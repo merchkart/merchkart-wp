@@ -1,0 +1,3778 @@
+# WordPress Blank Pot
+# Copyright (C) 2014 ...
+# This file is distributed under the GNU General Public License v2 or later.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: "
+"Teepro WordPress v3.0.0\n"
+"POT-Creation-Date: "
+"2018-10-22 15:40+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Your "
+"Name <you@example.com>\n"
+"Language-Team: "
+"netbaseteam\n"
+"Report-Msgid-Bugs-To: "
+"Translator Name "
+"<translations@example."
+"com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/"
+"plain; charset=UTF-8\n"
+"Content-Transfer-"
+"Encoding: 8bit\n"
+"Plural-Forms: "
+"nplurals=2; plural=n != "
+"1;\n"
+"X-Textdomain-Support: "
+"yesX-Generator: Poedit "
+"1.6.4\n"
+"X-Poedit-SourceCharset: "
+"UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;esc_html_e;"
+"esc_html_x:1,2c;"
+"esc_html__;esc_attr_e;"
+"esc_attr_x:1,2c;"
+"esc_attr__;_ex:1,2c;"
+"_nx:4c,1,2;"
+"_nx_noop:4c,1,2;_x:1,2c;"
+"_n:1,2;_n_noop:1,2;"
+"__ngettext:1,2;"
+"__ngettext_noop:1,2;_c,"
+"_nc:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"Language: en_US\n"
+"X-Generator: Poedit "
+"2.0.4\n"
+"X-Poedit-"
+"SearchPath-0: .\n"
+
+#: 404.php:16
+msgid "404"
+msgstr ""
+
+#: 404.php:18
+msgid ""
+"Sorry page not found"
+msgstr ""
+
+#: 404.php:19
+msgid ""
+"The page are looking for "
+"is not available or has "
+"been removed."
+msgstr ""
+
+#: 404.php:21
+#, php-format
+msgid ""
+"Try going to <a href=\"%s"
+"\">home page</a> by "
+"using the button below"
+msgstr ""
+
+#: 404.php:24
+msgid "go to home"
+msgstr ""
+
+#: assets/node_modules/browser-sync-ui/public/js/app.js:6
+msgid ""
+"ngSrc,ngSrcset,src,srcset"
+msgstr ""
+
+#: assets/node_modules/browser-sync-ui/public/js/app.js:7
+msgid "/"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs-parser/index.js:301
+#: assets/node_modules/npm/node_modules/yargs-parser/index.js:316
+#: assets/node_modules/sass-graph/node_modules/yargs-parser/index.js:301
+#: assets/node_modules/yargs-parser/index.js:301
+#, javascript-format
+msgid ""
+"Not enough arguments "
+"following: %s"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs-parser/index.js:449
+#: assets/node_modules/npm/node_modules/yargs-parser/index.js:479
+#: assets/node_modules/sass-graph/node_modules/yargs-parser/index.js:449
+#: assets/node_modules/yargs-parser/index.js:449
+#, javascript-format
+msgid ""
+"Invalid JSON config "
+"file: %s"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs/lib/usage.js:169
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/usage.js:161
+#: assets/node_modules/npm/node_modules/yargs/lib/usage.js:198
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/usage.js:169
+#: assets/node_modules/yargs/lib/usage.js:158
+msgid "Commands:"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs/lib/usage.js:177
+#: assets/node_modules/gulp/node_modules/yargs/lib/usage.js:407
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/usage.js:380
+#: assets/node_modules/npm/node_modules/yargs/lib/usage.js:214
+#: assets/node_modules/npm/node_modules/yargs/lib/usage.js:442
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/usage.js:177
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/usage.js:407
+#: assets/node_modules/yargs/lib/usage.js:376
+msgid "default:"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs/lib/usage.js:179
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/usage.js:169
+#: assets/node_modules/npm/node_modules/yargs/lib/usage.js:216
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/usage.js:179
+#: assets/node_modules/yargs/lib/usage.js:166
+msgid "aliases:"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs/lib/usage.js:241
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/usage.js:228
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+#: assets/node_modules/npm/node_modules/yargs/lib/usage.js:277
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/usage.js:241
+#: assets/node_modules/yargs/lib/usage.js:225
+msgid "boolean"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs/lib/usage.js:242
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/usage.js:229
+#: assets/node_modules/npm/node_modules/yargs/lib/usage.js:278
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/usage.js:242
+#: assets/node_modules/yargs/lib/usage.js:226
+msgid "count"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs/lib/usage.js:243
+#: assets/node_modules/gulp/node_modules/yargs/lib/usage.js:244
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/usage.js:230
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/usage.js:231
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+#: assets/node_modules/npm/node_modules/yargs/lib/usage.js:279
+#: assets/node_modules/npm/node_modules/yargs/lib/usage.js:280
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/usage.js:243
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/usage.js:244
+#: assets/node_modules/yargs/lib/usage.js:227
+#: assets/node_modules/yargs/lib/usage.js:228
+msgid "string"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs/lib/usage.js:245
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/usage.js:232
+#: assets/node_modules/npm/node_modules/yargs/lib/usage.js:281
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/usage.js:245
+#: assets/node_modules/yargs/lib/usage.js:229
+msgid "array"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs/lib/usage.js:246
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/usage.js:233
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+#: assets/node_modules/npm/node_modules/yargs/lib/usage.js:282
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/usage.js:246
+#: assets/node_modules/yargs/lib/usage.js:230
+msgid "number"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs/lib/usage.js:250
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/usage.js:237
+#: assets/node_modules/npm/node_modules/yargs/lib/usage.js:286
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/usage.js:250
+#: assets/node_modules/yargs/lib/usage.js:234
+msgid "required"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs/lib/usage.js:251
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/usage.js:238
+#: assets/node_modules/npm/node_modules/yargs/lib/usage.js:287
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/usage.js:251
+#: assets/node_modules/yargs/lib/usage.js:235
+msgid "choices:"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs/lib/usage.js:270
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/usage.js:257
+#: assets/node_modules/npm/node_modules/yargs/lib/usage.js:306
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/usage.js:270
+#: assets/node_modules/yargs/lib/usage.js:254
+msgid "Examples:"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs/lib/usage.js:385
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/usage.js:358
+#: assets/node_modules/npm/node_modules/yargs/lib/usage.js:420
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/usage.js:385
+#: assets/node_modules/yargs/lib/usage.js:354
+msgid "generated-value"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs/lib/validation.js:26
+#: assets/node_modules/gulp/node_modules/yargs/lib/validation.js:49
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/validation.js:26
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/validation.js:49
+#: assets/node_modules/npm/node_modules/yargs/lib/validation.js:29
+#: assets/node_modules/npm/node_modules/yargs/lib/validation.js:52
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/validation.js:26
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/validation.js:49
+#: assets/node_modules/yargs/lib/validation.js:22
+#: assets/node_modules/yargs/lib/validation.js:37
+#, javascript-format
+msgid ""
+"Not enough non-option "
+"arguments: got %s, need "
+"at least %s"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs/lib/validation.js:37
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/validation.js:37
+#: assets/node_modules/npm/node_modules/yargs/lib/validation.js:40
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/validation.js:37
+#: assets/node_modules/yargs/lib/validation.js:26
+#, javascript-format
+msgid ""
+"Too many non-option "
+"arguments: got %s, "
+"maximum of %s"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs/lib/validation.js:185
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/validation.js:183
+#: assets/node_modules/npm/node_modules/yargs/lib/validation.js:147
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/validation.js:185
+#: assets/node_modules/yargs/lib/validation.js:171
+msgid "Invalid values:"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs/lib/validation.js:188
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/validation.js:186
+#: assets/node_modules/npm/node_modules/yargs/lib/validation.js:150
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/validation.js:188
+#: assets/node_modules/yargs/lib/validation.js:174
+#, javascript-format
+msgid ""
+"Argument: %s, Given: %s, "
+"Choices: %s"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs/lib/validation.js:218
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/validation.js:212
+#: assets/node_modules/npm/node_modules/yargs/lib/validation.js:180
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/validation.js:218
+#: assets/node_modules/yargs/lib/validation.js:200
+#, javascript-format
+msgid ""
+"Argument check failed: %s"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs/lib/validation.js:283
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/validation.js:276
+#: assets/node_modules/npm/node_modules/yargs/lib/validation.js:256
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/validation.js:283
+#: assets/node_modules/yargs/lib/validation.js:270
+msgid ""
+"Implications failed:"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs/lib/validation.js:313
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/validation.js:305
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/validation.js:313
+#, javascript-format
+msgid ""
+"Arguments %s and %s are "
+"mutually exclusive"
+msgstr ""
+
+#: assets/node_modules/gulp/node_modules/yargs/lib/validation.js:332
+#: assets/node_modules/localtunnel/node_modules/yargs/lib/validation.js:324
+#: assets/node_modules/npm/node_modules/yargs/lib/validation.js:316
+#: assets/node_modules/sass-graph/node_modules/yargs/lib/validation.js:332
+#: assets/node_modules/yargs/lib/validation.js:294
+#, javascript-format
+msgid "Did you mean %s?"
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:25
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+msgid " "
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:25
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+msgid "."
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+msgid "*"
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+msgid "import"
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+msgid "{}"
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+#: netbase-core/helper/template-tags.php:351
+msgid ", "
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+msgid "this"
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+msgid "super"
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+msgid "null"
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+msgid ",\n"
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+msgid " = "
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+msgid "\n"
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+msgid "debugger;"
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+msgid ":"
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+msgid "empty"
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+msgid "any"
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+msgid "mixed"
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+msgid "interface "
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+msgid " & "
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+msgid "typeof "
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+msgid " | "
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/har-validator/node_modules/ajv/dist/regenerator.min.js:26
+msgid "void"
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/yargs/lib/usage.js:88
+msgid "Positionals:"
+msgstr ""
+
+#: assets/node_modules/npm/node_modules/yargs/lib/usage.js:187
+#: assets/node_modules/npm/node_modules/yargs/lib/usage.js:189
+msgid "command"
+msgstr ""
+
+#: comments.php:32
+#, php-format
+msgctxt "comments title"
+msgid ""
+"One comment on &ldquo;"
+"%2$s&rdquo;"
+msgid_plural ""
+"%1$s comments on &ldquo;"
+"%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:41
+#: comments.php:63
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:44
+#: comments.php:66
+msgid "Older Comments"
+msgstr ""
+
+#: comments.php:45
+#: comments.php:67
+msgid "Newer Comments"
+msgstr ""
+
+#: comments.php:80
+msgid ""
+"Comments are closed."
+msgstr ""
+
+#: comments.php:87
+msgid "Leave your comment"
+msgstr ""
+
+#: comments.php:88
+msgid "Your comment"
+msgstr ""
+
+#: comments.php:89
+msgid "Post comment"
+msgstr ""
+
+#: dokan/dashboard/big-counter-widget.php:17
+msgid "Sales"
+msgstr ""
+
+#: dokan/dashboard/big-counter-widget.php:21
+msgid "Earning"
+msgstr ""
+
+#: dokan/dashboard/big-counter-widget.php:25
+msgid "Pageview"
+msgstr ""
+
+#: dokan/dashboard/big-counter-widget.php:29
+#: dokan/my-orders.php:27
+#: dokan/orders/details.php:21
+#: dokan/sub-orders.php:25
+msgid "Order"
+msgstr ""
+
+#: dokan/dokan.php:42
+#: dokan/dokan.php:44
+msgid "Visit Store"
+msgstr ""
+
+#: dokan/dokan.php:48
+#: dokan/dokan.php:50
+msgid "Edit Account"
+msgstr ""
+
+#: dokan/dokan.php:54
+#: dokan/dokan.php:56
+msgid "Log out"
+msgstr ""
+
+#: dokan/global/product-tab.php:22
+msgid "Vendor:"
+msgstr ""
+
+#: dokan/global/product-tab.php:44
+msgid "View store"
+msgstr ""
+
+#: dokan/global/profile-progressbar.php:12
+msgid "% Profile complete"
+msgstr ""
+
+#: dokan/global/seller-registration-form.php:15
+msgid "First Name"
+msgstr ""
+
+#: dokan/global/seller-registration-form.php:20
+msgid "Last Name"
+msgstr ""
+
+#: dokan/global/seller-registration-form.php:26
+msgid "Shop Name"
+msgstr ""
+
+#: dokan/global/seller-registration-form.php:32
+msgid "Shop URL"
+msgstr ""
+
+#: dokan/global/seller-registration-form.php:40
+msgid "Phone Number"
+msgstr ""
+
+#: dokan/global/seller-registration-form.php:54
+#, php-format
+msgid ""
+"I have read and agree to "
+"the <a target=\"_blank\" "
+"href=\"%s\">Terms &amp; "
+"Conditions</a>."
+msgstr ""
+
+#: dokan/global/seller-registration-form.php:67
+msgid "I am a customer"
+msgstr ""
+
+#: dokan/global/seller-registration-form.php:72
+msgid "I am a vendor"
+msgstr ""
+
+#: dokan/my-orders.php:21
+msgid "Recent Orders"
+msgstr ""
+
+#: dokan/my-orders.php:28
+#: dokan/sub-orders.php:26
+msgid "Date"
+msgstr ""
+
+#: dokan/my-orders.php:29
+#: dokan/sub-orders.php:27
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2639
+msgid "Status"
+msgstr ""
+
+#: dokan/my-orders.php:30
+#: dokan/sub-orders.php:28
+#: woocommerce/cart/cart-totals.php:93
+#: woocommerce/cart/cart-totals.php:94
+#: woocommerce/netbase/cart/cart-layout-1.php:10
+#: woocommerce/netbase/cart/cart-layout-1.php:80
+#: woocommerce/netbase/cart/cart-layout-2.php:11
+#: woocommerce/netbase/cart/cart-layout-2.php:81
+msgid "Total"
+msgstr ""
+
+#: dokan/my-orders.php:31
+msgid "Vendor"
+msgstr ""
+
+#: dokan/my-orders.php:55
+#: dokan/sub-orders.php:51
+#, php-format
+msgid "%s for %s item"
+msgid_plural ""
+"%s for %s items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: dokan/my-orders.php:65
+msgid "Multiple Vendor"
+msgstr ""
+
+#: dokan/my-orders.php:77
+msgid "Pay"
+msgstr ""
+
+#: dokan/my-orders.php:83
+#: dokan/orders/details.php:172
+#: netbase-core/import/merlin-config.php:29
+#: woocommerce/wishlist-view.php:45
+msgid "Cancel"
+msgstr ""
+
+#: dokan/my-orders.php:88
+#: dokan/sub-orders.php:59
+msgid "View"
+msgstr ""
+
+#: dokan/my-orders.php:106
+msgid "No orders found!"
+msgstr ""
+
+#: dokan/orders/details.php:7
+msgid ""
+"This is not yours, I "
+"swear!"
+msgstr ""
+
+#: dokan/orders/details.php:21
+msgid "Order Items"
+msgstr ""
+
+#: dokan/orders/details.php:32
+msgid "Item"
+msgstr ""
+
+#: dokan/orders/details.php:36
+msgid "Qty"
+msgstr ""
+
+#: dokan/orders/details.php:38
+msgid "Totals"
+msgstr ""
+
+#: dokan/orders/details.php:98
+msgid "Coupons"
+msgstr ""
+
+#: dokan/orders/details.php:129
+msgid ""
+"Downloadable Product "
+"Permission"
+msgstr ""
+
+#: dokan/orders/details.php:144
+msgid "General Details"
+msgstr ""
+
+#: dokan/orders/details.php:148
+msgid "Order Status:"
+msgstr ""
+
+#: dokan/orders/details.php:152
+msgid "&nbsp; Edit"
+msgstr ""
+
+#: dokan/orders/details.php:170
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2808
+msgid "Update"
+msgstr ""
+
+#: dokan/orders/details.php:178
+msgid "Order Date:"
+msgstr ""
+
+#: dokan/orders/details.php:185
+msgid "Customer:"
+msgstr ""
+
+#: dokan/orders/details.php:198
+msgid "Email:"
+msgstr ""
+
+#: dokan/orders/details.php:202
+msgid "Phone:"
+msgstr ""
+
+#: dokan/orders/details.php:206
+msgid "Customer IP:"
+msgstr ""
+
+#: dokan/orders/details.php:218
+msgid "Customer Note:"
+msgstr ""
+
+#: dokan/orders/details.php:229
+msgid "Order Notes"
+msgstr ""
+
+#: dokan/orders/details.php:253
+#, php-format
+msgid "added %s ago"
+msgstr ""
+
+#: dokan/orders/details.php:255
+msgid "Delete note"
+msgstr ""
+
+#: dokan/orders/details.php:262
+msgid ""
+"There are no notes for "
+"this order yet."
+msgstr ""
+
+#: dokan/orders/details.php:271
+msgid "Add note"
+msgstr ""
+
+#: dokan/orders/details.php:279
+msgid "Customer note"
+msgstr ""
+
+#: dokan/orders/details.php:280
+msgid "Private note"
+msgstr ""
+
+#: dokan/orders/details.php:288
+msgid "Add Note"
+msgstr ""
+
+#: dokan/orders/details.php:295
+#: dokan/orders/details.php:304
+msgid "Tracking Number"
+msgstr ""
+
+#: dokan/orders/details.php:299
+msgid ""
+"Shipping Provider Name / "
+"URL"
+msgstr ""
+
+#: dokan/orders/details.php:309
+msgid "Date Shipped"
+msgstr ""
+
+#: dokan/orders/details.php:310
+msgid "YYYY-MM-DD"
+msgstr ""
+
+#: dokan/orders/details.php:319
+msgid ""
+"Add Tracking Details"
+msgstr ""
+
+#: dokan/orders/details.php:320
+msgid "Close"
+msgstr ""
+
+#: dokan/settings/store-form.php:67
+msgid "Upload banner"
+msgstr ""
+
+#: dokan/settings/store-form.php:80
+#, php-format
+msgid ""
+"Upload a banner for your "
+"store. Banner size is "
+"(%sx%s) pixels."
+msgstr ""
+
+#: dokan/settings/store-form.php:93
+msgid "Profile Picture"
+msgstr ""
+
+#: dokan/settings/store-form.php:103
+msgid "Upload Photo"
+msgstr ""
+
+#: dokan/settings/store-form.php:109
+msgid "Store Name"
+msgstr ""
+
+#: dokan/settings/store-form.php:112
+msgid "store name"
+msgstr ""
+
+#: dokan/settings/store-form.php:117
+msgid ""
+"Store Product Per Page"
+msgstr ""
+
+#: dokan/settings/store-form.php:140
+msgid "Phone No"
+msgstr ""
+
+#: dokan/settings/store-form.php:142
+msgid "+123456.."
+msgstr ""
+
+#: dokan/settings/store-form.php:147
+msgid "Email"
+msgstr ""
+
+#: dokan/settings/store-form.php:152
+msgid ""
+"Show email address in "
+"store"
+msgstr ""
+
+#: dokan/settings/store-form.php:159
+msgid "More product"
+msgstr ""
+
+#: dokan/settings/store-form.php:164
+msgid ""
+"Enable tab on product "
+"single page view"
+msgstr ""
+
+#: dokan/settings/store-form.php:172
+msgid "Map"
+msgstr ""
+
+#: dokan/settings/store-form.php:179
+msgid ""
+"Type an address to find"
+msgstr ""
+
+#: dokan/settings/store-form.php:180
+msgid "Find Address"
+msgstr ""
+
+#: dokan/settings/store-form.php:194
+msgid ""
+"Terms and Conditions"
+msgstr ""
+
+#: dokan/settings/store-form.php:198
+msgid ""
+"Show terms and "
+"conditions in store page"
+msgstr ""
+
+#: dokan/settings/store-form.php:204
+msgid "TOC Details"
+msgstr ""
+
+#: dokan/settings/store-form.php:226
+msgid "Update Settings"
+msgstr ""
+
+#: dokan/store-reviews.php:39
+msgid "Vendor Review"
+msgstr ""
+
+#: dokan/store-toc.php:27
+msgid ""
+"Terms And Conditions"
+msgstr ""
+
+#: dokan/store.php:56
+msgid ""
+"No products were found "
+"of this vendor!"
+msgstr ""
+
+#: dokan/sub-orders.php:12
+msgid "Sub Orders"
+msgstr ""
+
+#: dokan/sub-orders.php:16
+msgid "Note:"
+msgstr ""
+
+#: dokan/sub-orders.php:17
+msgid ""
+"This order has products "
+"from multiple vendors. "
+"So we divided this order "
+"into multiple vendor "
+"orders.\n"
+"    Each order will be "
+"handled by their "
+"respective vendor "
+"independently."
+msgstr ""
+
+#: functions.php:50
+msgid "Show Banner Bottom"
+msgstr ""
+
+#: functions.php:51
+msgid ""
+"Check this show banner"
+msgstr ""
+
+#: header.php:32
+msgid "Skip to content"
+msgstr ""
+
+#: netbase-core/core.php:164
+msgid "Primary"
+msgstr ""
+
+#: netbase-core/core.php:165
+msgid "Header sub menu"
+msgstr ""
+
+#: netbase-core/core.php:211
+msgid "Service Sidebar"
+msgstr ""
+
+#: netbase-core/core.php:213
+#: netbase-core/core.php:222
+msgid "Add widgets here."
+msgstr ""
+
+#: netbase-core/core.php:220
+msgid "Default Sidebar"
+msgstr ""
+
+#: netbase-core/core.php:230
+msgid "Shop Sidebar"
+msgstr ""
+
+#: netbase-core/core.php:232
+msgid ""
+"Add widgets for category "
+"page."
+msgstr ""
+
+#: netbase-core/core.php:240
+msgid "Blog Sidebar"
+msgstr ""
+
+#: netbase-core/core.php:242
+msgid ""
+"Add widgets for blog "
+"page."
+msgstr ""
+
+#: netbase-core/core.php:250
+msgid "Product Sidebar"
+msgstr ""
+
+#: netbase-core/core.php:252
+msgid ""
+"Add widgets for product "
+"details page"
+msgstr ""
+
+#: netbase-core/core.php:260
+msgid "Footer Top #1"
+msgstr ""
+
+#: netbase-core/core.php:262
+#: netbase-core/core.php:272
+#: netbase-core/core.php:282
+#: netbase-core/core.php:292
+#: netbase-core/core.php:302
+#: netbase-core/core.php:312
+#: netbase-core/core.php:322
+#: netbase-core/core.php:332
+msgid ""
+"For best display, please "
+"assign only one widget "
+"in this section."
+msgstr ""
+
+#: netbase-core/core.php:270
+msgid "Footer Top #2"
+msgstr ""
+
+#: netbase-core/core.php:280
+msgid "Footer Top #3"
+msgstr ""
+
+#: netbase-core/core.php:290
+msgid "Footer Top #4"
+msgstr ""
+
+#: netbase-core/core.php:300
+msgid "Footer Bottom #1"
+msgstr ""
+
+#: netbase-core/core.php:310
+msgid "Footer Bottom #2"
+msgstr ""
+
+#: netbase-core/core.php:320
+msgid "Footer Bottom #3"
+msgstr ""
+
+#: netbase-core/core.php:330
+msgid "Footer Bottom #4"
+msgstr ""
+
+#: netbase-core/customize/control/font-style.php:71
+msgid "Regular"
+msgstr ""
+
+#: netbase-core/customize/control/font-style.php:72
+msgid "Thin"
+msgstr ""
+
+#: netbase-core/customize/control/font-style.php:73
+msgid "Extra Light"
+msgstr ""
+
+#: netbase-core/customize/control/font-style.php:74
+#: netbase-core/customize/options.php:2003
+msgid "Light"
+msgstr ""
+
+#: netbase-core/customize/control/font-style.php:75
+msgid "Medium"
+msgstr ""
+
+#: netbase-core/customize/control/font-style.php:76
+msgid "Semi-bold"
+msgstr ""
+
+#: netbase-core/customize/control/font-style.php:77
+msgid "Bold"
+msgstr ""
+
+#: netbase-core/customize/control/font-style.php:78
+msgid "Extra Bold"
+msgstr ""
+
+#: netbase-core/customize/control/font-style.php:79
+msgid "Black"
+msgstr ""
+
+#: netbase-core/customize/control/heading.php:21
+#: netbase-core/customize/control/typography.php:82
+msgid "Info:"
+msgstr ""
+
+#: netbase-core/customize/control/typography.php:34
+msgid "Select Font"
+msgstr ""
+
+#: netbase-core/customize/control/typography.php:35
+msgid "Select"
+msgstr ""
+
+#: netbase-core/customize/control/typography.php:36
+msgid ""
+"Please choose only ONE "
+"font"
+msgstr ""
+
+#: netbase-core/customize/control/typography.php:66
+msgid "Google fonts"
+msgstr ""
+
+#: netbase-core/customize/control/typography.php:67
+msgid "Custom fonts"
+msgstr ""
+
+#: netbase-core/customize/control/typography.php:68
+msgid "Standard fonts"
+msgstr ""
+
+#: netbase-core/customize/control/typography.php:80
+msgid "Select fonts"
+msgstr ""
+
+#: netbase-core/customize/options.php:33
+#: netbase-core/customize/options.php:1189
+msgid "Footer"
+msgstr ""
+
+#: netbase-core/customize/options.php:39
+msgid "Footer top section"
+msgstr ""
+
+#: netbase-core/customize/options.php:48
+#: netbase-core/customize/options.php:125
+msgid "Show this section"
+msgstr ""
+
+#: netbase-core/customize/options.php:57
+#: netbase-core/customize/options.php:134
+msgid "Columns"
+msgstr ""
+
+#: netbase-core/customize/options.php:78
+#: netbase-core/customize/options.php:154
+msgid "Padding top"
+msgstr ""
+
+#: netbase-core/customize/options.php:93
+#: netbase-core/customize/options.php:169
+msgid "Padding bottom"
+msgstr ""
+
+#: netbase-core/customize/options.php:109
+#: netbase-core/customize/options.php:185
+msgid "Border Bottom Color"
+msgstr ""
+
+#: netbase-core/customize/options.php:116
+msgid ""
+"Footer bottom section"
+msgstr ""
+
+#: netbase-core/customize/options.php:194
+msgid ""
+"Enable colorful widget "
+"title"
+msgstr ""
+
+#: netbase-core/customize/options.php:201
+msgid "Absolute Footer"
+msgstr ""
+
+#: netbase-core/customize/options.php:202
+msgid ""
+"These area take text and "
+"HTML code for its content"
+msgstr ""
+
+#: netbase-core/customize/options.php:211
+msgid "Left content"
+msgstr ""
+
+#: netbase-core/customize/options.php:220
+msgid "Right content"
+msgstr ""
+
+#: netbase-core/customize/options.php:230
+#: netbase-core/customize/options.php:1853
+msgid ""
+"Padding top and bottom"
+msgstr ""
+
+#: netbase-core/customize/options.php:245
+#: netbase-core/customize/options.php:1871
+#: netbase-core/customize/options.php:2252
+msgid "Edit color"
+msgstr ""
+
+#: netbase-core/customize/options.php:256
+msgid "Blog"
+msgstr ""
+
+#: netbase-core/customize/options.php:260
+#: netbase-core/customize/options.php:640
+#: netbase-core/customize/options.php:744
+#: netbase-core/customize/options.php:1050
+#: netbase-core/customize/options.php:1180
+#: netbase-core/customize/options.php:2098
+msgid "General"
+msgstr ""
+
+#: netbase-core/customize/options.php:263
+msgid "Blog Archive"
+msgstr ""
+
+#: netbase-core/customize/options.php:266
+msgid "Blog Single"
+msgstr ""
+
+#: netbase-core/customize/options.php:273
+#: netbase-core/customize/options.php:573
+#: netbase-core/customize/options.php:649
+#: netbase-core/customize/options.php:767
+#: netbase-core/customize/options.php:1059
+#: netbase-core/customize/options.php:1143
+#: netbase-core/customize/options.php:1147
+#: netbase-core/customize/options.php:2778
+msgid "Layout"
+msgstr ""
+
+#: netbase-core/customize/options.php:283
+#: netbase-core/customize/options.php:674
+#: netbase-core/customize/options.php:777
+#: netbase-core/customize/options.php:1098
+msgid "Sidebar position"
+msgstr ""
+
+#: netbase-core/customize/options.php:299
+msgid "Blog width"
+msgstr ""
+
+#: netbase-core/customize/options.php:317
+msgid "Post meta"
+msgstr ""
+
+#: netbase-core/customize/options.php:327
+msgid "Show date"
+msgstr ""
+
+#: netbase-core/customize/options.php:337
+msgid "Show time to read"
+msgstr ""
+
+#: netbase-core/customize/options.php:347
+msgid "Show author"
+msgstr ""
+
+#: netbase-core/customize/options.php:357
+msgid "Show categories"
+msgstr ""
+
+#: netbase-core/customize/options.php:367
+msgid "Show Tags"
+msgstr ""
+
+#: netbase-core/customize/options.php:379
+#: netbase-core/customize/options.php:1195
+#: netbase-core/customize/options.php:2638
+msgid "Other"
+msgstr ""
+
+#: netbase-core/customize/options.php:389
+#: netbase-core/customize/options.php:851
+#: netbase-core/customize/options.php:2850
+msgid "Sticky sidebar"
+msgstr ""
+
+#: netbase-core/customize/options.php:400
+msgid "Meta align"
+msgstr ""
+
+#: netbase-core/customize/options.php:415
+msgid "Blog Archive Layout"
+msgstr ""
+
+#: netbase-core/customize/options.php:429
+msgid "Masonry Columns"
+msgstr ""
+
+#: netbase-core/customize/options.php:433
+#: netbase-core/customize/options.php:892
+#: netbase-core/customize/options.php:911
+#: netbase-core/customize/options.php:930
+#: netbase-core/customize/options.php:948
+#: netbase-core/customize/options.php:979
+#: netbase-core/customize/options.php:997
+#: netbase-core/customize/options.php:1014
+#: netbase-core/customize/options.php:1031
+msgid "2"
+msgstr ""
+
+#: netbase-core/customize/options.php:434
+#: netbase-core/customize/options.php:893
+#: netbase-core/customize/options.php:912
+#: netbase-core/customize/options.php:931
+#: netbase-core/customize/options.php:949
+#: netbase-core/customize/options.php:980
+#: netbase-core/customize/options.php:998
+#: netbase-core/customize/options.php:1015
+#: netbase-core/customize/options.php:1032
+msgid "3"
+msgstr ""
+
+#: netbase-core/customize/options.php:447
+msgid "Archive Post style"
+msgstr ""
+
+#: netbase-core/customize/options.php:461
+msgid "Show Post summary"
+msgstr ""
+
+#: netbase-core/customize/options.php:471
+msgid "Show Excerpt Only"
+msgstr ""
+
+#: netbase-core/customize/options.php:485
+msgid "Excerpt Length"
+msgstr ""
+
+#: netbase-core/customize/options.php:504
+msgid ""
+"Show Comments number"
+msgstr ""
+
+#: netbase-core/customize/options.php:516
+msgid "Post title"
+msgstr ""
+
+#: netbase-core/customize/options.php:526
+msgid "Post title style"
+msgstr ""
+
+#: netbase-core/customize/options.php:540
+msgid ""
+"Background Blog Single "
+"Title"
+msgstr ""
+
+#: netbase-core/customize/options.php:559
+#: netbase-core/customize/options.php:1836
+msgid "Font size"
+msgstr ""
+
+#: netbase-core/customize/options.php:583
+msgid "featured thumbnail"
+msgstr ""
+
+#: netbase-core/customize/options.php:584
+msgid ""
+"Show featured thumbnail "
+"of this post on top of "
+"its content"
+msgstr ""
+
+#: netbase-core/customize/options.php:594
+msgid "Show social button"
+msgstr ""
+
+#: netbase-core/customize/options.php:604
+msgid "Show author info"
+msgstr ""
+
+#: netbase-core/customize/options.php:614
+msgid ""
+"Show post navigation"
+msgstr ""
+
+#: netbase-core/customize/options.php:624
+msgid "Show post comments"
+msgstr ""
+
+#: netbase-core/customize/options.php:636
+msgid "Pages"
+msgstr ""
+
+#: netbase-core/customize/options.php:660
+msgid ""
+"Image Background Title "
+"Pages"
+msgstr ""
+
+#: netbase-core/customize/options.php:690
+msgid "Image Banner Pages"
+msgstr ""
+
+#: netbase-core/customize/options.php:705
+#: netbase-core/customize/options.php:1129
+msgid ""
+"Text banner bottom "
+"section"
+msgstr ""
+
+#: netbase-core/customize/options.php:717
+msgid "Page content width"
+msgstr ""
+
+#: netbase-core/customize/options.php:740
+msgid "Dokan"
+msgstr ""
+
+#: netbase-core/customize/options.php:747
+msgid "Dashboard"
+msgstr ""
+
+#: netbase-core/customize/options.php:751
+msgid "Store listing"
+msgstr ""
+
+#: netbase-core/customize/options.php:755
+msgid "Vendor detail"
+msgstr ""
+
+#: netbase-core/customize/options.php:759
+msgid "Single Product"
+msgstr ""
+
+#: netbase-core/customize/options.php:794
+msgid "Light style"
+msgstr ""
+
+#: netbase-core/customize/options.php:804
+msgid "Vendor Layout"
+msgstr ""
+
+#: netbase-core/customize/options.php:816
+msgid "Vendors sidebar"
+msgstr ""
+
+#: netbase-core/customize/options.php:834
+msgid ""
+"Vendors content width"
+msgstr ""
+
+#: netbase-core/customize/options.php:862
+msgid "Height of maps"
+msgstr ""
+
+#: netbase-core/customize/options.php:873
+#: netbase-core/customize/options.php:2714
+msgid "Products per Page"
+msgstr ""
+
+#: netbase-core/customize/options.php:888
+#: netbase-core/customize/options.php:975
+msgid ""
+"Products per row (Large "
+"Desktops)"
+msgstr ""
+
+#: netbase-core/customize/options.php:891
+#: netbase-core/customize/options.php:910
+#: netbase-core/customize/options.php:929
+#: netbase-core/customize/options.php:947
+#: netbase-core/customize/options.php:978
+#: netbase-core/customize/options.php:996
+#: netbase-core/customize/options.php:1013
+#: netbase-core/customize/options.php:1030
+msgid "1"
+msgstr ""
+
+#: netbase-core/customize/options.php:894
+#: netbase-core/customize/options.php:913
+#: netbase-core/customize/options.php:932
+#: netbase-core/customize/options.php:950
+#: netbase-core/customize/options.php:981
+#: netbase-core/customize/options.php:999
+#: netbase-core/customize/options.php:1016
+#: netbase-core/customize/options.php:1033
+msgid "4"
+msgstr ""
+
+#: netbase-core/customize/options.php:895
+#: netbase-core/customize/options.php:914
+#: netbase-core/customize/options.php:933
+#: netbase-core/customize/options.php:951
+msgid "6"
+msgstr ""
+
+#: netbase-core/customize/options.php:907
+#: netbase-core/customize/options.php:993
+msgid ""
+"Products per row "
+"(Desktops)"
+msgstr ""
+
+#: netbase-core/customize/options.php:926
+#: netbase-core/customize/options.php:1010
+msgid ""
+"Products per row "
+"(Tablets)"
+msgstr ""
+
+#: netbase-core/customize/options.php:944
+#: netbase-core/customize/options.php:1027
+msgid ""
+"Products per row (Mobile "
+"Landscape)"
+msgstr ""
+
+#: netbase-core/customize/options.php:962
+msgid "More Product Layout"
+msgstr ""
+
+#: netbase-core/customize/options.php:963
+msgid ""
+"If enable 'More product' "
+"tab on product single "
+"page view"
+msgstr ""
+
+#: netbase-core/customize/options.php:1046
+msgid "Services"
+msgstr ""
+
+#: netbase-core/customize/options.php:1069
+msgid "Show title service"
+msgstr ""
+
+#: netbase-core/customize/options.php:1080
+msgid ""
+"Image Banner Title "
+"Service"
+msgstr ""
+
+#: netbase-core/customize/options.php:1114
+msgid ""
+"Image Banner Bottom "
+"Service"
+msgstr ""
+
+#: netbase-core/customize/options.php:1158
+msgid "Container Width"
+msgstr ""
+
+#: netbase-core/customize/options.php:1162
+msgid "Standard (1170px)"
+msgstr ""
+
+#: netbase-core/customize/options.php:1163
+msgid "Wide (1470px)"
+msgstr ""
+
+#: netbase-core/customize/options.php:1176
+msgid "Color"
+msgstr ""
+
+#: netbase-core/customize/options.php:1183
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2634
+msgid "Type"
+msgstr ""
+
+#: netbase-core/customize/options.php:1186
+msgid "Header"
+msgstr ""
+
+#: netbase-core/customize/options.php:1192
+msgid "Buttons"
+msgstr ""
+
+#: netbase-core/customize/options.php:1202
+msgid "Main Colors"
+msgstr ""
+
+#: netbase-core/customize/options.php:1213
+msgid "Primary Color"
+msgstr ""
+
+#: netbase-core/customize/options.php:1224
+msgid "Secondary Color"
+msgstr ""
+
+#: netbase-core/customize/options.php:1232
+#: netbase-core/customize/options.php:1626
+#: netbase-core/customize/options.php:1700
+msgid "Background"
+msgstr ""
+
+#: netbase-core/customize/options.php:1243
+msgid ""
+"Site Background Color"
+msgstr ""
+
+#: netbase-core/customize/options.php:1254
+msgid ""
+"Inner Background Color"
+msgstr ""
+
+#: netbase-core/customize/options.php:1262
+#: netbase-core/customize/options.php:1648
+#: netbase-core/customize/options.php:1722
+msgid "Text"
+msgstr ""
+
+#: netbase-core/customize/options.php:1273
+msgid "Heading Color"
+msgstr ""
+
+#: netbase-core/customize/options.php:1284
+msgid "Body Color"
+msgstr ""
+
+#: netbase-core/customize/options.php:1292
+msgid "Link"
+msgstr ""
+
+#: netbase-core/customize/options.php:1302
+msgid "Link Color"
+msgstr ""
+
+#: netbase-core/customize/options.php:1312
+msgid "Link Hover Color"
+msgstr ""
+
+#: netbase-core/customize/options.php:1320
+msgid "Divider"
+msgstr ""
+
+#: netbase-core/customize/options.php:1331
+msgid "Divider Color"
+msgstr ""
+
+#: netbase-core/customize/options.php:1339
+msgid "Header Top"
+msgstr ""
+
+#: netbase-core/customize/options.php:1350
+#: netbase-core/customize/options.php:1391
+#: netbase-core/customize/options.php:1432
+msgid "background color"
+msgstr ""
+
+#: netbase-core/customize/options.php:1361
+#: netbase-core/customize/options.php:1402
+#: netbase-core/customize/options.php:1443
+#: netbase-core/customize/options.php:1462
+#: netbase-core/customize/options.php:1525
+#: netbase-core/customize/options.php:1566
+#: netbase-core/customize/options.php:1596
+#: netbase-core/customize/options.php:1774
+msgid "Text color"
+msgstr ""
+
+#: netbase-core/customize/options.php:1372
+#: netbase-core/customize/options.php:1413
+msgid "Text color hover"
+msgstr ""
+
+#: netbase-core/customize/options.php:1380
+#: netbase-core/customize/options.php:2199
+msgid "Header Middle"
+msgstr ""
+
+#: netbase-core/customize/options.php:1421
+msgid "Header Bottom"
+msgstr ""
+
+#: netbase-core/customize/options.php:1451
+msgid "Main Menu"
+msgstr ""
+
+#: netbase-core/customize/options.php:1473
+msgid "Border color"
+msgstr ""
+
+#: netbase-core/customize/options.php:1484
+#: netbase-core/customize/options.php:1659
+#: netbase-core/customize/options.php:1733
+msgid "Text hover"
+msgstr ""
+
+#: netbase-core/customize/options.php:1495
+msgid "border hover"
+msgstr ""
+
+#: netbase-core/customize/options.php:1503
+msgid "Footer top"
+msgstr ""
+
+#: netbase-core/customize/options.php:1514
+#: netbase-core/customize/options.php:1555
+msgid "Heading color"
+msgstr ""
+
+#: netbase-core/customize/options.php:1536
+#: netbase-core/customize/options.php:1577
+#: netbase-core/customize/options.php:1607
+msgid "Background color"
+msgstr ""
+
+#: netbase-core/customize/options.php:1544
+msgid "Footer bottom"
+msgstr ""
+
+#: netbase-core/customize/options.php:1585
+msgid ""
+"Footer Absolute Bottom"
+msgstr ""
+
+#: netbase-core/customize/options.php:1615
+msgid "Primary button"
+msgstr ""
+
+#: netbase-core/customize/options.php:1637
+#: netbase-core/customize/options.php:1711
+msgid "Background Hover"
+msgstr ""
+
+#: netbase-core/customize/options.php:1670
+#: netbase-core/customize/options.php:1744
+msgid "Border"
+msgstr ""
+
+#: netbase-core/customize/options.php:1681
+#: netbase-core/customize/options.php:1755
+msgid "Border hover"
+msgstr ""
+
+#: netbase-core/customize/options.php:1689
+msgid "Secondary button"
+msgstr ""
+
+#: netbase-core/customize/options.php:1763
+msgid "Page title"
+msgstr ""
+
+#: netbase-core/customize/options.php:1786
+msgid "Elements"
+msgstr ""
+
+#: netbase-core/customize/options.php:1790
+msgid "Title Section"
+msgstr ""
+
+#: netbase-core/customize/options.php:1793
+msgid "Button"
+msgstr ""
+
+#: netbase-core/customize/options.php:1796
+msgid "Social Share"
+msgstr ""
+
+#: netbase-core/customize/options.php:1799
+msgid "Pagination"
+msgstr ""
+
+#: netbase-core/customize/options.php:1802
+msgid "Back to Top Button"
+msgstr ""
+
+#: netbase-core/customize/options.php:1805
+msgid "Preloading"
+msgstr ""
+
+#: netbase-core/customize/options.php:1814
+msgid "Show title section"
+msgstr ""
+
+#: netbase-core/customize/options.php:1824
+msgid "Show Homepage title"
+msgstr ""
+
+#: netbase-core/customize/options.php:1825
+msgid ""
+"Turn this off to not "
+"display the title "
+"section for only homepage"
+msgstr ""
+
+#: netbase-core/customize/options.php:1881
+msgid ""
+"Padding left & right"
+msgstr ""
+
+#: netbase-core/customize/options.php:1898
+msgid "Border Radius"
+msgstr ""
+
+#: netbase-core/customize/options.php:1915
+msgid "Border Width"
+msgstr ""
+
+#: netbase-core/customize/options.php:1931
+#: netbase-core/customize/options.php:1959
+msgid "Style"
+msgstr ""
+
+#: netbase-core/customize/options.php:1935
+#: netbase-core/customize/options.php:1963
+#: netbase-core/customize/options.php:2733
+#: netbase-core/customize/options.php:2881
+msgid "Style 1"
+msgstr ""
+
+#: netbase-core/customize/options.php:1936
+#: netbase-core/customize/options.php:1964
+#: netbase-core/customize/options.php:2734
+#: netbase-core/customize/options.php:2882
+msgid "Style 2"
+msgstr ""
+
+#: netbase-core/customize/options.php:1945
+msgid "Buttons position"
+msgstr ""
+
+#: netbase-core/customize/options.php:1973
+#: netbase-core/customize/options.php:1984
+#: netbase-core/customize/options.php:1999
+msgid "Show button"
+msgstr ""
+
+#: netbase-core/customize/options.php:1988
+msgid "Circle"
+msgstr ""
+
+#: netbase-core/customize/options.php:1989
+msgid "Square"
+msgstr ""
+
+#: netbase-core/customize/options.php:2004
+msgid "Dark"
+msgstr ""
+
+#: netbase-core/customize/options.php:2013
+msgid "Show Preloading"
+msgstr ""
+
+#: netbase-core/customize/options.php:2024
+msgid ""
+"Choose style preloading"
+msgstr ""
+
+#: netbase-core/customize/options.php:2058
+msgid "Header Options"
+msgstr ""
+
+#: netbase-core/customize/options.php:2059
+msgid "header description"
+msgstr ""
+
+#: netbase-core/customize/options.php:2063
+msgid "Presets"
+msgstr ""
+
+#: netbase-core/customize/options.php:2066
+msgid "Sections"
+msgstr ""
+
+#: netbase-core/customize/options.php:2073
+msgid "Header style"
+msgstr ""
+
+#: netbase-core/customize/options.php:2074
+msgid ""
+"Quickly select a preset "
+"to change your header "
+"layout."
+msgstr ""
+
+#: netbase-core/customize/options.php:2109
+msgid "Site Logo"
+msgstr ""
+
+#: netbase-core/customize/options.php:2111
+msgid ""
+"If you don't upload logo "
+"image, your site's logo "
+"will be the Site Title "
+msgstr ""
+
+#: netbase-core/customize/options.php:2121
+msgid "Logo Area Width"
+msgstr ""
+
+#: netbase-core/customize/options.php:2139
+msgid "Menu Responsive"
+msgstr ""
+
+#: netbase-core/customize/options.php:2143
+msgid "576 px"
+msgstr ""
+
+#: netbase-core/customize/options.php:2144
+msgid "768 px"
+msgstr ""
+
+#: netbase-core/customize/options.php:2145
+msgid "992 px"
+msgstr ""
+
+#: netbase-core/customize/options.php:2146
+msgid "1200 px"
+msgstr ""
+
+#: netbase-core/customize/options.php:2155
+msgid "Fixed header"
+msgstr ""
+
+#: netbase-core/customize/options.php:2166
+msgid "Text section"
+msgstr ""
+
+#: netbase-core/customize/options.php:2174
+msgid "Header topbar"
+msgstr ""
+
+#: netbase-core/customize/options.php:2185
+#: netbase-core/customize/options.php:2210
+#: netbase-core/customize/options.php:2235
+msgid ""
+"Top & bottom padding"
+msgstr ""
+
+#: netbase-core/customize/options.php:2224
+msgid "Header bottom"
+msgstr ""
+
+#: netbase-core/customize/options.php:2264
+msgid "Typography"
+msgstr ""
+
+#: netbase-core/customize/options.php:2270
+msgid "Body Font"
+msgstr ""
+
+#: netbase-core/customize/options.php:2279
+msgid "Font Family"
+msgstr ""
+
+#: netbase-core/customize/options.php:2289
+#: netbase-core/customize/options.php:2337
+msgid "Font Styles"
+msgstr ""
+
+#: netbase-core/customize/options.php:2304
+msgid "Font Size"
+msgstr ""
+
+#: netbase-core/customize/options.php:2317
+msgid "Heading Font"
+msgstr ""
+
+#: netbase-core/customize/options.php:2327
+msgid "Heading font"
+msgstr ""
+
+#: netbase-core/customize/options.php:2352
+msgid "Heading base size"
+msgstr ""
+
+#: netbase-core/customize/options.php:2365
+msgid "Font subset"
+msgstr ""
+
+#: netbase-core/customize/options.php:2366
+msgid ""
+"Turn these settings on "
+"if you have to support "
+"these scripts"
+msgstr ""
+
+#: netbase-core/customize/options.php:2376
+msgid "Cyrillic subset"
+msgstr ""
+
+#: netbase-core/customize/options.php:2386
+msgid "Greek subset"
+msgstr ""
+
+#: netbase-core/customize/options.php:2396
+msgid "Vietnamese subset"
+msgstr ""
+
+#: netbase-core/customize/options.php:2405
+msgid "Edit font color"
+msgstr ""
+
+#: netbase-core/customize/options.php:2416
+#: netbase-core/customize/options.php:2440
+#: netbase-core/helper/template-tags.php:612
+msgid "Shop"
+msgstr ""
+
+#: netbase-core/customize/options.php:2420
+msgid "Product Category"
+msgstr ""
+
+#: netbase-core/customize/options.php:2423
+msgid "Product Details"
+msgstr ""
+
+#: netbase-core/customize/options.php:2426
+msgid "Other Pages"
+msgstr ""
+
+#: netbase-core/customize/options.php:2433
+msgid ""
+"Product category title"
+msgstr ""
+
+#: netbase-core/customize/options.php:2445
+msgid "Shop page title"
+msgstr ""
+
+#: netbase-core/customize/options.php:2456
+msgid "Show breadcrumb ?"
+msgstr ""
+
+#: netbase-core/customize/options.php:2464
+msgid ""
+"Product category layout"
+msgstr ""
+
+#: netbase-core/customize/options.php:2475
+msgid "Sidebar Layout"
+msgstr ""
+
+#: netbase-core/customize/options.php:2477
+msgid ""
+"Sidebar Position for "
+"product category and "
+"shop page"
+msgstr ""
+
+#: netbase-core/customize/options.php:2493
+msgid ""
+"Woocommerce content width"
+msgstr ""
+
+#: netbase-core/customize/options.php:2494
+msgid ""
+"This options also effect "
+"Cart page"
+msgstr ""
+
+#: netbase-core/customize/options.php:2515
+msgid "Sticky Sidebar"
+msgstr ""
+
+#: netbase-core/customize/options.php:2526
+msgid ""
+"Choose product meta align"
+msgstr ""
+
+#: netbase-core/customize/options.php:2530
+msgid "Left"
+msgstr ""
+
+#: netbase-core/customize/options.php:2531
+#: netbase-core/customize/options.php:2700
+msgid "Center"
+msgstr ""
+
+#: netbase-core/customize/options.php:2532
+msgid "Right"
+msgstr ""
+
+#: netbase-core/customize/options.php:2543
+msgid ""
+"Choose product price "
+"style"
+msgstr ""
+
+#: netbase-core/customize/options.php:2547
+msgid "Default Woocommerce"
+msgstr ""
+
+#: netbase-core/customize/options.php:2548
+msgid "Space Between"
+msgstr ""
+
+#: netbase-core/customize/options.php:2549
+msgid "No Strike"
+msgstr ""
+
+#: netbase-core/customize/options.php:2560
+msgid ""
+"Choose product hover"
+msgstr ""
+
+#: netbase-core/customize/options.php:2564
+msgid ""
+"Display box shadow only "
+"product image"
+msgstr ""
+
+#: netbase-core/customize/options.php:2565
+msgid ""
+"Display box shadow whole "
+"product block"
+msgstr ""
+
+#: netbase-core/customize/options.php:2577
+msgid "Product List Style"
+msgstr ""
+
+#: netbase-core/customize/options.php:2594
+msgid ""
+"Enable Product Title Bold"
+msgstr ""
+
+#: netbase-core/customize/options.php:2606
+msgid "Product Description"
+msgstr ""
+
+#: netbase-core/customize/options.php:2621
+#: netbase-core/customize/options.php:3133
+msgid "Products per row"
+msgstr ""
+
+#: netbase-core/customize/options.php:2648
+msgid "Shop Banner"
+msgstr ""
+
+#: netbase-core/customize/options.php:2663
+msgid "Show shop action"
+msgstr ""
+
+#: netbase-core/customize/options.php:2674
+msgid ""
+"Show opacity when hover"
+msgstr ""
+
+#: netbase-core/customize/options.php:2685
+msgid "Show product rating"
+msgstr ""
+
+#: netbase-core/customize/options.php:2696
+msgid ""
+"Choose product action "
+"style"
+msgstr ""
+
+#: netbase-core/customize/options.php:2701
+msgid "Vertical"
+msgstr ""
+
+#: netbase-core/customize/options.php:2702
+#: netbase-core/customize/options.php:2972
+msgid "Horizontal"
+msgstr ""
+
+#: netbase-core/customize/options.php:2729
+msgid ""
+"Choose sale tag style"
+msgstr ""
+
+#: netbase-core/customize/options.php:2735
+msgid "Style 3"
+msgstr ""
+
+#: netbase-core/customize/options.php:2745
+msgid "Wishlist button"
+msgstr ""
+
+#: netbase-core/customize/options.php:2746
+msgid ""
+"This feature need YITH "
+"Woocommerce Wishlist "
+"plugin to be installed "
+"and activated"
+msgstr ""
+
+#: netbase-core/customize/options.php:2757
+msgid "Compare button"
+msgstr ""
+
+#: netbase-core/customize/options.php:2758
+msgid ""
+"This feature need YITH "
+"Woocommerce Compare "
+"plugin to be installed "
+"and activated"
+msgstr ""
+
+#: netbase-core/customize/options.php:2769
+msgid "Quickview button"
+msgstr ""
+
+#: netbase-core/customize/options.php:2770
+msgid ""
+"This feature need YITH "
+"Woocommerce Quick View "
+"plugin to be installed "
+"and activated"
+msgstr ""
+
+#: netbase-core/customize/options.php:2789
+msgid ""
+"Enable Product title"
+msgstr ""
+
+#: netbase-core/customize/options.php:2790
+msgid ""
+"Default product title is "
+"not display if the Page "
+"title is showing. Enable "
+"this to displaying both."
+msgstr ""
+
+#: netbase-core/customize/options.php:2801
+msgid ""
+"Enable Review Rating"
+msgstr ""
+
+#: netbase-core/customize/options.php:2812
+msgid ""
+"Product details sidebar"
+msgstr ""
+
+#: netbase-core/customize/options.php:2829
+msgid ""
+"Product details content "
+"width"
+msgstr ""
+
+#: netbase-core/customize/options.php:2861
+msgid "Product meta layout"
+msgstr ""
+
+#: netbase-core/customize/options.php:2877
+msgid ""
+"Add to cart input style"
+msgstr ""
+
+#: netbase-core/customize/options.php:2892
+msgid "Show social share?"
+msgstr ""
+
+#: netbase-core/customize/options.php:2900
+msgid "Product Gallery"
+msgstr ""
+
+#: netbase-core/customize/options.php:2912
+msgid ""
+"Product images width"
+msgstr ""
+
+#: netbase-core/customize/options.php:2933
+msgid ""
+"Featured Images Autoplay"
+msgstr ""
+
+#: netbase-core/customize/options.php:2944
+msgid ""
+"Small thumb position"
+msgstr ""
+
+#: netbase-core/customize/options.php:2957
+msgid "Information tab"
+msgstr ""
+
+#: netbase-core/customize/options.php:2968
+msgid "Tabs style"
+msgstr ""
+
+#: netbase-core/customize/options.php:2973
+msgid "Accordion"
+msgstr ""
+
+#: netbase-core/customize/options.php:2984
+msgid "Reviews form style"
+msgstr ""
+
+#: netbase-core/customize/options.php:2988
+msgid "Split"
+msgstr ""
+
+#: netbase-core/customize/options.php:2989
+msgid "Full Width"
+msgstr ""
+
+#: netbase-core/customize/options.php:3000
+msgid ""
+"Round reviewer avatar"
+msgstr ""
+
+#: netbase-core/customize/options.php:3008
+msgid ""
+"Related & Cross-sells "
+"products"
+msgstr ""
+
+#: netbase-core/customize/options.php:3019
+msgid ""
+"Show upsells products?"
+msgstr ""
+
+#: netbase-core/customize/options.php:3030
+msgid ""
+"Upsells Products per row"
+msgstr ""
+
+#: netbase-core/customize/options.php:3034
+#: netbase-core/customize/options.php:3076
+msgid "2 Products"
+msgstr ""
+
+#: netbase-core/customize/options.php:3035
+#: netbase-core/customize/options.php:3077
+msgid "3 Products"
+msgstr ""
+
+#: netbase-core/customize/options.php:3036
+#: netbase-core/customize/options.php:3078
+msgid "4 Products"
+msgstr ""
+
+#: netbase-core/customize/options.php:3046
+msgid ""
+"Upsells Products limit"
+msgstr ""
+
+#: netbase-core/customize/options.php:3061
+msgid ""
+"Show related product?"
+msgstr ""
+
+#: netbase-core/customize/options.php:3072
+msgid ""
+"Related Products per row"
+msgstr ""
+
+#: netbase-core/customize/options.php:3085
+msgid "Cart"
+msgstr ""
+
+#: netbase-core/customize/options.php:3096
+msgid "Cart page layout"
+msgstr ""
+
+#: netbase-core/customize/options.php:3111
+msgid ""
+"Show Continue shopping "
+"button"
+msgstr ""
+
+#: netbase-core/customize/options.php:3122
+msgid "Show cross sells"
+msgstr ""
+
+#: netbase-core/customize/options.php:3137
+msgid "3 products"
+msgstr ""
+
+#: netbase-core/customize/options.php:3138
+msgid "4 products"
+msgstr ""
+
+#: netbase-core/customize/options.php:3139
+msgid "5 products"
+msgstr ""
+
+#: netbase-core/customize/options.php:3153
+msgid ""
+"Cross sells Products "
+"limit"
+msgstr ""
+
+#: netbase-core/extensions/extras.php:17
+#: netbase-core/extensions/extras.php:39
+msgid ""
+"Swatch style Attributes"
+msgstr ""
+
+#: netbase-core/extensions/extras.php:29
+msgid "Show Attribute ?"
+msgstr ""
+
+#: netbase-core/extensions/extras.php:30
+msgid ""
+"This options also effect "
+"for product attributes "
+"in product archive"
+msgstr ""
+
+#: netbase-core/extensions/extras.php:40
+msgid ""
+"This options also effect "
+"for product attributes"
+msgstr ""
+
+#: netbase-core/extensions/woocommerce.php:262
+msgid ""
+"Product has been added "
+"to cart"
+msgstr ""
+
+#: netbase-core/extensions/woocommerce.php:263
+msgid "View Cart"
+msgstr ""
+
+#: netbase-core/extensions/woocommerce.php:274
+#: netbase-core/extensions/woocommerce.php:348
+msgid "Thumbnail"
+msgstr ""
+
+#: netbase-core/extensions/woocommerce.php:279
+#: netbase-core/extensions/woocommerce.php:354
+msgid "Upload/Add image"
+msgstr ""
+
+#: netbase-core/extensions/woocommerce.php:280
+#: netbase-core/extensions/woocommerce.php:355
+msgid "Remove image"
+msgstr ""
+
+#: netbase-core/extensions/woocommerce.php:305
+#: netbase-core/extensions/woocommerce.php:380
+msgid "Choose an image"
+msgstr ""
+
+#: netbase-core/extensions/woocommerce.php:307
+#: netbase-core/extensions/woocommerce.php:382
+msgid "Use image"
+msgstr ""
+
+#: netbase-core/extensions/woocommerce.php:440
+msgid "Compare"
+msgstr ""
+
+#: netbase-core/helper/template-tags.php:28
+msgid "Navigation"
+msgstr ""
+
+#: netbase-core/helper/template-tags.php:38
+msgid "Assign a menu here"
+msgstr ""
+
+#: netbase-core/helper/template-tags.php:58
+msgid ""
+"Assign a menu for the "
+"Sub Menu "
+msgstr ""
+
+#: netbase-core/helper/template-tags.php:106
+msgid "My Account"
+msgstr ""
+
+#: netbase-core/helper/template-tags.php:113
+#: netbase-core/helper/template-tags.php:117
+#: woocommerce/myaccount/form-login.php:37
+#: woocommerce/myaccount/form-login.php:56
+msgid "Login"
+msgstr ""
+
+#: netbase-core/helper/template-tags.php:125
+#: netbase-core/helper/template-tags.php:875
+msgid "View cart"
+msgstr ""
+
+#: netbase-core/helper/template-tags.php:241
+msgid "View post &rarr;"
+msgstr ""
+
+#: netbase-core/helper/template-tags.php:249
+#: netbase-core/helper/template-tags.php:320
+msgid "1 minute read"
+msgstr ""
+
+#: netbase-core/helper/template-tags.php:281
+#, php-format
+msgctxt "post author"
+msgid "%s"
+msgstr ""
+
+#: netbase-core/helper/template-tags.php:303
+#, php-format
+msgctxt "post date"
+msgid "%s"
+msgstr ""
+
+#: netbase-core/helper/template-tags.php:353
+#, php-format
+msgid "%1$s"
+msgstr ""
+
+#: netbase-core/helper/template-tags.php:429
+msgid ""
+"<i class='icon-left-"
+"open'></i>"
+msgstr ""
+
+#: netbase-core/helper/template-tags.php:430
+msgid ""
+"<i class='icon-right-"
+"open'></i>"
+msgstr ""
+
+#: netbase-core/helper/template-tags.php:465
+msgid "Home"
+msgstr ""
+
+#: netbase-core/helper/template-tags.php:524
+msgid "Search Results"
+msgstr ""
+
+#: netbase-core/helper/template-tags.php:958
+#, php-format
+msgid "%s Discount"
+msgstr ""
+
+#: netbase-core/helper/template-tags.php:963
+#, php-format
+msgid "Coupon Code: %s"
+msgstr ""
+
+#: netbase-core/helper/template-tags.php:967
+#, php-format
+msgid "Expiring in %s"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:21
+msgid "Theme Setup"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:22
+#, php-format
+msgid ""
+"%s%s Themes &lsaquo; "
+"Theme Setup: %s%s"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:24
+msgid ""
+"Return to the dashboard"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:26
+msgid "Skip"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:27
+msgid "Next"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:28
+msgid "Start"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:30
+#: netbase-core/import/merlin-config.php:31
+#: netbase-core/import/merlin-config.php:32
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2802
+msgid "Install"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:33
+msgid "Import"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:35
+#, php-format
+msgid "Welcome to %s"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:36
+msgid "Hi. Welcome back"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:37
+msgid ""
+"This wizard will set up "
+"your theme, install "
+"plugins, and import "
+"content. It is optional "
+"& should take only a few "
+"minutes."
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:38
+msgid ""
+"You may have already run "
+"this theme setup wizard. "
+"If you would like to "
+"proceed anyway, click on "
+"the \"Start\" button "
+"below."
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:40
+msgid "Install Child Theme"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:41
+msgid "You're good to go!"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:42
+msgid ""
+"Let's build & activate a "
+"child theme so you may "
+"easily make theme "
+"changes."
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:43
+msgid ""
+"Your child theme has "
+"already been installed "
+"and is now activated, if "
+"it wasn't already."
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:44
+msgid ""
+"Learn about child themes"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:45
+msgid ""
+"Awesome. Your child "
+"theme has already been "
+"installed and is now "
+"activated."
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:46
+msgid ""
+"Awesome. Your child "
+"theme has been created "
+"and is now activated."
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:48
+#, php-format
+msgid ""
+"%d+ advanced plugins"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:49
+msgid "You're up to speed!"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:50
+msgid ""
+"Let's install some "
+"essential WordPress "
+"plugins to get your site "
+"up to speed."
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:51
+msgid ""
+"The required WordPress "
+"plugins are all "
+"installed and up to "
+"date. Press \"Next\" to "
+"continue the setup "
+"wizard."
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:52
+#: netbase-core/import/merlin-config.php:67
+msgid "Advanced"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:54
+msgid ""
+"Choose your own theme"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:55
+#, php-format
+msgid ""
+"See %d+ home layouts"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:56
+msgid "Choose Your Theme"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:57
+msgid ""
+"There are many unique "
+"and sophisticated theme "
+"are available on "
+"Printcart.com that you "
+"can choose the one is "
+"suitable for your "
+"printing business"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:58
+msgid "Import data"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:59
+msgid ""
+"You will get the demo "
+"data of the theme which "
+"you chose and you can "
+"customize it if you want"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:60
+msgid "Importing..."
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:61
+msgid ""
+"Please be patient. It "
+"will be ended soon.\n"
+"\t\t\tDo not quit or "
+"shut down your browser"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:63
+msgid ""
+"Importing core-wp data"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:65
+msgid "Import Content"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:66
+msgid ""
+"Let's import content to "
+"your website, to help "
+"you get familiar with "
+"the theme."
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:69
+msgid ""
+"Import Successfully!!!"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:70
+#, php-format
+msgid ""
+"Your site has been set "
+"up successfully. Enjoy "
+"your new site by %s"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:71
+msgid "Extras"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:72
+msgid "View your site"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:74
+msgid "Explore WordPress"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:75
+msgid "Get Theme Support"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:76
+msgid "Start Customizing"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:80
+msgid "Woocommerce"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:86
+msgid "Dokan Lite"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:92
+msgid "Max Mega Menu"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:98
+msgid "Contact Form 7"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:104
+msgid ""
+"MailChimp for WordPress"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:110
+msgid ""
+"YITH WooCommerce Compare"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:116
+msgid ""
+"YITH WooCommerce Wishlist"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:122
+msgid ""
+"YITH WooCommerce Quick "
+"View"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:128
+msgid "Dokan Pro"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:135
+msgid ""
+"Max Mega Menu - Pro Addon"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:142
+msgid "Slider Revolution"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:149
+msgid ""
+"WPBakery Visual Composer"
+msgstr ""
+
+#: netbase-core/import/merlin-config.php:171
+#: netbase-core/import/merlin-config.php:192
+#: netbase-core/import/merlin-config.php:212
+#: netbase-core/import/merlin-config.php:233
+msgid ""
+"After you import this "
+"demo, you will have to "
+"setup the slider "
+"separately."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:334
+msgid ""
+"Install Required Plugins"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:335
+msgid "Install Plugins"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:337
+#, php-format
+msgid ""
+"Installing Plugin: %s"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:339
+#, php-format
+msgid "Updating Plugin: %s"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:340
+msgid ""
+"Something went wrong "
+"with the plugin API."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:343
+#, php-format
+msgid ""
+"This theme requires the "
+"following plugin: %1$s."
+msgid_plural ""
+"This theme requires the "
+"following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:349
+#, php-format
+msgid ""
+"This theme recommends "
+"the following plugin: "
+"%1$s."
+msgid_plural ""
+"This theme recommends "
+"the following plugins: "
+"%1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:355
+#, php-format
+msgid ""
+"The following plugin "
+"needs to be updated to "
+"its latest version to "
+"ensure maximum "
+"compatibility with this "
+"theme: %1$s."
+msgid_plural ""
+"The following plugins "
+"need to be updated to "
+"their latest version to "
+"ensure maximum "
+"compatibility with this "
+"theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:361
+#, php-format
+msgid ""
+"There is an update "
+"available for: %1$s."
+msgid_plural ""
+"There are updates "
+"available for the "
+"following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:367
+#, php-format
+msgid ""
+"The following required "
+"plugin is currently "
+"inactive: %1$s."
+msgid_plural ""
+"The following required "
+"plugins are currently "
+"inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:373
+#, php-format
+msgid ""
+"The following "
+"recommended plugin is "
+"currently inactive: %1$s."
+msgid_plural ""
+"The following "
+"recommended plugins are "
+"currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:378
+msgid ""
+"Begin installing plugin"
+msgid_plural ""
+"Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:383
+msgid ""
+"Begin updating plugin"
+msgid_plural ""
+"Begin updating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:388
+msgid ""
+"Begin activating plugin"
+msgid_plural ""
+"Begin activating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:392
+msgid ""
+"Return to Required "
+"Plugins Installer"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:393
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:912
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2618
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:3665
+msgid ""
+"Return to the Dashboard"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:394
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:3244
+msgid ""
+"Plugin activated "
+"successfully."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:395
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:3037
+msgid ""
+"The following plugin was "
+"activated successfully:"
+msgid_plural ""
+"The following plugins "
+"were activated "
+"successfully:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:397
+#, php-format
+msgid ""
+"No action taken. Plugin "
+"%1$s was already active."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:399
+#, php-format
+msgid ""
+"Plugin not activated. A "
+"higher version of %s is "
+"needed for this theme. "
+"Please update the plugin."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:401
+#, php-format
+msgid ""
+"All plugins installed "
+"and activated "
+"successfully. %1$s"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:402
+msgid "Dismiss this notice"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:403
+msgid ""
+"There are one or more "
+"required or recommended "
+"plugins to install, "
+"update or activate."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:404
+msgid ""
+"Please contact the "
+"administrator of this "
+"site for help."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:607
+msgid ""
+"This plugin needs to be "
+"updated to be compatible "
+"with your theme."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:608
+msgid "Update Required"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:1019
+msgid ""
+"The remote plugin "
+"package does not contain "
+"a folder with the "
+"desired slug and "
+"renaming did not work."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:1019
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:1022
+msgid ""
+"Please contact the "
+"plugin provider and ask "
+"them to package their "
+"plugin according to the "
+"WordPress guidelines."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:1022
+msgid ""
+"The remote plugin "
+"package consists of more "
+"than one file, but the "
+"files are not packaged "
+"in a folder."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:1206
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:3033
+msgctxt ""
+"plugin A *and* plugin B"
+msgid "and"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2067
+#, php-format
+msgid "TGMPA v%s"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2358
+msgid "Required"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2361
+msgid "Recommended"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2377
+msgid ""
+"WordPress Repository"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2380
+msgid "External Source"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2383
+msgid "Pre-Packaged"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2400
+msgid "Not Installed"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2404
+msgid ""
+"Installed But Not "
+"Activated"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2406
+msgid "Active"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2412
+msgid ""
+"Required Update not "
+"Available"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2415
+msgid "Requires Update"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2418
+msgid "Update recommended"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2427
+#, php-format
+msgctxt ""
+"Install/Update Status"
+msgid "%1$s, %2$s"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2473
+#, php-format
+msgctxt "plugins"
+msgid ""
+"All <span class=\"count"
+"\">(%s)</span>"
+msgid_plural ""
+"All <span class=\"count"
+"\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2477
+#, php-format
+msgid ""
+"To Install <span class="
+"\"count\">(%s)</span>"
+msgid_plural ""
+"To Install <span class="
+"\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2481
+#, php-format
+msgid ""
+"Update Available <span "
+"class=\"count\">(%s)</"
+"span>"
+msgid_plural ""
+"Update Available <span "
+"class=\"count\">(%s)</"
+"span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2485
+#, php-format
+msgid ""
+"To Activate <span class="
+"\"count\">(%s)</span>"
+msgid_plural ""
+"To Activate <span class="
+"\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2567
+msgctxt ""
+"as in: \"version nr "
+"unknown\""
+msgid "unknown"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2575
+msgid "Installed version:"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2583
+msgid ""
+"Minimum required version:"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2595
+msgid "Available version:"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2618
+msgid ""
+"No plugins to install, "
+"update or activate."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2632
+msgid "Plugin"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2633
+msgid "Source"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2638
+msgid "Version"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2688
+#, php-format
+msgid "Install %2$s"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2693
+#, php-format
+msgid "Update %2$s"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2699
+#, php-format
+msgid "Activate %2$s"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2769
+msgid ""
+"Upgrade message from the "
+"plugin author:"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2811
+msgid "Activate"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2842
+msgid ""
+"No plugins were selected "
+"to be installed. No "
+"action taken."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2844
+msgid ""
+"No plugins were selected "
+"to be updated. No action "
+"taken."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2885
+msgid ""
+"No plugins are available "
+"to be installed at this "
+"time."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2887
+msgid ""
+"No plugins are available "
+"to be updated at this "
+"time."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:2993
+msgid ""
+"No plugins were selected "
+"to be activated. No "
+"action taken."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:3019
+msgid ""
+"No plugins are available "
+"to be activated at this "
+"time."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:3243
+msgid ""
+"Plugin activation failed."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:3583
+#, php-format
+msgid ""
+"Updating Plugin %1$s "
+"(%2$d/%3$d)"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:3586
+#, php-format
+msgid ""
+"An error occurred while "
+"installing %1$s: <strong>"
+"%2$s</strong>."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:3588
+#, php-format
+msgid ""
+"The installation of %1$s "
+"failed."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:3592
+msgid ""
+"The installation and "
+"activation process is "
+"starting. This process "
+"may take a while on some "
+"hosts, so please be "
+"patient."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:3594
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:3602
+#, php-format
+msgid "%1$s done."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:3595
+msgid ""
+"All installations and "
+"activations have been "
+"completed."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:3597
+#, php-format
+msgid ""
+"Installing and "
+"Activating Plugin %1$s "
+"(%2$d/%3$d)"
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:3600
+msgid ""
+"The installation process "
+"is starting. This "
+"process may take a while "
+"on some hosts, so please "
+"be patient."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:3603
+msgid ""
+"All installations have "
+"been completed."
+msgstr ""
+
+#: netbase-core/vendor/tgmpa/class-tgm-plugin-activation.php:3605
+#, php-format
+msgid ""
+"Installing Plugin %1$s "
+"(%2$d/%3$d)"
+msgstr ""
+
+#: page.php:44
+#: search.php:55
+#: single-service.php:66
+#: single.php:67
+#: template-parts/blog/classic.php:39
+msgid "Pages:"
+msgstr ""
+
+#: search.php:21
+#, php-format
+msgid ""
+"Search Results for: %s"
+msgstr ""
+
+#: search.php:46
+#: template-parts/blog/classic.php:30
+#: template-parts/blog/masonry.php:25
+msgid "View post"
+msgstr ""
+
+#: search.php:50
+#: single.php:62
+#: template-parts/blog/classic.php:34
+#, php-format
+msgid ""
+"Continue reading %s "
+"<span class=\"meta-nav"
+"\">&rarr;</span>"
+msgstr ""
+
+#: search.php:74
+msgid "Nothing Found"
+msgstr ""
+
+#: search.php:81
+#, php-format
+msgid ""
+"Ready to publish your "
+"first post? <a href="
+"\"%1$s\">Get started "
+"here</a>."
+msgstr ""
+
+#: search.php:85
+msgid ""
+"Sorry, but nothing "
+"matched your search "
+"terms. Please try again "
+"with some different "
+"keywords."
+msgstr ""
+
+#: search.php:91
+msgid ""
+"It seems we can&rsquo;t "
+"find what you&rsquo;re "
+"looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: searchform.php:3
+msgctxt "placeholder"
+msgid "Search"
+msgstr ""
+
+#: sidebar.php:59
+msgid "Store Category"
+msgstr ""
+
+#: sidebar.php:62
+msgid "Store Location"
+msgstr ""
+
+#: sidebar.php:66
+msgid "Contact Vendor"
+msgstr ""
+
+#: single.php:108
+msgid "Previous post"
+msgstr ""
+
+#: single.php:108
+msgctxt "Previous post"
+msgid ""
+"<span class=\"meta-nav"
+"\"><i class=\"icon-left-"
+"open\"></i></span>%title"
+msgstr ""
+
+#: single.php:109
+msgid "Next post"
+msgstr ""
+
+#: single.php:109
+msgctxt "Next post"
+msgid ""
+"%title<span class=\"meta-"
+"nav\"><i class=\"icon-"
+"right-open\"></i></span>"
+msgstr ""
+
+#: template-parts/blog/classic.php:20
+msgid "Leave a comment"
+msgstr ""
+
+#: template-parts/blog/classic.php:20
+msgid "One Comment"
+msgstr ""
+
+#: template-parts/blog/classic.php:20
+msgid "% Comments"
+msgstr ""
+
+#: template-parts/headers/teepro-header-1.php:16
+#: template-parts/headers/teepro-header-2.php:16
+#: template-parts/headers/teepro-header-3.php:13
+#: template-parts/headers/teepro-header-4.php:10
+msgid "login/register"
+msgstr ""
+
+#: template-parts/headers/teepro-header-1.php:16
+#: template-parts/headers/teepro-header-2.php:16
+#: template-parts/headers/teepro-header-3.php:13
+#: template-parts/headers/teepro-header-4.php:10
+msgid "Login / Register"
+msgstr ""
+
+#: template-parts/headers/teepro-header-1.php:44
+#: template-parts/headers/teepro-header-2.php:45
+#: template-parts/headers/teepro-header-3.php:42
+#: template-parts/headers/teepro-header-4.php:39
+msgid "My account"
+msgstr ""
+
+#: template-parts/headers/teepro-header-1.php:45
+#: template-parts/headers/teepro-header-2.php:46
+#: template-parts/headers/teepro-header-3.php:43
+#: template-parts/headers/teepro-header-4.php:40
+msgid "My order"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:28
+msgid "Cart totals"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:34
+#: woocommerce/cart/cart-totals.php:35
+#: woocommerce/cart/mini-cart.php:78
+msgid "Subtotal"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:56
+#: woocommerce/cart/cart-totals.php:57
+msgid "Shipping"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:72
+#, php-format
+msgid "(estimated for %s)"
+msgstr ""
+
+#: woocommerce/cart/cross-sells.php:34
+msgid ""
+"You may be interested "
+"in&hellip;"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:64
+#: woocommerce/netbase/cart/cart-layout-1.php:91
+#: woocommerce/netbase/cart/cart-layout-2.php:92
+msgid "Remove this item"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:86
+msgid ""
+"No products in the cart."
+msgstr ""
+
+#: woocommerce/cart/proceed-to-checkout-button.php:33
+msgid "Proceed to checkout"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:29
+msgid ""
+"You must be logged in to "
+"checkout."
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:59
+msgid "Your order"
+msgstr ""
+
+#: woocommerce/checkout/form-coupon.php:25
+msgid "Have a coupon?"
+msgstr ""
+
+#: woocommerce/checkout/form-coupon.php:25
+msgid ""
+"Click here to enter your "
+"code"
+msgstr ""
+
+#: woocommerce/checkout/form-coupon.php:34
+#: woocommerce/netbase/cart/cart-layout-1.php:127
+#: woocommerce/netbase/cart/cart-layout-2.php:139
+msgid "Coupon code"
+msgstr ""
+
+#: woocommerce/checkout/form-coupon.php:38
+#: woocommerce/netbase/cart/cart-layout-1.php:128
+#: woocommerce/netbase/cart/cart-layout-2.php:140
+msgid "Apply coupon"
+msgstr ""
+
+#: woocommerce/checkout/payment.php:35
+msgid ""
+"Sorry, it seems that "
+"there are no available "
+"payment methods for your "
+"state. Please contact us "
+"if you require "
+"assistance or wish to "
+"make alternate "
+"arrangements."
+msgstr ""
+
+#: woocommerce/checkout/payment.php:35
+msgid ""
+"Please fill in your "
+"details above to see "
+"available payment "
+"methods."
+msgstr ""
+
+#: woocommerce/checkout/payment.php:42
+msgid ""
+"Since your browser does "
+"not support JavaScript, "
+"or it is disabled, "
+"please ensure you click "
+"the <em>Update Totals</"
+"em> button before "
+"placing your order. You "
+"may be charged more than "
+"the amount stated above "
+"if you fail to do so."
+msgstr ""
+
+#: woocommerce/checkout/payment.php:43
+msgid "Update totals"
+msgstr ""
+
+#: woocommerce/global/quantity-input.php:28
+#: woocommerce/global/quantity-input.php:35
+msgctxt ""
+"Product quantity input "
+"tooltip"
+msgid "Qty"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:44
+msgid ""
+"Username or email address"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:48
+#: woocommerce/myaccount/form-login.php:102
+msgid "Password"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:59
+msgid "Remember me"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:64
+msgid "Lost your password?"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:79
+#: woocommerce/myaccount/form-login.php:115
+msgid "Register"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:88
+msgid "Username"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:95
+msgid "Email address"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:109
+msgid "Anti-spam"
+msgstr ""
+
+#: woocommerce/netbase/cart/cart-layout-1.php:6
+#: woocommerce/netbase/cart/cart-layout-1.php:39
+#: woocommerce/netbase/cart/cart-layout-2.php:7
+#: woocommerce/netbase/cart/cart-layout-2.php:40
+msgid "Product"
+msgstr ""
+
+#: woocommerce/netbase/cart/cart-layout-1.php:8
+#: woocommerce/netbase/cart/cart-layout-1.php:57
+#: woocommerce/netbase/cart/cart-layout-2.php:9
+#: woocommerce/netbase/cart/cart-layout-2.php:58
+msgid "Price"
+msgstr ""
+
+#: woocommerce/netbase/cart/cart-layout-1.php:9
+#: woocommerce/netbase/cart/cart-layout-1.php:63
+#: woocommerce/netbase/cart/cart-layout-2.php:10
+#: woocommerce/netbase/cart/cart-layout-2.php:64
+msgid "Quantity"
+msgstr ""
+
+#: woocommerce/netbase/cart/cart-layout-1.php:52
+#: woocommerce/netbase/cart/cart-layout-2.php:53
+msgid ""
+"Available on backorder"
+msgstr ""
+
+#: woocommerce/netbase/cart/cart-layout-1.php:108
+#: woocommerce/netbase/cart/cart-layout-2.php:109
+msgid "Continue Shopping"
+msgstr ""
+
+#: woocommerce/netbase/cart/cart-layout-1.php:111
+#: woocommerce/netbase/cart/cart-layout-2.php:112
+msgid "Update cart"
+msgstr ""
+
+#: woocommerce/netbase/loop/loop_variable.php:32
+#: woocommerce/single-product/add-to-cart/variable.php:132
+msgid ""
+"This product is "
+"currently out of stock "
+"and unavailable."
+msgstr ""
+
+#: woocommerce/netbase/loop/sale-flash/style-1.php:3
+#: woocommerce/netbase/loop/sale-flash/style-3.php:3
+msgid "Sale"
+msgstr ""
+
+#: woocommerce/netbase/single-product/product-image/style-1.php:37
+#: woocommerce/netbase/single-product/product-image/style-1.php:92
+msgid ""
+"Awaiting product image"
+msgstr ""
+
+#: woocommerce/single-product/add-to-cart/variable.php:102
+msgid "Clear selection"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:31
+msgid "SKU:"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:32
+msgid "N/A"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:36
+msgid "Category:"
+msgid_plural "Categories:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: woocommerce/single-product/meta.php:40
+msgid "Tag:"
+msgid_plural "Tags:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: woocommerce/single-product/meta.php:46
+msgid "Availability: "
+msgstr ""
+
+#: woocommerce/single-product/meta.php:52
+#: woocommerce/wishlist-view.php:176
+msgid "In Stock"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:54
+msgid "Out Of Stock"
+msgstr ""
+
+#: woocommerce/single-product/rating.php:38
+#, php-format
+msgid "%s Review"
+msgid_plural "%s Reviews"
+msgstr[0] ""
+msgstr[1] ""
+
+#: woocommerce/single-product/rating.php:42
+msgid "Add Your Review"
+msgstr ""
+
+#: woocommerce/single-product/related.php:27
+msgid "Related products"
+msgstr ""
+
+#: woocommerce/single-product/up-sells.php:27
+msgid ""
+"You may also like&hellip;"
+msgstr ""
+
+#: woocommerce/wishlist-view.php:32
+msgid "Edit title"
+msgstr ""
+
+#: woocommerce/wishlist-view.php:41
+msgid "Save"
+msgstr ""
+
+#: woocommerce/wishlist-view.php:82
+msgid "Product Name"
+msgstr ""
+
+#: woocommerce/wishlist-view.php:89
+msgid "Unit Price"
+msgstr ""
+
+#: woocommerce/wishlist-view.php:102
+msgid "Stock Status"
+msgstr ""
+
+#: woocommerce/wishlist-view.php:152
+#: woocommerce/wishlist-view.php:229
+msgid "Remove this product"
+msgstr ""
+
+#: woocommerce/wishlist-view.php:170
+msgid "Free!"
+msgstr ""
+
+#: woocommerce/wishlist-view.php:176
+msgid "Out of Stock"
+msgstr ""
+
+#: woocommerce/wishlist-view.php:185
+#, php-format
+msgid "Added on : %s"
+msgstr ""
+
+#: woocommerce/wishlist-view.php:197
+msgid "Move"
+msgstr ""
+
+#: woocommerce/wishlist-view.php:209
+msgid "Shared"
+msgstr ""
+
+#: woocommerce/wishlist-view.php:212
+msgid "Private"
+msgstr ""
+
+#: woocommerce/wishlist-view.php:215
+msgid "Public"
+msgstr ""
+
+#: woocommerce/wishlist-view.php:229
+msgid "Remove"
+msgstr ""
+
+#: woocommerce/wishlist-view.php:239
+msgid ""
+"No products were added "
+"to the wishlist"
+msgstr ""
+
+#: woocommerce/wishlist-view.php:256
+msgid ""
+"Add the selected "
+"products to the cart"
+msgstr ""
+
+#: woocommerce/wishlist-view.php:264
+#: woocommerce/wishlist-view.php:310
+msgid "Ask for an estimate"
+msgstr ""
+
+#: woocommerce/wishlist-view.php:300
+msgid "Your email"
+msgstr ""
