@@ -118,12 +118,12 @@ if(!function_exists('elessi_live_search_products')) :
         global $nasa_opt, $woocommerce;
 
         $results = array();
-        if (!$woocommerce || !isset($_GET['s']) || trim($_GET['s']) == '') {
+        if (!$woocommerce || !isset($_REQUEST['s']) || trim($_REQUEST['s']) == '') {
             die(json_encode($results));
         }
         
         $data_store = WC_Data_Store::load('product');
-        $post_id_in = $data_store->search_products(wc_clean($_GET['s']), '', true, true);
+        $post_id_in = $data_store->search_products(wc_clean($_REQUEST['s']), '', true, true);
         if (empty($post_id_in)) {
             die(json_encode($results));
         }

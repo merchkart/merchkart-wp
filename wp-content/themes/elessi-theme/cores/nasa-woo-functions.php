@@ -21,7 +21,8 @@ if(!function_exists('elessi_remove_action_woo')) :
         remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
         remove_action('woocommerce_before_shop_loop', 'woocommerce_output_all_notices', 10);
         
-        remove_action('woocommerce_cart_collaterals', 'woocommerce_cart_totals');
+        // remove_action('woocommerce_cart_collaterals', 'woocommerce_cart_totals');
+        remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
         
         remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
         remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
@@ -120,7 +121,8 @@ if(!function_exists('elessi_add_action_woo')) :
         }
         
         add_action('nasa_change_view', 'elessi_nasa_change_view', 10, 3);
-        add_action('woocommerce_cart_collaterals', 'woocommerce_cart_totals', 9);
+        // add_action('woocommerce_cart_collaterals', 'woocommerce_cart_totals', 9);
+        add_action('woocommerce_after_cart', 'woocommerce_cross_sell_display');
         
         add_action('woocommerce_single_product_lightbox_summary', 'woocommerce_template_loop_rating', 10);
         add_action('woocommerce_single_product_lightbox_summary', 'woocommerce_template_single_price', 15);
@@ -146,6 +148,7 @@ if(!function_exists('elessi_add_action_woo')) :
         add_action('woocommerce_after_single_product_summary', 'woocommerce_template_single_meta', 11);
         
         add_action('woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
+        add_action('woocommerce_single_product_summary', 'elessi_next_prev_single_product', 6);
         
         // add_action('woocommerce_single_product_summary', 'elessi_ProductShowReviews', 15);
         // add_action('woocommerce_single_review', 'elessi_ProductShowReviews', 10);
@@ -224,7 +227,7 @@ if(!function_exists('elessi_add_action_woo')) :
          */
         add_action('product_video_btn', 'elessi_add_wishlist_in_detail', 31);
         
-        add_filter('woocommerce_checkout_coupon_message', 'elessi_wrap_coupon_toggle');
+        // add_filter('woocommerce_checkout_coupon_message', 'elessi_wrap_coupon_toggle');
         
         // for woo 3.3
         if(version_compare(WC()->version, '3.3.0', ">=")) {
@@ -280,6 +283,16 @@ endif;
 /* ========================================================================== */
 /* END Remove - Add action, filter WooCommerce ============================== */
 /* ========================================================================== */
+
+add_filter('wc_empty_cart_message', 'elessi_empty_cart_message');
+if(!function_exists('elessi_empty_cart_message')) :
+    function elessi_empty_cart_message ($mess) {
+        $mess .= '<span class="nasa-extra-empty">' . esc_html__('Before proceed to checkout you must add some products to shopping cart.', 'elessi-theme') . '</span>';
+        $mess .= '<span class="nasa-extra-empty">' . esc_html__('You will find a lot of interesting products on our "Shop" page.', 'elessi-theme') . '</span>';
+
+        return $mess;
+    }
+endif;
 
 /**
  * Single Product stock
@@ -853,7 +866,7 @@ if (!function_exists('elessi_add_to_cart_btn')):
                 '<div class="add-to-cart-btn btn-link add-to-cart-icon">' .
                     '<a href="%s" rel="nofollow" data-quantity="1" data-product_id="%s" data-product_sku="%s" class="%s product_type_%s add-to-cart-grid" title="%s"' . $data_type . '>' .
                         '<span class="add_to_cart_text">%s</span>' .
-                        '<span class="cart-icon fa fa-plus"></span>' .
+                        '<i class="cart-icon fa fa-plus"></i>' .
                     '</a>' .
                 '</div>',
                 esc_url($product->add_to_cart_url()), //link
@@ -1436,11 +1449,13 @@ if(!function_exists('elessi_next_product')) :
                 <div class="dropdown-wrap">
                     <a title="<?php echo esc_attr($title); ?>" href="<?php echo esc_url($link); ?>">
                         <?php echo get_the_post_thumbnail($next_post->ID, apply_filters('single_product_small_thumbnail_size', 'shop_thumbnail')); ?>
-                        <div>
-                            <span class="product-name"><?php echo ($title); ?></span>
-                            <span class="price"><?php echo ($product_obj->get_price_html()); ?></span>
-                        </div>
                     </a>
+                    <div>
+                        <a title="<?php echo esc_attr($title); ?>" href="<?php echo esc_url($link); ?>">
+                            <span class="product-name"><?php echo $title; ?></span>
+                        </a>
+                        <span class="price"><?php echo $product_obj->get_price_html(); ?></span>
+                    </div>
                 </div>
             </div>
             <?php
@@ -1463,15 +1478,28 @@ if(!function_exists('elessi_prev_product')) :
                 <div class="dropdown-wrap">
                     <a title="<?php echo esc_attr($title); ?>" href="<?php echo esc_url($link); ?>">
                         <?php echo get_the_post_thumbnail($prev_post->ID, apply_filters('single_product_small_thumbnail_size', 'shop_thumbnail')); ?>
-                        <div>
-                            <span class="product-name"><?php echo ($title); ?></span>
-                            <span class="price"><?php echo ($product_obj->get_price_html()); ?></span>
-                        </div>
                     </a>
+                    <div>
+                        <a title="<?php echo esc_attr($title); ?>" href="<?php echo esc_url($link); ?>">
+                            <span class="product-name"><?php echo $title; ?></span>
+                        </a>
+                        <span class="price"><?php echo $product_obj->get_price_html(); ?></span>
+                    </div>
                 </div>
             </div>
             <?php
         }
+    }
+endif;
+
+/**
+ * Next - Prev Single Product
+ */
+if(!function_exists('elessi_next_prev_single_product')) :
+    function elessi_next_prev_single_product() {
+        echo '<div class="products-arrow">';
+        do_action('next_prev_product');
+        echo '</div>';
     }
 endif;
 
@@ -1565,7 +1593,7 @@ if(!function_exists('elessi_quickview_in_list')) :
         $type = $product->get_type();
         ?>
         <a href="javascript:void(0);" class="quick-view btn-link quick-view-icon tip-top" data-prod="<?php echo (int) $product->get_id(); ?>" data-tip="<?php echo $type !== 'woosb' ? esc_attr__('Quick View', 'elessi-theme') : esc_attr__('View', 'elessi-theme'); ?>" title="<?php echo $type !== 'woosb' ? esc_attr__('Quick View', 'elessi-theme') : esc_attr__('View', 'elessi-theme'); ?>" data-product_type="<?php echo esc_attr($type); ?>" data-href="<?php the_permalink(); ?>">
-            <span class="pe-icon pe-7s-look"></span>
+            <span class="nasa-icon pe-7s-look"></span>
             <span class="hidden-tag nasa-icon-text"><?php echo $type !== 'woosb' ? esc_html__('Quick View', 'elessi-theme') : esc_html__('View', 'elessi-theme'); ?></span>
         </a>
         <?php
@@ -1747,7 +1775,7 @@ endif;
  */
 if(!function_exists('elessi_wrap_coupon_toggle')) :
     function elessi_wrap_coupon_toggle($content) {
-        return '<div class="nasa-toggle-coupon-checkout text-right">' . $content . '</div>';
+        return '<div class="nasa-toggle-coupon-checkout">' . $content . '</div>';
     }
 endif;
 
@@ -2208,12 +2236,10 @@ if(!function_exists('elessi_nasa_change_view')) :
         
         ?>
         <ul class="filter-tabs">
-            <?php if(!$classic) : ?>
-                <li class="nasa-change-layout productGrid grid-5<?php echo ($typeShow == 'grid-5') ? ' active' : ''; ?>" data-columns="5">
-                    <i class="icon-nasa-5column"></i>
-                </li>
-            <?php endif; ?>
-            <li class="nasa-change-layout productGrid grid-4<?php echo (($typeShow == 'grid-4') || ($typeShow == 'grid-5' && $classic)) ? ' active' : ''; ?>" data-columns="4">
+            <li class="nasa-change-layout productGrid grid-5<?php echo ($typeShow == 'grid-5') ? ' active' : ''; ?>" data-columns="5">
+                <i class="icon-nasa-5column"></i>
+            </li>
+            <li class="nasa-change-layout productGrid grid-4<?php echo ($typeShow == 'grid-4') ? ' active' : ''; ?>" data-columns="4">
                 <i class="icon-nasa-4column"></i>
             </li>
             <li class="nasa-change-layout productGrid grid-3<?php echo ($typeShow == 'grid-3') ? ' active' : ''; ?>" data-columns="3">
@@ -2532,5 +2558,64 @@ endif;
 if(!function_exists('elessi_after_woocommerce_share')) :
     function elessi_after_woocommerce_share() {
         echo '</div>';
+    }
+endif;
+
+/**
+ * New Featured
+ *
+ * Add tab Bought Together
+ */
+add_filter('woocommerce_product_tabs', 'elessi_accessories_product_tab');
+if (!function_exists('elessi_accessories_product_tab')) :
+    function elessi_accessories_product_tab($tabs) {
+        global $product;
+        if ($product && 'simple' === $product->get_type()) {
+            
+            $productIds = get_post_meta($product->get_id(), '_accessories_ids', true);
+            if (!empty($productIds)) {
+                $GLOBALS['accessories_ids'] = $productIds;
+                $tabs['accessories_content'] = array(
+                    'title'     => esc_html__('Bought Together', 'elessi-theme'),
+                    'priority'  => 5,
+                    'callback'  => 'elessi_accessories_product_tab_content'
+                );
+            }
+        }
+        
+        return $tabs;
+    }
+endif;
+
+/**
+ * Content accessories of the current Product
+ */
+if (!function_exists('elessi_accessories_product_tab_content')) :
+    function elessi_accessories_product_tab_content() {
+        global $product, $accessories_ids, $nasa_opt;
+        if (!$product || !$accessories_ids) {
+            return;
+        }
+        
+        $accessories = array();
+        foreach ($accessories_ids as $accessories_id) {
+            $product_acc = wc_get_product($accessories_id);
+            
+            if (is_object($product_acc) && $product_acc->get_status() === 'publish') {
+                $type = $product_acc->get_type();
+                if ($type !== 'simple' && $type !== 'variation') {
+                    continue;
+                }
+                
+                $accessories[] = $product_acc;
+            }
+        }
+        
+        if (empty($accessories)) {
+            return;
+        }
+        
+        $file = ELESSI_THEME_PATH . '/includes/nasa-single-product-accessories-tab-content.php';
+        include is_file($file) ? $file : ELESSI_THEME_PATH . '/includes/nasa-single-product-accessories-tab-content.php';
     }
 endif;

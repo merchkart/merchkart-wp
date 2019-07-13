@@ -18,9 +18,9 @@ function elessi_register_required_plugins() {
         array(
             'name' => esc_html__('Nasa Core', 'elessi-theme'),
             'slug' => 'nasa-core',
-            'source' => ELESSI_THEME_PATH . '/admin/plugins/nasa-core_v1.7.1.zip',
+            'source' => ELESSI_THEME_PATH . '/admin/plugins/nasa-core_v2.0.zip',
             'required' => true,
-            'version' => '1.7.1'
+            'version' => '2.0'
         ),
         
         array(
@@ -109,7 +109,7 @@ if (!defined('ELESSI_ADMIN_DIR_URI')) {
 }
 
 define('ELESSI_ADMIN_THEMENAME', $theme_name);
-define('ELESSI_ADMIN_SUPPORT_FORUMS', 'http://www.nasatheme.com/support/elessi-documentation/');
+define('ELESSI_ADMIN_SUPPORT_FORUMS', 'https://www.nasatheme.com/support/elessi-documentation/');
 
 define('ELESSI_ADMIN_BACKUPS', 'backups');
 

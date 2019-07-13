@@ -154,10 +154,14 @@ endif;
 if (!function_exists('elessi_search')) :
 
     function elessi_search($search_type = 'icon', $return = true) {
+        global $nasa_opt;
+        
         add_filter('nasa_search_post_type', 'elessi_search_form_product');
         
         $class_wrap = ' nasa_search_' . $search_type;
         $class = $search_type == 'icon' ? ' nasa-over-hide' : ' nasa-search-relative';
+        $class .= isset($nasa_opt['search_effect']) && $nasa_opt['search_effect'] ? ' nasa-' . $nasa_opt['search_effect'] : '';   
+        
         $search = '';
         $search .= '<div class="nasa-search-space' . esc_attr($class_wrap) . '">';
         $search .= '<div class="nasa-show-search-form' . $class . '">';
@@ -815,39 +819,230 @@ endif;
 // **********************************************************************// 
 // ! Language Flags
 // **********************************************************************//
+add_action('elessi_support_multi_languages', 'elessi_multi_languages');
+if (!function_exists('elessi_multi_languages')) :
+    function elessi_multi_languages() {
+        global $nasa_opt;
+
+        $outputHtml = '';
+        
+        /**
+         * Multi Languages
+         */
+        if (isset($nasa_opt['switch_lang']) && $nasa_opt['switch_lang']) {
+            $language_output = '<li class="nasa-select-languages left rtl-right desktop-margin-right-30 rtl-desktop-margin-right-0 rtl-desktop-margin-left-30">';
+            $mainLang = '';
+            $selectLang = '<ul class="nasa-list-languages">';
+
+            if (function_exists('icl_get_languages')) {
+                $current = defined('ICL_LANGUAGE_CODE') ? ICL_LANGUAGE_CODE : get_option('WPLANG');
+
+                $languages = icl_get_languages('skip_missing=0&orderby=code');
+                if (!empty($languages)) {
+                    foreach ($languages as $lang) {
+                        /**
+                         * Current Language
+                         */
+                        if ($current == $lang['language_code']) {
+                            $mainLang .= '<a href="javascript:void(0);" class="nasa-current-lang">';
+
+                            if (isset($lang['country_flag_url'])) {
+                                $mainLang .= '<img src="' . esc_url($lang['country_flag_url']) . '" alt="' . esc_attr($lang['native_name']) . '" width="18" height="12" />';
+                            }
+
+                            $mainLang .= $lang['native_name'];
+                            $mainLang .= '</a>';
+                        }
+
+                        /**
+                         * Select Languages
+                         */
+                        else {
+                            $selectLang .= '<li class="nasa-item-lang"><a href="' . esc_url($lang['url']) . '" title="' . esc_attr($lang['native_name']) . '">';
+
+                            if (isset($lang['country_flag_url'])) {
+                                $selectLang .= '<img src="' . esc_url($lang['country_flag_url']) . '" alt="' . esc_attr($lang['native_name']) . '" width="18" height="12" />';
+                            }
+
+                            $selectLang .= $lang['native_name'];
+                            $selectLang .= '</a></li>';
+                        }
+                    }
+                }
+            }
+
+            /**
+             * have not installs WPML
+             */
+            else {
+                $mainLang .= '<a href="javascript:void(0);" class="nasa-current-lang" title="' . esc_attr__('English', 'elessi-theme') . '">';
+                $mainLang .= '<img src="' . esc_url(ELESSI_THEME_URI . '/assets/images/en.png') . '" alt="' . esc_attr__('English', 'elessi-theme') . '" width="18" height="12" />';
+                $mainLang .= esc_html__('English', 'elessi-theme');
+                $mainLang .= '</a>';
+
+                /**
+                 * Select Languages
+                 */
+                // Deutsch
+                $selectLang .= '<li class="nasa-item-lang"><a href="#" title="' . esc_attr__('Deutsch', 'elessi-theme') . '">';
+                $selectLang .= '<img src="' . esc_url(ELESSI_THEME_URI . '/assets/images/de.png') . '" alt="' . esc_attr__('Deutsch', 'elessi-theme') . '" width="18" height="12" />';
+
+                $selectLang .= esc_html__('Deutsch', 'elessi-theme');
+                $selectLang .= '</a></li>';
+
+                // Français
+                $selectLang .= '<li class="nasa-item-lang"><a href="#" title="' . esc_attr__('Français', 'elessi-theme') . '">';
+                $selectLang .= '<img src="' . esc_url(ELESSI_THEME_URI . '/assets/images/fr.png') . '" alt="' . esc_attr__('Français', 'elessi-theme') . '" width="18" height="12" />';
+
+                $selectLang .= esc_html__('Français', 'elessi-theme');
+                $selectLang .= '</a></li>';
+                
+                // Requires WPML
+                $selectLang .= '<li class="nasa-item-lang"><a href="#" title="' . esc_attr__('Requires WPML', 'elessi-theme') . '">';
+                $selectLang .= esc_html__('&nbsp;Requires WPML', 'elessi-theme');
+                $selectLang .= '</a></li>';
+            }
+
+            $selectLang .= '</ul>';
+
+            $language_output .= $mainLang . $selectLang . '</li>';
+            
+            $outputHtml .= $language_output;
+        }
+        
+        /**
+         * Multi Currencies
+         */
+        if (isset($nasa_opt['switch_currency']) && $nasa_opt['switch_currency']) {
+            $format = (!isset($nasa_opt['switch_currency_format']) || trim($nasa_opt['switch_currency_format']) === '') ? '(%symbol%) %code%' : $nasa_opt['switch_currency_format'];
+            
+            $currency_output = '';
+            
+            /**
+             * WPML + WooCommerce Multilingual
+             */
+            if (shortcode_exists('currency_switcher')) {
+                $currency_output .= do_shortcode('[currency_switcher switcher_style="wcml-dropdown" format="' . esc_attr($format) . '"]');
+            }
+            
+            /**
+             * For Demo
+             */
+            else {
+                $currency_output .=
+                '<div class="wcml-dropdown product wcml_currency_switcher">' .
+                    '<ul>' .
+                        '<li class="wcml-cs-active-currency">' .
+                            '<a href="#" class="wcml-cs-item-toggle" title="Requires WPML + WooCommerce Multilingual">($) USD</a>' .
+                            '<ul class="wcml-cs-submenu">' .
+                                '<li><a href="#">(€) EUR</a></li>' .
+                                '<li><a href="#">(£) GBP</a></li>' .
+                                '<li><a href="#">(¥) JPY</a></li>' .
+                            '</ul>' .
+                        '</li>' .
+                    '</ul>' .
+                '</div>';
+            }
+            
+            $outputHtml .= trim($currency_output) ? '<li class="nasa-select-currencies left rtl-right desktop-margin-right-30 rtl-desktop-margin-right-0 rtl-desktop-margin-left-30">' . $currency_output . '</li>' : '';
+        }
+
+        echo $outputHtml ? '<ul class="header-multi-languages left rtl-right">' . $outputHtml . '</ul>' : '';
+    }
+endif;
+
+/**
+ * Deprecated
+ */
 if (!function_exists('elessi_language_flages')) :
 
     function elessi_language_flages() {
         global $nasa_opt;
         
         if(!isset($nasa_opt['switch_lang']) || $nasa_opt['switch_lang'] != 1) {
-            return '';
+            return;
         }
         
-        $language_output = '<select name="nasa_switch_languages" class="nasa-select-language" data-active="0">';
-        $options = '';
+        $language_output = '<div class="nasa-select-languages">';
+        $mainLang = '';
+        $selectLang = '<ul class="nasa-list-languages">';
+        
         if (function_exists('icl_get_languages')) {
-            $current = defined('ICL_LANGUAGE_CODE') ? ICL_LANGUAGE_CODE : 'en';
+            $current = defined('ICL_LANGUAGE_CODE') ? ICL_LANGUAGE_CODE : get_option('WPLANG');
             
-            $language_output = '<select name="nasa_switch_languages" class="nasa-select-language" data-active="1">';
             $languages = icl_get_languages('skip_missing=0&orderby=code');
             if (!empty($languages)) {
-                foreach ($languages as $l) {
-                    $selected = $current == $l['language_code'] ? ' selected' : '';
-                    $options .= '<option data-code="' . $l['language_code'] . '" value="' . $l['url'] . '"' . $selected . '>' . $l['native_name'] . '</option>';
+                foreach ($languages as $lang) {
+                    /**
+                     * Current Language
+                     */
+                    if ($current == $lang['language_code']) {
+                        $mainLang .= '<a href="javascript:void(0);" class="nasa-current-lang">';
+                        
+                        if (isset($lang['country_flag_url'])) {
+                            $mainLang .= '<img src="' . esc_url($lang['country_flag_url']) . '" alt="' . esc_attr($lang['native_name']) . '" />';
+                        }
+                        
+                        $mainLang .= $lang['native_name'];
+                        $mainLang .= '</a>';
+                    }
+                    
+                    /**
+                     * Select Languages
+                     */
+                    else {
+                        $selectLang .= '<li class="nasa-item-lang"><a href="' . esc_url($lang['url']) . '" title="' . esc_attr($lang['native_name']) . '">';
+
+                        if (isset($lang['country_flag_url'])) {
+                            $selectLang .= '<img src="' . esc_url($lang['country_flag_url']) . '" alt="' . esc_attr($lang['native_name']) . '" />';
+                        }
+
+                        $selectLang .= $lang['native_name'];
+                        $selectLang .= '</a></li>';
+                    }
                 }
             }
-        } else {
-            $options .=
-                '<option value="en">' . esc_html__('English', 'elessi-theme') . '</option>' .
-                '<option value="gr">' . esc_html__('German', 'elessi-theme') . '</option>' .
-                '<option value="fr">' . esc_html__('French', 'elessi-theme') . '</option>';
         }
         
-        $language_output .= $options;
-        $language_output .= '</select>';
+        /**
+         * have not installs WPML
+         */
+        else {
+            $mainLang .= '<a href="javascript:void(0);" class="nasa-current-lang">';
+            $mainLang .= '<img src="' . esc_url(ELESSI_THEME_URI . '/assets/images/en.png') . '" alt="' . esc_attr__('English', 'elessi-theme') . '" />';
+            $mainLang .= esc_html__('Requires WPML', 'elessi-theme');
+            $mainLang .= '</a>';
+            
+            /**
+             * Select Languages
+             */
+            // English
+            $selectLang .= '<li class="nasa-item-lang"><a href="#" title="' . esc_attr__('English', 'elessi-theme') . '">';
+            $selectLang .= '<img src="' . esc_url(ELESSI_THEME_URI . '/assets/images/en.png') . '" alt="' . esc_attr__('English', 'elessi-theme') . '" />';
 
-        echo '<ul class="header-switch-languages"><li>' . $language_output . '</li></ul>';
+            $selectLang .= esc_html__('English', 'elessi-theme');
+            $selectLang .= '</a></li>';
+            
+            // German
+            $selectLang .= '<li class="nasa-item-lang"><a href="#" title="' . esc_attr__('Deutsch', 'elessi-theme') . '">';
+            $selectLang .= '<img src="' . esc_url(ELESSI_THEME_URI . '/assets/images/de.png') . '" alt="' . esc_attr__('Deutsch', 'elessi-theme') . '" />';
+
+            $selectLang .= esc_html__('Deutsch', 'elessi-theme');
+            $selectLang .= '</a></li>';
+            
+            // French
+            $selectLang .= '<li class="nasa-item-lang"><a href="#" title="' . esc_attr__('Français', 'elessi-theme') . '">';
+            $selectLang .= '<img src="' . esc_url(ELESSI_THEME_URI . '/assets/images/fr.png') . '" alt="' . esc_attr__('Français', 'elessi-theme') . '" />';
+
+            $selectLang .= esc_html__('Français', 'elessi-theme');
+            $selectLang .= '</a></li>';
+        }
+        
+        $selectLang .= '</ul>';
+        
+        $language_output .= $mainLang . $selectLang . '</div>';
+
+        echo '<ul class="header-switch-languages left rtl-right desktop-margin-right-30 rtl-desktop-margin-right-0 rtl-desktop-margin-left-30"><li>' . $language_output . '</li></ul>';
     }
 
 endif;
@@ -1065,4 +1260,19 @@ if (!function_exists('elessi_theme_before_load')):
         }
     }
 
+endif;
+
+/**
+ * Compatible with Plugin Nextend Social Login
+ */
+add_action('woocommerce_login_form_end', 'elessi_social_login');
+if (!function_exists('elessi_social_login')) :
+    function elessi_social_login () {
+        if (shortcode_exists('nextend_social_login') && !NASA_CORE_USER_LOGIGED) :
+            echo '<div class="nasa-social-login-title"><h5>' . esc_html__('OR LOGIN WITH') . '</h5></div>';
+            echo '<div class="form-row row-submit-login-social text-center">';
+            echo do_shortcode('[nextend_social_login]');
+            echo '</div>';
+        endif;
+    }
 endif;

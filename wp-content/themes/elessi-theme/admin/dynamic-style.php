@@ -184,13 +184,7 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
     /* COLOR SUCCESS ============================================================== */
     if (isset($nasa_opt['color_success']) && $nasa_opt['color_success'] != '') :
         ?> 
-            .woocommerce-message
-            {
-                color: <?php echo esc_attr($nasa_opt['color_success']); ?> !important;
-            }
-            .woocommerce-message:before,
-            .woocommerce-message:after
-            {
+            .woocommerce-message {
                 color: #FFF !important;
                 background-color: <?php echo esc_attr($nasa_opt['color_success']); ?> !important;
             }
@@ -220,6 +214,10 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
             body .product-interactions .btn-wishlist.nasa-added .icon-nasa-like
             {
                 color: <?php echo esc_attr($nasa_opt['color_success']); ?> !important;
+            }
+            body #yith-wcwl-popup-message #yith-wcwl-message
+            {
+                background-color: <?php echo esc_attr($nasa_opt['color_success']); ?>;
             }
         <?php
     endif;

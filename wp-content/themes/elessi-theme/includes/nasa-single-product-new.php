@@ -26,10 +26,6 @@ if($image_layout != 'single') {
     <?php endif; ?>
     
     <div class="row nasa-product-details-page">
-        <div class="products-arrow">
-            <?php do_action('next_prev_product'); ?>
-        </div>
-
         <div class="<?php echo esc_attr($main_class); ?>" data-num_main="<?php echo ($image_layout == 'double') ? '2' : '1'; ?>" data-num_thumb="<?php echo ($image_layout == 'double') ? '4' : '6'; ?>" data-speed="300">
 
             <div class="row">

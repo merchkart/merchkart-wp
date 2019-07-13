@@ -34,7 +34,7 @@ if (!function_exists('elessi_product_global_heading')) {
         $of_options[] = array(
             "name" => esc_html__("Catalog Mode", 'elessi-theme'),
             "id" => "disable-cart",
-            "desc" => esc_html__("Disable.", 'elessi-theme'),
+            "desc" => esc_html__("Yes, Please!.", 'elessi-theme'),
             "std" => "0",
             "type" => "checkbox"
         );
@@ -185,6 +185,14 @@ if (!function_exists('elessi_product_global_heading')) {
             "desc" => esc_html__("Input number limit products ajax search result.", 'elessi-theme'),
             "std" => "5",
             "type" => "text"
+        );
+        
+        $of_options[] = array(
+            "name" => esc_html__("Suggested keywords", 'flozen-theme'),
+            "desc" => 'Please input the Suggested keywords (ex: Accessories, Car, Technology)',
+            "id" => "hotkeys_search",
+            "std" => '',
+            "type" => "textarea"
         );
         // End Options live search products
         

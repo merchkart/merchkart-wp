@@ -1,6 +1,7 @@
 <?php 
 $topbar_left = !isset($topbar_left) ? '' : $topbar_left;
 $class_topbar = !isset($class_topbar) ? '' : $class_topbar;
+$class_topbar .= trim($topbar_left) != '' ? '' : ' hide-for-mobile';
 ?>
 <div class="nasa-topbar-wrap<?php echo esc_attr($class_topbar); ?>">
     <div id="top-bar" class="top-bar">
@@ -13,7 +14,7 @@ $class_topbar = !isset($class_topbar) ? '' : $class_topbar;
                 </div>
                 <div class="right-text nasa-hide-for-mobile right rtl-left">
                     <div class="topbar-menu-container">
-                        <?php echo elessi_language_flages(); ?>
+                        <?php do_action('elessi_support_multi_languages'); ?>
                         <?php elessi_get_menu('topbar-menu', 'nasa-topbar-menu', 1); ?>
                         <?php echo elessi_tiny_account(true); ?>
                     </div>

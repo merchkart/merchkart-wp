@@ -32,7 +32,7 @@ if (!function_exists('elessi_get_style_primary_color')) :
             body .entry-meta a,
             body #order_review_heading,
             body .checkout-group h3,
-            body .shop_table.cart td.product-name a,
+            body .shop_table.cart td.product-name a:hover,
             body a.shipping-calculator-button,
             body .widget_layered_nav li a:hover,
             body .widget_layered_nav_filters li a:hover,
@@ -88,7 +88,7 @@ if (!function_exists('elessi_get_style_primary_color')) :
             body ul li .nav-dropdown > ul > li:hover > a:before,
             body ul li .nav-dropdown > ul > li .nav-column-links > ul > li a:hover,
             body ul li .nav-dropdown > ul > li .nav-column-links > ul > li:hover > a:before,
-            body .topbar-menu-container ul li a:hover,
+            body .topbar-menu-container > ul > li > a:hover,
             body .header-account ul li a:hover,
             body .header-icons > li a:hover i,
             body .nasa-title span.nasa-first-word,
@@ -257,7 +257,8 @@ if (!function_exists('elessi_get_style_primary_color')) :
             body .sticky-type-4 .nasa-search-space .nasa-show-search-form.nasa-search-relative .search-wrapper form .nasa-icon-submit-page:before,
             body .nasa-menu-vertical-header,
             /* body .nasa-add-to-cart-fixed .single_variation_wrap-clone .button.disabled:hover, */
-            body .nasa-single-product-stock .nasa-product-stock-progress .nasa-product-stock-progress-bar
+            body .nasa-single-product-stock .nasa-product-stock-progress .nasa-product-stock-progress-bar,
+            body .nasa-quickview-view-detail
             {
                 background-color: <?php echo esc_attr($color_primary); ?>;
             }
@@ -575,9 +576,10 @@ if (!function_exists('elessi_get_style_topbar_color')) :
         if ($text_color != '') :
             ?>
                 body #top-bar,
-                body #top-bar .topbar-menu-container ul li:after,
-                body #top-bar .topbar-menu-container ul li a,
-                body #top-bar .topbar-menu-container ul li a .pe7-icon,
+                body #top-bar .topbar-menu-container .wcml-cs-item-toggle,
+                body #top-bar .topbar-menu-container > ul > li:after,
+                body #top-bar .topbar-menu-container > ul > li > a,
+                body #top-bar .topbar-menu-container > ul > li > a .pe7-icon,
                 body #top-bar .left-text,
                 body .nasa-topbar-wrap.nasa-topbar-toggle .nasa-icon-toggle
                 {
@@ -588,9 +590,10 @@ if (!function_exists('elessi_get_style_topbar_color')) :
 
             if ($text_color_hover != '') :
                 ?>
-                body #top-bar .topbar-menu-container ul li a:hover,
-                body #top-bar .topbar-menu-container ul li a:hover .pe7-icon,
-                body #top-bar .topbar-menu-container ul li a:hover i,
+                body #top-bar .topbar-menu-container .wcml-cs-item-toggle:hover,
+                body #top-bar .topbar-menu-container > ul > li > a:hover,
+                body #top-bar .topbar-menu-container > ul > li > a:hover .pe7-icon,
+                body #top-bar .topbar-menu-container > ul > li > a:hover i,
                 body .nasa-topbar-wrap.nasa-topbar-toggle .nasa-icon-toggle:hover
                 {
                     color: <?php echo esc_attr($text_color_hover); ?>;

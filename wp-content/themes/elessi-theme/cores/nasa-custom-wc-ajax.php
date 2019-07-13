@@ -31,7 +31,9 @@ if(class_exists('WC_AJAX')) :
                 'nasa_add_compare_product',
                 'nasa_remove_compare_product',
                 'nasa_remove_all_compare',
-                'nasa_reload_fragments'
+                'nasa_reload_fragments',
+                'nasa_refresh_accessories_price',
+                'nasa_add_to_cart_accessories'
             );
 
             foreach ($ajax_events as $ajax_event) {
@@ -452,6 +454,87 @@ if(class_exists('WC_AJAX')) :
                 );
                 wp_send_json($data);
             }
+        }
+        
+        /**
+         * Add To Cart All Product + Accessories
+         */
+        public static function nasa_add_to_cart_accessories() {
+            $error = array(
+                'error' => true,
+                'message' => esc_html__('Sorry, Maybe product empty in stock.', 'elessi-theme')
+            );
+            
+            if(!isset($_REQUEST['product_ids']) || empty($_REQUEST['product_ids'])) {
+                wp_send_json($error);
+                
+                return;
+            }
+            
+            foreach ($_REQUEST['product_ids'] as $productId) {
+                $product_id = (int) $productId;
+                $product = wc_get_product($product_id);
+                
+                /**
+                 * Check Product
+                 */
+                if (!$product) {
+                    wp_send_json($error);
+                
+                    return;
+                }
+                
+                $type = $product->get_type();
+                
+                /**
+                 * Check type
+                 */
+                if (!in_array($type, array('simple', 'variation'))) {
+                    wp_send_json($error);
+                
+                    return;
+                }
+                
+                $quantity = 1;
+                $passed_validation = apply_filters('woocommerce_add_to_cart_validation', true, $product_id, $quantity);
+                $product_status    = get_post_status($product_id);
+                $variation_id      = 0;
+		$variation         = array();
+                
+                /**
+                 * Check validate for variation product
+                 */
+                if ('variation' === $type) {
+                    $variation_id = $product_id;
+                    $product_id   = $product->get_parent_id();
+                    $variation    = $product->get_variation_attributes();
+                }
+                
+                /**
+                 * Add To Cart
+                 */
+                if ($passed_validation && false !== WC()->cart->add_to_cart($product_id, $quantity, $variation_id, $variation ) && 'publish' === $product_status) {
+                    do_action('woocommerce_ajax_added_to_cart', $product_id);
+		} else {
+                    wp_send_json($error);
+                
+                    return;
+		}
+            }
+            
+            self::get_refreshed_fragments();
+        }
+        
+        /**
+         * Get Total Price Accessories
+         */
+        public static function nasa_refresh_accessories_price() {
+            $price = 0;
+            if(isset($_REQUEST['total_price']) && $_REQUEST['total_price']) {
+                $price = $_REQUEST['total_price'];
+            }
+            
+            wp_send_json(array('total_price' => wc_price($price)));
         }
         
         /**

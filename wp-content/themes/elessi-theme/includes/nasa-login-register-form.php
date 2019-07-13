@@ -29,10 +29,11 @@ if (isset($_REQUEST['register'])) {
 }
 ?>
 
-<div class="row" id="<?php echo esc_attr($prefix); ?>customer_login"<?php echo $styleLogin; ?>>
-    <div class="large-12 columns <?php echo esc_attr($prefix); ?>login-form">
+<div class="row" id="<?php echo esc_attr($prefix); ?>customer_login">
+    <div class="large-12 columns <?php echo esc_attr($prefix); ?>login-form"<?php echo $styleLogin; ?>>
         <h2 class="nasa-form-title"><?php esc_html_e('Great to have you back !', 'elessi-theme'); ?></h2>
-        <form method="post" class="login">
+        
+        <form method="post" class="woocommerce-form woocommerce-form-login login">
             <?php do_action('woocommerce_login_form_start'); ?>
 
             <p class="form-row form-row-wide">
@@ -82,7 +83,7 @@ if (isset($_REQUEST['register'])) {
         <div class="large-12 columns <?php echo esc_attr($prefix); ?>register-form"<?php echo $styleRegister; ?>>
 
             <h2 class="nasa-form-title"><?php esc_html_e('Great to see you here !', 'elessi-theme'); ?></h2>
-            <form method="post" class="register">
+            <form method="post" class="woocommerce-form woocommerce-form-register register">
                 
                 <?php do_action('woocommerce_register_form_start'); ?>
                 <?php if ('no' === get_option('woocommerce_registration_generate_username')) : ?>

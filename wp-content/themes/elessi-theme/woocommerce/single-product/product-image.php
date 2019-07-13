@@ -22,16 +22,23 @@ $image_large = wp_get_attachment_image_src($thumbNailId, 'shop_single');
 $src_large = isset($image_large[0]) ? $image_large[0] : $image_link;
 $image = get_the_post_thumbnail($productId, apply_filters('single_product_large_thumbnail_size', 'shop_single'), array('title' => $image_title));
 $attachment_count = count($attachment_ids);
+
+$slideHoz = false;
+if (isset($nasa_opt['product_detail_layout']) && $nasa_opt['product_detail_layout'] === 'classic' && isset($nasa_opt['product_thumbs_style']) && $nasa_opt['product_thumbs_style'] === 'hoz') {
+    $slideHoz = true; 
+}
 ?>
 
 <div class="images">
     <div class="row">
-        <div class="large-12 columns">
-            <div class="nasa-thumb-wrap rtl-right">
-                <?php do_action('woocommerce_product_thumbnails'); ?>
-            </div>
+        <div class="large-12 columns mobile-padding-left-5 mobile-padding-right-5">
+            <?php if (!$slideHoz) : ?>
+                <div class="nasa-thumb-wrap rtl-right">
+                    <?php do_action('woocommerce_product_thumbnails'); ?>
+                </div>
+            <?php endif; ?>
             
-            <div class="nasa-main-wrap rtl-left">
+            <div class="nasa-main-wrap rtl-left<?php echo $slideHoz ? ' nasa-thumbnail-hoz' : ''; ?>">
                 <div class="product-images-slider images-popups-gallery">
                     <div class="nasa-main-image-default-wrap">
                         <div class="main-images nasa-single-product-main-image nasa-main-image-default">
@@ -111,6 +118,11 @@ $attachment_count = count($attachment_ids);
                 <div class="nasa-end-scroll"></div>
             </div>
             
+            <?php if ($slideHoz) : ?>
+                <div class="nasa-thumb-wrap nasa-thumbnail-hoz">
+                    <?php do_action('woocommerce_product_thumbnails'); ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>

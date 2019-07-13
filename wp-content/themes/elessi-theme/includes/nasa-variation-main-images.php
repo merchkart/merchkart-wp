@@ -1,7 +1,12 @@
 <?php
 $image_link = $main_id ? wp_get_attachment_url($main_id) : wc_placeholder_img_src();
 $image_large = wp_get_attachment_image_src($main_id, 'shop_single');
-$src_large = isset($image_large[0]) ? $image_large[0] : $image_link;
+$src_large = $image_link;
+$dimention = '';
+if(isset($image_large[0])) {
+    $src_large = $image_large[0];
+    $dimention .= 'width="' . $image_large[1] . '" height="' . $image_large[2] . '" ';
+}
 ?>
 <div class="main-images nasa-single-product-main-image nasa-main-image-default">
     <div class="item-wrap">
@@ -10,9 +15,10 @@ $src_large = isset($image_large[0]) ? $image_large[0] : $image_link;
                 <?php echo apply_filters(
                     'woocommerce_single_product_image_html',
                     sprintf(
-                        '<a href="%s" class="woocommerce-main-image product-image"><img src="%s" /></a>',
+                        '<a href="%s" class="woocommerce-main-image product-image"><img src="%s" %s/></a>',
                         $image_link,
-                        $src_large
+                        $src_large,
+                        $dimention
                     ),
                     $productId
                 ); ?>
@@ -31,10 +37,18 @@ $src_large = isset($image_large[0]) ? $image_large[0] : $image_link;
                         <?php
                         $image_link = wp_get_attachment_url($id);
                         $image = wp_get_attachment_image_src($id, 'shop_single');
+                        $src_large = $image_link;
+                        $dimention = '';
+                        if(isset($image[0])) {
+                            $src_large = $image[0];
+                            $dimention .= 'width="' . $image[1] . '" height="' . $image[2] . '" ';
+                        }
+                        
                         echo sprintf(
-                            '<a href="%s" class="woocommerce-additional-image product-image"><img src="%s" class="lazyOwl"/></a>',
+                            '<a href="%s" class="woocommerce-additional-image product-image"><img src="%s" %s/></a>',
                             $image_link,
-                            $image[0]
+                            $src_large,
+                            $dimention
                         );
                         ?>
                     </div>

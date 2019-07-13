@@ -2,9 +2,9 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Dokan Pro - professional 2.9.10\n"
+"Project-Id-Version: Dokan Pro - professional 2.9.11\n"
 "Report-Msgid-Bugs-To: https://wedevs.com/account/tickets/\n"
-"POT-Creation-Date: 2019-06-19 11:15:53+00:00\n"
+"POT-Creation-Date: 2019-07-03 06:30:52+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -979,6 +979,8 @@ msgid "Your changes has been updated!"
 msgstr ""
 
 #: classes/store-share.php:23
+#: includes/modules/elementor/includes/Widgets/StoreShareButton.php:67
+#: includes/modules/elementor/includes/Widgets/StoreShareButton.php:68
 msgid "Share"
 msgstr ""
 
@@ -1664,9 +1666,12 @@ msgid "To:"
 msgstr ""
 
 #: includes/admin/reports.php:83 includes/admin/reports.php:123
-#: includes/admin/reports.php:138 includes/reports.php:78
-#: includes/reports.php:477 includes/reports.php:851 includes/reports.php:958
-#: src/admin/components/Reports.vue:52 src/admin/components/Reports.vue:65
+#: includes/admin/reports.php:138
+#: includes/modules/elementor/includes/Widgets/StoreVacationMessage.php:112
+#: includes/modules/elementor/views/editor-templates/sortable-list-row.php:26
+#: includes/reports.php:78 includes/reports.php:477 includes/reports.php:851
+#: includes/reports.php:958 src/admin/components/Reports.vue:52
+#: src/admin/components/Reports.vue:65
 msgid "Show"
 msgstr ""
 
@@ -2468,6 +2473,7 @@ msgstr ""
 
 #: includes/class-dokan-store-category.php:80
 #: includes/class-dokan-store-category.php:155
+#: includes/modules/elementor/includes/StoreWPWidgets.php:185
 #: templates/seller-search-form-categories.php:6 templates/store-reviews.php:32
 #: templates/vendor-biography.php:29
 msgid "Store Category"
@@ -2866,6 +2872,390 @@ msgstr ""
 msgid "Dashboard Menu Border"
 msgstr ""
 
+#: includes/modules/elementor/elementor.php:159
+msgid "Dokan Elementor module requires both %s and %s to be activated"
+msgstr ""
+
+#: includes/modules/elementor/elementor.php:167
+#: includes/modules/elementor/elementor.php:172
+msgid "Dokan Elementor module requires atleast %s."
+msgstr ""
+
+#: includes/modules/elementor/includes/Conditions/Store.php:39
+#: includes/modules/elementor/includes/Documents/Store.php:75
+msgid "Single Store"
+msgstr ""
+
+#: includes/modules/elementor/includes/Conditions/Store.php:50
+msgid "All Stores"
+msgstr ""
+
+#: includes/modules/elementor/includes/Documents/Store.php:88
+#: src/admin/components/Vendors.vue:112 src/admin/components/Vendors.vue:294
+msgid "Store"
+msgstr ""
+
+#: includes/modules/elementor/includes/Module.php:121
+msgid "Dokan"
+msgstr ""
+
+#: includes/modules/elementor/includes/Module.php:226
+msgid "Column Wrapper Padding"
+msgstr ""
+
+#: includes/modules/elementor/includes/StoreWPWidgets.php:71
+#: includes/modules/elementor/includes/StoreWPWidgets.php:111
+#: includes/modules/store-support/support-widget.php:49
+#: includes/modules/store-support/support-widget.php:99
+#: templates/store-reviews.php:43 templates/vendor-biography.php:40
+msgid "Contact Vendor"
+msgstr ""
+
+#: includes/modules/elementor/includes/StoreWPWidgets.php:89
+#: includes/modules/elementor/includes/Tags/StoreSupportButton.php:55
+#: includes/modules/store-support/store-support.php:287
+#: includes/modules/store-support/store-support.php:1355
+#: includes/modules/store-support/support-widget.php:149
+msgid "Get Support"
+msgstr ""
+
+#: includes/modules/elementor/includes/StoreWPWidgets.php:149
+#: templates/store-reviews.php:35 templates/vendor-biography.php:32
+msgid "Store Location"
+msgstr ""
+
+#: includes/modules/elementor/includes/StoreWPWidgets.php:225
+#: templates/store-reviews.php:39 templates/vendor-biography.php:36
+msgid "Store Time"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreBanner.php:40
+#: includes/modules/elementor/includes/Widgets/StoreBanner.php:32
+msgid "Store Banner"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreBanner.php:86
+#: includes/modules/elementor/includes/Tags/StoreProfilePicture.php:75
+msgid "Fallback"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreCoupons.php:39
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:37
+msgid "Store Coupons"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreCoupons.php:63
+#: includes/modules/elementor/includes/Tags/StoreCoupons.php:81
+#: templates/coupon/store.php:4
+msgid "%s Discount"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreCoupons.php:71
+#: includes/modules/elementor/includes/Tags/StoreCoupons.php:86
+#: templates/coupon/store.php:13
+msgid "Expiring in %s"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreDummyProducts.php:39
+msgid "Store Dummy Products"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreFollowButton.php:39
+#: includes/modules/elementor/includes/Widgets/StoreFollowButton.php:31
+msgid "Store Follow Button"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreFollowButton.php:51
+#: includes/modules/follow-store/includes/functions.php:32
+msgid "Follow"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreInfo.php:29
+#: includes/modules/elementor/includes/Widgets/StoreInfo.php:35
+#: includes/modules/elementor/includes/Widgets/StoreInfo.php:84
+msgid "Store Info"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreInfo.php:45
+#: includes/modules/vendor-verification/templates/admin-verifications.php:115
+#: src/admin/components/AddVendor.vue:73
+#: src/admin/components/VendorAddressFields.vue:4
+#: templates/global/dokan-registration.php:52
+#: templates/global/update-account.php:58
+msgid "Address"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreInfo.php:55
+#: includes/modules/vendor-verification/templates/verification-new.php:148
+#: includes/modules/vendor-verification/templates/verification.php:159
+msgid "Phone No"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreInfo.php:65
+#: src/admin/components/VendorAccountFields.vue:69
+msgid "Email"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreInfo.php:75
+#: includes/modules/single-product-multiple-vendor/includes/products.php:474
+#: templates/review/listing.php:20
+msgid "Rating"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreInfo.php:85
+msgid "Open/Close Status"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreLiveChatButton.php:39
+#: includes/modules/elementor/includes/Widgets/StoreLiveChatButton.php:29
+msgid "Store Live Chat Button"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreLiveChatButton.php:63
+msgid "Chat Now"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreName.php:39
+#: includes/modules/elementor/includes/Widgets/StoreName.php:31
+#: includes/modules/store-support/store-support.php:1003
+#: includes/modules/vendor-verification/templates/admin-verifications.php:113
+#: includes/modules/vendor-verification/templates/admin-verifications.php:124
+#: src/admin/components/Reports.vue:37
+#: src/admin/components/VendorAccountFields.vue:43
+msgid "Store Name"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreProfilePicture.php:40
+#: includes/modules/elementor/includes/Widgets/StoreProfilePicture.php:32
+#: includes/modules/elementor/includes/Widgets/StoreProfilePicture.php:81
+msgid "Profile Picture"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreSocialProfile.php:39
+#: includes/modules/elementor/includes/Widgets/StoreSocialProfile.php:35
+msgid "Store Social Profile"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreSupportButton.php:39
+#: includes/modules/elementor/includes/Widgets/StoreSupportButton.php:29
+msgid "Store Support Button"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreSupportButton.php:51
+msgid "Dokan Store Support module is not active"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreTabItems.php:29
+#: includes/modules/elementor/includes/Widgets/StoreTabItems.php:29
+msgid "Store Tab Items"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreVacationMessage.php:39
+#: includes/modules/elementor/includes/Widgets/StoreVacationMessage.php:30
+msgid "Store Vacation Message"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreVacationMessage.php:51
+msgid "Dokan Seller Vacation module is not active"
+msgstr ""
+
+#: includes/modules/elementor/includes/Tags/StoreVacationMessage.php:63
+msgid "Store vacation message set in vendor dashboard will show here."
+msgstr ""
+
+#: includes/modules/elementor/includes/Traits/PositionControls.php:26
+#: includes/modules/elementor/includes/Traits/PositionControls.php:34
+msgid "Position"
+msgstr ""
+
+#: includes/modules/elementor/includes/Traits/PositionControls.php:37
+msgid "Static"
+msgstr ""
+
+#: includes/modules/elementor/includes/Traits/PositionControls.php:38
+msgid "Relative"
+msgstr ""
+
+#: includes/modules/elementor/includes/Traits/PositionControls.php:39
+msgid "Absolute"
+msgstr ""
+
+#: includes/modules/elementor/includes/Traits/PositionControls.php:40
+msgid "Sticky"
+msgstr ""
+
+#: includes/modules/elementor/includes/Traits/PositionControls.php:41
+msgid "Fixed"
+msgstr ""
+
+#: includes/modules/elementor/includes/Traits/PositionControls.php:56
+msgid "Top"
+msgstr ""
+
+#: includes/modules/elementor/includes/Traits/PositionControls.php:68
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:122
+msgid "Right"
+msgstr ""
+
+#: includes/modules/elementor/includes/Traits/PositionControls.php:80
+msgid "Bottom"
+msgstr ""
+
+#: includes/modules/elementor/includes/Traits/PositionControls.php:92
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:114
+msgid "Left"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreBanner.php:81
+msgid "Banner"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:83
+#: includes/modules/elementor/includes/Widgets/StoreInfo.php:93
+#: includes/modules/elementor/includes/Widgets/StoreInfo.php:95
+#: includes/modules/elementor/includes/Widgets/StoreVacationMessage.php:79
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:84
+#: includes/modules/paypal-adaptive-payments/classes/class-dokan-paypal-ap-gateway.php:129
+#: includes/modules/store-support/store-support.php:690
+#: includes/modules/store-support/store-support.php:1004
+#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:123
+#: src/admin/components/Announcement.vue:137
+#: src/frontend/components/Zone.vue:165 templates/coupon/form.php:18
+#: templates/products/edit/product-list-table-inline-edit-form.php:10
+msgid "Title"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:87
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:90
+#: includes/modules/paypal-adaptive-payments/classes/class-dokan-paypal-ap-gateway.php:136
+#: includes/modules/report-abuse/src/js/admin/pages/AbuseReports.vue:95
+#: includes/modules/report-abuse/views/report-abuse-admin-email-html.php:21
+#: includes/modules/report-abuse/views/report-form.php:28
+#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:129
+#: src/admin/components/StoreCategoriesIndex.vue:35
+#: src/admin/components/StoreCategoriesIndex.vue:154
+#: src/admin/components/StoreCategoriesShow.vue:35
+#: src/frontend/components/Zone.vue:92 src/frontend/components/Zone.vue:185
+#: templates/coupon/form.php:23
+msgid "Description"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:90
+#: templates/coupon/listing.php:14 templates/coupon/listing.php:27
+msgid "Code"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:93
+msgid "Expiration"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:110
+msgid "Alignment"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:118
+msgid "Center"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:126
+msgid "Justified"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:140
+msgid "Text Color"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:172
+msgid "Margin"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:184
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:236
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:369
+msgid "Padding"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:204
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:267
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:414
+msgid "Border Radius"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:228
+msgid "Coupon Inner Style"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:289
+msgid "Coupon Background"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:299
+msgid "Normal"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:324
+msgid "Hover"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:339
+msgid "Transition Duration"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreCoupons.php:361
+msgid "Coupon Outer Style"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreInfo.php:109
+#: includes/modules/elementor/includes/Widgets/StoreSocialProfile.php:86
+msgid "Icon"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreShareButton.php:29
+msgid "Store Share Button"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreSocialProfile.php:152
+msgid "Link"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreSocialProfile.php:162
+msgid "https://your-link.com"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreTabContents.php:29
+msgid "Store Tab Contents"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreVacationMessage.php:80
+msgid "We are on vacation!"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreVacationMessage.php:108
+msgid "Show Title"
+msgstr ""
+
+#: includes/modules/elementor/includes/Widgets/StoreVacationMessage.php:113
+#: includes/modules/elementor/views/editor-templates/sortable-list-row.php:27
+msgid "Hide"
+msgstr ""
+
+#: includes/modules/elementor/views/editor-templates/sortable-list-row.php:7
+msgid "Drag & Drop"
+msgstr ""
+
+#: includes/modules/elementor/views/store-tab-contents/products.php:26
+msgid "No products were found of this vendor!"
+msgstr ""
+
+#: includes/modules/elementor/views/store-tab-contents/reviews.php:15
+#: templates/store-reviews.php:78
+msgid "Vendor Review"
+msgstr ""
+
+#: includes/modules/elementor/views/store-tab-contents/toc.php:7
+msgid "Terms And Conditions"
+msgstr ""
+
 #: includes/modules/follow-store/includes/class-dokan-follow-store-ajax.php:26
 msgid "Nonce is invalid"
 msgstr ""
@@ -2927,10 +3317,6 @@ msgstr ""
 msgid ""
 "Send email to vendor when there is a new store follower or someone "
 "unfollows a vendor."
-msgstr ""
-
-#: includes/modules/follow-store/includes/functions.php:32
-msgid "Follow"
 msgstr ""
 
 #: includes/modules/follow-store/includes/functions.php:41
@@ -3042,17 +3428,6 @@ msgstr ""
 msgid "Enable Wirecard"
 msgstr ""
 
-#: includes/modules/moip/includes/admin/class-moip-gateway.php:84
-#: includes/modules/paypal-adaptive-payments/classes/class-dokan-paypal-ap-gateway.php:129
-#: includes/modules/store-support/store-support.php:690
-#: includes/modules/store-support/store-support.php:1004
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:123
-#: src/admin/components/Announcement.vue:137
-#: src/frontend/components/Zone.vue:165 templates/coupon/form.php:18
-#: templates/products/edit/product-list-table-inline-edit-form.php:10
-msgid "Title"
-msgstr ""
-
 #: includes/modules/moip/includes/admin/class-moip-gateway.php:86
 #: includes/modules/paypal-adaptive-payments/classes/class-dokan-paypal-ap-gateway.php:131
 #: includes/modules/stripe/classes/class-dokan-stripe-connect.php:125
@@ -3063,20 +3438,6 @@ msgstr ""
 
 #: includes/modules/moip/includes/admin/class-moip-gateway.php:87
 msgid "Wirecard Credit Card"
-msgstr ""
-
-#: includes/modules/moip/includes/admin/class-moip-gateway.php:90
-#: includes/modules/paypal-adaptive-payments/classes/class-dokan-paypal-ap-gateway.php:136
-#: includes/modules/report-abuse/src/js/admin/pages/AbuseReports.vue:95
-#: includes/modules/report-abuse/views/report-abuse-admin-email-html.php:21
-#: includes/modules/report-abuse/views/report-form.php:28
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:129
-#: src/admin/components/StoreCategoriesIndex.vue:35
-#: src/admin/components/StoreCategoriesIndex.vue:154
-#: src/admin/components/StoreCategoriesShow.vue:35
-#: src/frontend/components/Zone.vue:92 src/frontend/components/Zone.vue:185
-#: templates/coupon/form.php:23
-msgid "Description"
 msgstr ""
 
 #: includes/modules/moip/includes/admin/class-moip-gateway.php:92
@@ -4578,62 +4939,84 @@ msgstr ""
 msgid "Single Product MultiVendor"
 msgstr ""
 
-#: includes/modules/single-product-multiple-vendor/includes/admin.php:50
+#: includes/modules/single-product-multiple-vendor/includes/admin.php:49
 msgid "Enable Single Product Multiple Vendor"
 msgstr ""
 
-#: includes/modules/single-product-multiple-vendor/includes/admin.php:51
+#: includes/modules/single-product-multiple-vendor/includes/admin.php:50
 msgid "Enable Single Product Multiple Vendor functionality"
 msgstr ""
 
-#: includes/modules/single-product-multiple-vendor/includes/admin.php:57
+#: includes/modules/single-product-multiple-vendor/includes/admin.php:56
 msgid "Sell Item Button Text"
 msgstr ""
 
-#: includes/modules/single-product-multiple-vendor/includes/admin.php:58
+#: includes/modules/single-product-multiple-vendor/includes/admin.php:57
 msgid "Change your sell this item button text"
 msgstr ""
 
-#: includes/modules/single-product-multiple-vendor/includes/admin.php:60
+#: includes/modules/single-product-multiple-vendor/includes/admin.php:59
 #: includes/modules/single-product-multiple-vendor/includes/products.php:217
 msgid "Sell This Item"
 msgstr ""
 
-#: includes/modules/single-product-multiple-vendor/includes/admin.php:65
+#: includes/modules/single-product-multiple-vendor/includes/admin.php:64
 msgid "Available Vendor Display area title"
 msgstr ""
 
-#: includes/modules/single-product-multiple-vendor/includes/admin.php:66
+#: includes/modules/single-product-multiple-vendor/includes/admin.php:65
 msgid "Set your heading for available vendor section in single product page"
 msgstr ""
 
-#: includes/modules/single-product-multiple-vendor/includes/admin.php:68
+#: includes/modules/single-product-multiple-vendor/includes/admin.php:67
 #: includes/modules/single-product-multiple-vendor/includes/products.php:188
 #: includes/modules/single-product-multiple-vendor/includes/products.php:445
 #: includes/modules/single-product-multiple-vendor/views/dokan-spmv-products-admin.php:3
 msgid "Other Available Vendor"
 msgstr ""
 
-#: includes/modules/single-product-multiple-vendor/includes/admin.php:73
+#: includes/modules/single-product-multiple-vendor/includes/admin.php:72
 msgid "Available Vendor Section Display Position"
 msgstr ""
 
-#: includes/modules/single-product-multiple-vendor/includes/admin.php:74
+#: includes/modules/single-product-multiple-vendor/includes/admin.php:73
 msgid ""
 "Set your displaying position for diplaying available vendor section in "
 "single product page"
 msgstr ""
 
-#: includes/modules/single-product-multiple-vendor/includes/admin.php:77
+#: includes/modules/single-product-multiple-vendor/includes/admin.php:76
 msgid "Above Single Product Tabs"
 msgstr ""
 
-#: includes/modules/single-product-multiple-vendor/includes/admin.php:78
+#: includes/modules/single-product-multiple-vendor/includes/admin.php:77
 msgid "Display inside Product Tabs"
 msgstr ""
 
-#: includes/modules/single-product-multiple-vendor/includes/admin.php:79
+#: includes/modules/single-product-multiple-vendor/includes/admin.php:78
 msgid "After Single Product Tabs"
+msgstr ""
+
+#: includes/modules/single-product-multiple-vendor/includes/admin.php:85
+msgid "Show SPMV products"
+msgstr ""
+
+#: includes/modules/single-product-multiple-vendor/includes/admin.php:86
+msgid ""
+"Select option for shown products under SPMV concept. \"Show all products\" "
+"will show all duplicate products."
+msgstr ""
+
+#: includes/modules/single-product-multiple-vendor/includes/functions.php:60
+msgid "Show all products"
+msgstr ""
+
+#: includes/modules/single-product-multiple-vendor/includes/functions.php:64
+msgid "Min price"
+msgstr ""
+
+#: includes/modules/single-product-multiple-vendor/includes/functions.php:68
+msgid "Max price"
 msgstr ""
 
 #: includes/modules/single-product-multiple-vendor/includes/product-duplicator.php:45
@@ -4700,11 +5083,6 @@ msgstr ""
 msgid "Product deleted successfully."
 msgstr ""
 
-#: includes/modules/single-product-multiple-vendor/includes/products.php:474
-#: templates/review/listing.php:20
-msgid "Rating"
-msgstr ""
-
 #: includes/modules/single-product-multiple-vendor/includes/products.php:477
 msgid "%s customer review"
 msgid_plural "%s customer reviews"
@@ -4732,12 +5110,16 @@ msgstr ""
 msgid "No vendor own this same product."
 msgstr ""
 
-#: includes/modules/single-product-multiple-vendor/views/dokan-spmv-products-admin.php:33
+#: includes/modules/single-product-multiple-vendor/views/dokan-spmv-products-admin.php:35
 msgid "Assign product to vendors"
 msgstr ""
 
-#: includes/modules/single-product-multiple-vendor/views/dokan-spmv-products-admin.php:36
+#: includes/modules/single-product-multiple-vendor/views/dokan-spmv-products-admin.php:38
 msgid "Assign Products"
+msgstr ""
+
+#: includes/modules/store-reviews/classes/DSR_SPMV.php:47
+msgid "Top rated vendor"
 msgstr ""
 
 #: includes/modules/store-reviews/classes/DSR_View.php:120
@@ -4766,71 +5148,71 @@ msgstr ""
 msgid "Thanks for your review"
 msgstr ""
 
-#: includes/modules/store-reviews/store-reviews.php:135
-#: includes/modules/store-reviews/store-reviews.php:137
-#: includes/modules/store-reviews/store-reviews.php:138
-#: includes/modules/store-reviews/store-reviews.php:152
+#: includes/modules/store-reviews/store-reviews.php:141
+#: includes/modules/store-reviews/store-reviews.php:143
+#: includes/modules/store-reviews/store-reviews.php:144
+#: includes/modules/store-reviews/store-reviews.php:158
 msgid "Store Reviews"
 msgstr ""
 
-#: includes/modules/store-reviews/store-reviews.php:136
+#: includes/modules/store-reviews/store-reviews.php:142
 msgid "Store Review"
 msgstr ""
 
-#: includes/modules/store-reviews/store-reviews.php:139
+#: includes/modules/store-reviews/store-reviews.php:145
 #: includes/modules/store-support/store-support.php:210
 msgid "Parent Item"
 msgstr ""
 
-#: includes/modules/store-reviews/store-reviews.php:140
+#: includes/modules/store-reviews/store-reviews.php:146
 msgid "All Reviews"
 msgstr ""
 
-#: includes/modules/store-reviews/store-reviews.php:141
+#: includes/modules/store-reviews/store-reviews.php:147
 msgid "Add New review"
 msgstr ""
 
-#: includes/modules/store-reviews/store-reviews.php:142
+#: includes/modules/store-reviews/store-reviews.php:148
 #: includes/modules/store-support/store-support.php:213
 #: src/admin/components/Vendors.vue:4
 msgid "Add New"
 msgstr ""
 
-#: includes/modules/store-reviews/store-reviews.php:143
+#: includes/modules/store-reviews/store-reviews.php:149
 msgid "New review"
 msgstr ""
 
-#: includes/modules/store-reviews/store-reviews.php:144
+#: includes/modules/store-reviews/store-reviews.php:150
 msgid "Edit review"
 msgstr ""
 
-#: includes/modules/store-reviews/store-reviews.php:145
+#: includes/modules/store-reviews/store-reviews.php:151
 msgid "Update review"
 msgstr ""
 
-#: includes/modules/store-reviews/store-reviews.php:146
+#: includes/modules/store-reviews/store-reviews.php:152
 msgid "View review"
 msgstr ""
 
-#: includes/modules/store-reviews/store-reviews.php:147
+#: includes/modules/store-reviews/store-reviews.php:153
 msgid "Search review"
 msgstr ""
 
-#: includes/modules/store-reviews/store-reviews.php:148
+#: includes/modules/store-reviews/store-reviews.php:154
 #: includes/modules/store-support/store-support.php:219
 msgid "Not found"
 msgstr ""
 
-#: includes/modules/store-reviews/store-reviews.php:149
+#: includes/modules/store-reviews/store-reviews.php:155
 #: includes/modules/store-support/store-support.php:220
 msgid "Not found in Trash"
 msgstr ""
 
-#: includes/modules/store-reviews/store-reviews.php:153
+#: includes/modules/store-reviews/store-reviews.php:159
 msgid "Store Reviews by customer"
 msgstr ""
 
-#: includes/modules/store-reviews/store-reviews.php:202
+#: includes/modules/store-reviews/store-reviews.php:208
 msgid "No Ratings found yet"
 msgstr ""
 
@@ -4949,12 +5331,6 @@ msgid "Closed <span class=\"count\">(%s)</span>"
 msgid_plural "Closed <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
-
-#: includes/modules/store-support/store-support.php:287
-#: includes/modules/store-support/store-support.php:1355
-#: includes/modules/store-support/support-widget.php:149
-msgid "Get Support"
-msgstr ""
 
 #: includes/modules/store-support/store-support.php:354
 msgid "Please Login to Continue"
@@ -5107,14 +5483,6 @@ msgstr ""
 msgid "View Support Tickets"
 msgstr ""
 
-#: includes/modules/store-support/store-support.php:1003
-#: includes/modules/vendor-verification/templates/admin-verifications.php:113
-#: includes/modules/vendor-verification/templates/admin-verifications.php:124
-#: src/admin/components/Reports.vue:37
-#: src/admin/components/VendorAccountFields.vue:43
-msgid "Store Name"
-msgstr ""
-
 #: includes/modules/store-support/store-support.php:1307
 msgid "[%s][%d] A New Reply on Your Ticket"
 msgstr ""
@@ -5161,12 +5529,6 @@ msgstr ""
 
 #: includes/modules/store-support/support-widget.php:19
 msgid "Dokan: Store Support Area"
-msgstr ""
-
-#: includes/modules/store-support/support-widget.php:49
-#: includes/modules/store-support/support-widget.php:99
-#: templates/store-reviews.php:43 templates/vendor-biography.php:40
-msgid "Contact Vendor"
 msgstr ""
 
 #: includes/modules/store-support/support-widget.php:112
@@ -6412,14 +6774,6 @@ msgstr ""
 msgid "Requests approved!"
 msgstr ""
 
-#: includes/modules/vendor-verification/templates/admin-verifications.php:115
-#: src/admin/components/AddVendor.vue:73
-#: src/admin/components/VendorAddressFields.vue:4
-#: templates/global/dokan-registration.php:52
-#: templates/global/update-account.php:58
-msgid "Address"
-msgstr ""
-
 #: includes/modules/vendor-verification/templates/admin-verifications.php:116
 #: src/admin/components/VendorAccountFields.vue:64
 #: templates/global/dokan-registration.php:57
@@ -6508,11 +6862,6 @@ msgstr ""
 #: includes/modules/vendor-verification/templates/verification-new.php:136
 #: includes/modules/vendor-verification/templates/verification.php:147
 msgid "Phone Verification"
-msgstr ""
-
-#: includes/modules/vendor-verification/templates/verification-new.php:148
-#: includes/modules/vendor-verification/templates/verification.php:159
-msgid "Phone No"
 msgstr ""
 
 #: includes/modules/vendor-verification/templates/verification-new.php:165
@@ -7519,10 +7868,6 @@ msgstr ""
 msgid "Store URL"
 msgstr ""
 
-#: src/admin/components/VendorAccountFields.vue:69
-msgid "Email"
-msgstr ""
-
 #: src/admin/components/VendorAccountFields.vue:85
 msgid "Username"
 msgstr ""
@@ -7762,10 +8107,6 @@ msgstr ""
 
 #: src/admin/components/VendorSocialFields.vue:46
 msgid "Instagram"
-msgstr ""
-
-#: src/admin/components/Vendors.vue:112 src/admin/components/Vendors.vue:294
-msgid "Store"
 msgstr ""
 
 #: src/admin/components/Vendors.vue:122 src/admin/components/Vendors.vue:307
@@ -8039,10 +8380,6 @@ msgstr ""
 msgid "Add new Coupon"
 msgstr ""
 
-#: templates/coupon/listing.php:14 templates/coupon/listing.php:27
-msgid "Code"
-msgstr ""
-
 #: templates/coupon/listing.php:15 templates/coupon/listing.php:50
 msgid "Coupon type"
 msgstr ""
@@ -8079,16 +8416,8 @@ msgstr ""
 msgid "%s / &infin;"
 msgstr ""
 
-#: templates/coupon/store.php:4
-msgid "%s Discount"
-msgstr ""
-
 #: templates/coupon/store.php:9
 msgid "Coupon Code: <strong>%s</strong>"
-msgstr ""
-
-#: templates/coupon/store.php:13
-msgid "Expiring in %s"
 msgstr ""
 
 #: templates/dashboard/announcement-widget.php:14
@@ -9138,18 +9467,6 @@ msgstr ""
 
 #: templates/settings/social.php:32
 msgid "Update Settings"
-msgstr ""
-
-#: templates/store-reviews.php:35 templates/vendor-biography.php:32
-msgid "Store Location"
-msgstr ""
-
-#: templates/store-reviews.php:39 templates/vendor-biography.php:36
-msgid "Store Time"
-msgstr ""
-
-#: templates/store-reviews.php:78
-msgid "Vendor Review"
 msgstr ""
 
 #: templates/widgets/best-seller.php:22 templates/widgets/feature-seller.php:20

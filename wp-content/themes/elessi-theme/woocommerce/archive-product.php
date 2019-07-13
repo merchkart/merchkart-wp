@@ -163,7 +163,7 @@ get_header('shop');
 
                 <div class="<?php echo esc_attr($topSidebar_wrap); ?>columns nasa-topbar-filter-wrap">
                     <div class="row">
-                        <div class="large-10 medium-10 small-8 columns nasa-filter-action">
+                        <div class="large-10 medium-10 small-12 columns nasa-filter-action">
                             <div class="nasa-labels-filter-top">
                                 <input name="nasa-labels-filter-text" type="hidden" value="<?php echo (!isset($nasa_opt['top_bar_archive_label']) || $nasa_opt['top_bar_archive_label'] == 'Filter by:') ? esc_attr__('Filter by:', 'elessi-theme') : esc_attr($nasa_opt['top_bar_archive_label']); ?>" />
                                 <input name="nasa-widget-show-more-text" type="hidden" value="<?php echo esc_attr__('More +', 'elessi-theme'); ?>" />
@@ -173,7 +173,7 @@ get_header('shop');
                             </div>
                         </div>
                         
-                        <div class="large-2 medium-2 small-4 columns nasa-sort-by-action">
+                        <div class="large-2 medium-2 small-12 columns nasa-sort-by-action">
                             <ul class="sort-bar nasa-float-none margin-top-0">
                                 <li class="sort-bar-text nasa-order-label hidden-tag">
                                     <?php esc_html_e('Sort by: ', 'elessi-theme'); ?>

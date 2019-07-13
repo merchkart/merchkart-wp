@@ -4,17 +4,25 @@
  *
  * @package nasatheme
  */
-
+global $nasa_opt;
 $_id = rand();
+
 $postType = apply_filters('nasa_search_post_type', 'post');
 $classInput = 'search-field search-input';
 $placeHolder = esc_attr__("Start typing ...", 'elessi-theme');
+$hotkeys = '';
 $classWrap = 'nasa-searchform';
 if ($postType === 'product') {
     $classInput .= ' live-search-input';
     $classWrap = 'nasa-ajaxsearchform';
     $placeHolder = esc_attr__("I'm shopping for ...", 'elessi-theme');
+    
+    if (isset($nasa_opt['hotkeys_search']) && trim($nasa_opt['hotkeys_search']) !== '') {
+        $hotkeys = ' data-suggestions="' . esc_attr($nasa_opt['hotkeys_search']) . '"';
+    }
 }
+
+
 ?>
 
 <div class="search-wrapper <?php echo esc_attr($classWrap); ?>-container <?php echo esc_attr($_id); ?>_container">
@@ -24,7 +32,7 @@ if ($postType === 'product') {
                 <label class="sr-only screen-reader-text">
                     <?php esc_html_e('Search here', 'elessi-theme'); ?>
                 </label>
-                <input id="nasa-input-<?php echo esc_attr($_id); ?>" type="text" class="<?php echo esc_attr($classInput); ?>" value="<?php echo get_search_query(); ?>" name="s" placeholder="<?php echo $placeHolder; ?>" />
+                <input id="nasa-input-<?php echo esc_attr($_id); ?>" type="text" class="<?php echo esc_attr($classInput); ?>" value="<?php echo get_search_query(); ?>" name="s" placeholder="<?php echo $placeHolder; ?>"<?php echo $hotkeys;?> />
                 <span class="nasa-icon-submit-page">
                     <input type="submit" name="page" value="search" />
                 </span>

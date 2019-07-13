@@ -78,7 +78,7 @@ if (!function_exists('elessi_header_footer_heading')) {
         );
         
         $menus = wp_get_nav_menus(array('orderby' => 'name'));
-        $option_menu = array('' => esc_html__('Select menu', 'digi-theme'));
+        $option_menu = array('' => esc_html__('Select menu', 'elessi-theme'));
         if (!empty($menus)) {
             foreach ($menus as $menu_option) {
                 $option_menu[$menu_option->term_id] = $menu_option->name;
@@ -86,7 +86,7 @@ if (!function_exists('elessi_header_footer_heading')) {
         }
         
         $of_options[] = array(
-            "name" => esc_html__("Select vertical menu", 'digi-theme'),
+            "name" => esc_html__("Select vertical menu", 'elessi-theme'),
             "id" => "vertical_menu_selected",
             "std" => "",
             "type" => "select",
@@ -130,6 +130,23 @@ if (!function_exists('elessi_header_footer_heading')) {
             "type" => "checkbox",
             'class' => 'hidden-tag nasa-header-type-child nasa-header-type-select-1 nasa-header-type-select-2 nasa-header-type-select-3 nasa-header-type-select-4 nasa-fixed_nav'
         );
+        
+        $of_options[] = array(
+            "name" => esc_html__("Search Bar Effect", 'elessi-theme'),
+            "desc" => esc_html__("Search Bar Effect.", 'elessi-theme'),
+            "id" => "search_effect",
+            "std" => "right-to-left",
+            "type" => "select",
+            "options" => array(
+                "rightToLeft" => esc_html__("Right To Left", 'elessi-theme'),
+                "fadeInDown" => esc_html__("Fade In Down", 'elessi-theme'),
+                "fadeInUp" => esc_html__("Fade In Up", 'elessi-theme'),
+                "leftToRight" => esc_html__("Left To Right", 'elessi-theme'),
+                "fadeIn" => esc_html__("Fade In", 'elessi-theme'),
+                "noEffect" => esc_html__("No Effect", 'elessi-theme')
+            ),
+            'class' => 'hidden-tag nasa-header-type-child nasa-header-type-select-1 nasa-header-type-select-2 nasa-search_effect'
+        );
 
         $of_options[] = array(
             "name" => esc_html__("Toggle Top Bar", 'elessi-theme'),
@@ -155,6 +172,23 @@ if (!function_exists('elessi_header_footer_heading')) {
             "id" => "switch_lang",
             "std" => 0,
             "type" => "checkbox"
+        );
+        
+        $of_options[] = array(
+            "name" => esc_html__("Enable Currency Switcher", 'elessi-theme'),
+            "desc" => esc_html__("Enable Currency Switcher - Requires WPML + WooCommerce Multilingual.", 'elessi-theme'),
+            "id" => "switch_currency",
+            "std" => 0,
+            "type" => "checkbox"
+        );
+        
+        //(%symbol%) %code%
+        $of_options[] = array(
+            "name" => esc_html__("Format Currency", 'elessi-theme'),
+            "desc" => esc_html__("Default (%symbol%) %code%. You can custom for this. Ex (%name% (%symbol%) - %code%)", 'elessi-theme'),
+            "id" => "switch_currency_format",
+            "std" => "",
+            "type" => "text"
         );
         
         $of_options[] = array(

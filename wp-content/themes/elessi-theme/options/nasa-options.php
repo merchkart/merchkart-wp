@@ -117,7 +117,7 @@ function elessi_get_options() {
         $options['enable_optimized_speed'] = '0';
     }
     
-    return $options;
+    return apply_filters('nasa_theme_options', $options);
 }
 
 /**
@@ -125,13 +125,16 @@ function elessi_get_options() {
  */
 function elessi_init_global() {
     global $nasa_opt;
+    
+    $hoverProductEffect = array('hover-fade', 'hover-flip', 'hover-bottom-to-top', 'no');
+    
     /**
      * Animated effect
      */
     $nasa_animated_products = 
         isset($_REQUEST['effect-product']) && in_array(
             $_REQUEST['effect-product'],
-            array('hover-fade', 'hover-flip', 'hover-bottom-to-top', 'no')
+            $hoverProductEffect
         ) ? $_REQUEST['effect-product'] :
         (isset($nasa_opt['animated_products']) ? $nasa_opt['animated_products'] : '');
     

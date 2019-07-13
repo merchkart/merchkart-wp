@@ -22,7 +22,7 @@ if (!defined('ABSPATH')) {
 <div class="variation">
     <?php foreach ($item_data as $data) : ?>
         <span class="variation-row">
-            <span class="variation-<?php echo sanitize_html_class($data['key']); ?> nasa-bold inline-block"><?php echo wp_kses_post($data['key']); ?>:</span>
+            <span class="variation-<?php echo sanitize_html_class($data['key']); ?> inline-block"><?php echo wp_kses_post($data['key']); ?>:</span>
             <span class="variation-<?php echo sanitize_html_class($data['key']); ?> inline-block"><?php echo wp_kses_post(wpautop($data['display'])); ?></span>
         </span>
     <?php endforeach; ?>

@@ -6,7 +6,7 @@ $fields = $nasa_compare->fields();
 <div class="nasa-wrap-table-compare">
     <?php
     if ($products) :
-        $add_to_cart = array();?>
+        $add_to_cart = array(); ?>
         <table class="nasa-table-compare">
             <?php 
             foreach ($fields as $field => $name) :
@@ -124,7 +124,9 @@ $fields = $nasa_compare->fields();
         </table>
     <?php
     else:
-        echo '<h5 class="text-center">' . esc_html__('No product added to compare !', 'elessi-theme') . '</h5>';
+        echo '<p class="text-center padding-top-30"><i class="nasa-empty-icon icon-nasa-refresh"></i></p>';
+        echo '<h5 class="text-center margin-bottom-30 empty woocommerce-compare__empty-message">' . esc_html__('No product added to compare !', 'elessi-theme') . '</h5>';
+        echo '<p class="text-center"><a href="' . esc_url(get_permalink(wc_get_page_id('shop'))) . '" class="button nasa-sidebar-return-shop" title="' . esc_attr__('RETURN TO SHOP', 'elessi-theme') . '">' . esc_html__('RETURN TO SHOP', 'elessi-theme') . '</a></p>';
     endif;
     ?>
 </div>

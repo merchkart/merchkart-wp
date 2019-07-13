@@ -57,6 +57,19 @@ if (!function_exists('elessi_product_detail_heading')) {
         );
         
         $of_options[] = array(
+            "name" => esc_html__("Thumbnail Style", 'elessi-theme'),
+            "id" => "product_thumbs_style",
+            "std" => "ver",
+            "type" => "select",
+            "options" => array(
+                "ver" => esc_html__("Vertical", 'elessi-theme'),
+                "hoz" => esc_html__("Horizontal", 'elessi-theme')
+            ),
+            
+            'class' => 'nasa-theme-option-child nasa-product_detail_layout nasa-product_detail_layout-classic'
+        );
+        
+        $of_options[] = array(
             "name" => esc_html__("Enable Hover product Zoom", 'elessi-theme'),
             "id" => "product-zoom",
             "desc" => esc_html__("Enable product hover zoom on single product page", 'elessi-theme'),

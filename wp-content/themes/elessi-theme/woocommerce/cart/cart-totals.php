@@ -16,11 +16,11 @@ global $woocommerce;
 
     <?php do_action('woocommerce_before_cart_totals'); ?>
 
-    <h5 class="heading-title"><?php esc_html_e('Cart Totals', 'elessi-theme'); ?></h5>
-    <div class="nasa-hr medium  margin-bottom-30 text-left"></div>
+    <h5 class="heading-title">
+        <?php esc_html_e('Cart Totals', 'elessi-theme'); ?>
+    </h5>
 
     <table>
-
         <tr class="cart-subtotal">
             <th><?php esc_html_e('Subtotal', 'elessi-theme'); ?></th>
             <td><?php wc_cart_totals_subtotal_html(); ?></td>
@@ -37,6 +37,7 @@ global $woocommerce;
             <?php do_action('woocommerce_cart_totals_before_shipping'); ?>
             <?php wc_cart_totals_shipping_html(); ?>
             <?php do_action('woocommerce_cart_totals_after_shipping'); ?>
+            
         <?php elseif ($woocommerce->cart->needs_shipping()) : ?>
             <tr class="shipping">
                 <th><?php esc_html_e('Shipping', 'elessi-theme'); ?></th>

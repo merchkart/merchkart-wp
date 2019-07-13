@@ -1,16 +1,23 @@
 <?php
 $image_link = $main_id ? wp_get_attachment_url($main_id) : wc_placeholder_img_src();
 $image_thumb = wp_get_attachment_image_src($main_id, 'thumbnail');
-$src_thumb = isset($image_thumb[0]) ? $image_thumb[0] : $image_link;
+
+$src_thumb = $image_link;
+$dimention = '';
+if(isset($image_thumb[0])) {
+    $src_thumb = $image_thumb[0];
+    $dimention .= 'width="' . $image_thumb[1] . '" height="' . $image_thumb[2] . '" ';
+}
 ?>
 
 <div class="product-thumbnails images-popups-gallery nasa-single-product-thumbnails nasa-thumbnail-default">
     <?php
     echo sprintf(
-        '<div class="nasa-wrap-item-thumb nasa-active" data-main="#nasa-main-image-0" data-key="0" data-thumb_org="%s"><a href="javascript:void(0);" data-current_img="%s" class="active-thumbnail"><img src="%s" /></a></div>',
+        '<div class="nasa-wrap-item-thumb nasa-active" data-main="#nasa-main-image-0" data-key="0" data-thumb_org="%s"><a href="javascript:void(0);" data-current_img="%s" class="active-thumbnail"><img src="%s" %s/></a></div>',
         $src_thumb,
         $image_link,
-        $src_thumb
+        $src_thumb,
+        $dimention
     );
 
     if(!empty($attachment_count)) :

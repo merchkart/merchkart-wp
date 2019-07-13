@@ -4,7 +4,7 @@ global $nasa_opt, $product;
 $attachment_ids = $product->get_gallery_image_ids();
 $style_quickview = isset($nasa_opt['style_quickview']) && in_array($nasa_opt['style_quickview'], array('sidebar', 'popup')) ? $nasa_opt['style_quickview'] : 'sidebar';
 $style_quickview = isset($_REQUEST['quickview']) && in_array($_REQUEST['quickview'], array('sidebar', 'popup')) ? $_REQUEST['quickview'] : $style_quickview;
-$class = $style_quickview == 'sidebar' ? 'large-12 columns' : 'large-6 columns rtl-right';
+$class = $style_quickview == 'sidebar' ? 'large-12 columns padding-left-0 padding-right-0' : 'large-6 columns padding-left-0 padding-right-0 rtl-right';
 
 $column_thumbs = isset($nasa_opt['quick_view_item_thumb']) ? (int) $nasa_opt['quick_view_item_thumb'] : 1;
 $show_images = ($style_quickview == 'sidebar' && $attachment_ids && count($attachment_ids) > 1) ?
@@ -17,8 +17,11 @@ $image_large = wp_get_attachment_image_src($thumbNailId, 'shop_single');
 $src_large = isset($image_large[0]) ? $image_large[0] : $image_link;
 
 $imageMain = get_the_post_thumbnail($product->get_id(), apply_filters('single_product_large_thumbnail_size', 'shop_single'));
+
+$link = $product->get_permalink();
+$title = $product->get_name();
 ?>
-<div class="row collapse">
+<div class="row">
     <?php do_action('woocommerce_single_product_lightbox_before'); ?>
     
     <div class="<?php echo esc_attr($class); ?> product-quickview-img">
@@ -28,11 +31,19 @@ $imageMain = get_the_post_thumbnail($product->get_id(), apply_filters('single_pr
             include is_file($file) ? $file : ELESSI_THEME_PATH . '/includes/nasa-single-product-lightbox-gallery.php';
             ?>
         </div>
+        
+        <a class="nasa-quickview-view-detail" href="<?php echo esc_url($link); ?>" title="<?php echo esc_attr($title); ?>">
+            <?php echo esc_html__('VIEW DETAIL', 'elessi-theme'); ?>
+        </a>
     </div>
     
     <div class="<?php echo esc_attr($class); ?> product-quickview-info">
         <div class="product-lightbox-inner product-info summary entry-summary">
-            <h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h1>
+            <h1 class="entry-title">
+                <a href="<?php echo esc_url($link); ?>" title="<?php echo esc_attr($title); ?>">
+                    <?php echo $title; ?>
+                </a>
+            </h1>
             <?php do_action('woocommerce_single_product_lightbox_summary'); ?>
         </div>
     </div>

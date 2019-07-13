@@ -451,6 +451,9 @@ if (!function_exists('elessi_static_config_info')) :
 
         <!-- Enable countdown -->
         <input type="hidden" name="nasa-count-down-enable" value="1" />
+        
+        <!-- width toggle Add To Cart | Countdown -->
+        <input type="hidden" name="nasa-toggle-width-product-content" value="<?php echo apply_filters('nasa_toggle_width_product_content', 180); ?>" />
 
         <!-- Enable WOW -->
         <input type="hidden" name="nasa-enable-wow" value="<?php echo (!isset($nasa_opt['disable_wow']) || !$nasa_opt['disable_wow']) ? '1' : '0'; ?>" />
@@ -498,6 +501,14 @@ if (!function_exists('elessi_static_config_info')) :
         <script type="text/template" id="tmpl-unavailable-variation-template-nasa">
             <p>' . esc_html__('Sorry, this product is unavailable. Please choose a different combination.', 'elessi-theme') . '</p>
         </script>';
+        
+        if (isset($_GET) && !empty($_GET)) {
+            echo '<div class="hidden-tag nasa-value-gets">';
+            foreach ($_GET as $key => $value) {
+                echo '<input type="hidden" name="' . $key . '" value="' . $value . '" />';
+            }
+            echo '</div>';
+        }
     }
 
 endif;

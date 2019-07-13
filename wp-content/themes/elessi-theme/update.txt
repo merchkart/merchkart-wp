@@ -1,4 +1,21 @@
+----- 2.0 (09 Jul 2019) -----
+- NEW: Element Products Masonry - Metro.
+- NEW: Multi Flags languages - WPML.
+- NEW: Multi Currencies - WPML.
+- NEW: Layout Cart page.
+- NEW: Layout Checkout page.
+- NEW: 5 columns in the change-view of Shop page.
+- NEW: Feature Bought Together.
+- NEW: Single Product with thumbnail bottom.
+- NEW: Single Product tab reviews.
+- NEW: Suggestions search.
+- IMPROVED: Shop page layout Masonry - isotope.
+- IMPROVED: Quick-view Popup.
+- COMPATIBLE: Plugin - Nextend Social Login (Login by Social).
+- FIXED: Some css.
+
 ----- 1.7.1 (28 Jun 2019) -----
+- FIXED: Widget Nasa Product Categories (Active in Single Product Page).
 - IMPROVED: Search Feature.
 - IMPROVED: Optimized Performance.
 - IMPROVED: Mini Wishlist Count.
