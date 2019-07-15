@@ -514,19 +514,7 @@ if (!empty($post_type)) {
 }
 ?>
 									</select><span class="linebreak"></span>
-									<label_a><?php _e('Categories:', 'revslider');?></label_a><select id="post_category" name="post_category" multiple class="sliderinput tos2 nosearchbox easyinit" data-r="source.post.category">
-											<?php
-if (!empty($postTypesWithCats)) {
-	foreach ($postTypesWithCats as $post_type => $post_array) {
-		if (!empty($post_array)) {
-			foreach ($post_array as $cat_handle => $cat_name) {
-				echo '<option value="' . $cat_handle . '">' . $cat_name . '</option>';
-			}
-		}
-	}
-}
-?>
-										</select><span class="linebreak"></span>
+									<label_a><?php _e('Categories:', 'revslider');?></label_a><select id="post_category" name="post_category" multiple class="sliderinput tos2 nosearchbox easyinit" data-r="source.post.category"></select><span class="linebreak"></span>
 								</div>
 							</div>
 							<div id="specificpost_subtype_settings_wrapper">
@@ -616,20 +604,7 @@ if (!empty($woo_type)) {
 						</select>
 
 
-						<label_a><?php _e('Product Categories', 'revslider');?></label_a><select id="woo_category" name="woo_category" multiple data-theme="wideopentos2" class="sliderinput tos2 nosearchbox easyinit" data-r="source.woo.category">
-								<?php
-if (!empty($postTypesWithCats)) {
-	foreach ($postTypesWithCats as $woo_type => $post_array) {
-		if (!empty($post_array)) {
-			foreach ($post_array as $cat_handle => $cat_name) {
-				$dis = (strpos($cat_handle, 'option_disabled') !== false) ? ' disabled="disabled"' : '';
-				echo '<option value="' . $cat_handle . '"' . $dis . '>' . $cat_name . '</option>';
-			}
-		}
-	}
-}
-?>
-						</select>
+						<label_a><?php _e('Product Categories', 'revslider');?></label_a><select id="woo_category" name="woo_category" multiple data-theme="wideopentos2" class="sliderinput tos2 nosearchbox easyinit" data-r="source.woo.category"></select>
 					</div>
 				</div><!-- END OF WOOCOMMERCE TYPE AND CATEGORIES-->
 

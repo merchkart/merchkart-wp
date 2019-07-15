@@ -45,31 +45,33 @@ class RevSliderFront extends RevSliderFunctions {
 	 * Add all actions that the frontend needs here
 	 **/
 	public static function add_actions(){
-		global $wp_version;
+		global $wp_version, $revslider_is_preview_mode;
 
 		$func		= new RevSliderFunctions();
-		$output 	= new RevSliderOutput();
 		$css		= new RevSliderCssParser();
 		$rs_ver		= apply_filters('revslider_remove_version', RS_REVISION);
 		$global		= $func->get_global_settings();
 		$inc_global = $func->_truefalse($func->get_val($global, 'include', false));
 		$inc_footer = $func->_truefalse($func->get_val($global, array('script', 'footer'), false));
-		$output->set_add_to($func->get_val($global, 'includeids', ''));
-		$add_to		= $output->check_add_to();
 		$do_inclusion = apply_filters('revslider_include_libraries', false);
 		$waitfor	= array('jquery');
-
-		//put the includes only on pages with active widget or shortcode
-		// if the put in match, then include them always (ignore this if)
-		if($add_to === false && $inc_global == false && $do_inclusion == false){
-			$widget = is_active_widget(false, false, 'rev-slider-widget', true);
-			$has_shortcode = $func->has_shortcode('rev_slider');
-
-			if($widget == false && $has_shortcode == false){
-				return false;
-			}
+		
+		$load		= false;
+		$load		= ($revslider_is_preview_mode === true) ? true : $load;
+		$load		= ($inc_global === true) ? true : $load;
+		$load		= ($func->has_shortcode('rev_slider') === true) ? true : $load;
+		$widget		= is_active_widget(false, false, 'rev-slider-widget', true);
+		$load		= ($widget === true) ? true : $load;
+		
+		if($inc_global === false){
+			$output = new RevSliderOutput();
+			$output->set_add_to($func->get_val($global, 'includeids', ''));
+			$add_to = $output->check_add_to();
+			$load	= ($add_to === true) ? true : $load;
 		}
-
+		
+		if($load === false) return false;
+		
 		wp_enqueue_style('rs-plugin-settings', RS_PLUGIN_URL . 'public/assets/css/rs6.css', array(), $rs_ver);
 
 		/**

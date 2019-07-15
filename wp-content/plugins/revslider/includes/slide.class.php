@@ -1922,6 +1922,23 @@ class RevSliderSlide extends RevSliderFunctions {
 		
 		$image_url = $this->get_val($this->params, array('bg', 'image'));
 		
+		/**
+		 * fix for [{0:'a',1:'b'}] structures that can occur
+		 **/
+		$t_keys = array('duration', 'easeIn', 'easeOut', 'rotation', 'slots', 'transition');
+		foreach($t_keys as $tk){
+			$tlc = $this->get_val($this->params, array('timeline', $tk, 0));
+			if(is_object($tlc) || is_array($tlc)){
+				$a = array();
+				if(!empty($this->params['timeline'][$tk][0])){
+					foreach($this->params['timeline'][$tk][0] as $tkv){
+						$a[] = $tkv;
+					}
+				}
+				$this->params['timeline'][$tk] = $a;
+			}
+		}
+		
 		//get image url and thumb url
 		if($image_resolution !== 'full' || $image_url === ''){
 			if(!empty($this->image_id)){

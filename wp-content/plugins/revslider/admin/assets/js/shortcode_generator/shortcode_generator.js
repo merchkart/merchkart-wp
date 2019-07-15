@@ -4,9 +4,7 @@
 
 ;var RS_SC_WIZARD = {
 	
-	openTemplateLibrary: function(type, params) {
-		console.log(type);
-		console.log(params)
+	openTemplateLibrary: function(type, params) {		
 		// 5.0 to 6.0 update patch
 		if(typeof RVS.LIB.OBJ === 'undefined') return;
 		
@@ -34,10 +32,8 @@
 					this.dataset.evt,
 					[e, this.value, this.dataset.evtparam]
 					
-				);
-				
-			});
-			
+				);				
+			});			
 		}
 		
 		var successObj = {modules: 'addRevSliderShortcode', event: 'selectRevSliderItem'};
@@ -52,8 +48,7 @@
 		}
 	},
 
-	openSliderEditor : function(type,params) {
-		console.log(revslider_react.state)
+	openSliderEditor : function(type,params) {	
 		var alias = revslider_react.state.text;
 		if (alias==="" || alias===undefined) return;
 		if (alias!==undefined) alias = alias.split('alias="')[1];
@@ -65,12 +60,9 @@
 	
 };
 
-(function() {
-	
-	jQuery(document).ready(function() {
-		
-		if(typeof QTags !== 'undefined') {
-			
+(function() {	
+	jQuery(document).ready(function() {		
+		if(typeof QTags !== 'undefined') {			
 			var add_rs_button = true;
 			if(typeof edButtons !== 'undefined') {
 				for(var key in edButtons) {
@@ -80,16 +72,11 @@
 						break;
 					}
 				}
-			}
-			
-			if(add_rs_button){
-				
-				QTags.addButton('slider-revolution', 'Slider Revolution', function() {
-					
-					RS_SC_WIZARD.openTemplateLibrary('qtags');
-					
-				});
-				
+			}			
+			if(add_rs_button){				
+				QTags.addButton('slider-revolution', 'Slider Revolution', function() {				
+					RS_SC_WIZARD.openTemplateLibrary('qtags');					
+				});				
 			}
 		}
 		

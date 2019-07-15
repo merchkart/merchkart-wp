@@ -70,10 +70,7 @@ require_once(RS_PLUGIN_PATH . 'admin/views/modals-copyright.php');
 		</div>
 
 		<div id="the_container">
-			<!--THIS IS THE MAIN LEFT TOOLBAR-->
-			<div id="the_left_toolbar">
-				<div id="the_left_toolbar_inner"></div>
-			</div><!-- END OF THE LEFT TOOLBAR-->
+			<!--THIS IS THE MAIN LEFT TOOLBAR-->			
 			<div id="the_editor">
 				<!--- MAIN HORIZONTAL TOOLBAR CONTAINER -->
 				<div id="main_hor_toolbar">

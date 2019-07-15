@@ -5959,7 +5959,7 @@ rs-module .material-icons {
 		$me				 = $this->get_markup_export();
 		
 		//add inline style into the footer
-		if($js_to_footer === true && $me === false){
+		if($js_to_footer === true && $this->preview_mode == false && $me == false){
 			ob_start();
 		}
 		

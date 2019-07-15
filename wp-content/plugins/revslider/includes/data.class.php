@@ -319,9 +319,7 @@ class RevSliderData {
 			},
 			"rotate":{
 				"group":"Rotations",
-				"transitions":{
-					"wigglehorizontal":{"name":"Wiggle Horizontal","frame_0":{"transform":{"opacity":1}},"frame_1":{"timeline":{"speed":1750,"ease":"WiggleEaseOutShort"},"transform":{"opacity":1,"rotationY":"90deg"}}},
-					"wigglevertical":{"name":"Wiggle Vertical","frame_0":{"transform":{"opacity":1}},"frame_1":{"timeline":{"speed":1750,"ease":"WiggleEaseOutShort"},"transform":{"opacity":1,"rotationX":"90deg"}}},
+				"transitions":{					
 					"RotateInFromBottom":{"name":"Rotate In From Bottom","frame_0":{"transform":{"opacity":0,"rotationZ":"70deg","y":"bottom","scaleY":2,"scaleX":2}},"frame_1":{"timeline":{"speed":1000,"ease":"Power3.easeInOut"},"transform":{"opacity":1,"y":0,"rotationZ":0,"scaleX":1,"scaleY":1}}},
 					"RotateInFormZero":{"name":"Rotate In From Bottom v2.","frame_0":{"transform":{"opacity":1,"rotationY":"-20deg","rotationX":"-20deg","y":"200%","scaleY":2,"scaleX":2}},"frame_1":{"timeline":{"speed":1000,"ease":"Power3.easeOut"},"transform":{"opacity":1,"y":0,"rotationZ":0,"rotationY":0,"scaleX":1,"scaleY":1}}},
 					"FlipFromTop":{"name":"Flip From Top","frame_0":{"transform":{"opacity":0,"rotationX":"70deg","y":"0","originZ":"-50"}},"frame_1":{"timeline":{"speed":1750,"ease":"Power4.easeInOut"},"transform":{"opacity":1,"originZ":"-50","rotationX":0}}},

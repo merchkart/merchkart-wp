@@ -68,26 +68,26 @@ if(!defined('ABSPATH')) exit();
 									<option value="author"><?php _e('Author, Editor, Admin', 'revslider');?></option>
 								</select><span class="linebreak"></span>
 					<div class="div25"></div>
-					<label_a><?php _e('Include Libraries Globaly', 'revslider');?></label_a><input type="checkbox" class="easyinit globalinput" data-r="globals.include"><span class="linebreak"></span>
-					<label_a><?php _e('List of Pages to include Revslider Libraries ', 'revslider');?></label_a><input type="text" data-r="globals.includeids" class="easyinit globalinput" placeholder="<?php _e('Example 2,homepage,5', 'revslider');?>"><span class="linebreak"></span>
+					<label_a><?php _e('Include libraries globally', 'revslider');?></label_a><input type="checkbox" class="easyinit globalinput" data-r="globals.include"><span class="linebreak"></span>
+					<label_a><?php _e('List of pages to include RevSlider libraries ', 'revslider');?></label_a><input type="text" data-r="globals.includeids" class="easyinit globalinput" placeholder="<?php _e('Example 2,homepage,5', 'revslider');?>"><span class="linebreak"></span>
 					<div class="div25"></div>
-					<label_a><?php _e('Insert scripts in Footer', 'revslider');?></label_a><input type="checkbox" class="easyinit globalinput" data-r="globals.script.footer"><span class="linebreak"></span>
-					<label_a><?php _e('Defer JavaScript Loading', 'revslider');?></label_a><input type="checkbox" class="easyinit globalinput" data-r="globals.script.defer"><span class="linebreak"></span>					
+					<label_a><?php _e('Insert scripts in footer', 'revslider');?></label_a><input type="checkbox" class="easyinit globalinput" data-r="globals.script.footer"><span class="linebreak"></span>
+					<label_a><?php _e('Defer JavaScript loading', 'revslider');?></label_a><input type="checkbox" class="easyinit globalinput" data-r="globals.script.defer"><span class="linebreak"></span>					
 					<div class="div25"></div>		
-					<label_a><?php _e('Optional Font Loading URL', 'revslider');?></label_a><input type="text" class="easyinit globalinput" data-r="globals.fonturl" placeholder="<?php _e('ie. http://fonts.useso.com/css?family for chinese Environment', 'revslider');?>"><span class="linebreak"></span>
-					<label_a><?php _e('Enable Google Font Download', 'revslider');?></label_a><select id="fontdownload" name="fontdownload" data-theme="inmodal" class="globalinput easyinit nosearchbox tos2" data-r="globals.fontdownload">
+					<label_a><?php _e('Optional font loading URL', 'revslider');?></label_a><input type="text" class="easyinit globalinput" data-r="globals.fonturl" placeholder="<?php _e('ie. http://fonts.useso.com/css?family for chinese Environment', 'revslider');?>"><span class="linebreak"></span>
+					<label_a><?php _e('Enable google font download', 'revslider');?></label_a><select id="fontdownload" name="fontdownload" data-theme="inmodal" class="globalinput easyinit nosearchbox tos2" data-r="globals.fontdownload">
 									<option selected="selected" value="off"><?php _e('Load from Google','revslider');?></option>
 									<option value="preload"><?php _e('Preload from Google', 'revslider');?></option>
 									<option value="disable"><?php _e('Disable, Load on your own', 'revslider');?></option>
 								</select><span class="linebreak"></span>
 					<label_a></label_a><div id="rs_trigger_font_deletion" class="basic_action_button autosize"><i class="material-icons">build</i><?php _e('Update Preload Fonts', 'revslider'); ?></div>
 					<div class="div25"></div>
-					<label_a><?php _e('Default Desktop Content Width', 'revslider');?></label_a><input type="text" class="easyinit globalinput" data-numeric="true" data-allowed="px" data-min="0" data-max="2400" data-r="globals.size.desktop"><span class="linebreak"></span>
-					<label_a><?php _e('Default Notebook Content Width', 'revslider');?></label_a><input type="text" class="easyinit globalinput" data-numeric="true" data-allowed="px" data-min="0" data-max="2400" data-r="globals.size.notebook"><span class="linebreak"></span>
-					<label_a><?php _e('Default Tablet Content Width', 'revslider');?></label_a><input type="text" class="easyinit globalinput" data-numeric="true" data-allowed="px" data-min="0" data-max="2400" data-r="globals.size.tablet"><span class="linebreak"></span>
-					<label_a><?php _e('Default Mobile Content Width', 'revslider');?></label_a><input type="text" class="easyinit globalinput" data-numeric="true" data-allowed="px" data-min="0" data-max="2400" data-r="globals.size.mobile"><span class="linebreak"></span>		
+					<label_a><?php _e('Default desktop content width', 'revslider');?></label_a><input type="text" class="easyinit globalinput" data-numeric="true" data-allowed="px" data-min="0" data-max="2400" data-r="globals.size.desktop"><span class="linebreak"></span>
+					<label_a><?php _e('Default notebook content width', 'revslider');?></label_a><input type="text" class="easyinit globalinput" data-numeric="true" data-allowed="px" data-min="0" data-max="2400" data-r="globals.size.notebook"><span class="linebreak"></span>
+					<label_a><?php _e('Default tablet content width', 'revslider');?></label_a><input type="text" class="easyinit globalinput" data-numeric="true" data-allowed="px" data-min="0" data-max="2400" data-r="globals.size.tablet"><span class="linebreak"></span>
+					<label_a><?php _e('Default mobile content width', 'revslider');?></label_a><input type="text" class="easyinit globalinput" data-numeric="true" data-allowed="px" data-min="0" data-max="2400" data-r="globals.size.mobile"><span class="linebreak"></span>		
 					<div class="div25"></div>
-					<label_a><?php _e('Fix RS Table Issues', 'revslider');?></label_a><div id="rs_db_force_create" class="basic_action_button autosize"><i class="material-icons">build</i><?php _e('Force RS DB Creation', 'revslider');?></div>
+					<label_a><?php _e('Fix RevSlider table issues', 'revslider');?></label_a><div id="rs_db_force_create" class="basic_action_button autosize"><i class="material-icons">build</i><?php _e('Force RS DB Creation', 'revslider');?></div>
 
 				</div>	
 				

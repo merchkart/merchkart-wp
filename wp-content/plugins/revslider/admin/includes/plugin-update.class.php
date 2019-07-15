@@ -2564,13 +2564,24 @@ class RevSliderPluginUpdate extends RevSliderFunctions {
 			'rotation'		=> $slide->get_param('transition_rotation', array(0)),
 		);
 		
-		$ms['timeline']['duration']		= (!is_array($ms['timeline']['duration'])) ? (array)$ms['timeline']['duration'] : $ms['timeline']['duration'];
-		$ms['timeline']['easeIn']		= (!is_array($ms['timeline']['easeIn'])) ? (array)$ms['timeline']['easeIn'] : $ms['timeline']['easeIn'];
-		$ms['timeline']['easeOut']		= (!is_array($ms['timeline']['easeOut'])) ? (array)$ms['timeline']['easeOut'] : $ms['timeline']['easeOut'];
-		$ms['timeline']['rotation']		= (!is_array($ms['timeline']['rotation'])) ? (array)$ms['timeline']['rotation'] : $ms['timeline']['rotation'];
-		$ms['timeline']['slots']		= (!is_array($ms['timeline']['slots'])) ? (array)$ms['timeline']['slots'] : $ms['timeline']['slots'];
-		$ms['timeline']['transition']	= (!is_array($ms['timeline']['transition'])) ? (array)$ms['timeline']['transition'] : $ms['timeline']['transition'];
-
+		/**
+		 * fix for [{0:'a',1:'b'}] structures that can occur
+		 **/
+		$t_keys = array('duration', 'easeIn', 'easeOut', 'rotation', 'slots', 'transition');
+		foreach($t_keys as $tk){
+			$ms['timeline'][$tk] = (!is_array($ms['timeline'][$tk])) ? (array)$ms['timeline'][$tk] : $ms['timeline'][$tk];
+			$tlc = $this->get_val($ms, array('timeline', $tk, 0), '');
+			if(is_object($tlc) || is_array($tlc)){
+				$a = array();
+				if(!empty($ms['timeline'][$tk][0])){
+					foreach($ms['timeline'][$tk][0] as $tkv){
+						$a[] = $tkv;
+					}
+				}
+				$ms['timeline'][$tk] = $a;
+			}
+		}
+		
 		$ms['visibility'] = array(
 			'hideAfterLoop'		 => $slide->get_param('hideslideafter', 0),
 			'hideOnMobile'		 => $this->_truefalse($slide->get_param('hideslideonmobile', false)),

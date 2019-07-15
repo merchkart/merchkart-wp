@@ -929,7 +929,7 @@ foreach ($img_sizes as $imghandle => $imgSize) {
 						<oneshort><div id="copyhoversettings" data-evt="copyhoversettings" data-helpkey="resethover" class="basic_action_button rightbutton autosize callEventButton"><?php _e('Reset Style', 'revslider');?></div></oneshort>
 					</row>
 					<label_a><?php _e('Cursor', 'revslider');?></label_a><select class="layerinput tos2 nosearchbox easyinit" id="layer_css_cursor" data-r="idle.cursor"><option value="auto" selected="selected">Auto</option><option value="default">Default</option><option value="crosshair">Crosshair</option><option value="pointer">Pointer</option><option value="move">Move</option><option value="text">Text</option><option value="wait">Wait</option><option value="help">Help</option><option value="zoom-in">Zoom-in</option><option value="zoom-out">Zoom-out</option></select><span class="linebreak"></span>
-					<label_a><?php _e('Pointer Event', 'revslider');?></label_a><select class="layerinput tos2 nosearchbox easyinit" id="layer_css_cursor" data-r="hover.pointerEvents"><option value="auto" selected="selected">Auto</option><option value="none">None</option></select>
+					<label_a><?php _e('Pointer Event', 'revslider');?></label_a><select class="layerinput tos2 nosearchbox easyinit" id="layer_css_pointerevent" data-r="hover.pointerEvents"><option value="auto" selected="selected">Auto</option><option value="none">None</option></select>
 					<row class="directrow">
 						<onelong><label_a><?php _e('Mask', 'revslider');?></label_a><input type="checkbox" id="layer_usehovermask" class="layerinput easyinit" data-r="hover.usehovermask"/></onelong>
 						<oneshort></oneshort>

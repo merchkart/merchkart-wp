@@ -1250,6 +1250,8 @@ class RevSliderAdmin extends RevSliderFunctions {
 						$size['width'] = array('d' => '868', 'n' => '768', 't' => '960', 'm' => '720');
 					}
 					
+					global $revslider_is_preview_mode;
+					$revslider_is_preview_mode = true;
 					require_once(RS_PLUGIN_PATH . 'public/includes/functions-public.class.php');
 					$rev_slider_front = new RevSliderFront();
 					

@@ -777,7 +777,7 @@ class RevSliderFunctions extends RevSliderData {
 			 * change save_dir so that the file is not
 			 **/
 			if($atc_id !== false && $atc_id !== NULL){
-				if(md5_file($file_url) !== md5_file($ul_dir['basedir'].'/'.$s_dir)){
+				if(!is_file($ul_dir['basedir'].'/'.$s_dir) || md5_file($file_url) !== md5_file($ul_dir['basedir'].'/'.$s_dir)){
 					$file = explode('.', $filename);
 					$nr = 1;
 					while(1 === 1){
@@ -1395,8 +1395,7 @@ class RevSliderFunctions extends RevSliderData {
 		$taxonomies	= $this->get_val($a, 'taxonomies');
 		$addition	= $this->get_val($a, 'addition');
 		$type		= $this->get_val($a, 'type');
-		
-		$tax	= (!empty($taxonomies)) ? explode(',', $taxonomies) : array(); //get taxonomies array
+		$tax		= (!empty($taxonomies)) ? explode(',', $taxonomies) : array(); //get taxonomies array
 		
 		if(!is_array($post_types)){
 			if(strpos($post_types, ',') !== false){
@@ -1455,7 +1454,8 @@ class RevSliderFunctions extends RevSliderData {
 			$query = array_merge($query, $addition);
 		}
 		
-		$query		= apply_filters('revslider_get_posts', $query, $slider_id);
+		$query = apply_filters('revslider_get_posts', $query, $slider_id);
+		
 		$full_posts	= new WP_Query($query);
 		$posts		= $full_posts->posts;
 		
@@ -2390,13 +2390,12 @@ class RevSliderFunctions extends RevSliderData {
 	 * @before: hasShortcode()
 	 */  
 	public function has_shortcode($shortcode = ''){  
-	
+		$found = false; 
+		
+		if(empty($shortcode)) return false;
 		if(!is_singular()) return false;
 		
 		$post = get_post(get_the_ID());  
-		$found = false; 
-		
-		if(empty($shortcode)) return $found;
 		if(stripos($post->post_content, '[' . $shortcode) !== false ) $found = true;  
 		
 		return $found;  

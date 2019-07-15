@@ -28,7 +28,7 @@ class RevSliderUpdate {
 	
 	public function add_update_checks(){
 		if($this->force === true){
-			ini_set('max_execution_time', 300);
+			ini_set('max_execution_time', 300); //an update can follow, so set the execution time high for the runtime
 			$transient = get_site_transient('update_plugins');
 			$rs_t = $this->set_update_transient($transient);
 			

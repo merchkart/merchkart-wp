@@ -10,7 +10,7 @@ if(!defined('ABSPATH')) exit();
 class RevSliderLoadBalancer {
 	
 	public $servers = array();
-	public $dev = false;
+	 
 	
 	
 	/**
