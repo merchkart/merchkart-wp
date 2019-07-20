@@ -4103,14 +4103,15 @@ rs-module .material-icons {
 		if($this->get_val($layer, array('media', 'forceRewind'), true) !== true) $data['video']['rwd'] = 'f';
 		if($this->get_val($layer, array('media', 'nointeraction'), false) !== false) $data['video']['noint'] = 't';
 		
-		if($this->get_val($layer, array('size', 'covermode'), 'custom') === 'cover-proportional'){
-			$dotted	= $this->get_val($layer, array('media', 'dotted'));
+		if($this->get_val($layer, array('size', 'covermode'), 'custom') === 'cover-proportional'){			
 			$ratio = $this->get_val($layer, array('media', 'ratio'));
-			
-			$data['video']['fc'] = true;
-			if(!in_array($dotted, array('none', ''), true)) $data['video']['do'] = $dotted;
+			$data['video']['fc'] = true;			
 			if(!in_array($ratio, array('16:9', ''), true)) $data['video']['ar'] = $ratio;
 		}
+
+		$dotted	= $this->get_val($layer, array('media', 'dotted'));
+		if(!in_array($dotted, array('none', ''), true)) $data['video']['do'] = $dotted;
+		
 		if(!in_array($videoloop, array('loopandnoslidestop', ''), true)) $data['video']['l'] = $videoloop;
 		if($nextslide === false) $data['video']['nse'] = 'f';
 		if($this->get_val($layer, array('media', 'stopAllVideo'), true) === false) $data['video']['sav'] = 'f';
@@ -4992,12 +4993,10 @@ rs-module .material-icons {
 		//$data['video']['autoplay'] = 'true'; //default, so dont write
 		//$data['video']['apf'] = false; //default, so dont write
 		
-		if($slide->get_param(array('bg', 'video', 'forceCover'), false) == true){
-			$data['video']['fc'] = true;
-			$do	= $slide->get_param(array('bg', 'video', 'dottedOverlay'), 'none');
-			if($do !== 'none') $data['video']['do'] = $do;
-		}
-		
+		if($slide->get_param(array('bg', 'video', 'forceCover'), false) == true){ $data['video']['fc'] = true;}
+		$do	= $slide->get_param(array('bg', 'video', 'dottedOverlay'), 'none');		
+		if($do !== 'none') $data['video']['do'] = $do;
+
 		//echo $this->ld().RS_T7."<!-- BACKGROUND VIDEO LAYER -->\n";
 		echo $this->ld().RS_T7.'<rs-bgvideo '."\n";
 		if(!empty($data)){
@@ -6099,7 +6098,7 @@ rs-module .material-icons {
 		
 		if(!is_admin()){
 			$html .= RS_T4.'<script>'."\n";
-			$html .= RS_T5.'var htmlDivCss = unescape("'. $_css->compress_css(rawurlencode(stripslashes($css))).'");'."\n";
+			$html .= RS_T5.'var htmlDivCss = unescape("'. $_css->compress_css(rawurlencode($css)).'");'."\n";
 			$html .= RS_T5."var htmlDiv = document.getElementById('rs-plugin-settings-inline-css');"."\n";
 			$html .= RS_T5."if(htmlDiv) {"."\n";
 			$html .= RS_T6."htmlDiv.innerHTML = htmlDiv.innerHTML + htmlDivCss;"."\n";
@@ -6111,7 +6110,7 @@ rs-module .material-icons {
 			$html .= RS_T4."</script>"."\n";
 		}else{
 			$html .= ($markup_export === true) ? '<!-- STYLE -->' : '';
-			$html .= RS_T4. '<style type="text/css">'. $_css->compress_css(stripslashes($css)) .'</style>';
+			$html .= RS_T4. '<style type="text/css">'. $_css->compress_css($css) .'</style>';
 			$html .= ($markup_export === true) ? '<!-- /STYLE -->' : '';
 		}
 		
@@ -6543,6 +6542,7 @@ rs-module .material-icons {
 		$html	= '';
 		$s		= $this->slider; //shorten
 		$js_loc_r = explode('://', RS_PLUGIN_URL);
+		$global = $this->get_global_settings();
 		$l_type	= $s->get_param('layouttype');
 		$s_type = $s->get_param('type', 'standard');
 		$csizes = $this->get_responsive_size($this);
@@ -6662,6 +6662,11 @@ rs-module .material-icons {
 				'v' => $s->get_param(array('layout', 'spinner', 'color'), '#ffffff'),
 				'd' => '#ffffff'
 			);
+		}
+		
+		$lazyloaddata = $this->get_val($global, 'lazyloaddata', '');
+		if($lazyloaddata !== ''){
+			$keys['lazyloaddata'] = array('v' => $lazyloaddata, 'd' => '');
 		}
 		
 		$cache_size = $this->slider->get_param(array('size', 'editorCache'), false);

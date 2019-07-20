@@ -494,7 +494,7 @@ if ($wpml->wpml_exists()) {
 						<option value="hidden"><?php _e('Hidden', 'revslider');?></option>
 					</select><span class="linebreak"></span>
 
-					<label_a><?php _e('Z Position', 'revslider');?></label_a><select id="sl_static_layers_overflow" class="slideinput tos2 setboxes easyinit" data-r="static.position" data-theme="dark">
+					<label_a><?php _e('Z Position', 'revslider');?></label_a><select id="sl_static_layers_z_position" class="slideinput tos2 setboxes easyinit" data-r="static.position" data-theme="dark">
 						<option value="front"><?php _e('Front', 'revslider');?></option>
 						<option value="back"><?php _e('Back', 'revslider');?></option>
 					</select><span class="linebreak"></span>

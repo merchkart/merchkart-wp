@@ -1839,6 +1839,7 @@ class RevSliderAdmin extends RevSliderFunctions {
 			 * admin.js
 			 **/
 
+			'layerbleedsout' => __('<b>Layer width bleeds out of Grid:</b><br>-Auto Layer width has been removed<br>-Line Break set to Content Based', 'revslider'),
 			'noMultipleSelectionOfLayers' => __('Multiple Layerselection not Supported<br>in Animation Mode', 'revslider'),
 			'closeNews' => __('Close News', 'revslider'),
 			'copyrightandlicenseinfo' => __('&copy; Copyright & License Info', 'revslider'),

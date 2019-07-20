@@ -91,6 +91,7 @@ class RevSliderWidget extends WP_Widget {
 			$_slider = new RevSliderSlider();
 			
 			$sid = $_slider->get_val($instance, 'rev_slider');
+			
 			if(empty($sid)) return(false);
 			
 			$output = new RevSliderOutput();
@@ -116,10 +117,9 @@ class RevSliderWidget extends WP_Widget {
 				echo $_slider->get_val($args, 'after_title');
 			}
 			
-			
 			$output->set_add_to($homepage);
-			$output->add_slider_to_stage($sid);
-
+			$slider = $output->add_slider_to_stage($sid);
+			
 			add_action('wp_head', array($this, 'write_css'));
 			
 			echo $_slider->get_val($args, 'after_widget');

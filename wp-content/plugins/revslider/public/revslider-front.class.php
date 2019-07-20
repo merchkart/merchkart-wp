@@ -61,7 +61,7 @@ class RevSliderFront extends RevSliderFunctions {
 		$load		= ($inc_global === true) ? true : $load;
 		$load		= ($func->has_shortcode('rev_slider') === true) ? true : $load;
 		$widget		= is_active_widget(false, false, 'rev-slider-widget', true);
-		$load		= ($widget === true) ? true : $load;
+		$load		= ($widget !== false) ? true : $load;
 		
 		if($inc_global === false){
 			$output = new RevSliderOutput();
@@ -69,7 +69,7 @@ class RevSliderFront extends RevSliderFunctions {
 			$add_to = $output->check_add_to();
 			$load	= ($add_to === true) ? true : $load;
 		}
-		
+
 		if($load === false) return false;
 		
 		wp_enqueue_style('rs-plugin-settings', RS_PLUGIN_URL . 'public/assets/css/rs6.css', array(), $rs_ver);
@@ -154,15 +154,17 @@ class RevSliderFront extends RevSliderFunctions {
 	 */
 	public static function load_icon_fonts(){
 		global $fa_var, $fa_icon_var, $pe_7s_var;
-
-		if($fa_icon_var || $fa_var){
+		$func	= new RevSliderFunctions();
+		$global	= $func->get_global_settings();
+		$ignore_fa = $func->_truefalse($func->get_val($global, 'fontawesomedisable', false));
+		
+		if($ignore_fa === false && ($fa_icon_var == true || $fa_var == true)){
 			echo "<link rel='stylesheet' property='stylesheet' id='rs-icon-set-fa-icon-css' href='" . RS_PLUGIN_URL . "public/assets/fonts/font-awesome/css/font-awesome.css' type='text/css' media='all' />\n";
 		}
 
 		if($pe_7s_var){
 			echo "<link rel='stylesheet' property='stylesheet' id='rs-icon-set-pe-7s-css' href='" . RS_PLUGIN_URL . "public/assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css' type='text/css' media='all' />\n";
 		}
-
 	}
 	
 	

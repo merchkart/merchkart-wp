@@ -154,6 +154,103 @@ rs-sbg-px { pointer-events: none }
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
+
+rs-module i[class^="fa-"], 
+rs-module i[class*=" fa-"],
+.rb-modal-wrapper i[class^="fa-"], 
+.rb-modal-wrapper i[class*=" fa-"],
+#waitaminute i[class^="fa-"], 
+#waitaminute i[class*=" fa-"],
+#objectlibrary i[class^="fa-"], 
+#objectlibrary i[class*=" fa-"],
+#rs_overview i[class^="fa-"], 
+#rs_overview i[class*=" fa-"],
+#rs_overview_menu i[class^="fa-"], 
+#rs_overview_menu i[class*=" fa-"],
+#builderView i[class^="fa-"], 
+#builderView i[class*=" fa-"] 
+{
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+rs-module [class^="fa-"]:before, 
+rs-module [class*=" fa-"]:before,
+.rb-modal-wrapper [class^="fa-"]:before, 
+.rb-modal-wrapper [class*=" fa-"]:before,
+#rs_overview [class^="fa-"]:before, 
+#rs_overview [class*=" fa-"]:before,
+#objectlibrary [class^="fa-"]:before, 
+#objectlibrary [class*=" fa-"]:before,
+#waitaminute [class^="fa-"]:before, 
+#waitaminute [class*=" fa-"]:before,
+#rs_overview_menu [class^="fa-"]:before, 
+#rs_overview_menu [class*=" fa-"]:before,
+#builderView [class^="fa-"]:before, 
+#builderView [class*=" fa-"]:before
+{
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: 400;
+   
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    width: auto;
+    margin-right: 0;
+    text-align: center;
+    font-variant: normal;
+    text-transform: none;
+    line-height: inherit;
+    margin-left: 0;
+}
+
+rs-module .sr-only,
+#objectlibrary .sr-only,
+#waitaminute .sr-only,
+#rs_overview .sr-only,
+#rs_overview_menu .sr-only,
+.rb-modal-wrapper .sr-only,
+#builderView .sr-only 
+{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+rs-module .sr-only-focusable:active,
+rs-module .sr-only-focusable:focus,
+#waitaminute .sr-only-focusable:active,
+#waitaminute .sr-only-focusable:focus,
+#objectlibrary .sr-only-focusable:active,
+#objectlibrary .sr-only-focusable:focus,
+#rs_overview .sr-only-focusable:active,
+#rs_overview .sr-only-focusable:focus,
+#rs_overview_menu .sr-only-focusable:active,
+#rs_overview_menu .sr-only-focusable:focus,
+.rb-modal-wrapper .sr-only-focusable:active,
+.rb-modal-wrapper .sr-only-focusable:focus,
+#builderView .sr-only-focusable:active,
+#builderView .sr-only-focusable:focus
+
+{
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+}
+
+
 .revicon-search-1:before { content: '\e802'; } /* '' */
 .revicon-pencil-1:before { content: '\e831'; } /* '' */
 .revicon-picture-1:before { content: '\e803'; } /* '' */

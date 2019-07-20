@@ -12,33 +12,6 @@
   font-style: normal;
 }
 
-i[class^="fa-"], i[class*=" fa-"] {
-  display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-[class^="fa-"]:before, [class*=" fa-"]:before {
-    font-family: FontAwesome;
-    font-style: normal;
-    font-weight: 400;
-   
-    speak: none;
-    display: inline-block;
-    text-decoration: inherit;
-    width: auto;
-    margin-right: 0;
-    text-align: center;
-    font-variant: normal;
-    text-transform: none;
-    line-height: inherit;
-    margin-left: 0;
-}
-
-
 /* makes the font 33% larger relative to the icon container */
 .fa-lg {
   font-size: 1.33333333em;
@@ -2336,22 +2309,4 @@ i[class^="fa-"], i[class*=" fa-"] {
 .fa-meetup:before {
   content: "\f2e0";
 }
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-.sr-only-focusable:active,
-.sr-only-focusable:focus {
-  position: static;
-  width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-}
+

@@ -7718,7 +7718,7 @@ body.nasa-rtl .icon-nasa-potatoes:before {
   position: relative;
 }
 .header-wrapper.nasa-header-transparent {
-  position: absolute;
+  position: relative;
   width: 100%;
   z-index: 99;
 }

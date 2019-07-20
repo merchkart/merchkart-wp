@@ -4761,7 +4761,10 @@ i.fullpage_main_icon.material-icons { color: #777c80; font-size: 50px !important
 
 .quick_style_example_wrap {  background: #202224; height: 100px; border-bottom:1px solid #2a2c2f;  position: relative; box-sizing:border-box; overflow: hidden; cursor: pointer; vertical-align: top}
 .quick_style_example { padding:0px 20px; height:100%; position: relative;}
+
 .quick_style_example_content { color: #fff;vertical-align: top; transform: translateY(-50%); top: 50%; position: absolute; box-sizing: border-box;overflow-wrap: break-word;word-wrap: break-word;hyphens: auto; max-width:285px;}
+.quick_style_example_content.rev-btn { transform: translateY(-50%) translateX(-50%); left: 50%; white-space: nowrap; }
+
 
 .quick_style_example_content * { color: inherit; }
 
@@ -4856,7 +4859,10 @@ i.fullpage_main_icon.material-icons { color: #777c80; font-size: 50px !important
   - NAVIGATION EDITOR - 
 ****************************/
 #settings_sticky_info { display:none; width: 320px; height:50px; background:#202224; z-index: 500; position: absolute; top: 0px; left: 0px; padding:12px 15px; box-sizing: border-box;box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.25);}
-#settings_sticky_info.sticky_in_animation #settings_sticky_left { background: #5e35b1 !important; }
+
+
+#settings_sticky_info.sticky_in_animation #settings_sticky_left.blue.purple { background: #5e35b1 !important; }
+
 
 /****************************
   - NAVIGATION EDITOR - 

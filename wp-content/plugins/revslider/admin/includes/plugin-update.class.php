@@ -3181,14 +3181,30 @@ class RevSliderPluginUpdate extends RevSliderFunctions {
 			'wrapperId'	=> $this->get_val($layer, 'attrWrapperID', ''),
 		);
 		
+		$base_align = $this->get_val($layer, 'basealign', 'grid');
+		if($this->get_val($layer, 'p_uid', -1) == -1){ //only on layers that are not in row/group/column
+			if(in_array($this->get_val($layer, 'type'), array('image', 'shape', 'text'), true)){
+				$mmw = $this->get_val($ml, array('size', 'width'));
+				if($this->get_val($mmw, array('d', 'v')) === '100%' ||
+				   $this->get_val($mmw, array('n', 'v')) === '100%' ||
+				   $this->get_val($mmw, array('t', 'v')) === '100%' ||
+				   $this->get_val($mmw, array('m', 'v')) === '100%'
+				){
+					if($this->get_val($ml, array('size', 'covermode')) === 'custom'){
+						$base_align = 'slide';
+					}
+				}
+			}
+		}
+
 		$ml['behavior'] = array(
-			'autoResponsive' => $this->_truefalse($this->get_val($layer, 'resize-full', true)),
+			'autoResponsive'	 => $this->_truefalse($this->get_val($layer, 'resize-full', true)),
 			'intelligentInherit' => false,
-			'responsiveChilds' => $this->_truefalse($this->get_val($layer, 'resizeme', true)),
-			'baseAlign' => $this->get_val($layer, 'basealign', 'grid'),
-			'responsiveOffset' => $this->_truefalse($this->get_val($layer, 'responsive_offset', true)),
-			'lazyLoad' => $this->get_val($layer, 'lazy-load', 'auto'),
-			'imageSourceType' => $this->get_val($layer, 'image-size', 'auto'),
+			'responsiveChilds'	 => $this->_truefalse($this->get_val($layer, 'resizeme', true)),
+			'baseAlign'			 => $base_align,
+			'responsiveOffset'	 => $this->_truefalse($this->get_val($layer, 'responsive_offset', true)),
+			'lazyLoad'			 => $this->get_val($layer, 'lazy-load', 'auto'),
+			'imageSourceType'	 => $this->get_val($layer, 'image-size', 'auto'),
 		);
 		
 		if($this->get_val($layer, 'groupOrder', -99) === -99){
@@ -3830,7 +3846,8 @@ class RevSliderPluginUpdate extends RevSliderFunctions {
 		}
 		
 		// CHECK IF OLDER OBJ PADDING EXISTS (WITHOUT 4 LEVELS)
-		$layer['padding'] = ($this->get_val($deformation, 'padding', false) !== false) ? $this->get_val($deformation, 'padding') : $this->get_val($layer, 'padding');
+		//$layer['padding'] = ($this->get_val($deformation, 'padding', false) !== false) ? $this->get_val($deformation, 'padding') : $this->get_val($layer, 'padding');
+		$layer['padding'] = (!empty($this->get_val($layer, 'padding'))) ? $this->get_val($layer, 'padding') : $this->get_val($deformation, 'padding');
 
 		if($this->get_val($layer, 'displaymode', false) !== false){
 			if($this->get_val($layer, 'displaymode') === 'true' || $this->get_val($layer, 'displaymode') === true){
