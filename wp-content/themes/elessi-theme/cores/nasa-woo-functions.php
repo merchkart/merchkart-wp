@@ -1697,8 +1697,8 @@ if(!function_exists('elessi_add_compare_in_detail')) :
         ?>
         <div class="product-interactions">
             <a href="javascript:void(0);" class="btn-compare btn-link compare-icon<?php echo ($nasa_compare) ? ' nasa-compare' : ''; ?> tip-top" data-prod="<?php echo (int) $productId; ?>" data-tip="<?php esc_attr_e('Compare', 'elessi-theme'); ?>" title="<?php esc_attr_e('Compare', 'elessi-theme'); ?>">
-                <span class="nasa-icon icon-nasa-compare-2"></span>
-                <span class="nasa-icon-text"><?php esc_html_e('Add to Compare', 'elessi-theme'); ?></span>
+                <!-- <span class="nasa-icon icon-nasa-compare-2"></span>
+                <span class="nasa-icon-text"><?php esc_html_e('Add to Compare', 'elessi-theme'); ?></span> -->
             </a>
         
             <?php if(!$nasa_compare) : ?>
