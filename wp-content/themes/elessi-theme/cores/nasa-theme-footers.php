@@ -284,7 +284,7 @@ endif;
 // **********************************************************************// 
 // elessi_static_viewed_sidebar
 // **********************************************************************//
-add_action('nasa_static_content', 'elessi_static_viewed_sidebar', 15);
+// add_action('nasa_static_content', 'elessi_static_viewed_sidebar', 15);
 if (!function_exists('elessi_static_viewed_sidebar')) :
 
     function elessi_static_viewed_sidebar() {
