@@ -73,7 +73,7 @@ if(!defined('ABSPATH')) exit();
 					<div class="div25"></div>					
 					<label_a><?php _e('Insert scripts in footer', 'revslider');?></label_a><input type="checkbox" class="easyinit globalinput" data-r="globals.script.footer"><span class="linebreak"></span>
 					<label_a><?php _e('Defer JavaScript loading', 'revslider');?></label_a><input type="checkbox" class="easyinit globalinput" data-r="globals.script.defer"><span class="linebreak"></span>
-					<label_a><?php _e('3thd Party Lazy Loading Data', 'revslider');?></label_a><input type="text" class="easyinit globalinput"  data-r="globals.lazyloaddata" placeholder="lazy-src (i.e. WP Rocket)"><span class="linebreak"></span>
+					<label_a><?php _e('3rd Party Lazy Loading Data', 'revslider');?></label_a><input type="text" class="easyinit globalinput"  data-r="globals.lazyloaddata" placeholder="lazy-src (i.e. WP Rocket)"><span class="linebreak"></span>
 					<div class="div25"></div>
 					<label_a><?php _e('Disable RS Font Awesome Library', 'revslider');?></label_a><input type="checkbox" class="easyinit globalinput" data-r="globals.fontawesomedisable"><span class="linebreak"></span>					
 					<label_a><?php _e('Optional font loading URL', 'revslider');?></label_a><input type="text" class="easyinit globalinput" data-r="globals.fonturl" placeholder="<?php _e('ie. http://fonts.useso.com/css?family for chinese Environment', 'revslider');?>"><span class="linebreak"></span>

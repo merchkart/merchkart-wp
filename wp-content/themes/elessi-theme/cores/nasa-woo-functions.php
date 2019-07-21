@@ -173,7 +173,7 @@ if(!function_exists('elessi_add_action_woo')) :
          */
         if($yith_woocompare) {
             if (get_option('yith_woocompare_compare_button_in_product_page') == 'yes') {
-                add_action('product_video_btn', 'elessi_add_compare_in_detail', 32);
+                add_action('product_video_btn', 'elessi_add_compare_in_detail', 15);
             }
             
             if (get_option('yith_woocompare_compare_button_in_products_list') == 'yes') {
@@ -225,7 +225,7 @@ if(!function_exists('elessi_add_action_woo')) :
         /**
          * Add to wishlist in detail
          */
-        add_action('product_video_btn', 'elessi_add_wishlist_in_detail', 31);
+        add_action('product_video_btn', 'elessi_add_wishlist_in_detail', 10);
         
         // add_filter('woocommerce_checkout_coupon_message', 'elessi_wrap_coupon_toggle');
         
@@ -595,7 +595,7 @@ if (!function_exists('elessi_tiny_account')) {
             global $nasa_opt;
             $login_ajax = (!isset($nasa_opt['login_ajax']) || $nasa_opt['login_ajax'] == 1) ? '1' : '0';
             $span = $icon ? '<span class="pe7-icon pe-7s-user"></span>' : '';
-            $result .= '<li class="menu-item color"><a class="nasa-login-register-ajax" data-enable="' . $login_ajax . '" href="' . esc_url($login_url) . '" title="' . esc_attr__('Register or sign in', 'elessi-theme') . '">' . $span . '<span class="nasa-login-title">' . esc_html__('Register or sign in', 'elessi-theme') . '</span></a></li>';
+            $result .= '<li class="menu-item color"><a class="nasa-login-register-ajax" data-enable="' . $login_ajax . '" href="' . esc_url($login_url) . '" title="' . esc_attr__('Register or sign in', 'elessi-theme') . '">' . $span . '<span class="nasa-login-title">' . esc_html__('Login / Register', 'elessi-theme') . '</span></a></li>';
         } else {
             if(!$redirect) {
                 global $wp;
@@ -1506,15 +1506,16 @@ endif;
 /* ==========================================================================
  * ADD VIDEO PLAY BUTTON ON PRODUCT DETAIL PAGE
  * ======================================================================= */
-add_action('product_video_btn', 'elessi_product_video_btn_function', 1);
+add_action('product_video_btn', 'elessi_product_video_btn_function', 20);
 if (!function_exists('elessi_product_video_btn_function')) {
 
     function elessi_product_video_btn_function() {
         $id = get_the_ID();
-        if ($video_link = elessi_get_custom_field_value($id, '_product_video_link')) {
+        $video_link = elessi_get_custom_field_value($id, '_product_video_link');
+        if ($video_link) {
             ?>
-            <a class="product-video-popup tip-top" data-tip="<?php esc_attr_e('View video', 'elessi-theme'); ?>" href="<?php echo esc_url($video_link); ?>">
-                <span class="pe-7s-play"></span>
+            <a class="product-video-popup tip-top" data-tip="<?php esc_attr_e('Play Video', 'elessi-theme'); ?>" href="<?php echo esc_url($video_link); ?>" title="<?php esc_attr_e('Play Video', 'elessi-theme'); ?>">
+                <span class="nasa-icon pe-7s-play"></span>
                 <span class="nasa-play-video-text"><?php esc_html_e('Play Video', 'elessi-theme'); ?></span>
             </a>
 
@@ -1756,21 +1757,6 @@ if(!function_exists('elessi_single_hr')) :
 endif;
 
 /**
- * Before - After wrap extra buttons (quick view - wishlist - combo)
- */
-if(!function_exists('elessi_before_wrap_extra_btn')) :
-    function elessi_before_wrap_extra_btn() {
-        echo '<div class="nasa-wrap-extra-btns"><div class="nasa-inner-extra-btns">';
-    }
-endif;
-
-if(!function_exists('elessi_after_wrap_extra_btn')) :
-    function elessi_after_wrap_extra_btn() {
-        echo '</div></div>';
-    }
-endif;
-
-/**
  * Toggle coupon
  */
 if(!function_exists('elessi_wrap_coupon_toggle')) :
@@ -1784,19 +1770,36 @@ endif;
  */
 if(!function_exists('elessi_loop_product_content_thumbnail')) :
     function elessi_loop_product_content_thumbnail() {
-        global $product, $nasa_animated_products;
+        global $nasa_opt, $product, $nasa_animated_products;
         
         $nasa_link = $product->get_permalink(); // permalink
         $nasa_title = $product->get_name(); // Title
-        $image_size = apply_filters('single_product_archive_thumbnail_size', 'shop_catalog');
+        $attachment_ids = false;
+        $sizeLoad = 'thumbnail';
+        
+        /**
+         * Mobile detect
+         */
+        if ($nasa_animated_products != '' && (!isset($nasa_opt['nasa_in_mobile']) || !$nasa_opt['nasa_in_mobile'])) {
+            $attachment_ids = $product->get_gallery_image_ids();
+            $sizeLoad = 'shop_catalog';
+        }
+        
+        $image_size = apply_filters('single_product_archive_thumbnail_size', $sizeLoad);
         $main_img = $product->get_image($image_size);
         
-        $attachment_ids = $nasa_animated_products != '' ? $product->get_gallery_image_ids() : false;
         ?>
         <div class="product-img">
             <a href="<?php echo esc_url($nasa_link); ?>" title="<?php echo esc_attr($nasa_title); ?>">
-                <div class="main-img"><?php echo ($main_img); ?></div>
-                <?php if ($attachment_ids) :
+                <div class="main-img">
+                    <?php echo $main_img; ?>
+                </div>
+                
+                <?php
+                /**
+                 * Back image
+                 */
+                if ($attachment_ids) :
                     foreach ($attachment_ids as $attachment_id) :
                         $image_link = wp_get_attachment_url($attachment_id);
                         if (!$image_link):
@@ -1955,6 +1958,7 @@ if(!function_exists('elessi_top_sidebar_shop')) :
         } ?>
 
         <div class="<?php echo esc_attr($class); ?>">
+            <a class="nasa-close-sidebar hidden-tag" href="javascript:void(0);" title="<?php echo esc_attr__('Close', 'elessi-theme'); ?>"><?php echo esc_html__('Close', 'elessi-theme'); ?></a>
             <?php
             if (is_active_sidebar($sidebar_run)) :
                 dynamic_sidebar($sidebar_run);
@@ -2019,6 +2023,7 @@ if(!function_exists('elessi_side_sidebar_shop')) :
         ?>
         
         <div class="<?php echo esc_attr($class); ?>">
+            <a class="nasa-close-sidebar hidden-tag" href="javascript:void(0);" title="<?php echo esc_attr__('Close', 'elessi-theme'); ?>"><?php echo esc_html__('Close', 'elessi-theme'); ?></a>
             <?php
             if (is_active_sidebar($sidebar_run)) :
                 dynamic_sidebar($sidebar_run);
@@ -2290,7 +2295,12 @@ if(!function_exists('elessi_single_product_layout')) :
         }
 
         $nasa_sidebar = isset($nasa_opt['product_sidebar']) ? $nasa_opt['product_sidebar'] : 'no';
-        $nasa_actsidebar = is_active_sidebar('product-sidebar');
+        
+        if (isset($nasa_opt['nasa_in_mobile']) && $nasa_opt['nasa_in_mobile'] && isset($nasa_opt['single_product_mobile']) && $nasa_opt['single_product_mobile']) {
+            $nasa_actsidebar = false;
+        } else {
+            $nasa_actsidebar = is_active_sidebar('product-sidebar');
+        }
 
         // Check $_GET['sidebar']
         if (isset($_GET['sidebar'])):

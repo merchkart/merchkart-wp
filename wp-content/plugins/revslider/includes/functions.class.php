@@ -510,7 +510,7 @@ class RevSliderFunctions extends RevSliderData {
 			$arrOutput[$postType] = $arrCats;
 
 		}//loop types
-
+		
 		return $arrOutput;
 	}
 	
@@ -542,17 +542,18 @@ class RevSliderFunctions extends RevSliderData {
 		
 		foreach($post_types as $name => $tax){
 			$ptwc = array();
-			foreach($tax as $tax_name => $tax_title){
-				$cats = $this->get_categories_assoc($tax_name);
-				if(!empty($cats)){
-					$ptwc[] = array(
-						'name'	=> $tax_name,
-						'title'	=> $tax_title,
-						'cats'	=> $cats
-					);
+			if(!empty($tax)){
+				foreach($tax as $tax_name => $tax_title){
+					$cats = $this->get_categories_assoc($tax_name);
+					if(!empty($cats)){
+						$ptwc[] = array(
+							'name'	=> $tax_name,
+							'title'	=> $tax_title,
+							'cats'	=> $cats
+						);
+					}
 				}
 			}
-			
 			$post_types_categories[$name] = $ptwc;
 		}
 		
@@ -608,9 +609,12 @@ class RevSliderFunctions extends RevSliderData {
 	public function get_post_type_taxonomies($post_type){
 		$names	= array();
 		$tax	= get_object_taxonomies(array('post_type' => $post_type), 'objects');
-		
-		foreach($tax as $obj_tax){			
-			$names[$obj_tax->name] = $obj_tax->labels->name;
+
+		if(!empty($tax)){
+			foreach($tax as $obj_tax){
+				if($post_type === 'product' && !in_array($obj_tax->name, array('product_cat', 'product_tag'))) continue;
+				$names[$obj_tax->name] = $obj_tax->labels->name;
+			}
 		}
 		
 		return $names;
@@ -623,7 +627,6 @@ class RevSliderFunctions extends RevSliderData {
 	 */
 	public function get_categories_assoc($taxonomy = 'category'){
 		$categories	= array();
-		
 		if(strpos($taxonomy, ',') !== false){
 			$taxes		= explode(',', $taxonomy);
 			foreach($taxes as $tax){
@@ -633,7 +636,6 @@ class RevSliderFunctions extends RevSliderData {
 		}else{
 			$args = array('taxonomy' => $taxonomy);
 			$cats = get_categories($args);
-			
 			foreach($cats as $cat){
 				$num				= $cat->count;
 				$id					= $cat->cat_ID;
@@ -1449,13 +1451,25 @@ class RevSliderFunctions extends RevSliderData {
 			$query['tax_query'] = $tax_query;
 		}
 		
-		
 		if(!empty($addition)){
+			$tax_query = $this->get_val($addition, 'tax_query', array());
+			if(!empty($tax_query)){
+				if(!isset($query['tax_query'])) $query['tax_query'] = array();
+				if(is_array($tax_query)){
+					foreach($tax_query as $tk => $tv){
+						if(is_numeric($tk)){
+							$query['tax_query'][] = $tv;
+						}else{
+							$query['tax_query'][$tk] = $tv;
+						}
+					}
+				}
+				unset($addition['tax_query']);
+			}
 			$query = array_merge($query, $addition);
 		}
 		
 		$query = apply_filters('revslider_get_posts', $query, $slider_id);
-		
 		$full_posts	= new WP_Query($query);
 		$posts		= $full_posts->posts;
 		

@@ -23,6 +23,7 @@ if(class_exists('WC_AJAX')) :
             $ajax_events = array(
                 'nasa_render_variables',
                 'nasa_more_product',
+                'nasa_more_products_masonry',
             );
 
             foreach ($ajax_events as $ajax_event) {
@@ -88,6 +89,41 @@ if(class_exists('WC_AJAX')) :
             if(isset($data['content'])) {
                 $data['success'] = '1';
             }
+            
+            wp_send_json($data);
+        }
+        
+        /**
+         * Load more products MASONRY
+         */
+        public static function nasa_more_products_masonry() {
+            $type = isset($_REQUEST['type']) ? $_REQUEST['type'] : null;
+            $limit = isset($_REQUEST['limit']) ? $_REQUEST['limit'] : 18;
+            $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : 1;
+            $cat = (isset($_REQUEST['cat']) && $_REQUEST['cat'] != '') ? $_REQUEST['cat'] : null;
+            $layout = (isset($_REQUEST['layout']) && $_REQUEST['layout'] != '') ? $_REQUEST['layout'] : '1';
+            
+            $data = array('success' => '0');
+            
+            $file = NASA_CORE_PRODUCT_LAYOUTS . 'nasa_products_masonry/masonry-' . $layout . '.php';
+            if (is_file($file)) :
+                $loop = nasa_woocommerce_query($type, $limit, $cat, $page);
+                if ($loop->found_posts):
+                    global $nasa_opt;
+                    $custom_class = "nasa-opacity-0";
+                
+                    ob_start();
+                    include $file;
+
+                    $data['content'] = ob_get_clean();
+                endif;
+                wp_reset_postdata();
+
+                if(isset($data['content'])) {
+                    $data['success'] = '1';
+                }
+            endif;
+            
             
             wp_send_json($data);
         }

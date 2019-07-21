@@ -5605,6 +5605,7 @@ rs-module .material-icons {
 		if($add_to == 'homepage'){ //only add if we are the homepage
 			if(is_front_page() == false && is_home() == false) return false;
 		}elseif(!empty($add_to)){
+			
 			$add_to_pages = array();
 			$add_to = explode(',', $add_to);
 			if(!empty($add_to)){
@@ -5619,6 +5620,8 @@ rs-module .material-icons {
 			if(!empty($add_to_pages)){
 				$cp_id = $this->get_current_page_id();
 				if(array_search($cp_id, $add_to_pages) === false) return false;
+			}else{
+				return false;
 			}
 		}
 		

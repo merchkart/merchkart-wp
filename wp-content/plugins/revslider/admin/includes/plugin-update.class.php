@@ -3846,8 +3846,8 @@ class RevSliderPluginUpdate extends RevSliderFunctions {
 		}
 		
 		// CHECK IF OLDER OBJ PADDING EXISTS (WITHOUT 4 LEVELS)
-		//$layer['padding'] = ($this->get_val($deformation, 'padding', false) !== false) ? $this->get_val($deformation, 'padding') : $this->get_val($layer, 'padding');
-		$layer['padding'] = (!empty($this->get_val($layer, 'padding'))) ? $this->get_val($layer, 'padding') : $this->get_val($deformation, 'padding');
+		$pdng = $this->get_val($layer, 'padding'); //done this way for older php versions
+		$layer['padding'] = (!empty($pdng)) ? $pdng : $this->get_val($deformation, 'padding');
 
 		if($this->get_val($layer, 'displaymode', false) !== false){
 			if($this->get_val($layer, 'displaymode') === 'true' || $this->get_val($layer, 'displaymode') === true){

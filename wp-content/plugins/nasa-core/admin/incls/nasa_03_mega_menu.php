@@ -208,9 +208,19 @@ class Nasa_Nav_Menu_Item_Custom_Fields {
     }
 
     public static function getMedia($field, $hidden = false) {
-        $img = $field['value'] ? '<img src="' . $field['value'] . '" />' : '';
+        $img = '';
+        if (isset($field['value']) && $field['value']) {
+            if (is_numeric($field['value'])) {
+                $image = wp_get_attachment_image_src($field['value'], 'full');
+                if (isset($image[0])) {
+                    $img .= '<img src="' . esc_url($image[0]) . '" />';
+                }
+            } else {
+                $img .= '<img src="' . $field['value'] . '" />';
+            }
+        }
+        
         $hidden = $hidden ? 'hidden-tag ' : '';
-
         $media = '<p class="' . $hidden . 'additional-menu-field-' . $field['name'] . ' description description-' . $field['type_show'] . ' menu-field-media-' . $field['id'] . '">' .
                 $field['label'] .
                 '<input type="hidden" id="edit-menu-item-' . $field['name'] . '-' . $field['id'] . '" name="menu-item-' . $field['name'] . '[' . $field['id'] . ']" value="' . $field['value'] . '" />' .

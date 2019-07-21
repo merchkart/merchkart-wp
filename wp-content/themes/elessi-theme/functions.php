@@ -8,6 +8,7 @@
 define('ELESSI_THEME_PATH', get_template_directory());
 define('ELESSI_CHILD_PATH', get_stylesheet_directory());
 define('ELESSI_THEME_URI', get_template_directory_uri());
+defined('NASA_IS_PHONE') or define('NASA_IS_PHONE', false);
 
 /* Global $content_width */
 if (!isset($content_width)){

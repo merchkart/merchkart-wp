@@ -29,6 +29,10 @@ class Nasa_WC_Attr_UX extends Nasa_Abstract_WC_Attr_UX {
      * Class constructor.
      */
     public function __construct() {
+        if (!class_exists('WooCommerce')) {
+            return null;
+        }
+        
         global $nasa_opt;
         
         parent::__construct();
@@ -70,7 +74,7 @@ class Nasa_WC_Attr_UX extends Nasa_Abstract_WC_Attr_UX {
     public function nasa_custom_variation($variation) {
         if(!isset($variation['image_catalog'])) {
             $image = wp_get_attachment_image_src($variation['image_id'], 'shop_catalog');
-            $variation['image_catalog'] = isset($image[0]) ? $image[0] : '';
+            $variation['image_catalog'] = isset($image[0]) ? esc_url($image[0]) : '';
         }
         
         if(!isset($variation['deal_time'])) {

@@ -71,7 +71,7 @@
     color: #FF0000;
 }
 .hidden-tag, .nasa-theme-option-child {
-    display: none
+    /* display: none */
 }
 
 #wc_tab_specifications{

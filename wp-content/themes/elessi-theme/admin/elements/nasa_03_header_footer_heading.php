@@ -96,8 +96,8 @@ if (!function_exists('elessi_header_footer_heading')) {
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Fullwidth main menu", 'elessi-theme'),
-            "desc" => esc_html__("Fullwidth main menu", 'elessi-theme'),
+            "name" => esc_html__("Fullwidth Main Menu", 'elessi-theme'),
+            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "id" => "fullwidth_main_menu",
             "std" => 1,
             "type" => "checkbox",
@@ -105,8 +105,8 @@ if (!function_exists('elessi_header_footer_heading')) {
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Transparent header", 'elessi-theme'),
-            "desc" => esc_html__("Transparent header", 'elessi-theme'),
+            "name" => esc_html__("Transparent Header", 'elessi-theme'),
+            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "id" => "header_transparent",
             "std" => 0,
             "type" => "checkbox",
@@ -125,7 +125,7 @@ if (!function_exists('elessi_header_footer_heading')) {
         $of_options[] = array(
             "name" => esc_html__("Sticky", 'elessi-theme'),
             "id" => "fixed_nav",
-            "desc" => esc_html__("Enable sticky", 'elessi-theme'),
+            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "std" => 1,
             "type" => "checkbox",
             'class' => 'hidden-tag nasa-header-type-child nasa-header-type-select-1 nasa-header-type-select-2 nasa-header-type-select-3 nasa-header-type-select-4 nasa-fixed_nav'
@@ -159,7 +159,7 @@ if (!function_exists('elessi_header_footer_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Default Top Bar Show", 'elessi-theme'),
-            "desc" => esc_html__("Yes, please", 'elessi-theme'),
+            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "id" => "topbar_default_show",
             "std" => 1,
             "type" => "checkbox",

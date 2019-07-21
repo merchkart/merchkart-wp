@@ -94,7 +94,7 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
 
     if (isset($nasa_opt['max_height_logo']) && (int) $nasa_opt['max_height_logo']) :
         ?>
-            body #masthead .logo-wrapper .logo a img
+            body .logo-wrapper .logo .header_logo
             {
                 max-height: <?php echo (int) $nasa_opt['max_height_logo'] . 'px'; ?>;
             }
@@ -103,7 +103,7 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
     
     if (isset($nasa_opt['max_height_mobile_logo']) && (int) $nasa_opt['max_height_mobile_logo']) :
         ?>
-            body .mobile-menu .logo-wrapper .header_logo,
+            body .mobile-menu .logo-wrapper .logo .header_logo,
             body .nasa-login-register-warper #nasa-login-register-form .nasa-form-logo-log .header_logo
             {
                 max-height: <?php echo (int) $nasa_opt['max_height_mobile_logo'] . 'px'; ?>;
@@ -113,7 +113,7 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
     
     if (isset($nasa_opt['max_height_sticky_logo']) && (int) $nasa_opt['max_height_sticky_logo']) :
         ?>
-            body .fixed-already #masthead .logo-wrapper a img
+            body .fixed-already .logo-wrapper .logo .header_logo
             {
                 max-height: <?php echo (int) $nasa_opt['max_height_sticky_logo'] . 'px'; ?>;
             }

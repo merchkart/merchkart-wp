@@ -657,23 +657,20 @@ function nasa_category_thumbnail($category, $type = '280x150') {
     $small_thumbnail_size = apply_filters('subcategory_archive_thumbnail_size', $type);
     $thumbnail_id = function_exists('get_term_meta') ? get_term_meta($category->term_id, 'thumbnail_id', true) : get_woocommerce_term_meta($category->term_id, 'thumbnail_id', true);
 
-    $image_src = '';
+    $image_src = wc_placeholder_img_src();
+    $image_width = 100;
+    $image_height = 100;
+    
     if ($thumbnail_id) {
         $image = wp_get_attachment_image_src($thumbnail_id, $small_thumbnail_size);
-        $image_src = $image[0];
-        $image_width = $image[1];
-        $image_height = $image[2];
-    } else {
-        $image_src = wc_placeholder_img_src();
-        $image_width = 100;
-        $image_height = 100;
+        if (isset($image[0])) {
+            $image_src = $image[0];
+            $image_width = $image[1];
+            $image_height = $image[2];
+        }
     }
 
     if ($image_src) {
-        // Prevent esc_url from breaking spaces in urls for image embeds
-        // Ref: https://core.trac.wordpress.org/ticket/23605
-        $image_src = str_replace(' ', '%20', $image_src);
-
         echo '<img src="' . esc_url($image_src) . '" alt="' . esc_attr($category->name) . '" width="' . $image_width . '" height="' . $image_height . '" />';
     }
 }
@@ -962,6 +959,8 @@ function nasa_time_sale($time_sale = false, $gmt = true) {
  * @return type
  */
 function nasa_key_shortcode($shortcode, $dfAtts, $atts) {
+    global $nasa_opt;
+    
     $string = $shortcode;
     
     foreach ($dfAtts as $key => $value) {
@@ -986,6 +985,8 @@ function nasa_key_shortcode($shortcode, $dfAtts, $atts) {
     $lang = defined('ICL_LANGUAGE_CODE') ? ICL_LANGUAGE_CODE : get_option('WPLANG');
     
     $string .= $lang ? '_' . $lang : '';
+    
+    $string .= isset($nasa_opt['nasa_in_mobile']) && $nasa_opt['nasa_in_mobile'] ? '_mobile' : '';
     
     return $string ? $string : '';
 }

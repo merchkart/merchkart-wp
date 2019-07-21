@@ -136,7 +136,9 @@ abstract class Nasa_Abstract_WC_Attr_UX {
      */
     public static function get_image_preview($value = false, $id = false, $width = 60, $height= 60, $name = '') {
         $image_src = $value ? wp_get_attachment_thumb_url($value) : false;
-        $image_src = $image_src ? $image_src : self::$no_image;
+        if (!$image_src) {
+            $image_src = self::$no_image;
+        }
         
         return '<img' . ($id ? ' id="' . esc_attr($id) . '"' : '') . ' class="attr-image-preview" src="' . esc_url($image_src) . '" width="' . (int) $width . '" height="' . (int) $height . '" alt="' . esc_attr($name) . '" />';
     }

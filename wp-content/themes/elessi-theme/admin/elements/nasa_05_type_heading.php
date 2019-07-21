@@ -142,8 +142,8 @@ if (!function_exists('elessi_type_heading')) {
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Include FontAwesome 5.0.13", 'elessi-theme'),
-            "desc" => esc_html__("Include FontAwesome 5.0.13 (Note: You only can use Free icons)", 'elessi-theme'),
+            "name" => esc_html__("Include FontAwesome 5.0.13 (Note: You only can use Free icons)", 'elessi-theme'),
+            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "id" => "include_font_awesome_new",
             "std" => 0,
             "type" => "checkbox"

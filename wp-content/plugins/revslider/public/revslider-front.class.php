@@ -66,7 +66,7 @@ class RevSliderFront extends RevSliderFunctions {
 		if($inc_global === false){
 			$output = new RevSliderOutput();
 			$output->set_add_to($func->get_val($global, 'includeids', ''));
-			$add_to = $output->check_add_to();
+			$add_to = $output->check_add_to(true);
 			$load	= ($add_to === true) ? true : $load;
 		}
 
@@ -357,6 +357,14 @@ class RevSliderFront extends RevSliderFunctions {
 		$script .= '</script>' . "\n";
 		echo apply_filters('revslider_add_setREVStartSize', $script);
 	}
+	
+	/**
+	 * sets the post saving value to true, so that the output echo will not be done
+	 **/
+	public static function set_post_saving(){
+		global $revslider_save_post;
+		$revslider_save_post = true;
+	}
 
 	/**
 	 * Create Tables
@@ -367,66 +375,6 @@ class RevSliderFront extends RevSliderFunctions {
 	 **/
 	public static function create_tables($only_base = false){
 		$table_version = get_option('revslider_table_version', '1.0.0');
-		
-		/**
-		 * check if table version is below 1.0.8.
-		 * if yes, duplicate the tables into _bkp
-		 * this way, we can revert back to v5 if any slider
-		 * has issues in the v6 migration process
-		 **/
-		if(version_compare($table_version, '1.0.8', '<') && ($only_base === false || $only_base === '')){
-			global $wpdb;
-			
-			require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-			
-			$sql = "CREATE TABLE IF NOT EXISTS ".$wpdb->prefix . self::TABLE_SLIDER."_bkp LIKE ".$wpdb->prefix . self::TABLE_SLIDER.";";
-			dbDelta($sql);
-			$result = $wpdb->get_row("SELECT EXISTS (SELECT 1 FROM ".$wpdb->prefix . self::TABLE_SLIDER."_bkp) AS `exists`;", ARRAY_A);
-			if(!empty($result) && isset($result['exists']) && $result['exists'] === '0'){
-				$sql = "INSERT ".$wpdb->prefix . self::TABLE_SLIDER."_bkp SELECT * FROM ".$wpdb->prefix . self::TABLE_SLIDER.";";
-				$wpdb->query($sql);
-			}
-			
-			$sql = "CREATE TABLE IF NOT EXISTS ".$wpdb->prefix . self::TABLE_SLIDES."_bkp LIKE ".$wpdb->prefix . self::TABLE_SLIDES.";";
-			dbDelta($sql);
-			$result = $wpdb->get_row("SELECT EXISTS (SELECT 1 FROM ".$wpdb->prefix . self::TABLE_SLIDES."_bkp) AS `exists`;", ARRAY_A);
-			if(!empty($result) && isset($result['exists']) && $result['exists'] === '0'){
-				$sql = "INSERT ".$wpdb->prefix . self::TABLE_SLIDES."_bkp SELECT * FROM ".$wpdb->prefix . self::TABLE_SLIDES.";";
-				$wpdb->query($sql);
-			}
-			
-			$sql = "CREATE TABLE IF NOT EXISTS ".$wpdb->prefix . self::TABLE_STATIC_SLIDES."_bkp LIKE ".$wpdb->prefix . self::TABLE_STATIC_SLIDES.";";
-			dbDelta($sql);
-			$result = $wpdb->get_row("SELECT EXISTS (SELECT 1 FROM ".$wpdb->prefix . self::TABLE_STATIC_SLIDES."_bkp) AS `exists`;", ARRAY_A);
-			if(!empty($result) && isset($result['exists']) && $result['exists'] === '0'){
-				$sql = "INSERT ".$wpdb->prefix . self::TABLE_STATIC_SLIDES."_bkp SELECT * FROM ".$wpdb->prefix . self::TABLE_STATIC_SLIDES.";";
-				$wpdb->query($sql);
-			}
-			
-			$sql = "CREATE TABLE IF NOT EXISTS ".$wpdb->prefix . self::TABLE_CSS."_bkp LIKE ".$wpdb->prefix . self::TABLE_CSS.";";
-			dbDelta($sql);
-			$result = $wpdb->get_row("SELECT EXISTS (SELECT 1 FROM ".$wpdb->prefix . self::TABLE_CSS."_bkp) AS `exists`;", ARRAY_A);
-			if(!empty($result) && isset($result['exists']) && $result['exists'] === '0'){
-				$sql = "INSERT ".$wpdb->prefix . self::TABLE_CSS."_bkp SELECT * FROM ".$wpdb->prefix . self::TABLE_CSS.";";
-				$wpdb->query($sql);
-			}
-			
-			$sql = "CREATE TABLE IF NOT EXISTS ".$wpdb->prefix . self::TABLE_LAYER_ANIMATIONS."_bkp LIKE ".$wpdb->prefix . self::TABLE_LAYER_ANIMATIONS.";";
-			dbDelta($sql);
-			$result = $wpdb->get_row("SELECT EXISTS (SELECT 1 FROM ".$wpdb->prefix . self::TABLE_LAYER_ANIMATIONS."_bkp) AS `exists`;", ARRAY_A);
-			if(!empty($result) && isset($result['exists']) && $result['exists'] === '0'){
-				$sql = "INSERT ".$wpdb->prefix . self::TABLE_LAYER_ANIMATIONS."_bkp SELECT * FROM ".$wpdb->prefix . self::TABLE_LAYER_ANIMATIONS.";";
-				$wpdb->query($sql);
-			}
-			
-			$sql = "CREATE TABLE IF NOT EXISTS ".$wpdb->prefix . self::TABLE_NAVIGATIONS."_bkp LIKE ".$wpdb->prefix . self::TABLE_NAVIGATIONS.";";
-			dbDelta($sql);
-			$result = $wpdb->get_row("SELECT EXISTS (SELECT 1 FROM ".$wpdb->prefix . self::TABLE_NAVIGATIONS."_bkp) AS `exists`;", ARRAY_A);
-			if(!empty($result) && isset($result['exists']) && $result['exists'] === '0'){
-				$sql = "INSERT ".$wpdb->prefix . self::TABLE_NAVIGATIONS."_bkp SELECT * FROM ".$wpdb->prefix . self::TABLE_NAVIGATIONS.";";
-				$wpdb->query($sql);
-			}
-		}
 		
 		if(version_compare($table_version, self::CURRENT_TABLE_VERSION, '<')){
 			global $wpdb;
@@ -505,7 +453,68 @@ class RevSliderFront extends RevSliderFunctions {
 			}
 
 			update_option('revslider_table_version', self::CURRENT_TABLE_VERSION);
-			$table_version = self::CURRENT_TABLE_VERSION;
+			//$table_version = self::CURRENT_TABLE_VERSION;
+		}
+		
+		
+		/**
+		 * check if table version is below 1.0.8.
+		 * if yes, duplicate the tables into _bkp
+		 * this way, we can revert back to v5 if any slider
+		 * has issues in the v6 migration process
+		 **/
+		if(version_compare($table_version, '1.0.8', '<') && ($only_base === false || $only_base === '')){
+			global $wpdb;
+			
+			require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+			
+			$sql = "CREATE TABLE IF NOT EXISTS ".$wpdb->prefix . self::TABLE_SLIDER."_bkp LIKE ".$wpdb->prefix . self::TABLE_SLIDER.";";
+			dbDelta($sql);
+			$result = $wpdb->get_row("SELECT EXISTS (SELECT 1 FROM ".$wpdb->prefix . self::TABLE_SLIDER."_bkp) AS `exists`;", ARRAY_A);
+			if(!empty($result) && isset($result['exists']) && $result['exists'] === '0'){
+				$sql = "INSERT ".$wpdb->prefix . self::TABLE_SLIDER."_bkp SELECT * FROM ".$wpdb->prefix . self::TABLE_SLIDER.";";
+				$wpdb->query($sql);
+			}
+			
+			$sql = "CREATE TABLE IF NOT EXISTS ".$wpdb->prefix . self::TABLE_SLIDES."_bkp LIKE ".$wpdb->prefix . self::TABLE_SLIDES.";";
+			dbDelta($sql);
+			$result = $wpdb->get_row("SELECT EXISTS (SELECT 1 FROM ".$wpdb->prefix . self::TABLE_SLIDES."_bkp) AS `exists`;", ARRAY_A);
+			if(!empty($result) && isset($result['exists']) && $result['exists'] === '0'){
+				$sql = "INSERT ".$wpdb->prefix . self::TABLE_SLIDES."_bkp SELECT * FROM ".$wpdb->prefix . self::TABLE_SLIDES.";";
+				$wpdb->query($sql);
+			}
+			
+			$sql = "CREATE TABLE IF NOT EXISTS ".$wpdb->prefix . self::TABLE_STATIC_SLIDES."_bkp LIKE ".$wpdb->prefix . self::TABLE_STATIC_SLIDES.";";
+			dbDelta($sql);
+			$result = $wpdb->get_row("SELECT EXISTS (SELECT 1 FROM ".$wpdb->prefix . self::TABLE_STATIC_SLIDES."_bkp) AS `exists`;", ARRAY_A);
+			if(!empty($result) && isset($result['exists']) && $result['exists'] === '0'){
+				$sql = "INSERT ".$wpdb->prefix . self::TABLE_STATIC_SLIDES."_bkp SELECT * FROM ".$wpdb->prefix . self::TABLE_STATIC_SLIDES.";";
+				$wpdb->query($sql);
+			}
+			
+			$sql = "CREATE TABLE IF NOT EXISTS ".$wpdb->prefix . self::TABLE_CSS."_bkp LIKE ".$wpdb->prefix . self::TABLE_CSS.";";
+			dbDelta($sql);
+			$result = $wpdb->get_row("SELECT EXISTS (SELECT 1 FROM ".$wpdb->prefix . self::TABLE_CSS."_bkp) AS `exists`;", ARRAY_A);
+			if(!empty($result) && isset($result['exists']) && $result['exists'] === '0'){
+				$sql = "INSERT ".$wpdb->prefix . self::TABLE_CSS."_bkp SELECT * FROM ".$wpdb->prefix . self::TABLE_CSS.";";
+				$wpdb->query($sql);
+			}
+			
+			$sql = "CREATE TABLE IF NOT EXISTS ".$wpdb->prefix . self::TABLE_LAYER_ANIMATIONS."_bkp LIKE ".$wpdb->prefix . self::TABLE_LAYER_ANIMATIONS.";";
+			dbDelta($sql);
+			$result = $wpdb->get_row("SELECT EXISTS (SELECT 1 FROM ".$wpdb->prefix . self::TABLE_LAYER_ANIMATIONS."_bkp) AS `exists`;", ARRAY_A);
+			if(!empty($result) && isset($result['exists']) && $result['exists'] === '0'){
+				$sql = "INSERT ".$wpdb->prefix . self::TABLE_LAYER_ANIMATIONS."_bkp SELECT * FROM ".$wpdb->prefix . self::TABLE_LAYER_ANIMATIONS.";";
+				$wpdb->query($sql);
+			}
+			
+			$sql = "CREATE TABLE IF NOT EXISTS ".$wpdb->prefix . self::TABLE_NAVIGATIONS."_bkp LIKE ".$wpdb->prefix . self::TABLE_NAVIGATIONS.";";
+			dbDelta($sql);
+			$result = $wpdb->get_row("SELECT EXISTS (SELECT 1 FROM ".$wpdb->prefix . self::TABLE_NAVIGATIONS."_bkp) AS `exists`;", ARRAY_A);
+			if(!empty($result) && isset($result['exists']) && $result['exists'] === '0'){
+				$sql = "INSERT ".$wpdb->prefix . self::TABLE_NAVIGATIONS."_bkp SELECT * FROM ".$wpdb->prefix . self::TABLE_NAVIGATIONS.";";
+				$wpdb->query($sql);
+			}
 		}
 	}
 }

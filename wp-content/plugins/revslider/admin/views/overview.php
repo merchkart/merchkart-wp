@@ -140,8 +140,7 @@ if($time < '12'){
 		</div>
 		<!-- PLUGIN FEATURES -->
 		<div class="pli_right">
-			<h3 class="pli_title"><?php _e('Register to unlock all Premium Features', 'revslider');?></h3>
-			
+			<h3 class="pli_title" id="rs_register_to_unlock"><?php _e('Register to unlock all Premium Features', 'revslider');?></h3>
 			<div class="features_wrapper">				
 				<!-- TEMPLATE LIBRARY -->
 				<div class="featurebox">

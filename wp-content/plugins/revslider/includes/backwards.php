@@ -57,6 +57,11 @@ class RevSlider extends RevSliderSlider {
 
 class UniteFunctionsRev extends RevSliderFunctions {}
 
+if(!function_exists('set_revslider_as_theme')){
+	function set_revslider_as_theme(){
+	}
+}
+
 /**
  * backwards compatibility code
  * @END

@@ -86,9 +86,9 @@ if (!defined('YITH_WCWL_PREMIUM')) {
                                 </td>
                                 <?php if ($is_user_owner) : ?>
                                     <td class="product-remove">
-                                        <div>
-                                            <a href="javascrip:void(0);" class="remove nasa-remove_from_wishlist" title="<?php esc_html_e('Remove this product', 'elessi-theme') ?>" data-logined="<?php echo (int) NASA_CORE_USER_LOGIGED; ?>" data-prod_id="<?php echo (int) $productId ?>"><i class="pe-7s-close"></i></a>
-                                        </div>
+                                        <a href="javascrip:void(0);" class="remove nasa-remove_from_wishlist" title="<?php esc_attr_e('Remove this product', 'elessi-theme'); ?>" data-logined="<?php echo (int) NASA_CORE_USER_LOGIGED; ?>" data-prod_id="<?php echo (int) $productId; ?>">
+                                            <?php esc_html_e('Remove', 'elessi-theme') ?>
+                                        </a>
                                     </td>
                                 <?php endif; ?>
                             </tr>

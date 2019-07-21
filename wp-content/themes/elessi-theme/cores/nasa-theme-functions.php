@@ -29,7 +29,7 @@ if (!function_exists('elessi_logo')) :
         global $nasa_logo, $nasa_root_term_id;
         $h1 = apply_filters('nasa_logo_h1_tag', $h1);
         
-        if(!isset($nasa_logo) || !$nasa_logo) {
+        if (!isset($nasa_logo) || !$nasa_logo) {
             global $nasa_opt, $wp_query;
             
             $logo_link = isset($nasa_opt['site_logo']) ? $nasa_opt['site_logo'] : '';
@@ -39,23 +39,24 @@ if (!function_exists('elessi_logo')) :
             /*
              * Override Logo
              */
-            $is_product = is_product();
-            $is_product_cat = is_product_category();
-            $is_product_taxonomy = is_product_taxonomy();
-            $is_shop = is_shop();
+            $is_product = NASA_WOO_ACTIVED ? is_product() : false;
+            $is_product_cat = NASA_WOO_ACTIVED ? is_product_category() : false;
+            $is_product_taxonomy = NASA_WOO_ACTIVED ? is_product_taxonomy() : false;
+            $is_shop = NASA_WOO_ACTIVED ? is_shop() : false;
+
             $pageShop = wc_get_page_id('shop');
             
-            if($is_shop || $is_product_cat || $is_product_taxonomy || $is_product) {
+            if ($is_shop || $is_product_cat || $is_product_taxonomy || $is_product) {
                 $term_id = false;
                 $logo_retina_id = false;
 
                 /**
                  * Check Single product
                  */
-                if($is_product) {
-                    if(!$nasa_root_term_id) {
+                if ($is_product) {
+                    if (!$nasa_root_term_id) {
                         $product_cats = get_the_terms($wp_query->get_queried_object_id(), 'product_cat');
-                        if($product_cats) {
+                        if ($product_cats) {
                             foreach ($product_cats as $cat) {
                                 $term_id = $cat->term_id;
                                 break;
@@ -69,16 +70,16 @@ if (!function_exists('elessi_logo')) :
                 /**
                  * Check Category product
                  */
-                elseif($is_product_cat) {
+                elseif ($is_product_cat) {
                     $query_obj = $wp_query->get_queried_object();
                     $term_id = isset($query_obj->term_id) ? $query_obj->term_id : false;
                 }
                 
-                if($term_id) {
+                if ($term_id) {
                     $logo_id = get_term_meta($term_id, 'cat_logo', true);
 
-                    if(!$logo_id) {
-                        if($nasa_root_term_id) {
+                    if (!$logo_id) {
+                        if ($nasa_root_term_id) {
                             $term_id = $nasa_root_term_id;
                         } else {
                             $ancestors = get_ancestors($term_id, 'product_cat');
@@ -86,13 +87,15 @@ if (!function_exists('elessi_logo')) :
                             $GLOBALS['nasa_root_term_id'] = $term_id;
                         }
                         
-                        if($term_id) {
+                        if ($term_id) {
                             $logo_id = get_term_meta($term_id, 'cat_logo', true);
                             $logo_retina_id = $logo_id ? get_term_meta($term_id, 'cat_logo_retina', true) : false;
                         }
+                    } else {
+                        $logo_retina_id = get_term_meta($term_id, 'cat_logo_retina', true);
                     }
 
-                    if($logo_id) {
+                    if ($logo_id) {
                         $logo_link_overr = wp_get_attachment_image_url($logo_id, 'full');
                         $logo_link = $logo_link_overr ? $logo_link_overr : $logo_link;
 
@@ -104,7 +107,7 @@ if (!function_exists('elessi_logo')) :
                 /**
                  * Check shop page
                  */
-                elseif($pageShop > 0) {
+                elseif ($pageShop > 0) {
                     $page_id = $pageShop;
                 }
             }
@@ -112,11 +115,11 @@ if (!function_exists('elessi_logo')) :
             /**
              * Page
              */
-            elseif(!$page_id) {
+            elseif (!$page_id) {
                 $page_id = $wp_query->get_queried_object_id();
             }
             
-            if($page_id) {
+            if ($page_id) {
                 $logo_link_overr = get_post_meta($page_id, '_nasa_custom_logo', true);
                 $logo_link = $logo_link_overr ? $logo_link_overr : $logo_link;
 
@@ -349,163 +352,183 @@ if (!function_exists('elessi_get_breadcrumb')) :
         }
 
         global $wp_query, $post, $nasa_opt, $nasa_root_term_id;
+        
         $enable = (isset($nasa_opt['breadcrumb_show']) && !$nasa_opt['breadcrumb_show']) ? false : true;
-        $override = false;
-        
-        // Theme option
-        $has_bg = (isset($nasa_opt['breadcrumb_type']) && $nasa_opt['breadcrumb_type'] == 'has-background') ? true : false;
-
-        $bg = (isset($nasa_opt['breadcrumb_bg']) && trim($nasa_opt['breadcrumb_bg']) != '') ?
-            $nasa_opt['breadcrumb_bg'] : false;
-
-        $bg_cl = (isset($nasa_opt['breadcrumb_bg_color']) && $nasa_opt['breadcrumb_bg_color']) ?
-            $nasa_opt['breadcrumb_bg_color'] : false;
-        
-        $bg_lax = (isset($nasa_opt['breadcrumb_bg_lax']) && $nasa_opt['breadcrumb_bg_lax'] == 1) ? true : false;
-
-        $h_bg = (isset($nasa_opt['breadcrumb_height']) && (int) $nasa_opt['breadcrumb_height']) ?
-            (int) $nasa_opt['breadcrumb_height'] : false;
-
-        $txt_color = (isset($nasa_opt['breadcrumb_color']) && $nasa_opt['breadcrumb_color']) ?
-            $nasa_opt['breadcrumb_color'] : false;
-
-        /*
-         * Override breadcrumb BG
-         */
         $is_product = is_product();
         $is_product_cat = is_product_category();
         $is_product_taxonomy = is_product_taxonomy();
         $is_shop = is_shop();
         
-        if($is_shop || $is_product_cat || $is_product_taxonomy || $is_product) {
-            $pageShop = wc_get_page_id('shop');
-            
-            if($pageShop > 0) {
-                $show_breadcrumb = get_post_meta($pageShop, '_nasa_show_breadcrumb', true);
-                $enable = ($show_breadcrumb != 'on') ? false : true;
+        if (!isset($nasa_opt['nasa_in_mobile']) || !$nasa_opt['nasa_in_mobile']) {
+            $override = false;
+
+            // Theme option
+            $has_bg = (isset($nasa_opt['breadcrumb_type']) && $nasa_opt['breadcrumb_type'] == 'has-background') ? true : false;
+
+            $bg = (isset($nasa_opt['breadcrumb_bg']) && trim($nasa_opt['breadcrumb_bg']) != '') ?
+                $nasa_opt['breadcrumb_bg'] : false;
+
+            $bg_cl = (isset($nasa_opt['breadcrumb_bg_color']) && $nasa_opt['breadcrumb_bg_color']) ?
+                $nasa_opt['breadcrumb_bg_color'] : false;
+
+            $bg_lax = (isset($nasa_opt['breadcrumb_bg_lax']) && $nasa_opt['breadcrumb_bg_lax'] == 1) ? true : false;
+
+            $h_bg = (isset($nasa_opt['breadcrumb_height']) && (int) $nasa_opt['breadcrumb_height']) ?
+                (int) $nasa_opt['breadcrumb_height'] : false;
+
+            $txt_color = (isset($nasa_opt['breadcrumb_color']) && $nasa_opt['breadcrumb_color']) ?
+                $nasa_opt['breadcrumb_color'] : false;
+
+            /*
+             * Override breadcrumb BG
+             */
+            if($is_shop || $is_product_cat || $is_product_taxonomy || $is_product) {
+                $pageShop = wc_get_page_id('shop');
+
+                if($pageShop > 0) {
+                    $show_breadcrumb = get_post_meta($pageShop, '_nasa_show_breadcrumb', true);
+                    $enable = ($show_breadcrumb != 'on') ? false : true;
+                    if ($enable === false) {
+                        return;
+                    }
+                }
+
+                $term_id = false;
+
+                /**
+                 * Check Single product
+                 */
+                if($is_product) {
+                    if(!$nasa_root_term_id) {
+                        $product_cats = get_the_terms($wp_query->get_queried_object_id(), 'product_cat');
+                        if($product_cats) {
+                            foreach ($product_cats as $cat) {
+                                $term_id = $cat->term_id;
+                                break;
+                            }
+                        }
+                    } else {
+                        $term_id = $nasa_root_term_id;
+                    }
+                }
+
+                /**
+                 * Check Archive product
+                 */
+                elseif($is_product_cat) {
+                    $query_obj = get_queried_object();
+                    $term_id = isset($query_obj->term_id) ? $query_obj->term_id : false;
+                }
+
+                if($term_id) {
+                    $bg_cat_enable = get_term_meta($term_id, 'cat_breadcrumb', true);
+
+                    if(!$bg_cat_enable) {
+                        if($nasa_root_term_id) {
+                            $term_id = $nasa_root_term_id;
+                        } else {
+                            $ancestors = get_ancestors($term_id, 'product_cat');
+                            $term_id = $ancestors ? end($ancestors) : 0;
+                            $GLOBALS['nasa_root_term_id'] = $term_id;
+                        }
+
+                        if($term_id) {
+                            $bg_cat_enable = get_term_meta($term_id, 'cat_breadcrumb', true);
+                        }
+                    }
+
+                    if($bg_cat_enable) {
+                        $bgImgId = get_term_meta($term_id, 'cat_breadcrumb_bg', true);
+                        if ($bgImgId) {
+                            $bg = wp_get_attachment_image_url($bgImgId, 'full');
+                            $has_bg = true;
+                        }
+
+                        $text_color_cat = get_term_meta($term_id, 'cat_breadcrumb_text_color', true);
+                        $txt_color = $text_color_cat != '' ? $text_color_cat : $txt_color;
+                    }
+                }
+
+                /**
+                 * Breadcrumb shop page
+                 */
+                elseif($is_shop && $pageShop > 0) {
+                    $queryObj = $pageShop;
+                    $override = true;
+                }
+            }
+
+            else {
+                $pageBlog = get_option('page_for_posts');
+                /**
+                 * Check page
+                 */
+                if (isset($post->ID) && $post->post_type == 'page') {
+                    $queryObj = $post->ID;
+                    $show_breadcrumb = get_post_meta($queryObj, '_nasa_show_breadcrumb', true);
+                    $enable = ($show_breadcrumb != 'on') ? false : true;
+                    $override = true;
+                }
+
+                /**
+                 * Check Blog | archive post | single post
+                 */
+                elseif($pageBlog && isset($post->post_type) && $post->post_type == 'post' && (is_category() || is_tag() || is_date() || is_home() || is_single())) {
+                    $show_breadcrumb = get_post_meta($pageBlog, '_nasa_show_breadcrumb', true);
+                    $enable = ($show_breadcrumb != 'on') ? false : true;
+                    $queryObj = $pageBlog;
+                    $override = true;
+                }
+
                 if ($enable === false) {
                     return;
                 }
             }
-            
-            $term_id = false;
-            
-            /**
-             * Check Single product
-             */
-            if($is_product) {
-                if(!$nasa_root_term_id) {
-                    $product_cats = get_the_terms($wp_query->get_queried_object_id(), 'product_cat');
-                    if($product_cats) {
-                        foreach ($product_cats as $cat) {
-                            $term_id = $cat->term_id;
-                            break;
-                        }
-                    }
-                } else {
-                    $term_id = $nasa_root_term_id;
-                }
-            }
-            
-            /**
-             * Check Archive product
-             */
-            elseif($is_product_cat) {
-                $query_obj = get_queried_object();
-                $term_id = isset($query_obj->term_id) ? $query_obj->term_id : false;
-            }
-            
-            if($term_id) {
-                $bg_cat_enable = get_term_meta($term_id, 'cat_breadcrumb', true);
 
-                if(!$bg_cat_enable) {
-                    if($nasa_root_term_id) {
-                        $term_id = $nasa_root_term_id;
-                    } else {
-                        $ancestors = get_ancestors($term_id, 'product_cat');
-                        $term_id = $ancestors ? end($ancestors) : 0;
-                        $GLOBALS['nasa_root_term_id'] = $term_id;
-                    }
-                    
-                    if($term_id) {
-                        $bg_cat_enable = get_term_meta($term_id, 'cat_breadcrumb', true);
-                    }
+            // Override
+            if ($override) {
+                $type_bg = get_post_meta($queryObj, '_nasa_type_breadcrumb', true);
+                $bg_override = get_post_meta($queryObj, '_nasa_bg_breadcrumb', true);
+                $bg_cl_override = get_post_meta($queryObj, '_nasa_bg_color_breadcrumb', true);
+                $h_override = get_post_meta($queryObj, '_nasa_height_breadcrumb', true);
+                $color_override = get_post_meta($queryObj, '_nasa_color_breadcrumb', true);
+
+                if ($type_bg == '1') {
+                    $bg = $bg_override ? $bg_override : $bg;
                 }
 
-                if($bg_cat_enable) {
-                    $bgImgId = get_term_meta($term_id, 'cat_breadcrumb_bg', true);
-                    if ($bgImgId) {
-                        $bg = wp_get_attachment_image_url($bgImgId, 'full');
-                        $has_bg = true;
-                    }
+                $bg_cl = $bg_cl_override ? $bg_cl_override : $bg_cl;
+                $txt_color = $color_override ? $color_override : $txt_color;
+                $h_bg = (int) $h_override ? (int) $h_override : $h_bg;
+            }
 
-                    $text_color_cat = get_term_meta($term_id, 'cat_breadcrumb_text_color', true);
-                    $txt_color = $text_color_cat != '' ? $text_color_cat : $txt_color;
-                }
+            // set style by option breadcrumb
+            $style_custom = '';
+            if ($has_bg) {
+                $style_custom .= $bg ? 'background:url(\'' . esc_url($bg) . '\') center center repeat-y;' : '';
             }
+
+            $style_custom .= $bg_cl ? 'background-color:' . $bg_cl . ';' : '';
+            $style_custom .= $txt_color ? 'color:' . $txt_color . ';' : '';
+            $style_height = $h_bg ? 'height:' . $h_bg . 'px;' : 'height:auto;';
             
-            /**
-             * Breadcrumb shop page
-             */
-            elseif($is_shop && $pageShop > 0) {
-                $queryObj = $pageShop;
-                $override = true;
-            }
         }
         
+        /**
+         * Mobile Detect
+         */
         else {
-            $pageBlog = get_option('page_for_posts');
-            /**
-             * Check page
-             */
-            if (isset($post->ID) && $post->post_type == 'page') {
-                $queryObj = $post->ID;
-                $show_breadcrumb = get_post_meta($queryObj, '_nasa_show_breadcrumb', true);
-                $enable = ($show_breadcrumb != 'on') ? false : true;
-                $override = true;
-            }
+            $has_bg = $parallax = false;
+            $style_custom = $style_height = false;
             
-            /**
-             * Check Blog | archive post | single post
-             */
-            elseif($pageBlog && isset($post->post_type) && $post->post_type == 'post' && (is_category() || is_tag() || is_date() || is_home() || is_single())) {
-                $show_breadcrumb = get_post_meta($pageBlog, '_nasa_show_breadcrumb', true);
-                $enable = ($show_breadcrumb != 'on') ? false : true;
-                $queryObj = $pageBlog;
-                $override = true;
-            }
-
-            if ($enable === false) {
+            if($is_shop || $is_product_cat || $is_product_taxonomy || $is_product) {
+                if (!$enable) {
+                    return;
+                }
+            } else {
                 return;
             }
         }
-        
-        // Override
-        if ($override) {
-            $type_bg = get_post_meta($queryObj, '_nasa_type_breadcrumb', true);
-            $bg_override = get_post_meta($queryObj, '_nasa_bg_breadcrumb', true);
-            $bg_cl_override = get_post_meta($queryObj, '_nasa_bg_color_breadcrumb', true);
-            $h_override = get_post_meta($queryObj, '_nasa_height_breadcrumb', true);
-            $color_override = get_post_meta($queryObj, '_nasa_color_breadcrumb', true);
-
-            if ($type_bg == '1') {
-                $bg = $bg_override ? $bg_override : $bg;
-            }
-
-            $bg_cl = $bg_cl_override ? $bg_cl_override : $bg_cl;
-            $txt_color = $color_override ? $color_override : $txt_color;
-            $h_bg = (int) $h_override ? (int) $h_override : $h_bg;
-        }
-
-        // set style by option breadcrumb
-        $style_custom = '';
-        if ($has_bg) {
-            $style_custom .= $bg ? 'background:url(\'' . esc_url($bg) . '\') center center repeat-y;' : '';
-        }
-        
-        $style_custom .= $bg_cl ? 'background-color:' . $bg_cl . ';' : '';
-        $style_custom .= $txt_color ? 'color:' . $txt_color . ';' : '';
-        $style_height = $h_bg ? 'height:' . $h_bg . 'px;' : 'height:auto;';
         
         $defaults = apply_filters('nasa_breadcrumb_args', array(
             'delimiter' => '<span class="fa fa-angle-right"></span>',
@@ -531,10 +554,10 @@ if (!function_exists('elessi_get_breadcrumb')) :
         $args['breadcrumb'] = $wc_breadcrumbs->generate();
         do_action('woocommerce_breadcrumb', $wc_breadcrumbs, $args);
         ?>
-        <div id="nasa-breadcrumb-site" class="bread nasa-breadcrumb<?php echo ($has_bg ? ' nasa-breadcrumb-has-bg' : '') . ($parallax ? ' nasa-parallax' : ''); ?>"<?php echo ($style_custom) ? ' style="' . esc_attr($style_custom) . '"' : ''; ?><?php echo ($parallax ? ' data-stellar-background-ratio="0.6"' : ''); ?>>
+        <div id="nasa-breadcrumb-site" class="bread nasa-breadcrumb<?php echo ($has_bg ? ' nasa-breadcrumb-has-bg' : '') . ($parallax ? ' nasa-parallax' : ''); ?>"<?php echo $style_custom ? ' style="' . esc_attr($style_custom) . '"' : ''; ?><?php echo ($parallax ? ' data-stellar-background-ratio="0.6"' : ''); ?>>
             <div class="row">
                 <div class="large-12 columns nasa-display-table">
-                    <div class="breadcrumb-row <?php echo esc_attr($bread_align); ?>" style="<?php echo esc_attr($style_height); ?>">
+                    <div class="breadcrumb-row <?php echo esc_attr($bread_align); ?>"<?php echo $style_height ? ' style="' . esc_attr($style_height).'"' : ''; ?>>
                         <?php wc_get_template('global/breadcrumb.php', $args); ?>
                     </div>
                 </div>
@@ -639,14 +662,24 @@ if (!function_exists('elessi_body_classes')) :
             $classes[] = 'open-popup';
         }
 
-        if (NASA_WOO_ACTIVED && function_exists('is_product') && is_product()) {
-            if (isset($nasa_opt['product-zoom']) && $nasa_opt['product-zoom']) {
-                $classes[] = 'product-zoom';
+        if (NASA_WOO_ACTIVED) {
+            if (!in_array('nasa-woo-actived', $classes)) {
+                $classes[] = 'nasa-woo-actived';
             }
             
-            if (isset($nasa_opt['product-image-lightbox']) && !$nasa_opt['product-image-lightbox']) {
-                $classes[] = 'nasa-disable-lightbox-image';
+            if (function_exists('is_product') && is_product()) {
+                if (isset($nasa_opt['product-zoom']) && $nasa_opt['product-zoom']) {
+                    $classes[] = 'product-zoom';
+                }
+
+                if (isset($nasa_opt['product-image-lightbox']) && !$nasa_opt['product-image-lightbox']) {
+                    $classes[] = 'nasa-disable-lightbox-image';
+                }
             }
+        }
+        
+        if (isset($nasa_opt['nasa_in_mobile']) && $nasa_opt['nasa_in_mobile']) {
+            $classes[] = 'nasa-in-mobile';
         }
 
         if (
@@ -830,9 +863,9 @@ if (!function_exists('elessi_multi_languages')) :
          * Multi Languages
          */
         if (isset($nasa_opt['switch_lang']) && $nasa_opt['switch_lang']) {
-            $language_output = '<li class="nasa-select-languages left rtl-right desktop-margin-right-30 rtl-desktop-margin-right-0 rtl-desktop-margin-left-30">';
+            $language_output = '<li class="nasa-select-languages left rtl-right desktop-margin-right-30 rtl-desktop-margin-right-0 rtl-desktop-margin-left-30 menu-item-has-children root-item li_accordion">';
             $mainLang = '';
-            $selectLang = '<ul class="nasa-list-languages">';
+            $selectLang = '<ul class="nasa-list-languages sub-menu">';
 
             if (function_exists('icl_get_languages')) {
                 $current = defined('ICL_LANGUAGE_CODE') ? ICL_LANGUAGE_CODE : get_option('WPLANG');

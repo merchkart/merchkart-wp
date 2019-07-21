@@ -32,7 +32,7 @@ if (isset($nasa_opt['product_detail_layout']) && $nasa_opt['product_detail_layou
 <div class="images">
     <div class="row">
         <div class="large-12 columns mobile-padding-left-5 mobile-padding-right-5">
-            <?php if (!$slideHoz) : ?>
+            <?php if (!$slideHoz && (!isset($nasa_opt['nasa_in_mobile']) || !$nasa_opt['nasa_in_mobile'])) : ?>
                 <div class="nasa-thumb-wrap rtl-right">
                     <?php do_action('woocommerce_product_thumbnails'); ?>
                 </div>

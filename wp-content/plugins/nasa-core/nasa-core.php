@@ -3,7 +3,7 @@
  * Plugin Name: Nasa Core
  * Plugin URI: https://nasatheme.com
  * Description: Add shortcodes, custom post types and more for NasaTheme (ELESSI - THEME)
- * Version: 1.7.1
+ * Version: 2.1
  * Author: NasaTheme
  * Author URI: nasathemes@gmail.com
  * License: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html

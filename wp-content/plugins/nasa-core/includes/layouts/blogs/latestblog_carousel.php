@@ -23,7 +23,7 @@ $arrows = isset($arrows) ? $arrows : 0;
         </div>
     <?php endif; ?>
     
-    <div class="row nasa-blog-sc nasa-no-cols group-slider">
+    <div class="nasa-blog-sc nasa-no-cols group-slider">
         <div
             id="nasa-slider-<?php echo esc_attr($id_sc); ?>"
             class="group-blogs nasa-blog-carousel nasa-slider owl-carousel"
@@ -58,106 +58,106 @@ $arrows = isset($arrows) ? $arrows : 0;
                 
                 ?>
                 <div class="blog_item wow fadeInUp" data-wow-duration="1s" data-wow-delay="<?php echo esc_attr($_delay); ?>ms">
-                    <div class="large-12 columns">
-                        <div class="nasa-content-group">
-                            <a href="<?php echo esc_url($link); ?>" title="<?php echo esc_attr($title); ?>">
-                                <div class="entry-blog">
-                                    <div class="blog-image img_left">
-                                        <div class="blog-image-attachment" style="overflow:hidden;">
-                                            <?php
-                                            if (has_post_thumbnail()):
-                                                the_post_thumbnail('380x380', array(
-                                                    'alt' => trim(strip_tags(get_the_title()))
-                                                ));
-                                            else:
-                                                echo '<img src="' . NASA_CORE_PLUGIN_URL . 'assets/images/placeholder.png" alt="' . esc_attr($title) . '" />';
-                                            endif;
-                                            ?>
-                                            <div class="image-overlay"></div>
-                                        </div>
+
+                    <div class="nasa-content-group">
+                        <a href="<?php echo esc_url($link); ?>" title="<?php echo esc_attr($title); ?>">
+                            <div class="entry-blog">
+                                <div class="blog-image img_left">
+                                    <div class="blog-image-attachment" style="overflow:hidden;">
+                                        <?php
+                                        if (has_post_thumbnail()):
+                                            the_post_thumbnail('380x380', array(
+                                                'alt' => trim(strip_tags(get_the_title()))
+                                            ));
+                                        else:
+                                            echo '<img src="' . NASA_CORE_PLUGIN_URL . 'assets/images/placeholder.png" alt="' . esc_attr($title) . '" />';
+                                        endif;
+                                        ?>
+                                        <div class="image-overlay"></div>
                                     </div>
                                 </div>
-                            </a>
-                            <div class="nasa-blog-info-slider">
-                                <?php echo ($cats_enable == 'yes') ? '<div class="nasa-post-cats-wrap">' . $categories . '</div>' : ''; ?>
-                                <div class="blog_title">
-                                    <h5>
-                                        <a href="<?php echo esc_url($link); ?>" title="<?php echo esc_attr($title); ?>">
-                                            <?php echo $title; ?>
-                                        </a>
-                                    </h5>
-                                </div>
-                                
-                                <?php if($date_author == 'top') : ?>
-                                    <div class="nasa-post-date-author-wrap">
-                                        <?php if($date_enable == 'yes') : ?>
-                                            <a href="<?php echo esc_url($link_date); ?>" title="<?php echo esc_html__('Posts at ', 'nasa-core') . esc_attr($date_post); ?>" class="nasa-post-date-author-link">
-                                                <span class="nasa-post-date-author">
-                                                    <i class="pe-7s-date"></i>
-                                                    <?php echo $date_post; ?>
-                                                </span>
-                                            </a>
-                                        <?php endif; ?>
-
-                                        <?php if($author_enable == 'yes') : ?>
-                                            <a href="<?php echo esc_url($link_author); ?>" title="<?php echo esc_html__('Posted By ', 'nasa-core') . esc_attr($author); ?>" class="nasa-post-date-author-link">
-                                                <span class="nasa-post-date-author nasa-post-author">
-                                                    <i class="pe-7s-user"></i>
-                                                    <?php echo $author; ?>
-                                                </span>
-                                            </a>
-                                        <?php endif; ?>
-
-                                        <?php if($readmore == 'yes') : ?>
-                                            <a href="<?php echo esc_url($link); ?>" title="<?php echo esc_html__('Read more', 'nasa-core'); ?>" class="nasa-post-date-author-link hide-for-mobile nasa-post-read-more">
-                                                <span class="nasa-post-date-author nasa-post-author">
-                                                    <i class="pe-7s-news-paper margin-right-5"></i>
-                                                    <?php echo esc_html__('Read more', 'nasa-core'); ?>
-                                                </span>
-                                            </a>
-                                        <?php endif; ?>
-                                    </div>
-                                <?php endif; ?>
-                                
-                                <?php if($des_enable == 'yes') : ?>
-                                    <div class="nasa-info-short">
-                                        <?php the_excerpt(); ?>
-                                    </div>
-                                <?php endif; ?>
-
-                                <?php if($date_author == 'bot') : ?>
-                                    <div class="nasa-post-date-author-wrap">
-                                        <?php if($date_enable == 'yes') : ?>
-                                            <a href="<?php echo esc_url($link_date); ?>" title="<?php echo esc_html__('Posts at ', 'nasa-core') . esc_attr($date_post); ?>" class="nasa-post-date-author-link">
-                                                <span class="nasa-post-date-author bottom">
-                                                    <i class="pe-7s-date"></i>
-                                                    <?php echo $date_post; ?>
-                                                </span>
-                                            </a>
-                                        <?php endif; ?>
-
-                                        <?php if($author_enable == 'yes') : ?>
-                                            <a href="<?php echo esc_url($link_author); ?>" title="<?php echo esc_html__('Posted By ', 'nasa-core') . esc_attr($author); ?>" class="nasa-post-date-author-link">
-                                                <span class="nasa-post-date-author nasa-post-author bottom">
-                                                    <i class="pe-7s-user"></i>
-                                                    <?php echo $author; ?>
-                                                </span>
-                                            </a>
-                                        <?php endif; ?>
-
-                                        <?php if($readmore == 'yes') : ?>
-                                            <a href="<?php echo esc_url($link); ?>" title="<?php echo esc_html__('Read more', 'nasa-core'); ?>" class="nasa-post-date-author-link hide-for-mobile nasa-post-read-more">
-                                                <span class="nasa-post-date-author nasa-post-author bottom">
-                                                    <i class="pe-7s-news-paper margin-right-5"></i>
-                                                    <?php echo esc_html__('Read more', 'nasa-core'); ?>
-                                                </span>
-                                            </a>
-                                        <?php endif; ?>
-                                    </div>
-                                <?php endif; ?>
                             </div>
+                        </a>
+                        <div class="nasa-blog-info-slider">
+                            <?php echo ($cats_enable == 'yes') ? '<div class="nasa-post-cats-wrap">' . $categories . '</div>' : ''; ?>
+                            <div class="blog_title">
+                                <h5>
+                                    <a href="<?php echo esc_url($link); ?>" title="<?php echo esc_attr($title); ?>">
+                                        <?php echo $title; ?>
+                                    </a>
+                                </h5>
+                            </div>
+
+                            <?php if($date_author == 'top') : ?>
+                                <div class="nasa-post-date-author-wrap">
+                                    <?php if($date_enable == 'yes') : ?>
+                                        <a href="<?php echo esc_url($link_date); ?>" title="<?php echo esc_html__('Posts at ', 'nasa-core') . esc_attr($date_post); ?>" class="nasa-post-date-author-link">
+                                            <span class="nasa-post-date-author">
+                                                <i class="pe-7s-date"></i>
+                                                <?php echo $date_post; ?>
+                                            </span>
+                                        </a>
+                                    <?php endif; ?>
+
+                                    <?php if($author_enable == 'yes') : ?>
+                                        <a href="<?php echo esc_url($link_author); ?>" title="<?php echo esc_html__('Posted By ', 'nasa-core') . esc_attr($author); ?>" class="nasa-post-date-author-link">
+                                            <span class="nasa-post-date-author nasa-post-author">
+                                                <i class="pe-7s-user"></i>
+                                                <?php echo $author; ?>
+                                            </span>
+                                        </a>
+                                    <?php endif; ?>
+
+                                    <?php if($readmore == 'yes') : ?>
+                                        <a href="<?php echo esc_url($link); ?>" title="<?php echo esc_html__('Read more', 'nasa-core'); ?>" class="nasa-post-date-author-link hide-for-mobile nasa-post-read-more">
+                                            <span class="nasa-post-date-author nasa-post-author">
+                                                <i class="pe-7s-news-paper margin-right-5"></i>
+                                                <?php echo esc_html__('Read more', 'nasa-core'); ?>
+                                            </span>
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if($des_enable == 'yes') : ?>
+                                <div class="nasa-info-short">
+                                    <?php the_excerpt(); ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if($date_author == 'bot') : ?>
+                                <div class="nasa-post-date-author-wrap">
+                                    <?php if($date_enable == 'yes') : ?>
+                                        <a href="<?php echo esc_url($link_date); ?>" title="<?php echo esc_html__('Posts at ', 'nasa-core') . esc_attr($date_post); ?>" class="nasa-post-date-author-link">
+                                            <span class="nasa-post-date-author bottom">
+                                                <i class="pe-7s-date"></i>
+                                                <?php echo $date_post; ?>
+                                            </span>
+                                        </a>
+                                    <?php endif; ?>
+
+                                    <?php if($author_enable == 'yes') : ?>
+                                        <a href="<?php echo esc_url($link_author); ?>" title="<?php echo esc_html__('Posted By ', 'nasa-core') . esc_attr($author); ?>" class="nasa-post-date-author-link">
+                                            <span class="nasa-post-date-author nasa-post-author bottom">
+                                                <i class="pe-7s-user"></i>
+                                                <?php echo $author; ?>
+                                            </span>
+                                        </a>
+                                    <?php endif; ?>
+
+                                    <?php if($readmore == 'yes') : ?>
+                                        <a href="<?php echo esc_url($link); ?>" title="<?php echo esc_html__('Read more', 'nasa-core'); ?>" class="nasa-post-date-author-link hide-for-mobile nasa-post-read-more">
+                                            <span class="nasa-post-date-author nasa-post-author bottom">
+                                                <i class="pe-7s-news-paper margin-right-5"></i>
+                                                <?php echo esc_html__('Read more', 'nasa-core'); ?>
+                                            </span>
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
+
                 </div>
                 <?php $_delay += $_delay_item; ?>
             <?php endwhile; ?>

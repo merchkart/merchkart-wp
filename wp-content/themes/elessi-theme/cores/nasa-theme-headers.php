@@ -13,8 +13,8 @@ if (!function_exists('elessi_mobile_header')) :
                     <tr>
                         <td class="nasa-td-20">
                             <div class="mini-icon-mobile">
-                                <a href="javascript:void(0);" class="nasa-mobile-menu_toggle mobile_toggle"><span class="nasa-mobile-menu-icon pe-7s-menu"></span></a>
-                                <a class="icon pe-7s-search mobile-search" href="javascript:void(0);"></a>
+                                <a href="javascript:void(0);" class="nasa-icon nasa-mobile-menu_toggle mobile_toggle nasa-mobile-menu-icon pe-7s-menu"></a>
+                                <a class="nasa-icon icon pe-7s-search mobile-search" href="javascript:void(0);"></a>
                             </div>
                         </td>
 
@@ -252,6 +252,23 @@ if (!function_exists('elessi_get_header_structure')):
         }
         
         /**
+         * Mobile Detect
+         */
+        if (isset($nasa_opt['nasa_in_mobile']) && $nasa_opt['nasa_in_mobile']) {
+            $header_classes = 'mobile-menu nasa-header-mobile-layout';
+            if ($fixed_nav) {
+                $header_classes .= ' nasa-header-sticky';
+            }
+            
+            $vertical = in_array($hstructure, array(4)) ? true : false;
+            
+            $file = ELESSI_CHILD_PATH . '/headers/header-mobile.php';
+            include is_file($file) ? $file : ELESSI_THEME_PATH . '/headers/header-mobile.php';
+            
+            return;
+        }
+        
+        /**
          * Init vars
          */
         $menu_warp_class = array();
@@ -479,7 +496,7 @@ endif;
 // **********************************************************************//
 if (!function_exists('elessi_header_topbar')) :
 
-    function elessi_header_topbar() {
+    function elessi_header_topbar($mobile = false) {
         global $wp_query, $nasa_opt;
         
         /**

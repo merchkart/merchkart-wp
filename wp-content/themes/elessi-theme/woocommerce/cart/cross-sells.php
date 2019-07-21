@@ -28,7 +28,7 @@ if ($cross_sells) :
                 <div class="large-12 columns">
                     <div class="nasa-slide-style-product-carousel">
                         <h3 class="nasa-shortcode-title-slider text-center"><?php esc_html_e('You may be interested in&hellip;', 'elessi-theme') ?></h3>
-                        <div class="nasa-nav-carousel-wrap nasa-carousel-related text-right" data-id="#nasa-slider-related-product">
+                        <div class="nasa-nav-carousel-wrap nasa-carousel-related text-right" data-id="#nasa-slider-cross-sells-product">
                             <div class="nasa-nav-carousel-prev nasa-nav-carousel-div">
                                 <a class="nasa-nav-icon-slider" href="javascript:void(0);" data-do="prev">
                                     <span class="pe-7s-angle-left"></span>
@@ -44,8 +44,8 @@ if ($cross_sells) :
                 </div>
                 
                 <div class="large-12 columns">
-                    <div class="row group-slider">
-                        <div id="nasa-slider-related-product" class="nasa-slider owl-carousel products-group" data-columns="<?php echo (int) $columns_desk; ?>" data-columns-small="<?php echo (int) $columns_small; ?>" data-columns-tablet="<?php echo (int) $columns_tablet; ?>" data-margin="10" data-margin-small="0" data-margin-medium="0" data-padding="0px" data-disable-nav="true">
+                    <div class="group-slider">
+                        <div id="nasa-slider-cross-sells-product" class="nasa-slider owl-carousel products-group" data-columns="<?php echo (int) $columns_desk; ?>" data-columns-small="<?php echo (int) $columns_small; ?>" data-columns-tablet="<?php echo (int) $columns_tablet; ?>" data-margin="10" data-margin-small="0" data-margin-medium="0" data-padding="0px" data-disable-nav="true">
                             <?php
                             foreach ($cross_sells as $cross_sell) :
                                 $post_object = get_post($cross_sell->get_id());

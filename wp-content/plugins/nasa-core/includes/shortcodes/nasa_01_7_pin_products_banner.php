@@ -96,6 +96,8 @@ function nasa_sc_pin_products_banner($atts, $content = null) {
                 if(!isset($option->coords) || !$product || $product->get_status() !== 'publish') {
                     continue;
                 }
+                
+                $position_show = isset($option->position_show) ? $option->position_show : 'top';
 
                 if($marker_style == 'price') {
                     if($full_price_icon == 'yes') {
@@ -116,6 +118,7 @@ function nasa_sc_pin_products_banner($atts, $content = null) {
 
                 $data[$pin_rand_id][$k] = array(
                     'marker_pin' => $icon,
+                    'position' => 'nasa-' . $position_show,
                     'id_product' => $product_id,
                     'title_product' => $product->get_name(),
                     'link_product' => esc_url($product->get_permalink()),
@@ -157,12 +160,12 @@ function nasa_sc_pin_products_banner($atts, $content = null) {
         }
 
         $content .= '<span class="nasa-wrap-relative-image">' .
-            '<img class="nasa_pin_pb_image" src="' . esc_url($image_src) . '" data-easypin_id="' . $pin_rand_id . '" alt="' . esc_attr($pin->post_title) . '" />' .
+            '<img width="' . $_width . '" height="' . $_height . '" class="nasa_pin_pb_image" src="' . esc_url($image_src) . '" data-easypin_id="' . $pin_rand_id . '" alt="' . esc_attr($pin->post_title) . '" />' .
         '</span>';
         $content .= '<div style="display:none;" id="tpl-' . $pin_rand_id . '" class="nasa-easypin-tpl">';
         $content .= 
         '<div class="nasa-popover-clone">' .
-            '<div class="exPopoverContainer' . $popover . '">' .
+            '<div class="exPopoverContainer' . $popover . ' {[position]}">' .
                 '<div class="popBg borderRadius"></div>' .
                 '<div class="popBody">' .
                     '<div class="nasa-product-pin text-center">' .

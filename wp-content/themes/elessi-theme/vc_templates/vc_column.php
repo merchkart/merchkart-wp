@@ -90,9 +90,9 @@ $css_class = preg_replace('/\s+/', ' ', apply_filters(VC_SHORTCODE_CUSTOM_CSS_FI
 $wrapper_attributes[] = 'class="' . esc_attr(trim($css_class)) . '"';
 
 $output .= '<div ' . implode(' ', $wrapper_attributes) . '>';
-$output .= '<div class="wpb_wrapper">';
+// $output .= '<div class="wpb_wrapper">';
 $output .= wpb_js_remove_wpautop($content);
-$output .= '</div>';
+// $output .= '</div>';
 $output .= '</div>';
 
 echo $output;

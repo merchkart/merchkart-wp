@@ -789,8 +789,14 @@ class RevSliderInstagram  extends RevSliderFunctions {
 		$response_body = $response_body_encoded;
 		$response_headers_raw_list = explode("\r\n", $response_headers_str);
 		$response_http = array_shift($response_headers_raw_list);
+		
+		$found_matches = preg_match('#^([^\s]+)\s(\d+)\s([^$]+)$#', $response_http, $response_http_matches);
 
-		preg_match('#^([^\s]+)\s(\d+)\s([^$]+)$#', $response_http, $response_http_matches);
+		if(!$found_matches){
+			$response_http = trim($response_http);
+			preg_match('#^([^\s]+)\s(\d+)$#', $response_http, $response_http_matches);
+		}
+		
 		array_shift($response_http_matches);
 		list ($response_http_protocol, $response_http_code, $response_http_message) = $response_http_matches;
 

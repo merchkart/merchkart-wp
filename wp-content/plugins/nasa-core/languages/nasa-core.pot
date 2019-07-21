@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nasa Core\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-28 08:15+0000\n"
+"POT-Creation-Date: 2019-07-20 10:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -74,6 +74,8 @@ msgstr ""
 #: includes/shortcodes/nasa_02_carousel.php:109
 #: includes/shortcodes/nasa_02_carousel.php:122
 #: includes/shortcodes/nasa_02_carousel.php:135
+#: includes/shortcodes/nasa_20_instagram.php:98
+#: includes/shortcodes/nasa_20_instagram.php:114
 msgid "1"
 msgstr ""
 
@@ -81,12 +83,12 @@ msgstr ""
 msgid "1 Column"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:187
-#: admin/incls/nasa_04_custom_setting.php:198
+#: admin/incls/nasa_04_custom_setting.php:195
+#: admin/incls/nasa_04_custom_setting.php:206
 msgid "1 column"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:153
+#: includes/shortcodes/nasa_01_1_products.php:154
 msgid "1 Row"
 msgstr ""
 
@@ -106,7 +108,7 @@ msgstr ""
 msgid "1.6s"
 msgstr ""
 
-#: includes/shortcodes/nasa_20_instagram.php:81
+#: includes/shortcodes/nasa_20_instagram.php:87
 msgid "10"
 msgstr ""
 
@@ -129,6 +131,8 @@ msgstr ""
 #: includes/shortcodes/nasa_02_carousel.php:110
 #: includes/shortcodes/nasa_02_carousel.php:123
 #: includes/shortcodes/nasa_02_carousel.php:136
+#: includes/shortcodes/nasa_20_instagram.php:99
+#: includes/shortcodes/nasa_20_instagram.php:115
 msgid "2"
 msgstr ""
 
@@ -136,12 +140,12 @@ msgstr ""
 msgid "2 Columns"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:188
-#: admin/incls/nasa_04_custom_setting.php:199
+#: admin/incls/nasa_04_custom_setting.php:196
+#: admin/incls/nasa_04_custom_setting.php:207
 msgid "2 columns"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:154
+#: includes/shortcodes/nasa_01_1_products.php:155
 msgid "2 Rows"
 msgstr ""
 
@@ -152,6 +156,8 @@ msgstr ""
 #: includes/shortcodes/nasa_02_carousel.php:111
 #: includes/shortcodes/nasa_02_carousel.php:124
 #: includes/shortcodes/nasa_02_carousel.php:137
+#: includes/shortcodes/nasa_20_instagram.php:100
+#: includes/shortcodes/nasa_20_instagram.php:116
 msgid "3"
 msgstr ""
 
@@ -159,12 +165,12 @@ msgstr ""
 msgid "3 Columns"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:175
-#: admin/incls/nasa_04_custom_setting.php:200
+#: admin/incls/nasa_04_custom_setting.php:183
+#: admin/incls/nasa_04_custom_setting.php:208
 msgid "3 columns"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:155
+#: includes/shortcodes/nasa_01_1_products.php:156
 msgid "3 Rows"
 msgstr ""
 
@@ -175,7 +181,9 @@ msgstr ""
 #: includes/shortcodes/nasa_02_carousel.php:112
 #: includes/shortcodes/nasa_02_carousel.php:125
 #: includes/shortcodes/nasa_02_carousel.php:138
-#: includes/shortcodes/nasa_20_instagram.php:75
+#: includes/shortcodes/nasa_20_instagram.php:81
+#: includes/shortcodes/nasa_20_instagram.php:101
+#: includes/shortcodes/nasa_20_instagram.php:117
 msgid "4"
 msgstr ""
 
@@ -183,7 +191,7 @@ msgstr ""
 msgid "4 Columns"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:176
+#: admin/incls/nasa_04_custom_setting.php:184
 msgid "4 columns"
 msgstr ""
 
@@ -194,7 +202,9 @@ msgstr ""
 #: includes/shortcodes/nasa_02_carousel.php:113
 #: includes/shortcodes/nasa_02_carousel.php:126
 #: includes/shortcodes/nasa_02_carousel.php:139
-#: includes/shortcodes/nasa_20_instagram.php:76
+#: includes/shortcodes/nasa_20_instagram.php:82
+#: includes/shortcodes/nasa_20_instagram.php:102
+#: includes/shortcodes/nasa_20_instagram.php:118
 msgid "5"
 msgstr ""
 
@@ -202,7 +212,7 @@ msgstr ""
 msgid "5 Columns"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:177
+#: admin/incls/nasa_04_custom_setting.php:185
 msgid "5 columns"
 msgstr ""
 
@@ -213,7 +223,9 @@ msgstr ""
 #: includes/shortcodes/nasa_02_carousel.php:114
 #: includes/shortcodes/nasa_02_carousel.php:127
 #: includes/shortcodes/nasa_02_carousel.php:140
-#: includes/shortcodes/nasa_20_instagram.php:77
+#: includes/shortcodes/nasa_20_instagram.php:83
+#: includes/shortcodes/nasa_20_instagram.php:103
+#: includes/shortcodes/nasa_20_instagram.php:119
 msgid "6"
 msgstr ""
 
@@ -225,7 +237,7 @@ msgstr ""
 msgid "600ms"
 msgstr ""
 
-#: includes/shortcodes/nasa_20_instagram.php:78
+#: includes/shortcodes/nasa_20_instagram.php:84
 msgid "7"
 msgstr ""
 
@@ -237,7 +249,7 @@ msgstr ""
 msgid "700ms"
 msgstr ""
 
-#: includes/shortcodes/nasa_20_instagram.php:79
+#: includes/shortcodes/nasa_20_instagram.php:85
 msgid "8"
 msgstr ""
 
@@ -253,7 +265,7 @@ msgstr ""
 msgid "800x800"
 msgstr ""
 
-#: includes/shortcodes/nasa_20_instagram.php:80
+#: includes/shortcodes/nasa_20_instagram.php:86
 msgid "9"
 msgstr ""
 
@@ -276,7 +288,17 @@ msgstr ""
 msgid "about 1 minute ago"
 msgstr ""
 
-#: admin/incls/nasa_05_wc_product_data_fields.php:193
+#: admin/views/html-accessories-product.php:3
+msgid "Accessories"
+msgstr ""
+
+#: admin/views/html-accessories-product.php:15
+msgid ""
+"Accessories are suggested products purchased with the current product. Note: "
+"Only use for Simple product"
+msgstr ""
+
+#: admin/incls/nasa_05_wc_product_data_fields.php:195
 msgid "Add Gallery Images"
 msgstr ""
 
@@ -284,7 +306,7 @@ msgstr ""
 msgid "Add Group"
 msgstr ""
 
-#: admin/incls/nasa_05_wc_product_data_fields.php:189
+#: admin/incls/nasa_05_wc_product_data_fields.php:191
 msgid "Add images to variation gallery"
 msgstr ""
 
@@ -350,11 +372,11 @@ msgstr ""
 msgid "Add static block to Header"
 msgstr ""
 
-#: includes/incls/nasa_07_wc_attr_ux.php:59
+#: includes/incls/nasa_07_wc_attr_ux.php:63
 msgid "Add to cart"
 msgstr ""
 
-#: admin/incls/nasa_05_wc_product_data_fields.php:190
+#: admin/incls/nasa_05_wc_product_data_fields.php:192
 msgid "Add to gallery"
 msgstr ""
 
@@ -366,15 +388,15 @@ msgstr ""
 msgid "Additional"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:449
+#: includes/shortcodes/nasa_19_others.php:451
 msgid "Address"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:121
+#: includes/shortcodes/nasa_01_1_products.php:122
 msgid "Ajax Infinite"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:417
+#: includes/shortcodes/nasa_19_others.php:419
 msgid "Align"
 msgstr ""
 
@@ -397,6 +419,7 @@ msgstr ""
 msgid "ALL PORTFOLIOS LOADED"
 msgstr ""
 
+#: includes/shortcodes/nasa_01_1_products_masonry.php:71
 #: includes/layouts/products/nasa_products/infinite.php:26
 msgid "ALL PRODUCTS LOADED"
 msgstr ""
@@ -419,7 +442,7 @@ msgstr ""
 msgid "API Key"
 msgstr ""
 
-#: admin/incls/nasa_05_wc_product_data_fields.php:362
+#: admin/incls/nasa_05_wc_product_data_fields.php:364
 msgid "Are you sure to delete image ?"
 msgstr ""
 
@@ -466,7 +489,7 @@ msgstr ""
 msgid "Available:"
 msgstr ""
 
-#: includes/shortcodes/nasa_17_team_members.php:102
+#: includes/shortcodes/nasa_17_team_members.php:104
 msgid "Avatar"
 msgstr ""
 
@@ -483,13 +506,13 @@ msgstr ""
 msgid "Background for breadcrumb"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:283
-#: includes/shortcodes/nasa_01_8_pin_material_banner.php:173
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:286
+#: includes/shortcodes/nasa_01_8_pin_material_banner.php:176
 msgid "Background icon"
 msgstr ""
 
 #: includes/shortcodes/nasa_18_title.php:108
-#: includes/shortcodes/nasa_19_others.php:581
+#: includes/shortcodes/nasa_19_others.php:583
 msgid "Background title"
 msgstr ""
 
@@ -514,6 +537,7 @@ msgid "Banner Width"
 msgstr ""
 
 #: includes/shortcodes/nasa_01_1_products.php:102
+#: includes/shortcodes/nasa_01_1_products_masonry.php:109
 #: includes/shortcodes/nasa_01_4_products_deal.php:151
 #: includes/layouts/products/nasa_products/carousel.php:46
 msgid "Best Selling"
@@ -523,11 +547,11 @@ msgstr ""
 msgid "Black"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:627
+#: includes/shortcodes/nasa_19_others.php:629
 msgid "Blank"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:333
+#: includes/shortcodes/nasa_19_others.php:335
 msgid "Blank - New Window"
 msgstr ""
 
@@ -539,8 +563,8 @@ msgstr ""
 msgid "Blocks"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:299
-#: includes/shortcodes/nasa_01_8_pin_material_banner.php:189
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:302
+#: includes/shortcodes/nasa_01_8_pin_material_banner.php:192
 msgid "Border color icon"
 msgstr ""
 
@@ -552,10 +576,15 @@ msgstr ""
 msgid "Border outner"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:211
+#: admin/incls/nasa_04_custom_setting.php:219
 #: includes/shortcodes/nasa_04_banners.php:185
 #: includes/shortcodes/nasa_08_post.php:263
 msgid "Bottom"
+msgstr ""
+
+#: admin/views/pin-mb-admin-editor.php:180
+#: admin/views/pin-pb-admin-editor.php:250
+msgid "Bottom of Pin"
 msgstr ""
 
 #: admin/incls/nasa_06_wc_term_data_fields.php:201
@@ -603,31 +632,31 @@ msgstr ""
 msgid "Button text."
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:358
+#: includes/shortcodes/nasa_19_others.php:360
 msgid "Buzz"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:47
+#: admin/incls/nasa_04_custom_setting.php:55
 msgid "Cache Empty!"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:23
+#: admin/incls/nasa_04_custom_setting.php:31
 msgid "Cache file."
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:30
+#: admin/incls/nasa_04_custom_setting.php:38
 msgid "Cache Shortcodes"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:31
+#: admin/incls/nasa_04_custom_setting.php:39
 msgid "Cache Shortcodes (Apply with Enable Cache file)."
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:38
+#: admin/incls/nasa_04_custom_setting.php:46
 msgid "Cache Variable Loop Products"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:39
+#: admin/incls/nasa_04_custom_setting.php:47
 msgid "Cache Variable Loop Products (Apply with Enable Cache file)."
 msgstr ""
 
@@ -635,7 +664,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:119
+#: includes/shortcodes/nasa_01_1_products.php:120
 #: includes/shortcodes/nasa_01_9_products_by_ids.php:101
 #: includes/shortcodes/nasa_04_banners.php:244
 #: includes/shortcodes/nasa_11_brands.php:99
@@ -662,8 +691,8 @@ msgstr ""
 #: includes/shortcodes/nasa_04_banners.php:159
 #: includes/shortcodes/nasa_04_banners.php:195
 #: includes/shortcodes/nasa_18_title.php:140
-#: includes/shortcodes/nasa_19_others.php:611
-#: includes/shortcodes/nasa_19_others.php:667
+#: includes/shortcodes/nasa_19_others.php:613
+#: includes/shortcodes/nasa_19_others.php:669
 msgid "Center"
 msgstr ""
 
@@ -682,35 +711,35 @@ msgstr ""
 msgid "Choose an image"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:387
+#: includes/shortcodes/nasa_19_others.php:389
 msgid "Choose Avatar image."
 msgstr ""
 
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:286
-#: includes/shortcodes/nasa_01_8_pin_material_banner.php:176
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:289
+#: includes/shortcodes/nasa_01_8_pin_material_banner.php:179
 msgid "Choose Background color."
 msgstr ""
 
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:302
-#: includes/shortcodes/nasa_01_8_pin_material_banner.php:192
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:305
+#: includes/shortcodes/nasa_01_8_pin_material_banner.php:195
 msgid "Choose border color."
 msgstr ""
 
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:294
-#: includes/shortcodes/nasa_01_8_pin_material_banner.php:184
-#: includes/shortcodes/nasa_19_others.php:406
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:297
+#: includes/shortcodes/nasa_01_8_pin_material_banner.php:187
+#: includes/shortcodes/nasa_19_others.php:408
 msgid "Choose text color."
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:47
+#: admin/incls/nasa_04_custom_setting.php:55
 msgid "Clear Cache"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:47
+#: admin/incls/nasa_04_custom_setting.php:55
 msgid "Clear Cache Success !"
 msgstr ""
 
-#: includes/incls/nasa_02_functions.php:914
+#: includes/incls/nasa_02_functions.php:911
 msgid "Close"
 msgstr ""
 
@@ -721,7 +750,7 @@ msgid "Color"
 msgstr ""
 
 #: includes/shortcodes/nasa_18_title.php:88
-#: includes/shortcodes/nasa_19_others.php:560
+#: includes/shortcodes/nasa_19_others.php:562
 msgid "Color title"
 msgstr ""
 
@@ -729,7 +758,7 @@ msgstr ""
 msgid "Column"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:280
+#: includes/shortcodes/nasa_01_1_products.php:281
 #: includes/shortcodes/nasa_01_2_products_viewed.php:100
 #: includes/shortcodes/nasa_01_4_products_special_deal.php:147
 #: includes/shortcodes/nasa_01_9_products_by_ids.php:109
@@ -738,7 +767,7 @@ msgstr ""
 msgid "Columns number"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:289
+#: includes/shortcodes/nasa_01_1_products.php:290
 #: includes/shortcodes/nasa_01_2_products_viewed.php:109
 #: includes/shortcodes/nasa_01_4_products_special_deal.php:163
 #: includes/shortcodes/nasa_01_6_product_categories.php:391
@@ -748,7 +777,7 @@ msgstr ""
 msgid "Columns number small"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:304
+#: includes/shortcodes/nasa_01_1_products.php:305
 #: includes/shortcodes/nasa_01_2_products_viewed.php:118
 #: includes/shortcodes/nasa_01_4_products_special_deal.php:179
 #: includes/shortcodes/nasa_01_6_product_categories.php:410
@@ -763,7 +792,7 @@ msgstr ""
 msgid "Compare"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:441
+#: includes/shortcodes/nasa_19_others.php:443
 msgid "Contact info"
 msgstr ""
 
@@ -783,7 +812,7 @@ msgstr ""
 msgid "Could not found: "
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:646
+#: includes/shortcodes/nasa_19_others.php:648
 msgid "Countdown time"
 msgstr ""
 
@@ -795,27 +824,27 @@ msgstr ""
 msgid "Create an row."
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:649
+#: includes/shortcodes/nasa_19_others.php:651
 msgid "Create Countdown time."
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:444
+#: includes/shortcodes/nasa_19_others.php:446
 msgid "Create info contact, introduce."
 msgstr ""
 
-#: includes/shortcodes/nasa_20_instagram.php:46
+#: includes/shortcodes/nasa_20_instagram.php:52
 msgid "Create info Instagram."
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:487
+#: includes/shortcodes/nasa_19_others.php:489
 msgid "Create info opening time of shop."
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:294
+#: includes/shortcodes/nasa_19_others.php:296
 msgid "Create sevice box."
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:538
+#: includes/shortcodes/nasa_19_others.php:540
 msgid "Create text link custom."
 msgstr ""
 
@@ -831,7 +860,7 @@ msgstr ""
 msgid "Custom Badge Title"
 msgstr ""
 
-#: admin/incls/nasa_03_mega_menu.php:347
+#: admin/incls/nasa_03_mega_menu.php:357
 msgid "Custom Class"
 msgstr ""
 
@@ -843,11 +872,11 @@ msgstr ""
 msgid "Custom width this page"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:664
+#: includes/shortcodes/nasa_19_others.php:666
 msgid "Date align"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:655
+#: includes/shortcodes/nasa_19_others.php:657
 msgid "Date text"
 msgstr ""
 
@@ -855,11 +884,11 @@ msgstr ""
 msgid "Date/Author/Readmore position with description"
 msgstr ""
 
-#: nasa-autoloader.php:65
+#: nasa-autoloader.php:70
 msgid "Day"
 msgstr ""
 
-#: nasa-autoloader.php:58
+#: nasa-autoloader.php:63
 msgid "Days"
 msgstr ""
 
@@ -888,10 +917,10 @@ msgstr ""
 #: admin/incls/nasa_06_wc_term_data_fields.php:319
 #: admin/incls/nasa_06_wc_term_data_fields.php:830
 #: admin/incls/nasa_06_wc_term_data_fields.php:956
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:274
-#: includes/shortcodes/nasa_01_8_pin_material_banner.php:164
-#: includes/shortcodes/nasa_19_others.php:332
-#: includes/shortcodes/nasa_19_others.php:626
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:277
+#: includes/shortcodes/nasa_01_8_pin_material_banner.php:167
+#: includes/shortcodes/nasa_19_others.php:334
+#: includes/shortcodes/nasa_19_others.php:628
 msgid "Default"
 msgstr ""
 
@@ -907,12 +936,12 @@ msgstr ""
 msgid "Delay time animation display text content"
 msgstr ""
 
-#: admin/incls/nasa_05_wc_product_data_fields.php:192
-#: admin/views/variation-admin-template.php:10
+#: admin/incls/nasa_05_wc_product_data_fields.php:194
+#: admin/views/variation-admin-template.php:12
 msgid "Delete"
 msgstr ""
 
-#: admin/incls/nasa_05_wc_product_data_fields.php:191
+#: admin/incls/nasa_05_wc_product_data_fields.php:193
 msgid "Delete image"
 msgstr ""
 
@@ -921,7 +950,7 @@ msgstr ""
 msgid "Description (optional)"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:170
+#: admin/incls/nasa_04_custom_setting.php:178
 msgid "Desktop Columns Count"
 msgstr ""
 
@@ -977,12 +1006,17 @@ msgstr ""
 msgid "Display Google map address"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_8_pin_material_banner.php:147
+#: includes/shortcodes/nasa_01_8_pin_material_banner.php:150
 msgid "Display material pin banner."
 msgstr ""
 
 #: includes/shortcodes/nasa_07_menu_vertical.php:69
 msgid "Display menu is vertical format."
+msgstr ""
+
+#: admin/views/pin-mb-admin-editor.php:176
+#: admin/views/pin-pb-admin-editor.php:246
+msgid "Display Position"
 msgstr ""
 
 #: includes/shortcodes/nasa_08_post.php:104
@@ -998,6 +1032,10 @@ msgstr ""
 msgid "Display products as many format."
 msgstr ""
 
+#: includes/shortcodes/nasa_01_1_products_masonry.php:99
+msgid "Display products as masonry layout."
+msgstr ""
+
 #: includes/shortcodes/nasa_01_9_products_by_ids.php:83
 msgid "Display products by ids."
 msgstr ""
@@ -1006,7 +1044,7 @@ msgstr ""
 msgid "Display products deal."
 msgstr ""
 
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:205
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:208
 msgid "Display products pin banner."
 msgstr ""
 
@@ -1034,7 +1072,7 @@ msgstr ""
 msgid "Display tags cloud (product tag, product categories)."
 msgstr ""
 
-#: includes/shortcodes/nasa_17_team_members.php:82
+#: includes/shortcodes/nasa_17_team_members.php:84
 msgid "Display team members project."
 msgstr ""
 
@@ -1051,7 +1089,7 @@ msgstr ""
 msgid "Display Type of Attribule Image"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:100
+#: admin/incls/nasa_04_custom_setting.php:108
 msgid "Display Type with Image Attribute"
 msgstr ""
 
@@ -1109,14 +1147,14 @@ msgstr ""
 msgid "Effect banner hover."
 msgstr ""
 
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:271
-#: includes/shortcodes/nasa_01_8_pin_material_banner.php:161
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:274
+#: includes/shortcodes/nasa_01_8_pin_material_banner.php:164
 msgid "Effect icons"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:238
+#: admin/incls/nasa_04_custom_setting.php:246
 #: includes/shortcodes/nasa_15_share_follow.php:276
-#: includes/shortcodes/nasa_19_others.php:461
+#: includes/shortcodes/nasa_19_others.php:463
 msgid "Email"
 msgstr ""
 
@@ -1124,59 +1162,63 @@ msgstr ""
 msgid "Email to your friends"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:260
+#: admin/incls/nasa_04_custom_setting.php:268
 msgid "Email URL"
 msgstr ""
 
-#: includes/shortcodes/nasa_17_team_members.php:63
+#: includes/shortcodes/nasa_17_team_members.php:65
 msgid "Email:"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:130
+#: admin/incls/nasa_04_custom_setting.php:138
 #: includes/shortcodes/nasa_02_carousel.php:90
 #: includes/shortcodes/nasa_02_carousel.php:100
 #: includes/shortcodes/nasa_02_carousel.php:149
 msgid "Enable"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:22
+#: admin/incls/nasa_04_custom_setting.php:30
 msgid "Enable Cache file"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:54
+#: admin/incls/nasa_04_custom_setting.php:62
 msgid "Enable Effect Pin Space (Pin Products Banner)"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:129
+#: admin/incls/nasa_04_custom_setting.php:137
 msgid "Enable Gallery for Variation"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:146
+#: admin/incls/nasa_04_custom_setting.php:22
+msgid "Enable Mobile Layout"
+msgstr ""
+
+#: admin/incls/nasa_04_custom_setting.php:154
 msgid "Enable Recommend Products"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:148
+#: admin/incls/nasa_04_custom_setting.php:156
 msgid "Enable Recommend Products."
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:62
-#: admin/incls/nasa_04_custom_setting.php:63
+#: admin/incls/nasa_04_custom_setting.php:70
+#: admin/incls/nasa_04_custom_setting.php:71
 msgid "Enable Size Guide Product"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:84
+#: admin/incls/nasa_04_custom_setting.php:92
 msgid "Enable UX Variations"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:92
+#: admin/incls/nasa_04_custom_setting.php:100
 msgid "Enable UX Variations With Type Select"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:93
+#: admin/incls/nasa_04_custom_setting.php:101
 msgid "Enable UX Variations With Type Select In Loop Product."
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:85
+#: admin/incls/nasa_04_custom_setting.php:93
 msgid "Enable UX Variations."
 msgstr ""
 
@@ -1199,17 +1241,17 @@ msgstr ""
 msgid "Enter badge label (NEW, HOT etc...)."
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:316
+#: includes/shortcodes/nasa_19_others.php:318
 msgid ""
 "Enter icon class name. Support Font Awesome, Font Pe 7 Stroke (http://themes-"
 "pixeden.com/font-demos/7-stroke/), "
 msgstr ""
 
-#: includes/shortcodes/nasa_17_team_members.php:109
+#: includes/shortcodes/nasa_17_team_members.php:111
 msgid "Enter image size. Example in pixels: 200x100 (Width x Height)."
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:399
+#: includes/shortcodes/nasa_19_others.php:401
 msgid "Enter job."
 msgstr ""
 
@@ -1218,19 +1260,19 @@ msgid ""
 "Enter links for each slide here. Divide links with linebreaks (Enter) . "
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:393
+#: includes/shortcodes/nasa_19_others.php:395
 msgid "Enter name."
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:309
+#: includes/shortcodes/nasa_19_others.php:311
 msgid "Enter service Description."
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:323
+#: includes/shortcodes/nasa_19_others.php:325
 msgid "Enter service link."
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:303
+#: includes/shortcodes/nasa_19_others.php:305
 msgid "Enter service title."
 msgstr ""
 
@@ -1254,34 +1296,35 @@ msgstr ""
 msgid "Enter your title"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:47
+#: admin/incls/nasa_04_custom_setting.php:55
 msgid "Error!"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:379
+#: includes/shortcodes/nasa_19_others.php:381
 msgid "Ex: Customers say about us."
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:46
+#: admin/incls/nasa_04_custom_setting.php:54
 msgid "Expire Time (Seconds - Expire time live file.)"
 msgstr ""
 
 #: includes/shortcodes/nasa_01_6_product_categories.php:460
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:307
-#: includes/shortcodes/nasa_01_8_pin_material_banner.php:197
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:310
+#: includes/shortcodes/nasa_01_8_pin_material_banner.php:200
 #: includes/shortcodes/nasa_04_banners.php:302
 #: includes/shortcodes/nasa_06_1_menu_mega.php:81
 #: includes/shortcodes/nasa_06_2_menu_root.php:79
 #: includes/shortcodes/nasa_07_menu_vertical.php:101
 #: includes/shortcodes/nasa_13_feedburner.php:109
 #: includes/shortcodes/nasa_16_static_block.php:85
-#: includes/shortcodes/nasa_17_team_members.php:120
-#: includes/shortcodes/nasa_19_others.php:473
-#: includes/shortcodes/nasa_20_instagram.php:88
+#: includes/shortcodes/nasa_17_team_members.php:122
+#: includes/shortcodes/nasa_19_others.php:475
+#: includes/shortcodes/nasa_20_instagram.php:127
 msgid "Extra Class"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:329
+#: includes/shortcodes/nasa_01_1_products.php:330
+#: includes/shortcodes/nasa_01_1_products_masonry.php:156
 #: includes/shortcodes/nasa_01_2_products_viewed.php:152
 #: includes/shortcodes/nasa_01_3_products_main_extra.php:136
 #: includes/shortcodes/nasa_01_4_products_deal.php:178
@@ -1294,10 +1337,10 @@ msgstr ""
 #: includes/shortcodes/nasa_15_share_follow.php:234
 #: includes/shortcodes/nasa_15_share_follow.php:316
 #: includes/shortcodes/nasa_18_title.php:163
-#: includes/shortcodes/nasa_19_others.php:364
-#: includes/shortcodes/nasa_19_others.php:429
-#: includes/shortcodes/nasa_19_others.php:634
-#: includes/shortcodes/nasa_19_others.php:689
+#: includes/shortcodes/nasa_19_others.php:366
+#: includes/shortcodes/nasa_19_others.php:431
+#: includes/shortcodes/nasa_19_others.php:636
+#: includes/shortcodes/nasa_19_others.php:691
 msgid "Extra class name"
 msgstr ""
 
@@ -1305,12 +1348,12 @@ msgstr ""
 msgid "Extra Class Name Header"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:236
+#: admin/incls/nasa_04_custom_setting.php:244
 #: includes/shortcodes/nasa_15_share_follow.php:266
 msgid "Facebook"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:244
+#: admin/incls/nasa_04_custom_setting.php:252
 msgid "Facebook URL Follow"
 msgstr ""
 
@@ -1364,6 +1407,7 @@ msgid "Featured"
 msgstr ""
 
 #: includes/shortcodes/nasa_01_1_products.php:103
+#: includes/shortcodes/nasa_01_1_products_masonry.php:110
 #: includes/shortcodes/nasa_01_4_products_deal.php:152
 msgid "Featured Products"
 msgstr ""
@@ -1402,7 +1446,7 @@ msgstr ""
 msgid "Flickr ID"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:308
+#: admin/incls/nasa_04_custom_setting.php:316
 msgid "Flickr URL Follow"
 msgstr ""
 
@@ -1410,7 +1454,7 @@ msgstr ""
 msgid "Flip Horizontal"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:357
+#: includes/shortcodes/nasa_19_others.php:359
 msgid "Fly"
 msgstr ""
 
@@ -1434,7 +1478,7 @@ msgstr ""
 msgid "Follow us on Twitter"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:677
+#: includes/shortcodes/nasa_19_others.php:679
 msgid "Font size"
 msgstr ""
 
@@ -1455,11 +1499,11 @@ msgid "Footer Type"
 msgstr ""
 
 #: includes/shortcodes/nasa_18_title.php:118
-#: includes/shortcodes/nasa_19_others.php:591
+#: includes/shortcodes/nasa_19_others.php:593
 msgid "Full"
 msgstr ""
 
-#: admin/incls/nasa_03_mega_menu.php:280
+#: admin/incls/nasa_03_mega_menu.php:290
 msgid "Full Width"
 msgstr ""
 
@@ -1476,7 +1520,7 @@ msgstr ""
 msgid "Google map"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:118
+#: includes/shortcodes/nasa_01_1_products.php:119
 #: includes/shortcodes/nasa_01_9_products_by_ids.php:100
 #: includes/shortcodes/nasa_11_brands.php:100
 msgid "Grid"
@@ -1491,27 +1535,27 @@ msgid "Grid style 2"
 msgstr ""
 
 #: includes/shortcodes/nasa_18_title.php:97
-#: includes/shortcodes/nasa_19_others.php:570
+#: includes/shortcodes/nasa_19_others.php:572
 msgid "H1"
 msgstr ""
 
 #: includes/shortcodes/nasa_18_title.php:98
-#: includes/shortcodes/nasa_19_others.php:571
+#: includes/shortcodes/nasa_19_others.php:573
 msgid "H2"
 msgstr ""
 
 #: includes/shortcodes/nasa_18_title.php:99
-#: includes/shortcodes/nasa_19_others.php:572
+#: includes/shortcodes/nasa_19_others.php:574
 msgid "H3"
 msgstr ""
 
 #: includes/shortcodes/nasa_18_title.php:100
-#: includes/shortcodes/nasa_19_others.php:573
+#: includes/shortcodes/nasa_19_others.php:575
 msgid "H4"
 msgstr ""
 
 #: includes/shortcodes/nasa_18_title.php:101
-#: includes/shortcodes/nasa_19_others.php:574
+#: includes/shortcodes/nasa_19_others.php:576
 msgid "H5"
 msgstr ""
 
@@ -1646,11 +1690,11 @@ msgstr ""
 msgid "HOT"
 msgstr ""
 
-#: nasa-autoloader.php:69
+#: nasa-autoloader.php:74
 msgid "Hour"
 msgstr ""
 
-#: nasa-autoloader.php:62
+#: nasa-autoloader.php:67
 msgid "Hours"
 msgstr ""
 
@@ -1665,15 +1709,15 @@ msgstr ""
 msgid "https://nasatheme.com"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:314
+#: includes/shortcodes/nasa_19_others.php:316
 msgid "Icon"
 msgstr ""
 
-#: admin/incls/nasa_03_mega_menu.php:287
+#: admin/incls/nasa_03_mega_menu.php:297
 msgid "Icon Menu "
 msgstr ""
 
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:231
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:234
 msgid "Icon Show Full Price"
 msgstr ""
 
@@ -1685,15 +1729,16 @@ msgid ""
 "the new user&#8217;s details will be necessary."
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:331
+#: includes/shortcodes/nasa_01_1_products.php:332
+#: includes/shortcodes/nasa_01_1_products_masonry.php:158
 #: includes/shortcodes/nasa_01_2_products_viewed.php:154
 #: includes/shortcodes/nasa_01_3_products_main_extra.php:138
 #: includes/shortcodes/nasa_01_4_products_deal.php:180
 #: includes/shortcodes/nasa_01_4_products_special_deal.php:241
 #: includes/shortcodes/nasa_01_5_product_tags.php:103
 #: includes/shortcodes/nasa_01_6_product_categories.php:462
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:309
-#: includes/shortcodes/nasa_01_8_pin_material_banner.php:199
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:312
+#: includes/shortcodes/nasa_01_8_pin_material_banner.php:202
 #: includes/shortcodes/nasa_01_9_products_by_ids.php:139
 #: includes/shortcodes/nasa_02_carousel.php:172
 #: includes/shortcodes/nasa_04_banners.php:304
@@ -1705,12 +1750,12 @@ msgstr ""
 #: includes/shortcodes/nasa_15_share_follow.php:236
 #: includes/shortcodes/nasa_15_share_follow.php:318
 #: includes/shortcodes/nasa_16_static_block.php:87
-#: includes/shortcodes/nasa_17_team_members.php:122
+#: includes/shortcodes/nasa_17_team_members.php:124
 #: includes/shortcodes/nasa_18_title.php:165
-#: includes/shortcodes/nasa_19_others.php:366
-#: includes/shortcodes/nasa_19_others.php:431
-#: includes/shortcodes/nasa_19_others.php:636
-#: includes/shortcodes/nasa_19_others.php:691
+#: includes/shortcodes/nasa_19_others.php:368
+#: includes/shortcodes/nasa_19_others.php:433
+#: includes/shortcodes/nasa_19_others.php:638
+#: includes/shortcodes/nasa_19_others.php:693
 msgid ""
 "If you wish to style particular content element differently, then use this "
 "field to add a class name and then refer to it in your css file."
@@ -1721,7 +1766,7 @@ msgstr ""
 msgid "Image"
 msgstr ""
 
-#: admin/incls/nasa_03_mega_menu.php:308
+#: admin/incls/nasa_03_mega_menu.php:318
 msgid "Image Megamenu"
 msgstr ""
 
@@ -1733,7 +1778,7 @@ msgstr ""
 msgid "Image Simple Slide"
 msgstr ""
 
-#: includes/shortcodes/nasa_17_team_members.php:107
+#: includes/shortcodes/nasa_17_team_members.php:109
 msgid "Image size"
 msgstr ""
 
@@ -1765,27 +1810,27 @@ msgstr ""
 msgid "Input categories slug Divide links with \",\""
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:261
+#: admin/incls/nasa_04_custom_setting.php:269
 msgid "Input Email follow here."
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:245
+#: admin/incls/nasa_04_custom_setting.php:253
 msgid "Input Facebook link follow here."
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:309
+#: admin/incls/nasa_04_custom_setting.php:317
 msgid "Input Flickr link follow here."
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:277
+#: admin/incls/nasa_04_custom_setting.php:285
 msgid "Input instagram link follow here."
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:164
+#: admin/incls/nasa_04_custom_setting.php:172
 msgid "Input Limit Number of Visible Recommended Products."
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:293
+#: admin/incls/nasa_04_custom_setting.php:301
 msgid "Input Linkedin link follow here."
 msgstr ""
 
@@ -1797,33 +1842,34 @@ msgstr ""
 msgid "Input Material"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:269
+#: admin/incls/nasa_04_custom_setting.php:277
 msgid "Input pinterest link follow here."
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:285
+#: admin/incls/nasa_04_custom_setting.php:293
 msgid "Input RSS link follow here."
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:317
+#: admin/incls/nasa_04_custom_setting.php:325
 msgid "Input Telegram link follow here."
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:324
+#: includes/shortcodes/nasa_01_1_products.php:325
+#: includes/shortcodes/nasa_01_1_products_masonry.php:151
 #: includes/shortcodes/nasa_01_3_products_main_extra.php:119
 #: includes/shortcodes/nasa_01_4_products_special_deal.php:89
 msgid "Input the category name here."
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:253
+#: admin/incls/nasa_04_custom_setting.php:261
 msgid "Input Twitter link follow here."
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:325
+#: admin/incls/nasa_04_custom_setting.php:333
 msgid "Input Whatsapp link follow here."
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:301
+#: admin/incls/nasa_04_custom_setting.php:309
 msgid "Input Youtube link follow here."
 msgstr ""
 
@@ -1832,7 +1878,7 @@ msgid "Insert a style row padding."
 msgstr ""
 
 #: includes/shortcodes/nasa_15_share_follow.php:281
-#: includes/shortcodes/nasa_20_instagram.php:43
+#: includes/shortcodes/nasa_20_instagram.php:49
 msgid "Instagram"
 msgstr ""
 
@@ -1854,7 +1900,7 @@ msgstr ""
 msgid "Instagram Image"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:276
+#: admin/incls/nasa_04_custom_setting.php:284
 msgid "Instagram URL Follow"
 msgstr ""
 
@@ -1898,7 +1944,7 @@ msgid "Label search"
 msgstr ""
 
 #: includes/shortcodes/nasa_15_share_follow.php:229
-#: includes/shortcodes/nasa_19_others.php:681
+#: includes/shortcodes/nasa_19_others.php:683
 msgid "Large"
 msgstr ""
 
@@ -1906,23 +1952,37 @@ msgstr ""
 msgid "Lat"
 msgstr ""
 
+#: includes/shortcodes/nasa_01_1_products_masonry.php:123
 #: includes/shortcodes/nasa_11_brands.php:96
 msgid "Layout"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:185
+#: includes/shortcodes/nasa_01_1_products_masonry.php:126
+msgid "Layout type 1 (Limit 18 items)"
+msgstr ""
+
+#: includes/shortcodes/nasa_01_1_products_masonry.php:127
+msgid "Layout type 2 (Limit 16 items)"
+msgstr ""
+
+#: includes/shortcodes/nasa_01_1_products.php:186
 #: includes/shortcodes/nasa_02_carousel.php:80
 #: includes/shortcodes/nasa_04_banners.php:158
 #: includes/shortcodes/nasa_04_banners.php:194
 #: includes/shortcodes/nasa_07_menu_vertical.php:92
 #: includes/shortcodes/nasa_18_title.php:139
-#: includes/shortcodes/nasa_19_others.php:610
-#: includes/shortcodes/nasa_19_others.php:668
+#: includes/shortcodes/nasa_19_others.php:612
+#: includes/shortcodes/nasa_19_others.php:670
 msgid "Left"
 msgstr ""
 
 #: includes/shortcodes/nasa_04_banners.php:271
 msgid "Left alignment"
+msgstr ""
+
+#: admin/views/pin-mb-admin-editor.php:181
+#: admin/views/pin-pb-admin-editor.php:251
+msgid "Left of Pin"
 msgstr ""
 
 #: admin/incls/nasa_02_metabox.php:325
@@ -1933,15 +1993,15 @@ msgstr ""
 msgid "Limit deal products"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:112
+#: admin/incls/nasa_04_custom_setting.php:120
 msgid "Limit in product grid"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:162
+#: admin/incls/nasa_04_custom_setting.php:170
 msgid "Limit Number of Visible Recommended Products"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:113
+#: admin/incls/nasa_04_custom_setting.php:121
 msgid ""
 "Limit show variations/1 attribute in product grid. Empty input to show all"
 msgstr ""
@@ -1950,7 +2010,7 @@ msgstr ""
 msgid "Link"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:552
+#: includes/shortcodes/nasa_19_others.php:554
 msgid "Link text"
 msgstr ""
 
@@ -1962,11 +2022,11 @@ msgstr ""
 msgid "Linkedin"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:292
+#: admin/incls/nasa_04_custom_setting.php:300
 msgid "Linkedin URL Follow"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:122
+#: includes/shortcodes/nasa_01_1_products.php:123
 #: includes/shortcodes/nasa_08_post.php:123
 msgid "List"
 msgstr ""
@@ -1975,7 +2035,7 @@ msgstr ""
 msgid "List Blocks"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:123
+#: includes/shortcodes/nasa_01_1_products.php:124
 msgid "List Carousel"
 msgstr ""
 
@@ -1996,6 +2056,11 @@ msgstr ""
 msgid "LOAD MORE"
 msgstr ""
 
+#: includes/shortcodes/nasa_01_1_products_masonry.php:135
+msgid "Load More"
+msgstr ""
+
+#: includes/shortcodes/nasa_01_1_products_masonry.php:71
 #: includes/layouts/products/nasa_products/infinite.php:29
 msgid "LOAD MORE ..."
 msgstr ""
@@ -2008,7 +2073,7 @@ msgstr ""
 msgid "Loadding random products if not exists list viewed products."
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:122
+#: admin/incls/nasa_04_custom_setting.php:130
 msgid "Loading UX Variations In Loop by Ajax."
 msgstr ""
 
@@ -2040,7 +2105,7 @@ msgstr ""
 msgid "Margin items (Default: 50px)"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:219
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:222
 msgid "Marker style"
 msgstr ""
 
@@ -2048,24 +2113,24 @@ msgstr ""
 msgid "Maximum numbers tag to display (Show all insert \"0\" or \"All\")"
 msgstr ""
 
-#: admin/incls/nasa_03_mega_menu.php:273
+#: admin/incls/nasa_03_mega_menu.php:283
 #: includes/shortcodes/nasa_06_1_menu_mega.php:59
 msgid "Mega Menu"
 msgstr ""
 
-#: includes/shortcodes/nasa_17_team_members.php:116
+#: includes/shortcodes/nasa_17_team_members.php:118
 msgid "Member description"
 msgstr ""
 
-#: includes/shortcodes/nasa_17_team_members.php:92
+#: includes/shortcodes/nasa_17_team_members.php:94
 msgid "Member email"
 msgstr ""
 
-#: includes/shortcodes/nasa_17_team_members.php:114
+#: includes/shortcodes/nasa_17_team_members.php:116
 msgid "Member information"
 msgstr ""
 
-#: includes/shortcodes/nasa_17_team_members.php:87
+#: includes/shortcodes/nasa_17_team_members.php:89
 msgid "Member name"
 msgstr ""
 
@@ -2100,27 +2165,31 @@ msgstr ""
 msgid "Middle"
 msgstr ""
 
-#: nasa-autoloader.php:70
+#: nasa-autoloader.php:75
 msgid "Min"
 msgstr ""
 
-#: nasa-autoloader.php:63
+#: nasa-autoloader.php:68
 msgid "Mins"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:182
+#: admin/incls/nasa_04_custom_setting.php:190
 msgid "Mobile Columns Count"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:277
+#: admin/incls/nasa_04_custom_setting.php:23
+msgid "Mobile Layout."
+msgstr ""
+
+#: includes/shortcodes/nasa_19_others.php:279
 msgid "Monday - Friday"
 msgstr ""
 
-#: nasa-autoloader.php:66
+#: nasa-autoloader.php:71
 msgid "Month"
 msgstr ""
 
-#: nasa-autoloader.php:59
+#: nasa-autoloader.php:64
 msgid "Months"
 msgstr ""
 
@@ -2158,18 +2227,18 @@ msgstr ""
 msgid "Nasa global options"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:137
-#: admin/incls/nasa_04_custom_setting.php:138
+#: admin/incls/nasa_04_custom_setting.php:145
+#: admin/incls/nasa_04_custom_setting.php:146
 msgid "Nasa Options Archive product page"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:219
-#: admin/incls/nasa_04_custom_setting.php:220
+#: admin/incls/nasa_04_custom_setting.php:227
+#: admin/incls/nasa_04_custom_setting.php:228
 msgid "Nasa Options Share & Follow"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:78
-#: admin/incls/nasa_04_custom_setting.php:79
+#: admin/incls/nasa_04_custom_setting.php:86
+#: admin/incls/nasa_04_custom_setting.php:87
 msgid "Nasa UX variations product's variable"
 msgstr ""
 
@@ -2222,12 +2291,13 @@ msgstr ""
 #: admin/incls/nasa_02_metabox.php:68 admin/incls/nasa_02_metabox.php:172
 #: admin/incls/nasa_02_metabox.php:195 admin/incls/nasa_02_metabox.php:218
 #: admin/incls/nasa_02_metabox.php:242 admin/incls/nasa_02_metabox.php:256
+#: includes/shortcodes/nasa_01_1_products_masonry.php:139
 #: includes/shortcodes/nasa_01_2_products_viewed.php:144
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:234
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:252
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:263
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:276
-#: includes/shortcodes/nasa_01_8_pin_material_banner.php:166
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:237
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:255
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:266
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:279
+#: includes/shortcodes/nasa_01_8_pin_material_banner.php:169
 #: includes/shortcodes/nasa_04_banners.php:216
 #: includes/shortcodes/nasa_04_banners.php:282
 #: includes/shortcodes/nasa_04_banners.php:294
@@ -2267,7 +2337,7 @@ msgstr ""
 msgid "No Headers found"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:569
+#: includes/shortcodes/nasa_19_others.php:571
 msgid "No heading"
 msgstr ""
 
@@ -2312,10 +2382,10 @@ msgid "No terms"
 msgstr ""
 
 #: admin/incls/nasa_00_functions.php:55
-#: includes/shortcodes/nasa_01_1_products.php:204
-#: includes/shortcodes/nasa_01_1_products.php:222
-#: includes/shortcodes/nasa_01_1_products.php:240
-#: includes/shortcodes/nasa_01_1_products.php:258
+#: includes/shortcodes/nasa_01_1_products.php:205
+#: includes/shortcodes/nasa_01_1_products.php:223
+#: includes/shortcodes/nasa_01_1_products.php:241
+#: includes/shortcodes/nasa_01_1_products.php:259
 #: includes/shortcodes/nasa_01_2_products_viewed.php:132
 #: includes/shortcodes/nasa_01_4_products_deal.php:134
 #: includes/shortcodes/nasa_01_4_products_deal.php:170
@@ -2336,8 +2406,8 @@ msgstr ""
 #: includes/shortcodes/nasa_04_banners.php:253
 #: includes/shortcodes/nasa_04_banners.php:270
 #: includes/shortcodes/nasa_18_title.php:121
-#: includes/shortcodes/nasa_19_others.php:356
-#: includes/shortcodes/nasa_19_others.php:592
+#: includes/shortcodes/nasa_19_others.php:358
+#: includes/shortcodes/nasa_19_others.php:594
 msgid "None"
 msgstr ""
 
@@ -2361,7 +2431,7 @@ msgstr ""
 msgid "Number columns"
 msgstr ""
 
-#: admin/incls/nasa_03_mega_menu.php:294
+#: admin/incls/nasa_03_mega_menu.php:304
 msgid "Number Columns Mega Menu"
 msgstr ""
 
@@ -2369,11 +2439,11 @@ msgstr ""
 msgid "Number of photos to show:"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:272
+#: includes/shortcodes/nasa_01_1_products.php:273
 msgid "Number of products to show"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:150
+#: includes/shortcodes/nasa_01_1_products.php:151
 msgid "Number row of Slide"
 msgstr ""
 
@@ -2386,6 +2456,7 @@ msgid "Offer End In:"
 msgstr ""
 
 #: includes/shortcodes/nasa_01_1_products.php:105
+#: includes/shortcodes/nasa_01_1_products_masonry.php:112
 #: includes/shortcodes/nasa_01_4_products_deal.php:155
 #: includes/layouts/products/nasa_products/carousel.php:55
 msgid "On Sale"
@@ -2419,31 +2490,31 @@ msgstr ""
 msgid "Only using for Show type is Carousel."
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:145
+#: includes/shortcodes/nasa_01_1_products.php:146
 msgid "Only using for Style is Ajax Infinite."
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:177
+#: includes/shortcodes/nasa_01_1_products.php:178
 msgid "Only using for Style is Carousel 1 row."
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:231
+#: includes/shortcodes/nasa_01_1_products.php:232
 msgid "Only using for Style is Carousel or Simple Slide."
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:267
+#: includes/shortcodes/nasa_01_1_products.php:268
 msgid "Only using for Style is Carousel or Slide."
 msgstr ""
 
 #: includes/shortcodes/nasa_01_1_products.php:93
-#: includes/shortcodes/nasa_01_1_products.php:165
-#: includes/shortcodes/nasa_01_1_products.php:195
-#: includes/shortcodes/nasa_01_1_products.php:213
-#: includes/shortcodes/nasa_01_1_products.php:249
+#: includes/shortcodes/nasa_01_1_products.php:166
+#: includes/shortcodes/nasa_01_1_products.php:196
+#: includes/shortcodes/nasa_01_1_products.php:214
+#: includes/shortcodes/nasa_01_1_products.php:250
 msgid "Only using for Style is Carousel."
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:484
+#: includes/shortcodes/nasa_19_others.php:486
 msgid "Opening time"
 msgstr ""
 
@@ -2586,16 +2657,12 @@ msgstr ""
 msgid "Parent Tag:"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:455
+#: includes/shortcodes/nasa_19_others.php:457
 msgid "Phone"
 msgstr ""
 
 #: includes/widgets/nasa_02_flickr.php:16
 msgid "Photos from flickr."
-msgstr ""
-
-#: includes/shortcodes/nasa_20_instagram.php:72
-msgid "Picture numbers"
 msgstr ""
 
 #: post_type/incls/nasa_05_pin_material_banner.php:6
@@ -2612,12 +2679,12 @@ msgstr ""
 msgid "Pin products banner"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:239
+#: admin/incls/nasa_04_custom_setting.php:247
 #: includes/shortcodes/nasa_15_share_follow.php:271
 msgid "Pinterest"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:268
+#: admin/incls/nasa_04_custom_setting.php:276
 msgid "Pinterest URL Follow"
 msgstr ""
 
@@ -2638,16 +2705,16 @@ msgstr ""
 msgid "Please Try Again"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:223
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:226
 msgid "Plus icon"
 msgstr ""
 
-#: admin/incls/nasa_03_mega_menu.php:322
-#: includes/shortcodes/nasa_17_team_members.php:97
+#: admin/incls/nasa_03_mega_menu.php:332
+#: includes/shortcodes/nasa_17_team_members.php:99
 msgid "Position"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:170
+#: includes/shortcodes/nasa_01_1_products.php:171
 msgid "Position Title | Navigation (Only use for Style is Carousel 1 row)"
 msgstr ""
 
@@ -2706,7 +2773,7 @@ msgstr ""
 msgid "Prev Deal"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:222
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:225
 msgid "Price icon"
 msgstr ""
 
@@ -2722,7 +2789,8 @@ msgstr ""
 msgid "Product Categories"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:320
+#: includes/shortcodes/nasa_01_1_products.php:321
+#: includes/shortcodes/nasa_01_1_products_masonry.php:147
 #: includes/shortcodes/nasa_01_3_products_main_extra.php:115
 #: includes/shortcodes/nasa_01_4_products_special_deal.php:86
 msgid "Product Category"
@@ -2780,7 +2848,11 @@ msgstr ""
 msgid "Products Main Extra"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:205
+#: includes/shortcodes/nasa_01_1_products_masonry.php:96
+msgid "Products Masonry"
+msgstr ""
+
+#: admin/incls/nasa_04_custom_setting.php:213
 msgid "Products Position"
 msgstr ""
 
@@ -2815,11 +2887,13 @@ msgid "Recent"
 msgstr ""
 
 #: includes/shortcodes/nasa_01_1_products.php:101
+#: includes/shortcodes/nasa_01_1_products_masonry.php:108
 #: includes/shortcodes/nasa_01_4_products_deal.php:154
 msgid "Recent Products"
 msgstr ""
 
 #: includes/shortcodes/nasa_01_1_products.php:106
+#: includes/shortcodes/nasa_01_1_products_masonry.php:113
 #: includes/shortcodes/nasa_01_4_products_deal.php:156
 #: includes/layouts/products/nasa_products/carousel.php:58
 msgid "Recent Review"
@@ -2833,7 +2907,7 @@ msgstr ""
 msgid "Recommend Products"
 msgstr ""
 
-#: admin/incls/nasa_03_mega_menu.php:218
+#: admin/incls/nasa_03_mega_menu.php:228
 #: admin/metabox/helpers/cmb_Meta_Box_types.php:304
 #: admin/metabox/helpers/cmb_Meta_Box_types.php:702
 #: admin/metabox/helpers/cmb_Meta_Box_types.php:763
@@ -2881,14 +2955,14 @@ msgstr ""
 msgid "RETURN TO SHOP"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:186
+#: includes/shortcodes/nasa_01_1_products.php:187
 #: includes/shortcodes/nasa_02_carousel.php:82
 #: includes/shortcodes/nasa_04_banners.php:160
 #: includes/shortcodes/nasa_04_banners.php:196
 #: includes/shortcodes/nasa_07_menu_vertical.php:93
 #: includes/shortcodes/nasa_18_title.php:141
-#: includes/shortcodes/nasa_19_others.php:612
-#: includes/shortcodes/nasa_19_others.php:669
+#: includes/shortcodes/nasa_19_others.php:614
+#: includes/shortcodes/nasa_19_others.php:671
 msgid "Right"
 msgstr ""
 
@@ -2898,6 +2972,11 @@ msgstr ""
 
 #: includes/incls/nasa_02_functions.php:443
 msgid "right now"
+msgstr ""
+
+#: admin/views/pin-mb-admin-editor.php:179
+#: admin/views/pin-pb-admin-editor.php:249
+msgid "Right of Pin"
 msgstr ""
 
 #: includes/shortcodes/nasa_12_google_maps.php:174
@@ -2912,12 +2991,12 @@ msgstr ""
 msgid "Root Product Category. (Use for Multi stores)"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:359
+#: includes/shortcodes/nasa_19_others.php:361
 msgid "Rotate"
 msgstr ""
 
 #: admin/incls/nasa_02_metabox.php:48
-#: admin/incls/nasa_04_custom_setting.php:105
+#: admin/incls/nasa_04_custom_setting.php:113
 #: admin/incls/nasa_06_wc_term_data_fields.php:154
 msgid "Round"
 msgstr ""
@@ -2930,7 +3009,7 @@ msgstr ""
 msgid "RSS"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:284
+#: admin/incls/nasa_04_custom_setting.php:292
 msgid "RSS URL Follow"
 msgstr ""
 
@@ -2938,15 +3017,15 @@ msgstr ""
 msgid "SATELLITE"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:278
+#: includes/shortcodes/nasa_19_others.php:280
 msgid "Saturday"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:511
+#: includes/shortcodes/nasa_19_others.php:513
 msgid "Saturday End Time"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:505
+#: includes/shortcodes/nasa_19_others.php:507
 msgid "Saturday Start Time"
 msgstr ""
 
@@ -2976,6 +3055,10 @@ msgstr ""
 msgid "Search Footers"
 msgstr ""
 
+#: admin/views/html-accessories-product.php:4
+msgid "Search for a product&hellip;"
+msgstr ""
+
 #: post_type/incls/nasa_00_header.php:12
 msgid "Search Header"
 msgstr ""
@@ -2989,11 +3072,11 @@ msgstr ""
 msgid "Search Types"
 msgstr ""
 
-#: nasa-autoloader.php:71
+#: nasa-autoloader.php:76
 msgid "Sec"
 msgstr ""
 
-#: nasa-autoloader.php:64
+#: nasa-autoloader.php:69
 msgid "Secs"
 msgstr ""
 
@@ -3025,7 +3108,7 @@ msgstr ""
 msgid "Select columns count in mobile."
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:315
+#: includes/shortcodes/nasa_01_1_products.php:316
 #: includes/shortcodes/nasa_01_2_products_viewed.php:123
 #: includes/shortcodes/nasa_01_4_products_special_deal.php:190
 #: includes/shortcodes/nasa_01_9_products_by_ids.php:132
@@ -3034,7 +3117,7 @@ msgstr ""
 msgid "Select columns count in tablet."
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:300
+#: includes/shortcodes/nasa_01_1_products.php:301
 #: includes/shortcodes/nasa_01_2_products_viewed.php:114
 #: includes/shortcodes/nasa_01_4_products_special_deal.php:174
 #: includes/shortcodes/nasa_01_9_products_by_ids.php:123
@@ -3042,7 +3125,7 @@ msgstr ""
 msgid "Select columns count small display."
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:285
+#: includes/shortcodes/nasa_01_1_products.php:286
 #: includes/shortcodes/nasa_01_2_products_viewed.php:105
 #: includes/shortcodes/nasa_01_4_products_special_deal.php:158
 #: includes/shortcodes/nasa_01_9_products_by_ids.php:114
@@ -3051,11 +3134,11 @@ msgstr ""
 msgid "Select columns count."
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:354
+#: includes/shortcodes/nasa_19_others.php:356
 msgid "Select effect when hover service icon"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:226
+#: admin/incls/nasa_04_custom_setting.php:234
 msgid ""
 "Select icons to be shown on share icons on product page, blog page and "
 "[share] shortcode"
@@ -3069,7 +3152,7 @@ msgstr ""
 msgid "Select initial loading animation for text content."
 msgstr ""
 
-#: includes/incls/nasa_02_functions.php:930
+#: includes/incls/nasa_02_functions.php:927
 msgid "Select Item"
 msgstr ""
 
@@ -3092,11 +3175,11 @@ msgstr ""
 msgid "Select none"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_8_pin_material_banner.php:152
+#: includes/shortcodes/nasa_01_8_pin_material_banner.php:155
 msgid "Select Pin"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:210
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:213
 msgid "Select pin"
 msgstr ""
 
@@ -3104,7 +3187,7 @@ msgstr ""
 msgid "Select source for tag cloud."
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:341
+#: includes/shortcodes/nasa_19_others.php:343
 msgid "Select style type"
 msgstr ""
 
@@ -3121,6 +3204,7 @@ msgid "Select type main product to show."
 msgstr ""
 
 #: includes/shortcodes/nasa_01_1_products.php:111
+#: includes/shortcodes/nasa_01_1_products_masonry.php:118
 msgid "Select type product to show."
 msgstr ""
 
@@ -3136,19 +3220,19 @@ msgstr ""
 msgid "Send us an email"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:291
+#: includes/shortcodes/nasa_19_others.php:293
 msgid "Service box"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:307
+#: includes/shortcodes/nasa_19_others.php:309
 msgid "Service Description"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:320
+#: includes/shortcodes/nasa_19_others.php:322
 msgid "Service link"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:300
+#: includes/shortcodes/nasa_19_others.php:302
 msgid "Service title"
 msgstr ""
 
@@ -3156,7 +3240,7 @@ msgstr ""
 msgid "Share"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:225
+#: admin/incls/nasa_04_custom_setting.php:233
 msgid "Share Icons"
 msgstr ""
 
@@ -3173,7 +3257,7 @@ msgstr ""
 msgid "Shop all"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:200
+#: includes/shortcodes/nasa_01_1_products.php:201
 msgid "Shop url"
 msgstr ""
 
@@ -3181,7 +3265,7 @@ msgstr ""
 msgid "Short description"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:218
+#: includes/shortcodes/nasa_01_1_products.php:219
 #: includes/shortcodes/nasa_01_4_products_deal.php:166
 #: includes/shortcodes/nasa_01_4_products_special_deal.php:215
 #: includes/shortcodes/nasa_01_4_products_special_deal.php:222
@@ -3225,16 +3309,28 @@ msgstr ""
 msgid "Show description"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:236
+#: includes/shortcodes/nasa_01_1_products.php:237
 #: includes/shortcodes/nasa_08_post.php:147
 msgid "Show dots"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:249
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:252
 msgid "Show image"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:260
+#: includes/shortcodes/nasa_20_instagram.php:78
+msgid "Show on DeskTop"
+msgstr ""
+
+#: includes/shortcodes/nasa_20_instagram.php:111
+msgid "Show on Mobile"
+msgstr ""
+
+#: includes/shortcodes/nasa_20_instagram.php:95
+msgid "Show on Tablet"
+msgstr ""
+
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:263
 msgid "Show price"
 msgstr ""
 
@@ -3242,7 +3338,7 @@ msgstr ""
 msgid "Show read more"
 msgstr ""
 
-#: admin/incls/nasa_03_mega_menu.php:335
+#: admin/incls/nasa_03_mega_menu.php:345
 msgid "Show Title"
 msgstr ""
 
@@ -3250,16 +3346,16 @@ msgstr ""
 msgid "Show Type"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:173
+#: includes/shortcodes/nasa_01_1_products.php:174
 msgid "Side"
 msgstr ""
 
 #: includes/shortcodes/nasa_18_title.php:117
-#: includes/shortcodes/nasa_19_others.php:590
+#: includes/shortcodes/nasa_19_others.php:592
 msgid "Simple"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:120
+#: includes/shortcodes/nasa_01_1_products.php:121
 msgid "Simple Slide"
 msgstr ""
 
@@ -3271,11 +3367,11 @@ msgstr ""
 msgid "Size Chars Image"
 msgstr ""
 
-#: includes/incls/nasa_02_functions.php:914
+#: includes/incls/nasa_02_functions.php:911
 msgid "Size Guide"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:71
+#: admin/incls/nasa_04_custom_setting.php:79
 msgid "Size Guide for Product."
 msgstr ""
 
@@ -3283,11 +3379,11 @@ msgstr ""
 msgid "Size guide image"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:70
+#: admin/incls/nasa_04_custom_setting.php:78
 msgid "Size Guide Product"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:254
+#: includes/shortcodes/nasa_01_1_products.php:255
 #: includes/shortcodes/nasa_01_2_products_viewed.php:128
 #: includes/shortcodes/nasa_01_4_products_deal.php:130
 #: includes/shortcodes/nasa_01_6_product_categories.php:448
@@ -3303,11 +3399,11 @@ msgstr ""
 msgid "Slug"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:680
+#: includes/shortcodes/nasa_19_others.php:682
 msgid "Small"
 msgstr ""
 
-#: includes/incls/nasa_07_wc_attr_ux.php:60
+#: includes/incls/nasa_07_wc_attr_ux.php:64
 msgid ""
 "Sorry, no products matched your selection. Please choose a different "
 "combination."
@@ -3330,7 +3426,7 @@ msgid "Specifications"
 msgstr ""
 
 #: admin/incls/nasa_02_metabox.php:49
-#: admin/incls/nasa_04_custom_setting.php:106
+#: admin/incls/nasa_04_custom_setting.php:114
 #: admin/incls/nasa_06_wc_term_data_fields.php:155
 msgid "Square"
 msgstr ""
@@ -3355,26 +3451,26 @@ msgstr ""
 msgid "Sticky"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:115
+#: includes/shortcodes/nasa_01_1_products.php:116
 #: includes/shortcodes/nasa_01_4_products_special_deal.php:94
 #: includes/shortcodes/nasa_01_9_products_by_ids.php:97
 #: includes/shortcodes/nasa_13_feedburner.php:97
 msgid "Style"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:343
+#: includes/shortcodes/nasa_19_others.php:345
 msgid "Style 1"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:344
+#: includes/shortcodes/nasa_19_others.php:346
 msgid "Style 2"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:345
+#: includes/shortcodes/nasa_19_others.php:347
 msgid "Style 3"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:346
+#: includes/shortcodes/nasa_19_others.php:348
 msgid "Style 4"
 msgstr ""
 
@@ -3386,15 +3482,15 @@ msgstr ""
 msgid "Subscribe to RSS"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:279
+#: includes/shortcodes/nasa_19_others.php:281
 msgid "Sunday"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:523
+#: includes/shortcodes/nasa_19_others.php:525
 msgid "Sunday End Time"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:517
+#: includes/shortcodes/nasa_19_others.php:519
 msgid "Sunday Start Time"
 msgstr ""
 
@@ -3402,12 +3498,12 @@ msgstr ""
 msgid "Swith map type"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:193
+#: admin/incls/nasa_04_custom_setting.php:201
 msgid "Tablet Columns Count"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:330
-#: includes/shortcodes/nasa_19_others.php:623
+#: includes/shortcodes/nasa_19_others.php:332
+#: includes/shortcodes/nasa_19_others.php:625
 msgid "Target"
 msgstr ""
 
@@ -3449,7 +3545,7 @@ msgstr ""
 msgid "Telegram"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:316
+#: admin/incls/nasa_04_custom_setting.php:324
 msgid "Telegram URL Follow"
 msgstr ""
 
@@ -3457,23 +3553,23 @@ msgstr ""
 msgid "TERRAIN"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:376
+#: includes/shortcodes/nasa_19_others.php:378
 msgid "Testimonials"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:385
+#: includes/shortcodes/nasa_19_others.php:387
 msgid "Testimonials avatar image"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:397
+#: includes/shortcodes/nasa_19_others.php:399
 msgid "Testimonials job"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:391
+#: includes/shortcodes/nasa_19_others.php:393
 msgid "Testimonials name"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:403
+#: includes/shortcodes/nasa_19_others.php:405
 msgid "Testimonials text color"
 msgstr ""
 
@@ -3490,16 +3586,16 @@ msgstr ""
 msgid "Text color breadcrumb"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:291
-#: includes/shortcodes/nasa_01_8_pin_material_banner.php:181
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:294
+#: includes/shortcodes/nasa_01_8_pin_material_banner.php:184
 msgid "Text color icon"
 msgstr ""
 
-#: includes/shortcodes/nasa_20_instagram.php:65
+#: includes/shortcodes/nasa_20_instagram.php:71
 msgid "Text display"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:535
+#: includes/shortcodes/nasa_19_others.php:537
 msgid "Text link"
 msgstr ""
 
@@ -3561,34 +3657,34 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:182
+#: includes/shortcodes/nasa_01_1_products.php:183
 msgid "Title align (Only use for Style is Carousel)"
 msgstr ""
 
 #: includes/shortcodes/nasa_18_title.php:136
-#: includes/shortcodes/nasa_19_others.php:607
+#: includes/shortcodes/nasa_19_others.php:609
 msgid "Title Alignment"
 msgstr ""
 
 #: includes/shortcodes/nasa_18_title.php:128
-#: includes/shortcodes/nasa_19_others.php:599
+#: includes/shortcodes/nasa_19_others.php:601
 msgid "Title description"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:154
+#: admin/incls/nasa_04_custom_setting.php:162
 msgid "Title for Recommended"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:155
+#: admin/incls/nasa_04_custom_setting.php:163
 msgid "Title for Recommended."
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:566
+#: includes/shortcodes/nasa_19_others.php:568
 msgid "Title heading"
 msgstr ""
 
 #: includes/shortcodes/nasa_18_title.php:114
-#: includes/shortcodes/nasa_19_others.php:587
+#: includes/shortcodes/nasa_19_others.php:589
 msgid "Title HR"
 msgstr ""
 
@@ -3598,7 +3694,7 @@ msgstr ""
 
 #: includes/shortcodes/nasa_01_5_product_tags.php:75
 #: includes/shortcodes/nasa_18_title.php:80
-#: includes/shortcodes/nasa_19_others.php:544
+#: includes/shortcodes/nasa_19_others.php:546
 msgid "Title text"
 msgstr ""
 
@@ -3630,8 +3726,8 @@ msgstr ""
 msgid "Toggle Top Bar"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:210
-#: includes/shortcodes/nasa_01_1_products.php:174
+#: admin/incls/nasa_04_custom_setting.php:218
+#: includes/shortcodes/nasa_01_1_products.php:175
 #: includes/shortcodes/nasa_04_banners.php:183
 #: includes/shortcodes/nasa_08_post.php:262
 msgid "Top"
@@ -3654,34 +3750,41 @@ msgstr ""
 msgid "Top Content"
 msgstr ""
 
+#: admin/views/pin-mb-admin-editor.php:178
+#: admin/views/pin-pb-admin-editor.php:248
+msgid "Top of Pin"
+msgstr ""
+
 #: includes/shortcodes/nasa_01_1_products.php:104
+#: includes/shortcodes/nasa_01_1_products_masonry.php:111
 #: includes/shortcodes/nasa_01_4_products_deal.php:153
 #: includes/layouts/products/nasa_products/carousel.php:52
 msgid "Top Rate"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:237
+#: admin/incls/nasa_04_custom_setting.php:245
 #: includes/shortcodes/nasa_15_share_follow.php:261
 msgid "Twitter"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:252
+#: admin/incls/nasa_04_custom_setting.php:260
 msgid "Twitter URL Follow"
 msgstr ""
 
 #: includes/shortcodes/nasa_01_1_products.php:98
+#: includes/shortcodes/nasa_01_1_products_masonry.php:105
 msgid "Type"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:134
+#: includes/shortcodes/nasa_01_1_products.php:135
 msgid "Type 1"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:135
+#: includes/shortcodes/nasa_01_1_products.php:136
 msgid "Type 2"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:136
+#: includes/shortcodes/nasa_01_1_products.php:137
 msgid "Type 3 - No border"
 msgstr ""
 
@@ -3701,7 +3804,7 @@ msgstr ""
 msgid "Type show for grid"
 msgstr ""
 
-#: includes/shortcodes/nasa_01_1_products.php:131
+#: includes/shortcodes/nasa_01_1_products.php:132
 msgid "Type view more"
 msgstr ""
 
@@ -3717,7 +3820,7 @@ msgstr ""
 msgid "Update Tag"
 msgstr ""
 
-#: admin/incls/nasa_03_mega_menu.php:217
+#: admin/incls/nasa_03_mega_menu.php:227
 msgid "Upload"
 msgstr ""
 
@@ -3752,19 +3855,19 @@ msgstr ""
 msgid "Use image"
 msgstr ""
 
-#: includes/shortcodes/nasa_20_instagram.php:51
+#: includes/shortcodes/nasa_20_instagram.php:57
 msgid "User name"
 msgstr ""
 
-#: includes/shortcodes/nasa_20_instagram.php:58
+#: includes/shortcodes/nasa_20_instagram.php:64
 msgid "User name for display show"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:121
+#: admin/incls/nasa_04_custom_setting.php:129
 msgid "UX Variations Loop by Ajax"
 msgstr ""
 
-#: admin/incls/nasa_05_wc_product_data_fields.php:171
+#: admin/incls/nasa_05_wc_product_data_fields.php:173
 msgid "Variation Image Gallery"
 msgstr ""
 
@@ -3815,23 +3918,23 @@ msgstr ""
 msgid "View Project"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:467
+#: includes/shortcodes/nasa_19_others.php:469
 msgid "Website"
 msgstr ""
 
-#: nasa-autoloader.php:67
+#: nasa-autoloader.php:72
 msgid "Week"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:499
+#: includes/shortcodes/nasa_19_others.php:501
 msgid "Weekdays End Time"
 msgstr ""
 
-#: includes/shortcodes/nasa_19_others.php:493
+#: includes/shortcodes/nasa_19_others.php:495
 msgid "Weekdays Start Time"
 msgstr ""
 
-#: nasa-autoloader.php:60
+#: nasa-autoloader.php:65
 msgid "Weeks"
 msgstr ""
 
@@ -3844,7 +3947,7 @@ msgstr ""
 msgid "Whatsapp"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:324
+#: admin/incls/nasa_04_custom_setting.php:332
 msgid "Whatsapp URL Follow"
 msgstr ""
 
@@ -3861,23 +3964,24 @@ msgstr ""
 msgid "Wrong request"
 msgstr ""
 
-#: nasa-autoloader.php:68
+#: nasa-autoloader.php:73
 msgid "Year"
 msgstr ""
 
-#: nasa-autoloader.php:61
+#: nasa-autoloader.php:66
 msgid "Years"
 msgstr ""
 
 #: admin/incls/nasa_02_metabox.php:67 admin/incls/nasa_02_metabox.php:171
 #: admin/incls/nasa_02_metabox.php:194 admin/incls/nasa_02_metabox.php:217
 #: admin/incls/nasa_02_metabox.php:241 admin/incls/nasa_02_metabox.php:255
+#: includes/shortcodes/nasa_01_1_products_masonry.php:138
 #: includes/shortcodes/nasa_01_2_products_viewed.php:143
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:235
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:253
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:264
-#: includes/shortcodes/nasa_01_7_pin_products_banner.php:275
-#: includes/shortcodes/nasa_01_8_pin_material_banner.php:165
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:238
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:256
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:267
+#: includes/shortcodes/nasa_01_7_pin_products_banner.php:278
+#: includes/shortcodes/nasa_01_8_pin_material_banner.php:168
 #: includes/shortcodes/nasa_04_banners.php:215
 #: includes/shortcodes/nasa_04_banners.php:281
 #: includes/shortcodes/nasa_04_banners.php:293
@@ -3895,10 +3999,10 @@ msgstr ""
 
 #: admin/incls/nasa_02_metabox.php:101 admin/incls/nasa_02_metabox.php:326
 #: admin/incls/nasa_02_metabox.php:362
-#: includes/shortcodes/nasa_01_1_products.php:203
-#: includes/shortcodes/nasa_01_1_products.php:221
-#: includes/shortcodes/nasa_01_1_products.php:239
-#: includes/shortcodes/nasa_01_1_products.php:257
+#: includes/shortcodes/nasa_01_1_products.php:204
+#: includes/shortcodes/nasa_01_1_products.php:222
+#: includes/shortcodes/nasa_01_1_products.php:240
+#: includes/shortcodes/nasa_01_1_products.php:258
 #: includes/shortcodes/nasa_01_2_products_viewed.php:131
 #: includes/shortcodes/nasa_01_4_products_deal.php:133
 #: includes/shortcodes/nasa_01_4_products_deal.php:169
@@ -3914,7 +4018,7 @@ msgstr ""
 msgid "Yes, please"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:55
+#: admin/incls/nasa_04_custom_setting.php:63
 #: admin/incls/nasa_06_wc_term_data_fields.php:440
 #: admin/incls/nasa_06_wc_term_data_fields.php:450
 msgid "Yes, please!"
@@ -3936,7 +4040,7 @@ msgstr ""
 msgid "Youtube"
 msgstr ""
 
-#: admin/incls/nasa_04_custom_setting.php:300
+#: admin/incls/nasa_04_custom_setting.php:308
 msgid "Youtube URL Follow"
 msgstr ""
 

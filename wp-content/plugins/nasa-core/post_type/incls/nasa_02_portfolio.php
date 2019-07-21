@@ -437,20 +437,4 @@ if (!function_exists('nasa_vt_resize')) {
             'height' => $image_src[2]
         );
     }
-
-}
-
-// Script nasa-core
-add_action('wp_enqueue_scripts', 'nasa_portfolio_scripts', 11);
-function nasa_portfolio_scripts() {
-    global $nasa_opt;
-    if(isset($nasa_opt['enable_portfolio']) && !$nasa_opt['enable_portfolio']) {
-        return;
-    }
-    /**
-     * Masonry
-     */
-    if (!wp_script_is('jquery-masonry-isotope')) {
-        wp_enqueue_script('jquery-masonry-isotope', NASA_CORE_PLUGIN_URL . 'assets/js/min/jquery.masonry-isotope.min.js', array('jquery'), null, true);
-    }
 }

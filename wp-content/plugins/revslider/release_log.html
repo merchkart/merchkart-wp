@@ -1,4 +1,28 @@
 <div class="slider-revolution-update-list">
+	<h3 class="version-number">Version 6.0.6 (20th July 2019)</h3>
+	<div class="change"><strong style="font-weight:700">Changes</strong></div>
+	<ul>
+		<li>Changed obsolete function getArrSliders() default value to false, so that template slider are not shown in lists of page builders that still use this obsolete function</li>
+		<li>Added 2nd Instagram crawler method for compatibility with certain servers</li>
+		<li>Added the automatic replacement of spaces to dashes in the Slider Revolution shortcode</li>
+		<li>In the WooCommerce category selection, only tags and cagetories will now be listed</li>
+		<li>Added RevSliderSlide->getParam() for compatibility with certain plugins. Please use RevSliderSlide->get_val() instead</li>
+	</ul>
+	<div class="bugfix"><strong style="font-weight:700">Bugfixes</strong></div>
+	<ul>				
+		<li>Fixed static slide "global layers" settings not showing the selected value in the slide editor after reloading the settings</li>
+		<li>Fixed issue where in old PHP versions an PHP error occured in the update routine</li>
+		<li>Fixed issue where in post/pages, the "Choose Slide Template" option was not saved</li>
+		<li>Fixed alt. image on mobile option not working properly</li>
+		<li>Fixed spike masks on layers not working properly</li>
+		<li>Fixed issue with add_revslider() in combination with library global inclusion not set</li>
+		<li>Fixed issue with WooCommerce slider, where in combination of "In Stock Only" and selecting more than one category created unwanted results</li>
+		<li>Fixed issue with Elementor, where the Slider Revolution Widget was not rendered in frontend</li>
+		<li>Fixed issue in editor, where the preload option for html5 videos was not visible</li>
+		<li>Fixed issue in post/page editor, where saving returned an error when in the slider settings for the added slider, output filter was set to "By Echo Output"</li>
+		<li>Fixed installation/backup complications with the TGM Plugin Activation library</li>
+	</ul>
+	
 	<h3 class="version-number">Version 6.0.5 (16th July 2019)</h3>	
 	<div class="change"><strong style="font-weight:700">Changes</strong></div>
 	<ul>

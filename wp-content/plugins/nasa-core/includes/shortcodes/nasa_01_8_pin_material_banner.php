@@ -71,9 +71,12 @@ function nasa_sc_pin_material_banner($atts, $content = null) {
                 if(!isset($option->coords) || !isset($option->content)) {
                     continue;
                 }
+                
+                $position_show = isset($option->position_show) ? $option->position_show : 'top';
 
                 $data[$pin_rand_id][$k] = array(
                     'marker_pin' => $icon,
+                    'position' => 'nasa-' . $position_show,
                     'content_material' => $option->content,
                     'coords' => $option->coords
                 );
@@ -103,12 +106,12 @@ function nasa_sc_pin_material_banner($atts, $content = null) {
         $content .= '<div class="nasa-inner-wrap nasa-pin-wrap nasa-pin-material-banner-wrap' . $effect_class . '" data-pin="' . esc_attr($data_pin) . '">';
 
         $content .= '<span class="nasa-wrap-relative-image">' .
-            '<img class="nasa_pin_mb_image" src="' . esc_url($image_src) . '" data-easypin_id="' . $pin_rand_id . '" alt="' . esc_attr($pin->post_title) . '" />' .
+            '<img width="' . $_width . '" height="' . $_height . '" class="nasa_pin_mb_image" src="' . esc_url($image_src) . '" data-easypin_id="' . $pin_rand_id . '" alt="' . esc_attr($pin->post_title) . '" />' .
         '</span>';
         $content .= '<div style="display:none;" id="tpl-' . $pin_rand_id . '" class="nasa-easypin-tpl">';
         $content .= 
         '<div class="nasa-popover-clone">' .
-            '<div class="exPopoverContainer' . $popover . '">' .
+            '<div class="exPopoverContainer' . $popover . ' {[position]}">' .
                 '<div class="popBg borderRadius"></div>' .
                 '<div class="popBody">' .
                     '<div class="nasa-material-pin text-center">' .

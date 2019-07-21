@@ -19,6 +19,14 @@ function nasa_custom_option_themes() {
     );
     
     $of_options[] = array(
+        "name" => esc_html__('Enable Mobile Layout', 'nasa-core'),
+        "desc" => esc_html__('Mobile Layout.', 'nasa-core'),
+        "id" => "enable_nasa_mobile",
+        "std" => 0,
+        "type" => "checkbox"
+    );
+    
+    $of_options[] = array(
         "name" => esc_html__('Enable Cache file', 'nasa-core'),
         "desc" => esc_html__('Cache file.', 'nasa-core'),
         "id" => "enable_nasa_cache",

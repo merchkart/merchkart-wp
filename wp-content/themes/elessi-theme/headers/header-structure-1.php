@@ -12,6 +12,7 @@
                     <div class="mobile-menu">
                         <?php elessi_mobile_header(); ?>
                     </div>
+                    
                     <div class="row nasa-hide-for-mobile">
                         <div class="large-12 columns nasa-wrap-event-search">
                             <div class="nasa-relative nasa-elements-wrap nasa-wrap-width-main-menu">

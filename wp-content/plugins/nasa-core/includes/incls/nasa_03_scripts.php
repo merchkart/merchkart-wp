@@ -12,34 +12,6 @@ function nasa_ajax_headers() {
 }
 
 /**
- * Shop Ajax loadMore
- * ========================================================================
- */
-// add_action('wp_ajax_nasa_more_product', 'nasa_loadmore_products');
-// add_action('wp_ajax_nopriv_nasa_more_product', 'nasa_loadmore_products');
-function nasa_loadmore_products() {
-    nasa_ajax_headers();
-    $type = $_REQUEST['type'];
-    $post_per_page = $_REQUEST['post_per_page'];
-    $page = $_REQUEST['page'];
-    $cat = (isset($_REQUEST['cat']) && $_REQUEST['cat'] != '') ? $_REQUEST['cat'] : null;
-    $is_deals = $_REQUEST['is_deals'];
-    $columns_number = $_REQUEST['columns_number'];
-    $columns_number_tablet = $_REQUEST['columns_number_medium'];
-    $columns_number_small = $_REQUEST['columns_number_small'];
-
-    $loop = nasa_woocommerce_query($type, $post_per_page, $cat, $page);
-    if ($loop->found_posts):
-        global $nasa_opt;
-        $start_row = $end_row = '';
-        include NASA_CORE_PRODUCT_LAYOUTS . 'globals/row_layout.php';
-    endif;
-    wp_reset_postdata();
-    
-    die();
-}
-
-/**
  * Shortcode load Ajax All
  */
 add_action('wp_ajax_nasa_load_ajax_all', 'nasa_load_sc_ajax_all');

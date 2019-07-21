@@ -9,6 +9,11 @@ function nasa_includes_files($files = array()) {
 }
 
 /**
+ * Mobile Detect
+ */
+require_once NASA_CORE_PLUGIN_PATH . 'nasa_mobile_detect.php';
+
+/**
  * Abstract files
  */
 nasa_includes_files(glob(NASA_CORE_PLUGIN_PATH . 'abstracts/nasa_*.php'));
@@ -74,6 +79,13 @@ function nasa_core_scripts_libs() {
     }
     
     /**
+     * Masonry isotope
+     */
+    if (!wp_script_is('jquery-masonry-isotope')) {
+        wp_enqueue_script('jquery-masonry-isotope', NASA_CORE_PLUGIN_URL . 'assets/js/min/jquery.masonry-isotope.min.js', array('jquery'), null, true);
+    }
+    
+    /**
      * Owl-Carousel
      */
     if(!wp_script_is('owl-carousel')) {
@@ -85,6 +97,14 @@ function nasa_core_scripts_libs() {
      */
     if(!wp_script_is('jquery-slick')) {
         wp_enqueue_script('jquery-slick', NASA_CORE_PLUGIN_URL . 'assets/js/min/jquery.slick.min.js', array('jquery'), null, true);
+    }
+    
+    /**
+     * Select2
+     */
+    if(class_exists('WooCommerce') && !wp_script_is('select2')) {
+        wp_enqueue_script('select2', WC()->plugin_url() . '/assets/js/select2/select2.full.min.js', array('jquery'), null, true);
+        wp_enqueue_style('select2');
     }
     
     /**
@@ -104,4 +124,16 @@ function nasa_core_scripts_ready() {
     
     $nasa_core_js = 'var ajaxurl_core="' . esc_url(admin_url('admin-ajax.php')) . '";';
     wp_add_inline_script('nasa-core-functions-js', $nasa_core_js, 'before');
+}
+
+/**
+ * Add class woo actived for body
+ */
+add_filter('body_class', 'nasa_add_body_classes');
+function nasa_add_body_classes($classes) {
+    if (class_exists('WooCommerce') && !in_array('nasa-woo-actived', $classes)) {
+        $classes[] = 'nasa-woo-actived';
+    }
+    
+    return $classes;
 }

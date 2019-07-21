@@ -94,6 +94,7 @@ switch ($nasa_sidebar):
     case 'top':
         $hasSidebar = false;
         $topSidebar = true;
+        $topbarWrap_class .= ' top-bar-wrap-type-1';
         $attr .= 'large-12 columns no-sidebar top-sidebar';
         break;
     
@@ -128,8 +129,9 @@ get_header('shop');
     
     <div class="nasa_shop_description-wrap">
         <span id="position-nasa-cat-header" class="hidden-tag"></span>
-        <?php echo elessi_get_cat_header($nasa_term_id); ?>
         <?php
+        echo elessi_get_cat_header($nasa_term_id);
+        
         /**
          * Hook: woocommerce_archive_description.
          *
@@ -163,20 +165,23 @@ get_header('shop');
 
                 <div class="<?php echo esc_attr($topSidebar_wrap); ?>columns nasa-topbar-filter-wrap">
                     <div class="row">
-                        <div class="large-10 medium-10 small-12 columns nasa-filter-action">
+                        <div class="large-10 medium-10 columns nasa-filter-action">
                             <div class="nasa-labels-filter-top">
                                 <input name="nasa-labels-filter-text" type="hidden" value="<?php echo (!isset($nasa_opt['top_bar_archive_label']) || $nasa_opt['top_bar_archive_label'] == 'Filter by:') ? esc_attr__('Filter by:', 'elessi-theme') : esc_attr($nasa_opt['top_bar_archive_label']); ?>" />
                                 <input name="nasa-widget-show-more-text" type="hidden" value="<?php echo esc_attr__('More +', 'elessi-theme'); ?>" />
                                 <input name="nasa-widget-show-less-text" type="hidden" value="<?php echo esc_attr__('Less -', 'elessi-theme'); ?>" />
                                 <input name="nasa-limit-widgets-show-more" type="hidden" value="<?php echo (!isset($nasa_opt['limit_widgets_show_more']) || (int) $nasa_opt['limit_widgets_show_more'] < 0) ? '2' : (int) $nasa_opt['limit_widgets_show_more']; ?>" />
+                                <a class="toggle-topbar-shop-mobile hidden-tag" href="javascript:void(0);">
+                                    <i class="pe-7s-filter"></i><?php echo esc_attr__('&nbsp;Filters', 'elessi-theme'); ?>
+                                </a>
                                 <span class="nasa-labels-filter-accordion hidden-tag"></span>
                             </div>
                         </div>
                         
-                        <div class="large-2 medium-2 small-12 columns nasa-sort-by-action">
+                        <div class="large-2 medium-2 columns nasa-sort-by-action right rtl-left">
                             <ul class="sort-bar nasa-float-none margin-top-0">
                                 <li class="sort-bar-text nasa-order-label hidden-tag">
-                                    <?php esc_html_e('Sort by: ', 'elessi-theme'); ?>
+                                    <?php esc_html_e('Sort by', 'elessi-theme'); ?>
                                 </li>
                                 <li class="nasa-filter-order filter-order">
                                     <?php do_action('woocommerce_before_shop_loop'); ?>
@@ -207,7 +212,7 @@ get_header('shop');
                     <div class="row">
                         <div class="large-4 medium-6 small-6 columns nasa-toggle-top-bar rtl-right">
                             <a class="nasa-toggle-top-bar-click" href="javascript:void(0);">
-                                <i class="pe-7s-angle-down"></i> <?php esc_html_e('Filter', 'elessi-theme'); ?>
+                                <i class="pe-7s-angle-down"></i> <?php esc_html_e('Filters', 'elessi-theme'); ?>
                             </a>
                         </div>
                         
@@ -243,7 +248,7 @@ get_header('shop');
                 <div class="large-4 medium-6 small-6 columns nasa-toggle-layout-side-sidebar">
                     <div class="li-toggle-sidebar">
                         <a class="toggle-sidebar-shop" href="javascript:void(0);">
-                            <i class="fa fa-bars"></i><?php esc_html_e('Filter', 'elessi-theme'); ?>
+                            <i class="pe-7s-filter"></i><?php esc_html_e('Filters', 'elessi-theme'); ?>
                         </a>
                     </div>
                 </div>
@@ -292,7 +297,7 @@ get_header('shop');
                         <?php if ($hasSidebar): ?>
                             <li class="li-toggle-sidebar">
                                 <a class="toggle-sidebar" href="javascript:void(0);">
-                                    <i class="fa fa-bars"></i> <?php esc_html_e('Sidebar', 'elessi-theme'); ?>
+                                    <i class="pe-7s-filter"></i> <?php esc_html_e('Filters', 'elessi-theme'); ?>
                                 </a>
                             </li>
                         <?php endif; ?>

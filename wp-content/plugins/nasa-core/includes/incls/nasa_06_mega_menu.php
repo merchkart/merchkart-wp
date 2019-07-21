@@ -56,19 +56,36 @@ class Nasa_Nav_Menu extends Walker_Nav_Menu {
             $this->_mega[] = $item->ID;
         }
 
-        $image_mega = $position = $bg = '';
+        $image_mega_id = $position = $bg = $image_mega = '';
         $title_menu = apply_filters('the_title', $item->title, $item->ID);
         $title_disable = false;
         
         if ($this->getOption($item->ID, 'image_mega_enable')) {
-            $position = $this->getOption($item->ID, 'position_image_mega');
-            $image_mega = $this->getOption($item->ID, 'image_mega');
-            $title_disable = $this->getOption($item->ID, 'disable_title_image_mega');
-            if ($image_mega && $position != 'bg') {
-                $image_mega = '<img src="' . esc_attr($image_mega) . '" alt="' . esc_attr($title_menu) . '" />';
-            } elseif ($image_mega && $position == 'bg') {
-                $image_mega = esc_attr($image_mega);
-                $bg = ' style="background: url(\'' . $image_mega . '\') center center no-repeat"';
+            $image_mega_id = $this->getOption($item->ID, 'image_mega');
+            
+            if ($image_mega_id) {
+                $title_disable = $this->getOption($item->ID, 'disable_title_image_mega');
+                $position = $this->getOption($item->ID, 'position_image_mega');
+                $dimentions = $image_mega_src = '';
+                
+                if (is_numeric($image_mega_id)) {
+                    $image = wp_get_attachment_image_src($image_mega_id, 'full');
+                    if (isset($image[0])) {
+                        $image_mega_src = $image[0];
+                        $dimentions .= isset($image[1]) ? ' width="' . $image[1] . '"' : '';
+                        $dimentions .= isset($image[2]) ? ' height="' . $image[2] . '"' : '';
+                    }
+                } else {
+                    $image_mega_src = $image_mega_id;
+                }
+                
+                if ($image_mega_src) {
+                    if ($position == 'bg') {
+                        $bg = ' style="background: url(\'' . esc_url($image_mega_src) . '\') center center no-repeat"';
+                    } else {
+                        $image_mega = '<img src="' . esc_url($image_mega_src) . '" alt="' . esc_attr($title_menu) . '"' . $dimentions . ' />';
+                    }
+                }
             }
         }
 

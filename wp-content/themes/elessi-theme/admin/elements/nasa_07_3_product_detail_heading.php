@@ -153,6 +153,23 @@ if (!function_exists('elessi_product_detail_heading')) {
             "type" => "checkbox"
         );
         
+        $options = array(
+            "no" => esc_html__("Not Show", 'elessi-theme'),
+            "ext" => esc_html__("Extends Desktop", 'elessi-theme')
+        );
+        
+        if (class_exists('Nasa_Mobile_Detect')) {
+            $options['btn'] = esc_html__("Only Show Buttons", 'elessi-theme');
+        }
+        
+        $of_options[] = array(
+            "name" => esc_html__("Quick Buy Add To Cart In Mobile", 'elessi-theme'),
+            "id" => "mobile_fixed_add_to_cart",
+            "std" => "no",
+            "type" => "select",
+            "options" => $options
+        );
+        
         $of_options[] = array(
             "name" => esc_html__("Stock Process Bar", 'elessi-theme'),
             "id" => "enable_progess_stock",
@@ -186,12 +203,14 @@ if (!function_exists('elessi_product_detail_heading')) {
                 "2d-no-border" => esc_html__("Classic 2D - No border", 'elessi-theme'),
                 "2d" => esc_html__("Classic 2D", 'elessi-theme'),
                 "3d" => esc_html__("Classic 3D", 'elessi-theme'),
-                "slide" => esc_html__("Slide", 'elessi-theme')
-            )
+                "slide" => esc_html__("Slide", 'elessi-theme'),
+                "accordion" => esc_html__("Accordion", 'elessi-theme')
+            ),
+            'class' => 'nasa-theme-option-parent'
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Tabs align", 'elessi-theme'),
+            "name" => esc_html__("Tabs Align", 'elessi-theme'),
             "id" => "tab_align_info",
             "std" => "center",
             "type" => "select",
@@ -199,7 +218,8 @@ if (!function_exists('elessi_product_detail_heading')) {
                 "center" => esc_html__("Center", 'elessi-theme'),
                 "left" => esc_html__("Left", 'elessi-theme'),
                 "right" => esc_html__("Right", 'elessi-theme')
-            )
+            ),
+            'class' => 'nasa-tab_style_info nasa-tab_style_info-2d-no-border nasa-tab_style_info-2d nasa-tab_style_info-3d nasa-tab_style_info-slide nasa-theme-option-child'
         );
         
         $of_options[] = array(
@@ -250,6 +270,14 @@ if (!function_exists('elessi_product_detail_heading')) {
             "id" => "enable_ajax_addtocart",
             "desc" => esc_html__("Enable AJAX add to cart button on Detail And Quickview", 'elessi-theme'),
             "std" => "1",
+            "type" => "checkbox"
+        );
+        
+        $of_options[] = array(
+            "name" => esc_html__('Enable Mobile Layout', 'elessi-theme'),
+            "desc" => esc_html__('Note: Mobile layout for single product pages will hide all widgets and sidebar to increase performance.', 'elessi-theme'),
+            "id" => "single_product_mobile",
+            "std" => 0,
             "type" => "checkbox"
         );
     }

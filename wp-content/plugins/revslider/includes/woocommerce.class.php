@@ -93,11 +93,10 @@ class RevSliderWooCommerce extends RevSliderFunctions {
 		}
 		
 		if($f->get_val($args, array('source', 'woo', 'inStockOnly')) == true){
-			$tax_query[] = array(
-				'taxonomy' => 'product_visibility',
-				'field'    => 'name',
-				'terms'    => 'outofstock',
-				'operator' => 'NOT IN',
+			$meta_query[] = array(
+				'key' => '_stock_status',
+				'value' => 'instock',
+				'compare' => '='
 			);
 		}
 		

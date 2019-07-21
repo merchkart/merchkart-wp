@@ -57,7 +57,7 @@ $dots = isset($dots) ? $dots : 'false';
             data-columns="<?php echo (int) $columns_number; ?>"
             data-columns-small="<?php echo (int) $columns_number_small; ?>"
             data-columns-tablet="<?php echo (int) $columns_number_tablet; ?>"
-            data-height-auto="true"
+            data-height-auto="false"
             data-disable-nav="true">
         <?php while ($specials->have_posts()) : $specials->the_post();
             global $product;

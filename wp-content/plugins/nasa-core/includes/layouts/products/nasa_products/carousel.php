@@ -102,7 +102,7 @@ if($pos_nav == 'left' && $style_row == 1) :
             </div>
         </div>
         <div class="large-9 columns">
-            <div class="row nasa-no-cols group-slider">
+            <div class="group-slider">
                 <div
                     id="nasa-slider-<?php echo esc_attr($id_sc); ?>"
                     class="slider products-group nasa-slider owl-carousel products grid"
@@ -181,7 +181,7 @@ if($pos_nav == 'left' && $style_row == 1) :
             </div>
         <?php endif; ?>
         
-        <div class="row nasa-no-cols group-slider">
+        <div class="group-slider">
             <div
                 id="nasa-slider-<?php echo esc_attr($id_sc); ?>"
                 class="slider products-group nasa-slider owl-carousel products grid<?php echo $style_row > 1 ? ' nasa-slide-double-row' : ''; ?>"

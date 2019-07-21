@@ -26,7 +26,10 @@ if($product->is_on_sale() && $product->get_type() != 'variable') {
     $time_sale = ((int) $time_to < NASA_TIME_NOW || (int) $time_from > NASA_TIME_NOW) ? false : (int) $time_to;
 }
 
-$class_wrap = 'wow fadeInUp product-item grid';
+$class_wrap = 'product-item grid';
+if (!isset($nasa_opt['nasa_in_mobile']) || !$nasa_opt['nasa_in_mobile']) {
+    $class_wrap .= ' wow fadeInUp';
+}
 $class_wrap .= $nasa_animated_products ? ' ' . $nasa_animated_products : '';
 $class_wrap .= $stock_status == "outofstock" ? ' out-of-stock' : '';
 
@@ -53,15 +56,18 @@ do_action('woocommerce_before_shop_loop_item');
         </div>
     </div>
 
-    <!-- Clone Group btns for layout List -->
-    <div class="hidden-tag nasa-list-stock-wrap">
-        <p class="nasa-list-stock-status <?php echo esc_attr($stock_status); ?>">
-            <?php echo esc_html__('AVAILABILITY: ', 'elessi-theme') . '<span>' . $stock_label . '</span>'; ?>
-        </p>
-    </div>
-    <div class="group-btn-in-list-wrap hidden-tag">
-        <div class="group-btn-in-list"></div>
-    </div>
+    <?php if (!isset($nasa_opt['nasa_in_mobile']) || !$nasa_opt['nasa_in_mobile']) : ?>
+        <!-- Clone Group btns for layout List -->
+        <div class="hidden-tag nasa-list-stock-wrap">
+            <p class="nasa-list-stock-status <?php echo esc_attr($stock_status); ?>">
+                <?php echo esc_html__('AVAILABILITY: ', 'elessi-theme') . '<span>' . $stock_label . '</span>'; ?>
+            </p>
+        </div>
+    
+        <div class="group-btn-in-list-wrap hidden-tag">
+            <div class="group-btn-in-list"></div>
+        </div>
+    <?php endif; ?>
 
     <?php echo $time_sale ? elessi_time_sale($time_sale) : '<div class="nasa-sc-pdeal-countdown hidden-tag"></div>'; ?>
 </div>

@@ -110,6 +110,7 @@ function nasa_register_product(){
                 "admin_label" => true,
                 "description" => esc_html__("Select type product to show.", 'nasa-core')
             ),
+            
             array(
                 "type" => "dropdown",
                 "heading" => esc_html__("Style", 'nasa-core'),

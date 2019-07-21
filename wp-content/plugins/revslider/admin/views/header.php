@@ -65,7 +65,7 @@ $rs_color_picker_presets = RSColorpicker::get_color_presets();
 		last_week:	 '<?php echo date($rs_wp_date_format, strtotime(date($rs_wp_date_format) . ' -7 day')); ?>',
 		<?php
 		if(RevSliderWooCommerce::woo_exists()){
-			$wc = new WC_Product();
+			$wc = new WC_Product(0);
 		?>wc_full_price:		'<?php echo wc_price('99') . $wc->get_price_suffix(); ?>',
 		wc_price:			'<?php echo strip_tags(wc_price('99') . $wc->get_price_suffix()); ?>',
 		wc_price_no_cur:	'<?php echo strip_tags(wc_price('99')); ?>',

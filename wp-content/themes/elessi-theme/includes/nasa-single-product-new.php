@@ -19,7 +19,7 @@ if($image_layout != 'single') {
         <div class="nasa-toggle-layout-side-sidebar nasa-sidebar-single-product <?php echo esc_attr($nasa_sidebar); ?>">
             <div class="li-toggle-sidebar">
                 <a class="toggle-sidebar-shop" href="javascript:void(0);">
-                    <i class="fa fa-bars"></i><?php esc_html_e('Sidebar', 'elessi-theme'); ?>
+                    <i class="nasa-icon icon-nasa-icons-19"></i><?php esc_html_e('', 'elessi-theme'); ?>
                 </a>
             </div>
         </div>

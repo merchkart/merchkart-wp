@@ -44,13 +44,17 @@ switch ($nasa_sidebar):
         break;
 endswitch;
 
+
+$class_wrap = 'container-wrap';
+$class_wrap .= $nasa_sidebar ? ' page-' . $nasa_sidebar . '-sidebar' : ' page-left-sidebar';
+
 get_header();
 ?>
 
-<div class="container-wrap page-<?php echo ($nasa_sidebar) ? esc_attr($nasa_sidebar) : 'left'; ?>-sidebar">
+<div class="<?php echo esc_attr($class_wrap); ?>">
     
     <?php if ($hasSidebar): ?>
-        <div class="div-toggle-sidebar center">
+        <div class="div-toggle-sidebar nasa-blog-sidebar center">
             <a class="toggle-sidebar" href="javascript:void(0);"><i class="fa fa-bars"></i> <?php esc_html_e('Sidebar', 'elessi-theme'); ?></a>
         </div>
     <?php endif; ?>

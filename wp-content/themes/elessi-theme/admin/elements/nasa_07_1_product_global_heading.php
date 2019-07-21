@@ -90,9 +90,9 @@ if (!function_exists('elessi_product_global_heading')) {
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Hide quickview icon in loop products", 'elessi-theme'),
+            "name" => esc_html__("Disable Quick view", 'elessi-theme'),
             "id" => "disable-quickview",
-            "desc" => esc_html__("Hide quickview icon in loop products.", 'elessi-theme'),
+            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "std" => "0",
             "type" => "checkbox"
         );
@@ -153,7 +153,7 @@ if (!function_exists('elessi_product_global_heading')) {
             // Enable Gift in grid
             $of_options[] = array(
                 "name" => esc_html__("Enable Promotion Gifts featured icon", 'elessi-theme'),
-                "desc" => esc_html__("Enable Promotion Gifts featured icon products", 'elessi-theme'),
+                "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
                 "id" => "enable_gift_featured",
                 "std" => 1,
                 "type" => "checkbox"
@@ -162,7 +162,7 @@ if (!function_exists('elessi_product_global_heading')) {
             // Enable effect Gift featured
             $of_options[] = array(
                 "name" => esc_html__("Enable Promotion Gifts effect featured icon", 'elessi-theme'),
-                "desc" => esc_html__("Enable Promotion Gifts effect featured icon.", 'elessi-theme'),
+                "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
                 "id" => "enable_gift_effect",
                 "std" => 0,
                 "type" => "checkbox"
@@ -171,8 +171,8 @@ if (!function_exists('elessi_product_global_heading')) {
 
         // Options live search products
         $of_options[] = array(
-            "name" => esc_html__("Enable live search products", 'elessi-theme'),
-            "desc" => esc_html__("Enable live search ajax", 'elessi-theme'),
+            "name" => esc_html__("Enable Live Search Ajax Products", 'elessi-theme'),
+            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "id" => "enable_live_search",
             "std" => 1,
             "type" => "checkbox"
@@ -199,7 +199,7 @@ if (!function_exists('elessi_product_global_heading')) {
         $of_options[] = array(
             "name" => esc_html__("Disable ajax Shop", 'elessi-theme'),
             "id" => "disable_ajax_product",
-            "desc" => esc_html__("Disable ajax archive product", 'elessi-theme'),
+            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "std" => 0,
             "type" => "checkbox"
         );
@@ -207,14 +207,14 @@ if (!function_exists('elessi_product_global_heading')) {
         $of_options[] = array(
             "name" => esc_html__("Disable ajax Shop Progress bar loading", 'elessi-theme'),
             "id" => "disable_ajax_product_progress_bar",
-            "desc" => esc_html__("Disable ajax Shop Progress bar loading.", 'elessi-theme'),
+            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "std" => 0,
             "type" => "checkbox"
         );
         
         $of_options[] = array(
             "name" => esc_html__("Display top icon filter categories", 'elessi-theme'),
-            "desc" => esc_html__("Display top icon filter categories.", 'elessi-theme'),
+            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "id" => "show_icon_cat_top",
             "std" => "show-in-shop",
             "type" => "select",
@@ -227,7 +227,7 @@ if (!function_exists('elessi_product_global_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Disable top level of categories follow current category archive (Use for Multi stores)", 'elessi-theme'),
-            "desc" => esc_html__("Disable", 'elessi-theme'),
+            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "id" => "disable_top_level_cat",
             "std" => 0,
             "type" => "checkbox"
@@ -236,7 +236,7 @@ if (!function_exists('elessi_product_global_heading')) {
         $of_options[] = array(
             "name" => esc_html__("Show Uncategorized", 'elessi-theme'),
             "id" => "show_uncategorized",
-            "desc" => esc_html__("Show Uncategorized", 'elessi-theme'),
+            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "std" => 0,
             "type" => "checkbox"
         );
@@ -244,7 +244,7 @@ if (!function_exists('elessi_product_global_heading')) {
         $of_options[] = array(
             "name" => esc_html__("Disable Viewed products", 'elessi-theme'),
             "id" => "disable-viewed",
-            "desc" => esc_html__("Disable Viewed products", 'elessi-theme'),
+            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "std" => 0,
             "type" => "checkbox"
         );

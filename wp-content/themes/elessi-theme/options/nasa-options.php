@@ -101,6 +101,18 @@ function elessi_get_options() {
     }
     
     /**
+     * Check Mobile Detect
+     */
+    $options['nasa_in_mobile'] = false;
+    if (defined('NASA_IS_PHONE') && NASA_IS_PHONE && isset($options['enable_nasa_mobile']) && $options['enable_nasa_mobile']) {
+        $options['nasa_in_mobile'] = true;
+        
+        $options['showing_info_top'] = false;
+        $options['enable_change_view'] = false;
+        $options['breadcrumb_row'] = 'single';
+    }
+    
+    /**
      * Check WP Super Cache active
      */
     global $super_cache_enabled;
@@ -251,8 +263,6 @@ function elessi_dequeue_scripts() {
 add_action('wp_enqueue_scripts', 'elessi_enqueue_scripts', 998);
 function elessi_enqueue_scripts() {
     global $nasa_opt;
-    // Main Css
-    wp_enqueue_style('elessi-style', get_stylesheet_uri());
     
     wp_enqueue_script('jquery-cookie', ELESSI_THEME_URI . '/assets/js/min/jquery.cookie.min.js', array('jquery'), null, true);
     wp_enqueue_script('modernizr', ELESSI_THEME_URI . '/assets/js/min/modernizr.min.js', array('jquery'), null, true);
@@ -344,6 +354,14 @@ function elessi_enqueue_scripts() {
     }
     
     /**
+     * Select2
+     */
+    if(NASA_WOO_ACTIVED && !wp_script_is('select2')) {
+        wp_enqueue_script('select2', WC()->plugin_url() . '/assets/js/select2/select2.full.min.js', array('jquery'), null, true);
+        wp_enqueue_style('select2');
+    }
+    
+    /**
      * Theme js
      */
     wp_enqueue_script('elessi-functions-js', ELESSI_THEME_URI . '/assets/js/min/functions.min.js', array('jquery'), null, true);
@@ -356,6 +374,22 @@ function elessi_enqueue_scripts() {
      */
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
+    }
+}
+
+add_action('wp_enqueue_scripts', 'elessi_enqueue_style', 998);
+function elessi_enqueue_style() {
+    global $nasa_opt;
+    
+    // MAIN CSS
+    wp_enqueue_style('elessi-style', get_stylesheet_uri());
+    
+    // RTL CSS
+    if (
+        (isset($nasa_opt['nasa_rtl']) && $nasa_opt['nasa_rtl']) ||
+        (isset($_REQUEST['rtl']) && $_REQUEST['rtl'] == '1')
+    ) {
+        wp_enqueue_style('elessi-style-rtl', ELESSI_THEME_URI . '/style-rtl.css', array('elessi-style'), null, 'all');
     }
 }
 

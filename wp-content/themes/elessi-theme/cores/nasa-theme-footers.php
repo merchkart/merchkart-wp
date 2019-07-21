@@ -29,10 +29,11 @@ if(!function_exists('elessi_footer_layout_style_function')) :
         /*
          * Override Header
          */
-        $is_product = is_product();
-        $is_product_cat = is_product_category();
-        $is_product_taxonomy = is_product_taxonomy();
-        $is_shop = is_shop();
+        $is_product = NASA_WOO_ACTIVED ? is_product() : false;
+        $is_product_cat = NASA_WOO_ACTIVED ? is_product_category() : false;
+        $is_product_taxonomy = NASA_WOO_ACTIVED ? is_product_taxonomy() : false;
+        $is_shop = NASA_WOO_ACTIVED ? is_shop() : false;
+        
         $pageShop = wc_get_page_id('shop');
         if($is_shop || $is_product_cat || $is_product_taxonomy || $is_product) {
             $term_id = false;
@@ -162,7 +163,7 @@ endif;
 add_action('nasa_static_content', 'elessi_static_content_before', 10);
 if (!function_exists('elessi_static_content_before')) :
     function elessi_static_content_before() {
-        echo '<a href="javascript:void(0);" id="nasa-back-to-top" data-wow="bounceIn" class="wow bounceIn hidden-tag"><i class="pe-7s-angle-up"></i></a>';
+        echo '<a href="javascript:void(0);" id="nasa-back-to-top" data-wow="fadeIn" class="wow fadeIn hidden-tag"><i class="pe-7s-angle-up"></i></a>';
         
         echo '<!-- Start static content -->' .
             '<div class="static-position">' .
@@ -395,10 +396,15 @@ endif;
 add_action('nasa_static_content', 'elessi_static_menu_vertical_mobile', 19);
 if (!function_exists('elessi_static_menu_vertical_mobile')) :
 
-    function elessi_static_menu_vertical_mobile() { ?>
-        <div id="nasa-menu-sidebar-content">
+    function elessi_static_menu_vertical_mobile() {
+        global $nasa_opt;
+        
+        $class = isset($nasa_opt['mobile_menu_layout']) ? 
+            'nasa-' . $nasa_opt['mobile_menu_layout'] : 'nasa-light';
+    ?>
+        <div id="nasa-menu-sidebar-content" class="<?php echo esc_attr($class); ?>">
             <div class="nasa-mobile-nav-wrap">
-                <div id="mobile-navigation" class="nasa-loader"></div>
+                <div id="mobile-navigation"></div>
             </div>
         </div>
         <?php
@@ -414,7 +420,7 @@ if (!function_exists('elessi_static_top_cat_filter')) :
 
     function elessi_static_top_cat_filter() {
         ?>
-        <div class="nasa-top-cat-filter-wrap-mobile">
+        <div class="nasa-top-cat-filter-wrap-mobile nasa-light">
             <h3 class="nasa-tit-filter-cat"><?php echo esc_html__("Categories", 'elessi-theme'); ?></h3>
             
             <div id="nasa-mobile-cat-filter">
@@ -437,16 +443,43 @@ if (!function_exists('elessi_static_config_info')) :
     function elessi_static_config_info() {
         global $nasa_opt, $loadmoreStyle;
         
+        /**
+         * Paging style in store
+         */
         if(isset($_REQUEST['paging-style']) && in_array($_REQUEST['paging-style'], $loadmoreStyle)) {
             echo '<input type="hidden" name="nasa_loadmore_style" value="' . $_REQUEST['paging-style'] . '" />';
         }
         
+        /**
+         * Mobile Fixed add to cart in Desktop
+         */
         if (!isset($nasa_opt['enable_fixed_add_to_cart']) || $nasa_opt['enable_fixed_add_to_cart']) {
+            echo '<!-- Enable Fixed add to cart single product -->';
             echo '<input type="hidden" name="nasa_fixed_single_add_to_cart" value="1" />';
+        }
+        
+        /**
+         * Mobile Fixed add to cart in mobile
+         */
+        if (!isset($nasa_opt['mobile_fixed_add_to_cart'])) {
+            $nasa_opt['mobile_fixed_add_to_cart'] = 'no';
+        }
+        echo '<!-- Fixed add to cart single product in Mobile layout -->';
+        echo '<input type="hidden" name="nasa_fixed_mobile_single_add_to_cart_layout" value="' . esc_attr($nasa_opt['mobile_fixed_add_to_cart']) . '" />';
+        
+        /**
+         * Mobile Detect
+         */
+        if (isset($nasa_opt['nasa_in_mobile']) && $nasa_opt['nasa_in_mobile']) {
+            echo '<!-- In Mobile -->';
+            echo '<input type="hidden" name="nasa_mobile_layout" value="1" />';
         }
         ?>
         
+        <!-- Format currency -->
         <input type="hidden" name="nasa_currency_pos" value="<?php echo get_option('woocommerce_currency_pos'); ?>" />
+        
+        <!-- URL Logout -->
         <input type="hidden" name="nasa_logout_menu" value="<?php echo wp_logout_url(get_home_url()); ?>" />
 
         <!-- Enable countdown -->
@@ -467,13 +500,17 @@ if (!function_exists('elessi_static_config_info')) :
         <!-- Enable focus main image -->
         <input type="hidden" name="nasa-enable-focus-main-image" value="<?php echo (isset($nasa_opt['enable_focus_main_image']) && $nasa_opt['enable_focus_main_image'] == 1) ? '1' : '0'; ?>" />
         
-        <!-- Select option to quickview -->
+        <!-- Select option to Quick-view -->
         <input type="hidden" name="nasa-disable-quickview-ux" value="<?php echo (isset($nasa_opt['disable-quickview']) && $nasa_opt['disable-quickview'] == 1) ? '1' : '0'; ?>" />
         
-        <!-- Close popup string -->
+        <!-- Close Pop-up string -->
         <input type="hidden" name="nasa-close-string" value="<?php echo esc_attr__('Close (Esc)', 'elessi-theme'); ?>" />
 
+        <!-- Text no results in live search products -->
         <p class="hidden-tag" id="nasa-empty-result-search"><?php esc_html_e('Sorry. No results match your search.', 'elessi-theme'); ?></p>
+        
+        <!-- Toggle Select Options Sticky add to cart single product page -->
+        <input type="hidden" name="nasa_select_options_text" value="<?php echo esc_attr__('Select Options', 'elessi-theme'); ?>" />
 
         <?php
         $shop_url   = NASA_WOO_ACTIVED ? wc_get_page_permalink('shop') : '';
@@ -511,4 +548,19 @@ if (!function_exists('elessi_static_config_info')) :
         }
     }
 
+endif;
+        
+/**
+ * Bottom Bar menu
+ */
+add_action('nasa_static_content', 'elessi_bottom_bar_menu', 22);
+if (!function_exists('elessi_bottom_bar_menu')):
+    function elessi_bottom_bar_menu() {
+        global $nasa_opt;
+        
+        if (isset($nasa_opt['nasa_in_mobile']) && $nasa_opt['nasa_in_mobile']) {
+            $file = ELESSI_CHILD_PATH . '/includes/nasa-mobile-bottom-bar.php';
+            include is_file($file) ? $file : ELESSI_THEME_PATH . '/includes/nasa-mobile-bottom-bar.php';
+        }
+    }
 endif;

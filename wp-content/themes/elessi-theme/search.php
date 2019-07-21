@@ -28,7 +28,7 @@ get_header();
 <div class="container-wrap page-<?php echo ($nasa_opt['blog_layout']) ? esc_attr($nasa_opt['blog_layout']) : 'right-sidebar'; ?>">
 
     <?php if ($hasSidebar): ?>
-        <div class="div-toggle-sidebar center"><a class="toggle-sidebar" href="javascript:void(0);"><i class="fa fa-bars"></i> <?php esc_html_e('Sidebar', 'elessi-theme'); ?></a></div>
+        <div class="div-toggle-sidebar nasa-blog-sidebar center"><a class="toggle-sidebar" href="javascript:void(0);"><i class="fa fa-bars"></i> <?php esc_html_e('Sidebar', 'elessi-theme'); ?></a></div>
     <?php endif; ?>
 
     <div class="row">

@@ -291,7 +291,7 @@ if (!function_exists('elessi_get_content_widget_variation')) :
                 $image_switch = Nasa_Abstract_WC_Attr_UX::_NASA_IMAGE;
             }
             
-            $class_ul = ' small-block-grid-3 medium-block-grid-4 large-block-grid-7';
+            $class_ul = ' small-block-grid-1 medium-block-grid-4 large-block-grid-7';
             
             if ($taxonomyObj && isset($taxonomyObj->attribute_type)) {
                 switch ($taxonomyObj->attribute_type) {
@@ -305,7 +305,7 @@ if (!function_exists('elessi_get_content_widget_variation')) :
                     
                     case $image_switch:
                         $vari_type = 'image';
-                        $class_ul = ' small-block-grid-3 medium-block-grid-4 large-block-grid-5';
+                        $class_ul = ' small-block-grid-1 medium-block-grid-4 large-block-grid-5';
                         break;
                     
                     default :

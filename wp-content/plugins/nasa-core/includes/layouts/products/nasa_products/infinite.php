@@ -19,16 +19,16 @@ $columns_number = (int) $columns_number < 2 || (int) $columns_number > 5 ? 5 : (
         </div>
     </div>
     
-    <div class="large-12 columns text-center margin-top-40 margin-bottom-20">
+    <div class="large-12 columns text-center desktop-margin-top-40 margin-bottom-20">
         <?php if ($loop->max_num_pages > 1) :
             $style_viewmore = ' nasa-more-type-' . (isset($style_viewmore) ? $style_viewmore : '1');
             ?>
-            <div class="load-more-btn load-more<?php echo esc_attr($style_viewmore); ?>" data-infinite="<?php echo $infinite_id; ?>" data-nodata="<?php esc_attr_e('ALL PRODUCTS LOADED', 'nasa-core'); ?>">
+            <a href="javascrip:void(0);" class="load-more-btn load-more<?php echo esc_attr($style_viewmore); ?>" data-infinite="<?php echo $infinite_id; ?>" data-nodata="<?php esc_attr_e('ALL PRODUCTS LOADED', 'nasa-core'); ?>">
                 <div class="load-more-content">
                     <span class="load-more-icon icon-nasa-refresh"></span>
                     <span class="load-more-text"><?php esc_html_e('LOAD MORE ...', 'nasa-core'); ?></span>
                 </div>
-            </div>
+            </a>
         <?php endif; ?>
     </div>
 </div>

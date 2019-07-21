@@ -2,9 +2,9 @@
 if (!function_exists('elessi_general_heading')) {
     add_action('init', 'elessi_general_heading');
     function elessi_general_heading() {
-        /* ----------------------------------------------------------------------------------- */
+        /* --------------------------------------------------------------------- */
         /* The Options Array */
-        /* ----------------------------------------------------------------------------------- */
+        /* --------------------------------------------------------------------- */
         // Set the Options Array
         global $of_options;
         if(empty($of_options)) {
@@ -58,7 +58,7 @@ if (!function_exists('elessi_general_heading')) {
         );
 
         $of_options[] = array(
-            "name" => esc_html__("Site Background Color", 'elessi-theme'),
+            "name" => esc_html__("Site Background Color - Only use for Site Layout => Wide", 'elessi-theme'),
             "id" => "site_bg_color",
             "std" => "#eee",
             "type" => "color",
@@ -66,7 +66,7 @@ if (!function_exists('elessi_general_heading')) {
         );
 
         $of_options[] = array(
-            "name" => esc_html__("Site Background Image", 'elessi-theme'),
+            "name" => esc_html__("Site Background Image - Only use for Site Layout => Wide", 'elessi-theme'),
             "id" => "site_bg_image",
             "std" => ELESSI_THEME_URI . "/assets/images/bkgd1.jpg",
             "type" => "media",
@@ -95,6 +95,19 @@ if (!function_exists('elessi_general_heading')) {
             "id" => "login_ajax",
             "std" => 1,
             "type" => "checkbox"
+        );
+        
+        $of_options[] = array(
+            "name" => esc_html__("Mobile Menu Layout", 'elessi-theme'),
+            "desc" => esc_html__("Selects Mobile Menu Layout.", 'elessi-theme'),
+            "id" => "mobile_menu_layout",
+            "std" => "light-new",
+            "type" => "select",
+            "options" => array(
+                "light-new" => esc_html__("Light Layout 1", 'elessi-theme'),
+                "light" => esc_html__("Light Layout 2", 'elessi-theme'),
+                "dark" => esc_html__("Dark Layout", 'elessi-theme')
+            )
         );
 
         $of_options[] = array(

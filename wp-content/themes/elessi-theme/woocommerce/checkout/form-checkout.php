@@ -24,9 +24,9 @@ endif;
         <?php
         $class_order_review = 'large-12 columns';
         if ($checkout->get_checkout_fields()) :
-            $class_order_review = 'large-5 columns';
+            $class_order_review = 'large-6 columns';
             ?>
-            <div class="large-7 columns">
+            <div class="large-6 columns">
                 <div class="checkout-group woo-billing">
                     <?php do_action('woocommerce_checkout_before_customer_details'); ?>
                     <div class="col2-set" id="customer_details">

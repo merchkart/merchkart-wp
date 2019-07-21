@@ -4,7 +4,7 @@ Plugin Name: Slider Revolution
 Plugin URI: https://revolution.themepunch.com/
 Description: Slider Revolution - Premium responsive slider
 Author: ThemePunch
-Version: 6.0.5
+Version: 6.0.6
 Author URI: https://themepunch.com/
 */
 
@@ -15,7 +15,7 @@ if(class_exists('RevSliderFront')){
 	die('ERROR: It looks like you have more than one instance of Slider Revolution installed. Please remove additional instances for this plugin to work again.');
 }
 
-define('RS_REVISION',			'6.0.5');
+define('RS_REVISION',			'6.0.6');
 define('RS_PLUGIN_PATH',		plugin_dir_path(__FILE__));
 define('RS_PLUGIN_SLUG_PATH',	plugin_basename(__FILE__));
 define('RS_PLUGIN_FILE_PATH',	__FILE__);
@@ -27,6 +27,7 @@ define('RS_TP_TOOLS',			'6.0'); //holds the version of the tp-tools script, load
 
 $revslider_fonts = array('queue' => array(), 'loaded' => array());
 $revslider_is_preview_mode = false;
+$revslider_save_post = false;
 
 //include frameword files
 require_once(RS_PLUGIN_PATH . 'includes/data.class.php');
@@ -93,6 +94,9 @@ try{
 					return $content;
 				break;
 				case 'echo':
+					global $revslider_save_post;
+					if($revslider_save_post) return $content;
+					
 					echo $content; //bypass the filters
 				break;
 				default:
@@ -107,6 +111,7 @@ try{
 	$rslb = new RevSliderLoadBalancer();
 	$rslb->refresh_server_list();
 	add_shortcode('rev_slider', 'rev_slider_shortcode');
+	add_action('save_post', array('RevSliderFront', 'set_post_saving'));
 	add_action('widgets_init', array('RevSliderWidget', 'register_widget'));
 	
 	if(is_admin()){
@@ -135,10 +140,10 @@ try{
 		
 		function add_revslider($data, $put_in = ''){
 			$output = new RevSliderOutput();
-			
 			$g_values = $output->get_global_settings();
 			$add_to = $output->get_val($g_values, 'includeids', '');
-			if($output->check_add_to($add_to) == false && $output->_truefalse($output->get_val($g_values, 'include', false)) == false){
+			$output->set_add_to($add_to);
+			if($output->check_add_to(true) == false && $output->_truefalse($output->get_val($g_values, 'include', false)) == false){
 				$output->print_error_message(
 					__('If you want to use the PHP function "add_revslider" in your code please make sure to activate ', 'revslider').
 					__('"Include RevSlider libraries globally" ', 'revslider').

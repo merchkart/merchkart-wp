@@ -242,12 +242,14 @@
             <?php echo esc_html__('Find product', 'nasa-core'); ?>
             <textarea name="content" class="hidden-tag"></textarea>
             <input class="select_product" name="product_id" type="text" value="" />
-            <?php /*select name="position_show">
-                <option value="top"><?php echo esc_html__('Top', 'nasa-core'); ?></option>
-                <option value="bot"><?php echo esc_html__('Bot', 'nasa-core'); ?></option>
-                <option value="left"><?php echo esc_html__('Left', 'nasa-core'); ?></option>
-                <option value="right"><?php echo esc_html__('Right', 'nasa-core'); ?></option>
-            </select */?>
+                
+            <p><?php echo esc_html__('Display Position', 'nasa-core'); ?></p>
+            <select name="position_show" style="display: block; width: 100%;">
+                <option value="top"><?php echo esc_html__('Top of Pin', 'nasa-core'); ?></option>
+                <option value="right"><?php echo esc_html__('Right of Pin', 'nasa-core'); ?></option>
+                <option value="bot"><?php echo esc_html__('Bottom of Pin', 'nasa-core'); ?></option>
+                <option value="left"><?php echo esc_html__('Left of Pin', 'nasa-core'); ?></option>
+            </select>
             <input type="button" value="Save" class="easy-submit" />
         </div>
         

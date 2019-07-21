@@ -44,7 +44,7 @@ if ($related_products) :
                 </div>
                 
                 <div class="large-12 columns">
-                    <div class="row group-slider">
+                    <div class="group-slider">
                         <div id="nasa-slider-related-product" class="nasa-slider owl-carousel products-group" data-columns="<?php echo (int) $columns_desk; ?>" data-columns-small="<?php echo (int) $columns_small; ?>" data-columns-tablet="<?php echo (int) $columns_tablet; ?>" data-margin="10" data-margin-small="0" data-margin-medium="0" data-padding="0px" data-disable-nav="true">
                             <?php
                             foreach ($related_products as $related_product) :

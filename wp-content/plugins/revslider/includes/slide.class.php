@@ -86,6 +86,17 @@ class RevSliderSlide extends RevSliderFunctions {
 	}
 	
 	/**
+	 * old version of RevSliderSlide->get_val()
+	 */
+	public function getParam($name, $default = null){
+		if($default === null){
+			$default = '';
+		}
+		
+		return $this->get_val($this->params, $name, $default);
+	}
+	
+	/**
 	 * END: DEPRECATED FUNCTIONS THAT ARE IN HERE FOR OLD ADDONS TO WORK PROPERLY
 	 **/
 	 

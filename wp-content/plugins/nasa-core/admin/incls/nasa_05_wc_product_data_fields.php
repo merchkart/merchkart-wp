@@ -114,6 +114,8 @@ if (!class_exists('Nasa_WC_Product_Data_Fields')) {
                 add_action('woocommerce_save_product_variation', array($this, 'nasa_save_variation_gallery'), 10, 1);
                 add_action('woocommerce_product_after_variable_attributes', array($this, 'nasa_variation_gallery_admin_html'), 10, 3);
             }
+            
+            add_action('woocommerce_product_options_related', array($this, 'nasa_accessories_product'));
         }
         
         /**
@@ -414,9 +416,31 @@ if (!class_exists('Nasa_WC_Product_Data_Fields')) {
             update_post_meta($post_id, 'wc_productdata_options', $options_value);
             
             /**
+             * Accessories for product
+             */
+            if (isset($_POST['accessories_ids'])) {
+                update_post_meta($post_id, '_accessories_ids', $_POST['accessories_ids']);
+            }
+            
+            /**
              * Delete cache by post id
              */
             nasa_del_cache_by_product_id($post_id);
+        }
+        
+        /**
+         * HTML Accessories of Product
+         */
+        public function nasa_accessories_product() {
+            global $post, $thepostid, $product_object;
+            $product_ids = $this->get_accessories_ids($thepostid);
+            include NASA_CORE_PLUGIN_PATH . 'admin/views/html-accessories-product.php';
+        }
+        
+        protected function get_accessories_ids($post_id) {
+            $ids = get_post_meta($post_id, '_accessories_ids', true);
+            
+            return $ids;
         }
 
     }

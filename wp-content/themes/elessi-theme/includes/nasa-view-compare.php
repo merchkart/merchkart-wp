@@ -34,7 +34,7 @@ $fields = $nasa_compare->fields();
                                     echo '<a href="' . esc_url($href) . '" title="' . esc_attr($product->fields['title']) . '">';
 
                                     echo '<div class="image-wrap">' . $product->get_image('thumbnail', array('alt' => esc_attr($nasa_title))) . '</div>';
-                                    echo ($nasa_title != '') ? '<h5>' . $nasa_title . '</h5>' : '';
+                                    echo ($nasa_title != '') ? '<h5 class="compare-product-title">' . $nasa_title . '</h5>' : '';
                                     echo '</a>';
                                     break;
 
@@ -114,7 +114,7 @@ $fields = $nasa_compare->fields();
                     $product_class = ($index % 2 == 0 ? 'odd' : 'even') . ' nasa-compare-view-product_' . $product_id
                     ?>
                     <td class="<?php echo esc_attr($product_class); ?>">
-                        <a href="javascript:void(0);" class="nasa-remove-compare" data-prod="<?php echo esc_attr($product_id); ?>"><?php echo esc_html__('Remove', 'elessi-theme'); ?><i class="pe-7s-close"></i></a>
+                        <a href="javascript:void(0);" class="nasa-remove-compare" data-prod="<?php echo esc_attr($product_id); ?>"><?php echo esc_html__('Remove', 'elessi-theme'); ?></a>
                     </td>
                     <?php
                     ++$index;

@@ -76,6 +76,7 @@ if (WPBakeryShortCode_VC_Tta_Section::$section_info):
                     break;
             }
         }
+        
         $class_item = 'nasa-tab';
         $class_item .= $k == 0 ? ' active first' : '';
         $class_item .= ($k + 1) == WPBakeryShortCode_VC_Tta_Section::$self_count ? ' last' : '';
@@ -84,7 +85,6 @@ if (WPBakeryShortCode_VC_Tta_Section::$section_info):
         $nasa_attr .= !empty($tab_color) ? ' style="' . implode(';', $tab_color) . '"' : '';
         $output .= '<li' . $nasa_attr . '>';
         $output .= '<a href="javascript:void(0);" data-id="#nasa-secion-' . esc_attr($v['tab_id']) . '" class="' . esc_attr($class_a_click) . '"><h5' . (!empty($tab_color_h5) ? ' style="' . implode(';', $tab_color_h5) . '"' : '') . '>' . $title . '</h5></a></li>';
-        $output .= !$tabs_slide ? '<li class="separator"> </li>' : ''; // separator
     endforeach;
     
     $output .= '</ul>';

@@ -39,7 +39,7 @@ class RevSliderElementor {
 	}
 	
 	public static function init_elementor_widgets() {
-
+		
 		// Include Widget files
 		require_once(plugin_dir_path( __FILE__) . 'elementor-widget.class.php');
 

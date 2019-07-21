@@ -183,8 +183,10 @@ function nasa_sc_client($atts, $content) {
 
     $image = '';
     if ($img_src != '') {
-        $image = wp_get_attachment_image_src($img_src, 'full');
-        $image = '<img class="wow fadeInUp" data-wow-delay="100ms" data-wow-duration="1s" src="' . esc_url($image[0]) . '" alt="" />';
+        $imageArr = wp_get_attachment_image_src($img_src, 'full');
+        if (isset($imageArr[0])) {
+            $image = '<img class="wow fadeInUp" data-wow-delay="100ms" data-wow-duration="1s" src="' . esc_url($imageArr[0]) . '" alt="" width="' . $imageArr[1] . '" height="' . $imageArr[2] . '" />';
+        }
     }
 
     $text_color = esc_attr($text_color);
@@ -197,7 +199,7 @@ function nasa_sc_client($atts, $content) {
                         '<div class="client-img">' . $image . '</div>' .
                         '<div class="client-name-post">' .
                             '<h4 class="client-name">' . $name . '</h4>' .
-                            '<span class="client-pos" style="color:' . $text_color . '">' . $company . '</span>' .
+                            '<span class="client-pos" style="color: ' . $text_color . '">' . $company . '</span>' .
                         '</div>' .
                     '</div>' .
                 '</div>' .

@@ -59,7 +59,7 @@ class RevSliderSlider extends RevSliderFunctions {
 	 * old version of get_sliders();
 	 * added for compatibility with old AddOns
 	 **/
-	public function getArrSliders($templates = 'neither'){
+	public function getArrSliders($templates = false){
 		//echo '<!-- Slider Revolution Notice: Please do not use RevSliderSlider->getArrSliders() anymore, use RevSliderSlider->get_sliders() instead -->'."\n";
 		return $this->get_sliders($templates);
 	}
@@ -266,6 +266,7 @@ class RevSliderSlider extends RevSliderFunctions {
 	public function init_by_alias($alias){
 		global $wpdb;
 		
+		$alias = str_replace(' ', '-', $alias); //make sure that no spaces are added
 		$slider_data = $wpdb->get_row($wpdb->prepare("SELECT * FROM ". $wpdb->prefix . RevSliderFront::TABLE_SLIDER ." WHERE alias = %s", $alias), ARRAY_A);
 		if(empty($slider_data) && !is_admin()){
 			throw new Exception('Slider with alias '.sanitize_text_field(esc_attr($alias)).' not found.');
@@ -657,9 +658,13 @@ class RevSliderSlider extends RevSliderFunctions {
 		$this->init_by_id($id);
 		
 		$title	= $this->get_title();
-		if($is_template) $title = str_replace(' Template', '', $title); //remove the added Template from the title in copy process
+		if($is_template){
+			$title = str_replace(' Template', '', $title); //remove the added Template from the title in copy process
+			$talias	= $title;
+		}else{
+			$talias	= $this->get_alias();
+		}
 		
-		$talias	= $title;
 		$ti		= 1;
 		while($this->alias_exists($talias)){ //set a new alias and title if its existing in database
 			$talias = $title. ' ' .$ti;

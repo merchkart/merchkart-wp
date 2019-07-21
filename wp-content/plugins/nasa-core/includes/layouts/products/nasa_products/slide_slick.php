@@ -60,7 +60,7 @@ if($shop_url == 1) {
     
     <div class="nasa-row">
         <div class="nasa-col large-12 columns">
-            <div class="nasa-no-cols group-slider">
+            <div class="group-slider">
                 <div
                     id="nasa-slick-slider-<?php echo esc_attr($id_sc); ?>"
                     data-id="<?php echo esc_attr($id_sc); ?>"

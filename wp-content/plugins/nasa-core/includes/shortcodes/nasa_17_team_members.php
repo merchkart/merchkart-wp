@@ -30,7 +30,9 @@ function nasa_sc_team_member($atts, $content = null) {
     }
     if ($a['img'] != '') {
         $image = wp_get_attachment_image_src($a['img'], 'full');
-        $src = $image[0];
+        if (isset($image[0])) {
+            $src = $image[0];
+        }
     } elseif ($a['img_src'] != '') {
         $src = do_shortcode($a['img_src']);
     }
@@ -49,7 +51,7 @@ function nasa_sc_team_member($atts, $content = null) {
             $span = 6;
         }
         $html .= '<div class="member-image">';
-        $html .= '<img src="' . $src . '" ' . $image_size . ' alt=""/>';
+        $html .= '<img src="' . esc_url($src) . '" ' . $image_size . ' alt="' . $a['name'] . '"/>';
         $html .= '</div>';
         $html .= '<div class="clear"></div>';
         $html .= $a['type'] == 2 ? '</div>' : '';

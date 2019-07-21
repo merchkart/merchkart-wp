@@ -24,16 +24,15 @@ if (!function_exists('elessi_get_style_primary_color')) :
             body .navigation-image a,
             body .logo a,
             body li.mini-cart .cart-icon strong,
-            body .checkout-group h3,
-            body .order-review h3,
             body .mini-cart-item .cart_list_product_price,
             body .remove:hover i,
             body .support-icon,
             body .entry-meta a,
-            body #order_review_heading,
-            body .checkout-group h3,
             body .shop_table.cart td.product-name a:hover,
-            body a.shipping-calculator-button,
+            body #order_review .cart-subtotal .woocommerce-Price-amount,
+            body #order_review .order-total .woocommerce-Price-amount,
+            body #order_review .woocommerce-shipping-totals .woocommerce-Price-amount,
+            body a.shipping-calculator-button:hover,
             body .widget_layered_nav li a:hover,
             body .widget_layered_nav_filters li a:hover,
             body .product_list_widget .text-info span,
@@ -109,8 +108,6 @@ if (!function_exists('elessi_get_style_primary_color')) :
             body #nasa-wishlist-sidebar .wishlist_sidebar .wishlist_table tbody tr .product-remove a:hover i,
             body #cart-sidebar .widget_shopping_cart_content .cart_list .mini-cart-item .mini-cart-info a:hover,
             body #cart-sidebar .widget_shopping_cart_content .cart_list .mini-cart-item .item-in-cart:hover i,
-            body .nasa-table-compare tr.stock td span,
-            body .nasa-wrap-table-compare .nasa-table-compare tr.stock td span,
             body .item-product-widget.nasa-list-type-extra .product-meta .product-interactions .btn-wishlist-main-list:hover .pe-icon,
             body .item-product-widget.nasa-list-type-extra .product-meta .product-interactions .btn-wishlist-main-list:hover .nasa-icon,
             body .item-product-widget.nasa-list-type-main .product-interactions .btn-wishlist:hover .pe-icon,
@@ -258,7 +255,8 @@ if (!function_exists('elessi_get_style_primary_color')) :
             body .nasa-menu-vertical-header,
             /* body .nasa-add-to-cart-fixed .single_variation_wrap-clone .button.disabled:hover, */
             body .nasa-single-product-stock .nasa-product-stock-progress .nasa-product-stock-progress-bar,
-            body .nasa-quickview-view-detail
+            body .nasa-quickview-view-detail,
+            html body.nasa-in-mobile #top-bar .topbar-mobile-text
             {
                 background-color: <?php echo esc_attr($color_primary); ?>;
             }
@@ -771,8 +769,9 @@ if (!function_exists('elessi_page_override_style')) :
          */
         else {
             $current_cat = null;
-            $is_product_cat = is_product_category();
-            $is_product = is_product();
+            $is_product = NASA_WOO_ACTIVED ? is_product() : false;
+            $is_product_cat = NASA_WOO_ACTIVED ? is_product_category() : false;
+            
             $rootCatId = 0;
             if($is_product) {
                 global $post;

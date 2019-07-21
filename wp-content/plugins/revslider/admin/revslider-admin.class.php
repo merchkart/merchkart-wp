@@ -217,7 +217,7 @@ class RevSliderAdmin extends RevSliderFunctions {
 	 */
 	public function add_slider_meta_box($post_types = null){
 		try {
-			add_meta_box('mymetabox_revslider_0', 'Revolution Slider Options', array('RevSliderAdmin', 'add_meta_box_content'), $post_types, 'normal', 'default');
+			add_meta_box('mymetabox_revslider_0', 'Slider Revolution Options', array('RevSliderAdmin', 'add_meta_box_content'), $post_types, 'normal', 'default');
 		} catch (Exception $e){}
 	}
 
@@ -232,18 +232,15 @@ class RevSliderAdmin extends RevSliderFunctions {
 	 *  custom output function
 	 */
 	public static function custom_post_fields_output(){
-		$meta = get_post_meta(get_the_ID(), 'slide_template', true);
-		if($meta == ''){
-			$meta = 'default';
-		}
-
 		$slider = new RevSliderSlider();
 		$output = array();
 		$output['default'] = 'default';
 
+		$meta = get_post_meta(get_the_ID(), 'slide_template', true);
+		$meta = ($meta == '') ? 'default' : $meta;
+		
 		$slides = $slider->get_sliders_with_slides_short('template');
 		$output = $output + $slides; //union arrays
-
 		?>
 		<ul class="revslider_settings">
 			<li id="slide_template_row">
@@ -262,6 +259,25 @@ class RevSliderAdmin extends RevSliderFunctions {
 		</ul>
 		<?php
 	}
+	
+	
+	
+	/**
+	 * 
+	 * on save post meta. Update metaboxes data from post, add it to the post meta 
+	 * @before: RevSliderBaseAdmin::onSavePost();
+	 */
+	public static function on_save_post(){
+		$f = new RevSliderFunctions();
+		
+		$post_id = $f->get_post_var('ID');
+		if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return $post_id; //protection against autosave
+		if(empty($post_id)) return false;
+		
+		$value = $f->get_post_var('slide_template');
+		update_post_meta($post_id, 'slide_template', $value);
+	}
+	
 	
 	/**
 	 * we dont want to show notices in our plugin
@@ -319,6 +335,7 @@ class RevSliderAdmin extends RevSliderFunctions {
 		add_action('admin_head', array($this, 'hide_notices'), 1);
 		add_action('admin_menu', array($this, 'add_admin_pages'));
 		add_action('add_meta_boxes', array($this, 'add_slider_meta_box'));
+		add_action('save_post', array($this, 'on_save_post'));
 		add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_styles'));
 		add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_scripts'));
 		add_action('wp_ajax_revslider_ajax_action', array($this, 'do_ajax_action')); //ajax response to save slider options.
@@ -2146,27 +2163,28 @@ class RevSliderAdmin extends RevSliderFunctions {
 			'cannotbeundone' => __('This action can not be undone !!', 'revslider'),
 			'deleteslider' => __('Delete Slider', 'revslider'),
 			'deleteslide' => __('Delete Slide', 'revslider'),
-			'deletingslide' => __('This can be Undone only within the Current session.', 'revslider'),			
-			'deleteselectedslide' => __('Are you sure you want to delete the selected Slide:', 'revslider'),			
+			'deletingslide' => __('This can be Undone only within the Current session.', 'revslider'),
+			'deleteselectedslide' => __('Are you sure you want to delete the selected Slide:', 'revslider'),
 			'cancel' => __('Cancel', 'revslider'),
 			'addons' => __('Add-Ons', 'revslider'),
 			'deletingslider' => __('Deleting Slider', 'revslider'),
-			'active_sr_tmp_obl' => __('Template & Object Library', 'revslider'),			
-			'active_sr_inst_upd' => __('Instant Updates', 'revslider'),			
-			'active_sr_one_on_one' => __('1on1 Support', 'revslider'),			
-			'getlicensekey' => __('Get a Purchase Code', 'revslider'),			
-			'ihavelicensekey' => __('I have a Purchase Code', 'revslider'),			
+			'active_sr_tmp_obl' => __('Template & Object Library', 'revslider'),
+			'active_sr_inst_upd' => __('Instant Updates', 'revslider'),
+			'active_sr_one_on_one' => __('1on1 Support', 'revslider'),
+			'getlicensekey' => __('Get a Purchase Code', 'revslider'),
+			'ihavelicensekey' => __('I have a Purchase Code', 'revslider'),
 			'active_sr_to_access' => __('Register Slider Revolution<br>to Unlock Premium Features', 'revslider'),
 			'active_sr_plg_activ' => __('Register Purchase Code', 'revslider'),
 			'onepurchasekey' => __('1 Purchase Code per Website!', 'revslider'),
-			'onepurchasekey_info' => __('If you want to use your purchase code on<br>another domain, please deregister it first or', 'revslider'),			
+			'onepurchasekey_info' => __('If you want to use your purchase code on<br>another domain, please deregister it first or', 'revslider'),
 			'parallaxsettoenabled' => __('Parallax is now generally Enabled', 'revslider'),
 			'timelinescrollsettoenabled' => __('Scroll Based Timeline is now generally Enabled', 'revslider'),
 			'feffectscrollsettoenabled' => __('Filter Effect Scroll is now generally Enabled', 'revslider'),
 			'nolayersinslide' => __('Slide has no Layers', 'revslider'),
 			'leaving' => __('Changes that you made may not be saved.', 'revslider'),
-			'sliderasmodal' => __('Add Slider as Modal', 'revslider')
-			
+			'sliderasmodal' => __('Add Slider as Modal', 'revslider'),
+			'register_to_unlock' => __('Register to unlock all Premium Features', 'revslider'),
+			'premium_features_unlocked' => __('All Premium Features unlocked', 'revslider')
 		);
 
 		return apply_filters('revslider_get_javascript_multilanguage', $lang);
