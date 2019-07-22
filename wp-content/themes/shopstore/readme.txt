@@ -4,7 +4,7 @@ Contributors: athemeart
 Donate link: https://athemeart.com/downloads/shopstore/
 Requires at least: 4.0
 Tested up to: 5.2.2
-Stable tag: 3.3
+Stable tag: 3.4
 Requires PHP: 7.0
 License: GPLv3 
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -98,6 +98,9 @@ All are Licensed under CC0
 
 == Upgrade Notice  ==
 
+= 3.4 =
+* skip-link added
+
 = 3.3 =
 * add sidebar ( front_page_sidebar )
 
@@ -154,6 +157,9 @@ All are Licensed under CC0
 
 
 == Changelog ==
+
+= 3.4 =
+* skip-link added
 
 = 3.3 =
 * add sidebar ( front_page_sidebar )
