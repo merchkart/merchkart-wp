@@ -7714,7 +7714,7 @@ body input[type="submit"]:hover {
   position: relative;
 }
 .header-wrapper.nasa-header-transparent {
-  position: relative;
+  position: absolute;
   width: 100%;
   z-index: 99;
 }
