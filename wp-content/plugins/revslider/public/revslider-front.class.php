@@ -51,16 +51,16 @@ class RevSliderFront extends RevSliderFunctions {
 		$css		= new RevSliderCssParser();
 		$rs_ver		= apply_filters('revslider_remove_version', RS_REVISION);
 		$global		= $func->get_global_settings();
-		$inc_global = $func->_truefalse($func->get_val($global, 'include', false));
+		$inc_global = $func->_truefalse($func->get_val($global, 'allinclude', true));
 		$inc_footer = $func->_truefalse($func->get_val($global, array('script', 'footer'), false));
-		$do_inclusion = apply_filters('revslider_include_libraries', false);
 		$waitfor	= array('jquery');
+		$widget		= is_active_widget(false, false, 'rev-slider-widget', true);
 		
 		$load		= false;
+		$load		= apply_filters('revslider_include_libraries', $load);
 		$load		= ($revslider_is_preview_mode === true) ? true : $load;
 		$load		= ($inc_global === true) ? true : $load;
 		$load		= ($func->has_shortcode('rev_slider') === true) ? true : $load;
-		$widget		= is_active_widget(false, false, 'rev-slider-widget', true);
 		$load		= ($widget !== false) ? true : $load;
 		
 		if($inc_global === false){

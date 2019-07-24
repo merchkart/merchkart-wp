@@ -4477,7 +4477,7 @@ class RevSliderPluginUpdate extends RevSliderFunctions {
 			$g = array(
 				'version' => '6.0.0',
 				'permission' => $this->get_val($global, 'role', 'admin'),
-				'include' => $this->_truefalse($this->get_val($global, 'includes_globally', false)),
+				//'include' => $this->_truefalse($this->get_val($global, 'includes_globally', true)),
 				'includeids' => $this->get_val($global, 'pages_for_includes', ''),
 				'script' => array(
 					'footer' => $this->_truefalse($this->get_val($global, 'js_to_footer', false)),

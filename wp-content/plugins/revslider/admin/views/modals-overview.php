@@ -68,15 +68,15 @@ if(!defined('ABSPATH')) exit();
 									<option value="author"><?php _e('Author, Editor, Admin', 'revslider');?></option>
 								</select><span class="linebreak"></span>
 					<div class="div25"></div>
-					<label_a><?php _e('Include libraries globally', 'revslider');?></label_a><input type="checkbox" class="easyinit globalinput" data-r="globals.include"><span class="linebreak"></span>
-					<label_a><?php _e('List of pages to include RevSlider libraries ', 'revslider');?></label_a><input type="text" data-r="globals.includeids" class="easyinit globalinput" placeholder="<?php _e('Example 2,homepage,5', 'revslider');?>"><span class="linebreak"></span>
+					<label_a><?php _e('Include libraries globally', 'revslider');?></label_a><input type="checkbox" class="easyinit globalinput" data-r="globals.allinclude"><span class="linebreak"></span>
+					<label_a><?php _e('List of pages to include RevSlider libraries ', 'revslider');?></label_a><input type="text" data-r="globals.includeids" class="easyinit globalinput" placeholder="<?php _e('(ie. Example 2,homepage,5)', 'revslider');?>"><span class="linebreak"></span>
 					<div class="div25"></div>					
 					<label_a><?php _e('Insert scripts in footer', 'revslider');?></label_a><input type="checkbox" class="easyinit globalinput" data-r="globals.script.footer"><span class="linebreak"></span>
 					<label_a><?php _e('Defer JavaScript loading', 'revslider');?></label_a><input type="checkbox" class="easyinit globalinput" data-r="globals.script.defer"><span class="linebreak"></span>
-					<label_a><?php _e('3rd Party Lazy Loading Data', 'revslider');?></label_a><input type="text" class="easyinit globalinput"  data-r="globals.lazyloaddata" placeholder="lazy-src (i.e. WP Rocket)"><span class="linebreak"></span>
+					<label_a><?php _e('3rd Party Lazy Loading Data', 'revslider');?></label_a><input type="text" class="easyinit globalinput"  data-r="globals.lazyloaddata" placeholder="<?php _e('(i.e. lazy-src for WP Rocket)', 'revslider'); ?>"><span class="linebreak"></span>
 					<div class="div25"></div>
 					<label_a><?php _e('Disable RS Font Awesome Library', 'revslider');?></label_a><input type="checkbox" class="easyinit globalinput" data-r="globals.fontawesomedisable"><span class="linebreak"></span>					
-					<label_a><?php _e('Optional font loading URL', 'revslider');?></label_a><input type="text" class="easyinit globalinput" data-r="globals.fonturl" placeholder="<?php _e('ie. http://fonts.useso.com/css?family for chinese Environment', 'revslider');?>"><span class="linebreak"></span>
+					<label_a><?php _e('Optional font loading URL', 'revslider');?></label_a><input type="text" class="easyinit globalinput" data-r="globals.fonturl" placeholder="<?php _e('(ie. http://fonts.useso.com/css?family for chinese Environment)', 'revslider');?>"><span class="linebreak"></span>
 					<label_a><?php _e('Enable google font download', 'revslider');?></label_a><select id="fontdownload" name="fontdownload" data-theme="inmodal" class="globalinput easyinit nosearchbox tos2" data-r="globals.fontdownload">
 									<option selected="selected" value="off"><?php _e('Load from Google','revslider');?></option>
 									<option value="preload"><?php _e('Preload from Google', 'revslider');?></option>

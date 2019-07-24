@@ -4,7 +4,7 @@ Plugin Name: Slider Revolution
 Plugin URI: https://revolution.themepunch.com/
 Description: Slider Revolution - Premium responsive slider
 Author: ThemePunch
-Version: 6.0.6
+Version: 6.0.7
 Author URI: https://themepunch.com/
 */
 
@@ -15,7 +15,7 @@ if(class_exists('RevSliderFront')){
 	die('ERROR: It looks like you have more than one instance of Slider Revolution installed. Please remove additional instances for this plugin to work again.');
 }
 
-define('RS_REVISION',			'6.0.6');
+define('RS_REVISION',			'6.0.7');
 define('RS_PLUGIN_PATH',		plugin_dir_path(__FILE__));
 define('RS_PLUGIN_SLUG_PATH',	plugin_basename(__FILE__));
 define('RS_PLUGIN_FILE_PATH',	__FILE__);
@@ -69,10 +69,7 @@ try{
 		
 		//this fixes an issue with the Visual Composer extension 
 		if(empty($slider_alias)){
-			if(function_exists('is_user_logged_in') && is_user_logged_in()){
-				return '<div><img src="' . RS_PLUGIN_URL_CLEAN . 'admin/assets/images/rs6_logo_2x.png"></div>';	
-			}
-			else return '';
+			return (function_exists('is_user_logged_in') && is_user_logged_in()) ? '<div><img src="' . RS_PLUGIN_URL_CLEAN . 'admin/assets/images/rs6_logo_2x.png"></div>' : '';
 		}
 		
 		$output->set_custom_order($order);
@@ -143,7 +140,7 @@ try{
 			$g_values = $output->get_global_settings();
 			$add_to = $output->get_val($g_values, 'includeids', '');
 			$output->set_add_to($add_to);
-			if($output->check_add_to(true) == false && $output->_truefalse($output->get_val($g_values, 'include', false)) == false){
+			if($output->check_add_to(true) == false && $output->_truefalse($output->get_val($g_values, 'allinclude', true)) == false){
 				$output->print_error_message(
 					__('If you want to use the PHP function "add_revslider" in your code please make sure to activate ', 'revslider').
 					__('"Include RevSlider libraries globally" ', 'revslider').

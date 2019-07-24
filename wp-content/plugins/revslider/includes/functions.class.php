@@ -878,7 +878,7 @@ class RevSliderFunctions extends RevSliderData {
 	 * temporary remove image sizes so that only the needed thumb will be created
 	 * @since: 6.0
 	 **/
-	public static function temporary_remove_sizes($sizes, $meta){
+	public static function temporary_remove_sizes($sizes, $meta = false){
 		foreach($sizes as $size => $values){
 			if($size == 'thumbnail'){
 				return array($size => $values);
@@ -2410,7 +2410,7 @@ class RevSliderFunctions extends RevSliderData {
 		if(!is_singular()) return false;
 		
 		$post = get_post(get_the_ID());  
-		if(stripos($post->post_content, '[' . $shortcode) !== false ) $found = true;  
+		if(stripos($post->post_content, '[' . $shortcode) !== false) $found = true;  
 		
 		return $found;  
 	}
