@@ -271,7 +271,7 @@ foreach ($img_sizes as $imghandle => $imgSize) {
 			</div>
 			<!-- LAYER VIDEO SETTINGS -->
 			<div id="form_layercontent_content_video_adv" class="form_inner open _shfv_ _shfa_ layerbg_youtube_settings layerbg_vimeo_settings layer_bg_settings">
-				<div class="form_inner_header"><i class="material-icons">video_library</i><?php _e('Advenced Media Settings', 'revslider');?></div>
+				<div class="form_inner_header"><i class="material-icons">video_library</i><?php _e('Advanced Media Settings', 'revslider');?></div>
 				<div class="collapsable">
 					<longoption><i class="material-icons">stop</i><label_a ><?php _e('Stop Other Media', 'revslider');?></label_a><input type="checkbox" class="easyinit layerinput" data-r="media.stopAllVideo"></longoption>
 					<longoption class="_nsfa_"><i class="material-icons">fullscreen</i><label_a ><?php _e('Allow Fullscreen', 'revslider');?></label_a><input type="checkbox" class="easyinit layerinput" data-r="media.allowFullscreen"></longoption>
@@ -1043,8 +1043,8 @@ foreach ($img_sizes as $imghandle => $imgSize) {
 						<oneshort><label_icon class="ui_bradius_topright"></label_icon><input class="layerinput valueduekeyboard smallinput easyinit callEvent" data-updateviaevt="true" data-evt="updateBorderRadiusInputHover" data-evtparam="1" data-allowed="px,%"  data-numeric="true" data-r="hover.borderRadius.v.1" data-min="-500" data-max="500" type="text"></oneshort>
 					</row>
 					<row class="directrow">
-						<onelong><label_icon class="ui_bradius_bottomleft"></label_icon><input class="layerinput valueduekeyboard smallinput easyinit callEvent" data-updateviaevt="true" data-evt="updateBorderRadiusInputHover" data-evtparam="2" data-allowed="px,%"  data-numeric="true" data-r="hover.borderRadius.v.2" data-min="-500" data-max="500" type="text"></onelong>
-						<oneshort><label_icon class="ui_bradius_bottomright"></label_icon><input class="layerinput valueduekeyboard smallinput easyinit callEvent" data-updateviaevt="true" data-evt="updateBorderRadiusInputHover" data-evtparam="3" data-allowed="px,%"  data-numeric="true" data-r="hover.borderRadius.v.3" data-min="-500" data-max="500" type="text"></oneshort>
+						<onelong><label_icon class="ui_bradius_bottomleft"></label_icon><input class="layerinput valueduekeyboard smallinput easyinit callEvent" data-updateviaevt="true" data-evt="updateBorderRadiusInputHover" data-evtparam="3" data-allowed="px,%"  data-numeric="true" data-r="hover.borderRadius.v.3" data-min="-500" data-max="500" type="text"></onelong>
+						<oneshort><label_icon class="ui_bradius_bottomright"></label_icon><input class="layerinput valueduekeyboard smallinput easyinit callEvent" data-updateviaevt="true" data-evt="updateBorderRadiusInputHover" data-evtparam="2" data-allowed="px,%"  data-numeric="true" data-r="hover.borderRadius.v.2" data-min="-500" data-max="500" type="text"></oneshort>
 					</row>
 				</div>
 			</div>
@@ -1609,7 +1609,7 @@ foreach ($img_sizes as $imghandle => $imgSize) {
 				<div id="layer_timelineloop_animation"> 
 					<div id="la_loopings_tab_timeline" class="la_loopings_tab selected">
 						<div id="form_layer_loop_timeline" class="form_inner open">
-							<div class="form_inner_header"><i class="material-icons">repeat_one</i><?php _e('Layer Timline Loop', 'revslider');?></div>															
+							<div class="form_inner_header"><i class="material-icons">repeat_one</i><?php _e('Layer Timeline Loop', 'revslider');?></div>															
 							<div class="collapsable">
 								<label_a><?php _e('Start Frame', 'revslider');?></label_a><select id="la_timeline_loop_from" class="layerinput easyinit nosearchbox tos2 callEvent" data-evt="updateAllLayerFrames" data-r="timeline.tloop.from"></select><span class="linebreak"></span>
 								<label_a><?php _e('End Frame', 'revslider');?></label_a><select id="la_timeline_loop_to" class="layerinput easyinit nosearchbox tos2 callEvent" data-evt="updateAllLayerFrames"  data-r="timeline.tloop.to"></select><span class="linebreak"></span>

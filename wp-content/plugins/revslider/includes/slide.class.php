@@ -558,10 +558,11 @@ class RevSliderSlide extends RevSliderFunctions {
 		//check if we are woocommerce or not
 		$slider_source = $this->get_slider_param($slider_id, 'source', array());
 		if($this->get_slider_param($slider_id, 'sourcetype', 'gallery') == 'woocommerce'){
-			$excerpt_limit = $this->get_val($slider_source, array('woo', 'excerptLimit'), 55);
+			$excerpt_limit = str_replace('char', '', $this->get_val($slider_source, array('woo', 'excerptLimit'), 55));
 		}else{
-			$excerpt_limit = $this->get_val($slider_source, array('post', 'excerptLimit'), 55);
+			$excerpt_limit = str_replace('char', '', $this->get_val($slider_source, array('post', 'excerptLimit'), 55));
 		}
+		
 		$excerpt_limit	= (int)$excerpt_limit;
 		$date		= $this->get_val($post, 'post_date_gmt');
 		$date_mod	= $this->get_val($post, 'post_modified');
@@ -1253,14 +1254,13 @@ class RevSliderSlide extends RevSliderFunctions {
 		}
 		
 		$this->set_param(array('bg', 'vimeo'), $this->get_val($this->post_data, 'url'));
-		
-		$bg_type = $this->get_val($this->params, array('bg', 'type'));
-		
-		if($bg_type == 'trans' || $bg_type == 'image' || $bg_type == 'streamvimeo' || $bg_type == 'streamvimeoboth'){ //if image is choosen, use featured image as background
-			//facebook check which image size is choosen
+		if($this->get_val($this->params, array('bg', 'imageFromStream'), false) === true && in_array($this->get_val($this->params, array('bg', 'type')), array('trans', 'image', 'streamvimeo', 'streamvimeoboth', 'vimeo'), true)){ //if image is choosen, use featured image as background
+			//vimeo check which image size is choosen
 			$img_sizes	= $this->get_all_image_sizes('vimeo');
 			$img_res	= $this->get_val($this->params, array('bg', 'imageSourceType'), reset($img_sizes));
 			$img_res	= (!isset($img_sizes[$img_res])) ? key($img_sizes) : $img_res;
+			
+			//var_dump($img_sizes);
 			$is			= array();
 			$this->image_id = $this->get_val($this->post_data, 'id');
 

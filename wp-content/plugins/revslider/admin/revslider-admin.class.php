@@ -380,10 +380,6 @@ class RevSliderAdmin extends RevSliderFunctions {
 				add_action('after_plugin_row_' . $plugin_id, array('RevSliderAdmin', 'show_purchase_notice'), 10, 3);
 			}
 			
-			if(version_compare(get_option('revslider-latest-version', RS_REVISION), $plugin['Version'], '>')){
-				add_action('after_plugin_row_' . $plugin_id, array('RevSliderAdmin', 'show_update_notice'), 10, 3);
-			}
-
 			if($add){
 				add_action('after_plugin_row_' . $plugin_id, array('RevSliderAdmin', 'add_notice_wrap_post'), 10, 3);
 			}
@@ -429,17 +425,6 @@ class RevSliderAdmin extends RevSliderFunctions {
         <?php
 	}
 
-	/**
-	 * Show message for update notification
-	 **/
-	public static function show_update_notice(){
-		?>
-		<p>
-			<?php _e('A new version of Slider Revolution is available.', 'revslider');?>
-		</p>
-        <?php
-	}
-	
 	/**
 	 * Add the suggested privacy policy text to the policy postbox.
 	 */

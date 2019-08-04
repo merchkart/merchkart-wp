@@ -739,7 +739,9 @@ class RevSliderFunctions extends RevSliderData {
 				if($add_path){
 					$upload_dir	= wp_upload_dir();
 					$cont_url	= $upload_dir['baseurl'];
-					$image		= str_replace('uploads/uploads/', 'uploads/', $cont_url . '/' . $image);
+					if(strpos($image, $cont_url) === false){
+						$image = str_replace('uploads/uploads/', 'uploads/', $cont_url . '/' . $image);
+					}
 				}
 			}
 		}
@@ -1704,7 +1706,7 @@ class RevSliderFunctions extends RevSliderData {
 			array_pop($array);
 			$intro = implode(' ', $array);
 			$intro = trim($intro);
-			$intro = (!empty($intro)) ? '...' : '';
+			$intro .= (!empty($intro)) ? '...' : '';
 		}else{
 			$intro = $text;
 		}

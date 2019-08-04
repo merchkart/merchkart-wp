@@ -122,6 +122,7 @@ class RevSliderEventsManager extends RevSliderFunctions {
 		if($postType != EM_POST_TYPE_EVENT){
 			$response = array();
 		}else{
+			$f			 = new RevSliderFunctions();
 			$event		 = new EM_Event($postID, 'post_id');
 			$location	 = $event->get_location();
 			$ev			 = $event->to_array();
@@ -130,21 +131,21 @@ class RevSliderEventsManager extends RevSliderFunctions {
 			$time_format = get_option('time_format');
 			
 			$response = array(
-				'id'				 => $this->get_val($ev, 'event_id'),
-				'start_date'		 => date_format(date_create_from_format('Y-m-d', $this->get_val($ev, 'event_start_date')), $date_format),
-				'end_date'			 => date_format(date_create_from_format('Y-m-d', $this->get_val($ev, 'event_end_date')), $date_format),
-				'start_time'		 => date_format(date_create_from_format('H:i:s', $this->get_val($ev, 'event_start_time')), $time_format),
-				'end_time'			 => date_format(date_create_from_format('H:i:s', $this->get_val($ev, 'event_end_time')), $time_format),
-				'location_name'		 => $this->get_val($loc, 'location_name'),
-				'location_address'	 => $this->get_val($loc, 'location_address'),
-				'location_slug'		 => $this->get_val($loc, 'location_slug'),
-				'location_town'		 => $this->get_val($loc, 'location_town'),
-				'location_state'	 => $this->get_val($loc, 'location_state'),
-				'location_postcode'	 => $this->get_val($loc, 'location_postcode'),
-				'location_region'	 => $this->get_val($loc, 'location_region'),
-				'location_country'	 => $this->get_val($loc, 'location_country'),
-				'location_latitude'	 => $this->get_val($loc, 'location_latitude'),
-				'location_longitude' => $this->get_val($loc, 'location_longitude')
+				'id'				 => $f->get_val($ev, 'event_id'),
+				'start_date'		 => date_format(date_create_from_format('Y-m-d', $f->get_val($ev, 'event_start_date')), $date_format),
+				'end_date'			 => date_format(date_create_from_format('Y-m-d', $f->get_val($ev, 'event_end_date')), $date_format),
+				'start_time'		 => date_format(date_create_from_format('H:i:s', $f->get_val($ev, 'event_start_time')), $time_format),
+				'end_time'			 => date_format(date_create_from_format('H:i:s', $f->get_val($ev, 'event_end_time')), $time_format),
+				'location_name'		 => $f->get_val($loc, 'location_name'),
+				'location_address'	 => $f->get_val($loc, 'location_address'),
+				'location_slug'		 => $f->get_val($loc, 'location_slug'),
+				'location_town'		 => $f->get_val($loc, 'location_town'),
+				'location_state'	 => $f->get_val($loc, 'location_state'),
+				'location_postcode'	 => $f->get_val($loc, 'location_postcode'),
+				'location_region'	 => $f->get_val($loc, 'location_region'),
+				'location_country'	 => $f->get_val($loc, 'location_country'),
+				'location_latitude'	 => $f->get_val($loc, 'location_latitude'),
+				'location_longitude' => $f->get_val($loc, 'location_longitude')
 			);
 		}
 		

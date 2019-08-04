@@ -297,11 +297,11 @@ class RevSliderFront extends RevSliderFunctions {
 			//Shortcode Wizard Includes
 			add_action('vc_before_init', array('RevSliderShortcodeWizard', 'visual_composer_include')); //VC functionality
 			add_action('admin_enqueue_scripts', array('RevSliderShortcodeWizard', 'enqueue_scripts'));
-			
-			//Elementor Functionality
-			require_once(RS_PLUGIN_PATH . 'admin/includes/shortcode_generator/elementor/elementor.class.php');
-			add_action('init', array('RevSliderElementor', 'init'));
 		}
+		
+		//Elementor Functionality
+		require_once(RS_PLUGIN_PATH . 'admin/includes/shortcode_generator/elementor/elementor.class.php');
+		add_action('init', array('RevSliderElementor', 'init'));
 	}
 
 	/**

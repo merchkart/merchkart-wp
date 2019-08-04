@@ -1748,10 +1748,10 @@ class RevSliderOutput extends RevSliderFunctions {
 		//echo $html_idle_style;
 		echo '"'."\n";
 		echo $this->ld().RS_T7.'>';//."\n";
-		if($special_type !== false ){
+		echo ($html_bg_image !== '') ? $html_bg_image."\n" : '';
+		if($special_type !== false){
 			echo $this->add_opening_comment();
 		}
-		echo ($html_bg_image !== '') ? $html_bg_image."\n" : '';
 		
 		if($toggle_data['allow'] === true){
 			echo "\n".$this->ld().RS_T8.'<div class="';
@@ -4090,8 +4090,7 @@ rs-module .material-icons {
 		$videoloop	= $this->get_val($layer, array('media', 'loop'), 'loopandnoslidestop');
 		$autoplay	= $this->get_val($layer, array('media', 'autoPlay'), 'true');
 		$nextslide	= $this->get_val($layer, array('media', 'nextSlideAtEnd'), true);
-		$poster	 = $this->remove_http($this->get_val($layer, array('media', 'posterUrl'), ''));
-		
+		$poster	= $this->remove_http($this->get_val($layer, array('media', 'posterUrl'), ''));
 		$mute	= ($autoplay !== 'false') ? true : $mute;
 		
 		if($autoplay !== 'true') $data['video']['ap'] = $autoplay;
@@ -4127,6 +4126,7 @@ rs-module .material-icons {
 			case 'streamyoutubeboth':
 			case 'youtube':
 				$vid	= (in_array($video_type, array('streamyoutube', 'streamyoutubeboth'), true)) ? $this->slide->get_param(array('bg', 'youtube'), '') : $vid; //change $vid to the stream!
+				$vid	= ($this->get_val($layer, array('media', 'videoFromStream'), false) === true) ? $this->slide->get_param(array('bg', 'youtube'), '') : $vid;
 				$vargs	= (empty($vargs)) ? RevSliderFront::YOUTUBE_ARGUMENTS : $vargs;
 				$sp		= $this->get_val($layer, array('media', 'speed'), 1);
 				$inl	= $this->get_val($layer, array('media', 'playInline'), true);
@@ -4162,6 +4162,7 @@ rs-module .material-icons {
 			case 'streamvimeoboth':
 			case 'vimeo':
 				$vid = (in_array($video_type, array('streamvimeo', 'streamvimeoboth'), true)) ? $this->slide->get_param(array('bg', 'vimeo'), '') : $vid;
+				$vid = ($this->get_val($layer, array('media', 'videoFromStream'), false) === true) ? $this->slide->get_param(array('bg', 'vimeo'), '') : $vid;
 				$vid = (strpos($vid, 'http') !== false) ? (int) substr(parse_url($vid, PHP_URL_PATH), 1) : $vid; //check if full URL //we have full URL, split it to ID
 				$vargs = (empty($vargs)) ? RevSliderFront::VIMEO_ARGUMENTS : $vargs;
 				$vargs = (!$control) ? 'background=1&'.$vargs : $vargs;

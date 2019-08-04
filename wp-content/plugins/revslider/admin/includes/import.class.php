@@ -942,6 +942,8 @@ class RevSliderSliderImport extends RevSliderSlider {
 						$params['bg']['ogv'] = $this->get_image_url_from_path($this->check_file_in_zip($this->download_path, $this->get_val($params, array('bg', 'ogv')), $alias, $this->imported, true));
 					}
 				}
+				
+				$this->slides_data[$slide_key]['params'] = $params;
 			}
 			
 			//convert layers images:
@@ -1065,6 +1067,7 @@ class RevSliderSliderImport extends RevSliderSlider {
 			);
 			
 			if(isset($slide['id'])){
+				$this->slides_data[$slide_key]['new_id'] = $wpdb->insert_id;
 				$this->map[$slide['id']] = $wpdb->insert_id;
 			}
 		}
@@ -1683,6 +1686,22 @@ class RevSliderSliderImport extends RevSliderSlider {
 				}
 				$change = true;
 			}
+			
+			//check for all slides, if seo.slideLink needs to be changed
+			$this->init_layer = false;
+			$slides = $this->get_slides();
+			if(!empty($slides)){
+				foreach($slides as $skey => $slide){
+					if(version_compare($slide->get_param('version', '1.0.0'), '6.0.0', '<')){
+					}else{
+						$slidelink = $slide->get_param(array('seo', 'slideLink'), false);
+						if($slidelink !== false && isset($map[$slidelink])){
+							$slide->set_param(array('seo', 'slideLink'), $map[$slidelink]);
+							$slide->save_params();
+						}
+					}
+				}
+			}
 		}
 		
 		if($change === true){
@@ -1704,7 +1723,7 @@ class RevSliderSliderImport extends RevSliderSlider {
 			if($this->import_zip === true){ //we have a zip, check if exists
 				$exists = $wp_filesystem->exists($this->download_path.'images/'.$image);
 				if(!$exists){
-					echo '<p>'.esc_attr($image).__(' not found!', 'revslider').'</p>';
+					//echo '<p>'.esc_attr($image).__(' not found!', 'revslider').'</p>';
 				}else{
 					if(!isset($this->imported['images/'.$image])){
 						$import_image = $this->import_media($this->download_path.'images/'.$image, $this->get_val($this->slider_data, 'alias', 'alias').'/');

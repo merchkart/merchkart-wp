@@ -237,9 +237,9 @@ class RevSliderData {
 			break;
 			case 'vimeo':
 				$custom_sizes = array(
-					'thumbnail_small' => __('Small', 'revslider'),
-					'thumbnail_medium' => __('Medium', 'revslider'),
 					'thumbnail_large' => __('Large', 'revslider'),
+					'thumbnail_medium' => __('Medium', 'revslider'),
+					'thumbnail_small' => __('Small', 'revslider'),
 				);
 			break;
 			case 'gallery':
