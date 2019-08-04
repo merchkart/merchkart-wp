@@ -20,6 +20,11 @@ if (!isset($content_width)){
  */
 require_once ELESSI_THEME_PATH . '/options/nasa-options.php';
 
+/**
+Remove Stripe Buy Now from Single Product Page
+**/
+add_filter( 'wc_stripe_hide_payment_request_on_product_page', '__return_true' );
+
 add_action('after_setup_theme', 'elessi_setup');
 if (!function_exists('elessi_setup')) :
 

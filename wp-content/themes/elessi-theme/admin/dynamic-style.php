@@ -4,7 +4,7 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
 
     ob_start();
     ?><style><?php
-    echo '@charset "UTF-8";' . "\n";
+    // echo '@charset "UTF-8";' . "\n";
     /**
      * Start font style
      */
