@@ -18,8 +18,8 @@ if (!function_exists('elessi_product_page_heading')) {
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Shop sidebar", 'elessi-theme'),
-            "desc" => esc_html__("Select if you want a sidebar on product categories.", 'elessi-theme'),
+            "name" => esc_html__("Shop Sidebar Layout", 'elessi-theme'),
+            // "desc" => esc_html__("Select if you want a sidebar on product categories.", 'elessi-theme'),
             "id" => "category_sidebar",
             "std" => "top",
             "type" => "select",
@@ -39,7 +39,7 @@ if (!function_exists('elessi_product_page_heading')) {
         $of_options[] = array(
             "name" => esc_html__("Top Bar Label", 'elessi-theme'),
             "id" => "top_bar_archive_label",
-            "desc" => esc_html__("Top Bar Label value.", 'elessi-theme'),
+            // "desc" => esc_html__("Top Bar Label value.", 'elessi-theme'),
             "std" => "Filter by:",
             "type" => "text",
             'class' => 'nasa-category_sidebar nasa-category_sidebar-top nasa-theme-option-child'
@@ -57,7 +57,7 @@ if (!function_exists('elessi_product_page_heading')) {
         $of_options[] = array(
             "name" => esc_html__("Position filter categories", 'elessi-theme'),
             "id" => "top_bar_cat_pos",
-            "desc" => esc_html__("Position filter categories.", 'elessi-theme'),
+            // "desc" => esc_html__("Position filter categories.", 'elessi-theme'),
             "std" => "left-bar",
             "type" => "select",
             "options" => array(
@@ -69,7 +69,7 @@ if (!function_exists('elessi_product_page_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Products Per Row", 'elessi-theme'),
-            "desc" => esc_html__("Change products number display per row for the Shop page", 'elessi-theme'),
+            // "desc" => esc_html__("Change products number display per row for the Shop page", 'elessi-theme'),
             "id" => "products_per_row",
             "std" => "4-cols",
             "type" => "select",
@@ -106,14 +106,14 @@ if (!function_exists('elessi_product_page_heading')) {
         $of_options[] = array(
             "name" => esc_html__("Products Per Page", 'elessi-theme'),
             "id" => "products_pr_page",
-            "desc" => esc_html__("Change products per page.", 'elessi-theme'),
+            // "desc" => esc_html__("Change products per page.", 'elessi-theme'),
             "std" => "16",
             "type" => "text"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Select type view", 'elessi-theme'),
-            "desc" => esc_html__("Select type view.", 'elessi-theme'),
+            "name" => esc_html__("Default Type View", 'elessi-theme'),
+            // "desc" => esc_html__("Select type view.", 'elessi-theme'),
             "id" => "products_type_view",
             "std" => "grid",
             "type" => "select",
@@ -126,22 +126,22 @@ if (!function_exists('elessi_product_page_heading')) {
         $of_options[] = array(
             "name" => esc_html__("Enable show info in top", 'elessi-theme'),
             "id" => "showing_info_top",
-            "desc" => esc_html__("Enable show info in top. (don't using for Sidebar Off-canvas)", 'elessi-theme'),
+            "desc" => esc_html__("Note: don't using for Sidebar Off-canvas.", 'elessi-theme'),
             "std" => "1",
-            "type" => "checkbox"
+            "type" => "switch"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Enable change view as", 'elessi-theme'),
+            "name" => esc_html__("Change View As (Only Desktop Mode)", 'elessi-theme'),
             "id" => "enable_change_view",
-            "desc" => esc_html__("Enable change view grid or list.", 'elessi-theme'),
+            // "desc" => esc_html__("Enable change view grid or list.", 'elessi-theme'),
             "std" => "1",
-            "type" => "checkbox"
+            "type" => "switch"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Layout style", 'elessi-theme'),
-            "desc" => esc_html__("Select Layout style.", 'elessi-theme'),
+            "name" => esc_html__("Layout Style", 'elessi-theme'),
+            // "desc" => esc_html__("Select Layout style.", 'elessi-theme'),
             "id" => "products_layout_style",
             "std" => "grid_row",
             "type" => "select",
@@ -152,9 +152,9 @@ if (!function_exists('elessi_product_page_heading')) {
         );
 
         $of_options[] = array(
-            "name" => esc_html__("Pagination page style", 'elessi-theme'),
+            "name" => esc_html__("Pagination Layout", 'elessi-theme'),
             "id" => "pagination_style",
-            "desc" => esc_html__("Select style for pagination", 'elessi-theme'),
+            // "desc" => esc_html__("Select style for pagination", 'elessi-theme'),
             "std" => 'style-2',
             "type" => "select",
             "options" => array(
@@ -164,13 +164,29 @@ if (!function_exists('elessi_product_page_heading')) {
                 "load-more" => esc_html__("Load More - Only using for Ajax", 'elessi-theme')
             )
         );
+        
+        $of_options[] = array(
+            "name" => esc_html__("Disable Ajax Shop", 'elessi-theme'),
+            "id" => "disable_ajax_product",
+            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
+            "std" => 0,
+            "type" => "checkbox"
+        );
+        
+        $of_options[] = array(
+            "name" => esc_html__("Disable ajax Shop Progress bar loading", 'elessi-theme'),
+            "id" => "disable_ajax_product_progress_bar",
+            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
+            "std" => 0,
+            "type" => "checkbox"
+        );
 
         $of_options[] = array(
-            "name" => esc_html__("Show title in one line", 'elessi-theme'),
+            "name" => esc_html__("Show Title In Line", 'elessi-theme'),
             "id" => "cutting_product_name",
-            "desc" => esc_html__("Only show title product if it is too long.", 'elessi-theme'),
+            "desc" => esc_html__("Only show title product on one line if it is too long.", 'elessi-theme'),
             "std" => "1",
-            "type" => "checkbox"
+            "type" => "switch"
         );
 
         $of_options[] = array(
@@ -182,9 +198,9 @@ if (!function_exists('elessi_product_page_heading')) {
         $of_options[] = array(
             "name" => esc_html__("Enable Category top content", 'elessi-theme'),
             "id" => "enable_cat_header",
-            "desc" => esc_html__("Enable Category top content", 'elessi-theme'),
+            // "desc" => esc_html__("Enable Category top content", 'elessi-theme'),
             "std" => "1",
-            "type" => "checkbox"
+            "type" => "switch"
         );
 
         $of_options[] = array(

@@ -467,7 +467,6 @@ jQuery(document).ready(function ($) {
 
     });
 
-
     /* AJAX Options Reset */
     $('#of_reset').click(function () {
 
@@ -689,6 +688,7 @@ jQuery(document).ready(function ($) {
             // Grab the selected attachment.
             var attachment = frame.state().get('selection').first();
             frame.close();
+            // selector.find('.upload').val(attachment.attributes.id);
             selector.find('.upload').val(attachment.attributes.url);
             if (attachment.attributes.type == 'image') {
                 selector.find('.screenshot').empty().hide().append('<img class="of-option-image" src="' + attachment.attributes.url + '" />').slideDown('fast');

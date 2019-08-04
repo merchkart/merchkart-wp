@@ -18,77 +18,74 @@ if (!function_exists('elessi_breadcrumb_heading')) {
         );
 
         $of_options[] = array(
-            "name" => esc_html__("Show Breadcrumb", 'elessi-theme'),
-            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
+            "name" => esc_html__("Enable", 'elessi-theme'),
+            // "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "id" => "breadcrumb_show",
             "std" => 1,
-            "type" => "checkbox",
+            "type" => "switch",
             'class' => 'nasa-breadcrumb-flag-option'
         );
 
         $of_options[] = array(
-            "name" => esc_html__("Breadcrumb Row", 'elessi-theme'),
-            "desc" => esc_html__("Breadcrumb Row.", 'elessi-theme'),
+            "name" => esc_html__("Layout", 'elessi-theme'),
+            "desc" => esc_html__("Layout Single or Double rows.", 'elessi-theme'),
             "id" => "breadcrumb_row",
             "std" => "multi",
             "type" => "select",
             "options" => array(
-                "multi" => esc_html__("Double Row", 'elessi-theme'),
+                "multi" => esc_html__("Double Rows", 'elessi-theme'),
                 "single" => esc_html__("Single Row", 'elessi-theme')
             ),
-            'class' => 'hidden-tag nasa-breadcrumb-type-option'
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Breadcrumb Type", 'elessi-theme'),
-            "desc" => esc_html__("Choose breadcrumb type.", 'elessi-theme'),
+            "name" => esc_html__("Type", 'elessi-theme'),
+            "desc" => esc_html__("With or Without Background.", 'elessi-theme'),
             "id" => "breadcrumb_type",
             "std" => "has-background",
             "type" => "select",
             "options" => array(
-                "default" => esc_html__("Without Background", 'elessi-theme'),
+                "default" => esc_html__("Without Background - Default use Background Color", 'elessi-theme'),
                 "has-background" => esc_html__("With Background", 'elessi-theme')
             ),
-            'class' => 'hidden-tag nasa-breadcrumb-type-option'
         );
 
         $of_options[] = array(
-            "name" => esc_html__("Breadcrumb Background Image", 'elessi-theme'),
-            "desc" => esc_html__("Breadcrumb background image.", 'elessi-theme'),
+            "name" => esc_html__("Background Image", 'elessi-theme'),
+            // "desc" => esc_html__("background image.", 'elessi-theme'),
             "id" => "breadcrumb_bg",
             "std" => ELESSI_ADMIN_DIR_URI . 'assets/images/breadcrumb-bg.jpg',
             "type" => "media",
-            'class' => 'hidden-tag nasa-breadcrumb-bg-option'
+            "mod" => "min"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Breadcrumb Background Parallax", 'elessi-theme'),
-            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
+            "name" => esc_html__("Background Parallax", 'elessi-theme'),
+            // "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "id" => "breadcrumb_bg_lax",
             "std" => 1,
-            "type" => "checkbox",
-            'class' => 'hidden-tag nasa-breadcrumb-bg-lax'
+            "type" => "switch"
         );
 
         $of_options[] = array(
-            "name" => esc_html__("Breadcrumb Background Color", 'elessi-theme'),
-            "desc" => esc_html__("Breadcrumb background color.", 'elessi-theme'),
+            "name" => esc_html__("Background Color", 'elessi-theme'),
+            // "desc" => esc_html__("Breadcrumb background color.", 'elessi-theme'),
             "id" => "breadcrumb_bg_color",
             "std" => "",
             "type" => "color"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Breadcrumb Text Color", 'elessi-theme'),
-            "desc" => esc_html__("Change Breadcrumb Text Color", 'elessi-theme'),
+            "name" => esc_html__("Text Color", 'elessi-theme'),
+            // "desc" => esc_html__("Change Breadcrumb Text Color", 'elessi-theme'),
             "id" => "breadcrumb_color",
             "std" => "",
             "type" => "color"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Breadcrumb Text Align", 'elessi-theme'),
-            "desc" => esc_html__("Select if you want change Text Align.", 'elessi-theme'),
+            "name" => esc_html__("Text Align", 'elessi-theme'),
+            // "desc" => esc_html__("Select if you want change Text Align.", 'elessi-theme'),
             "id" => "breadcrumb_align",
             "std" => "text-center",
             "type" => "select",
@@ -97,12 +94,11 @@ if (!function_exists('elessi_breadcrumb_heading')) {
                 "text-left" => esc_html__("Left", 'elessi-theme'),
                 "text-right" => esc_html__("Right", 'elessi-theme')
             ),
-            'class' => 'hidden-tag nasa-breadcrumb-align-option'
         );
 
         $of_options[] = array(
-            "name" => esc_html__("Height Breadcrumb", 'elessi-theme'),
-            "desc" => esc_html__("Height breadcrumb. (px)", 'elessi-theme'),
+            "name" => esc_html__("Height", 'elessi-theme'),
+            "desc" => esc_html__("Default - 130px", 'elessi-theme'),
             "id" => "breadcrumb_height",
             "std" => "130",
             "type" => "text"

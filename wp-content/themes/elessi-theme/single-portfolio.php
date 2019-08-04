@@ -13,7 +13,7 @@ get_header();
 ?>
 
 <div class="row">
-    <div class="content large-12 columns margin-bottom-50">
+    <div class="content large-12 columns margin-bottom-70">
         <?php if (have_posts()) :
             while (have_posts()) :
                 the_post(); ?>

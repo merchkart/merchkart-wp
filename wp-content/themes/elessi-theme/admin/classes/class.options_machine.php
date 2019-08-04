@@ -617,7 +617,6 @@ class Options_Machine {
 
                         break;
 
-
                     //Switch option
                     case 'switch':
                         if (!isset($smof_data[$value['id']])) {
@@ -746,13 +745,20 @@ class Options_Machine {
         if (isset($smof_data[$id])) {
             $upload = $smof_data[$id];
         }
+        $val = $upload != "" ? $upload : $std;
+        
+        if (is_numeric($upload)) {
+            $image = wp_get_attachment_image_src($upload, 'full');
+            
+            if (isset($image[0])) {
+                $upload = $image[0];
+            }
+        }
+        
         $hide = '';
-
         if ($mod == "min") {
             $hide = 'hide';
         }
-
-        $val = $upload != "" ? $upload : $std;
 
         $uploader .= '<input class="' . $hide . ' upload of-input" name="' . $id . '" id="' . $id . '_upload" value="' . $val . '" />';
 
@@ -777,7 +783,7 @@ class Options_Machine {
         //Preview
         $uploader .= '<div class="screenshot">';
         if (!empty($upload)) {
-            $uploader .= '<a class="of-uploaded-image" href="' . $upload . '">';
+            $uploader .= '<a class="of-uploaded-image" href="javascript:void(0);">';
             $uploader .= '<img class="of-option-image" id="image_' . $id . '" src="' . $upload . '" />';
             $uploader .= '</a>';
         }

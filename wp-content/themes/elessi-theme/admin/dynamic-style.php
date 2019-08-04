@@ -4,7 +4,7 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
 
     ob_start();
     ?><style><?php
-    // echo '@charset "UTF-8";' . "\n";
+    echo '@charset "UTF-8";' . "\n";
     /**
      * Start font style
      */
@@ -584,6 +584,46 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
             body .product-item .product-img-wrap .nasa-product-grid .product-interactions .btn-compare
             {
                 top: 55px;
+            }
+        <?php
+    endif;
+    
+    /**
+     * Promo Popup
+     */
+    if(isset($nasa_opt['promo_popup']) && $nasa_opt['promo_popup']) :
+        if (!isset($nasa_opt['pp_background_image'])) :
+            $nasa_opt['pp_background_image'] = ELESSI_THEME_URI . '/assets/images/newsletter_bg.jpg';
+        endif;
+        
+        $nasa_opt['pp_background_image'] = $nasa_opt['pp_background_image'] ? str_replace(
+            array(
+                '[site_url]',
+                '[site_url_secure]',
+            ), array(
+                site_url('', 'http'),
+                site_url('', 'https'),
+            ), $nasa_opt['pp_background_image']
+        ) : false;
+        ?>
+            #nasa-popup
+            {
+                width: <?php echo isset($nasa_opt['pp_width']) ? (int) $nasa_opt['pp_width'] : 724; ?>px;
+                background-color: <?php echo isset($nasa_opt['pp_background_color']) ? esc_url($nasa_opt['pp_background_color']) : 'transparent' ?>;
+                <?php if ($nasa_opt['pp_background_image']) : ?>
+                    background-image: url('<?php echo esc_url($nasa_opt['pp_background_image']); ?>');
+                <?php endif; ?>
+                background-repeat: no-repeat;
+                background-size: auto;
+            }
+            #nasa-popup,
+            #nasa-popup .nasa-popup-wrap
+            {
+                height: <?php echo isset($nasa_opt['pp_height']) ? (int) $nasa_opt['pp_height'] : 501; ?>px;
+            }
+            .nasa-pp-left
+            {
+                min-height: 1px;
             }
         <?php
     endif;

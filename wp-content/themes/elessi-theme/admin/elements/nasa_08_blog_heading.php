@@ -17,21 +17,21 @@ if (!function_exists('elessi_blog_heading')) {
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Single Blog layout", 'elessi-theme'),
-            "desc" => esc_html__("Change Single blog layout", 'elessi-theme'),
+            "name" => esc_html__("Single Layout", 'elessi-theme'),
+            // "desc" => esc_html__("Change Single blog layout", 'elessi-theme'),
             "id" => "single_blog_layout",
             "std" => "left",
             "type" => "select",
             "options" => array(
-                "left" => esc_html__("Left sidebar", 'elessi-theme'),
+                "left" => esc_html__("Left Sidebar", 'elessi-theme'),
                 "right" => esc_html__("Right sidebar", 'elessi-theme'),
                 "no" => esc_html__("No sidebar (Centered)", 'elessi-theme')
             )
         );
 
         $of_options[] = array(
-            "name" => esc_html__("Blog layout", 'elessi-theme'),
-            "desc" => esc_html__("Change blog layout", 'elessi-theme'),
+            "name" => esc_html__("Archive Layout", 'elessi-theme'),
+            // "desc" => esc_html__("Change blog layout", 'elessi-theme'),
             "id" => "blog_layout",
             "std" => "left",
             "type" => "select",
@@ -43,8 +43,8 @@ if (!function_exists('elessi_blog_heading')) {
         );
 
         $of_options[] = array(
-            "name" => esc_html__("Blog style", 'elessi-theme'),
-            "desc" => esc_html__("Change blog style", 'elessi-theme'),
+            "name" => esc_html__("Style", 'elessi-theme'),
+            // "desc" => esc_html__("Change blog style", 'elessi-theme'),
             "id" => "blog_type",
             "std" => "blog-standard",
             "type" => "select",
@@ -109,11 +109,11 @@ if (!function_exists('elessi_blog_heading')) {
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Parallax effect", 'elessi-theme'),
+            "name" => esc_html__("Parallax", 'elessi-theme'),
             "id" => "blog_parallax",
-            "desc" => esc_html__("Enable parallax effect on featured images", 'elessi-theme'),
+            // "desc" => esc_html__("Enable parallax effect on featured images", 'elessi-theme'),
             "std" => 0,
-            "type" => "checkbox"
+            "type" => "switch"
         );
         
         /* ======================================================================= */
@@ -125,67 +125,67 @@ if (!function_exists('elessi_blog_heading')) {
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Show author info", 'elessi-theme'),
+            "name" => esc_html__("Author info", 'elessi-theme'),
             "id" => "show_author_info",
-            "desc" => esc_html__("Show author info", 'elessi-theme'),
+            // "desc" => esc_html__("Show author info", 'elessi-theme'),
             "std" => 1,
-            "type" => "checkbox"
+            "type" => "switch"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Show datetime info", 'elessi-theme'),
+            "name" => esc_html__("Datetime info", 'elessi-theme'),
             "id" => "show_date_info",
-            "desc" => esc_html__("Show datetime info", 'elessi-theme'),
+            // "desc" => esc_html__("Show datetime info", 'elessi-theme'),
             "std" => 1,
-            "type" => "checkbox"
+            "type" => "switch"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Show Categories info", 'elessi-theme'),
+            "name" => esc_html__("Categories info", 'elessi-theme'),
             "id" => "show_cat_info",
-            "desc" => esc_html__("Show Categories info", 'elessi-theme'),
+            // "desc" => esc_html__("Show Categories info", 'elessi-theme'),
             "std" => 0,
-            "type" => "checkbox"
+            "type" => "switch"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Show Tags info", 'elessi-theme'),
+            "name" => esc_html__("Tags info", 'elessi-theme'),
             "id" => "show_tag_info",
-            "desc" => esc_html__("Show Tags info", 'elessi-theme'),
+            // "desc" => esc_html__("Show Tags info", 'elessi-theme'),
             "std" => 0,
-            "type" => "checkbox"
+            "type" => "switch"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Show Readmore blog", 'elessi-theme'),
+            "name" => esc_html__("Readmore", 'elessi-theme'),
             "id" => "show_readmore_blog",
-            "desc" => esc_html__("Show Readmore blog", 'elessi-theme'),
+            // "desc" => esc_html__("Show Readmore blog", 'elessi-theme'),
             "std" => 1,
-            "type" => "checkbox"
+            "type" => "switch"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Show Short description (Only use for Blog Grid layout)", 'elessi-theme'),
+            "name" => esc_html__("Short description (Only use for Blog Grid layout)", 'elessi-theme'),
             "id" => "show_desc_blog",
-            "desc" => esc_html__("Show Short description", 'elessi-theme'),
+            // "desc" => esc_html__("Show Short description", 'elessi-theme'),
             "std" => 1,
-            "type" => "checkbox"
+            "type" => "switch"
         );
         
         /* ======================================================================= */
         
         $of_options[] = array(
-            "name" => esc_html__("Single Blog page", 'elessi-theme'),
+            "name" => esc_html__("Single Page", 'elessi-theme'),
             "std" => "<h4>" . esc_html__("Single Blog page", 'elessi-theme') . "</h4>",
             "type" => "info"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Show Related post", 'elessi-theme'),
+            "name" => esc_html__("Related", 'elessi-theme'),
             "id" => "relate_blogs",
-            "desc" => esc_html__("Show Related", 'elessi-theme'),
+            // "desc" => esc_html__("Show Related", 'elessi-theme'),
             "std" => 1,
-            "type" => "checkbox"
+            "type" => "switch"
         );
         
         $of_options[] = array(

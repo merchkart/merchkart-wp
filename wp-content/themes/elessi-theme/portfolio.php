@@ -34,7 +34,7 @@ get_header();
 ?>
 
 <div class="row">
-    <div class="content large-12 columns margin-top-25 margin-bottom-40">
+    <div class="content large-12 columns margin-top-35 margin-bottom-40">
         <div class="nasa-tabs-content nasa-classic-style nasa-classic-2d nasa-tabs-no-border">
             <div class="nasa-portfolio-wrap margin-bottom-20">
                 <?php if(!$cat):?>
@@ -62,7 +62,7 @@ get_header();
 
                 <div class="row">
                     <div class="large-12 columns">
-                        <ul class="margin-left-0 margin-right-0 portfolio portfolio-list large-block-grid-<?php echo (int) $nasa_columns; ?> small-block-grid-1 medium-block-grid-2" data-columns="<?php echo (int) $nasa_columns; ?>">
+                        <ul class="margin-left-0 margin-right-0 portfolio portfolio-list large-block-grid-<?php echo (int) $nasa_columns; ?> small-block-grid-2 medium-block-grid-3" data-columns="<?php echo (int) $nasa_columns; ?>">
                         </ul>
                     </div>
                 </div>
@@ -71,7 +71,6 @@ get_header();
                     <div class="large-12 columns">
                         <div class="text-center load-more loadmore-portfolio margin-top-20" data-category="<?php echo (int) $cat; ?>">
                             <span><?php esc_html_e('LOAD MORE ...', 'elessi-theme'); ?></span>
-                            <span class="load-more-icon fa fa-angle-double-down"></span>
                         </div>
                     </div>
                 </div>

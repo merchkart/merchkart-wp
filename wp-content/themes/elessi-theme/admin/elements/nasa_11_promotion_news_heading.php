@@ -18,16 +18,15 @@ if (!function_exists('elessi_promotion_news_heading')) {
         );
 
         $of_options[] = array(
-            "name" => esc_html__("Enable Top bar Promotion news", 'elessi-theme'),
-            "desc" => esc_html__("Checked is Enable", 'elessi-theme'),
+            "name" => esc_html__("Top bar Promotion news", 'elessi-theme'),
             "id" => "enable_post_top",
             "std" => 0,
-            "type" => "checkbox"
+            "type" => "switch"
         );
 
         $of_options[] = array(
-            "name" => esc_html__("Type display selected", 'elessi-theme'),
-            "desc" => esc_html__('Type display "My content custom" or "List posts"', 'elessi-theme'),
+            "name" => esc_html__("Type Display", 'elessi-theme'),
+            // "desc" => esc_html__('Type display "My content custom" or "List posts"', 'elessi-theme'),
             "id" => "type_display",
             "std" => 'custom',
             "type" => "select",
@@ -49,7 +48,7 @@ if (!function_exists('elessi_promotion_news_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Category post", 'elessi-theme'),
-            "desc" => esc_html__("Post in category selected", 'elessi-theme'),
+            // "desc" => esc_html__("Post in category selected", 'elessi-theme'),
             "id" => "category_post",
             "std" => '',
             "type" => "select",
@@ -59,7 +58,7 @@ if (!function_exists('elessi_promotion_news_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Limit posts", 'elessi-theme'),
-            "desc" => esc_html__("Number posts display", 'elessi-theme'),
+            // "desc" => esc_html__("Number posts display", 'elessi-theme'),
             "id" => "number_post",
             "std" => 4,
             "type" => "text",
@@ -68,7 +67,7 @@ if (!function_exists('elessi_promotion_news_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Slide display", 'elessi-theme'),
-            "desc" => esc_html__("Number posts display in slide", 'elessi-theme'),
+            // "desc" => esc_html__("Number posts display in slide", 'elessi-theme'),
             "id" => "number_post_slide",
             "std" => 1,
             "type" => "text",
@@ -77,15 +76,15 @@ if (!function_exists('elessi_promotion_news_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Display full width", 'elessi-theme'),
-            "desc" => esc_html__("Display full width", 'elessi-theme'),
+            // "desc" => esc_html__("Display full width", 'elessi-theme'),
             "id" => "enable_fullwidth",
             "std" => 1,
-            "type" => "checkbox"
+            "type" => "switch"
         );
 
         $of_options[] = array(
             "name" => esc_html__("Text promotion color", 'elessi-theme'),
-            "desc" => esc_html__("Text promotion color", 'elessi-theme'),
+            // "desc" => esc_html__("Text promotion color", 'elessi-theme'),
             "id" => "t_promotion_color",
             "std" => "#333",
             "type" => "color"
@@ -93,10 +92,11 @@ if (!function_exists('elessi_promotion_news_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Background", 'elessi-theme'),
-            "desc" => esc_html__("Background", 'elessi-theme'),
+            // "desc" => esc_html__("Background", 'elessi-theme'),
             "id" => "background_area",
             "std" => ELESSI_ADMIN_DIR_URI . 'assets/images/promo_bg.jpg',
-            "type" => "media"
+            "type" => "media",
+            "mod" => "min"
         );
     }
 }

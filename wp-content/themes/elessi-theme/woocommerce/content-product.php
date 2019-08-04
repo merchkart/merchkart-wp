@@ -37,9 +37,11 @@ if(!isset($_delay)) {
     $_delay = 0;
 }
 
+$attributes = 'data-wow="fadeInUp" data-wow-duration="1s" data-wow-delay="' . esc_attr($_delay) . 'ms"';
+
 echo (!isset($wrapper) || $wrapper == 'li') ? '<li class="product-warp-item">' : '';
 
-echo '<div class="' . esc_attr($class_wrap) . '" data-wow-duration="1s" data-wow-delay="' . esc_attr($_delay) . 'ms" data-wow="fadeInUp">';
+echo '<div class="' . esc_attr($class_wrap) . '" ' . $attributes . '>';
 
 do_action('woocommerce_before_shop_loop_item');
 ?>

@@ -18,9 +18,9 @@ function elessi_register_required_plugins() {
         array(
             'name' => esc_html__('Nasa Core', 'elessi-theme'),
             'slug' => 'nasa-core',
-            'source' => ELESSI_THEME_PATH . '/admin/plugins/nasa-core_v2.1.zip',
+            'source' => ELESSI_THEME_PATH . '/admin/plugins/nasa-core_v2.1.1.zip',
             'required' => true,
-            'version' => '2.1'
+            'version' => '2.1.1'
         ),
         
         array(
@@ -28,7 +28,7 @@ function elessi_register_required_plugins() {
             'slug' => 'js_composer',
             'source' => ELESSI_THEME_PATH . '/admin/plugins/js_composer.zip',
             'required' => true,
-            'version' => '6.0.3'
+            'version' => '6.0.5'
         ),
         
         array(

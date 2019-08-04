@@ -1,8 +1,15 @@
+----- 2.1.1 (08 Aug 2019) -----
+- NEW: Popup Your Order After Add To Cart.
+- NEW: Free Shipping for order greater than $ number.
+- IMPROVED: Menu Account.
+- IMPROVED: RTL.
+- FIXED: Some css.
+
 ----- 2.1 (20 Jul 2019) -----
 - NEW: Mobile Layout Ready.
 - NEW: +2 Layouts Light Menu Mobile.
 - NEW: +1 Breadcrumb Layout (1 Row).
-- NEW: +1 Layout for Tabs of single product (Accordion style).
+- NEW: +1 Layout for Tabs of the single product page (Accordion-style).
 - NEW: +2 Layout Sticky Add To Cart Single Product for Mobile.
 - IMPROVED: Style group buttons in loop product in mobile.
 - FIXED: Some css.

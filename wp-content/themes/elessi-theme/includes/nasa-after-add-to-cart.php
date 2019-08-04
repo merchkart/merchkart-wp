@@ -9,16 +9,19 @@
 if (!defined('ABSPATH')) :
     exit; // Exit if accessed directly
 endif;
-$nasa_cart = WC()->cart;
 do_action('woocommerce_before_cart');
 ?>
-<div class="row">
-    <div class="large-8 columns rtl-right desktop-padding-right-30 rtl-desktop-padding-right-10 rtl-desktop-padding-left-30">
-        <form class="woocommerce-cart-form nasa-shopping-cart-form" action="<?php echo esc_url(wc_get_cart_url()); ?>" method="post">
-            <div class="cart-wrapper">
-                <?php do_action('woocommerce_before_cart_table'); ?>
 
-                <table class="shop_table cart responsive woocommerce-cart-form__contents">
+<div class="row">
+    <div class="large-12 columns">
+        <h3 class="nasa-title-after-add-to-cart text-center">
+            <?php echo esc_html__('Your Order', 'elessi-theme'); ?>
+        </h3>
+        <form class="after-add-to-cart-form" action="<?php echo esc_url(wc_get_cart_url()); ?>" method="post">
+            <?php do_action('woocommerce_before_cart_table'); ?>
+            
+            <div class="nasa-table-wrap">
+                <table class="after-add-to-cart-shop_table responsive woocommerce-cart-form__contents">
                     <thead>
                         <tr>
                             <th class="product-name" colspan="3"><?php esc_html_e('Product', 'elessi-theme'); ?></th>
@@ -30,7 +33,6 @@ do_action('woocommerce_before_cart');
                     <tbody>
                         <?php do_action('woocommerce_before_cart_contents'); ?>
                         <?php
-                        $cart_items = $nasa_cart->get_cart();
                         foreach ($cart_items as $cart_item_key => $cart_item) {
                             $_product = apply_filters('woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key);
                             $product_id = apply_filters('woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key);
@@ -44,11 +46,11 @@ do_action('woocommerce_before_cart');
                                 );
 
                                 ?>
-                                <tr class="woocommerce-cart-form__cart-item <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
+                                <tr class="woocommerce-mini-cart-item woocommerce-cart-form__cart-item <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
                                     <td class="product-remove remove-product">
                                         <?php echo apply_filters(
                                             'woocommerce_cart_item_remove_link',
-                                            sprintf('<a href="%s" class="remove" title="%s" data-product_id="%s" data-product_sku="%s">%s</a>',
+                                            sprintf('<a href="%s" class="remove_from_cart_popup" title="%s" data-product_id="%s" data-product_sku="%s">%s</a>',
                                                 esc_url(function_exists('wc_get_cart_remove_url') ? wc_get_cart_remove_url($cart_item_key) : $nasa_cart->get_remove_url($cart_item_key)),
                                                 esc_attr__('Remove this item', 'elessi-theme'),
                                                 esc_attr($product_id),
@@ -125,38 +127,64 @@ do_action('woocommerce_before_cart');
                         ?>
                     </tbody>
                 </table>
+            </div>
 
-                <?php do_action('woocommerce_after_cart_table'); ?>
-                <?php do_action('nasa_subtotal_free_shipping'); ?>
+            <?php do_action('woocommerce_after_cart_table'); ?>
+            
+            <div class="nasa-after-add-to-cart-subtotal text-center">
+                <span class="nasa-after-add-to-cart-subtotal-title">
+                    <?php esc_html_e('Subtotal&nbsp;&nbsp;&nbsp;', 'elessi-theme'); ?>
+                </span>
+                <span class="nasa-after-add-to-cart-subtotal-price">
+                    <?php wc_cart_totals_subtotal_html(); ?>
+                </span>
+            </div>
+            
+            <?php do_action('nasa_subtotal_free_shipping'); ?>
+            
+            <div class="nasa-after-add-to-cart-buttons margin-top-20">
+                <a class="button nasa-disable nasa-update-cart-popup left rtl-right" href="javascript:void(0);" title="<?php esc_attr_e('Update Cart', 'elessi-theme'); ?>">
+                    <?php esc_html_e('Update Cart', 'elessi-theme'); ?>
+                </a>
+                
+                <a href="<?php echo esc_url(wc_get_checkout_url()); ?>" class="checkout-button button alt wc-forward right rtl-left" title="<?php esc_attr_e('Proceed to checkout', 'elessi-theme'); ?>">
+                    <?php esc_html_e('Proceed to checkout', 'elessi-theme'); ?>
+                </a>
+            </div>
+            
+            <div class="clearfix"></div>
+            
+            <?php 
+            /*div class="row">
+                <div class="large-12 small-12 columns cart-wrapper">
+                    <div class="row desktop-margin-top-40">
+                        <div class="large-5 columns right rtl-left">
+                            <input type="submit" class="button right margin-bottom-20" name="update_cart" value="<?php esc_attr_e('Update Cart', 'elessi-theme'); ?>" />
+                        </div>
 
-                <div class="row desktop-margin-top-40">
-                    <div class="large-5 columns right rtl-left">
-                        <input type="submit" class="button right margin-bottom-20" name="update_cart" value="<?php esc_attr_e('Update Cart', 'elessi-theme'); ?>" />
+                        <div class="large-7 columns left rtl-right nasa-min-height">
+                            <?php if (wc_coupons_enabled()) : ?>
+                                <div class="coupon">
+                                    <input type="text" name="coupon_code" id="coupon_code" value="" placeholder="<?php esc_attr_e('Enter Coupon Code', 'elessi-theme'); ?>" /> 
+                                    <input type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e('Apply Coupon', 'elessi-theme'); ?>" />
+                                    <?php do_action('woocommerce_cart_coupon'); ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
                     </div>
 
-                    <div class="large-7 columns left rtl-right nasa-min-height">
-                        <?php if (wc_coupons_enabled()) : ?>
-                            <div class="coupon">
-                                <input type="text" name="coupon_code" id="coupon_code" value="" placeholder="<?php esc_attr_e('Enter Coupon Code', 'elessi-theme'); ?>" /> 
-                                <input type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e('Apply Coupon', 'elessi-theme'); ?>" />
-                                <?php do_action('woocommerce_cart_coupon'); ?>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                </div>
+                    <?php do_action('woocommerce_cart_actions'); ?>
 
-                <?php do_action('woocommerce_cart_actions'); ?>
-
-                <?php wp_nonce_field('woocommerce-cart', 'woocommerce-cart-nonce'); ?>
-            </div><!-- .cart-wrapper -->
+                    
+                </div><!-- .cart-wrapper -->
+            </div */?>
+            
+            <?php wp_nonce_field('woocommerce-cart', 'woocommerce-cart-nonce'); ?>
         </form>
     </div>
-
-    <div class="large-4 columns cart-collaterals rtl-left">
-        <?php do_action('woocommerce_cart_collaterals'); ?>
-    </div><!-- .large-12 -->
     
 </div><!-- .row -->
 
 <?php
 do_action('woocommerce_after_cart');
+

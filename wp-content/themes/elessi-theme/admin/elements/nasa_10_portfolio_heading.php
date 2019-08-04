@@ -24,15 +24,15 @@ if (!function_exists('elessi_portfolio_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Enable Portfolio", 'elessi-theme'),
-            "desc" => esc_html__("Enable Portfolio - Only use with plugin Nasa Core.", 'elessi-theme'),
+            // "desc" => esc_html__("Enable Portfolio - Only use with plugin Nasa Core.", 'elessi-theme'),
             "id" => "enable_portfolio",
             "std" => 1,
-            "type" => "checkbox"
+            "type" => "switch"
         );
         
         $of_options[] = array(
             "name" => esc_html__("Page view Portfolio", 'elessi-theme'),
-            "desc" => esc_html__("Select page view Portfolio.", 'elessi-theme'),
+            // "desc" => esc_html__("Select page view Portfolio.", 'elessi-theme'),
             "id" => "nasa-page-view-portfolio",
             "type" => "select",
             "options" => get_pages_temp_portfolio()
@@ -40,43 +40,43 @@ if (!function_exists('elessi_portfolio_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Recent Projects", 'elessi-theme'),
-            "desc" => esc_html__("Recent Projects", 'elessi-theme'),
+            // "desc" => esc_html__("Recent Projects", 'elessi-theme'),
             "id" => "recent_projects",
             "std" => 1,
-            "type" => "checkbox"
+            "type" => "switch"
         );
         $of_options[] = array(
             "name" => esc_html__("Portfolio Comments", 'elessi-theme'),
-            "desc" => esc_html__("Portfolio Comments", 'elessi-theme'),
+            // "desc" => esc_html__("Portfolio Comments", 'elessi-theme'),
             "id" => "portfolio_comments",
             "std" => 1,
-            "type" => "checkbox"
+            "type" => "switch"
         );
         $of_options[] = array(
             "name" => esc_html__("Portfolio Count", 'elessi-theme'),
-            "desc" => esc_html__("Portfolio Count", 'elessi-theme'),
+            // "desc" => esc_html__("Portfolio Count", 'elessi-theme'),
             "id" => "portfolio_count",
             "std" => 10,
             "type" => "text"
         );
         $of_options[] = array(
             "name" => esc_html__("Project Category", 'elessi-theme'),
-            "desc" => esc_html__("Display project category", 'elessi-theme'),
+            // "desc" => esc_html__("Display project category", 'elessi-theme'),
             "id" => "project_byline",
             "std" => 1,
-            "type" => "checkbox"
+            "type" => "switch"
         );
         $of_options[] = array(
             "name" => esc_html__("Project Name", 'elessi-theme'),
-            "desc" => esc_html__("Project Name", 'elessi-theme'),
+            // "desc" => esc_html__("Project Name", 'elessi-theme'),
             "id" => "project_name",
             "std" => 1,
-            "type" => "checkbox"
+            "type" => "switch"
         );
 
         $of_options[] = array(
             "name" => esc_html__("Portfolio Columns", 'elessi-theme'),
-            "desc" => esc_html__("Portfolio Columns", 'elessi-theme'),
+            // "desc" => esc_html__("Portfolio Columns", 'elessi-theme'),
             "id" => "portfolio_columns",
             "std" => "5-cols",
             "type" => "select",
@@ -90,10 +90,10 @@ if (!function_exists('elessi_portfolio_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("portfolio Lightbox", 'elessi-theme'),
-            "desc" => esc_html__("portfolio Lightbox", 'elessi-theme'),
+            // "desc" => esc_html__("portfolio Lightbox", 'elessi-theme'),
             "id" => "portfolio_lightbox",
             "std" => 1,
-            "type" => "checkbox"
+            "type" => "switch"
         );
     }
 }

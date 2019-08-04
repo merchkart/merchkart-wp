@@ -65,9 +65,42 @@ if (!function_exists('elessi_vc_setup')) :
         ));
         
         vc_add_param('vc_tta_accordion', array(
+            "type" => "dropdown",
+            "heading" => esc_html__("Layout", 'elessi-theme'),
+            "param_name" => "accordion_layout",
+            'value' => array(
+                esc_html__('With Border Wrapper', 'elessi-theme') => 'has-border',
+                esc_html__('Without Border Wrapper', 'elessi-theme') => 'no-border'
+            ),
+            'std' => 'has-border',
+            "description" => esc_html__('Only use for Visual Composer Template.', 'elessi-theme'),
+        ));
+        
+        vc_add_param('vc_tta_accordion', array(
+            "type" => "dropdown",
+            "heading" => esc_html__("Toggle Icon", 'elessi-theme'),
+            "param_name" => "accordion_icon",
+            'value' => array(
+                esc_html__('Plus', 'elessi-theme') => 'plus',
+                esc_html__('Arrow', 'elessi-theme') => 'arrow'
+            ),
+            'std' => 'plus',
+            "description" => esc_html__('Only use for Visual Composer Template.', 'elessi-theme'),
+        ));
+        
+        vc_add_param('vc_tta_accordion', array(
             "type" => 'checkbox',
             "heading" => esc_html__("Hide First Section ?", 'elessi-theme'),
             "param_name" => "accordion_hide_first",
+            "value" => array(
+                esc_html__('Yes, please', 'elessi-theme') => '1'
+            )
+        ));
+        
+        vc_add_param('vc_tta_accordion', array(
+            "type" => 'checkbox',
+            "heading" => esc_html__("Show Multi", 'elessi-theme'),
+            "param_name" => "accordion_show_multi",
             "value" => array(
                 esc_html__('Yes, please', 'elessi-theme') => '1'
             )

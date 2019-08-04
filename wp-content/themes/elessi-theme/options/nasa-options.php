@@ -104,7 +104,7 @@ function elessi_get_options() {
      * Check Mobile Detect
      */
     $options['nasa_in_mobile'] = false;
-    if (defined('NASA_IS_PHONE') && NASA_IS_PHONE && isset($options['enable_nasa_mobile']) && $options['enable_nasa_mobile']) {
+    if (defined('NASA_IS_PHONE') && NASA_IS_PHONE && (!isset($options['enable_nasa_mobile']) || $options['enable_nasa_mobile'])) {
         $options['nasa_in_mobile'] = true;
         
         $options['showing_info_top'] = false;

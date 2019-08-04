@@ -7,12 +7,20 @@
  */
 if (!defined('YITH_WCWL_PREMIUM')) {
     global $woocommerce, $nasa_opt;
+    
+    $countItems = count($wishlist_items);
+    $classTitle = 'nasa-tit-wishlist nasa-sidebar-tit';
+    $classTitle .= $countItems <= 0 ? ' text-center' : '';
 
     remove_filter('woocommerce_loop_add_to_cart_link', array('YITH_WCWL_UI', 'alter_add_to_cart_button'));
     ?>
     <?php /* div id="yith-wcwl-messages"></div */ ?>
 
     <?php do_action('yith_wcwl_before_wishlist_form', $wishlist_meta); ?>
+
+    <h3 class="<?php echo esc_attr($classTitle); ?>">
+        <?php echo esc_html__('Wishlist', 'elessi-theme'); ?>
+    </h3>
     
     <form id="yith-wcwl-form" action="<?php echo esc_url(YITH_WCWL()->get_wishlist_url('view' . ($wishlist_meta['is_default'] != 1 ? '/' . $wishlist_meta['wishlist_token'] : ''))); ?>" method="post">
         
@@ -21,7 +29,7 @@ if (!defined('YITH_WCWL_PREMIUM')) {
         <!-- WISHLIST TABLE -->
         <table class="shop_table wishlist_table" data-pagination="<?php echo esc_attr($pagination); ?>" data-per-page="<?php echo esc_attr($per_page); ?>" data-page="<?php echo esc_attr($current_page); ?>" data-id="<?php echo $wishlist_id; ?>" data-token="<?php echo $wishlist_token ?>">
             <tbody>
-                <?php if (count($wishlist_items) > 0) :
+                <?php if ($countItems > 0) :
                     foreach ($wishlist_items as $item) :
                         global $product;
                         $product = wc_get_product($item['prod_id']);

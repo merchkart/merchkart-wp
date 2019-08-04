@@ -55,7 +55,8 @@ if(!function_exists('elessi_remove_from_wishlist')) :
         $json = array(
             'error' => '1',
             'list' => '',
-            'count' => 0
+            'count' => 0,
+            'mess' => ''
         );
 
         if(!NASA_WISHLIST_ENABLE) {
@@ -77,6 +78,7 @@ if(!function_exists('elessi_remove_from_wishlist')) :
             $count = $nasa_wishlist->count_products();
             $nasaSl = (int) $count > 9 ? '9+' : (int) $count;
             $json['count'] = apply_filters('nasa_mini_compare_total_items', $nasaSl);
+            $json['mess'] = '<div id="yith-wcwl-message">' . esc_html__('Product successfully removed!', 'elessi-theme') . '</div>';
         }
 
         die(json_encode($json));

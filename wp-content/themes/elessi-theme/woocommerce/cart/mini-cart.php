@@ -10,11 +10,10 @@ if (!defined('ABSPATH')) {
 }
 
 do_action('woocommerce_before_mini_cart');
-?>
+$empty = WC()->cart->is_empty();
 
-<?php if (!WC()->cart->is_empty()) : ?>
+if (!$empty) : ?>
     <div class="woocommerce-mini-cart cart_list product_list_widget <?php echo esc_attr($args['list_class']); ?>">
-        
         <?php
         do_action('woocommerce_before_mini_cart_contents');
 
@@ -50,12 +49,13 @@ do_action('woocommerce_before_mini_cart');
                     
                     <div class="small-2 large-1 columns product-remove text-right">
                         <?php
-                        echo apply_filters('woocommerce_cart_item_remove_link', sprintf(
+                        echo apply_filters('woocommerce_cart_item_remove_link',
+                            sprintf(
                                 '<a href="%s" class="remove remove_from_cart_button item-in-cart" aria-label="%s" data-product_id="%s" data-cart_item_key="%s" data-product_sku="%s" title="%s">%s</a>',
                                 esc_url(wc_get_cart_remove_url($cart_item_key)),
                                 esc_attr__('Remove', 'elessi-theme'),
-                                esc_attr($product_id ),
-                                esc_attr($cart_item_key ),
+                                esc_attr($product_id),
+                                esc_attr($cart_item_key),
                                 esc_attr($_product->get_sku()),
                                 esc_html__('Remove', 'elessi-theme'),
                                 esc_attr__('Remove', 'elessi-theme')
@@ -81,15 +81,11 @@ do_action('woocommerce_before_mini_cart');
         <span class="total-price right"><?php wc_cart_totals_subtotal_html(); ?></span>
     </div>
 
+    <?php do_action('nasa_subtotal_free_shipping'); ?>
+
     <div class="btn-mini-cart inline-lists text-center">
-        <div class="row collapse">
-            <div class="small-12 large-12 columns">
-                <a href="<?php echo esc_url(wc_get_cart_url()); ?>" class="button btn-viewcart" title="<?php esc_attr_e('VIEW CART', 'elessi-theme'); ?>"><?php esc_html_e('VIEW CART', 'elessi-theme'); ?></a>
-            </div>
-            <div class="small-12 large-12 columns">
-                <a href="<?php echo esc_url(wc_get_checkout_url()); ?>" class="button btn-checkout" title="<?php esc_attr_e('CHECKOUT', 'elessi-theme'); ?>"><?php esc_html_e('CHECKOUT', 'elessi-theme'); ?></a>
-            </div>
-        </div>
+        <a href="<?php echo esc_url(wc_get_cart_url()); ?>" class="button btn-viewcart" title="<?php esc_attr_e('VIEW CART', 'elessi-theme'); ?>"><?php esc_html_e('VIEW CART', 'elessi-theme'); ?></a>
+        <a href="<?php echo esc_url(wc_get_checkout_url()); ?>" class="button btn-checkout" title="<?php esc_attr_e('CHECKOUT', 'elessi-theme'); ?>"><?php esc_html_e('CHECKOUT', 'elessi-theme'); ?></a>
     </div>
 
 <?php
@@ -97,9 +93,7 @@ do_action('woocommerce_before_mini_cart');
  * Empty cart
  */
 else :
-    
     echo '<p class="empty woocommerce-mini-cart__empty-message"><i class="nasa-empty-icon icon-nasa-cart-2"></i>' . esc_html__('No products in the cart.', 'elessi-theme') . '<a href="javascript:void(0);" class="button nasa-sidebar-return-shop">' . esc_html__('RETURN TO SHOP', 'elessi-theme') . '</a></p>';
-
 endif;
 
 do_action('woocommerce_after_mini_cart');

@@ -169,6 +169,9 @@ body.nasa-rtl .nasa-slider .owl-item *,
 body.nasa-rtl .nasa-sc-carousel .owl-item * {
   direction: rtl;
 }
+body.nasa-rtl .nasa-after-add-to-cart-popup {
+  text-align: right;
+}
 body.nasa-rtl table.shop_table .product-subtotal {
   text-align: left;
 }
@@ -205,6 +208,12 @@ body.nasa-rtl .cart_totals table th {
 }
 body.nasa-rtl .checkout-breadcrumb .pe-7s-angle-right {
   display: none;
+}
+body.nasa-rtl .col2-set.addresses .col-1,
+body.nasa-rtl .col2-set.addresses .col-2 {
+  float: right;
+  padding-right: unset;
+  padding-left: 30px;
 }
 body.nasa-rtl .product-item .product-img-wrap .nasa-product-content-nasa_color-wrap,
 body.nasa-rtl .product-item .product-img-wrap .nasa-product-content-nasa_image-wrap {
@@ -342,18 +351,6 @@ body.nasa-rtl .wpb_single_image.vc_align_left {
 body.nasa-rtl .countdown * {
   direction: rtl;
 }
-body.nasa-rtl .countdown .countdown-row > span:first-child {
-  margin-left: 25px;
-}
-body.nasa-rtl .countdown .countdown-row > span:last-child {
-  margin-left: 0;
-}
-body.nasa-rtl .nasa-special-deal-item .countdown .countdown-row > span:first-child {
-  margin-left: 25px;
-}
-body.nasa-rtl .nasa-special-deal-item .countdown .countdown-row > span:last-child {
-  margin-left: 0;
-}
 body.nasa-rtl input.tt-hint {
   display: none !important;
 }
@@ -458,22 +455,15 @@ body.nasa-rtl .nasa-product-details-page .product_meta > span a .nasa-sc-pdeal-c
 body.nasa-rtl .nasa-detail-product-deal-countdown .nasa-sc-pdeal-countdown {
   text-align: inherit;
 }
+body.nasa-rtl .nasa-product-details-page .product_meta > span a .nasa-sc-pdeal-countdown .countdown .countdown-row, body.nasa-rtl .nasa-product-details-page .product_meta > span .sku
+.nasa-quickview-product-deal-countdown .nasa-sc-pdeal-countdown .countdown .countdown-row,
+body.nasa-rtl .nasa-detail-product-deal-countdown .nasa-sc-pdeal-countdown .countdown .countdown-row {
+  margin: 0 -5px;
+}
 body.nasa-rtl .nasa-product-details-page .product_meta > span a .nasa-sc-pdeal-countdown .countdown .countdown-row > span, body.nasa-rtl .nasa-product-details-page .product_meta > span .sku
 .nasa-quickview-product-deal-countdown .nasa-sc-pdeal-countdown .countdown .countdown-row > span,
 body.nasa-rtl .nasa-detail-product-deal-countdown .nasa-sc-pdeal-countdown .countdown .countdown-row > span {
   margin: 0 5px;
-}
-body.nasa-rtl .nasa-product-details-page .product_meta > span a .nasa-sc-pdeal-countdown .countdown .countdown-row > span:first-child, body.nasa-rtl .nasa-product-details-page .product_meta > span .sku
-.nasa-quickview-product-deal-countdown .nasa-sc-pdeal-countdown .countdown .countdown-row > span:first-child,
-body.nasa-rtl .nasa-detail-product-deal-countdown .nasa-sc-pdeal-countdown .countdown .countdown-row > span:first-child {
-  margin-right: 0;
-  margin-left: 5px;
-}
-body.nasa-rtl .nasa-product-details-page .product_meta > span a .nasa-sc-pdeal-countdown .countdown .countdown-row > span:last-child, body.nasa-rtl .nasa-product-details-page .product_meta > span .sku
-.nasa-quickview-product-deal-countdown .nasa-sc-pdeal-countdown .countdown .countdown-row > span:last-child,
-body.nasa-rtl .nasa-detail-product-deal-countdown .nasa-sc-pdeal-countdown .countdown .countdown-row > span:last-child {
-  margin-left: 0;
-  margin-right: 5px;
 }
 body.nasa-rtl .nasa-slide-left-info-wrap .nasa-view-more-slider {
   float: right;
@@ -759,12 +749,6 @@ body.nasa-rtl .nasa-title.hr-type-vertical .nasa-wrap {
 body.nasa-rtl .nasa-products-special-deal.nasa-products-special-deal-simple .product-deal-special-price .price ins {
   float: none;
 }
-body.nasa-rtl .nasa-products-special-deal.nasa-products-special-deal-simple .countdown .countdown-row > span:first-child {
-  margin: 0 0 0 10px;
-}
-body.nasa-rtl .nasa-products-special-deal.nasa-products-special-deal-simple .countdown .countdown-row > span:last-child {
-  margin-right: 10px;
-}
 body.nasa-rtl .nasa-products-special-deal .product-deal-special-progress .deal-stock-label .stock-available {
   float: right;
 }
@@ -803,6 +787,15 @@ body.nasa-rtl .nasa-pagination.style-1 .page-number .pe-7s-angle-left:before {
 }
 body.nasa-rtl .nasa-pagination.style-1 .page-number .pe-7s-angle-right:before {
   content: "\e686";
+}
+body.nasa-rtl .nasa-pagination.style-2 .page-numbers li {
+  float: right;
+}
+body.nasa-rtl .nasa-pagination li .pe-7s-angle-right:before {
+  content: "\e686";
+}
+body.nasa-rtl .nasa-pagination li .pe-7s-angle-left:before {
+  content: "\e684";
 }
 body.nasa-rtl .nasa-labels-filter-top .nasa-labels-filter-accordion .nasa-top-row-filter li {
   float: right;
@@ -871,6 +864,14 @@ body.nasa-rtl .product-item .product-img-wrap .nasa-product-content-nasa_image-w
 }
 body.nasa-rtl .product-item .product-img-wrap .nasa-product-content-nasa_image-wrap .nasa-product-content-child > a:last-child {
   margin-left: 0;
+}
+body.nasa-rtl .add-to-cart-grid.loading:before {
+  right: auto;
+  left: 18px;
+}
+body.nasa-rtl .add-to-cart-grid.loading.btn-from-wishlist:before {
+  left: 50%;
+  right: auto;
 }
 body.nasa-rtl .widget li.nasa-li-filter-image a,
 body.nasa-rtl .widget.woocommerce li.nasa-li-filter-image a {
@@ -960,36 +961,48 @@ body.nasa-rtl .nasa-product-details-page .product-info .entry-title {
   padding-right: 0;
   padding-left: 60px;
 }
+body.nasa-rtl .product-info .cart.grouped_form .woocommerce-grouped-product-list-item__label {
+  padding-right: 0;
+  padding-left: 10px;
+}
 body.nasa-rtl .my-account .columns.nasa-menu-account-wrap {
   float: right;
 }
 body.nasa-rtl .my-account .columns.nasa-info-account-wrap {
   float: left;
 }
-body.nasa-rtl .my-account .account-user {
-  padding: 15px 80px 15px 15px;
-}
-body.nasa-rtl .my-account .account-user span {
-  padding-left: auto;
-  padding-right: 20px;
-}
 body.nasa-rtl .my-account .account-user .avatar {
-  left: auto;
-  right: 15px;
+  float: right;
+  margin: 0 0 0 10px;
 }
-body.nasa-rtl .my-account .vertical-tabs .tabs-inner {
-  padding-left: 0;
-  padding-right: 40px;
-}
-body.nasa-rtl .my-account .vertical-tabs ul.tabs-nav li a,
-body.nasa-rtl .my-account .vertical-tabs ul.tabs-nav li.is-active.no-active a {
+body.nasa-rtl .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link a {
   border-right: none;
   border-left: 1px solid #eeeeee;
 }
-body.nasa-rtl .my-account .vertical-tabs ul.tabs-nav li.current a,
-body.nasa-rtl .my-account .vertical-tabs ul.tabs-nav li.current-menu-item a,
-body.nasa-rtl .my-account .vertical-tabs ul.tabs-nav li.is-active a {
-  border-left: none;
+body.nasa-rtl .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link.is-active a {
+  border-left: 1px solid transparent;
+}
+body.nasa-rtl .woocommerce-MyAccount-navigation.nasa-MyAccount-navigation .woocommerce-MyAccount-navigation-link {
+  float: right;
+}
+body.nasa-rtl .woocommerce-MyAccount-navigation.nasa-MyAccount-navigation .woocommerce-MyAccount-navigation-link a {
+  border-right: 1px solid #eeeeee;
+}
+body.nasa-rtl .woocommerce-MyAccount-content {
+  padding-left: unset;
+  padding-right: 40px;
+  float: left;
+}
+body.nasa-rtl .woocommerce-MyAccount-content .woocommerce-Message .woocommerce-Button {
+  margin-left: 10px;
+  margin-right: unset;
+}
+body.nasa-rtl .account-nav-wrap {
+  float: right;
+}
+body.nasa-rtl .top-bar .nasa-menus-account .sub-menu {
+  right: auto;
+  left: 0;
 }
 body.nasa-rtl .nasa-filter-wrap .nasa-topbar-filter-wrap {
   float: right;
@@ -1321,12 +1334,6 @@ body.nasa-rtl .rtl-padding-right-140 {
   body.nasa-rtl .nasa-menu-ver-align-left ul li a {
     direction: rtl;
     text-align: left;
-  }
-  body.nasa-rtl .nasa-custom-countdown.nasa-large .countdown .countdown-row > span:first-child {
-    margin-left: 40px;
-  }
-  body.nasa-rtl .nasa-custom-countdown.nasa-large .countdown .countdown-row > span:last-child {
-    margin-left: 0px;
   }
   body.nasa-rtl .rtl-desktop-margin-left-0 {
     margin-left: 0px !important;
@@ -1796,6 +1803,10 @@ body.nasa-rtl .star-rating span:before {
   left: auto;
   right: 0;
 }
+.nasa-rtl .mobile-search {
+  margin-left: 0;
+  margin-right: 8px;
+}
 
 body.nasa-rtl .icon-nasa-banana:before {
   content: "\29";
@@ -1804,6 +1815,11 @@ body.nasa-rtl .icon-nasa-potatoes:before {
   content: "\28";
 }
 
+body.nasa-rtl .cwginstock-subscribe-form .center-block {
+  float: right;
+  margin-right: 0;
+  margin-left: 10px;
+}
 body.nasa-rtl .cwginstock-subscribe-form input[type="email"],
 body.nasa-rtl .cwginstock-subscribe-form input[type="text"] {
   text-align: right !important;
@@ -1908,12 +1924,179 @@ body.nasa-rtl .nasa-accessories-product .product-img:before {
   right: -36px;
 }
 
-@media (max-width: 370px) {
-  body.nasa-rtl .nasa-products-special-deal.nasa-products-special-deal-multi-2 .countdown .countdown-row > span:first-child {
-    margin-left: 20px;
+body.nasa-rtl .nasa-accordions-content .nasa-accordion-title a {
+  padding: 15px 40px 15px 15px;
+}
+body.nasa-rtl .nasa-accordions-content .nasa-accordion-title a:before, body.nasa-rtl .nasa-accordions-content .nasa-accordion-title a:after {
+  left: auto;
+  right: 15px;
+}
+body.nasa-rtl .nasa-accordions-content.nasa-no-border .nasa-accordion-title a {
+  padding: 5px 25px 5px 15px;
+}
+body.nasa-rtl .nasa-accordions-content.nasa-no-border .nasa-accordion-title a:before, body.nasa-rtl .nasa-accordions-content.nasa-no-border .nasa-accordion-title a:after {
+  left: auto;
+  right: 0;
+}
+body.nasa-rtl .nasa-accordions-content.nasa-arrow .nasa-accordion-title a {
+  padding: 15px 15px 15px 30px;
+}
+body.nasa-rtl .nasa-accordions-content.nasa-arrow .nasa-accordion-title a:after {
+  right: auto;
+  left: 10px;
+}
+body.nasa-rtl .nasa-accordions-content.nasa-arrow .nasa-accordion-title a.active:after {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+body.nasa-rtl .nasa-accordions-content.nasa-arrow.nasa-no-border .nasa-accordion-title a {
+  padding: 5px 0 5px 25px;
+}
+body.nasa-rtl .nasa-accordions-content.nasa-arrow.nasa-no-border .nasa-accordion-title a:after {
+  right: auto;
+  left: 0;
+}
+body.nasa-rtl .nasa-products-special-deal.nasa-products-special-deal-multi-2 .product-deal-special-buttons .product-interactions {
+  direction: rtl !important;
+}
+body.nasa-rtl .nasa-total-condition-hin {
+  left: auto;
+  right: 0;
+}
+
+body.nasa-rtl #nasa-back-to-top,
+body.nasa-rtl #nasa-init-viewed,
+body.nasa-rtl #btn-switch-rtl {
+  left: 25px;
+  right: auto;
+}
+body.nasa-rtl #nasa-menu-sidebar-content {
+  left: auto;
+  right: -550px;
+}
+body.nasa-rtl #nasa-menu-sidebar-content.nasa-active {
+  left: auto;
+  right: 0;
+}
+body.nasa-rtl .nasa-static-sidebar {
+  right: auto;
+  left: -550px;
+}
+body.nasa-rtl .nasa-static-sidebar#nasa-quickview-sidebar {
+  right: auto;
+  left: -650px;
+}
+body.nasa-rtl .nasa-static-sidebar#nasa-quickview-sidebar.nasa-active {
+  right: auto;
+  left: 0;
+}
+body.nasa-rtl .nasa-static-sidebar.nasa-active {
+  right: auto;
+  left: 0;
+}
+body.nasa-rtl .nasa-badges-wrap {
+  left: auto;
+  right: 0;
+}
+body.nasa-rtl .badge {
+  float: right;
+  -webkit-border-radius: 0 0 0 3px;
+  -moz-border-radius: 0 0 0 3px;
+  border-radius: 0 0 0 3px;
+}
+body.nasa-rtl .product-item .nasa-product-grid {
+  left: 0;
+  right: auto;
+}
+body.nasa-rtl .product-item .nasa-product-grid .product-interactions .add-to-cart-btn {
+  left: 10px;
+  right: auto;
+  -webkit-transform: translateX(-20px);
+  -moz-transform: translateX(-20px);
+  -o-transform: translateX(-20px);
+  -ms-transform: translateX(-20px);
+  transform: translateX(-20px);
+}
+body.nasa-rtl .product-item .nasa-product-grid .product-interactions .btn-wishlist {
+  left: 18px;
+}
+body.nasa-rtl .product-item .nasa-product-grid .product-interactions .quick-view,
+body.nasa-rtl .product-item .nasa-product-grid .product-interactions .btn-compare,
+body.nasa-rtl .product-item .nasa-product-grid .product-interactions .btn-combo-link {
+  left: 10px;
+  right: auto;
+  -webkit-transform: translateX(-20px);
+  -moz-transform: translateX(-20px);
+  -o-transform: translateX(-20px);
+  -ms-transform: translateX(-20px);
+  transform: translateX(-20px);
+}
+body.nasa-rtl .product-item .nasa-product-content-nasa_label-wrap {
+  left: auto;
+  right: 10px;
+}
+body.nasa-rtl .product-item .nasa-product-content-select-wrap {
+  right: -75%;
+  left: auto;
+}
+body.nasa-rtl .product-item:hover .product-img-wrap .nasa-product-content-select-wrap {
+  right: 0;
+  left: auto;
+}
+body.nasa-rtl .nasa-wrap-products-masonry .add-to-cart-grid.loading:before,
+body.nasa-rtl .nasa-special-deal-style-multi-2 .add-to-cart-grid.loading:before {
+  left: 50%;
+  right: auto;
+}
+
+@media only screen and (max-width: 52.96552em) {
+  body.nasa-rtl .product-item .nasa-product-grid .product-interactions .add-to-cart-btn {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -o-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
   }
-  body.nasa-rtl .nasa-products-special-deal.nasa-products-special-deal-multi-2 .countdown .countdown-row > span:last-child {
-    margin-left: 0;
+  body.nasa-rtl .product-item .nasa-product-grid .product-interactions .btn-wishlist,
+  body.nasa-rtl .product-item .nasa-product-grid .product-interactions .quick-view,
+  body.nasa-rtl .product-item .nasa-product-grid .product-interactions .btn-compare,
+  body.nasa-rtl .product-item .nasa-product-grid .product-interactions .btn-combo-link {
+    left: 5px;
+  }
+}
+@media only screen and (min-width: 52.96552em) {
+  body.nasa-rtl {
+    /** Product masonry item **/
+  }
+  body.nasa-rtl .nasa-masonry-item .product-item:hover .nasa-badges-wrap {
+    -webkit-transform: translateX(20px);
+    -moz-transform: translateX(20px);
+    -o-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+  body.nasa-rtl .nasa-masonry-item .product-item .nasa-product-grid .product-interactions .btn-link {
+    -webkit-transform: translate(0, 0);
+    -moz-transform: ttranslate(0, 0);
+    -o-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+  body.nasa-rtl .products.list .product-warp-item .product-item .product-img-wrap .badge {
+    margin-right: 30px;
+    margin-left: unset;
+  }
+  body.nasa-rtl .products.list .product-warp-item .product-item .product-img-wrap .nasa-product-content-variable-warp .nasa-product-content-nasa_color-wrap,
+  body.nasa-rtl .products.list .product-warp-item .product-item .product-img-wrap .nasa-product-content-variable-warp .nasa-product-content-nasa_image-wrap {
+    left: 35px;
+    right: auto;
+  }
+  body.nasa-rtl .products.list .product-warp-item .product-item .product-img-wrap .nasa-product-content-variable-warp .nasa-product-content-nasa_label-wrap {
+    right: 40px;
+    left: auto;
   }
 }
 @media only screen and (max-width: 52.96552em) {
@@ -1953,6 +2136,14 @@ body.nasa-rtl .nasa-accessories-product .product-img:before {
   }
   body.nasa-rtl .sort-bar .select-wrapper {
     text-align: left;
+  }
+
+  body.nasa-rtl .woocommerce-MyAccount-navigation .woocommerce-MyAccount-navigation-link a {
+    border-left-color: transparent;
+  }
+
+  body.nasa-rtl .woocommerce-MyAccount-navigation.nasa-MyAccount-navigation .woocommerce-MyAccount-navigation-link a {
+    border-left-color: #eeeeee;
   }
 }
 @media only screen and (min-width: 640px) {

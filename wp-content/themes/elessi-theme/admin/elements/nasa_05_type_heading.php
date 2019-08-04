@@ -21,8 +21,8 @@ if (!function_exists('elessi_type_heading')) {
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Font use in site", 'elessi-theme'),
-            "desc" => esc_html__("Select font use in your site.", 'elessi-theme'),
+            "name" => esc_html__("Type Font", 'elessi-theme'),
+            // "desc" => esc_html__("Select font use in your site.", 'elessi-theme'),
             "id" => "type_font_select",
             "std" => "google",
             "type" => "select",
@@ -35,8 +35,8 @@ if (!function_exists('elessi_type_heading')) {
         );
 
         $of_options[] = array(
-            "name" => esc_html__("Heading fonts (H1, H2)", 'elessi-theme'),
-            "desc" => esc_html__("Select heading fonts.", 'elessi-theme'),
+            "name" => esc_html__("Heading fonts (H1, H2, H3, H4, H5, H6)", 'elessi-theme'),
+            // "desc" => esc_html__("Select heading fonts.", 'elessi-theme'),
             "id" => "type_headings",
             "std" => "Nunito Sans",
             "type" => "select_google_font",
@@ -50,7 +50,7 @@ if (!function_exists('elessi_type_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Text fonts (paragraphs, buttons, sub-navigations)", 'elessi-theme'),
-            "desc" => esc_html__("Select heading fonts", 'elessi-theme'),
+            // "desc" => esc_html__("Select heading fonts", 'elessi-theme'),
             "id" => "type_texts",
             "std" => "Nunito Sans",
             "type" => "select_google_font",
@@ -64,7 +64,7 @@ if (!function_exists('elessi_type_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Main navigation", 'elessi-theme'),
-            "desc" => esc_html__("Select navigation fonts", 'elessi-theme'),
+            // "desc" => esc_html__("Select navigation fonts", 'elessi-theme'),
             "id" => "type_nav",
             "std" => "Nunito Sans",
             "type" => "select_google_font",
@@ -78,7 +78,7 @@ if (!function_exists('elessi_type_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Banner font", 'elessi-theme'),
-            "desc" => esc_html__("Select banners font", 'elessi-theme'),
+            // "desc" => esc_html__("Select banners font", 'elessi-theme'),
             "id" => "type_banner",
             "std" => "Nunito Sans",
             "type" => "select_google_font",
@@ -92,7 +92,7 @@ if (!function_exists('elessi_type_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Price font", 'elessi-theme'),
-            "desc" => esc_html__("Select price font", 'elessi-theme'),
+            // "desc" => esc_html__("Select price font", 'elessi-theme'),
             "id" => "type_price",
             "std" => "Nunito Sans",
             "type" => "select_google_font",
@@ -106,7 +106,7 @@ if (!function_exists('elessi_type_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Character Sub-sets", 'elessi-theme'),
-            "desc" => esc_html__("Choose the character sets you want.", 'elessi-theme'),
+            // "desc" => esc_html__("Choose the character sets you want.", 'elessi-theme'),
             "id" => "type_subset",
             "std" => array("latin"),
             "type" => "multicheck",
@@ -124,16 +124,16 @@ if (!function_exists('elessi_type_heading')) {
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Upload new font", 'elessi-theme'),
-            "desc" => esc_html__("Upload new custom font.", 'elessi-theme'),
+            "name" => esc_html__("Upload Custom Font", 'elessi-theme'),
+            // "desc" => esc_html__("Upload new custom font.", 'elessi-theme'),
             "std" => "",
             "type" => "nasa_upload_custom_font",
             'class' => 'hidden-tag nasa-type-font-glb nasa-type-font-custom'
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Select custom font", 'elessi-theme'),
-            "desc" => esc_html__("Custom font use in site.", 'elessi-theme'),
+            "name" => esc_html__("Select Custom Font", 'elessi-theme'),
+            // "desc" => esc_html__("Custom font use in site.", 'elessi-theme'),
             "id" => "custom_font",
             "std" => "",
             "type" => "select",
@@ -143,10 +143,10 @@ if (!function_exists('elessi_type_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Include FontAwesome 5.0.13 (Note: You only can use Free icons)", 'elessi-theme'),
-            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
+            // "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "id" => "include_font_awesome_new",
             "std" => 0,
-            "type" => "checkbox"
+            "type" => "switch"
         );
     }
 }

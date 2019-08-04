@@ -38,7 +38,7 @@ if (!function_exists('elessi_general_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Site Layout", 'elessi-theme'),
-            "desc" => esc_html__("Selects site layout.", 'elessi-theme'),
+            // "desc" => esc_html__("Selects site layout.", 'elessi-theme'),
             "id" => "site_layout",
             "std" => "wide",
             "type" => "select",
@@ -70,68 +70,69 @@ if (!function_exists('elessi_general_heading')) {
             "id" => "site_bg_image",
             "std" => ELESSI_THEME_URI . "/assets/images/bkgd1.jpg",
             "type" => "media",
-            'class' => 'nasa-site_layout nasa-site_layout-boxed nasa-theme-option-child'
+            'class' => 'nasa-site_layout nasa-site_layout-boxed nasa-theme-option-child',
+            "mod" => "min"
         );
         
         $of_options[] = array(
             "name" => esc_html__("Site RTL", 'elessi-theme'),
-            "desc" => esc_html__("Yes, please!", 'elessi-theme'),
+            // "desc" => esc_html__("Yes, please!", 'elessi-theme'),
             "id" => "nasa_rtl",
             "std" => 0,
-            "type" => "checkbox"
+            "type" => "switch"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Hide Login or Register menu", 'elessi-theme'),
-            "desc" => esc_html__("Hide Login or Register menu.", 'elessi-theme'),
+            "name" => esc_html__("Disable Login/Register Menu in Topbar", 'elessi-theme'),
+            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "id" => "hide_tini_menu_acc",
             "std" => 0,
             "type" => "checkbox"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Login or Register by Ajax form", 'elessi-theme'),
-            "desc" => esc_html__("Enable Login or Register by Ajax form", 'elessi-theme'),
+            "name" => esc_html__("Login/Register by Ajax form", 'elessi-theme'),
+            // "desc" => esc_html__("Enable Login or Register by Ajax form", 'elessi-theme'),
             "id" => "login_ajax",
             "std" => 1,
-            "type" => "checkbox"
+            "type" => "switch"
         );
         
         $of_options[] = array(
             "name" => esc_html__("Mobile Menu Layout", 'elessi-theme'),
-            "desc" => esc_html__("Selects Mobile Menu Layout.", 'elessi-theme'),
+            // "desc" => esc_html__("Selects Mobile Menu Layout.", 'elessi-theme'),
             "id" => "mobile_menu_layout",
             "std" => "light-new",
             "type" => "select",
             "options" => array(
-                "light-new" => esc_html__("Light Layout 1", 'elessi-theme'),
-                "light" => esc_html__("Light Layout 2", 'elessi-theme'),
-                "dark" => esc_html__("Dark Layout", 'elessi-theme')
+                "light-new" => esc_html__("Light - Default", 'elessi-theme'),
+                "light" => esc_html__("Light - 2", 'elessi-theme'),
+                "dark" => esc_html__("Dark", 'elessi-theme')
             )
         );
 
         $of_options[] = array(
             "name" => esc_html__("Disable Transition Loading", 'elessi-theme'),
-            "desc" => esc_html__("Disable transition loading for all page", 'elessi-theme'),
+            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "id" => "disable_wow",
             "std" => 0,
             "type" => "checkbox"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Delay overlay items", 'elessi-theme'),
-            "desc" => esc_html__("(ms) Delay overlay items.", 'elessi-theme'),
+            "name" => esc_html__("Delay Overlay (ms)", 'elessi-theme'),
+            // "desc" => esc_html__("(ms) Delay overlay items.", 'elessi-theme'),
             "id" => "delay_overlay",
             "std" => "100",
             "type" => "text"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Effect before load site", 'elessi-theme'),
-            "desc" => esc_html__("Enable Effect before load site", 'elessi-theme'),
+            "name" => esc_html__("Effect Before Load Site", 'elessi-theme'),
+            // "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "id" => "effect_before_load",
             "std" => 1,
-            "type" => "checkbox"
+            "type" => "switch"
         );
     }
 }

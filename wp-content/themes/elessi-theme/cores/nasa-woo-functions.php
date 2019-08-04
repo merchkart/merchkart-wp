@@ -595,19 +595,31 @@ if (!function_exists('elessi_tiny_account')) {
             global $nasa_opt;
             $login_ajax = (!isset($nasa_opt['login_ajax']) || $nasa_opt['login_ajax'] == 1) ? '1' : '0';
             $span = $icon ? '<span class="pe7-icon pe-7s-user"></span>' : '';
-            $result .= '<li class="menu-item color"><a class="nasa-login-register-ajax" data-enable="' . $login_ajax . '" href="' . esc_url($login_url) . '" title="' . esc_attr__('Register or sign in', 'elessi-theme') . '">' . $span . '<span class="nasa-login-title">' . esc_html__('Login / Register', 'elessi-theme') . '</span></a></li>';
+            $result .= '<li class="menu-item"><a class="nasa-login-register-ajax" data-enable="' . $login_ajax . '" href="' . esc_url($login_url) . '" title="' . esc_attr__('Register or sign in', 'elessi-theme') . '">' . $span . '<span class="nasa-login-title">' . esc_html__('Login / Register', 'elessi-theme') . '</span></a></li>';
         } else {
-            if(!$redirect) {
-                global $wp;
-                $redirect = home_url(add_query_arg(array(), $wp->request));
-            }
-            $logout_url = wp_logout_url($redirect);
-        
             $span1 = $icon ? '<span class="pe7-icon pe-7s-user"></span>' : '';
-            $span2 = $icon ? '<span class="pe7-icon pe-7s-back"></span>' : '';
+            
+            $submenu = '<ul class="sub-menu">';
+            $current_user = wp_get_current_user();
+            
+            // Hello Account
+            $submenu .= '<li class="nasa-subitem-acc nasa-hello-acc">' . sprintf(esc_html__('Hello, %s!', 'elessi-theme'), $current_user->display_name) . '</li>';
+            
+            $menu_items = NASA_WOO_ACTIVED ? wc_get_account_menu_items() : false;
+            if ($menu_items) {
+                foreach ($menu_items as $endpoint => $label) {
+                    $submenu .= '<li class="nasa-subitem-acc ' . wc_get_account_menu_item_classes($endpoint) . '"><a href="' . esc_url(wc_get_account_endpoint_url($endpoint)) . '">' . esc_html($label) . '</a></li>';
+                }
+            }
+            
+            $submenu .= '</ul>';
+            
             $result .= 
-                '<li class="menu-item"><a href="' . esc_url($profile_url) . '" title="' . esc_attr__('My Account', 'elessi-theme') . '">' . $span1 . esc_html__('My Account', 'elessi-theme') . '</a></li>' .
-                '<li class="menu-item"><a class="nav-top-link" href="' . esc_url($logout_url) . '" title="' . esc_attr__('Logout', 'elessi-theme') . '">' . $span2 . esc_html__('Logout', 'elessi-theme') . '</a></li>';
+                '<li class="menu-item nasa-menu-item-account menu-item-has-children root-item">' .
+                    '<a href="' . esc_url($profile_url) . '" title="' . esc_attr__('My Account', 'elessi-theme') . '">' . $span1 . esc_html__('My Account', 'elessi-theme') . '</a>' .
+                    
+                    $submenu .
+                '</li>';
         }
         
         $result .= '</ul>';
@@ -1697,8 +1709,8 @@ if(!function_exists('elessi_add_compare_in_detail')) :
         ?>
         <div class="product-interactions">
             <a href="javascript:void(0);" class="btn-compare btn-link compare-icon<?php echo ($nasa_compare) ? ' nasa-compare' : ''; ?> tip-top" data-prod="<?php echo (int) $productId; ?>" data-tip="<?php esc_attr_e('Compare', 'elessi-theme'); ?>" title="<?php esc_attr_e('Compare', 'elessi-theme'); ?>">
-                <!-- <span class="nasa-icon icon-nasa-compare-2"></span>
-                <span class="nasa-icon-text"><?php esc_html_e('Add to Compare', 'elessi-theme'); ?></span> -->
+                <span class="nasa-icon icon-nasa-compare-2"></span>
+                <span class="nasa-icon-text"><?php esc_html_e('Add to Compare', 'elessi-theme'); ?></span>
             </a>
         
             <?php if(!$nasa_compare) : ?>
@@ -1775,14 +1787,13 @@ if(!function_exists('elessi_loop_product_content_thumbnail')) :
         $nasa_link = $product->get_permalink(); // permalink
         $nasa_title = $product->get_name(); // Title
         $attachment_ids = false;
-        $sizeLoad = 'thumbnail';
+        $sizeLoad = 'shop_catalog';
         
         /**
          * Mobile detect
          */
         if ($nasa_animated_products != '' && (!isset($nasa_opt['nasa_in_mobile']) || !$nasa_opt['nasa_in_mobile'])) {
             $attachment_ids = $product->get_gallery_image_ids();
-            $sizeLoad = 'shop_catalog';
         }
         
         $image_size = apply_filters('single_product_archive_thumbnail_size', $sizeLoad);
@@ -1847,11 +1858,11 @@ if(!function_exists('elessi_loop_product_content_title')) :
         
         $nasa_link = $product->get_permalink(); // permalink
         $nasa_title = $product->get_name(); // Title
-        $class_title = (!isset($nasa_opt['cutting_product_name']) || $nasa_opt['cutting_product_name'] == '1') ? ' nasa-show-one-line' : '';
+        $class_title = (!isset($nasa_opt['cutting_product_name']) || $nasa_opt['cutting_product_name']) ? ' nasa-show-one-line' : '';
         ?>
         <div class="name<?php echo esc_attr($class_title); ?>">
             <a href="<?php echo esc_url($nasa_link); ?>" title="<?php echo esc_attr($nasa_title); ?>">
-                <?php echo ($nasa_title); ?>
+                <?php echo $nasa_title; ?>
             </a>
         </div>
     <?php
@@ -1958,7 +1969,6 @@ if(!function_exists('elessi_top_sidebar_shop')) :
         } ?>
 
         <div class="<?php echo esc_attr($class); ?>">
-            <a class="nasa-close-sidebar hidden-tag" href="javascript:void(0);" title="<?php echo esc_attr__('Close', 'elessi-theme'); ?>"><?php echo esc_html__('Close', 'elessi-theme'); ?></a>
             <?php
             if (is_active_sidebar($sidebar_run)) :
                 dynamic_sidebar($sidebar_run);
@@ -2023,7 +2033,6 @@ if(!function_exists('elessi_side_sidebar_shop')) :
         ?>
         
         <div class="<?php echo esc_attr($class); ?>">
-            <a class="nasa-close-sidebar hidden-tag" href="javascript:void(0);" title="<?php echo esc_attr__('Close', 'elessi-theme'); ?>"><?php echo esc_html__('Close', 'elessi-theme'); ?></a>
             <?php
             if (is_active_sidebar($sidebar_run)) :
                 dynamic_sidebar($sidebar_run);
@@ -2627,5 +2636,197 @@ if (!function_exists('elessi_accessories_product_tab_content')) :
         
         $file = ELESSI_THEME_PATH . '/includes/nasa-single-product-accessories-tab-content.php';
         include is_file($file) ? $file : ELESSI_THEME_PATH . '/includes/nasa-single-product-accessories-tab-content.php';
+    }
+endif;
+
+/**
+ * Compatible WooCommerce_Advanced_Free_Shipping
+ * Only with one Rule "subtotal >= Rule"
+ */
+add_action('nasa_subtotal_free_shipping', 'elessi_subtotal_free_shipping');
+if (!function_exists('elessi_subtotal_free_shipping')) :
+    function elessi_subtotal_free_shipping() {
+        /**
+         * Check active plug-in WooCommerce || WooCommerce_Advanced_Free_Shipping
+         */
+        if (!NASA_WOO_ACTIVED || !class_exists('WooCommerce_Advanced_Free_Shipping') || !function_exists('WAFS')) {
+            return;
+        }
+
+        /**
+         * Check setting plug-in
+         */
+        $wafs = WAFS();
+        if (!isset($wafs->was_method)) {
+            $wafs->wafs_free_shipping();
+        }
+        
+        $wafs_method = isset($wafs->was_method) ? $wafs->was_method : null;
+        if (!$wafs_method || $wafs_method->hide_shipping === 'no' || $wafs_method->enabled === 'no') {
+            return;
+        }
+
+        /**
+         * Check only 1 post wafs inputed
+         */
+        $wafs_posts = get_posts(array(
+            'posts_per_page'    => 2,
+            'post_status'       => 'publish',
+            'post_type'         => 'wafs'
+        ));
+        if (count($wafs_posts) !== 1) {
+            return;
+        }
+
+        /**
+         * Check only 1 rule on 1 post inputed
+         */
+        $wafs_post = $wafs_posts[0];
+        $condition_groups = get_post_meta($wafs_post->ID, '_wafs_shipping_method_conditions', true);
+        if (count($condition_groups) !== 1) {
+            return;
+        }
+        $condition_group = $condition_groups[0];
+        if (count($condition_group) !== 1) {
+            return;
+        }
+
+        /**
+         * Check rule is subtotal
+         */
+        $value = 0;
+        foreach ($condition_group as $condition) {
+            if ($condition['condition'] !== 'subtotal' || $condition['operator'] !== '>=' || !$condition['value']) {
+                return;
+            }
+
+            $value = $condition['value'];
+            break;
+        }
+
+        $subtotalCart = WC()->cart->subtotal;
+        $spend = 0;
+        
+        /**
+         * Check free shipping
+         */
+        if ($subtotalCart < $value) {
+            $spend = $value - $subtotalCart;
+            $per = intval(($subtotalCart/$value)*100);
+            
+            echo '<div class="nasa-total-condition-wrap">';
+            
+            echo '<div class="nasa-total-condition" data-per="' . $per . '">' .
+                '<span class="nasa-total-condition-hin">' . $per . '%</span>' .
+                '<div class="nasa-subtotal-condition">' . $per . '%</div>' .
+            '</div>';
+            
+            $allowed_html = array(
+                'strong' => array(),
+                'a' => array(
+                    'class' => array(),
+                    'href' => array(),
+                    'title' => array()
+                ),
+                'span' => array(
+                    'class' => array()
+                ),
+                'br' => array()
+            );
+            
+            echo '<div class="nasa-total-condition-desc">' .
+            sprintf(
+                wp_kses(__('Spend %s more to reach <strong>FREE SHIPPING!</strong> <a class="nasa-close-magnificPopup hide-in-cart-sidebar" href="' . esc_url(get_permalink(wc_get_page_id('shop'))) . '" title="Continue Shopping">Continue Shopping</a><br /><span class="hide-in-cart-sidebar">to add more products to your cart and receive free shipping for order %s.</span>', 'elessi-theme'), $allowed_html),
+                wc_price($spend),
+                wc_price($value)
+            ) . 
+            '</div>';
+            
+            echo '</div>';
+        }
+        /**
+         * Congratulations! You've got free shipping!
+         */
+        else {
+            echo '<div class="nasa-total-condition-wrap">';
+            echo '<div class="nasa-total-condition-desc">';
+            echo sprintf(
+                esc_html__("Congratulations! You get free shipping with your order greater %s.", 'elessi-theme'),
+                wc_price($value)
+            );
+            echo '</div>';
+            echo '</div>';
+        }
+    }
+endif;
+
+/**
+ * Before account Navigation
+ */
+add_action('woocommerce_before_account_navigation', 'elessi_before_account_nav');
+if (!function_exists('elessi_before_account_nav')) :
+    function elessi_before_account_nav() {
+        global $nasa_opt;
+        if (!NASA_CORE_USER_LOGIGED || (isset($nasa_opt['nasa_in_mobile']) && $nasa_opt['nasa_in_mobile'])) {
+            return;
+        }
+        
+        $current_user = wp_get_current_user();
+        $logout_url = wp_logout_url(home_url('/'));
+        ?>
+        <div class="account-nav-wrap vertical-tabs">
+            <div class="account-nav account-user hide-for-small">
+                <?php echo get_avatar($current_user->ID, 60); ?>
+                <span class="user-name">
+                    <?php echo esc_attr($current_user->display_name); ?>
+                </span>
+                <span class="logout-link">
+                    <a href="<?php echo esc_url($logout_url); ?>" title="<?php esc_attr_e('Logout', 'elessi-theme'); ?>">
+                        <?php esc_html_e('Logout', 'elessi-theme'); ?>
+                    </a>
+                </span>
+            </div>
+    <?php
+    }
+endif;
+
+/**
+ * After account Navigation
+ */
+add_action('woocommerce_after_account_navigation', 'elessi_after_account_nav');
+if (!function_exists('elessi_after_account_nav')) :
+    function elessi_after_account_nav() {
+        global $nasa_opt;
+        if (!NASA_CORE_USER_LOGIGED || (isset($nasa_opt['nasa_in_mobile']) && $nasa_opt['nasa_in_mobile'])) {
+            return;
+        }
+        ?>
+        </div>
+    <?php
+    }
+endif;
+
+add_action('woocommerce_account_dashboard', 'elessi_account_dashboard_nav');
+if (!function_exists('elessi_account_dashboard_nav')) :
+    function elessi_account_dashboard_nav() {
+        if (!NASA_CORE_USER_LOGIGED) {
+            return;
+        }
+        
+        $menu_items = wc_get_account_menu_items();
+        if (empty($menu_items)) {
+            return;
+        }
+        ?>
+        <nav class="woocommerce-MyAccount-navigation nasa-MyAccount-navigation">
+            <ul>
+                <?php foreach ($menu_items as $endpoint => $label) : ?>
+                    <li class="<?php echo wc_get_account_menu_item_classes($endpoint); ?>">
+                        <a href="<?php echo esc_url(wc_get_account_endpoint_url($endpoint)); ?>"><?php echo esc_html($label); ?></a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </nav>
+    <?php
     }
 endif;

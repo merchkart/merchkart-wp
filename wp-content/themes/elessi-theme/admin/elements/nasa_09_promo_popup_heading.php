@@ -20,16 +20,16 @@ if (!function_exists('elessi_promo_popup_heading')) {
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Enable promo popup", 'elessi-theme'),
-            "desc" => esc_html__("Enable promo popup", 'elessi-theme'),
+            "name" => esc_html__("Promo popup", 'elessi-theme'),
+            // "desc" => esc_html__("Enable promo popup", 'elessi-theme'),
             "id" => "promo_popup",
             "std" => 0,
-            "type" => "checkbox"
+            "type" => "switch"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Hide in Mobile", 'elessi-theme'),
-            "desc" => esc_html__("Hide in Mobile (Width site <= 640px)", 'elessi-theme'),
+            "name" => esc_html__("Hide in Mobile (Width site <= 640px OR Mobile Layout)", 'elessi-theme'),
+            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "id" => "disable_popup_mobile",
             "std" => 0,
             "type" => "checkbox"
@@ -58,7 +58,7 @@ if (!function_exists('elessi_promo_popup_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Select contact form", 'elessi-theme'),
-            "desc" => esc_html__("Select contact form", 'elessi-theme'),
+            // "desc" => esc_html__("Select contact form", 'elessi-theme'),
             "id" => "pp_contact_form",
             "type" => "select",
             'override_numberic' => true,
@@ -67,7 +67,7 @@ if (!function_exists('elessi_promo_popup_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Content Width", 'elessi-theme'),
-            "desc" => esc_html__("Content Width.", 'elessi-theme'),
+            // "desc" => esc_html__("Content Width.", 'elessi-theme'),
             "id" => "pp_style",
             "std" => "simple",
             "type" => "select",
@@ -79,7 +79,7 @@ if (!function_exists('elessi_promo_popup_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Popup Background Color", 'elessi-theme'),
-            "desc" => esc_html__("Insert popup background color.", 'elessi-theme'),
+            // "desc" => esc_html__("Insert popup background color.", 'elessi-theme'),
             "id" => "pp_background_color",
             "std" => "#fff",
             "type" => "color"
@@ -87,15 +87,16 @@ if (!function_exists('elessi_promo_popup_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Popup Background", 'elessi-theme'),
-            "desc" => esc_html__("Insert popup background.", 'elessi-theme'),
+            // "desc" => esc_html__("Insert popup background.", 'elessi-theme'),
             "id" => "pp_background_image",
             "std" => ELESSI_THEME_URI . '/assets/images/newsletter_bg.jpg',
-            "type" => "media"
+            "type" => "media",
+            "mod" => "min"
         );
         
         $of_options[] = array(
             "name" => esc_html__("Delay time to show", 'elessi-theme'),
-            "desc" => esc_html__("Delay time (seconds)", 'elessi-theme'),
+            // "desc" => esc_html__("Delay time (seconds)", 'elessi-theme'),
             "id" => "delay_promo_popup",
             "std" => 0,
             "type" => "text"

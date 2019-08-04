@@ -24,6 +24,7 @@ endif;
     foreach ($tabs as $key => $tab) :
         $class_item = $k_acc == 0 ? ' active first' : '';
         $class_item .= $k_acc == $countTabs ? ' last' : '';
+        $class_item .= ' nasa-accordion-' . $key;
         ?>
             <div class="nasa-accordion-title">
                 <a class="nasa-single-product-tab nasa-accordion hidden-tag<?php echo esc_attr($class_item); ?>" href="javascript:void(0);" data-id="accordion-<?php echo esc_attr($key); ?>">

@@ -104,8 +104,8 @@ endif;
                         $total,
                         $current,
                         'list',
-                        '<span class="fa fa-caret-left"></span>',
-                        '<span class="fa fa-caret-right"></span>',
+                        '<span class="pe7-icon pe-7s-angle-left"></span>', // Prev text
+                        '<span class="pe7-icon pe-7s-angle-right"></span>', // Next text
                         1, // end_size
                         1  // mid_size
                     ) : paginate_links(apply_filters('woocommerce_pagination_args', array(
@@ -113,8 +113,8 @@ endif;
                         'format' => $format,
                         'current' => $current,
                         'total' => $total,
-                        'prev_text' => '<span class="fa fa-caret-left"></span>',
-                        'next_text' => '<span class="fa fa-caret-right"></span>',
+                        'prev_text' => '<span class="pe7-icon pe-7s-angle-left"></span>',
+                        'next_text' => '<span class="pe7-icon pe-7s-angle-right"></span>',
                         'type' => 'list',
                         'end_size' => 1,
                         'mid_size' => 1

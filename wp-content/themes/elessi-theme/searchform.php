@@ -21,10 +21,7 @@ if ($postType === 'product') {
         $hotkeys = ' data-suggestions="' . esc_attr($nasa_opt['hotkeys_search']) . '"';
     }
 }
-
-
 ?>
-
 <div class="search-wrapper <?php echo esc_attr($classWrap); ?>-container <?php echo esc_attr($_id); ?>_container">
     <div class="nasa-search-form-warp">
         <form method="get" class="<?php echo esc_attr($classWrap); ?>" action="<?php echo esc_url(home_url('/')); ?>">
@@ -34,8 +31,11 @@ if ($postType === 'product') {
                 </label>
                 <input id="nasa-input-<?php echo esc_attr($_id); ?>" type="text" class="<?php echo esc_attr($classInput); ?>" value="<?php echo get_search_query(); ?>" name="s" placeholder="<?php echo $placeHolder; ?>"<?php echo $hotkeys;?> />
                 <span class="nasa-icon-submit-page">
-                    <input type="submit" name="page" value="search" />
+                    <button class="nasa-submit-search hidden-tag">
+                        <?php esc_attr_e('Search', 'elessi-theme'); ?>
+                    </button>
                 </span>
+                <input type="hidden" name="page" value="search" />
                 <input type="hidden" name="post_type" value="<?php echo esc_attr($postType); ?>" />
             </div>
         </form>

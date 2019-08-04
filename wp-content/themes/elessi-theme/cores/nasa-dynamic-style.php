@@ -134,7 +134,9 @@ if (!function_exists('elessi_get_style_primary_color')) :
             body .widget.woocommerce.widget_product_categories li.current-cat .children a:hover,
             body .widget li a:hover,
             body .widget.woocommerce li a:hover,
-            body .nasa-products-special-deal.nasa-products-special-deal-multi-2 .nasa-list-stock-status span
+            body .nasa-products-special-deal.nasa-products-special-deal-multi-2 .nasa-list-stock-status span,
+            body .nasa-total-condition-desc .woocommerce-Price-amount,
+            body .woocommerce-MyAccount-navigation.nasa-MyAccount-navigation .woocommerce-MyAccount-navigation-link a:hover:before
             {
                 color: <?php echo esc_attr($color_primary); ?>;
             }
@@ -256,7 +258,11 @@ if (!function_exists('elessi_get_style_primary_color')) :
             /* body .nasa-add-to-cart-fixed .single_variation_wrap-clone .button.disabled:hover, */
             body .nasa-single-product-stock .nasa-product-stock-progress .nasa-product-stock-progress-bar,
             body .nasa-quickview-view-detail,
-            html body.nasa-in-mobile #top-bar .topbar-mobile-text
+            html body.nasa-in-mobile #top-bar .topbar-mobile-text,
+            body .nasa-subtotal-condition,
+            body .nasa-pagination.style-2 .page-numbers span.current,
+            body .nasa-pagination.style-2 .page-numbers a.current,
+            body .nasa-pagination.style-2 .page-numbers a.nasa-current
             {
                 background-color: <?php echo esc_attr($color_primary); ?>;
             }
@@ -336,7 +342,9 @@ if (!function_exists('elessi_get_style_primary_color')) :
             body .vertical-menu.nasa-shortcode-menu .section-title,
             body .nasa-products-special-deal.nasa-products-special-deal-multi-2 .nasa-main-special,
             body .nasa-slider-deal-vertical-extra-switcher.nasa-nav-4-items .item-slick.slick-current,
-            body .nasa-slider-deal-vertical-extra-switcher.nasa-nav-4-items .item-slick:hover
+            body .nasa-slider-deal-vertical-extra-switcher.nasa-nav-4-items .item-slick:hover,
+            body .nasa-accordions-content .nasa-accordion-title a.active:before,
+            body .nasa-accordions-content .nasa-accordion-title a.active:after
             {
                 border-color: <?php echo esc_attr($color_primary); ?>;
             }
@@ -500,7 +508,8 @@ if (!function_exists('elessi_get_style_header_color')) :
         ?><style>
             /* Start override header color =========================================== */
             <?php if ($bg_color != '') : ?>
-                body #masthead
+                body #masthead,
+                body .mobile-menu .nasa-td-mobile-icons .nasa-mobile-icons-wrap.nasa-absolute-icons .nasa-header-icons-wrap
                 {
                     background-color: <?php echo esc_attr($bg_color); ?>;
                 }
@@ -509,7 +518,13 @@ if (!function_exists('elessi_get_style_header_color')) :
 
         if ($text_color != '') :
             ?>
-                body #masthead .header-icons > li a
+                body #masthead .header-icons > li a,
+                body .mini-icon-mobile .nasa-icon,
+                body .nasa-toggle-mobile_icons,
+                body #masthead .follow-icon a i,
+                body #masthead .nasa-search-space .nasa-show-search-form .search-wrapper form .nasa-icon-submit-page:before,
+                body #masthead .nasa-search-space .nasa-show-search-form .nasa-close-search,
+                body #masthead .nasa-search-space .nasa-show-search-form .search-wrapper form input[name="s"]
                 {
                     color: <?php echo esc_attr($text_color); ?>;
                 }
@@ -517,13 +532,18 @@ if (!function_exists('elessi_get_style_header_color')) :
                 {
                     color: <?php echo esc_attr($text_color); ?> !important;
                 }
+                .mobile-menu .nasa-td-mobile-icons .nasa-toggle-mobile_icons .nasa-icon
+                {
+                    border-color: transparent !important;
+                }
                 <?php
             endif;
 
             if ($text_color_hover != '') :
                 ?>
                 body #masthead .header-icons > li a:hover i,
-                body #masthead .mini-cart .cart-icon:hover:before
+                body #masthead .mini-cart .cart-icon:hover:before,
+                body #masthead .follow-icon a:hover i
                 {
                     color: <?php echo esc_attr($text_color_hover); ?>;
                 }

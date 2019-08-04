@@ -36,8 +36,8 @@ if (!function_exists('elessi_header_footer_heading')) {
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Header type", 'elessi-theme'),
-            "desc" => esc_html__("Select header type", 'elessi-theme'),
+            "name" => esc_html__("Header Layout", 'elessi-theme'),
+            //"desc" => esc_html__("Select header type", 'elessi-theme'),
             "id" => "header-type",
             "std" => "1",
             "type" => "images",
@@ -97,25 +97,25 @@ if (!function_exists('elessi_header_footer_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Fullwidth Main Menu", 'elessi-theme'),
-            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
+            // "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "id" => "fullwidth_main_menu",
             "std" => 1,
-            "type" => "checkbox",
+            "type" => "switch",
             'class' => 'hidden-tag nasa-header-type-child nasa-header-type-select-2 nasa-header-type-select-3 nasa-fullwidth_main_menu'
         );
         
         $of_options[] = array(
             "name" => esc_html__("Transparent Header", 'elessi-theme'),
-            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
+            // "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "id" => "header_transparent",
             "std" => 0,
-            "type" => "checkbox",
+            "type" => "switch",
             'class' => 'hidden-tag nasa-header-type-child nasa-header-type-select-1 nasa-header-type-select-2 nasa-header-type-select-3 nasa-header_transparent'
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Block Header transparent", 'elessi-theme'),
-            "desc" => esc_html__("Please Create Static Block and Selected here to use", 'elessi-theme'),
+            "name" => esc_html__("Block Header Transparent", 'elessi-theme'),
+            "desc" => esc_html__("Please Create Static Block and Selected here to use.", 'elessi-theme'),
             "id" => "header-block",
             "type" => "select",
             "options" => $header_blocks,
@@ -125,15 +125,15 @@ if (!function_exists('elessi_header_footer_heading')) {
         $of_options[] = array(
             "name" => esc_html__("Sticky", 'elessi-theme'),
             "id" => "fixed_nav",
-            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
+            // "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "std" => 1,
-            "type" => "checkbox",
+            "type" => "switch",
             'class' => 'hidden-tag nasa-header-type-child nasa-header-type-select-1 nasa-header-type-select-2 nasa-header-type-select-3 nasa-header-type-select-4 nasa-fixed_nav'
         );
         
         $of_options[] = array(
             "name" => esc_html__("Search Bar Effect", 'elessi-theme'),
-            "desc" => esc_html__("Search Bar Effect.", 'elessi-theme'),
+            // "desc" => esc_html__("Search Bar Effect.", 'elessi-theme'),
             "id" => "search_effect",
             "std" => "right-to-left",
             "type" => "select",
@@ -150,36 +150,36 @@ if (!function_exists('elessi_header_footer_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Toggle Top Bar", 'elessi-theme'),
-            "desc" => esc_html__("Toggle Show/Hide Top Bar", 'elessi-theme'),
+            // "desc" => esc_html__("Toggle Show/Hide Top Bar", 'elessi-theme'),
             "id" => "topbar_toggle",
             "std" => 0,
-            "type" => "checkbox",
+            "type" => "switch",
             'class' => 'hidden-tag nasa-topbar_toggle nasa-header-type-child nasa-header-type-select-1 nasa-header-type-select-2 nasa-header-type-select-3 nasa-header-type-select-4 nasa-fixed_nav'
         );
         
         $of_options[] = array(
             "name" => esc_html__("Default Top Bar Show", 'elessi-theme'),
-            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
+            // "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "id" => "topbar_default_show",
             "std" => 1,
-            "type" => "checkbox",
+            "type" => "switch",
             'class' => 'hidden-tag nasa-topbar_df-show'
         );
 
         $of_options[] = array(
-            "name" => esc_html__("Enable Switch Languages", 'elessi-theme'),
-            "desc" => esc_html__("Enable Switch Languages", 'elessi-theme'),
+            "name" => esc_html__("Languages Switcher - Requires WPML", 'elessi-theme'),
+            // "desc" => esc_html__("Requires WPML.", 'elessi-theme'),
             "id" => "switch_lang",
             "std" => 0,
-            "type" => "checkbox"
+            "type" => "switch"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Enable Currency Switcher", 'elessi-theme'),
-            "desc" => esc_html__("Enable Currency Switcher - Requires WPML + WooCommerce Multilingual.", 'elessi-theme'),
+            "name" => esc_html__("Currencies Switcher - Requires Package of WPML", 'elessi-theme'),
+            // "desc" => esc_html__("Requires Package of WPML.", 'elessi-theme'),
             "id" => "switch_currency",
             "std" => 0,
-            "type" => "checkbox"
+            "type" => "switch"
         );
         
         //(%symbol%) %code%
@@ -193,7 +193,7 @@ if (!function_exists('elessi_header_footer_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Topbar Content", 'elessi-theme'),
-            "desc" => esc_html__("Please Create Static Block and Selected here to use", 'elessi-theme'),
+            "desc" => esc_html__("Please Create Static Block and Selected here to use.", 'elessi-theme'),
             "id" => "topbar_content",
             "type" => "select",
             "options" => $header_blocks,
@@ -213,11 +213,11 @@ if (!function_exists('elessi_header_footer_heading')) {
         ); */
         
         $of_options[] = array(
-            "name" => esc_html__("Toggle Header Icons in Mobile", 'elessi-theme'),
-            "desc" => esc_html__("Toggle Show/Hide Header Icons in Mobile", 'elessi-theme'),
+            "name" => esc_html__("Toggle Header Icons - Responsive mode", 'elessi-theme'),
+            // "desc" => esc_html__("Toggle Show/Hide Header Icons in Responsive mode", 'elessi-theme'),
             "id" => "topbar_mobile_icons_toggle",
             "std" => 0,
-            "type" => "checkbox",
+            "type" => "switch",
             'class' => 'hidden-tag nasa-header-type-child nasa-header-type-select-1 nasa-header-type-select-2 nasa-header-type-select-3 nasa-header-type-select-4 nasa-topbar_mobile_icons_toggle'
         );
 
@@ -229,7 +229,7 @@ if (!function_exists('elessi_header_footer_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Topbar Background", 'elessi-theme'),
-            "desc" => esc_html__("Topbar Background.", 'elessi-theme'),
+            // "desc" => esc_html__("Topbar Background.", 'elessi-theme'),
             "id" => "bg_color_topbar",
             "std" => "",
             "type" => "color"
@@ -237,7 +237,7 @@ if (!function_exists('elessi_header_footer_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Topbar Text color", 'elessi-theme'),
-            "desc" => esc_html__("Topbar Text color.", 'elessi-theme'),
+            // "desc" => esc_html__("Topbar Text color.", 'elessi-theme'),
             "id" => "text_color_topbar",
             "std" => "",
             "type" => "color"
@@ -245,15 +245,15 @@ if (!function_exists('elessi_header_footer_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Topbar Text color hover", 'elessi-theme'),
-            "desc" => esc_html__("Text color hover for items Topbar.", 'elessi-theme'),
+            // "desc" => esc_html__("Text color hover for items in Topbar.", 'elessi-theme'),
             "id" => "text_color_hover_topbar",
             "std" => "",
             "type" => "color"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Background color Header", 'elessi-theme'),
-            "desc" => esc_html__("Background Color header.", 'elessi-theme'),
+            "name" => esc_html__("Background Color Header", 'elessi-theme'),
+            // "desc" => esc_html__("Background Color header.", 'elessi-theme'),
             "id" => "bg_color_header",
             "std" => "",
             "type" => "color",
@@ -262,7 +262,7 @@ if (!function_exists('elessi_header_footer_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Header Icons", 'elessi-theme'),
-            "desc" => esc_html__("Header Icons.", 'elessi-theme'),
+            // "desc" => esc_html__("Header Icons.", 'elessi-theme'),
             "id" => "text_color_header",
             "std" => "",
             "type" => "color",
@@ -271,7 +271,7 @@ if (!function_exists('elessi_header_footer_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Header Icons Hover", 'elessi-theme'),
-            "desc" => esc_html__("Header Icons Hover.", 'elessi-theme'),
+            // "desc" => esc_html__("Header Icons Hover.", 'elessi-theme'),
             "id" => "text_color_hover_header",
             "std" => "",
             "type" => "color",
@@ -280,7 +280,7 @@ if (!function_exists('elessi_header_footer_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Main Menu Background Color", 'elessi-theme'),
-            "desc" => esc_html__("Change Background Color of Main Menu.", 'elessi-theme'),
+            // "desc" => esc_html__("Change Background Color of Main Menu.", 'elessi-theme'),
             "id" => "bg_color_main_menu",
             "std" => "",
             "type" => "color",
@@ -289,7 +289,7 @@ if (!function_exists('elessi_header_footer_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Main Menu Text Color", 'elessi-theme'),
-            "desc" => esc_html__("Change Text Color of Main Menu.", 'elessi-theme'),
+            // "desc" => esc_html__("Change Text Color of Main Menu.", 'elessi-theme'),
             "id" => "text_color_main_menu",
             "std" => "",
             "type" => "color",
@@ -307,23 +307,46 @@ if (!function_exists('elessi_header_footer_heading')) {
             'post_status'       => 'publish',
             'post_type'         => 'footer'
         ));
-        $footers_option = array();
+        
+        /**
+         * Footer Desktop
+         */
+        $footers_option = $footers_mobile = array();
         $footers_option['default'] = esc_html__('Select the Footer type', 'elessi-theme');
+        $footers_mobile['default'] = esc_html__('Extends from Desktop', 'elessi-theme');
         $footer_selected = false;
         if (!empty($footers_type)) {
             foreach ($footers_type as $key => $value) {
                 $footer_selected = !$footer_selected ? $value->post_name : $footer_selected;
                 $footers_option[$value->post_name] = $value->post_title;
+                $footers_mobile[$value->post_name] = $value->post_title;
             }
         }
+        
+        /**
+         * Footer Desktop
+         */
         $of_options[] = array(
-            "name" => esc_html__("Footer Type", 'elessi-theme'),
-            "desc" => esc_html__("Select Footer type", 'elessi-theme'),
+            "name" => esc_html__("Footer Layout", 'elessi-theme'),
+            // "desc" => esc_html__("Select Footer type", 'elessi-theme'),
             "id" => "footer-type",
             "type" => "select",
             'override_numberic' => true,
             "options" => $footers_option,
             'std' => $footer_selected ? $footer_selected : ''
+        );
+        
+        /**
+         * Footer Mobile
+         */
+        $of_options[] = array(
+            "name" => esc_html__("Footer Mobile Layout", 'elessi-theme'),
+            // "desc" => esc_html__("Select Footer Mobile", 'elessi-theme'),
+            "id" => "footer-mobile",
+            "type" => "select",
+            'override_numberic' => true,
+            "options" => $footers_mobile,
+            'std' => ''
         );
     }
 }

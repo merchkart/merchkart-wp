@@ -33,7 +33,8 @@ if(class_exists('WC_AJAX')) :
                 'nasa_remove_all_compare',
                 'nasa_reload_fragments',
                 'nasa_refresh_accessories_price',
-                'nasa_add_to_cart_accessories'
+                'nasa_add_to_cart_accessories',
+                'nasa_after_add_to_cart'
             );
 
             foreach ($ajax_events as $ajax_event) {
@@ -70,7 +71,6 @@ if(class_exists('WC_AJAX')) :
             if(defined('NASA_PLG_CACHE_ACTIVE') && NASA_PLG_CACHE_ACTIVE) {
                 $data['content']['.nasa-compare-count.compare-number'] = elessi_get_count_compare();
                 $data['content']['.nasa-wishlist-count.wishlist-number'] = elessi_get_count_wishlist();
-                // $content['.cart-inner'] = elessi_mini_cart();
 
                 if (NASA_CORE_USER_LOGIGED) {
                     $data['content']['.nasa-menus-account'] = elessi_tiny_account(true);
@@ -86,7 +86,7 @@ if(class_exists('WC_AJAX')) :
              * Get viewed product
              */
             if(defined('NASA_COOKIE_VIEWED') && shortcode_exists('nasa_products_viewed') && (!isset($nasa_opt['disable-viewed']) || !$nasa_opt['disable-viewed'])) {
-                $data['content']['#nasa-viewed-sidebar-content'] = do_shortcode('[nasa_products_viewed is_ajax="no" columns_number="1" columns_small="1" columns_number_tablet="1" default_rand="false" display_type="sidebar"]');
+                $data['content']['#nasa-viewed-sidebar-content'] = do_shortcode('[nasa_products_viewed is_ajax="no" columns_number="1" columns_small="1" columns_number_tablet="1" default_rand="false" display_type="sidebar" animation="0"]');
             }
 
             /**
@@ -416,7 +416,7 @@ if(class_exists('WC_AJAX')) :
                 $mini_cart = ob_get_clean();
 
                 // Fragments and mini cart are returned
-                $cart_session = $woocommerce->cart->get_cart_for_session();
+                // $cart_session = $woocommerce->cart->get_cart_for_session();
                 $data = array(
                     'fragments' => apply_filters(
                         'woocommerce_add_to_cart_fragments',
@@ -695,6 +695,40 @@ if(class_exists('WC_AJAX')) :
                 $result['result_table'] = elessi_products_compare_content();
             }
 
+            wp_send_json($result);
+        }
+        
+        /**
+         * After Add To Cart
+         * 
+         * Pop-up Cross-Sells product
+         */
+        public static function nasa_after_add_to_cart() {
+            $result = array(
+                'success' => '0',
+                'content' => ''
+            );
+            
+            $nasa_cart = WC()->cart;
+            $cart_items = $nasa_cart->get_cart();
+            
+            /**
+             * Empty items
+             */
+            if (empty($cart_items)) {
+                wp_send_json($result);
+                wp_die();
+            }
+            
+            $file = ELESSI_CHILD_PATH . '/includes/nasa-after-add-to-cart.php';
+            $file = is_file($file) ? $file : ELESSI_THEME_PATH . '/includes/nasa-after-add-to-cart.php';
+            
+            ob_start();
+            include $file;
+            
+            $result['content'] = ob_get_clean();
+            $result['success'] = '1';
+            
             wp_send_json($result);
         }
     }

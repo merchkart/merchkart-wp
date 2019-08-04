@@ -19,8 +19,11 @@ $productId = $product->get_id();
 $link = $product->get_permalink();
 $title = $product->get_name();
 $show_rating = isset($show_rating) ? $show_rating : true;
+$animation = !isset($animation) ? true : $animation;
 
-$class = 'row item-product-widget clearfix wow fadeInUp';
+$class = 'row item-product-widget clearfix';
+$class .= $animation ? ' wow fadeInUp' : '';
+
 $list_type = isset($list_type) ? $list_type : '1';
 
 $class_img = 'large-4 medium-6 small-4 columns images';
