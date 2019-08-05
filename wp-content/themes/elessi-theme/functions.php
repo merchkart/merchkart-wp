@@ -24,6 +24,17 @@ require_once ELESSI_THEME_PATH . '/options/nasa-options.php';
 Remove Stripe Buy Now from Single Product Page
 **/
 add_filter( 'wc_stripe_hide_payment_request_on_product_page', '__return_true' );
+add_filter( 'woocommerce_product_tabs', 'merchkart_remove_product_tabs', 98 );
+ 
+function merchkart_remove_product_tabs( $tabs ) {
+    unset( $tabs['additional_information'] ); 
+    unset( $tabs['shipping'] ); 
+    unset( $tabs['seller'] ); 
+    return $tabs;
+}
+/* 
+End Of Custom Code
+*/
 
 add_action('after_setup_theme', 'elessi_setup');
 if (!function_exists('elessi_setup')) :
