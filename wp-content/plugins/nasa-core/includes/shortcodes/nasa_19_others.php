@@ -272,10 +272,14 @@ function nasa_opening_time($atts, $content = null) {
         'sat_start' => '09:00',
         'sat_end' => '21:00',
         'sun_start' => '13:00',
-        'sun_end' => '22:00'
+        'sun_end' => '22:00',
+        'el_class' => ''
     ), $atts));
 
-    $content = '<ul class="nasa-opening-time">';
+    $class = 'nasa-opening-time';
+    $class .= $el_class ? ' ' . $el_class : '';
+    
+    $content = '<ul class="' . $class . '">';
         $content .= '<li><span class="nasa-day-open">' . esc_html__('Monday - Friday', 'nasa-core') . '</span><span class="nasa-time-open">' . $weekdays_start . ' - ' . $weekdays_end . '</span></li>';
         $content .= '<li><span class="nasa-day-open">' . esc_html__('Saturday', 'nasa-core') . '</span><span class="nasa-time-open">' . $sat_start . ' - ' . $sat_end . '</span></li>';
         $content .= '<li><span class="nasa-day-open">' . esc_html__('Sunday', 'nasa-core') . '</span><span class="nasa-time-open">' . $sun_start . ' - ' . $sun_end . '</span></li>';
@@ -525,6 +529,12 @@ function nasa_register_others(){
                 "heading" => esc_html__('Sunday End Time', 'nasa-core'),
                 "param_name" => 'sun_end',
                 "std" => '22:00'
+            ),
+            array(
+                "type" => "textfield",
+                "heading" => esc_html__("Extra class name", 'nasa-core'),
+                "param_name" => "el_class",
+                "description" => esc_html__("If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", 'nasa-core')
             )
         )
     );

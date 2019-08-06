@@ -246,10 +246,10 @@
             <p><?php echo esc_html__('Display Position', 'nasa-core'); ?></p>
             <select name="position_show" style="display: block; width: 100%;">
                 <option value="top"><?php echo esc_html__('Top of Pin', 'nasa-core'); ?></option>
-                <option value="right"><?php echo esc_html__('Right of Pin', 'nasa-core'); ?></option>
-                <option value="bot"><?php echo esc_html__('Bottom of Pin', 'nasa-core'); ?></option>
                 <option value="left"><?php echo esc_html__('Left of Pin', 'nasa-core'); ?></option>
+                <option value="right"><?php echo esc_html__('Right of Pin', 'nasa-core'); ?></option>
             </select>
+            
             <input type="button" value="Save" class="easy-submit" />
         </div>
         

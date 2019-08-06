@@ -432,6 +432,15 @@ function nasa_metaboxes(array $meta_boxes) {
                 'type' => 'select',
                 'options' => nasa_get_footers_options(),
                 'default' => ''
+            ),
+            
+            array(
+                'name' => esc_html__('Footer Mobile', 'nasa-core'),
+                'desc' => esc_html__('Description (optional)', 'nasa-core'),
+                'id' => $prefix . 'custom_footer_mobile',
+                'type' => 'select',
+                'options' => nasa_get_footers_options(),
+                'default' => ''
             )
         )
     );

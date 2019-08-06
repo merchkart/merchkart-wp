@@ -66,7 +66,8 @@ if($display_type === 'slide') :
                                     array(
                                         'wapper' => 'div',
                                         'delay' => $_delay,
-                                        'list_type' => '1'
+                                        'list_type' => '1',
+                                        'animation' => $animation
                                     )
                                 );
 
@@ -97,7 +98,8 @@ elseif($display_type === 'sidebar') :
                             array(
                                 'wapper' => 'div',
                                 'delay' => $_delay,
-                                'list_type' => '1'
+                                'list_type' => '1',
+                                'animation' => $animation
                             )
                         );
 

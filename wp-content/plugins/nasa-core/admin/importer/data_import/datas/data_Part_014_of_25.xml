@@ -16,7 +16,7 @@
 <!-- 7. WordPress will then import each of the posts, pages, comments, categories, etc. -->
 <!--    contained in this file into your site. -->
 
-	<!-- generator="WordPress/5.1" created="2019-02-25 13:53" -->
+	<!-- generator="WordPress/5.2.2" created="2019-08-04 04:43" -->
 <rss version="2.0"
 	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -27,13 +27,13 @@
 
 <channel>
 	<title>Elessi</title>
-	<link>http://elessi.nasatheme.com</link>
+	<link>https://elessi.nasatheme.com</link>
 	<description>Just another WordPress site</description>
-	<pubDate>Mon, 25 Feb 2019 13:53:19 +0000</pubDate>
+	<pubDate>Sun, 04 Aug 2019 04:43:34 +0000</pubDate>
 	<language>en-US</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
-	<wp:base_site_url>http://elessi.nasatheme.com</wp:base_site_url>
-	<wp:base_blog_url>http://elessi.nasatheme.com</wp:base_blog_url>
+	<wp:base_site_url>https://elessi.nasatheme.com</wp:base_site_url>
+	<wp:base_blog_url>https://elessi.nasatheme.com</wp:base_blog_url>
 
 		<wp:author><wp:author_id>1</wp:author_id><wp:author_login><![CDATA[admin]]></wp:author_login><wp:author_email><![CDATA[youremail@yourdomain.com]]></wp:author_email><wp:author_display_name><![CDATA[admin]]></wp:author_display_name><wp:author_first_name><![CDATA[]]></wp:author_first_name><wp:author_last_name><![CDATA[]]></wp:author_last_name></wp:author>
 
@@ -527,6 +527,21 @@
 		</wp:termmeta>
 	</wp:term>
 		<wp:term>
+		<wp:term_id><![CDATA[223]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[kid]]></wp:term_slug>
+		<wp:term_parent><![CDATA[]]></wp:term_parent>
+		<wp:term_name><![CDATA[Kid]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
 		<wp:term_id><![CDATA[77]]></wp:term_id>
 		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
 		<wp:term_slug><![CDATA[knit]]></wp:term_slug>
@@ -573,6 +588,25 @@
 		<wp:term_name><![CDATA[M]]></wp:term_name>
 	</wp:term>
 		<wp:term>
+		<wp:term_id><![CDATA[120]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[men]]></wp:term_slug>
+		<wp:term_parent><![CDATA[]]></wp:term_parent>
+		<wp:term_name><![CDATA[Men]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[9]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[9]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
 		<wp:term_id><![CDATA[83]]></wp:term_id>
 		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
 		<wp:term_slug><![CDATA[menly]]></wp:term_slug>
@@ -581,6 +615,45 @@
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[product_count_product_tag]]></wp:meta_key>
 			<wp:meta_value><![CDATA[6]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[239]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[mumz]]></wp:term_slug>
+		<wp:term_parent><![CDATA[kid]]></wp:term_parent>
+		<wp:term_name><![CDATA[Mumz]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[7]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2821]]></wp:meta_value>
 		</wp:termmeta>
 	</wp:term>
 		<wp:term>
@@ -735,6 +808,21 @@
 		<wp:term_name><![CDATA[Samsung Watch]]></wp:term_name>
 	</wp:term>
 		<wp:term>
+		<wp:term_id><![CDATA[132]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[shoes-men]]></wp:term_slug>
+		<wp:term_parent><![CDATA[men]]></wp:term_parent>
+		<wp:term_name><![CDATA[Shoes]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[23]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
 		<wp:term_id><![CDATA[2]]></wp:term_id>
 		<wp:term_taxonomy><![CDATA[product_type]]></wp:term_taxonomy>
 		<wp:term_slug><![CDATA[simple]]></wp:term_slug>
@@ -747,6 +835,21 @@
 		<wp:term_slug><![CDATA[snap]]></wp:term_slug>
 		<wp:term_parent><![CDATA[]]></wp:term_parent>
 		<wp:term_name><![CDATA[Snap]]></wp:term_name>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[133]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[sneakers-men]]></wp:term_slug>
+		<wp:term_parent><![CDATA[shoes-men]]></wp:term_parent>
+		<wp:term_name><![CDATA[Sneakers]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[26]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
 	</wp:term>
 		<wp:term>
 		<wp:term_id><![CDATA[100]]></wp:term_id>
@@ -795,350 +898,6 @@
 		</wp:termmeta>
 	</wp:term>
 		<wp:term>
-		<wp:term_id><![CDATA[105]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[trending]]></wp:term_slug>
-		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[trending]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[product_count_product_tag]]></wp:meta_key>
-			<wp:meta_value><![CDATA[18]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[106]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[tv]]></wp:term_slug>
-		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[TV]]></wp:term_name>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[107]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[tv-3d]]></wp:term_slug>
-		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[TV 3D]]></wp:term_name>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[108]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[tv-4k]]></wp:term_slug>
-		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[TV 4K]]></wp:term_name>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[109]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[uhd-tv]]></wp:term_slug>
-		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[UHD TV]]></wp:term_name>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[4]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_type]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[variable]]></wp:term_slug>
-		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[variable]]></wp:term_name>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[110]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[virtual]]></wp:term_slug>
-		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[Virtual]]></wp:term_name>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[111]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[vr-glasses]]></wp:term_slug>
-		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[VR Glasses]]></wp:term_name>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[112]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[watch]]></wp:term_slug>
-		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[Watch]]></wp:term_name>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[237]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[portfolio_category]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[web-design]]></wp:term_slug>
-		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[Web Design]]></wp:term_name>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[113]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[windbreaker]]></wp:term_slug>
-		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[windbreaker]]></wp:term_name>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[114]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[wireless]]></wp:term_slug>
-		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[Wireless]]></wp:term_name>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[115]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[wireless-gaming]]></wp:term_slug>
-		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[Wireless Gaming]]></wp:term_name>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[116]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[pa_size]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[xl]]></wp:term_slug>
-		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[XL]]></wp:term_name>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[117]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[pa_size]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[xxl]]></wp:term_slug>
-		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[XXL]]></wp:term_name>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[118]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[pa_color]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[yellow]]></wp:term_slug>
-		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[YELLOW]]></wp:term_name>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[119]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_type]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[yith_bundle]]></wp:term_slug>
-		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[yith_bundle]]></wp:term_name>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[15]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[uncategorized]]></wp:term_slug>
-		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[Uncategorized]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[223]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[kid]]></wp:term_slug>
-		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[Kid]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[2]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[241]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[bikes]]></wp:term_slug>
-		<wp:term_parent><![CDATA[kid]]></wp:term_parent>
-		<wp:term_name><![CDATA[Bikes]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[3]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
-			<wp:meta_value><![CDATA[2818]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[240]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[car-seats]]></wp:term_slug>
-		<wp:term_parent><![CDATA[kid]]></wp:term_parent>
-		<wp:term_name><![CDATA[Car Seats]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[4]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
-			<wp:meta_value><![CDATA[2822]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[224]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[clothing-kids]]></wp:term_slug>
-		<wp:term_parent><![CDATA[kid]]></wp:term_parent>
-		<wp:term_name><![CDATA[Clothing]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[5]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
-			<wp:meta_value><![CDATA[2819]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[238]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[diapers]]></wp:term_slug>
-		<wp:term_parent><![CDATA[kid]]></wp:term_parent>
-		<wp:term_name><![CDATA[Diapers]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[6]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
-			<wp:meta_value><![CDATA[2820]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[239]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[mumz]]></wp:term_slug>
-		<wp:term_parent><![CDATA[kid]]></wp:term_parent>
-		<wp:term_name><![CDATA[Mumz]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[7]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
-			<wp:meta_value><![CDATA[2821]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
 		<wp:term_id><![CDATA[225]]></wp:term_id>
 		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
 		<wp:term_slug><![CDATA[toys]]></wp:term_slug>
@@ -1178,302 +937,117 @@
 		</wp:termmeta>
 	</wp:term>
 		<wp:term>
-		<wp:term_id><![CDATA[120]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[men]]></wp:term_slug>
+		<wp:term_id><![CDATA[105]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[trending]]></wp:term_slug>
 		<wp:term_parent><![CDATA[]]></wp:term_parent>
-		<wp:term_name><![CDATA[Men]]></wp:term_name>
+		<wp:term_name><![CDATA[trending]]></wp:term_name>
 		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[9]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
-			<wp:meta_value><![CDATA[9]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[121]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[clothing-men]]></wp:term_slug>
-		<wp:term_parent><![CDATA[men]]></wp:term_parent>
-		<wp:term_name><![CDATA[Clothing]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[10]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
-			<wp:meta_value><![CDATA[9]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[126]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[outerwear-men]]></wp:term_slug>
-		<wp:term_parent><![CDATA[clothing-men]]></wp:term_parent>
-		<wp:term_name><![CDATA[Outerwear]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[11]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[128]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[pants-men]]></wp:term_slug>
-		<wp:term_parent><![CDATA[clothing-men]]></wp:term_parent>
-		<wp:term_name><![CDATA[Pants]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[12]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[122]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[shirts-men]]></wp:term_slug>
-		<wp:term_parent><![CDATA[clothing-men]]></wp:term_parent>
-		<wp:term_name><![CDATA[Shirts]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[13]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
-			<wp:meta_value><![CDATA[3]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[129]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[shorts-men]]></wp:term_slug>
-		<wp:term_parent><![CDATA[clothing-men]]></wp:term_parent>
-		<wp:term_name><![CDATA[Shorts]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[14]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
-			<wp:meta_value><![CDATA[2]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[125]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[sweaters-men]]></wp:term_slug>
-		<wp:term_parent><![CDATA[clothing-men]]></wp:term_parent>
-		<wp:term_name><![CDATA[Sweaters]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[15]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
-			<wp:meta_value><![CDATA[4]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[130]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[swim-men]]></wp:term_slug>
-		<wp:term_parent><![CDATA[clothing-men]]></wp:term_parent>
-		<wp:term_name><![CDATA[Swim]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[16]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[153]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[accessories-men]]></wp:term_slug>
-		<wp:term_parent><![CDATA[men]]></wp:term_parent>
-		<wp:term_name><![CDATA[Accessories]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[17]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[140]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[bags-men]]></wp:term_slug>
-		<wp:term_parent><![CDATA[men]]></wp:term_parent>
-		<wp:term_name><![CDATA[Bags]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_key><![CDATA[product_count_product_tag]]></wp:meta_key>
 			<wp:meta_value><![CDATA[18]]></wp:meta_value>
 		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[106]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[tv]]></wp:term_slug>
+		<wp:term_parent><![CDATA[]]></wp:term_parent>
+		<wp:term_name><![CDATA[TV]]></wp:term_name>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[107]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[tv-3d]]></wp:term_slug>
+		<wp:term_parent><![CDATA[]]></wp:term_parent>
+		<wp:term_name><![CDATA[TV 3D]]></wp:term_name>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[108]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[tv-4k]]></wp:term_slug>
+		<wp:term_parent><![CDATA[]]></wp:term_parent>
+		<wp:term_name><![CDATA[TV 4K]]></wp:term_name>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[109]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[uhd-tv]]></wp:term_slug>
+		<wp:term_parent><![CDATA[]]></wp:term_parent>
+		<wp:term_name><![CDATA[UHD TV]]></wp:term_name>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[15]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[uncategorized]]></wp:term_slug>
+		<wp:term_parent><![CDATA[]]></wp:term_parent>
+		<wp:term_name><![CDATA[Uncategorized]]></wp:term_name>
 		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[1]]></wp:meta_value>
 		</wp:termmeta>
 	</wp:term>
 		<wp:term>
-		<wp:term_id><![CDATA[147]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[grooming-men]]></wp:term_slug>
-		<wp:term_parent><![CDATA[men]]></wp:term_parent>
-		<wp:term_name><![CDATA[Grooming]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[19]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
+		<wp:term_id><![CDATA[4]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_type]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[variable]]></wp:term_slug>
+		<wp:term_parent><![CDATA[]]></wp:term_parent>
+		<wp:term_name><![CDATA[variable]]></wp:term_name>
 	</wp:term>
 		<wp:term>
-		<wp:term_id><![CDATA[148]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[hair-men]]></wp:term_slug>
-		<wp:term_parent><![CDATA[grooming-men]]></wp:term_parent>
-		<wp:term_name><![CDATA[Hair]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[20]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
+		<wp:term_id><![CDATA[110]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[virtual]]></wp:term_slug>
+		<wp:term_parent><![CDATA[]]></wp:term_parent>
+		<wp:term_name><![CDATA[Virtual]]></wp:term_name>
 	</wp:term>
 		<wp:term>
-		<wp:term_id><![CDATA[149]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[skin-men]]></wp:term_slug>
-		<wp:term_parent><![CDATA[grooming-men]]></wp:term_parent>
-		<wp:term_name><![CDATA[Skin]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[21]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
+		<wp:term_id><![CDATA[111]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[vr-glasses]]></wp:term_slug>
+		<wp:term_parent><![CDATA[]]></wp:term_parent>
+		<wp:term_name><![CDATA[VR Glasses]]></wp:term_name>
 	</wp:term>
 		<wp:term>
-		<wp:term_id><![CDATA[152]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[toiletry-cases-men]]></wp:term_slug>
-		<wp:term_parent><![CDATA[grooming-men]]></wp:term_parent>
-		<wp:term_name><![CDATA[Toiletry Cases]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[22]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
+		<wp:term_id><![CDATA[112]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[watch]]></wp:term_slug>
+		<wp:term_parent><![CDATA[]]></wp:term_parent>
+		<wp:term_name><![CDATA[Watch]]></wp:term_name>
 	</wp:term>
 		<wp:term>
-		<wp:term_id><![CDATA[132]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[shoes-men]]></wp:term_slug>
-		<wp:term_parent><![CDATA[men]]></wp:term_parent>
-		<wp:term_name><![CDATA[Shoes]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[23]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
+		<wp:term_id><![CDATA[243]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[action-group]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[wc_update_product_lookup_tables]]></wp:term_slug>
+		<wp:term_parent><![CDATA[]]></wp:term_parent>
+		<wp:term_name><![CDATA[wc_update_product_lookup_tables]]></wp:term_name>
 	</wp:term>
 		<wp:term>
-		<wp:term_id><![CDATA[139]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[boots-men]]></wp:term_slug>
-		<wp:term_parent><![CDATA[shoes-men]]></wp:term_parent>
-		<wp:term_name><![CDATA[Boots]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[24]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
+		<wp:term_id><![CDATA[237]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[portfolio_category]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[web-design]]></wp:term_slug>
+		<wp:term_parent><![CDATA[]]></wp:term_parent>
+		<wp:term_name><![CDATA[Web Design]]></wp:term_name>
 	</wp:term>
 		<wp:term>
-		<wp:term_id><![CDATA[135]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[sandals-men]]></wp:term_slug>
-		<wp:term_parent><![CDATA[shoes-men]]></wp:term_parent>
-		<wp:term_name><![CDATA[Sandals]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[25]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
+		<wp:term_id><![CDATA[113]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[windbreaker]]></wp:term_slug>
+		<wp:term_parent><![CDATA[]]></wp:term_parent>
+		<wp:term_name><![CDATA[windbreaker]]></wp:term_name>
 	</wp:term>
 		<wp:term>
-		<wp:term_id><![CDATA[133]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[sneakers-men]]></wp:term_slug>
-		<wp:term_parent><![CDATA[shoes-men]]></wp:term_parent>
-		<wp:term_name><![CDATA[Sneakers]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[26]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
+		<wp:term_id><![CDATA[114]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[wireless]]></wp:term_slug>
+		<wp:term_parent><![CDATA[]]></wp:term_parent>
+		<wp:term_name><![CDATA[Wireless]]></wp:term_name>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[115]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_tag]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[wireless-gaming]]></wp:term_slug>
+		<wp:term_parent><![CDATA[]]></wp:term_parent>
+		<wp:term_name><![CDATA[Wireless Gaming]]></wp:term_name>
 	</wp:term>
 		<wp:term>
 		<wp:term_id><![CDATA[163]]></wp:term_id>
@@ -1495,526 +1069,64 @@
 		</wp:termmeta>
 	</wp:term>
 		<wp:term>
-		<wp:term_id><![CDATA[164]]></wp:term_id>
+		<wp:term_id><![CDATA[242]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[action-group]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[woocommerce-db-updates]]></wp:term_slug>
+		<wp:term_parent><![CDATA[]]></wp:term_parent>
+		<wp:term_name><![CDATA[woocommerce-db-updates]]></wp:term_name>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[116]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[pa_size]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[xl]]></wp:term_slug>
+		<wp:term_parent><![CDATA[]]></wp:term_parent>
+		<wp:term_name><![CDATA[XL]]></wp:term_name>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[117]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[pa_size]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[xxl]]></wp:term_slug>
+		<wp:term_parent><![CDATA[]]></wp:term_parent>
+		<wp:term_name><![CDATA[XXL]]></wp:term_name>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[118]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[pa_color]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[yellow]]></wp:term_slug>
+		<wp:term_parent><![CDATA[]]></wp:term_parent>
+		<wp:term_name><![CDATA[YELLOW]]></wp:term_name>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[119]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_type]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[yith_bundle]]></wp:term_slug>
+		<wp:term_parent><![CDATA[]]></wp:term_parent>
+		<wp:term_name><![CDATA[yith_bundle]]></wp:term_name>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[153]]></wp:term_id>
 		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[clothing-woman]]></wp:term_slug>
+		<wp:term_slug><![CDATA[accessories-men]]></wp:term_slug>
+		<wp:term_parent><![CDATA[men]]></wp:term_parent>
+		<wp:term_name><![CDATA[Accessories]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[17]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[208]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[accessories-woman]]></wp:term_slug>
 		<wp:term_parent><![CDATA[woman]]></wp:term_parent>
-		<wp:term_name><![CDATA[Clothing]]></wp:term_name>
+		<wp:term_name><![CDATA[Accessories]]></wp:term_name>
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[28]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
-			<wp:meta_value><![CDATA[12]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[168]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[coats-and-jackets-woman]]></wp:term_slug>
-		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
-		<wp:term_name><![CDATA[Coats and jackets]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[30]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
-			<wp:meta_value><![CDATA[2]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_primary_color]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header_builder]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_footer_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_effect_hover]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_logo]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_logo_retina]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
-			<wp:meta_value><![CDATA[2873]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[170]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[dresses-woman]]></wp:term_slug>
-		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
-		<wp:term_name><![CDATA[Dresses]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[31]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
-			<wp:meta_value><![CDATA[3]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_primary_color]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header_builder]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_footer_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_effect_hover]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_logo]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_logo_retina]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
-			<wp:meta_value><![CDATA[2874]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[172]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[jeans-woman]]></wp:term_slug>
-		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
-		<wp:term_name><![CDATA[Jeans]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[32]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
-			<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_primary_color]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header_builder]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_footer_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_effect_hover]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_logo]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_logo_retina]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
-			<wp:meta_value><![CDATA[2875]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[173]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[knit-woman]]></wp:term_slug>
-		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
-		<wp:term_name><![CDATA[Knit]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[33]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
-			<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_primary_color]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header_builder]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_footer_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_effect_hover]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_logo]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_logo_retina]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
-			<wp:meta_value><![CDATA[2876]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[174]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[outerwear-woman]]></wp:term_slug>
-		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
-		<wp:term_name><![CDATA[Outerwear]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[34]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_primary_color]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header_builder]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_footer_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_effect_hover]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_logo]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_logo_retina]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
-			<wp:meta_value><![CDATA[2877]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[175]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[puffer-jackets-woman]]></wp:term_slug>
-		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
-		<wp:term_name><![CDATA[Puffer jackets]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[35]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
-			<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_primary_color]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header_builder]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_footer_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_effect_hover]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_logo]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_logo_retina]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
-			<wp:meta_value><![CDATA[2878]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[178]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[sweaters-woman]]></wp:term_slug>
-		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
-		<wp:term_name><![CDATA[Sweaters]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[36]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
-			<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_primary_color]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header_builder]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_footer_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_effect_hover]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_logo]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_logo_retina]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
-			<wp:meta_value><![CDATA[2879]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[179]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[sweatshirts-hoodies-woman]]></wp:term_slug>
-		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
-		<wp:term_name><![CDATA[Sweatshirts &amp; Hoodies]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[37]]></wp:meta_value>
+			<wp:meta_value><![CDATA[42]]></wp:meta_value>
 		</wp:termmeta>
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
@@ -2026,56 +1138,18 @@
 		</wp:termmeta>
 	</wp:term>
 		<wp:term>
-		<wp:term_id><![CDATA[180]]></wp:term_id>
+		<wp:term_id><![CDATA[140]]></wp:term_id>
 		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[swim-woman]]></wp:term_slug>
-		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
-		<wp:term_name><![CDATA[Swim]]></wp:term_name>
+		<wp:term_slug><![CDATA[bags-men]]></wp:term_slug>
+		<wp:term_parent><![CDATA[men]]></wp:term_parent>
+		<wp:term_name><![CDATA[Bags]]></wp:term_name>
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[38]]></wp:meta_value>
+			<wp:meta_value><![CDATA[18]]></wp:meta_value>
 		</wp:termmeta>
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
 			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[181]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[t-shirts-woman]]></wp:term_slug>
-		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
-		<wp:term_name><![CDATA[T-shirts]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[39]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
-			<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[182]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[tees-woman]]></wp:term_slug>
-		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
-		<wp:term_name><![CDATA[Tees]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[40]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
-			<wp:meta_value><![CDATA[1]]></wp:meta_value>
 		</wp:termmeta>
 	</wp:term>
 		<wp:term>
@@ -2150,14 +1224,122 @@
 		</wp:termmeta>
 	</wp:term>
 		<wp:term>
-		<wp:term_id><![CDATA[208]]></wp:term_id>
+		<wp:term_id><![CDATA[199]]></wp:term_id>
 		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[accessories-woman]]></wp:term_slug>
+		<wp:term_slug><![CDATA[beauty]]></wp:term_slug>
 		<wp:term_parent><![CDATA[woman]]></wp:term_parent>
-		<wp:term_name><![CDATA[Accessories]]></wp:term_name>
+		<wp:term_name><![CDATA[Beauty]]></wp:term_name>
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[42]]></wp:meta_value>
+			<wp:meta_value><![CDATA[45]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[241]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[bikes]]></wp:term_slug>
+		<wp:term_parent><![CDATA[kid]]></wp:term_parent>
+		<wp:term_name><![CDATA[Bikes]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[3]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2818]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[139]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[boots-men]]></wp:term_slug>
+		<wp:term_parent><![CDATA[shoes-men]]></wp:term_parent>
+		<wp:term_name><![CDATA[Boots]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[24]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[240]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[car-seats]]></wp:term_slug>
+		<wp:term_parent><![CDATA[kid]]></wp:term_parent>
+		<wp:term_name><![CDATA[Car Seats]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[4]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2822]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[121]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[clothing-men]]></wp:term_slug>
+		<wp:term_parent><![CDATA[men]]></wp:term_parent>
+		<wp:term_name><![CDATA[Clothing]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[10]]></wp:meta_value>
 		</wp:termmeta>
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
@@ -2165,7 +1347,276 @@
 		</wp:termmeta>
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
-			<wp:meta_value><![CDATA[1]]></wp:meta_value>
+			<wp:meta_value><![CDATA[9]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[164]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[clothing-woman]]></wp:term_slug>
+		<wp:term_parent><![CDATA[woman]]></wp:term_parent>
+		<wp:term_name><![CDATA[Clothing]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[28]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[12]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[224]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[clothing-kids]]></wp:term_slug>
+		<wp:term_parent><![CDATA[kid]]></wp:term_parent>
+		<wp:term_name><![CDATA[Clothing]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[5]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2819]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[168]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[coats-and-jackets-woman]]></wp:term_slug>
+		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
+		<wp:term_name><![CDATA[Coats and jackets]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[30]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_primary_color]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header_builder]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_footer_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_effect_hover]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_logo]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_logo_retina]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2873]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[238]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[diapers]]></wp:term_slug>
+		<wp:term_parent><![CDATA[kid]]></wp:term_parent>
+		<wp:term_name><![CDATA[Diapers]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[6]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2820]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[170]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[dresses-woman]]></wp:term_slug>
+		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
+		<wp:term_name><![CDATA[Dresses]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[31]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[3]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_primary_color]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header_builder]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_footer_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_effect_hover]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_logo]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_logo_retina]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2874]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[147]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[grooming-men]]></wp:term_slug>
+		<wp:term_parent><![CDATA[men]]></wp:term_parent>
+		<wp:term_name><![CDATA[Grooming]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[19]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[148]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[hair-men]]></wp:term_slug>
+		<wp:term_parent><![CDATA[grooming-men]]></wp:term_parent>
+		<wp:term_name><![CDATA[Hair]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[20]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
 		</wp:termmeta>
 	</wp:term>
 		<wp:term>
@@ -2177,36 +1628,6 @@
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[order]]></wp:meta_key>
 			<wp:meta_value><![CDATA[43]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[210]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[wallets-ace-woman]]></wp:term_slug>
-		<wp:term_parent><![CDATA[accessories-woman]]></wp:term_parent>
-		<wp:term_name><![CDATA[Wallets]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[44]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[199]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[beauty]]></wp:term_slug>
-		<wp:term_parent><![CDATA[woman]]></wp:term_parent>
-		<wp:term_name><![CDATA[Beauty]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[45]]></wp:meta_value>
 		</wp:termmeta>
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
@@ -2278,6 +1699,163 @@
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
 			<wp:meta_value><![CDATA[2897]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[172]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[jeans-woman]]></wp:term_slug>
+		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
+		<wp:term_name><![CDATA[Jeans]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[32]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_primary_color]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header_builder]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_footer_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_effect_hover]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_logo]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_logo_retina]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2875]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[194]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[jewelry-woman]]></wp:term_slug>
+		<wp:term_parent><![CDATA[woman]]></wp:term_parent>
+		<wp:term_name><![CDATA[Jewelry]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[49]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[173]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[knit-woman]]></wp:term_slug>
+		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
+		<wp:term_name><![CDATA[Knit]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[33]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_primary_color]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header_builder]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_footer_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_effect_hover]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_logo]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_logo_retina]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2876]]></wp:meta_value>
 		</wp:termmeta>
 	</wp:term>
 		<wp:term>
@@ -2419,14 +1997,562 @@
 		</wp:termmeta>
 	</wp:term>
 		<wp:term>
-		<wp:term_id><![CDATA[194]]></wp:term_id>
+		<wp:term_id><![CDATA[195]]></wp:term_id>
 		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[jewelry-woman]]></wp:term_slug>
-		<wp:term_parent><![CDATA[woman]]></wp:term_parent>
-		<wp:term_name><![CDATA[Jewelry]]></wp:term_name>
+		<wp:term_slug><![CDATA[necklaces-woman]]></wp:term_slug>
+		<wp:term_parent><![CDATA[jewelry-woman]]></wp:term_parent>
+		<wp:term_name><![CDATA[Necklaces]]></wp:term_name>
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[49]]></wp:meta_value>
+			<wp:meta_value><![CDATA[52]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_primary_color]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header_builder]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_footer_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_effect_hover]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_logo]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_logo_retina]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2900]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[126]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[outerwear-men]]></wp:term_slug>
+		<wp:term_parent><![CDATA[clothing-men]]></wp:term_parent>
+		<wp:term_name><![CDATA[Outerwear]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[11]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[174]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[outerwear-woman]]></wp:term_slug>
+		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
+		<wp:term_name><![CDATA[Outerwear]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[34]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_primary_color]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header_builder]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_footer_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_effect_hover]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_logo]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_logo_retina]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2877]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[128]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[pants-men]]></wp:term_slug>
+		<wp:term_parent><![CDATA[clothing-men]]></wp:term_parent>
+		<wp:term_name><![CDATA[Pants]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[12]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[175]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[puffer-jackets-woman]]></wp:term_slug>
+		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
+		<wp:term_name><![CDATA[Puffer jackets]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[35]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_primary_color]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header_builder]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_footer_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_effect_hover]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_logo]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_logo_retina]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2878]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[197]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[rings-woman]]></wp:term_slug>
+		<wp:term_parent><![CDATA[jewelry-woman]]></wp:term_parent>
+		<wp:term_name><![CDATA[Rings]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[53]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[135]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[sandals-men]]></wp:term_slug>
+		<wp:term_parent><![CDATA[shoes-men]]></wp:term_parent>
+		<wp:term_name><![CDATA[Sandals]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[25]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[122]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[shirts-men]]></wp:term_slug>
+		<wp:term_parent><![CDATA[clothing-men]]></wp:term_parent>
+		<wp:term_name><![CDATA[Shirts]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[13]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[3]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[185]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[shoes-woman]]></wp:term_slug>
+		<wp:term_parent><![CDATA[woman]]></wp:term_parent>
+		<wp:term_name><![CDATA[Shoes]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[54]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[129]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[shorts-men]]></wp:term_slug>
+		<wp:term_parent><![CDATA[clothing-men]]></wp:term_parent>
+		<wp:term_name><![CDATA[Shorts]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[14]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[149]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[skin-men]]></wp:term_slug>
+		<wp:term_parent><![CDATA[grooming-men]]></wp:term_parent>
+		<wp:term_name><![CDATA[Skin]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[21]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[125]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[sweaters-men]]></wp:term_slug>
+		<wp:term_parent><![CDATA[clothing-men]]></wp:term_parent>
+		<wp:term_name><![CDATA[Sweaters]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[15]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[4]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[178]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[sweaters-woman]]></wp:term_slug>
+		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
+		<wp:term_name><![CDATA[Sweaters]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[36]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_primary_color]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_header_builder]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_footer_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_effect_hover]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_logo]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_logo_retina]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
+			<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2879]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[179]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[sweatshirts-hoodies-woman]]></wp:term_slug>
+		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
+		<wp:term_name><![CDATA[Sweatshirts &amp; Hoodies]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[37]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[130]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[swim-men]]></wp:term_slug>
+		<wp:term_parent><![CDATA[clothing-men]]></wp:term_parent>
+		<wp:term_name><![CDATA[Swim]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[16]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[180]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[swim-woman]]></wp:term_slug>
+		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
+		<wp:term_name><![CDATA[Swim]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[38]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[181]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[t-shirts-woman]]></wp:term_slug>
+		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
+		<wp:term_name><![CDATA[T-shirts]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[39]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[182]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[tees-woman]]></wp:term_slug>
+		<wp:term_parent><![CDATA[clothing-woman]]></wp:term_parent>
+		<wp:term_name><![CDATA[Tees]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[40]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
+			<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[152]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[toiletry-cases-men]]></wp:term_slug>
+		<wp:term_parent><![CDATA[grooming-men]]></wp:term_parent>
+		<wp:term_name><![CDATA[Toiletry Cases]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[22]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[210]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[wallets-ace-woman]]></wp:term_slug>
+		<wp:term_parent><![CDATA[accessories-woman]]></wp:term_parent>
+		<wp:term_name><![CDATA[Wallets]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[44]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
+			<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:termmeta>
+	</wp:term>
+		<wp:term>
+		<wp:term_id><![CDATA[186]]></wp:term_id>
+		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
+		<wp:term_slug><![CDATA[boots-and-ankle-boots-woman]]></wp:term_slug>
+		<wp:term_parent><![CDATA[shoes-woman]]></wp:term_parent>
+		<wp:term_name><![CDATA[Boots and ankle boots]]></wp:term_name>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[55]]></wp:meta_value>
 		</wp:termmeta>
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
@@ -2568,118 +2694,6 @@
 		</wp:termmeta>
 	</wp:term>
 		<wp:term>
-		<wp:term_id><![CDATA[195]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[necklaces-woman]]></wp:term_slug>
-		<wp:term_parent><![CDATA[jewelry-woman]]></wp:term_parent>
-		<wp:term_name><![CDATA[Necklaces]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[52]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_primary_color]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_header_builder]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_footer_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_effect_hover]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_logo]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_logo_retina]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_bg]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_breadcrumb_text_color]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[display_type]]></wp:meta_key>
-			<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[thumbnail_id]]></wp:meta_key>
-			<wp:meta_value><![CDATA[2900]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[197]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[rings-woman]]></wp:term_slug>
-		<wp:term_parent><![CDATA[jewelry-woman]]></wp:term_parent>
-		<wp:term_name><![CDATA[Rings]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[53]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[185]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[shoes-woman]]></wp:term_slug>
-		<wp:term_parent><![CDATA[woman]]></wp:term_parent>
-		<wp:term_name><![CDATA[Shoes]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[54]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
-		<wp:term_id><![CDATA[186]]></wp:term_id>
-		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
-		<wp:term_slug><![CDATA[boots-and-ankle-boots-woman]]></wp:term_slug>
-		<wp:term_parent><![CDATA[shoes-woman]]></wp:term_parent>
-		<wp:term_name><![CDATA[Boots and ankle boots]]></wp:term_name>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[order]]></wp:meta_key>
-			<wp:meta_value><![CDATA[55]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[cat_sidebar_override]]></wp:meta_key>
-			<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:termmeta>
-	</wp:term>
-		<wp:term>
 		<wp:term_id><![CDATA[187]]></wp:term_id>
 		<wp:term_taxonomy><![CDATA[product_cat]]></wp:term_taxonomy>
 		<wp:term_slug><![CDATA[flat-shoes-woman]]></wp:term_slug>
@@ -2754,21 +2768,222 @@
 	<wp:term><wp:term_id>232</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug><![CDATA[vertical-menu]]></wp:term_slug><wp:term_name><![CDATA[Vertical Menu]]></wp:term_name>
 </wp:term>
 
-	<generator>https://wordpress.org/?v=5.1</generator>
+	<generator>https://wordpress.org/?v=5.2.2</generator>
 
 		
 					<item>
-		<title>
-				Privacy Policy		</title>
-		<link>http://elessi.nasatheme.com/privacy-policy-2/</link>
+		<title>Store Directory</title>
+		<link>https://elessi.nasatheme.com/store-directory/</link>
+		<pubDate>Fri, 12 Oct 2018 11:12:56 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">https://elessi.nasatheme.com/?p=2710</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>2710</wp:post_id>
+		<wp:post_date><![CDATA[2018-10-12 11:12:56]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-10-12 11:12:56]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[store-directory]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>4</wp:menu_order>
+		<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+										<category domain="nav_menu" nicename="footer-menu"><![CDATA[Footer menu]]></category>
+						<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_nasa_enable_mega]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_nasa_enable_fullwidth]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_nasa_image_mega_enable]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+		<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+		<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2710]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+		<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+		<wp:meta_value><![CDATA[#]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+
+					<item>
+		<title>About Us</title>
+		<link>https://elessi.nasatheme.com/about-us/</link>
+		<pubDate>Fri, 12 Oct 2018 11:12:56 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">https://elessi.nasatheme.com/?p=2711</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>2711</wp:post_id>
+		<wp:post_date><![CDATA[2018-10-12 11:12:56]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-10-12 11:12:56]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[about-us]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>5</wp:menu_order>
+		<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+										<category domain="nav_menu" nicename="footer-menu"><![CDATA[Footer menu]]></category>
+						<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_nasa_enable_mega]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_nasa_enable_fullwidth]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_nasa_image_mega_enable]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+		<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+		<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2711]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+		<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+		<wp:meta_value><![CDATA[#]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+
+					<item>
+		<title>Delivery Information</title>
+		<link>https://elessi.nasatheme.com/delivery-information/</link>
 		<pubDate>Fri, 12 Oct 2018 11:12:57 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://elessi.nasatheme.com/?p=2713</guid>
+		<guid isPermaLink="false">https://elessi.nasatheme.com/?p=2712</guid>
 		<description></description>
-		<content:encoded>
-				<![CDATA[]]>		</content:encoded>
-		<excerpt:encoded>
-				<![CDATA[]]>		</excerpt:encoded>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>2712</wp:post_id>
+		<wp:post_date><![CDATA[2018-10-12 11:12:57]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-10-12 11:12:57]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[delivery-information]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>1</wp:menu_order>
+		<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+										<category domain="nav_menu" nicename="information"><![CDATA[Information]]></category>
+						<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_nasa_enable_mega]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_nasa_enable_fullwidth]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_nasa_image_mega_enable]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+		<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+		<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2712]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+		<wp:meta_value><![CDATA[custom]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+		<wp:meta_value><![CDATA[#]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+
+					<item>
+		<title>Privacy Policy</title>
+		<link>https://elessi.nasatheme.com/privacy-policy-2/</link>
+		<pubDate>Fri, 12 Oct 2018 11:12:57 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">https://elessi.nasatheme.com/?p=2713</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>2713</wp:post_id>
 		<wp:post_date><![CDATA[2018-10-12 11:12:57]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2018-10-12 11:12:57]]></wp:post_date_gmt>
@@ -2829,17 +3044,14 @@
 							</item>
 
 					<item>
-		<title>
-				Terms &amp; Condition		</title>
-		<link>http://elessi.nasatheme.com/terms-condition-2/</link>
+		<title>Terms &amp; Condition</title>
+		<link>https://elessi.nasatheme.com/terms-condition-2/</link>
 		<pubDate>Fri, 12 Oct 2018 11:12:57 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://elessi.nasatheme.com/?p=2714</guid>
+		<guid isPermaLink="false">https://elessi.nasatheme.com/?p=2714</guid>
 		<description></description>
-		<content:encoded>
-				<![CDATA[]]>		</content:encoded>
-		<excerpt:encoded>
-				<![CDATA[]]>		</excerpt:encoded>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>2714</wp:post_id>
 		<wp:post_date><![CDATA[2018-10-12 11:12:57]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2018-10-12 11:12:57]]></wp:post_date_gmt>
@@ -2900,17 +3112,14 @@
 							</item>
 
 					<item>
-		<title>
-				Search Terms		</title>
-		<link>http://elessi.nasatheme.com/search-terms/</link>
+		<title>Search Terms</title>
+		<link>https://elessi.nasatheme.com/search-terms/</link>
 		<pubDate>Fri, 12 Oct 2018 11:12:57 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://elessi.nasatheme.com/?p=2715</guid>
+		<guid isPermaLink="false">https://elessi.nasatheme.com/?p=2715</guid>
 		<description></description>
-		<content:encoded>
-				<![CDATA[]]>		</content:encoded>
-		<excerpt:encoded>
-				<![CDATA[]]>		</excerpt:encoded>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>2715</wp:post_id>
 		<wp:post_date><![CDATA[2018-10-12 11:12:57]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2018-10-12 11:12:57]]></wp:post_date_gmt>
@@ -2971,17 +3180,14 @@
 							</item>
 
 					<item>
-		<title>
-				Order &amp; Return		</title>
-		<link>http://elessi.nasatheme.com/order-return/</link>
+		<title>Order &amp; Return</title>
+		<link>https://elessi.nasatheme.com/order-return/</link>
 		<pubDate>Fri, 12 Oct 2018 11:12:57 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://elessi.nasatheme.com/?p=2716</guid>
+		<guid isPermaLink="false">https://elessi.nasatheme.com/?p=2716</guid>
 		<description></description>
-		<content:encoded>
-				<![CDATA[]]>		</content:encoded>
-		<excerpt:encoded>
-				<![CDATA[]]>		</excerpt:encoded>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>2716</wp:post_id>
 		<wp:post_date><![CDATA[2018-10-12 11:12:57]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2018-10-12 11:12:57]]></wp:post_date_gmt>
@@ -3042,17 +3248,14 @@
 							</item>
 
 					<item>
-		<title>
-				Credit Cards		</title>
-		<link>http://elessi.nasatheme.com/credit-cards/</link>
+		<title>Credit Cards</title>
+		<link>https://elessi.nasatheme.com/credit-cards/</link>
 		<pubDate>Fri, 12 Oct 2018 11:12:57 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://elessi.nasatheme.com/?p=2717</guid>
+		<guid isPermaLink="false">https://elessi.nasatheme.com/?p=2717</guid>
 		<description></description>
-		<content:encoded>
-				<![CDATA[]]>		</content:encoded>
-		<excerpt:encoded>
-				<![CDATA[]]>		</excerpt:encoded>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>2717</wp:post_id>
 		<wp:post_date><![CDATA[2018-10-12 11:12:57]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2018-10-12 11:12:57]]></wp:post_date_gmt>
@@ -3113,17 +3316,14 @@
 							</item>
 
 					<item>
-		<title>
-				Order Status		</title>
-		<link>http://elessi.nasatheme.com/order-status/</link>
+		<title>Order Status</title>
+		<link>https://elessi.nasatheme.com/order-status/</link>
 		<pubDate>Fri, 12 Oct 2018 11:12:58 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://elessi.nasatheme.com/?p=2718</guid>
+		<guid isPermaLink="false">https://elessi.nasatheme.com/?p=2718</guid>
 		<description></description>
-		<content:encoded>
-				<![CDATA[]]>		</content:encoded>
-		<excerpt:encoded>
-				<![CDATA[]]>		</excerpt:encoded>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>2718</wp:post_id>
 		<wp:post_date><![CDATA[2018-10-12 11:12:58]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2018-10-12 11:12:58]]></wp:post_date_gmt>
@@ -3184,17 +3384,14 @@
 							</item>
 
 					<item>
-		<title>
-				Store Locator		</title>
-		<link>http://elessi.nasatheme.com/store-locator/</link>
+		<title>Store Locator</title>
+		<link>https://elessi.nasatheme.com/store-locator/</link>
 		<pubDate>Fri, 12 Oct 2018 11:12:58 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://elessi.nasatheme.com/?p=2719</guid>
+		<guid isPermaLink="false">https://elessi.nasatheme.com/?p=2719</guid>
 		<description></description>
-		<content:encoded>
-				<![CDATA[]]>		</content:encoded>
-		<excerpt:encoded>
-				<![CDATA[]]>		</excerpt:encoded>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>2719</wp:post_id>
 		<wp:post_date><![CDATA[2018-10-12 11:12:58]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2018-10-12 11:12:58]]></wp:post_date_gmt>
@@ -3255,17 +3452,14 @@
 							</item>
 
 					<item>
-		<title>
-				Shop now		</title>
-		<link>http://elessi.nasatheme.com/shop-now/</link>
+		<title>Shop now</title>
+		<link>https://elessi.nasatheme.com/shop-now/</link>
 		<pubDate>Fri, 12 Oct 2018 11:13:01 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://elessi.nasatheme.com/?p=2736</guid>
+		<guid isPermaLink="false">https://elessi.nasatheme.com/?p=2736</guid>
 		<description></description>
-		<content:encoded>
-				<![CDATA[]]>		</content:encoded>
-		<excerpt:encoded>
-				<![CDATA[]]>		</excerpt:encoded>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>2736</wp:post_id>
 		<wp:post_date><![CDATA[2018-10-12 11:13:01]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2018-10-12 11:13:01]]></wp:post_date_gmt>
@@ -3358,17 +3552,14 @@
 							</item>
 
 					<item>
-		<title>
-				Accessories		</title>
-		<link>http://elessi.nasatheme.com/accessories/</link>
+		<title>Accessories</title>
+		<link>https://elessi.nasatheme.com/accessories/</link>
 		<pubDate>Fri, 12 Oct 2018 11:13:01 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://elessi.nasatheme.com/?p=2737</guid>
+		<guid isPermaLink="false">https://elessi.nasatheme.com/?p=2737</guid>
 		<description></description>
-		<content:encoded>
-				<![CDATA[]]>		</content:encoded>
-		<excerpt:encoded>
-				<![CDATA[]]>		</excerpt:encoded>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>2737</wp:post_id>
 		<wp:post_date><![CDATA[2018-10-12 11:13:01]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2018-10-12 11:13:01]]></wp:post_date_gmt>
@@ -3461,310 +3652,14 @@
 							</item>
 
 					<item>
-		<title>
-				Fashions		</title>
-		<link>http://elessi.nasatheme.com/fashions/</link>
-		<pubDate>Fri, 12 Oct 2018 11:13:01 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://elessi.nasatheme.com/?p=2738</guid>
-		<description></description>
-		<content:encoded>
-				<![CDATA[]]>		</content:encoded>
-		<excerpt:encoded>
-				<![CDATA[]]>		</excerpt:encoded>
-		<wp:post_id>2738</wp:post_id>
-		<wp:post_date><![CDATA[2018-10-12 11:13:01]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2018-10-12 11:13:01]]></wp:post_date_gmt>
-		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[fashions]]></wp:post_name>
-		<wp:status><![CDATA[publish]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>1</wp:menu_order>
-		<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-										<category domain="nav_menu" nicename="vertical-menu"><![CDATA[Vertical Menu]]></category>
-						<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_enable_mega]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_enable_fullwidth]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_image_mega_enable]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
-		<wp:meta_value><![CDATA[custom]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
-		<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2738]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
-		<wp:meta_value><![CDATA[custom]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
-		<wp:meta_value><![CDATA[#]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_icon_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_columns_mega]]></wp:meta_key>
-		<wp:meta_value><![CDATA[4]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_image_mega]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_position_image_mega]]></wp:meta_key>
-		<wp:meta_value><![CDATA[before]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_disable_title_image_mega]]></wp:meta_key>
-		<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_el_class]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-
-					<item>
-		<title>
-				Jewelry		</title>
-		<link>http://elessi.nasatheme.com/jewelry/</link>
-		<pubDate>Fri, 12 Oct 2018 11:13:01 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://elessi.nasatheme.com/?p=2739</guid>
-		<description></description>
-		<content:encoded>
-				<![CDATA[]]>		</content:encoded>
-		<excerpt:encoded>
-				<![CDATA[]]>		</excerpt:encoded>
-		<wp:post_id>2739</wp:post_id>
-		<wp:post_date><![CDATA[2018-10-12 11:13:01]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2018-10-12 11:13:01]]></wp:post_date_gmt>
-		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[jewelry]]></wp:post_name>
-		<wp:status><![CDATA[publish]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>4</wp:menu_order>
-		<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-										<category domain="nav_menu" nicename="vertical-menu"><![CDATA[Vertical Menu]]></category>
-						<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_enable_mega]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_enable_fullwidth]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_image_mega_enable]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
-		<wp:meta_value><![CDATA[custom]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2738]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2739]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
-		<wp:meta_value><![CDATA[custom]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
-		<wp:meta_value><![CDATA[#]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_icon_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_columns_mega]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_image_mega]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_position_image_mega]]></wp:meta_key>
-		<wp:meta_value><![CDATA[before]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_disable_title_image_mega]]></wp:meta_key>
-		<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_el_class]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-
-					<item>
-		<title>
-				Wedding Dress		</title>
-		<link>http://elessi.nasatheme.com/wedding-dress/</link>
-		<pubDate>Fri, 12 Oct 2018 11:13:01 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://elessi.nasatheme.com/?p=2744</guid>
-		<description></description>
-		<content:encoded>
-				<![CDATA[]]>		</content:encoded>
-		<excerpt:encoded>
-				<![CDATA[]]>		</excerpt:encoded>
-		<wp:post_id>2744</wp:post_id>
-		<wp:post_date><![CDATA[2018-10-12 11:13:01]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2018-10-12 11:13:01]]></wp:post_date_gmt>
-		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[wedding-dress]]></wp:post_name>
-		<wp:status><![CDATA[publish]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>2</wp:menu_order>
-		<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-										<category domain="nav_menu" nicename="vertical-menu"><![CDATA[Vertical Menu]]></category>
-						<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_enable_mega]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_enable_fullwidth]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_image_mega_enable]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
-		<wp:meta_value><![CDATA[custom]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2738]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2744]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
-		<wp:meta_value><![CDATA[custom]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
-		<wp:meta_value><![CDATA[#]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_icon_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_columns_mega]]></wp:meta_key>
-		<wp:meta_value><![CDATA[4]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_image_mega]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_image_mega]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_position_image_mega]]></wp:meta_key>
-		<wp:meta_value><![CDATA[before]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_position_image_mega]]></wp:meta_key>
-		<wp:meta_value><![CDATA[before]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_disable_title_image_mega]]></wp:meta_key>
-		<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_nasa_el_class]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-
-					<item>
-		<title>
-				Blog		</title>
-		<link>http://elessi.nasatheme.com/blog/</link>
+		<title>Blog</title>
+		<link>https://elessi.nasatheme.com/blog/</link>
 		<pubDate>Wed, 27 Sep 2017 16:06:56 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://elessi.nasatheme.com/?page_id=214</guid>
+		<guid isPermaLink="false">https://elessi.nasatheme.com/?page_id=214</guid>
 		<description></description>
-		<content:encoded>
-				<![CDATA[]]>		</content:encoded>
-		<excerpt:encoded>
-				<![CDATA[]]>		</excerpt:encoded>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>214</wp:post_id>
 		<wp:post_date><![CDATA[2017-09-27 16:06:56]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2017-09-27 16:06:56]]></wp:post_date_gmt>
@@ -3812,23 +3707,20 @@
 							</item>
 
 					<item>
-		<title>
-				Homepage 2		</title>
-		<link>http://elessi.nasatheme.com/homepage-2/</link>
+		<title>Homepage 2</title>
+		<link>https://elessi.nasatheme.com/homepage-2/</link>
 		<pubDate>Wed, 27 Sep 2017 16:33:53 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://elessi.nasatheme.com/?page_id=216</guid>
+		<guid isPermaLink="false">https://elessi.nasatheme.com/?page_id=216</guid>
 		<description></description>
-		<content:encoded>
-				<![CDATA[[vc_row el_class="margin-top-10"][vc_column width="1/2" el_class="desktop-padding-right-5"][nasa_banner effect_text="fadeInLeft" hover="zoom" data_delay="300ms" img_src="1616" link="#"]
+		<content:encoded><![CDATA[[vc_row el_class="margin-top-10"][vc_column width="1/2" el_class="desktop-padding-right-5"][nasa_banner effect_text="fadeInLeft" hover="zoom" data_delay="300ms" img_src="1616" link="#"]
 <h4 style="color: #333;">Bag Collection</h4>
 <h5 style="color: #999;">Sale off 50%</h5>
 [/nasa_banner][/vc_column][vc_column width="1/2" el_class="desktop-padding-left-5"][vc_row_inner css=".vc_custom_1509780350467{margin-bottom: 10px !important;}"][vc_column_inner el_class="desktop-padding-right-5" width="1/2"][nasa_banner height="260px" hover="zoom" border_outner="yes" img_src="2179" link="#" el_class="margin-bottom-0"][/nasa_banner][/vc_column_inner][vc_column_inner el_class="desktop-padding-left-5 mobile-margin-top-10" width="1/2"][nasa_banner height="260px" hover="zoom" img_src="1617" link="#" el_class="margin-bottom-0"][/nasa_banner][/vc_column_inner][/vc_row_inner][vc_row_inner el_class="margin-top-5"][vc_column_inner][nasa_banner height="268" width="590" effect_text="flipInX" hover="zoom" img_src="1618" link="#"]
 <h4 style="color: #333;">Mini backpack</h4>
 <h5 style="color: #999;">Bags &amp; Accessories</h5>
-[/nasa_banner][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row][vc_row css=".vc_custom_1509772778240{margin-top: 50px !important;margin-bottom: 50px !important;}"][vc_column][nasa_title title_text="Trendy item" title_type="h1" title_bg="#ffffff" title_hr="none" title_align="text-center"][vc_tta_tabs alignment="center"][vc_tta_section hr="1" title="ALL" tab_id="1509680382542-1cd79545-bdae"][nasa_products type="featured_product" style="carousel" style_row="2" shop_url="0" arrows="0" number="12" columns_number="4" columns_number_small="1" columns_number_tablet="2"][/vc_tta_section][vc_tta_section hr="1" title="WOMAN" tab_id="1509680382515-609c6f4d-fd0e"][nasa_products type="featured_product" style="carousel" style_row="2" shop_url="0" arrows="0" auto_slide="true" number="10" columns_number="4" columns_number_small="1" columns_number_tablet="2" cat="woman"][/vc_tta_section][vc_tta_section hr="1" title="MAN" tab_id="1509771354416-4988be9f-2227"][nasa_products style="carousel" style_row="2" shop_url="0" arrows="0" number="10" columns_number="4" columns_number_small="1" columns_number_tablet="2" cat="men"][/vc_tta_section][vc_tta_section hr="1" title="ON SALE" tab_id="1509957049380-e38870ed-5797"][nasa_products type="on_sale" style="carousel" style_row="2" shop_url="0" arrows="0" number="12" columns_number="4" columns_number_small="1" columns_number_tablet="2"][/vc_tta_section][vc_tta_section hr="1" title="NEW" tab_id="1509957137879-8aa83829-3ba3"][nasa_products style="carousel" style_row="2" shop_url="0" arrows="0" number="12" columns_number="4" columns_number_small="1" columns_number_tablet="2"][/vc_tta_section][/vc_tta_tabs][/vc_column][/vc_row][vc_row parallax_speed="0.1" css=".vc_custom_1551100262069{margin-bottom: 170px !important;background-image: url(http://elessi.nasatheme.com/wp-content/uploads/2018/03/h1-deal-bg.jpg?id=1629) !important;}"][vc_column][nasa_products_special_deal style="multi" arrows="1" auto_slide="false" el_class="nasa-relative top-100"][/vc_column][/vc_row][vc_row css=".vc_custom_1520494481735{border-radius: 1px !important;}" el_class="margin-top-80"][vc_column][nasa_title title_text="Latest blog" title_type="h1" title_bg="" title_hr="none" title_desc="The freshest and most exciting news" title_align="text-center"][nasa_post auto_slide="true" dots="true" arrows="0" posts="5" columns_number="3" columns_number_small="1" columns_number_tablet="2" category="fashions-magazine" date_enable="no" author_enable="no" page_blogs="no"][/vc_column][/vc_row][vc_row fullwidth="1" el_class="padding-top-30"][vc_column][nasa_title title_text="Follow us on Instagram" title_type="h4" title_bg="#ffffff" title_align="text-center" el_class="desktop-margin-bottom-20"][nasa_instagram username="nasathemes" username_show="Street Style" photos="6"][/vc_column][/vc_row][vc_row css=".vc_custom_1518594118728{margin-bottom: 50px !important;padding-top: 30px !important;}"][vc_column][nasa_brands images="636,637,638,639,640,641" columns_number="6" columns_number_tablet="4" columns_number_small="3" is_ajax="no" custom_links="#,#,#,#,#,#"][/vc_column][/vc_row]]]>		</content:encoded>
-		<excerpt:encoded>
-				<![CDATA[]]>		</excerpt:encoded>
+[/nasa_banner][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row][vc_row css=".vc_custom_1509772778240{margin-top: 50px !important;margin-bottom: 50px !important;}"][vc_column][nasa_title title_text="Trendy item" title_type="h1" title_bg="#ffffff" title_hr="none" title_align="text-center"][vc_tta_tabs alignment="center"][vc_tta_section hr="1" title="ALL" tab_id="1509680382542-1cd79545-bdae"][nasa_products type="featured_product" style="carousel" style_row="2" shop_url="0" arrows="0" number="12" columns_number="4" columns_number_small="1" columns_number_tablet="2"][/vc_tta_section][vc_tta_section hr="1" title="WOMAN" tab_id="1509680382515-609c6f4d-fd0e"][nasa_products type="featured_product" style="carousel" style_row="2" shop_url="0" arrows="0" auto_slide="true" number="10" columns_number="4" columns_number_small="1" columns_number_tablet="2" cat="woman"][/vc_tta_section][vc_tta_section hr="1" title="MAN" tab_id="1509771354416-4988be9f-2227"][nasa_products style="carousel" style_row="2" shop_url="0" arrows="0" number="10" columns_number="4" columns_number_small="1" columns_number_tablet="2" cat="men"][/vc_tta_section][vc_tta_section hr="1" title="ON SALE" tab_id="1509957049380-e38870ed-5797"][nasa_products type="on_sale" style="carousel" style_row="2" shop_url="0" arrows="0" number="12" columns_number="4" columns_number_small="1" columns_number_tablet="2"][/vc_tta_section][vc_tta_section hr="1" title="NEW" tab_id="1509957137879-8aa83829-3ba3"][nasa_products style="carousel" style_row="2" shop_url="0" arrows="0" number="12" columns_number="4" columns_number_small="1" columns_number_tablet="2"][/vc_tta_section][/vc_tta_tabs][/vc_column][/vc_row][vc_row parallax_speed="0.1" css=".vc_custom_1551100262069{margin-bottom: 170px !important;background-image: url(https://nasatheme.com/import/elessi_211/2018/03/h1-deal-bg.jpg?id=1629) !important;}"][vc_column][nasa_products_special_deal style="multi" arrows="1" auto_slide="false" el_class="nasa-relative top-100"][/vc_column][/vc_row][vc_row css=".vc_custom_1520494481735{border-radius: 1px !important;}" el_class="margin-top-80"][vc_column][nasa_title title_text="Latest blog" title_type="h1" title_bg="" title_hr="none" title_desc="The freshest and most exciting news" title_align="text-center"][nasa_post auto_slide="true" dots="true" arrows="0" posts="5" columns_number="3" columns_number_small="1" columns_number_tablet="2" category="fashions-magazine" date_enable="no" author_enable="no" page_blogs="no"][/vc_column][/vc_row][vc_row fullwidth="1" el_class="padding-top-30"][vc_column][nasa_title title_text="Follow us on Instagram" title_type="h4" title_bg="#ffffff" title_align="text-center" el_class="desktop-margin-bottom-20"][nasa_instagram username="nasathemes" username_show="Street Style" photos="6"][/vc_column][/vc_row][vc_row css=".vc_custom_1518594118728{margin-bottom: 50px !important;padding-top: 30px !important;}"][vc_column][nasa_brands images="636,637,638,639,640,641" columns_number="6" columns_number_tablet="4" columns_number_small="3" is_ajax="no" custom_links="#,#,#,#,#,#"][/vc_column][/vc_row]]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>216</wp:post_id>
 		<wp:post_date><![CDATA[2017-09-27 16:33:53]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2017-09-27 16:33:53]]></wp:post_date_gmt>
@@ -3843,7 +3735,7 @@
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
 		<wp:meta_key><![CDATA[_wpb_shortcodes_custom_css]]></wp:meta_key>
-		<wp:meta_value><![CDATA[.vc_custom_1509772778240{margin-top: 50px !important;margin-bottom: 50px !important;}.vc_custom_1551100262069{margin-bottom: 170px !important;background-image: url(http://elessi.nasatheme.com/wp-content/uploads/2018/03/h1-deal-bg.jpg?id=1629) !important;}.vc_custom_1520494481735{border-radius: 1px !important;}.vc_custom_1518594118728{margin-bottom: 50px !important;padding-top: 30px !important;}.vc_custom_1509780350467{margin-bottom: 10px !important;}]]></wp:meta_value>
+		<wp:meta_value><![CDATA[.vc_custom_1509772778240{margin-top: 50px !important;margin-bottom: 50px !important;}.vc_custom_1551100262069{margin-bottom: 170px !important;background-image: url(https://nasatheme.com/import/elessi_211/2018/03/h1-deal-bg.jpg?id=1629) !important;}.vc_custom_1520494481735{border-radius: 1px !important;}.vc_custom_1518594118728{margin-bottom: 50px !important;padding-top: 30px !important;}.vc_custom_1509780350467{margin-bottom: 10px !important;}]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
@@ -3859,7 +3751,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_wpb_shortcodes_custom_css]]></wp:meta_key>
-		<wp:meta_value><![CDATA[.vc_custom_1509772778240{margin-top: 50px !important;margin-bottom: 50px !important;}.vc_custom_1551100262069{margin-bottom: 170px !important;background-image: url(http://elessi.nasatheme.com/wp-content/uploads/2018/03/h1-deal-bg.jpg?id=1629) !important;}.vc_custom_1520494481735{border-radius: 1px !important;}.vc_custom_1518594118728{margin-bottom: 50px !important;padding-top: 30px !important;}.vc_custom_1509780350467{margin-bottom: 10px !important;}]]></wp:meta_value>
+		<wp:meta_value><![CDATA[.vc_custom_1509772778240{margin-top: 50px !important;margin-bottom: 50px !important;}.vc_custom_1551100262069{margin-bottom: 170px !important;background-image: url(https://nasatheme.com/import/elessi_211/2018/03/h1-deal-bg.jpg?id=1629) !important;}.vc_custom_1520494481735{border-radius: 1px !important;}.vc_custom_1518594118728{margin-bottom: 50px !important;padding-top: 30px !important;}.vc_custom_1509780350467{margin-bottom: 10px !important;}]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_nasa_height_breadcrumb]]></wp:meta_key>
@@ -3900,17 +3792,14 @@
 							</item>
 
 					<item>
-		<title>
-				Shop		</title>
-		<link>http://elessi.nasatheme.com/shop/</link>
+		<title>Shop</title>
+		<link>https://elessi.nasatheme.com/shop/</link>
 		<pubDate>Wed, 27 Sep 2017 16:57:07 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://elessi.nasatheme.com/?page_id=248</guid>
+		<guid isPermaLink="false">https://elessi.nasatheme.com/?page_id=248</guid>
 		<description></description>
-		<content:encoded>
-				<![CDATA[]]>		</content:encoded>
-		<excerpt:encoded>
-				<![CDATA[]]>		</excerpt:encoded>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>248</wp:post_id>
 		<wp:post_date><![CDATA[2017-09-27 16:57:07]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2017-09-27 16:57:07]]></wp:post_date_gmt>
@@ -3946,6 +3835,53 @@
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_nasa_show_breadcrumb]]></wp:meta_key>
 		<wp:meta_value><![CDATA[on]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+
+					<item>
+		<title>Compare</title>
+		<link>https://elessi.nasatheme.com/compare/</link>
+		<pubDate>Wed, 27 Sep 2017 17:05:57 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">https://elessi.nasatheme.com/?page_id=251</guid>
+		<description></description>
+		<content:encoded><![CDATA[[vc_row][vc_column][nasa_title title_text="Best selling" title_bg="#ffffff" title_align="text-center" el_class="margin-bottom-30"][nasa_products type="best_selling" style="list" number="9" columns_number="3" columns_number_small="1" columns_number_tablet="2"][vc_empty_space][/vc_column][/vc_row]]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>251</wp:post_id>
+		<wp:post_date><![CDATA[2017-09-27 17:05:57]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2017-09-27 17:05:57]]></wp:post_date_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[compare]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[page]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+														<wp:postmeta>
+		<wp:meta_key><![CDATA[_vc_post_settings]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:1:{s:10:"vc_grid_id";a:0:{}}]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_page_template]]></wp:meta_key>
+		<wp:meta_value><![CDATA[page-view-compare.php]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[slide_template]]></wp:meta_key>
+		<wp:meta_value><![CDATA[default]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wpb_vc_js_status]]></wp:meta_key>
+		<wp:meta_value><![CDATA[true]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_nasa_show_breadcrumb]]></wp:meta_key>
+		<wp:meta_value><![CDATA[on]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_nasa_pri_color]]></wp:meta_key>
+		<wp:meta_value><![CDATA[#229fff]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 

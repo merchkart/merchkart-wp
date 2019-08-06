@@ -113,7 +113,14 @@ function nasa_sc_follow($atts, $content = null) {
     $youtube = $youtube ? $youtube : (isset($nasa_opt['youtube_url_follow']) ? $nasa_opt['youtube_url_follow'] : '');
     $flickr = $flickr ? $flickr : (isset($nasa_opt['flickr_url_follow']) ? $nasa_opt['flickr_url_follow'] : '');
     $telegram = $telegram ? $telegram : (isset($nasa_opt['telegram_url_follow']) ? $nasa_opt['telegram_url_follow'] : '');
-    $whatsapp = $whatsapp ? $whatsapp : (isset($nasa_opt['whatsapp_url_follow']) ? $nasa_opt['whatsapp_url_follow'] : '');
+    
+    /**
+     * Whatsapp Only Show on Mobile Device
+     */
+    $whatsapp = false;
+    if (NASA_IS_PHONE) {
+        $whatsapp = $whatsapp ? $whatsapp : (isset($nasa_opt['whatsapp_url_follow']) ? $nasa_opt['whatsapp_url_follow'] : '');
+    }
     
     $follow_wrap_start = '<div class="social-icons nasa-follow' . ($el_class ? ' ' . esc_attr($el_class) : '') . '">';
     $follow_wrap_start .= $title ? '<div class="nasa-follow-title">' . $title . '</div>' : '';

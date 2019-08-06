@@ -10,6 +10,7 @@ function nasa_sc_products_viewed($atts, $content = null) {
     
     $dfAttr = array(
         'title' => '',
+        'animation' => '1',
         'columns_number' => '5',
         'columns_number_small' => '1',
         'columns_number_tablet' => '2',

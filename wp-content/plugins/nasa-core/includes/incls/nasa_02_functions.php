@@ -1,4 +1,20 @@
 <?php
+/**
+ * Render Time sale countdown
+ * 
+ * @param type $time_sale
+ * @return type
+ */
+function nasa_time_sale($time_sale = false, $gmt = true) {
+    if($time_sale) {
+        return $gmt ?
+        '<span class="countdown" data-countdown="' . esc_attr(get_date_from_gmt(date('Y-m-d H:i:s', $time_sale), 'M j Y H:i:s O')) . '"></span>' : 
+        '<span class="countdown" data-countdown="' . esc_attr(date('M j Y H:i:s O', $time_sale)) . '"></span>';
+    }
+    
+    return '';
+}
+
 // **********************************************************************// 
 // ! Fix shortcode content
 // **********************************************************************//
@@ -932,22 +948,6 @@ function nasa_get_pin_arrays($type = 'nasa_pin_pb') {
     }
     
     return $pin_items;
-}
-
-/**
- * Render Time sale countdown
- * 
- * @param type $time_sale
- * @return type
- */
-function nasa_time_sale($time_sale = false, $gmt = true) {
-    if($time_sale) {
-        return $gmt ?
-        '<span class="countdown" data-countdown="' . esc_attr(get_date_from_gmt(date('Y-m-d H:i:s', $time_sale), 'M j Y H:i:s O')) . '"></span>' : 
-        '<span class="countdown" data-countdown="' . esc_attr(date('M j Y H:i:s O', $time_sale)) . '"></span>';
-    }
-    
-    return '';
 }
 
 /**

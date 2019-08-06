@@ -699,6 +699,9 @@ function nasa_theme_set_option_default() {
     set_theme_mod('enable_portfolio', '1');
     set_theme_mod('portfolio_columns', '5-cols');
     
+    set_theme_mod('enable_nasa_mobile', '1');
+    set_theme_mod('single_product_mobile', '1');
+    
     update_option('yith_woocompare_compare_button_in_products_list', 'yes');
     update_option('woocommerce_enable_myaccount_registration', 'yes');
 }

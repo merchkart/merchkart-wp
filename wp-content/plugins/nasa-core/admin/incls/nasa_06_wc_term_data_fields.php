@@ -66,6 +66,11 @@ if (!class_exists('Nasa_WC_Term_Data_Fields')) {
         private $_cat_footer_type = 'cat_footer_type';
         
         /**
+         * Nasa Footer mobile category
+         */
+        private $_cat_footer_mobile = 'cat_footer_mobile';
+        
+        /**
          * Nasa hover effect product category
          */
         private $_cat_effect_hover = 'cat_effect_hover';
@@ -254,6 +259,9 @@ if (!class_exists('Nasa_WC_Term_Data_Fields')) {
                 if (!$cat_footer_type = get_term_meta($term->term_id, $this->_cat_footer_type)) {
                     $cat_footer_type = add_term_meta($term->term_id, $this->_cat_footer_type, '');
                 }
+                if (!$cat_footer_mobile = get_term_meta($term->term_id, $this->_cat_footer_mobile)) {
+                    $cat_footer_mobile = add_term_meta($term->term_id, $this->_cat_footer_mobile, '');
+                }
                 ?>
                 <!-- Header type -->
                 <tr class="form-field term-cat_header-type-wrap">
@@ -307,7 +315,25 @@ if (!class_exists('Nasa_WC_Term_Data_Fields')) {
                         ?>
                     </td>
                 </tr>
-                <!-- End Footer type -->
+                <!-- End Footer Mobile -->
+                
+                <!-- Footer type -->
+                <tr class="form-field">
+                    <th scope="row" valign="top">
+                        <label for="<?php echo $this->_cat_footer_mobile; ?>"><?php esc_html_e('Override Footer Mobile', 'nasa-core'); ?></label>
+                    </th>
+                    <td>             
+                        <?php
+                        $selected = isset($cat_footer_mobile[0]) ? $cat_footer_mobile[0] : '';
+                        echo '<p><select id="' . $this->_cat_footer_mobile . '" name="' . $this->_cat_footer_mobile . '">';
+                        foreach ($footer_builder as $slug => $name) {
+                            echo '<option value="' . $slug . '"' . ($selected == $slug ? ' selected' : '') . '>' . $name . '</option>';
+                        }
+                        echo '</select></p>';
+                        ?>
+                    </td>
+                </tr>
+                <!-- End Footer Mobile -->
                 <?php
             } else {
                 ?>
@@ -349,6 +375,19 @@ if (!class_exists('Nasa_WC_Term_Data_Fields')) {
                     ?>
                 </div>
                 <!-- End Footer type -->
+                
+                <!-- Footer mobile -->
+                <div class="form-field">
+                    <label for="<?php echo $this->_cat_footer_mobile; ?>"><?php esc_html_e('Override Footer Mobile', 'nasa-core'); ?></label>
+                    <?php
+                    echo '<p><select id="' . $this->_cat_footer_mobile . '" name="' . $this->_cat_footer_mobile . '">';
+                    foreach ($footer_builder as $slug => $name) {
+                        echo '<option value="' . $slug . '">' . $name . '</option>';
+                    }
+                    echo '</select></p>';
+                    ?>
+                </div>
+                <!-- End Footer mobile -->
                 <?php
             } ?>
             <script>

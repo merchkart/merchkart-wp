@@ -13,41 +13,57 @@ function nasa_custom_option_themes() {
     );
 
     $of_options[] = array(
-        "name" => esc_html__("Nasa global options", 'nasa-core'),
-        "std" => "<h4>" . esc_html__("Nasa global options", 'nasa-core') . "</h4>",
+        "name" => esc_html__("Nasa Global Options", 'nasa-core'),
+        "std" => "<h4>" . esc_html__("Nasa Global Options", 'nasa-core') . "</h4>",
         "type" => "info"
     );
     
     $of_options[] = array(
         "name" => esc_html__('Enable Mobile Layout', 'nasa-core'),
-        "desc" => esc_html__('Mobile Layout.', 'nasa-core'),
+        // "desc" => esc_html__('Yes, Please!', 'nasa-core'),
         "id" => "enable_nasa_mobile",
         "std" => 0,
-        "type" => "checkbox"
+        "type" => "switch"
     );
     
     $of_options[] = array(
-        "name" => esc_html__('Enable Cache file', 'nasa-core'),
-        "desc" => esc_html__('Cache file.', 'nasa-core'),
+        "name" => esc_html__('CDN Images Site', 'nasa-core'),
+        // "desc" => esc_html__('Yes, Please!', 'nasa-core'),
+        "id" => "enable_nasa_cdn_images",
+        "std" => 1,
+        "type" => "switch"
+    );
+    
+    $of_options[] = array(
+        "name" => esc_html__('CDN CNAME.', 'nasa-core'),
+        "desc" => esc_html__('Input CNAME. It will be replaced for home URL of images your site. (Ex: https://elessi-cdn.nasatheme.com)', 'nasa-core'),
+        "id" => "nasa_cname_images",
+        "std" => "",
+        "type" => "text"
+    );
+    
+    $of_options[] = array(
+        "name" => esc_html__('Cache Files', 'nasa-core'),
+        // "desc" => esc_html__('Yes, Please!', 'nasa-core'),
         "id" => "enable_nasa_cache",
         "std" => 1,
-        "type" => "checkbox"
+        "type" => "switch"
     );
     
     $of_options[] = array(
-        "name" => esc_html__('Cache Shortcodes', 'nasa-core'),
-        "desc" => esc_html__('Cache Shortcodes (Apply with Enable Cache file).', 'nasa-core'),
+        "name" => esc_html__('Cache Shortcodes (Apply with Cache Files)', 'nasa-core'),
+        // "desc" => esc_html__('Cache Shortcodes (Apply with Enable Cache file).', 'nasa-core'),
         "id" => "nasa_cache_shortcodes",
         "std" => 1,
-        "type" => "checkbox"
+        "type" => "switch"
     );
     
     $of_options[] = array(
-        "name" => esc_html__('Cache Variable Loop Products', 'nasa-core'),
-        "desc" => esc_html__('Cache Variable Loop Products (Apply with Enable Cache file).', 'nasa-core'),
+        "name" => esc_html__('Cache Variable Loop Products (Apply with Cache Files)', 'nasa-core'),
+        // "desc" => esc_html__('Cache Variable Loop Products (Apply with Enable Cache file).', 'nasa-core'),
         "id" => "nasa_cache_variables",
         "std" => 1,
-        "type" => "checkbox"
+        "type" => "switch"
     );
     
     $of_options[] = array(
@@ -60,23 +76,23 @@ function nasa_custom_option_themes() {
 
     $of_options[] = array(
         "name" => esc_html__("Enable Effect Pin Space (Pin Products Banner)", 'nasa-core'),
-        "desc" => esc_html__("Yes, please!", 'nasa-core'),
+        // "desc" => esc_html__("Yes, please!", 'nasa-core'),
         "id" => "effect_pin_product_banner",
         "std" => 0,
-        "type" => "checkbox"
+        "type" => "switch"
     );
     
     $of_options[] = array(
         "name" => esc_html__("Enable Size Guide Product", 'nasa-core'),
-        "desc" => esc_html__("Enable Size Guide Product", 'nasa-core'),
+        // "desc" => esc_html__("Yes, Please!", 'nasa-core'),
         "id" => "enable_size_guide",
         "std" => '1',
-        "type" => "checkbox"
+        "type" => "switch"
     );
     
     $of_options[] = array(
         "name" => esc_html__("Size Guide Product", 'nasa-core'),
-        "desc" => esc_html__("Size Guide for Product.", 'nasa-core'),
+        // "desc" => esc_html__("Size Guide for Product.", 'nasa-core'),
         "id" => "size_guide",
         "std" => '',
         "type" => "media"
@@ -90,18 +106,18 @@ function nasa_custom_option_themes() {
 
     $of_options[] = array(
         "name" => esc_html__('Enable UX Variations', 'nasa-core'),
-        "desc" => esc_html__('Enable UX Variations.', 'nasa-core'),
+        // "desc" => esc_html__('Enable UX Variations.', 'nasa-core'),
         "id" => "enable_nasa_variations_ux",
         "std" => 1,
-        "type" => "checkbox"
+        "type" => "switch"
     );
 
     $of_options[] = array(
         "name" => esc_html__('Enable UX Variations With Type Select', 'nasa-core'),
-        "desc" => esc_html__('Enable UX Variations With Type Select In Loop Product.', 'nasa-core'),
+        // "desc" => esc_html__('Enable UX Variations With Type Select In Loop Product.', 'nasa-core'),
         "id" => "enable_nasa_ux_select",
         "std" => 1,
-        "type" => "checkbox"
+        "type" => "switch"
     );
 
     $of_options[] = array(
@@ -127,18 +143,18 @@ function nasa_custom_option_themes() {
     // Loading ux variations in loop by ajax
     $of_options[] = array(
         "name" => esc_html__('UX Variations Loop by Ajax', 'nasa-core'),
-        "desc" => esc_html__('Loading UX Variations In Loop by Ajax.', 'nasa-core'),
+        // "desc" => esc_html__('Loading UX Variations In Loop by Ajax.', 'nasa-core'),
         "id" => "load_variations_ux_ajax",
         "std" => 1,
-        "type" => "checkbox"
+        "type" => "switch"
     );
 
     $of_options[] = array(
-        "name" => esc_html__('Enable Gallery for Variation', 'nasa-core'),
-        "desc" => esc_html__('Enable', 'nasa-core'),
+        "name" => esc_html__('Gallery for Variation', 'nasa-core'),
+        // "desc" => esc_html__('Enable', 'nasa-core'),
         "id" => "gallery_images_variation",
         "std" => 1,
-        "type" => "checkbox"
+        "type" => "switch"
     );
 
     $of_options[] = array(
@@ -153,14 +169,14 @@ function nasa_custom_option_themes() {
     $of_options[] = array(
         "name" => esc_html__("Enable Recommend Products", 'nasa-core'),
         "id" => "enable_recommend_product",
-        "desc" => esc_html__("Enable Recommend Products.", 'nasa-core'),
+        // "desc" => esc_html__("Enable Recommend Products.", 'nasa-core'),
         "std" => "0",
-        "type" => "checkbox"
+        "type" => "switch"
     );
 
     $of_options[] = array(
         "name" => esc_html__('Title for Recommended', 'nasa-core'),
-        "desc" => esc_html__('Title for Recommended.', 'nasa-core'),
+        // "desc" => esc_html__('Title for Recommended.', 'nasa-core'),
         "id" => "recommend_product_title",
         "std" => "Recommend Products",
         "type" => "text"
@@ -169,13 +185,13 @@ function nasa_custom_option_themes() {
     $of_options[] = array(
         "name" => esc_html__("Limit Number of Visible Recommended Products", 'nasa-core'),
         "id" => "recommend_product_limit",
-        "desc" => esc_html__("Input Limit Number of Visible Recommended Products.", 'nasa-core'),
+        // "desc" => esc_html__("Input Limit Number of Visible Recommended Products.", 'nasa-core'),
         "std" => "9",
         "type" => "text"
     );
 
     $of_options[] = array(
-        "name" => esc_html__("Desktop Columns Count", 'nasa-core'),
+        "name" => esc_html__("Desktop Columns", 'nasa-core'),
         "id" => "recommend_columns_desk",
         "std" => "5-cols",
         "type" => "select",
@@ -187,7 +203,7 @@ function nasa_custom_option_themes() {
     );
 
     $of_options[] = array(
-        "name" => esc_html__("Mobile Columns Count", 'nasa-core'),
+        "name" => esc_html__("Mobile Columns", 'nasa-core'),
         "id" => "recommend_columns_small",
         "std" => "1-col",
         "type" => "select",
@@ -198,7 +214,7 @@ function nasa_custom_option_themes() {
     );
 
     $of_options[] = array(
-        "name" => esc_html__("Tablet Columns Count", 'nasa-core'),
+        "name" => esc_html__("Tablet Columns", 'nasa-core'),
         "id" => "recommend_columns_tablet",
         "std" => "3-cols",
         "type" => "select",
@@ -210,7 +226,7 @@ function nasa_custom_option_themes() {
     );
 
     $of_options[] = array(
-        "name" => esc_html__("Products Position", 'nasa-core'),
+        "name" => esc_html__("Recommend Position", 'nasa-core'),
         "id" => "recommend_product_position",
         "std" => "bot",
         "type" => "select",
@@ -250,7 +266,7 @@ function nasa_custom_option_themes() {
 
     $of_options[] = array(
         "name" => esc_html__("Facebook URL Follow", 'nasa-core'),
-        "desc" => esc_html__("Input Facebook link follow here.", 'nasa-core'),
+        // "desc" => esc_html__("Input Facebook link follow here.", 'nasa-core'),
         "id" => "facebook_url_follow",
         "std" => "",
         "type" => "text"
@@ -258,7 +274,7 @@ function nasa_custom_option_themes() {
 
     $of_options[] = array(
         "name" => esc_html__("Twitter URL Follow", 'nasa-core'),
-        "desc" => esc_html__("Input Twitter link follow here.", 'nasa-core'),
+        // "desc" => esc_html__("Input Twitter link follow here.", 'nasa-core'),
         "id" => "twitter_url_follow",
         "std" => "",
         "type" => "text"
@@ -266,7 +282,7 @@ function nasa_custom_option_themes() {
 
     $of_options[] = array(
         "name" => esc_html__("Email URL", 'nasa-core'),
-        "desc" => esc_html__("Input Email follow here.", 'nasa-core'),
+        // "desc" => esc_html__("Input Email follow here.", 'nasa-core'),
         "id" => "email_url_follow",
         "std" => "",
         "type" => "text"
@@ -274,7 +290,7 @@ function nasa_custom_option_themes() {
 
     $of_options[] = array(
         "name" => esc_html__("Pinterest URL Follow", 'nasa-core'),
-        "desc" => esc_html__("Input pinterest link follow here.", 'nasa-core'),
+        // "desc" => esc_html__("Input pinterest link follow here.", 'nasa-core'),
         "id" => "pinterest_url_follow",
         "std" => "",
         "type" => "text"
@@ -282,7 +298,7 @@ function nasa_custom_option_themes() {
 
     $of_options[] = array(
         "name" => esc_html__("Instagram URL Follow", 'nasa-core'),
-        "desc" => esc_html__("Input instagram link follow here.", 'nasa-core'),
+        // "desc" => esc_html__("Input instagram link follow here.", 'nasa-core'),
         "id" => "instagram_url",
         "std" => "",
         "type" => "text"
@@ -290,7 +306,7 @@ function nasa_custom_option_themes() {
 
     $of_options[] = array(
         "name" => esc_html__("RSS URL Follow", 'nasa-core'),
-        "desc" => esc_html__("Input RSS link follow here.", 'nasa-core'),
+        // "desc" => esc_html__("Input RSS link follow here.", 'nasa-core'),
         "id" => "rss_url_follow",
         "std" => "",
         "type" => "text"
@@ -298,7 +314,7 @@ function nasa_custom_option_themes() {
 
     $of_options[] = array(
         "name" => esc_html__("Linkedin URL Follow", 'nasa-core'),
-        "desc" => esc_html__("Input Linkedin link follow here.", 'nasa-core'),
+        // "desc" => esc_html__("Input Linkedin link follow here.", 'nasa-core'),
         "id" => "linkedin_url_follow",
         "std" => "",
         "type" => "text"
@@ -306,7 +322,7 @@ function nasa_custom_option_themes() {
 
     $of_options[] = array(
         "name" => esc_html__("Youtube URL Follow", 'nasa-core'),
-        "desc" => esc_html__("Input Youtube link follow here.", 'nasa-core'),
+        // "desc" => esc_html__("Input Youtube link follow here.", 'nasa-core'),
         "id" => "youtube_url_follow",
         "std" => "",
         "type" => "text"
@@ -314,7 +330,7 @@ function nasa_custom_option_themes() {
 
     $of_options[] = array(
         "name" => esc_html__("Flickr URL Follow", 'nasa-core'),
-        "desc" => esc_html__("Input Flickr link follow here.", 'nasa-core'),
+        // "desc" => esc_html__("Input Flickr link follow here.", 'nasa-core'),
         "id" => "flickr_url_follow",
         "std" => "",
         "type" => "text"
@@ -322,15 +338,15 @@ function nasa_custom_option_themes() {
 
     $of_options[] = array(
         "name" => esc_html__("Telegram URL Follow", 'nasa-core'),
-        "desc" => esc_html__("Input Telegram link follow here.", 'nasa-core'),
+        // "desc" => esc_html__("Input Telegram link follow here.", 'nasa-core'),
         "id" => "telegram_url_follow",
         "std" => "",
         "type" => "text"
     );
 
     $of_options[] = array(
-        "name" => esc_html__("Whatsapp URL Follow", 'nasa-core'),
-        "desc" => esc_html__("Input Whatsapp link follow here.", 'nasa-core'),
+        "name" => esc_html__("Whatsapp URL Follow Only Show in Mobile", 'nasa-core'),
+        // "desc" => esc_html__("Input Whatsapp link follow here.", 'nasa-core'),
         "id" => "whatsapp_url_follow",
         "std" => "",
         "type" => "text"

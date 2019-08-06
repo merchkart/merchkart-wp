@@ -122,22 +122,22 @@ function nasa_create_portfolio_recent($args, $title = false, $width = 540, $heig
     
     $box_id = rand(1000, 10000);
     $multislides = new WP_Query($args);
-    $class = '';
-
-    ob_start();
+    $result = '';
+    
     if ($multislides->have_posts()) :
+        ob_start();
+        
         $title_output = '';
         if ($title) {
             $title_output = 
             '<div class="title-block text-left rtl-text-right">' .
-                '<h4 class="heading-title"><span>' . $title . '</span></h4>' .
-                '<div class="nasa-hr medium text-left"></div>' .
+                '<h3 class="nasa-bold-700">' . $title . '</h3>' .
             '</div>';
         }
-        echo '<div class="slider-container carousel-area ' . $class . '">' .
+        echo '<div class="slider-container carousel-area">' .
             $title_output .
             '<div class="items-slide items-slider-portfolio slider-' . $box_id . '">' .
-                '<div class="nasa-slider owl-carousel recentPortfolio" data-columns="3" data-columns-small="1" data-columns-tablet="3">';
+                '<div class="nasa-slider owl-carousel recentPortfolio" data-columns="3" data-columns-small="2" data-columns-tablet="3">';
                     $delay = 0;
                     $delay_item = (isset($nasa_opt['delay_overlay']) && (int) $nasa_opt['delay_overlay']) ? (int) $nasa_opt['delay_overlay'] : 100;
                     while ($multislides->have_posts()) :
@@ -148,10 +148,12 @@ function nasa_create_portfolio_recent($args, $title = false, $width = 540, $heig
                 echo '</div><!-- slider -->' .
             '</div><!-- products-slider -->' .
         '</div><!-- slider-container -->';
+        
+        $result = ob_get_clean();
     endif;
     wp_reset_query();
 
-    return ob_get_clean();
+    return $result;
 }
 
 function nasa_print_item_cats($id) {
@@ -163,11 +165,12 @@ function nasa_print_item_cats($id) {
     //Returns Array of Term Names for "categories"
     $term_list = wp_get_post_terms($id, 'portfolio_category');
     $_i = 0;
-    if ($count = count($term_list)) {
+    $count = count($term_list);
+    if ($count) {
         foreach ($term_list as $value) {
             $_i++;
             echo '<a href="' . get_term_link($value) . '" title="' . $value->name . '">' . $value->name . '</a>';
-            echo ($_i != $count) ? ', ' : '';
+            echo $_i != $count ? ', ' : '';
         }
     }
 }
