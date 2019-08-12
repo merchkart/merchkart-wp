@@ -2,9 +2,9 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Dokan Pro - professional 2.9.11\n"
+"Project-Id-Version: Dokan Pro - professional 2.9.12\n"
 "Report-Msgid-Bugs-To: https://wedevs.com/account/tickets/\n"
-"POT-Creation-Date: 2019-07-03 06:30:52+00:00\n"
+"POT-Creation-Date: 2019-08-09 03:48:55+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -52,7 +52,7 @@ msgid "Order ID"
 msgstr ""
 
 #: classes/admin-refund.php:167 classes/admin-refund.php:180
-#: includes/admin/admin.php:507 includes/admin/reports.php:194
+#: includes/admin/admin.php:567 includes/admin/reports.php:194
 #: includes/modules/moip/includes/admin/class-moip-gateway.php:100
 #: includes/modules/paypal-adaptive-payments/classes/class-dokan-paypal-ap-gateway.php:176
 #: includes/modules/report-abuse/assets/js/dokan-report-abuse-admin.js:876
@@ -94,7 +94,7 @@ msgstr ""
 
 #: classes/admin-refund.php:221 classes/admin-refund.php:225
 #: includes/modules/subscription/assets/js/subscription.min.js:1
-#: includes/modules/subscription/includes/classes/Shortcode.php:98
+#: includes/modules/subscription/includes/classes/Shortcode.php:104
 #: includes/modules/subscription/src/admin/components/Subscriptions.vue:41
 #: includes/modules/vendor-verification/templates/verification-new.php:111
 #: includes/modules/vendor-verification/templates/verification-new.php:273
@@ -195,7 +195,7 @@ msgstr ""
 #: classes/ajax.php:109 classes/ajax.php:130 classes/ajax.php:151
 #: classes/ajax.php:187 classes/ajax.php:227 classes/ajax.php:263
 #: classes/ajax.php:299 classes/ajax.php:331 classes/ajax.php:358
-#: classes/products.php:818 includes/admin/admin.php:668
+#: classes/products.php:818 includes/admin/admin.php:728
 #: includes/admin/ajax.php:379 includes/modules/rma/includes/class-ajax.php:32
 #: includes/modules/rma/includes/class-ajax.php:54
 #: includes/modules/rma/includes/class-ajax.php:148
@@ -248,39 +248,39 @@ msgstr ""
 msgid "Zone settings save successfully"
 msgstr ""
 
-#: classes/ajax.php:447 classes/ajax.php:2179 classes/products.php:229
+#: classes/ajax.php:447 classes/ajax.php:2178 classes/products.php:229
 #: includes/wc-functions.php:275 templates/orders/views/html-order-items.php:21
 #: templates/products/edit/inventory.php:6
 msgid "Standard"
 msgstr ""
 
-#: classes/ajax.php:457 classes/ajax.php:2189 classes/products.php:800
+#: classes/ajax.php:457 classes/ajax.php:2188 classes/products.php:800
 #: includes/woo-views/variation-admin-html.php:68
 #: templates/products/edit/inventory.php:53
 msgid "Do not allow"
 msgstr ""
 
-#: classes/ajax.php:458 classes/ajax.php:2190
+#: classes/ajax.php:458 classes/ajax.php:2189
 msgid "Allow, but notify customer"
 msgstr ""
 
-#: classes/ajax.php:459 classes/ajax.php:2191 classes/products.php:802
+#: classes/ajax.php:459 classes/ajax.php:2190 classes/products.php:802
 #: includes/woo-views/variation-admin-html.php:70
 #: templates/products/edit/inventory.php:55
 msgid "Allow"
 msgstr ""
 
-#: classes/ajax.php:464 classes/ajax.php:2196
+#: classes/ajax.php:464 classes/ajax.php:2195
 #: includes/woo-views/variation-admin-html.php:78
 msgid "In stock"
 msgstr ""
 
-#: classes/ajax.php:465 classes/ajax.php:2197
+#: classes/ajax.php:465 classes/ajax.php:2196
 #: includes/woo-views/variation-admin-html.php:79
 msgid "Out of stock"
 msgstr ""
 
-#: classes/ajax.php:1091
+#: classes/ajax.php:1091 classes/refund.php:55
 msgid "Vendor not found"
 msgstr ""
 
@@ -306,24 +306,21 @@ msgstr ""
 msgid "Invalid refund amount for item"
 msgstr ""
 
-#: classes/ajax.php:1144
-#: includes/modules/moip/includes/admin/class-moip-subscription.php:101
-#: includes/modules/moip/includes/admin/class-moip-subscription.php:178
-#: includes/modules/moip/includes/admin/class-moip-subscription.php:537
-msgid "Something went wrong"
+#: classes/ajax.php:1143 classes/refund.php:66
+msgid "Unable to insert refund"
 msgstr ""
 
-#: classes/ajax.php:1150
+#: classes/ajax.php:1149
 msgid "Refund request sent successfully"
 msgstr ""
 
-#: classes/ajax.php:1225 classes/ajax.php:1251 classes/ajax.php:1335
+#: classes/ajax.php:1224 classes/ajax.php:1250 classes/ajax.php:1334
 #: src/admin/components/VendorAddressFields.vue:36
 #: templates/settings/shipping.php:203 templates/settings/shipping.php:233
 msgid "State"
 msgstr ""
 
-#: classes/ajax.php:1231 classes/ajax.php:1255
+#: classes/ajax.php:1230 classes/ajax.php:1254
 #: includes/modules/rma/templates/rma/product.php:111
 #: includes/modules/rma/templates/rma/settings.php:118
 #: src/frontend/components/Zone.vue:170
@@ -334,43 +331,43 @@ msgstr ""
 msgid "Cost"
 msgstr ""
 
-#: classes/ajax.php:1305
+#: classes/ajax.php:1304
 msgid "No Announcement found"
 msgstr ""
 
-#: classes/ajax.php:1337
+#: classes/ajax.php:1336
 msgid "--Select State--"
 msgstr ""
 
-#: classes/ajax.php:1341
+#: classes/ajax.php:1340
 msgid "Other States"
 msgstr ""
 
-#: classes/ajax.php:1405
+#: classes/ajax.php:1404
 msgid "Please select a State from the dropdown"
 msgstr ""
 
-#: classes/ajax.php:1407 classes/ajax.php:1410
+#: classes/ajax.php:1406 classes/ajax.php:1409
 msgid "Shipping Cost : "
 msgstr ""
 
-#: classes/ajax.php:1413
+#: classes/ajax.php:1412
 msgid "Please select a country from the dropdown"
 msgstr ""
 
-#: classes/ajax.php:1739
+#: classes/ajax.php:1738
 msgid "Variation #%s of %s"
 msgstr ""
 
-#: classes/ajax.php:2084
+#: classes/ajax.php:2083
 msgid "Clear All"
 msgstr ""
 
-#: classes/ajax.php:2084 templates/coupon/form.php:110
+#: classes/ajax.php:2083 templates/coupon/form.php:110
 msgid "Clear"
 msgstr ""
 
-#: classes/ajax.php:2377 includes/woo-views/variation-admin-html.php:6
+#: classes/ajax.php:2376 includes/woo-views/variation-admin-html.php:6
 #: templates/orders/views/html-product-attribute.php:3
 #: templates/orders/views/html-variation-admin.php:17
 #: templates/products/edit/attributes.php:54
@@ -381,21 +378,21 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: classes/ajax.php:2388 templates/orders/views/html-product-attribute.php:66
+#: classes/ajax.php:2387 templates/orders/views/html-product-attribute.php:66
 #: templates/products/edit/attributes.php:72
 #: templates/products/edit/html-product-attribute.php:24
 #: templates/products/edit/templates-js.php:21
 msgid "Visible on the product page"
 msgstr ""
 
-#: classes/ajax.php:2395 templates/orders/views/html-product-attribute.php:72
+#: classes/ajax.php:2394 templates/orders/views/html-product-attribute.php:72
 #: templates/products/edit/attributes.php:85
 #: templates/products/edit/html-product-attribute.php:28
 #: templates/products/edit/templates-js.php:27
 msgid "Used for variations"
 msgstr ""
 
-#: classes/ajax.php:2406 classes/ajax.php:2417
+#: classes/ajax.php:2405 classes/ajax.php:2416
 #: templates/products/edit/attributes.php:99
 #: templates/products/edit/attributes.php:113
 #: templates/products/edit/templates-js.php:36
@@ -428,7 +425,7 @@ msgstr ""
 msgid "You have no permission to add this coupon"
 msgstr ""
 
-#: classes/coupons.php:203 classes/coupons.php:617
+#: classes/coupons.php:203 classes/coupons.php:614
 msgid "You have no permission to edit this coupon"
 msgstr ""
 
@@ -472,87 +469,83 @@ msgstr ""
 msgid "Update Coupon"
 msgstr ""
 
-#: classes/coupons.php:615
+#: classes/coupons.php:612
 msgid "You have no permission to add coupon"
 msgstr ""
 
-#: classes/coupons.php:650
-msgid "Product Discount"
+#: classes/coupons.php:647
+msgid "Fixed Product Discount"
 msgstr ""
 
-#: classes/coupons.php:651
-msgid "Product % Discount"
+#: classes/coupons.php:648
+msgid "Percentage Discount"
 msgstr ""
 
-#: classes/coupons.php:652
-msgid "Booking Person Discount (Amount Off Per Person)"
-msgstr ""
-
-#: classes/email-verification.php:117
+#: classes/email-verification.php:120
 msgid "Didn't get the email?"
 msgstr ""
 
-#: classes/email-verification.php:117
+#: classes/email-verification.php:120
 msgid "Send again"
 msgstr ""
 
-#: classes/email-verification.php:202
+#: classes/email-verification.php:205
 msgid "<p><b>To Verify your Email <a href='%s'>Click Here</a></b></p>"
 msgstr ""
 
-#: classes/email-verification.php:218
+#: classes/email-verification.php:221
 msgid "Verify Vendor"
 msgstr ""
 
-#: classes/email-verification.php:222
+#: classes/email-verification.php:225
 msgid "Make this vendor verified."
 msgstr ""
 
-#: classes/email-verification.php:311
+#: classes/email-verification.php:314
 msgid ""
 "A new verification email has been sent to your eamil. Please verify to "
 "login."
 msgstr ""
 
-#: classes/email-verification.php:324
+#: classes/email-verification.php:327
 msgid "Email Verification"
 msgstr ""
 
-#: classes/email-verification.php:342
+#: classes/email-verification.php:345
 msgid "Enable Email Verification"
 msgstr ""
 
-#: classes/email-verification.php:344
+#: classes/email-verification.php:347
 msgid ""
 "Enabling this will add email verification after registration form to allow "
 "users to verify their emails"
 msgstr ""
 
-#: classes/email-verification.php:348
+#: classes/email-verification.php:351
 msgid "Registration Notice"
 msgstr ""
 
-#: classes/email-verification.php:350
+#: classes/email-verification.php:353
 msgid ""
 "This notice will be shown after a user has registered with pending email "
 "verification."
 msgstr ""
 
-#: classes/email-verification.php:351 classes/email-verification.php:358
+#: classes/email-verification.php:354 classes/email-verification.php:361
 msgid "Please check your email and complete email verification to login."
 msgstr ""
 
-#: classes/email-verification.php:355
+#: classes/email-verification.php:358
 msgid "Login Notice"
 msgstr ""
 
-#: classes/email-verification.php:357
+#: classes/email-verification.php:360
 msgid ""
 "This notice will be shown when a user tries to login without email "
 "verification."
 msgstr ""
 
-#: classes/email-verification.php:382
+#: classes/email-verification.php:385
 #: includes/modules/subscription/includes/admin/admin.php:359
 msgid "- select -"
 msgstr ""
@@ -569,13 +562,13 @@ msgstr ""
 
 #: classes/products.php:255
 #: includes/modules/subscription/includes/admin/admin.php:111
-#: includes/wc-functions.php:1067
+#: includes/wc-functions.php:1246
 msgid "Admin Commission type"
 msgstr ""
 
 #: classes/products.php:257
 #: includes/modules/subscription/includes/admin/admin.php:113
-#: includes/wc-functions.php:1035 includes/wc-functions.php:1070
+#: includes/wc-functions.php:1214 includes/wc-functions.php:1249
 #: templates/products/product-lot-discount.php:26
 #: templates/settings/discount.php:24
 msgid "Percentage"
@@ -583,7 +576,7 @@ msgstr ""
 
 #: classes/products.php:258
 #: includes/modules/subscription/includes/admin/admin.php:114
-#: includes/wc-functions.php:1036 includes/wc-functions.php:1071
+#: includes/wc-functions.php:1215 includes/wc-functions.php:1250
 msgid "Flat"
 msgstr ""
 
@@ -670,11 +663,23 @@ msgstr ""
 msgid "Product updated successfully"
 msgstr ""
 
-#: classes/refund.php:181
+#: classes/refund.php:48
+msgid "You don't have permission to create refund."
+msgstr ""
+
+#: classes/refund.php:82
+msgid "Unable to approve refund request"
+msgstr ""
+
+#: classes/refund.php:86
+msgid "Refund has been made by admin."
+msgstr ""
+
+#: classes/refund.php:266
 msgid "Pending Reivew"
 msgstr ""
 
-#: classes/refund.php:185
+#: classes/refund.php:270
 msgid "Accepted"
 msgstr ""
 
@@ -705,7 +710,7 @@ msgstr ""
 msgid "Balance"
 msgstr ""
 
-#: classes/reports.php:100 includes/admin/admin.php:506
+#: classes/reports.php:100 includes/admin/admin.php:566
 #: includes/admin/reports.php:193 includes/reports.php:126
 msgid "Order"
 msgstr ""
@@ -719,8 +724,8 @@ msgstr ""
 msgid "Refund"
 msgstr ""
 
-#: classes/reports.php:170 includes/admin/admin.php:64
-#: includes/admin/admin.php:467 includes/admin/reports.php:17
+#: classes/reports.php:170 includes/admin/admin.php:67
+#: includes/admin/admin.php:527 includes/admin/reports.php:17
 #: src/admin/components/Reports.vue:5 templates/report/header.php:11
 msgid "Reports"
 msgstr ""
@@ -876,97 +881,120 @@ msgstr ""
 msgid "Something went wrong! please try again"
 msgstr ""
 
-#: classes/social-login.php:241
+#: classes/social-login.php:241 classes/social-login.php:259
 msgid "Social API"
 msgstr ""
 
-#: classes/social-login.php:259
+#: classes/social-login.php:264
 msgid "Enable Social Login"
 msgstr ""
 
-#: classes/social-login.php:261
+#: classes/social-login.php:266
 msgid ""
 "Enabling this will add Social Icons under registration form to allow users "
 "to login or register using Social Profiles"
 msgstr ""
 
-#: classes/social-login.php:265
+#: classes/social-login.php:270
 #: includes/modules/vendor-verification/includes/admin/admin.php:27
+#: src/admin/components/VendorSocialFields.vue:11
+msgid "Facebook"
+msgstr ""
+
+#: classes/social-login.php:275
+#: includes/modules/vendor-verification/includes/admin/admin.php:32
 msgid "Facebook App Settings"
 msgstr ""
 
-#: classes/social-login.php:267 classes/social-login.php:289
-#: classes/social-login.php:311 classes/social-login.php:333
-#: includes/modules/vendor-verification/includes/admin/admin.php:29
-#: includes/modules/vendor-verification/includes/admin/admin.php:51
-#: includes/modules/vendor-verification/includes/admin/admin.php:73
-#: includes/modules/vendor-verification/includes/admin/admin.php:95
+#: classes/social-login.php:277 classes/social-login.php:304
+#: classes/social-login.php:331 classes/social-login.php:358
+#: includes/modules/vendor-verification/includes/admin/admin.php:34
+#: includes/modules/vendor-verification/includes/admin/admin.php:61
+#: includes/modules/vendor-verification/includes/admin/admin.php:88
+#: includes/modules/vendor-verification/includes/admin/admin.php:115
 msgid "Create an App"
 msgstr ""
 
-#: classes/social-login.php:271
+#: classes/social-login.php:281
 msgid "Site URL"
 msgstr ""
 
-#: classes/social-login.php:277
+#: classes/social-login.php:287
 #: includes/modules/paypal-adaptive-payments/classes/class-dokan-paypal-ap-gateway.php:216
 msgid "App ID"
 msgstr ""
 
-#: classes/social-login.php:282
-#: includes/modules/vendor-verification/includes/admin/admin.php:44
+#: classes/social-login.php:292
+#: includes/modules/vendor-verification/includes/admin/admin.php:49
 msgid "App Secret"
 msgstr ""
 
-#: classes/social-login.php:287
-#: includes/modules/vendor-verification/includes/admin/admin.php:49
+#: classes/social-login.php:297
+#: includes/modules/vendor-verification/includes/admin/admin.php:54
+#: src/admin/components/VendorSocialFields.vue:26
+msgid "Twitter"
+msgstr ""
+
+#: classes/social-login.php:302
+#: includes/modules/vendor-verification/includes/admin/admin.php:59
 msgid "Twitter App Settings"
 msgstr ""
 
-#: classes/social-login.php:293
-#: includes/modules/vendor-verification/includes/admin/admin.php:55
+#: classes/social-login.php:308
+#: includes/modules/vendor-verification/includes/admin/admin.php:65
 msgid "Callback URL"
 msgstr ""
 
-#: classes/social-login.php:299
-#: includes/modules/vendor-verification/includes/admin/admin.php:61
+#: classes/social-login.php:314
+#: includes/modules/vendor-verification/includes/admin/admin.php:71
 msgid "Consumer Key"
 msgstr ""
 
-#: classes/social-login.php:304
-#: includes/modules/vendor-verification/includes/admin/admin.php:66
+#: classes/social-login.php:319
+#: includes/modules/vendor-verification/includes/admin/admin.php:76
 msgid "Consumer Secret"
 msgstr ""
 
-#: classes/social-login.php:309
-#: includes/modules/vendor-verification/includes/admin/admin.php:71
+#: classes/social-login.php:324
+#: includes/modules/vendor-verification/includes/admin/admin.php:81
+msgid "Google"
+msgstr ""
+
+#: classes/social-login.php:329
+#: includes/modules/vendor-verification/includes/admin/admin.php:86
 msgid "Google App Settings"
 msgstr ""
 
-#: classes/social-login.php:315 classes/social-login.php:337
-#: includes/modules/vendor-verification/includes/admin/admin.php:99
+#: classes/social-login.php:335 classes/social-login.php:362
+#: includes/modules/vendor-verification/includes/admin/admin.php:119
 msgid "Redirect URL"
 msgstr ""
 
-#: classes/social-login.php:321 classes/social-login.php:343
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:224
-#: includes/modules/vendor-verification/includes/admin/admin.php:83
-#: includes/modules/vendor-verification/includes/admin/admin.php:106
+#: classes/social-login.php:341 classes/social-login.php:368
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:317
+#: includes/modules/vendor-verification/includes/admin/admin.php:98
+#: includes/modules/vendor-verification/includes/admin/admin.php:126
 msgid "Client ID"
 msgstr ""
 
-#: classes/social-login.php:326
-#: includes/modules/vendor-verification/includes/admin/admin.php:88
+#: classes/social-login.php:346
+#: includes/modules/vendor-verification/includes/admin/admin.php:103
 msgid "Client secret"
 msgstr ""
 
-#: classes/social-login.php:331
-#: includes/modules/vendor-verification/includes/admin/admin.php:93
+#: classes/social-login.php:351
+#: includes/modules/vendor-verification/includes/admin/admin.php:108
+#: src/admin/components/VendorSocialFields.vue:36
+msgid "Linkedin"
+msgstr ""
+
+#: classes/social-login.php:356
+#: includes/modules/vendor-verification/includes/admin/admin.php:113
 msgid "Linkedin App Settings"
 msgstr ""
 
-#: classes/social-login.php:348
-#: includes/modules/vendor-verification/includes/admin/admin.php:111
+#: classes/social-login.php:373
+#: includes/modules/vendor-verification/includes/admin/admin.php:131
 msgid "Client Secret"
 msgstr ""
 
@@ -1183,133 +1211,117 @@ msgstr ""
 msgid "You can search vendors using Username, Shopname or Email."
 msgstr ""
 
-#: includes/admin/admin.php:51
+#: includes/admin/admin.php:54
 msgid "Refunds"
 msgstr ""
 
-#: includes/admin/admin.php:57
+#: includes/admin/admin.php:60
 msgid "Refunds %s"
 msgstr ""
 
-#: includes/admin/admin.php:61 includes/admin/admin.php:460
+#: includes/admin/admin.php:64 includes/admin/admin.php:520
 #: includes/modules/follow-store/includes/class-dokan-follow-store-my-account.php:42
 #: src/admin/components/Vendors.vue:3
 msgid "Vendors"
 msgstr ""
 
-#: includes/admin/admin.php:62
+#: includes/admin/admin.php:65
 msgid "Announcements"
 msgstr ""
 
-#: includes/admin/admin.php:67
+#: includes/admin/admin.php:70
 msgid "Whats New"
 msgstr ""
 
-#: includes/admin/admin.php:71 includes/admin/modules.php:5
+#: includes/admin/admin.php:74 includes/admin/modules.php:5
 #: src/admin/components/Modules.vue:3
 msgid "Modules"
 msgstr ""
 
-#: includes/admin/admin.php:72
+#: includes/admin/admin.php:75
 msgid "Tools"
 msgstr ""
 
-#: includes/admin/admin.php:100
-msgid "Product Mail Notification"
-msgstr ""
-
-#: includes/admin/admin.php:101
-msgid "Email notification on new product submission"
-msgstr ""
-
-#: includes/admin/admin.php:107
-msgid "Vendor Product Review"
-msgstr ""
-
-#: includes/admin/admin.php:108
-msgid "Vendor can change product review status from vendor dashboard"
-msgstr ""
-
-#: includes/admin/admin.php:114
+#: includes/admin/admin.php:102
 msgid "Enable Terms and Condition"
 msgstr ""
 
-#: includes/admin/admin.php:115
+#: includes/admin/admin.php:103
 msgid "Enable Terms and Condition check on registration form"
 msgstr ""
 
-#: includes/admin/admin.php:121
-msgid "Store Banner width"
-msgstr ""
-
-#: includes/admin/admin.php:127
-msgid "Store Banner height"
-msgstr ""
-
-#: includes/admin/admin.php:136
-msgid "Category Selection"
-msgstr ""
-
-#: includes/admin/admin.php:137
-msgid "What option do you prefer for vendor to select product category? "
-msgstr ""
-
-#: includes/admin/admin.php:141
-#: includes/brands/class-dokan-brands-admin-settings.php:37
-#: includes/class-dokan-store-category.php:84
-msgid "Single"
-msgstr ""
-
-#: includes/admin/admin.php:142
-#: includes/brands/class-dokan-brands-admin-settings.php:38
-#: includes/class-dokan-store-category.php:85
-msgid "Multiple"
-msgstr ""
-
-#: includes/admin/admin.php:147
-msgid "Vendors Can Create Tags"
-msgstr ""
-
-#: includes/admin/admin.php:148
-msgid "Allow vendors to create new product tags from vendor dashboard."
-msgstr ""
-
-#: includes/admin/admin.php:154
+#: includes/admin/admin.php:123
 msgid "New Product Status"
 msgstr ""
 
-#: includes/admin/admin.php:155
+#: includes/admin/admin.php:124
 msgid "Product status when a vendor creates a product"
 msgstr ""
 
-#: includes/admin/admin.php:159
+#: includes/admin/admin.php:128
 #: includes/modules/subscription/includes/admin/admin.php:422
 #: src/admin/components/Announcement.vue:116
 msgid "Published"
 msgstr ""
 
-#: includes/admin/admin.php:160
+#: includes/admin/admin.php:129
 #: includes/modules/subscription/includes/admin/admin.php:423
 #: templates/products/edit/product-list-table-inline-edit-form.php:40
 msgid "Pending Review"
 msgstr ""
 
-#: includes/admin/admin.php:165
+#: includes/admin/admin.php:135
+msgid "Duplicate product"
+msgstr ""
+
+#: includes/admin/admin.php:136
+msgid "Allow vendor to duplicate their product"
+msgstr ""
+
+#: includes/admin/admin.php:143
 msgid "Edited Product Status"
 msgstr ""
 
-#: includes/admin/admin.php:166
+#: includes/admin/admin.php:144
 msgid ""
 "Set Product status as pending review when a vendor edits or updates a "
 "product"
 msgstr ""
 
-#: includes/admin/admin.php:172
-msgid "Duplicate product"
+#: includes/admin/admin.php:151
+msgid "Product Mail Notification"
 msgstr ""
 
-#: includes/admin/admin.php:173
-msgid "Allow vendor to duplicate their product"
+#: includes/admin/admin.php:152
+msgid "Email notification on new product submission"
+msgstr ""
+
+#: includes/admin/admin.php:159
+msgid "Product Category Selection"
+msgstr ""
+
+#: includes/admin/admin.php:160
+msgid "Select a category type for Products"
+msgstr ""
+
+#: includes/admin/admin.php:164
+#: includes/brands/class-dokan-brands-admin-settings.php:37
+#: includes/class-dokan-store-category.php:84
+msgid "Single"
+msgstr ""
+
+#: includes/admin/admin.php:165
+#: includes/brands/class-dokan-brands-admin-settings.php:38
+#: includes/class-dokan-store-category.php:85
+msgid "Multiple"
+msgstr ""
+
+#: includes/admin/admin.php:171
+msgid "Vendors Can Create Tags"
+msgstr ""
+
+#: includes/admin/admin.php:172
+msgid "Allow vendors to create new product tags from vendor dashboard."
 msgstr ""
 
 #: includes/admin/admin.php:179
@@ -1328,95 +1340,111 @@ msgstr ""
 msgid "Allow vendor to add discount on order"
 msgstr ""
 
-#: includes/admin/admin.php:187
+#: includes/admin/admin.php:188
 msgid "Hide Customer info"
 msgstr ""
 
-#: includes/admin/admin.php:188
+#: includes/admin/admin.php:189
 msgid "Hide customer information from order details of vendors"
 msgstr ""
 
+#: includes/admin/admin.php:196
+msgid "Vendor Product Review"
+msgstr ""
+
 #: includes/admin/admin.php:197
+msgid "Vendor can change product review status from vendor dashboard"
+msgstr ""
+
+#: includes/admin/admin.php:235
+msgid "Store Banner width"
+msgstr ""
+
+#: includes/admin/admin.php:241
+msgid "Store Banner height"
+msgstr ""
+
+#: includes/admin/admin.php:257
 msgid "Order Status for Withdraw"
 msgstr ""
 
-#: includes/admin/admin.php:198
+#: includes/admin/admin.php:258
 msgid "Order status for which vendor can make a withdraw request."
 msgstr ""
 
-#: includes/admin/admin.php:200 includes/admin/admin.php:201
+#: includes/admin/admin.php:260 includes/admin/admin.php:261
 #: includes/modules/rma/includes/functions.php:293
 #: src/admin/components/Reports.vue:289
 msgid "Completed"
 msgstr ""
 
-#: includes/admin/admin.php:200 includes/admin/admin.php:201
+#: includes/admin/admin.php:260 includes/admin/admin.php:261
 #: includes/modules/rma/includes/functions.php:292
 #: src/admin/components/Reports.vue:285
 msgid "Processing"
 msgstr ""
 
-#: includes/admin/admin.php:200 includes/admin/admin.php:201
+#: includes/admin/admin.php:260 includes/admin/admin.php:261
 #: src/admin/components/Reports.vue:293
 msgid "On-hold"
 msgstr ""
 
-#: includes/admin/admin.php:205
+#: includes/admin/admin.php:265
 msgid "Withdraw Threshold"
 msgstr ""
 
-#: includes/admin/admin.php:206
+#: includes/admin/admin.php:266
 msgid ""
 "Days, ( Make order matured to make a withdraw request) <br> Value \"0\" "
 "will inactive this option"
 msgstr ""
 
-#: includes/admin/admin.php:212
+#: includes/admin/admin.php:272
 msgid "Hide Withdraw Option"
 msgstr ""
 
-#: includes/admin/admin.php:213
+#: includes/admin/admin.php:273
 msgid "Hide withdraw option (when vendor is getting commission automatically) "
 msgstr ""
 
-#: includes/admin/admin.php:348 includes/admin/admin.php:352
+#: includes/admin/admin.php:408 includes/admin/admin.php:412
 #: includes/admin/ajax.php:49 includes/admin/ajax.php:53
 #: includes/admin/ajax.php:117 includes/admin/ajax.php:121
 msgid "You don't have enough permission"
 msgstr ""
 
-#: includes/admin/admin.php:358
+#: includes/admin/admin.php:418
 msgid "Dashboard"
 msgstr ""
 
-#: includes/admin/admin.php:364
+#: includes/admin/admin.php:424
 msgid "Store List"
 msgstr ""
 
-#: includes/admin/admin.php:370
+#: includes/admin/admin.php:430
 msgid "My Orders"
 msgstr ""
 
-#: includes/admin/admin.php:417
+#: includes/admin/admin.php:477
 msgid "All the default pages has been created!"
 msgstr ""
 
-#: includes/admin/admin.php:474
+#: includes/admin/admin.php:534
 msgid "Settings"
 msgstr ""
 
-#: includes/admin/admin.php:508 includes/admin/reports.php:195
+#: includes/admin/admin.php:568 includes/admin/reports.php:195
 #: src/admin/components/Reports.vue:325
 #: templates/orders/views/html-order-items.php:200
 msgid "Order Total"
 msgstr ""
 
-#: includes/admin/admin.php:509 includes/admin/reports.php:196
+#: includes/admin/admin.php:569 includes/admin/reports.php:196
 #: src/admin/components/Reports.vue:328
 msgid "Vendor Earning"
 msgstr ""
 
-#: includes/admin/admin.php:510 includes/admin/reports.php:198
+#: includes/admin/admin.php:570 includes/admin/reports.php:198
 #: includes/modules/rma/templates/rma/customer-rma-requests.php:25
 #: includes/modules/rma/templates/rma/vendor-rma-requests.php:55
 #: includes/modules/rma/templates/rma/vendor-rma-single-request.php:136
@@ -1432,18 +1460,18 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: includes/admin/admin.php:511 src/admin/components/Reports.vue:331
+#: includes/admin/admin.php:571 src/admin/components/Reports.vue:331
 msgid "Commission"
 msgstr ""
 
-#: includes/admin/admin.php:619
+#: includes/admin/admin.php:679
 msgid ""
 "<p>Christmas Offer! <strong>Save 30%%</strong> Upgrading Your Dokan "
 "Package. <strong>Coupon: “XMAS30”</strong>. Offer Ends in 31st Dec, 12.00 "
 "PM! <a target=\"_blank\" href=\"%s\">Grab The Deal</a></p>"
 msgstr ""
 
-#: includes/admin/admin.php:662
+#: includes/admin/admin.php:722
 msgid "You have no permission to do that"
 msgstr ""
 
@@ -2473,7 +2501,7 @@ msgstr ""
 
 #: includes/class-dokan-store-category.php:80
 #: includes/class-dokan-store-category.php:155
-#: includes/modules/elementor/includes/StoreWPWidgets.php:185
+#: includes/modules/elementor/includes/StoreWPWidgets.php:186
 #: templates/seller-search-form-categories.php:6 templates/store-reviews.php:32
 #: templates/vendor-biography.php:29
 msgid "Store Category"
@@ -2545,7 +2573,7 @@ msgstr ""
 #: includes/modules/report-abuse/includes/AdminEmail.php:58
 #: includes/modules/rma/includes/emails/class-dokan-rma-send-coupin-email.php:139
 #: includes/modules/rma/includes/emails/class-dokan-rma-send-warranty-request.php:146
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:116
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:202
 #: includes/modules/subscription/includes/emails/subscription-cancelled.php:147
 #: includes/shipping-gateway/shipping.php:65
 msgid "Enable/Disable"
@@ -2903,15 +2931,15 @@ msgstr ""
 msgid "Column Wrapper Padding"
 msgstr ""
 
-#: includes/modules/elementor/includes/StoreWPWidgets.php:71
-#: includes/modules/elementor/includes/StoreWPWidgets.php:111
+#: includes/modules/elementor/includes/StoreWPWidgets.php:72
+#: includes/modules/elementor/includes/StoreWPWidgets.php:112
 #: includes/modules/store-support/support-widget.php:49
 #: includes/modules/store-support/support-widget.php:99
 #: templates/store-reviews.php:43 templates/vendor-biography.php:40
 msgid "Contact Vendor"
 msgstr ""
 
-#: includes/modules/elementor/includes/StoreWPWidgets.php:89
+#: includes/modules/elementor/includes/StoreWPWidgets.php:90
 #: includes/modules/elementor/includes/Tags/StoreSupportButton.php:55
 #: includes/modules/store-support/store-support.php:287
 #: includes/modules/store-support/store-support.php:1355
@@ -2919,14 +2947,22 @@ msgstr ""
 msgid "Get Support"
 msgstr ""
 
-#: includes/modules/elementor/includes/StoreWPWidgets.php:149
+#: includes/modules/elementor/includes/StoreWPWidgets.php:150
 #: templates/store-reviews.php:35 templates/vendor-biography.php:32
 msgid "Store Location"
 msgstr ""
 
-#: includes/modules/elementor/includes/StoreWPWidgets.php:225
+#: includes/modules/elementor/includes/StoreWPWidgets.php:226
 #: templates/store-reviews.php:39 templates/vendor-biography.php:36
 msgid "Store Time"
+msgstr ""
+
+#: includes/modules/elementor/includes/StoreWPWidgets.php:282
+#: includes/modules/vendor-verification/includes/widgets/verifications-list.php:32
+#: includes/modules/vendor-verification/includes/widgets/verifications-list.php:92
+#: includes/modules/vendor-verification/templates/verification-new.php:33
+#: includes/modules/vendor-verification/templates/verification.php:45
+msgid "ID Verification"
 msgstr ""
 
 #: includes/modules/elementor/includes/Tags/StoreBanner.php:40
@@ -3118,7 +3154,7 @@ msgstr ""
 #: includes/modules/paypal-adaptive-payments/classes/class-dokan-paypal-ap-gateway.php:129
 #: includes/modules/store-support/store-support.php:690
 #: includes/modules/store-support/store-support.php:1004
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:123
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:209
 #: src/admin/components/Announcement.vue:137
 #: src/frontend/components/Zone.vue:165 templates/coupon/form.php:18
 #: templates/products/edit/product-list-table-inline-edit-form.php:10
@@ -3131,7 +3167,7 @@ msgstr ""
 #: includes/modules/report-abuse/src/js/admin/pages/AbuseReports.vue:95
 #: includes/modules/report-abuse/views/report-abuse-admin-email-html.php:21
 #: includes/modules/report-abuse/views/report-form.php:28
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:129
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:215
 #: src/admin/components/StoreCategoriesIndex.vue:35
 #: src/admin/components/StoreCategoriesIndex.vue:154
 #: src/admin/components/StoreCategoriesShow.vue:35
@@ -3411,7 +3447,7 @@ msgstr ""
 
 #: includes/modules/live-search/classes/class-dokan-live-search.php:83
 #: includes/modules/store-support/support-widget.php:108
-#: includes/modules/vendor-verification/includes/widgets/verifications-list.php:114
+#: includes/modules/vendor-verification/includes/widgets/verifications-list.php:98
 #: includes/widgets/best-seller.php:85 includes/widgets/feature-seller.php:86
 msgid "Title:"
 msgstr ""
@@ -3421,6 +3457,7 @@ msgid "Dokan Wirecard Connect"
 msgstr ""
 
 #: includes/modules/moip/includes/admin/class-moip-gateway.php:35
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:67
 msgid "Have your customers pay with credit card."
 msgstr ""
 
@@ -3430,7 +3467,7 @@ msgstr ""
 
 #: includes/modules/moip/includes/admin/class-moip-gateway.php:86
 #: includes/modules/paypal-adaptive-payments/classes/class-dokan-paypal-ap-gateway.php:131
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:125
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:211
 #: includes/shipping-gateway/shipping.php:73
 #: includes/shipping-gateway/vendor-shipping.php:200
 msgid "This controls the title which the user sees during checkout."
@@ -3442,7 +3479,7 @@ msgstr ""
 
 #: includes/modules/moip/includes/admin/class-moip-gateway.php:92
 #: includes/modules/paypal-adaptive-payments/classes/class-dokan-paypal-ap-gateway.php:138
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:131
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:217
 msgid "This controls the description which the user sees during checkout."
 msgstr ""
 
@@ -3460,17 +3497,17 @@ msgid "Select who will bear the Wirecard transection fee."
 msgstr ""
 
 #: includes/modules/moip/includes/admin/class-moip-gateway.php:106
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:142
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:235
 msgid "Test mode"
 msgstr ""
 
 #: includes/modules/moip/includes/admin/class-moip-gateway.php:107
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:143
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:236
 msgid "Enable Test Mode"
 msgstr ""
 
 #: includes/modules/moip/includes/admin/class-moip-gateway.php:109
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:145
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:238
 msgid "Place the payment gateway in test mode using test API keys."
 msgstr ""
 
@@ -3505,7 +3542,7 @@ msgid ""
 msgstr ""
 
 #: includes/modules/moip/includes/admin/class-moip-gateway.php:135
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:230
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:323
 msgid "Test credentials"
 msgstr ""
 
@@ -3534,7 +3571,6 @@ msgid "Get your test public API keys from your wirecard account. (Required**)"
 msgstr ""
 
 #: includes/modules/moip/includes/admin/class-moip-gateway.php:234
-#: includes/modules/moip/includes/admin/class-moip-gateway.php:356
 msgid "Something went wrong:"
 msgstr ""
 
@@ -3562,84 +3598,106 @@ msgid ""
 msgstr ""
 
 #: includes/modules/moip/includes/admin/class-moip-gateway.php:346
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:500
+#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:75
 msgid "Minimum order total is 0.50"
 msgstr ""
 
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:356
+msgid "Something went wrong: "
+msgstr ""
+
 #: includes/modules/moip/includes/admin/class-moip-gateway.php:373
-#: includes/modules/moip/includes/admin/class-moip-gateway.php:532
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:552
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:691
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:549
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:700
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:870
 msgid "%s - Order %s"
 msgstr ""
 
 #: includes/modules/moip/includes/admin/class-moip-gateway.php:376
-#: includes/modules/moip/includes/admin/class-moip-gateway.php:552
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:556
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:712
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:569
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:704
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:888
 msgid "No orders found to process!"
 msgstr ""
 
-#: includes/modules/moip/includes/admin/class-moip-gateway.php:413
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:398
+msgid "Wirecard doesn't support weekly subscription plan."
+msgstr ""
+
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:412
+msgid "Subscription can't be created, as plan id is not found"
+msgstr ""
+
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:422
 #: includes/modules/moip/includes/admin/class-moip-subscription.php:262
 msgid "Subscripton can't be created"
 msgstr ""
 
-#: includes/modules/moip/includes/admin/class-moip-gateway.php:454
-#: includes/modules/moip/includes/admin/class-moip-gateway.php:566
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:460
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:583
 msgid "Wirecard data is not found"
 msgstr ""
 
-#: includes/modules/moip/includes/admin/class-moip-gateway.php:474
-#: includes/modules/moip/includes/admin/class-moip-gateway.php:606
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:473
+msgid "Unable to cancel previous subscription."
+msgstr ""
+
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:494
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:623
 msgid "Credit card nout found"
 msgstr ""
 
-#: includes/modules/moip/includes/admin/class-moip-gateway.php:487
-#: includes/modules/moip/includes/admin/class-moip-gateway.php:619
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:507
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:636
 msgid "Payment id not found"
 msgstr ""
 
-#: includes/modules/moip/includes/admin/class-moip-gateway.php:515
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:532
 msgid "Wirecard Payment Error: %s"
 msgstr ""
 
-#: includes/modules/moip/includes/admin/class-moip-gateway.php:576
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:724
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:593
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:897
 msgid "Something went wrong and the order can not be processed!"
 msgstr ""
 
-#: includes/modules/moip/includes/admin/class-moip-gateway.php:625
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:750
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:642
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:906
 msgid "Order %s payment completed"
 msgstr ""
 
-#: includes/modules/moip/includes/admin/class-moip-gateway.php:698
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:715
 msgid "Order %d payment auto paid via Dokan Wirecard"
 msgstr ""
 
-#: includes/modules/moip/includes/admin/class-moip-gateway.php:735
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:752
 msgid "Please enter card details"
 msgstr ""
 
-#: includes/modules/moip/includes/admin/class-moip-gateway.php:739
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:756
 msgid "Phone number is required"
 msgstr ""
 
-#: includes/modules/moip/includes/admin/class-moip-gateway.php:743
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:760
 msgid "CPF number is required"
 msgstr ""
 
-#: includes/modules/moip/includes/admin/class-moip-gateway.php:747
+#: includes/modules/moip/includes/admin/class-moip-gateway.php:764
 msgid "CPF number must be 11 character long"
+msgstr ""
+
+#: includes/modules/moip/includes/admin/class-moip-subscription.php:101
+#: includes/modules/moip/includes/admin/class-moip-subscription.php:178
+#: includes/modules/moip/includes/admin/class-moip-subscription.php:524
+msgid "Something went wrong"
 msgstr ""
 
 #: includes/modules/moip/includes/admin/class-moip-subscription.php:272
 msgid "Subscripton not created"
 msgstr ""
 
-#: includes/modules/moip/includes/admin/class-moip-subscription.php:480
-#: includes/modules/moip/includes/admin/class-moip-subscription.php:484
+#: includes/modules/moip/includes/admin/class-moip-subscription.php:467
+#: includes/modules/moip/includes/admin/class-moip-subscription.php:471
 msgid "Invoice not found"
 msgstr ""
 
@@ -3653,8 +3711,8 @@ msgstr ""
 
 #: includes/modules/moip/includes/public/class-withdraw-methods.php:177
 msgid ""
-"Your account is not yet connected with Wirecard. Connect with Wirecard to "
-"receive your commissions."
+"Your account is not connected to Wirecard. Connect your Wirecard account to "
+"receive payouts."
 msgstr ""
 
 #: includes/modules/moip/includes/public/class-withdraw-methods.php:206
@@ -3666,34 +3724,35 @@ msgid "Your account is connected with Wirecard."
 msgstr ""
 
 #: includes/modules/moip/includes/public/class-withdraw-methods.php:213
-#: includes/modules/stripe/gateway-stripe.php:324
+#: includes/modules/stripe/gateway-stripe.php:361
 msgid "Disconnect"
 msgstr ""
 
-#: includes/modules/moip/moip.php:345
+#: includes/modules/moip/moip.php:365
+#: includes/modules/stripe/gateway-stripe.php:198
 msgid ""
-"<strong>Error!</strong> The <strong>%s</strong> does not allowes the "
-"Wirecard gateway. You can not purchase this products %s using Wirecard "
-"Gateway"
+"<strong>Error!</strong> You cannot complete your purchase until "
+"<strong>%s</strong> has enabled Stripe as a payment gateway. Please remove "
+"%s to continue."
 msgstr ""
 
-#: includes/modules/moip/moip.php:418
+#: includes/modules/moip/moip.php:438
 msgid "Your Wirecard account isn't active yet. Please connect to Wirecard first!"
 msgstr ""
 
-#: includes/modules/moip/moip.php:418
+#: includes/modules/moip/moip.php:438
 msgid "Connect to Moip"
 msgstr ""
 
-#: includes/modules/moip/moip.php:465
+#: includes/modules/moip/moip.php:485
 msgid "Dokan Wirecard Settings"
 msgstr ""
 
-#: includes/modules/moip/moip.php:468
+#: includes/modules/moip/moip.php:488
 msgid "Disconnect User Wirecard Account"
 msgstr ""
 
-#: includes/modules/moip/moip.php:470
+#: includes/modules/moip/moip.php:490
 msgid "User account not connected to Wirecard"
 msgstr ""
 
@@ -3715,7 +3774,7 @@ msgid "PayPal Adaptive works by sending payment to multiple user email"
 msgstr ""
 
 #: includes/modules/paypal-adaptive-payments/classes/class-dokan-paypal-ap-gateway.php:100
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:274
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:367
 msgid "Gateway Disabled"
 msgstr ""
 
@@ -5564,412 +5623,466 @@ msgstr ""
 msgid "You can see it by going here :"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:16
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:66
 msgid "Dokan Stripe Connect"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:58
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:144
 msgid ""
 "Stripe now uses stripe.js for security and requires WooCommerce 1.5.8. "
 "Please update WooCommerce to continue using Stripe."
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:63
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:149
 msgid "Stripe error: Please enter your secret key <a href=\"%s\">here</a>"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:67
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:153
 msgid "Stripe error: Please enter your publishable key <a href=\"%s\">here</a>"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:72
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:158
 msgid ""
 "Stripe error: Your secret and publishable keys match. Please check and "
 "re-enter."
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:77
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:163
 msgid ""
 "Stripe is enabled, but the <a href=\"%s\">force SSL option</a> is disabled; "
 "your checkout may not be secure! Please enable SSL and ensure your server "
 "has a valid SSL certificate - Stripe will only work in test mode."
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:117
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:203
 msgid "Enable Stripe"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:126
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:212
 msgid "Dokan Credit card (Stripe)"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:135
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:221
 msgid "Non-connected sellers"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:136
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:222
 msgid "Allow ordering products from non-connected sellers"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:138
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:224
 msgid ""
 "If this is enable, customers can order products from non-connected sellers. "
 "The payment will send to admin Stripe account."
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:149
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:228
+msgid "3D Secure and SCA"
+msgstr ""
+
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:229
+msgid "Enable 3D Secure and Strong Customer Authentication"
+msgstr ""
+
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:231
+msgid ""
+"Note: 3D Secure and SCA ready transaction is only supported when both your "
+"platform and the connected account (Vendor) are in the same region: both in "
+"Europe or both in the U.S. Also automatic refund through stripe is not "
+"supported as well."
+msgstr ""
+
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:242
 msgid "Stripe Checkout"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:150
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:243
 msgid "Enable Stripe Checkout"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:152
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:245
 msgid ""
 "If enabled, this option shows a \"pay\" button and modal credit card form "
 "on the checkout, instead of credit card fields directly on the page."
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:156
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:249
 msgid "Stripe Checkout locale"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:159
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:252
 msgid ""
 "Language to display in Stripe Checkout modal. Specify Auto to display "
 "Checkout in the user's preferred language, if available. English will be "
 "used by default."
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:163
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:256
 msgid "Auto"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:164
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:257
 msgid "Simplified Chinese"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:165
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:258
 msgid "Danish"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:166
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:259
 msgid "Dutch"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:167
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:260
 msgid "English"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:168
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:261
 msgid "Finnish"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:169
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:262
 msgid "French"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:170
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:263
 msgid "German"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:171
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:264
 msgid "Italian"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:172
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:265
 msgid "Japanese"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:173
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:266
 msgid "Norwegian"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:174
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:267
 msgid "Spanish"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:175
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:268
 msgid "Swedish"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:179
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:272
 msgid "Bitcoin Currency"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:180
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:273
 msgid "Enable Bitcoin Currency in Stripe Checkout"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:182
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:275
 msgid ""
 "If enabled, an option to accept bitcoin will show on the checkout modal. "
 "Note: Stripe Checkout needs to be enabled and store currency must be set to "
 "USD."
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:187
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:280
 msgid "Checkout Image"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:188
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:281
 msgid ""
 "Optionally enter the URL to a 128x128px image of your brand or product. "
 "e.g. "
 "<code>https://yoursite.com/wp-content/uploads/2013/09/yourimage.jpg</code>"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:194
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:287
 msgid "Checkout Button Label"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:195
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:288
 msgid "Optionally enter a Label for PAY button"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:201
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:294
 #: includes/modules/stripe/templates/saved-cards.php:1
 msgid "Saved cards"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:202
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:295
 msgid "Enable saved cards"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:204
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:297
 msgid ""
 "If enabled, users will be able to pay with a saved card during checkout. "
 "Card details are saved on Stripe servers, not on your store."
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:208
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:301
 msgid "Live credentials"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:212
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:305
 msgid "Secret Key"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:214
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:220
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:236
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:242
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:307
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:313
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:329
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:335
 msgid "Get your API keys from your stripe account."
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:218
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:311
 msgid "Publishable Key"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:226
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:248
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:319
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:341
 msgid "Get your client ID from your stripe account, the Apps menu."
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:234
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:327
 msgid "Test Secret Key"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:240
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:333
 msgid "Test Publishable Key"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:246
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:339
 msgid "Test Client ID"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:260
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:353
 msgid "Stripe Connect"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:261
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:354
 msgid ""
 "Stripe works by adding credit card fields on the checkout and then sending "
 "the details to Stripe for verification."
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:263
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:356
 msgid ""
 "Recurring subscription requires webhooks to be configured. Go to <a "
 "href=\"%s\">webhook</a> and set your webhook url <code>%s</code>. Otherwise "
 "recurring payment not working automatically"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:275
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:368
 msgid ""
 "Choose a currency supported by Stripe as your store currency to enable "
 "Stripe Connect."
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:326
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:423
 msgid ""
 "TEST MODE ENABLED. In test mode, you can use the card number "
 "4242424242424242 with any CVC and a valid expiration date."
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:333
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:430
 msgid "Manage cards"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:337
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:434
 msgid "Card ending with"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:340
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:437
 msgid "Use a new credit card"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:412
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:473
+msgid "Credit or debit card"
+msgstr ""
+
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:552
 #: templates/coupon/form.php:35 templates/coupon/listing.php:55
 msgid "%s"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:416
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:556
 msgid "Please accept the terms and conditions first"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:417
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:557
 msgid "Please fill in required checkout fields first"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:488
-msgid "Invalid card."
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:693
+msgid "Order payment completed via stripe with 3d secure"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:494
-msgid ""
-"Please make sure your card details have been entered correctly and that "
-"your browser supports JavaScript."
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:756
+msgid "Unable to find previous subscriptoin id"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:529
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:675
-msgid "Stripe Payment Error: %s"
-msgstr ""
-
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:532
-msgid "Error: "
-msgstr ""
-
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:642
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:802
 msgid "Order %s payment <a href=\"#\">completed</a> via %s on (Charge IDs: %s)"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:672
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:792
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:817
+#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:49
+msgid "Payment intent is not successful. Please try agin with a different card."
+msgstr ""
+
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:847
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:941
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:990
+msgid ""
+"Order %s payment <a href=\"#\">completed</a> via Dokan Stripe with 3d "
+"secure on (Charge ID: %s)"
+msgstr ""
+
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:849
 msgid ""
 "Order %s payment <a href=\"#\">completed</a> via Dokan Stripe on (Charge "
 "IDs: %s)"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:743
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:854
+#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:104
+msgid "Stripe Payment Error: %s"
+msgstr ""
+
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:922
+msgid "Connected vendor id is not found"
+msgstr ""
+
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:936
+msgid "Unable to transfer fund to vendor account"
+msgstr ""
+
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:954
 msgid "Unable to process with Stripe gateway"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:771
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:966
 msgid "%s - Order %s, suborder of %s"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:780
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:975
 msgid ""
 "Vendor payment transferred to admin account since the vendor had not "
 "connected to Stripe"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:787
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:982
 msgid "Order %s payment completed via Dokan Stripe on Charge ID: %s"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:892
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:994
+msgid ""
+"Order %s payment <a href=\"#\">completed</a> via Dokan Stripe on (Charge "
+"ID: %s)"
+msgstr ""
+
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:1046
+msgid "Unable to reterive the order total"
+msgstr ""
+
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:1178
 msgid "Order %d payment Auto paid via Dokan Stripe"
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:995
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:1292
 msgid "There was a problem connecting to the payment gateway."
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:999
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:1296
 msgid "Empty response."
 msgstr ""
 
-#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:1011
+#: includes/modules/stripe/abstracts/abstract-class-dokan-stripe-gateway.php:1308
 msgid "Invalid response."
 msgstr ""
 
-#: includes/modules/stripe/gateway-stripe.php:151
-msgid ""
-"<strong>Error!</strong> The <strong>%s</strong> does not allowes the Stipe "
-"gateway. You can not purchase this products %s using Stripe Gateway"
+#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:66
+msgid "Invalid card."
 msgstr ""
 
-#: includes/modules/stripe/gateway-stripe.php:234
+#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:69
 msgid ""
-"This vendor has not configured his Stripe payment gateway and the product "
-"can not be purchased!"
+"Please make sure your card details have been entered correctly and that "
+"your browser supports JavaScript."
 msgstr ""
 
-#: includes/modules/stripe/gateway-stripe.php:257
+#: includes/modules/stripe/classes/class-dokan-stripe-connect.php:107
+msgid "Error: "
+msgstr ""
+
+#: includes/modules/stripe/classes/class-dokan-stripe-subscription.php:153
+msgid "Unable to create subscription"
+msgstr ""
+
+#: includes/modules/stripe/classes/class-dokan-stripe-subscription.php:201
+msgid "Unable to find previous subscription"
+msgstr ""
+
+#: includes/modules/stripe/gateway-stripe.php:285
 msgid "Stripe"
 msgstr ""
 
-#: includes/modules/stripe/gateway-stripe.php:274
+#: includes/modules/stripe/gateway-stripe.php:302
 msgid "Stripe gateway is not configured. Please contact admin."
 msgstr ""
 
-#: includes/modules/stripe/gateway-stripe.php:304
+#: includes/modules/stripe/gateway-stripe.php:333
 msgid ""
-"Your account is not yet connected with Stripe. Connect with Stripe to "
-"receive your commissions."
+"Your account is not connected to Stripe. Connect your Stripe account to "
+"receive payouts."
 msgstr ""
 
-#: includes/modules/stripe/gateway-stripe.php:323
+#: includes/modules/stripe/gateway-stripe.php:360
 msgid "Your account is connected with Stripe."
 msgstr ""
 
-#: includes/modules/stripe/gateway-stripe.php:501
+#: includes/modules/stripe/gateway-stripe.php:544
 msgid "Order %s status is now on-hold due to dispute via %s on (Charge IDs: %s)"
 msgstr ""
 
-#: includes/modules/stripe/gateway-stripe.php:521
+#: includes/modules/stripe/gateway-stripe.php:564
 msgid ""
 "Order %s status is now completed due to dispute resolved in your favour via "
 "%s on (Charge IDs: %s)"
 msgstr ""
 
-#: includes/modules/stripe/gateway-stripe.php:622
+#: includes/modules/stripe/gateway-stripe.php:683
 msgid "Dokan Stripe Settings"
 msgstr ""
 
-#: includes/modules/stripe/gateway-stripe.php:625
+#: includes/modules/stripe/gateway-stripe.php:686
 msgid "Disconnect User Stripe Account"
 msgstr ""
 
-#: includes/modules/stripe/gateway-stripe.php:627
+#: includes/modules/stripe/gateway-stripe.php:688
 msgid "User account not connected to Stripe"
 msgstr ""
 
-#: includes/modules/stripe/gateway-stripe.php:662
+#: includes/modules/stripe/gateway-stripe.php:723
 msgid "No refund data to be processed"
 msgstr ""
 
-#: includes/modules/stripe/gateway-stripe.php:687
+#: includes/modules/stripe/gateway-stripe.php:753
 msgid "requested_by_customer"
 msgstr ""
 
-#: includes/modules/stripe/gateway-stripe.php:695
+#: includes/modules/stripe/gateway-stripe.php:761
 msgid "Refund ID is not found"
 msgstr ""
 
-#: includes/modules/stripe/gateway-stripe.php:698
+#: includes/modules/stripe/gateway-stripe.php:764
 msgid "Refund Processed Via Stripe ( Refund ID: %s )"
 msgstr ""
 
-#: includes/modules/stripe/gateway-stripe.php:714
+#: includes/modules/stripe/gateway-stripe.php:780
 msgid "Refund request has been sent but not approved"
 msgstr ""
 
-#: includes/modules/stripe/gateway-stripe.php:724
+#: includes/modules/stripe/gateway-stripe.php:790
 msgid "Your refund request has been processed."
 msgstr ""
 
@@ -6181,8 +6294,8 @@ msgid "Product Subscription"
 msgstr ""
 
 #: includes/modules/subscription/includes/admin/admin.php:384
-#: includes/modules/subscription/product-subscription.php:408
-#: includes/modules/subscription/product-subscription.php:415
+#: includes/modules/subscription/product-subscription.php:409
+#: includes/modules/subscription/product-subscription.php:416
 msgid "Subscription"
 msgstr ""
 
@@ -6295,65 +6408,85 @@ msgstr ""
 msgid "You can only assign non-recurring packs"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Helper.php:95
+#: includes/modules/subscription/includes/classes/Helper.php:96
 msgid "day"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Helper.php:98
+#: includes/modules/subscription/includes/classes/Helper.php:99
 msgid "week"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Helper.php:101
+#: includes/modules/subscription/includes/classes/Helper.php:102
 msgid "month"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Helper.php:104
+#: includes/modules/subscription/includes/classes/Helper.php:105
 msgid "year"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Helper.php:158
+#: includes/modules/subscription/includes/classes/Helper.php:159
 msgid "Day(s)"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Helper.php:159
+#: includes/modules/subscription/includes/classes/Helper.php:160
 msgid "Week(s)"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Helper.php:160
+#: includes/modules/subscription/includes/classes/Helper.php:161
 msgid "Month(s)"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Helper.php:161
+#: includes/modules/subscription/includes/classes/Helper.php:162
 msgid "Year(s)"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Helper.php:263
+#: includes/modules/subscription/includes/classes/Helper.php:264
 msgid "day(s)"
 msgid_plural "%s days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/modules/subscription/includes/classes/Helper.php:264
+#: includes/modules/subscription/includes/classes/Helper.php:265
 msgid "week(s)"
 msgid_plural "%s weeks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/modules/subscription/includes/classes/Helper.php:265
+#: includes/modules/subscription/includes/classes/Helper.php:266
 msgid "month(s)"
 msgid_plural "%s months"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/modules/subscription/includes/classes/Helper.php:266
+#: includes/modules/subscription/includes/classes/Helper.php:267
 msgid "year(s)"
 msgid_plural "%s years"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/modules/subscription/includes/classes/Helper.php:287
+#: includes/modules/subscription/includes/classes/Helper.php:288
 #: templates/orders/views/html-order-download-permission.php:27
 msgid "Never"
+msgstr ""
+
+#: includes/modules/subscription/includes/classes/ProductStatusChanger.php:48
+msgid "Publish Products"
+msgstr ""
+
+#: includes/modules/subscription/includes/classes/ProductStatusChanger.php:119
+msgid "Featured"
+msgstr ""
+
+#: includes/modules/subscription/includes/classes/ProductStatusChanger.php:120
+msgid "Top Rated"
+msgstr ""
+
+#: includes/modules/subscription/includes/classes/ProductStatusChanger.php:121
+msgid "Best Selling"
+msgstr ""
+
+#: includes/modules/subscription/includes/classes/ProductStatusChanger.php:126
+msgid "- Select Filter -"
 msgstr ""
 
 #: includes/modules/subscription/includes/classes/Registration.php:62
@@ -6373,103 +6506,110 @@ msgstr ""
 msgid "Select subscription a pack"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:61
+#: includes/modules/subscription/includes/classes/Shortcode.php:54
+msgid ""
+"The intend <span>%s</span> subscription is inactive due to payment failure. "
+"Please <a href=\"?add-to-cart=%s\">Pay Now</a> to active it again."
+msgstr ""
+
+#: includes/modules/subscription/includes/classes/Shortcode.php:67
 msgid "Your are using <span>%s (%s trial)</span> package."
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:63
+#: includes/modules/subscription/includes/classes/Shortcode.php:69
 msgid "Your are using <span>%s</span> package."
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:69
+#: includes/modules/subscription/includes/classes/Shortcode.php:75
 msgid "unlimited"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:72
+#: includes/modules/subscription/includes/classes/Shortcode.php:78
 msgid "You can add <span>%s</span> products"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:74
+#: includes/modules/subscription/includes/classes/Shortcode.php:80
 msgid ""
 "You can add <span>%s</span> product(s) for <span> unlimited days</span> "
 "days."
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:76
+#: includes/modules/subscription/includes/classes/Shortcode.php:82
 msgid "You can add <span>%s</span> product(s) for <span>%s</span> days."
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:85
+#: includes/modules/subscription/includes/classes/Shortcode.php:91
 msgid "You will be charged in every %d"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:87
+#: includes/modules/subscription/includes/classes/Shortcode.php:93
 msgid "You have a lifetime package."
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:89
+#: includes/modules/subscription/includes/classes/Shortcode.php:95
 msgid "Your package will expire on <span>%s</span>"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:95
+#: includes/modules/subscription/includes/classes/Shortcode.php:101
 msgid "To cancel your subscription click here &rarr;"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:102
+#: includes/modules/subscription/includes/classes/Shortcode.php:108
 msgid "Please cancel your running package to switch another subscription"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:113
+#: includes/modules/subscription/includes/classes/Shortcode.php:118
 msgid "Your subscription has been cancelled!"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:152
+#: includes/modules/subscription/includes/classes/Shortcode.php:157
 msgid "<div class=\"pack_data_option\"><strong>Unlimited</strong> Products <br />"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:154
+#: includes/modules/subscription/includes/classes/Shortcode.php:159
 msgid "<div class=\"pack_data_option\"><strong>%d</strong> Products <br />"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:161
-#: includes/modules/subscription/includes/classes/Shortcode.php:169
+#: includes/modules/subscription/includes/classes/Shortcode.php:166
+#: includes/modules/subscription/includes/classes/Shortcode.php:174
 msgid "In every %d %s(s)</div>"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:165
+#: includes/modules/subscription/includes/classes/Shortcode.php:170
 msgid "In every %d %s(s) <p class=\"trail-details\">%d %s(s) trial </p> </div>"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:173
+#: includes/modules/subscription/includes/classes/Shortcode.php:178
 msgid "For<br /><strong>Unlimited</strong> Days</div>"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:176
+#: includes/modules/subscription/includes/classes/Shortcode.php:181
 msgid "For<br /><strong>%s</strong> Days</div>"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:185
+#: includes/modules/subscription/includes/classes/Shortcode.php:190
 msgid "Your Pack"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:189
+#: includes/modules/subscription/includes/classes/Shortcode.php:194
 msgid "Renew"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:194
 #: includes/modules/subscription/includes/classes/Shortcode.php:199
+#: includes/modules/subscription/includes/classes/Shortcode.php:211
+msgid "Switch Plan"
+msgstr ""
+
+#: includes/modules/subscription/includes/classes/Shortcode.php:201
+#: includes/modules/subscription/includes/classes/Shortcode.php:207
 msgid "Buy Now"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:197
+#: includes/modules/subscription/includes/classes/Shortcode.php:205
 msgid "Start Free Trial"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/Shortcode.php:204
-msgid "View Details"
-msgstr ""
-
-#: includes/modules/subscription/includes/classes/Shortcode.php:215
+#: includes/modules/subscription/includes/classes/Shortcode.php:219
 msgid "No subscription pack has been found!"
 msgstr ""
 
@@ -6490,59 +6630,63 @@ msgid ""
 "cancellation features. %sLearn More &raquo;%s"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:231
+#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:171
+msgid "Sorry, with paypal you can't switch subscription plan."
+msgstr ""
+
+#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:234
 msgid "Trial subscription can't be more than 720 days for PayPal"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:266
+#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:269
 msgid "Billing cycle can't be less than 2 or greater than 52 for PayPal"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:369
+#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:372
 msgid "IPN subscription sign up completed."
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:410
+#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:413
 msgid "IPN subscription payment completed. txn_id#%s"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:415
+#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:418
 msgid "IPN subscription payment failed."
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:431
+#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:434
 msgid "IPN subscription cancelled for order."
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:450
+#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:453
 msgid "IPN subscription end-of-term for order."
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:464
+#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:467
 msgid "IPN subscription payment failure."
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:492
+#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:495
 msgid "Subscription cancelled with PayPal"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:506
+#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:509
 msgid "cancelled"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:509
+#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:512
 msgid "suspended"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:512
+#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:515
 msgid "reactivated"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:527
+#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:530
 msgid "Subscription %s at %s"
 msgstr ""
 
-#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:565
+#: includes/modules/subscription/includes/classes/class-dps-paypal-standard-subscriptions.php:568
 msgid "Your Paypal Credentials are not complete"
 msgstr ""
 
@@ -6562,57 +6706,57 @@ msgstr ""
 msgid "A Subscription is cancelled by {vendor_name}"
 msgstr ""
 
-#: includes/modules/subscription/product-subscription.php:275
+#: includes/modules/subscription/product-subscription.php:276
 msgid "Do you really want to cancel the subscription?"
 msgstr ""
 
-#: includes/modules/subscription/product-subscription.php:290
+#: includes/modules/subscription/product-subscription.php:291
 msgid "You can add unlimited products"
 msgstr ""
 
-#: includes/modules/subscription/product-subscription.php:302
+#: includes/modules/subscription/product-subscription.php:303
 msgid ""
 "Sorry! You can not add or publish any more product. Please <a "
 "href=\"%s\">update your package</a>."
 msgstr ""
 
-#: includes/modules/subscription/product-subscription.php:306
+#: includes/modules/subscription/product-subscription.php:307
 msgid "You can add %d more product(s)."
 msgstr ""
 
-#: includes/modules/subscription/product-subscription.php:443
-#: includes/modules/subscription/product-subscription.php:527
+#: includes/modules/subscription/product-subscription.php:444
+#: includes/modules/subscription/product-subscription.php:528
 msgid ""
 "Sorry your subscription exceeds your package limits please update your "
 "package subscription"
 msgstr ""
 
-#: includes/modules/subscription/product-subscription.php:714
+#: includes/modules/subscription/product-subscription.php:715
 msgid "Subscription Package Cancel notification"
 msgstr ""
 
-#: includes/modules/subscription/product-subscription.php:715
+#: includes/modules/subscription/product-subscription.php:716
 msgid ""
 "Due to finish your Package validation we are canceling your Subscription "
 "Package"
 msgstr ""
 
-#: includes/modules/subscription/product-subscription.php:740
+#: includes/modules/subscription/product-subscription.php:741
 msgid "Package End notification alert"
 msgstr ""
 
-#: includes/modules/subscription/product-subscription.php:741
+#: includes/modules/subscription/product-subscription.php:742
 msgid "Your Package validation remaining some days please confirm it"
 msgstr ""
 
-#: includes/modules/subscription/product-subscription.php:842
+#: includes/modules/subscription/product-subscription.php:843
 msgid ""
 "A subscription has been removed from your cart. Due to payment gateway "
 "restrictions, products and subscriptions can not be purchased at the same "
 "time."
 msgstr ""
 
-#: includes/modules/subscription/product-subscription.php:873
+#: includes/modules/subscription/product-subscription.php:874
 msgid "Nonce failure"
 msgstr ""
 
@@ -6631,89 +6775,98 @@ msgid "Seller Verification"
 msgstr ""
 
 #: includes/modules/vendor-verification/includes/admin/admin.php:13
+#: includes/modules/vendor-verification/includes/admin/admin.php:147
 msgid "Verification SMS Gateways"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/admin/admin.php:33
+#: includes/modules/vendor-verification/includes/admin/admin.php:38
 msgid "Site Url"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/admin/admin.php:39
+#: includes/modules/vendor-verification/includes/admin/admin.php:44
 msgid "App Id"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/admin/admin.php:77
+#: includes/modules/vendor-verification/includes/admin/admin.php:92
 msgid "Redirect URI"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/admin/admin.php:127
+#: includes/modules/vendor-verification/includes/admin/admin.php:152
 msgid "Sender Name"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/admin/admin.php:133
+#: includes/modules/vendor-verification/includes/admin/admin.php:158
 msgid "SMS Text"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/admin/admin.php:135
+#: includes/modules/vendor-verification/includes/admin/admin.php:160
 msgid "Your verification code is: %CODE%"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/admin/admin.php:136
+#: includes/modules/vendor-verification/includes/admin/admin.php:161
 msgid ""
 "will be displayed in SMS. <strong>%CODE%</strong> will be replaced by "
 "verification code"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/admin/admin.php:140
+#: includes/modules/vendor-verification/includes/admin/admin.php:165
 msgid "SMS Sent Success"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/admin/admin.php:141
+#: includes/modules/vendor-verification/includes/admin/admin.php:166
 msgid "SMS sent. Please enter your verification code"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/admin/admin.php:146
+#: includes/modules/vendor-verification/includes/admin/admin.php:171
 msgid "SMS Sent Error"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/admin/admin.php:147
+#: includes/modules/vendor-verification/includes/admin/admin.php:172
 msgid "Unable to send sms. Contact admin"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/admin/admin.php:152
+#: includes/modules/vendor-verification/includes/admin/admin.php:177
+msgid "Nexmo"
+msgstr ""
+
+#: includes/modules/vendor-verification/includes/admin/admin.php:182
 msgid "Active Gateway"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/admin/admin.php:158
+#: includes/modules/vendor-verification/includes/admin/admin.php:188
 msgid "Nexmo App Settings"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/admin/admin.php:160
-#: includes/modules/vendor-verification/includes/admin/admin.php:176
+#: includes/modules/vendor-verification/includes/admin/admin.php:190
+#: includes/modules/vendor-verification/includes/admin/admin.php:211
 msgid "here"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/admin/admin.php:164
+#: includes/modules/vendor-verification/includes/admin/admin.php:194
 msgid "API Key"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/admin/admin.php:169
+#: includes/modules/vendor-verification/includes/admin/admin.php:199
 msgid "API Secret"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/admin/admin.php:174
+#: includes/modules/vendor-verification/includes/admin/admin.php:204
+msgid "Twilio"
+msgstr ""
+
+#: includes/modules/vendor-verification/includes/admin/admin.php:209
 msgid "Twilio App Settings"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/admin/admin.php:180
+#: includes/modules/vendor-verification/includes/admin/admin.php:215
 msgid "From Number"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/admin/admin.php:185
+#: includes/modules/vendor-verification/includes/admin/admin.php:220
 msgid "Account SID"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/admin/admin.php:190
+#: includes/modules/vendor-verification/includes/admin/admin.php:225
 msgid "Auth Token"
 msgstr ""
 
@@ -6729,27 +6882,21 @@ msgstr ""
 msgid "Dokan: Verification"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/widgets/verifications-list.php:108
-#: includes/modules/vendor-verification/templates/verification-new.php:33
-#: includes/modules/vendor-verification/templates/verification.php:45
-msgid "ID Verification"
-msgstr ""
-
-#: includes/modules/vendor-verification/includes/widgets/verifications-list.php:159
+#: includes/modules/vendor-verification/includes/widgets/verifications-list.php:144
 #: includes/modules/vendor-verification/templates/admin-verifications.php:114
 msgid "Photo ID"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/widgets/verifications-list.php:169
+#: includes/modules/vendor-verification/includes/widgets/verifications-list.php:154
 msgid "Postal Address"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/widgets/verifications-list.php:179
+#: includes/modules/vendor-verification/includes/widgets/verifications-list.php:164
 #: src/admin/components/Vendors.vue:119 src/admin/components/Vendors.vue:304
 msgid "Phone"
 msgstr ""
 
-#: includes/modules/vendor-verification/includes/widgets/verifications-list.php:209
+#: includes/modules/vendor-verification/includes/widgets/verifications-list.php:193
 #: includes/modules/vendor-verification/vendor-verification.php:240
 msgid "Verifications"
 msgstr ""
@@ -7201,27 +7348,36 @@ msgstr ""
 msgid "Order Discount"
 msgstr ""
 
-#: includes/wc-functions.php:1033
+#: includes/wc-functions.php:870 includes/wc-functions.php:920
+msgid "Quantity Discount:"
+msgstr ""
+
+#: includes/wc-functions.php:878 includes/wc-functions.php:884
+#: includes/wc-functions.php:912
+msgid "Order Discount:"
+msgstr ""
+
+#: includes/wc-functions.php:1212
 msgid "Commission type"
 msgstr ""
 
-#: includes/wc-functions.php:1038 includes/wc-functions.php:1073
+#: includes/wc-functions.php:1217 includes/wc-functions.php:1252
 msgid "This is the commission type for admin fee"
 msgstr ""
 
-#: includes/wc-functions.php:1041
+#: includes/wc-functions.php:1220
 msgid "Admin Commission from this category"
 msgstr ""
 
-#: includes/wc-functions.php:1043 includes/wc-functions.php:1080
+#: includes/wc-functions.php:1222 includes/wc-functions.php:1259
 msgid "If set, it will override global admin commission rate for this category"
 msgstr ""
 
-#: includes/wc-functions.php:1077
+#: includes/wc-functions.php:1256
 msgid "Admin commission"
 msgstr ""
 
-#: includes/wc-functions.php:1183
+#: includes/wc-functions.php:1362
 msgid "Shipping: "
 msgstr ""
 
@@ -8077,10 +8233,6 @@ msgstr ""
 msgid "Social Options"
 msgstr ""
 
-#: src/admin/components/VendorSocialFields.vue:11
-msgid "Facebook"
-msgstr ""
-
 #: src/admin/components/VendorSocialFields.vue:16
 msgid "Flickr"
 msgstr ""
@@ -8089,16 +8241,8 @@ msgstr ""
 msgid "Google Plus"
 msgstr ""
 
-#: src/admin/components/VendorSocialFields.vue:26
-msgid "Twitter"
-msgstr ""
-
 #: src/admin/components/VendorSocialFields.vue:31
 msgid "Youtube"
-msgstr ""
-
-#: src/admin/components/VendorSocialFields.vue:36
-msgid "Linkedin"
 msgstr ""
 
 #: src/admin/components/VendorSocialFields.vue:41
@@ -8260,6 +8404,10 @@ msgstr ""
 
 #: src/frontend/components/Zone.vue:288
 msgid "Edit Shipping Method"
+msgstr ""
+
+#: src/frontend/components/Zone.vue:289
+msgid "Postcodes need to be comma separated"
 msgstr ""
 
 #: templates/announcement/listing-announcement.php:34

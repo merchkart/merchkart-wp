@@ -29,7 +29,7 @@ add_filter( 'woocommerce_product_tabs', 'merchkart_remove_product_tabs', 98 );
 function merchkart_remove_product_tabs( $tabs ) {
     unset( $tabs['additional_information'] ); 
     unset( $tabs['shipping'] ); 
-    unset( $tabs['seller'] ); 
+    unset( $tabs['seller'] );
     return $tabs;
 }
 /* 

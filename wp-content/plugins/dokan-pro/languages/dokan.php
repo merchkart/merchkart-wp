@@ -274,4 +274,5 @@ return [
 	__( 'Save Settings', 'dokan' ),
 	__( 'Enter a cost (excl. tax) or sum, e.g. <code>10.00 * [qty]</code>. Use <code>[qty]</code> for the number of items, <code>[cost]</code> for the total cost of items, and <code>[fee percent=\'10\' min_fee=\'20\' max_fee=\'\']</code> for percentage based fees.', 'dokan' ),
 	__( 'Edit Shipping Method', 'dokan' ),
+	__( 'Postcodes need to be comma separated', 'dokan' ),
 ];
