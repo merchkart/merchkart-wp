@@ -22,7 +22,7 @@ class WC_Taxjar_Integration extends WC_Integration {
 		$this->integration_uri    = $this->app_uri . 'account/apps/add/woo';
 		$this->regions_uri        = $this->app_uri . 'account#states';
 		$this->uri                = 'https://api.taxjar.com/v2/';
-		$this->ua                 = 'TaxJarWordPressPlugin/2.3.0/WordPress/' . get_bloginfo( 'version' ) . '+WooCommerce/' . WC()->version . '; ' . get_bloginfo( 'url' );
+		$this->ua                 = 'TaxJarWordPressPlugin/2.3.1/WordPress/' . get_bloginfo( 'version' ) . '+WooCommerce/' . WC()->version . '; ' . get_bloginfo( 'url' );
 		$this->debug              = filter_var( $this->get_option( 'debug' ), FILTER_VALIDATE_BOOLEAN );
 		$this->download_orders    = new WC_Taxjar_Download_Orders( $this );
 
@@ -459,13 +459,19 @@ class WC_Taxjar_Integration extends WC_Integration {
 			'tax_rate_class' => $tax_class,
 		);
 
-		$wc_rate = WC_Tax::find_rates( array(
+		$rate_lookup = array(
 			'country' => $location['to_country'],
 			'state' => $location['to_state'],
 			'postcode' => $location['to_zip'],
 			'city' => $location['to_city'],
 			'tax_class' => $tax_class,
-		) );
+		);
+
+		if ( version_compare( WC()->version, '3.2.0', '>=' ) ) {
+			$rate_lookup['state'] = sanitize_key( $location['to_state'] );
+		}
+
+		$wc_rate = WC_Tax::find_rates( $rate_lookup );
 
 		if ( ! empty( $wc_rate ) ) {
 			$this->_log( ':: Tax Rate Found ::' );
@@ -870,7 +876,7 @@ class WC_Taxjar_Integration extends WC_Integration {
 			}
 		}
 
-		return $line_items;
+		return apply_filters( 'taxjar_cart_get_line_items', $line_items, $wc_cart_object );
 	}
 
 	/**
@@ -924,7 +930,7 @@ class WC_Taxjar_Integration extends WC_Integration {
 			}
 		}
 
-		return $line_items;
+		return apply_filters( 'taxjar_order_calculation_get_line_items', $line_items, $order );
 	}
 
 	protected function get_line_item( $id, $line_items ) {

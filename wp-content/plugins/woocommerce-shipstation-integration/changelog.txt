@@ -1,5 +1,8 @@
 *** ShipStation for WooCommerce ***
 
+= 2019-08-12 - version 4.1.29 =
+* Tweak - WC 3.7 compatibility.
+
 = 2019-04-17 - version 4.1.28 =
 * Tweak - WC 3.6 compatibility.
 

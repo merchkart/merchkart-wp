@@ -146,7 +146,7 @@ class WC_Shipstation_API_Export extends WC_Shipstation_API_Request {
 			$this->xml_append( $order_xml, 'InternalNotes', implode( ' | ', $this->get_order_notes( $order ) ) );
 
 			// Custom fields - 1 is used for coupon codes
-			$this->xml_append( $order_xml, 'CustomField1', implode( ' | ', $order->get_used_coupons() ) );
+			$this->xml_append( $order_xml, 'CustomField1', implode( ' | ', version_compare( WC_VERSION, '3.7', 'ge' ) ? $order->get_coupon_codes() : $order->get_used_coupons() ) );
 
 			// Custom fields 2 and 3 can be mapped to a custom field via the following filters
 			$meta_key = apply_filters( 'woocommerce_shipstation_export_custom_field_2', '' );

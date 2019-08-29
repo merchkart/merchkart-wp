@@ -82,6 +82,7 @@ $recommended_memory = '128M';
 								case 'mbstring_enabled':
 								case 'simplexml_enabled':
 								case 'gd_enabled':
+								case 'iconv_enabled':
 								case 'opcache_enabled':
 								case 'url_fopen_enabled':
 									echo __( 'Contact your hosting company in order to enable it.', 'yith-plugin-fw' );
