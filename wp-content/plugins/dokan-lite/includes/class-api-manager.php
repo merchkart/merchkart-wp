@@ -126,8 +126,10 @@ class Dokan_API_Manager {
         }
 
         $commission                    = get_user_meta( $store_id, 'dokan_admin_percentage', true );
+        $additional_fee                = get_user_meta( $store_id, 'dokan_admin_additional_fee', true );
         $commission_type               = get_user_meta( $store_id, 'dokan_admin_percentage_type', true );
         $data['admin_commission']      = $commission;
+        $data['admin_additional_fee']  = $additional_fee;
         $data['admin_commission_type'] = $commission_type;
 
         return $data;
@@ -156,7 +158,7 @@ class Dokan_API_Manager {
      *
      * @param array $data
      *
-     * @since DOKAN_LITE_SINCE
+     * @since 2.9.21
      *
      * @return array
      */

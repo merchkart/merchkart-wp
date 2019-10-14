@@ -2,9 +2,9 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Conversion Tracking 2.0.3\n"
+"Project-Id-Version: WooCommerce Conversion Tracking 2.0.4\n"
 "Report-Msgid-Bugs-To: https://example.com\n"
-"POT-Creation-Date: 2019-08-05 09:53:06+00:00\n"
+"POT-Creation-Date: 2019-08-21 06:56:44+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,7 +31,7 @@ msgid ""
 "href=\"https://wordpress.org/plugins/woocommerce/\">Woocommerce</a>"
 msgstr ""
 
-#: conversion-tracking.php:313
+#: conversion-tracking.php:318
 msgid ""
 "Reach beyond your imagination in creating web pages. <strong> Try Happy "
 "Addons for Elementor to shape your dream.</strong> 😊"
@@ -45,15 +45,15 @@ msgstr ""
 msgid "Integrations"
 msgstr ""
 
-#: includes/class-ajax.php:42
+#: includes/class-ajax.php:43
 msgid "Settings has been saved successfully!"
 msgstr ""
 
-#: includes/class-ajax.php:63
+#: includes/class-ajax.php:64
 msgid "ERROR: Error fetching plugin information: %s"
 msgstr ""
 
-#: includes/class-ajax.php:88
+#: includes/class-ajax.php:89
 msgid "Successfully installed and activate,"
 msgstr ""
 
@@ -259,7 +259,7 @@ msgstr ""
 
 #: includes/integrations/class-integration-google.php:13
 #: includes/views/settings.php:152
-msgid "Google Adwords"
+msgid "Google Ads"
 msgstr ""
 
 #: includes/integrations/class-integration-google.php:30
@@ -268,7 +268,7 @@ msgstr ""
 
 #: includes/integrations/class-integration-google.php:33
 msgid ""
-"Provide the AdWords Account ID. Usually it's something like "
+"Provide the Google Ads Account ID. Usually it's something like "
 "<code>AW-123456789</code>, <a href=\"%s\" target=\"_blank\">learn more</a>."
 msgstr ""
 
@@ -300,7 +300,7 @@ msgid "Perfect Audience"
 msgstr ""
 
 #: includes/views/settings.php:154
-msgid "Bing Ads"
+msgid "Microsoft Advertising"
 msgstr ""
 
 #. Plugin Name of the plugin/theme

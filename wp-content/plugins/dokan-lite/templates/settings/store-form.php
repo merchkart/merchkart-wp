@@ -83,7 +83,7 @@
                          */
                         $general_settings = get_option( 'dokan_general', [] );
                         $banner_width     = dokan_get_option( 'store_banner_width', 'dokan_appearance', 625 );
-                        $banner_height    = dokan_get_option( 'store_banner_width', 'dokan_appearance', 625 );
+                        $banner_height    = dokan_get_option( 'store_banner_height', 'dokan_appearance', 300 );
 
                         $help_text = sprintf(
                             __('Upload a banner for your store. Banner size is (%sx%s) pixels.', 'dokan-lite' ),
@@ -397,6 +397,11 @@
         var dokan_address_wrapper = $( '.dokan-address-fields' );
         var dokan_address_select = {
             init: function () {
+                var savedState = '<?php echo esc_html( $address_state ); ?>';
+
+                if ( ! savedState || 'N/A' === savedState ) {
+                    $('#dokan-states-box').hide();
+                }
 
                 dokan_address_wrapper.on( 'change', 'select.country_to_state', this.state_select );
             },

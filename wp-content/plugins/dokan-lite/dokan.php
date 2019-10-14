@@ -3,12 +3,12 @@
 Plugin Name: Dokan
 Plugin URI: https://wordpress.org/plugins/dokan-lite/
 Description: An e-commerce marketplace plugin for WordPress. Powered by WooCommerce and weDevs.
-Version: 2.9.19
-Author: weDevs, LLC
+Version: 2.9.22
+Author: weDevs
 Author URI: https://wedevs.com/
 Text Domain: dokan-lite
 WC requires at least: 3.0
-WC tested up to: 3.6.5
+WC tested up to: 3.7.0
 Domain Path: /languages/
 License: GPL2
 */
@@ -78,7 +78,7 @@ final class WeDevs_Dokan {
      *
      * @var string
      */
-    public $version = '2.9.19';
+    public $version = '2.9.22';
 
     /**
      * Instance of self
@@ -144,14 +144,12 @@ final class WeDevs_Dokan {
      *
      * @param $prop
      *
-     * @return mixed
+     * @return Class Instance
      */
     public function __get( $prop ) {
         if ( array_key_exists( $prop, $this->container ) ) {
             return $this->container[ $prop ];
         }
-
-        return $this->{$prop};
     }
 
     /**
@@ -349,6 +347,7 @@ final class WeDevs_Dokan {
         require_once $inc_dir . 'class-order-manager.php';
         require_once $inc_dir . 'class-product-manager.php';
         require_once $inc_dir . 'class-dokan-privacy.php';
+        require_once $inc_dir . 'class-commission.php';
 
         if ( is_admin() ) {
             require_once $inc_dir . 'admin/class-settings.php';
@@ -396,6 +395,7 @@ final class WeDevs_Dokan {
         $this->container['registration']  = new Dokan_Registration();
         $this->container['orders']        = new Dokan_Order_Manager();
         $this->container['api']           = new Dokan_API_Manager();
+        $this->container['commission']    = Dokan_Commission::instance();
 
         $this->container = apply_filters( 'dokan_get_class_container', $this->container );
 
