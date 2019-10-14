@@ -2069,6 +2069,15 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var Switches = dokan_get_lib('Switches');
 var Multiselect = dokan_get_lib('Multiselect');
@@ -2092,8 +2101,8 @@ var Multiselect = dokan_get_lib('Multiselect');
             enabled: false,
             trusted: false,
             featured: false,
-            commissionTypes: ['Flat', 'Percentage'],
-            selectedCommissionType: '',
+            commissionTypes: [this.__('Flat', 'dokan'), this.__('Percentage', 'dokan'), this.__('Combine', 'dokan')],
+            selectedCommissionType: this.__('Flat', 'dokan'),
             getBankFields: dokan.hooks.applyFilters('getVendorBankFields', []),
             getPyamentFields: dokan.hooks.applyFilters('AfterPyamentFields', [])
         };
@@ -2153,7 +2162,7 @@ var Multiselect = dokan_get_lib('Multiselect');
         },
         saveCommissionType: function saveCommissionType(value) {
             if (!value) {
-                return;
+                this.vendorInfo.admin_commission_type = 'flat';
             }
 
             this.vendorInfo.admin_commission_type = value.toLowerCase();
@@ -2172,13 +2181,8 @@ var Multiselect = dokan_get_lib('Multiselect');
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_admin_components_VendorAccountFields_vue__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_admin_components_VendorPaymentFields_vue__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_admin_components_VendorAddressFields_vue__ = __webpack_require__(13);
-//
-//
-//
-//
-//
-//
-//
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 //
 //
 //
@@ -2598,42 +2602,13 @@ var VclTwitch = ContentLoading.VclTwitch;
 
             return categories;
         },
-
-
-        storeCategories: {
-            get: function get() {
-                var self = this;
-
-                if (!self.isCategoryMultiple) {
-                    if (self.store.categories.length) {
-                        return self.store.categories[0].id;
-                    } else {
-                        return null;
-                    }
-                } else {
-                    return self.store.categories.map(function (category) {
-                        return category.id;
-                    });
-                }
-            },
-            set: function set(categories) {
-                var self = this;
-
-                if ($.isArray(categories)) {
-                    self.store.categories = categories.map(function (category_id) {
-                        return self.categoriesFlattened[category_id];
-                    });
-                } else {
-                    self.store.categories = [self.categoriesFlattened[categories]];
-                }
-            }
-        },
-
         getEearningRate: function getEearningRate() {
-            if (this.stats.others.commission_type == 'percentage') {
+            if (this.stats.others.commission_type === 'flat') {
+                return accounting.formatMoney(this.stats.others.commission_rate);
+            } else if (this.stats.others.commission_type === 'percentage') {
                 return this.stats.others.commission_rate + '%';
             } else {
-                return accounting.formatMoney(this.stats.others.commission_rate);
+                return this.stats.others.commission_rate + '% &nbsp; + ' + accounting.formatMoney(this.stats.others.additional_fee);
             }
         },
         saveBtn: function saveBtn() {
@@ -2661,14 +2636,13 @@ var VclTwitch = ContentLoading.VclTwitch;
     methods: {
         fetch: function fetch() {
             var self = this;
-
             dokan.api.get('/stores/' + self.id).done(function (response) {
                 Object.assign(self.fakeStore, self.store);
                 Object.assign(self.store, response);
                 self.transformer(response);
             });
 
-            dokan.api.get('/store-categories').done(function (response, status, xhr) {
+            dokan.api.get('/store-categories?per_page=50').done(function (response, status, xhr) {
                 self.categories = response;
                 self.isCategoryMultiple = 'multiple' === xhr.getResponseHeader('X-WP-Store-Category-Type');
             });
@@ -2684,9 +2658,14 @@ var VclTwitch = ContentLoading.VclTwitch;
                 }
             }
 
-            // set default payment object for v-model
-            if ('payment' in response && response.payment.bank && response.payment.bank.length < 1) {
-                this.store.payment = this.fakeStore.payment;
+            // set default bank paymet object if it's not found in the API response
+            if ('payment' in response && typeof response.payment.bank === 'undefined') {
+                this.store.payment.bank = this.fakeStore.payment.bank;
+            }
+
+            // set default paypal paymet object if it's not found in the API response
+            if ('payment' in response && typeof response.payment.paypal === 'undefined') {
+                this.store.payment.paypal = this.fakeStore.payment.paypal;
             }
 
             if ('email' in response) {
@@ -2811,15 +2790,85 @@ var VclTwitch = ContentLoading.VclTwitch;
             return dokan.urls.proAssetsUrl + '/images/store-pic.png';
         },
         updateCommissonRate: function updateCommissonRate() {
-            var admin_commission = this.store.admin_commission;
-
-            if (this.store.admin_commission_type === 'percentage') {
-                this.stats.others.commission_rate = 100 - admin_commission;
-            } else {
-                this.stats.others.commission_rate = admin_commission;
-            }
-
+            this.stats.others.commission_rate = this.store.admin_commission;
             this.stats.others.commission_type = this.store.admin_commission_type;
+        },
+        setStoreCategories: function setStoreCategories() {
+            var self = this;
+            var storeCategories = $('#store-categories');
+
+            storeCategories.selectWoo({
+                multiple: self.isCategoryMultiple ? true : false,
+                ajax: {
+                    delay: 800,
+                    url: dokan.rest.root + 'dokan/v1/store-categories?per_page=50',
+                    dataType: 'json',
+                    headers: {
+                        "X-WP-Nonce": dokan.rest.nonce
+                    },
+                    data: function data(params) {
+                        return {
+                            search: params.term
+                        };
+                    },
+                    processResults: function processResults(data) {
+                        return {
+                            results: data.map(function (cat) {
+                                return {
+                                    id: cat.id,
+                                    text: cat.name,
+                                    slug: cat.slug
+                                };
+                            })
+                        };
+                        cache: true;
+                    }
+                }
+            });
+
+            self.store.categories.forEach(function (category) {
+                var option = new Option(category.name, category.id, true, true);
+                storeCategories.append(option).trigger('change');
+            });
+
+            $('#store-categories').on('select2:select', function (e) {
+                if (self.isCategoryMultiple) {
+                    self.store.categories.push({
+                        id: e.params.data.id,
+                        name: e.params.data.text,
+                        slug: e.params.data.slug
+                    });
+                } else {
+                    self.store.categories[0] = {
+                        id: e.params.data.id,
+                        name: e.params.data.text,
+                        slug: e.params.data.slug
+                    };
+                }
+            });
+        },
+        editCategory: function editCategory() {
+            var _this4 = this;
+
+            return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+                return regeneratorRuntime.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _this4.editingCategories = true;
+                                _context.next = 3;
+                                return _this4.$nextTick();
+
+                            case 3:
+                                _this4.setStoreCategories();
+
+                            case 4:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, _this4);
+            }))();
         }
     }
 });
@@ -3781,6 +3830,7 @@ var Switches = dokan_get_lib('Switches');
 //
 //
 //
+//
 
 var ListTable = dokan_get_lib('ListTable');
 var Modal = dokan_get_lib('Modal');
@@ -3802,7 +3852,8 @@ var Modal = dokan_get_lib('Modal');
                 'publish': this.__('Published', 'dokan'),
                 'pending': this.__('Pending', 'dokan'),
                 'draft': this.__('Draft', 'dokan'),
-                'trash': this.__('Trash', 'dokan')
+                'trash': this.__('Trash', 'dokan'),
+                'future': this.__('Scheduled', 'dokan')
             },
 
             counts: {
@@ -3810,7 +3861,8 @@ var Modal = dokan_get_lib('Modal');
                 publish: 0,
                 draft: 0,
                 pending: 0,
-                trash: 0
+                trash: 0,
+                future: 0
             },
             notFound: this.__('No announcement found.', 'dokan'),
             totalPages: 1,
@@ -3824,7 +3876,7 @@ var Modal = dokan_get_lib('Modal');
                 'content': { label: this.__('Content', 'dokan') },
                 'send_to': { label: this.__('Sent To', 'dokan') },
                 'status': { label: this.__('Status', 'dokan') },
-                'created_at': { label: this.__('Created Date', 'dokan') }
+                'created_at': { label: this.__('Date', 'dokan') }
             },
 
             actionColumn: 'title',
@@ -3890,6 +3942,7 @@ var Modal = dokan_get_lib('Modal');
             this.counts.pending = parseInt(xhr.getResponseHeader('X-Status-Pending'));
             this.counts.draft = parseInt(xhr.getResponseHeader('X-Status-Draft'));
             this.counts.trash = parseInt(xhr.getResponseHeader('X-Status-Trash'));
+            this.counts.future = parseInt(xhr.getResponseHeader('X-Status-Future'));
         },
         updatePagination: function updatePagination(xhr) {
             this.totalPages = parseInt(xhr.getResponseHeader('X-WP-TotalPages'));
@@ -4020,6 +4073,50 @@ var Modal = dokan_get_lib('Modal');
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4097,6 +4194,7 @@ var Modal = dokan_get_lib('Modal');
 var TextEditor = dokan_get_lib('TextEditor');
 var Postbox = dokan_get_lib('Postbox');
 var Multiselect = dokan_get_lib('Multiselect');
+var moment = dokan_get_lib('moment');
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     name: 'NewAnnouncement',
@@ -4122,7 +4220,19 @@ var Multiselect = dokan_get_lib('Multiselect');
             isLoading: false,
             draftBtnLabel: this.__('Save as Draft', 'dokan'),
             publishBtnLabel: this.__('Send', 'dokan'),
-            vendors: []
+            vendors: [],
+            onSchedule: false,
+            onScheduleEdit: false,
+            months: ['01-Jan', '02-Feb', '03-Mar', '04-Apr', '05-May', '06-Jun', '07-Jul', '08-Aug', '09-Sep', '10-Oct', '11-Nov', '12-Dec'],
+            scheduleTime: {
+                year: moment(dokan.current_time).format('YYYY'),
+                month: moment(dokan.current_time).format('MM') + '-' + moment(dokan.current_time).format('MMM'),
+                day: moment(dokan.current_time).format('DD'),
+                hour: moment(dokan.current_time).format('HH'),
+                min: moment(dokan.current_time).format('mm'),
+                postDate: '',
+                humanTime: ''
+            }
         };
     },
 
@@ -4164,6 +4274,7 @@ var Multiselect = dokan_get_lib('Multiselect');
 
             jsonData.sender_ids = _.pluck(jsonData.sender_ids, 'id');
             jsonData.status = status;
+            jsonData.post_date = this.scheduleTime.postDate;
 
             dokan.api.post('/announcement', jsonData).done(function (response) {
                 _this2.isSaved = false;
@@ -4183,6 +4294,27 @@ var Multiselect = dokan_get_lib('Multiselect');
                 _this2.isSaved = false;
                 alert(response.responseJSON.message);
             });
+        },
+        saveSchedule: function saveSchedule() {
+            this.onSchedule = true;
+            this.onScheduleEdit = false;
+            this.publishBtnLabel = this.__('Schedule', 'dokan');
+
+            var _scheduleTime = _extends({}, this.scheduleTime),
+                year = _scheduleTime.year,
+                month = _scheduleTime.month,
+                day = _scheduleTime.day,
+                hour = _scheduleTime.hour,
+                min = _scheduleTime.min;
+
+            this.scheduleTime.postDate = year + '-' + month.substr(0, 2) + '-' + day + ' ' + hour + ':' + min;
+            this.scheduleTime.humanTime = day + ' ' + month.substr(3) + ', ' + year + ' @ ' + hour + ':' + min;
+        },
+        cancelSchedule: function cancelSchedule() {
+            this.onSchedule = false;
+            this.onScheduleEdit = false;
+            this.publishBtnLabel = this.__('Send', 'dokan');
+            this.scheduleTime.postDate = '';
         }
     }
 
@@ -4193,6 +4325,51 @@ var Multiselect = dokan_get_lib('Multiselect');
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4278,6 +4455,7 @@ var Multiselect = dokan_get_lib('Multiselect');
 var TextEditor = dokan_get_lib('TextEditor');
 var Postbox = dokan_get_lib('Postbox');
 var Multiselect = dokan_get_lib('Multiselect');
+var moment = dokan_get_lib('moment');
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     name: 'EditAnnouncement',
@@ -4298,7 +4476,19 @@ var Multiselect = dokan_get_lib('Multiselect');
             draftBtnLabel: this.__('Save as Draft', 'dokan'),
             publishBtnLabel: this.__('Send', 'dokan'),
             message: '',
-            vendors: []
+            vendors: [],
+            onSchedule: false,
+            onScheduleEdit: false,
+            months: ['01-Jan', '02-Feb', '03-Mar', '04-Apr', '05-May', '06-Jun', '07-Jul', '08-Aug', '09-Sep', '10-Oct', '11-Nov', '12-Dec'],
+            scheduleTime: {
+                year: moment(dokan.current_time).format('YYYY'),
+                month: moment(dokan.current_time).format('MM') + '-' + moment(dokan.current_time).format('MMM'),
+                day: moment(dokan.current_time).format('DD'),
+                hour: moment(dokan.current_time).format('HH'),
+                min: moment(dokan.current_time).format('mm'),
+                postDate: '',
+                humanTime: ''
+            }
         };
     },
 
@@ -4328,6 +4518,27 @@ var Multiselect = dokan_get_lib('Multiselect');
             var _this2 = this;
 
             dokan.api.get('/announcement/' + this.$route.params.id).done(function (response) {
+                if ('future' === response.status) {
+                    _this2.onSchedule = true;
+                    _this2.publishBtnLabel = _this2.__('Schedule', 'dokan');
+
+                    var date = moment(response.created_at);
+                    _this2.scheduleTime.year = date.format('YYYY');
+                    _this2.scheduleTime.month = date.format('MM') + '-' + date.format('MMM');
+                    _this2.scheduleTime.day = moment(dokan.current_time).format('DD'), _this2.scheduleTime.hour = date.format('HH');
+                    _this2.scheduleTime.min = date.format('mm');
+
+                    var _scheduleTime = _extends({}, _this2.scheduleTime),
+                        year = _scheduleTime.year,
+                        month = _scheduleTime.month,
+                        day = _scheduleTime.day,
+                        hour = _scheduleTime.hour,
+                        min = _scheduleTime.min;
+
+                    _this2.scheduleTime.humanTime = date.format('MMM') + ' ' + day + ', ' + year + ' @ ' + hour + ':' + min;
+                    _this2.scheduleTime.postDate = year + '-' + month.substr(0, 2) + '-' + day + ' ' + hour + ':' + min;
+                }
+
                 _this2.announcement = response;
             }).error(function (response) {
                 alert(response.responseJSON.message);
@@ -4342,6 +4553,15 @@ var Multiselect = dokan_get_lib('Multiselect');
 
             jsonData.sender_ids = _.pluck(jsonData.sender_ids, 'id');
             jsonData.status = status;
+            jsonData.post_date = this.scheduleTime.postDate;
+
+            // if announcement is 'schedueld', but want to publish it now
+            // change post status to `future` so that wp_insert_post can make it `publish`
+            // and set post_date_gmt to `0000-00-00 00:00:00`
+            if (!jsonData.post_date) {
+                jsonData.status = 'future';
+                jsonData.post_date_gmt = '0000-00-00 00:00:00';
+            }
 
             dokan.api.put('/announcement/' + this.$route.params.id, jsonData).done(function (response) {
                 _this3.loadSpinner = false;
@@ -4363,6 +4583,27 @@ var Multiselect = dokan_get_lib('Multiselect');
                 _this3.isSaved = true;
                 _this3.message = response.responseJSON.message;
             });
+        },
+        saveSchedule: function saveSchedule() {
+            this.onSchedule = true;
+            this.onScheduleEdit = false;
+            this.publishBtnLabel = this.__('Schedule', 'dokan');
+
+            var _scheduleTime2 = _extends({}, this.scheduleTime),
+                year = _scheduleTime2.year,
+                month = _scheduleTime2.month,
+                day = _scheduleTime2.day,
+                hour = _scheduleTime2.hour,
+                min = _scheduleTime2.min;
+
+            this.scheduleTime.postDate = year + '-' + month.substr(0, 2) + '-' + day + ' ' + hour + ':' + min;
+            this.scheduleTime.humanTime = day + ' ' + month.substr(3) + ', ' + year + ' @ ' + hour + ':' + min;
+        },
+        cancelSchedule: function cancelSchedule() {
+            this.onSchedule = false;
+            this.onScheduleEdit = false;
+            this.publishBtnLabel = this.__('Send', 'dokan');
+            this.scheduleTime.postDate = '';
         }
     },
 
@@ -7115,8 +7356,7 @@ var render = function() {
                               options: _vm.commissionTypes,
                               multiselect: false,
                               searchable: false,
-                              showLabels: false,
-                              placeholder: _vm.__("Please Select One", "dokan")
+                              showLabels: false
                             },
                             on: { input: _vm.saveCommissionType },
                             model: {
@@ -7132,37 +7372,119 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "column" }, [
-                      _c("label", [
-                        _vm._v(_vm._s(_vm.__("Admin Commission", "dokan")))
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.vendorInfo.admin_commission,
-                            expression: "vendorInfo.admin_commission"
-                          }
-                        ],
-                        staticClass: "dokan-form-input",
-                        attrs: { type: "number", placeholder: "10" },
-                        domProps: { value: _vm.vendorInfo.admin_commission },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.vendorInfo,
-                              "admin_commission",
-                              $event.target.value
+                    "Combine" === _vm.selectedCommissionType
+                      ? _c(
+                          "div",
+                          { staticClass: "column combine-commission" },
+                          [
+                            _c("label", [
+                              _vm._v(
+                                _vm._s(_vm.__("Admin Commission", "dokan"))
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "combine-commission-field" },
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.vendorInfo.admin_commission,
+                                      expression: "vendorInfo.admin_commission"
+                                    }
+                                  ],
+                                  staticClass: "dokan-form-input percent_fee",
+                                  attrs: { type: "number" },
+                                  domProps: {
+                                    value: _vm.vendorInfo.admin_commission
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.vendorInfo,
+                                        "admin_commission",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(
+                                  "\n                        " +
+                                    _vm._s("%    +") +
+                                    "\n                        "
+                                ),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value:
+                                        _vm.vendorInfo.admin_additional_fee,
+                                      expression:
+                                        "vendorInfo.admin_additional_fee"
+                                    }
+                                  ],
+                                  staticClass: "dokan-form-input fixed_fee",
+                                  attrs: { type: "number" },
+                                  domProps: {
+                                    value: _vm.vendorInfo.admin_additional_fee
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.vendorInfo,
+                                        "admin_additional_fee",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]
                             )
-                          }
-                        }
-                      })
-                    ])
+                          ]
+                        )
+                      : _c("div", { staticClass: "column" }, [
+                          _c("label", [
+                            _vm._v(_vm._s(_vm.__("Admin Commission", "dokan")))
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.vendorInfo.admin_commission,
+                                expression: "vendorInfo.admin_commission"
+                              }
+                            ],
+                            staticClass: "dokan-form-input",
+                            attrs: { type: "number" },
+                            domProps: {
+                              value: _vm.vendorInfo.admin_commission
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.vendorInfo,
+                                  "admin_commission",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
                   ]
                 : _vm._e(),
               _vm._v(" "),
@@ -8367,7 +8689,7 @@ var render = function() {
                                         on: {
                                           click: function($event) {
                                             $event.preventDefault()
-                                            _vm.editingCategories = true
+                                            return _vm.editCategory($event)
                                           }
                                         }
                                       })
@@ -8388,7 +8710,7 @@ var render = function() {
                                         on: {
                                           click: function($event) {
                                             $event.preventDefault()
-                                            _vm.editingCategories = true
+                                            return _vm.editCategory($event)
                                           }
                                         }
                                       })
@@ -8419,174 +8741,17 @@ var render = function() {
                                       "fieldset",
                                       { attrs: { disabled: _vm.isUpdating } },
                                       [
-                                        _c(
-                                          "ul",
-                                          {
-                                            staticClass: "category-select-list"
-                                          },
-                                          _vm._l(_vm.categories, function(
-                                            category
-                                          ) {
-                                            return _c(
-                                              "li",
-                                              { key: category.id },
-                                              [
-                                                _c("label", [
-                                                  (_vm.isCategoryMultiple
-                                                    ? "checkbox"
-                                                    : "radio") === "checkbox"
-                                                    ? _c("input", {
-                                                        directives: [
-                                                          {
-                                                            name: "model",
-                                                            rawName: "v-model",
-                                                            value:
-                                                              _vm.storeCategories,
-                                                            expression:
-                                                              "storeCategories"
-                                                          }
-                                                        ],
-                                                        attrs: {
-                                                          type: "checkbox"
-                                                        },
-                                                        domProps: {
-                                                          value: category.id,
-                                                          checked: Array.isArray(
-                                                            _vm.storeCategories
-                                                          )
-                                                            ? _vm._i(
-                                                                _vm.storeCategories,
-                                                                category.id
-                                                              ) > -1
-                                                            : _vm.storeCategories
-                                                        },
-                                                        on: {
-                                                          change: function(
-                                                            $event
-                                                          ) {
-                                                            var $$a =
-                                                                _vm.storeCategories,
-                                                              $$el =
-                                                                $event.target,
-                                                              $$c = $$el.checked
-                                                                ? true
-                                                                : false
-                                                            if (
-                                                              Array.isArray($$a)
-                                                            ) {
-                                                              var $$v =
-                                                                  category.id,
-                                                                $$i = _vm._i(
-                                                                  $$a,
-                                                                  $$v
-                                                                )
-                                                              if (
-                                                                $$el.checked
-                                                              ) {
-                                                                $$i < 0 &&
-                                                                  (_vm.storeCategories = $$a.concat(
-                                                                    [$$v]
-                                                                  ))
-                                                              } else {
-                                                                $$i > -1 &&
-                                                                  (_vm.storeCategories = $$a
-                                                                    .slice(
-                                                                      0,
-                                                                      $$i
-                                                                    )
-                                                                    .concat(
-                                                                      $$a.slice(
-                                                                        $$i + 1
-                                                                      )
-                                                                    ))
-                                                              }
-                                                            } else {
-                                                              _vm.storeCategories = $$c
-                                                            }
-                                                          }
-                                                        }
-                                                      })
-                                                    : (_vm.isCategoryMultiple
-                                                        ? "checkbox"
-                                                        : "radio") === "radio"
-                                                      ? _c("input", {
-                                                          directives: [
-                                                            {
-                                                              name: "model",
-                                                              rawName:
-                                                                "v-model",
-                                                              value:
-                                                                _vm.storeCategories,
-                                                              expression:
-                                                                "storeCategories"
-                                                            }
-                                                          ],
-                                                          attrs: {
-                                                            type: "radio"
-                                                          },
-                                                          domProps: {
-                                                            value: category.id,
-                                                            checked: _vm._q(
-                                                              _vm.storeCategories,
-                                                              category.id
-                                                            )
-                                                          },
-                                                          on: {
-                                                            change: function(
-                                                              $event
-                                                            ) {
-                                                              _vm.storeCategories =
-                                                                category.id
-                                                            }
-                                                          }
-                                                        })
-                                                      : _c("input", {
-                                                          directives: [
-                                                            {
-                                                              name: "model",
-                                                              rawName:
-                                                                "v-model",
-                                                              value:
-                                                                _vm.storeCategories,
-                                                              expression:
-                                                                "storeCategories"
-                                                            }
-                                                          ],
-                                                          attrs: {
-                                                            type: _vm.isCategoryMultiple
-                                                              ? "checkbox"
-                                                              : "radio"
-                                                          },
-                                                          domProps: {
-                                                            value: category.id,
-                                                            value:
-                                                              _vm.storeCategories
-                                                          },
-                                                          on: {
-                                                            input: function(
-                                                              $event
-                                                            ) {
-                                                              if (
-                                                                $event.target
-                                                                  .composing
-                                                              ) {
-                                                                return
-                                                              }
-                                                              _vm.storeCategories =
-                                                                $event.target.value
-                                                            }
-                                                          }
-                                                        }),
-                                                  _vm._v(
-                                                    " " +
-                                                      _vm._s(category.name) +
-                                                      "\n                                            "
-                                                  )
-                                                ])
-                                              ]
+                                        _c("select", {
+                                          staticStyle: { width: "100%" },
+                                          attrs: {
+                                            multiple: "multiple",
+                                            id: "store-categories",
+                                            "data-placeholder": _vm.__(
+                                              "Select Category",
+                                              "dokan"
                                             )
-                                          })
-                                        ),
+                                          }
+                                        }),
                                         _vm._v(" "),
                                         _c("p", [
                                           _c("button", {
@@ -8957,12 +9122,13 @@ var render = function() {
                       _vm._v(" "),
                       _c("ul", { staticClass: "counts" }, [
                         _c("li", { staticClass: "commision" }, [
-                          _c("span", { staticClass: "count" }, [
-                            _vm._v(_vm._s(_vm.getEearningRate))
-                          ]),
+                          _c("span", {
+                            staticClass: "count",
+                            domProps: { innerHTML: _vm._s(_vm.getEearningRate) }
+                          }),
                           _vm._v(" "),
                           _c("span", { staticClass: "subhead" }, [
-                            _vm._v(_vm._s(_vm.__("Commission Rate", "dokan")))
+                            _vm._v(_vm._s(_vm.__("Admin Commission", "dokan")))
                           ])
                         ]),
                         _vm._v(" "),
@@ -10534,6 +10700,31 @@ var render = function() {
           [
             _c("router-link", {
               attrs: {
+                to: { name: "Announcement", query: { status: "future" } },
+                "active-class": "current",
+                exact: ""
+              },
+              domProps: {
+                innerHTML: _vm._s(
+                  _vm.sprintf(
+                    _vm.__(
+                      "Scheduled <span class='count'>(%s)</span>",
+                      "dokan-lite"
+                    ),
+                    _vm.counts.future
+                  )
+                )
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          [
+            _c("router-link", {
+              attrs: {
                 to: { name: "Announcement", query: { status: "draft" } },
                 "active-class": "current",
                 exact: ""
@@ -11027,6 +11218,295 @@ var render = function() {
                       }),
                       _vm._v(" "),
                       _c("div", { staticClass: "clear" })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "sub-action" }, [
+                      _c(
+                        "span",
+                        { attrs: { id: "timestamp" } },
+                        [
+                          _c("span", {
+                            staticClass:
+                              "dashicons dashicons dashicons-calendar"
+                          }),
+                          _vm._v(" "),
+                          _vm.onSchedule
+                            ? [
+                                _vm._v(
+                                  "\n                                    Schedule for: "
+                                ),
+                                _c("strong", [
+                                  _vm._v(_vm._s(_vm.scheduleTime.humanTime))
+                                ])
+                              ]
+                            : [
+                                _vm._v(
+                                  "\n                                    Publish: "
+                                ),
+                                _c("strong", [_vm._v("immediately")])
+                              ],
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.onScheduleEdit,
+                                  expression: "!onScheduleEdit"
+                                }
+                              ],
+                              attrs: { href: "#" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  _vm.onScheduleEdit = true
+                                }
+                              }
+                            },
+                            [_vm._v("Edit")]
+                          )
+                        ],
+                        2
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "fieldset",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.onScheduleEdit,
+                              expression: "onScheduleEdit"
+                            }
+                          ],
+                          attrs: { id: "timestampdiv" }
+                        },
+                        [
+                          _c("label", [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.scheduleTime.month,
+                                    expression: "scheduleTime.month"
+                                  }
+                                ],
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.scheduleTime,
+                                      "month",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              _vm._l(_vm.months, function(month) {
+                                return _c("option", [
+                                  _vm._v(
+                                    "\n                                            " +
+                                      _vm._s(month) +
+                                      "\n                                        "
+                                  )
+                                ])
+                              })
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("label", [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.scheduleTime.day,
+                                  expression: "scheduleTime.day"
+                                }
+                              ],
+                              attrs: {
+                                id: "jj",
+                                type: "text",
+                                size: "2",
+                                maxlength: "2",
+                                autocomplete: "off"
+                              },
+                              domProps: { value: _vm.scheduleTime.day },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.scheduleTime,
+                                    "day",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(",\n                                ")
+                          ]),
+                          _vm._v(" "),
+                          _c("label", [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.scheduleTime.year,
+                                  expression: "scheduleTime.year"
+                                }
+                              ],
+                              attrs: {
+                                id: "aa",
+                                type: "text",
+                                size: "4",
+                                maxlength: "4",
+                                autocomplete: "off"
+                              },
+                              domProps: { value: _vm.scheduleTime.year },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.scheduleTime,
+                                    "year",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" @\n                                ")
+                          ]),
+                          _vm._v(" "),
+                          _c("label", [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.scheduleTime.hour,
+                                  expression: "scheduleTime.hour"
+                                }
+                              ],
+                              attrs: {
+                                id: "hh",
+                                type: "text",
+                                size: "2",
+                                maxlength: "2",
+                                autocomplete: "off"
+                              },
+                              domProps: { value: _vm.scheduleTime.hour },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.scheduleTime,
+                                    "hour",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" :\n                                ")
+                          ]),
+                          _vm._v(" "),
+                          _c("label", [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.scheduleTime.min,
+                                  expression: "scheduleTime.min"
+                                }
+                              ],
+                              attrs: {
+                                id: "mm",
+                                type: "text",
+                                size: "2",
+                                maxlength: "2",
+                                autocomplete: "off"
+                              },
+                              domProps: { value: _vm.scheduleTime.min },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.scheduleTime,
+                                    "min",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.onScheduleEdit,
+                              expression: "onScheduleEdit"
+                            }
+                          ]
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.saveSchedule($event)
+                                }
+                              }
+                            },
+                            [_vm._v(_vm._s(_vm.__("Ok", "dokan")))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.cancelSchedule($event)
+                                }
+                              }
+                            },
+                            [_vm._v(_vm._s(_vm.__("Cancel", "dokan")))]
+                          )
+                        ]
+                      )
                     ])
                   ]
                 )
@@ -11512,6 +11992,302 @@ var render = function() {
                             }),
                             _vm._v(" "),
                             _c("div", { staticClass: "clear" })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "sub-action" }, [
+                            _c(
+                              "span",
+                              { attrs: { id: "timestamp" } },
+                              [
+                                _c("span", {
+                                  staticClass:
+                                    "dashicons dashicons dashicons-calendar"
+                                }),
+                                _vm._v(" "),
+                                _vm.onSchedule
+                                  ? [
+                                      _vm._v(
+                                        "\n                                    Schedule for: "
+                                      ),
+                                      _c("strong", [
+                                        _vm._v(
+                                          _vm._s(_vm.scheduleTime.humanTime)
+                                        )
+                                      ])
+                                    ]
+                                  : [
+                                      _vm._v(
+                                        "\n                                    Publish: "
+                                      ),
+                                      _c("strong", [_vm._v("immediately")])
+                                    ],
+                                _vm._v(" "),
+                                _c(
+                                  "a",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: !_vm.onScheduleEdit,
+                                        expression: "!onScheduleEdit"
+                                      }
+                                    ],
+                                    attrs: { href: "#" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        _vm.onScheduleEdit = true
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Edit")]
+                                )
+                              ],
+                              2
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "fieldset",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.onScheduleEdit,
+                                    expression: "onScheduleEdit"
+                                  }
+                                ],
+                                attrs: { id: "timestampdiv" }
+                              },
+                              [
+                                _c("label", [
+                                  _c(
+                                    "select",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.scheduleTime.month,
+                                          expression: "scheduleTime.month"
+                                        }
+                                      ],
+                                      on: {
+                                        change: function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            _vm.scheduleTime,
+                                            "month",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        }
+                                      }
+                                    },
+                                    _vm._l(_vm.months, function(month) {
+                                      return _c("option", [
+                                        _vm._v(
+                                          "\n                                            " +
+                                            _vm._s(month) +
+                                            "\n                                        "
+                                        )
+                                      ])
+                                    })
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("label", [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.scheduleTime.day,
+                                        expression: "scheduleTime.day"
+                                      }
+                                    ],
+                                    attrs: {
+                                      id: "jj",
+                                      type: "text",
+                                      size: "2",
+                                      maxlength: "2",
+                                      autocomplete: "off"
+                                    },
+                                    domProps: { value: _vm.scheduleTime.day },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.scheduleTime,
+                                          "day",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(",\n                                ")
+                                ]),
+                                _vm._v(" "),
+                                _c("label", [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.scheduleTime.year,
+                                        expression: "scheduleTime.year"
+                                      }
+                                    ],
+                                    attrs: {
+                                      id: "aa",
+                                      type: "text",
+                                      size: "4",
+                                      maxlength: "4",
+                                      autocomplete: "off"
+                                    },
+                                    domProps: { value: _vm.scheduleTime.year },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.scheduleTime,
+                                          "year",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" @\n                                ")
+                                ]),
+                                _vm._v(" "),
+                                _c("label", [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.scheduleTime.hour,
+                                        expression: "scheduleTime.hour"
+                                      }
+                                    ],
+                                    attrs: {
+                                      id: "hh",
+                                      type: "text",
+                                      size: "2",
+                                      maxlength: "2",
+                                      autocomplete: "off"
+                                    },
+                                    domProps: { value: _vm.scheduleTime.hour },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.scheduleTime,
+                                          "hour",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" :\n                                ")
+                                ]),
+                                _vm._v(" "),
+                                _c("label", [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.scheduleTime.min,
+                                        expression: "scheduleTime.min"
+                                      }
+                                    ],
+                                    attrs: {
+                                      id: "mm",
+                                      type: "text",
+                                      size: "2",
+                                      maxlength: "2",
+                                      autocomplete: "off"
+                                    },
+                                    domProps: { value: _vm.scheduleTime.min },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.scheduleTime,
+                                          "min",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  })
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "p",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.onScheduleEdit,
+                                    expression: "onScheduleEdit"
+                                  }
+                                ]
+                              },
+                              [
+                                _c(
+                                  "button",
+                                  {
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.saveSchedule($event)
+                                      }
+                                    }
+                                  },
+                                  [_vm._v(_vm._s(_vm.__("Ok", "dokan")))]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.cancelSchedule($event)
+                                      }
+                                    }
+                                  },
+                                  [_vm._v(_vm._s(_vm.__("Cancel", "dokan")))]
+                                )
+                              ]
+                            )
                           ])
                         ]
                       )

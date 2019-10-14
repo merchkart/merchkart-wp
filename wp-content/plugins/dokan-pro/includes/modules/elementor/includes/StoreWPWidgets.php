@@ -268,7 +268,7 @@ class StoreWPWidgets {
     /**
      * Render dummy content for Store Vendor Verification widget
      *
-     * @since DOKAN_PRO_SINCE
+     * @since 2.9.13
      *
      * @param array                          $args
      * @param array                          $instance
@@ -325,7 +325,7 @@ class StoreWPWidgets {
 
             dokan_get_template_part( 'widgets/vendor-verification', '', [
                 'pro'        => true,
-                'args'       => $args,
+                'data'       => $args,
                 'instance'   => $instance,
                 'store_info' => $store_info,
                 'widget'     => $widget,

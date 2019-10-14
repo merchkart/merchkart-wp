@@ -4,7 +4,7 @@ Plugin Name: Slider Revolution
 Plugin URI: https://revolution.themepunch.com/
 Description: Slider Revolution - Premium responsive slider
 Author: ThemePunch
-Version: 6.0.9
+Version: 6.1.3
 Author URI: https://themepunch.com/
 */
 
@@ -15,7 +15,7 @@ if(class_exists('RevSliderFront')){
 	die('ERROR: It looks like you have more than one instance of Slider Revolution installed. Please remove additional instances for this plugin to work again.');
 }
 
-define('RS_REVISION',			'6.0.9');
+define('RS_REVISION',			'6.1.3');
 define('RS_PLUGIN_PATH',		plugin_dir_path(__FILE__));
 define('RS_PLUGIN_SLUG_PATH',	plugin_basename(__FILE__));
 define('RS_PLUGIN_FILE_PATH',	__FILE__);
@@ -170,6 +170,7 @@ try{
 	add_action('plugins_loaded', array('RevSliderPageTemplate', 'get_instance'));
 	add_action('plugins_loaded', array('RevSliderFront', 'add_post_editor'));
 	
+	add_filter('wpseo_sitemap_entry', array('RevSliderFront', 'get_images_for_seo'), 10, 3);
 }catch(Exception $e){
 	$message = $e->getMessage();
 	//$trace = $e->getTraceAsString();

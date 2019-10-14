@@ -1,6 +1,98 @@
 <?php
 $changelog = array(
     array(
+        'version'  => 'Version 2.9.14',
+        'released' => '2019-10-02',
+        'changes'  => array(
+            array(
+                'title'         => 'Add Combine Commission (Percentage + Fixed)',
+                'type'          => 'New',
+                'description'   => 'Admin can now charge commission in both percentage and fixed fee.'
+            ),
+            array(
+                'title'         => 'Elementor Biography Tab',
+                'type'          => 'New',
+                'description'   => 'Add support for vendor biography in Elementor builder (Elementor).'
+            ),
+            array(
+                'title'         => 'Admin is only able to add 10 categories for a store in admin backend',
+                'type'          => 'Fix',
+                'description'   => 'Admin is only able to add 10 categories for a store in admin backend. Which is fixed now.'
+            ),
+            array(
+                'title'         => 'Vendor verification widget doesn\'t Show Up',
+                'type'          => 'Fix',
+                'description'   => 'Vendor verification widget doesn\'t show up in the store page'
+            ),
+            array(
+                'title'         => 'Vacation Mode is Not Making the Product Offline',
+                'type'          => 'Fix',
+                'description'   => ' Vacation mode is not making the product offline (Seller Vacation).'
+            ),
+            array(
+                'title'         => 'Product is Not Visible in the Shop Page',
+                'type'          => 'Fix',
+                'description'   => 'Assigning a new product to a vendor from admin backend doesn\'t show up in the shop page.'
+            ),
+            array(
+                'title'         => 'Stripe Subscription With Coupon',
+                'type'          => 'Fix',
+                'description'   => 'Apply coupon on stripe subscription if there is any (Stripe Connect).'
+            ),
+            array(
+                'title'         => 'Store Support Messages',
+                'type'          => 'Fix',
+                'description'   => 'There are only 5 store support messages is appearing. (Store Support)'
+            ),
+        )
+    ),
+    array(
+        'version'  => 'Version 2.9.13',
+        'released' => '2019-08-29',
+        'changes'  => array(
+            array(
+                'title'         => 'Scheduled Announcement',
+                'type'          => 'New',
+                'description'   => 'Add scheduled announcement option for admin.'
+            ),
+            array(
+                'title'         => 'Identity Verification in Live Chat',
+                'type'          => 'New',
+                'description'   => 'Add identity verification and unread message count in live chat (Live Chat Module).'
+            ),
+            array(
+                'title'         => 'Admin Defined Default Geolocation',
+                'type'          => 'New',
+                'description'   => 'Add admin defined location on Geolocation map to be shown instead of default `Dhaka, Bangladesh` when there is no vendor or product found (Geolocation Module).'
+            ),
+            array(
+                'title'         => 'Guest User Checkout',
+                'type'          => 'fix',
+                'description'   => 'Guest user is unable to checkout with stripe (Stripe Module).'
+            ),
+            array(
+                'title'         => 'Stripe Certificate Missing Issue',
+                'type'          => 'Fix',
+                'description'   => 'Add ca-certificate file to allow certificate verification of stripe SSL (Stripe Module).'
+            ),
+            array(
+                'title'         => 'Shipping doesn\'t Work on Variable Product',
+                'type'          => 'Fix',
+                'description'   => 'If variable product is created by admin for a vendor, vendor shipping method doesn\'t work.'
+            ),
+            array(
+                'title'         => 'Payment Fields are Missing in Edit Vendor Page',
+                'type'          => 'Fix',
+                'description'   => 'Set default bank payment object if it\'s not found from the API response.'
+            ),
+            array(
+                'title'         => 'Product Lot Discount on Sub Orders',
+                'type'          => 'Fix',
+                'description'   => 'Product lot discount is getting applied on sub-orders even though discount is disabled.'
+            ),
+        )
+    ),
+    array(
         'version'  => 'Version 2.9.12',
         'released' => '2019-08-09',
         'changes'  => array(

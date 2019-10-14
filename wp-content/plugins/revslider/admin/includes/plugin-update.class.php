@@ -4488,7 +4488,7 @@ class RevSliderPluginUpdate extends RevSliderFunctions {
 				'size' => array(
 					'desktop' => $this->get_val($global, 'width', 1240),
 					'notebook' => $this->get_val($global, 'width_notebook', 1024),
-					'tablet' => $this->get_val($global, 'width_tablet', 768),
+					'tablet' => $this->get_val($global, 'width_tablet', 778),
 					'mobile' => $this->get_val($global, 'width_mobile', 480)
 				)
 			);
@@ -4506,7 +4506,7 @@ class RevSliderPluginUpdate extends RevSliderFunctions {
 
 		$rs_nav = new RevSliderNavigation();
 		//do on all navigations ?
-		$navs = ($navs === false) ? $rs_nav->get_all_navigations(false) : (array) $navs;
+		$navs = ($navs === false) ? $rs_nav->get_all_navigations(false, false, true) : (array) $navs;
 
 		$new_navs = array();
 		if(!empty($navs)){
@@ -4515,12 +4515,14 @@ class RevSliderPluginUpdate extends RevSliderFunctions {
 
 			//now push all again back in with new IDs
 			foreach($navs as $nav){
+				$nav['css'] = (!is_array($nav['css'])) ? json_decode($nav['css'], true) : $nav['css'];
+				$nav['markup'] = (!is_array($nav['markup'])) ? json_decode($nav['markup'], true) : $nav['markup'];
+				
 				foreach($this->navtypes as $navtype){
 					if(isset($nav['css'][$navtype]) && !empty($nav['css'][$navtype])){
 						//otherwise we are already on 6.0
 						$new_nav = $this->create_new_navigation_6_0($nav, $navtype);
-
-						$wpdb->update($wpdb->prefix . RevSliderFront::TABLE_NAVIGATIONS,
+						$wpdb->insert($wpdb->prefix . RevSliderFront::TABLE_NAVIGATIONS,
 							array(
 								'name' => $this->get_val($new_nav, 'name'),
 								'handle' => $this->get_val($new_nav, 'handle'),
@@ -6274,6 +6276,64 @@ class RevSliderPluginUpdate extends RevSliderFunctions {
 		return $slide;
 	}
 	
+	
+	/**
+	 * Check if it is an empty array or object
+	 * @since: 6.0.0
+	 **/
+	public function isEmptyObject($vars){ //object	
+		//$vars = get_object_vars($object);
+		if(empty($vars) && $vars !== 0){ // && $vars !== false
+		//if(!is_array($vars) && !is_object($vars) && trim($vars) === '' && $vars !== 0){
+			return true;
+		}else{
+			$vars = (array)$vars;
+			foreach($vars as $var){
+				if(!is_array($var)){ //!is_object($var) && 
+					return false;
+				}else{
+					return $this->isEmptyObject($var);
+				}
+			}
+		}
+	}
+	
+	
+	/**
+	 * get transparency from rgba
+	 * @since: 5.0
+	 */
+	public function get_trans_from_rgba($rgba, $in_percent = false){
+		if(strtolower($rgba) == 'transparent') return 100;
+		
+		$temp = explode(',', $rgba);
+		if(count($temp) == 4){
+			return ($in_percent) ? preg_replace('/[^\d.]/', '', $temp[3]) : preg_replace('/[^\d.]/', "", $temp[3]) * 100;
+		}
+		
+		return 100;
+	}
+	
+	
+	/**
+	 * change rgba to hex
+	 * @since: 5.0
+	 * @moved: 6.1.3
+	 */
+	public function rgba2hex($rgba){
+		if(strtolower($rgba) == 'transparent') return $rgba;
+		
+		$temp = explode(',', $rgba);
+		$rgb = array();
+		if(count($temp) == 4) unset($temp[3]);
+		foreach($temp as $val){
+			$t = dechex(preg_replace('/[^\d.]/', '', $val));
+			if(strlen($t) < 2) $t = '0'.$t;
+			$rgb[] = $t;
+		}
+		
+		return '#'.implode('', $rgb);
+	}
 }
 
 ?>

@@ -290,7 +290,8 @@ class Email_Log {
 				`email_last_open_date` DATETIME,
 				`email_created` DATETIME NOT NULL,
 				`email_sent` DATETIME,
-				PRIMARY KEY  (email_id)
+				PRIMARY KEY  (email_id),
+				INDEX email_subject (email_subject)
 				) $charset_collate;";
 		dbDelta( $sql );
 	}

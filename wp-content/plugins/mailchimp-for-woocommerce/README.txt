@@ -2,11 +2,12 @@
 Contributors: ryanhungate, Mailchimp
 Tags: ecommerce,email,workflows,mailchimp
 Donate link: https://mailchimp.com
-Requires at least: 4.3
-Tested up to: 5.1
-Stable tag: 2.1.17
+Requires at least: 4.9
+Tested up to: 5.2.3
+Stable tag: 2.2.3
 Requires PHP: 7.0
-WC tested up to: 3.5.4
+WC requires at least: 3.5
+WC tested up to: 3.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Connect your store to your Mailchimp audience to track sales, create targeted emails, send abandoned cart emails, and more.
@@ -62,6 +63,11 @@ The Mailchimp for WooCommerce supports Wordpress Multi Sites and below are a few
 - Deleting removes the connection between Mailchimp and WooCommerce, and uninstalls the plugin from your site.
 Refer to the Wordpress Codex for more information about [Multisite Network Administration](https://codex.wordpress.org/Multisite_Network_Administration)
 == Changelog ==
+= 2.2 =
+* plugin reskin 
+* support for oauth to Mailchimp  
+* fixes sync issues with altered order IDs
+* fixes issues with trashed coupons 
 = 2.1.17 =
 * Re add resync button to sync tab, after sync finishes
 * Renamed 'merge_vars' to 'merge_fields' as per new Mailchimp naming convention

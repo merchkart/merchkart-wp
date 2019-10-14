@@ -80,6 +80,10 @@ class Dokan_Stripe {
 
         // approve refund request automatically such as stripe connect
         add_action( 'dokan_after_refund_request', [ $this, 'process_refund_request' ], 10, 2 );
+
+        // set guest customer billing data to session
+        add_filter( 'woocommerce_checkout_fields', [ $this, 'trigger_update_checkout_on_change' ] );
+        add_action( 'woocommerce_checkout_update_order_review', [ $this, 'set_email_prop_to_session' ] );
     }
 
     /**
@@ -486,11 +490,19 @@ class Dokan_Stripe {
                     $event = \Stripe\Event::retrieve( $event_id );
                     $invoice = $event->data->object;
 
-                    // successful payment, both one time and recurring payments
+                    // successful payment recurring payments
                     if ( 'invoice.payment_succeeded' == $event->type ) {
-                        $user_id      = $wpdb->get_var( "SELECT `user_id` FROM $wpdb->usermeta WHERE `meta_key` = '_stripe_subscription_id' AND `meta_value`='$invoice->subscription'" );
-                        $period_start = date( 'Y-m-d H:i:s', $invoice->period_start );
-                        $period_end   = date( 'Y-m-d H:i:s', $invoice->period_end );
+                        $subscription_id = ! empty( $invoice->subscription ) ? $invoice->subscription : null;
+
+                        if ( ! $subscription_id ) {
+                            return;
+                        }
+
+                        $user_id      = $wpdb->get_var( "SELECT `user_id` FROM $wpdb->usermeta WHERE `meta_key` = '_stripe_subscription_id' AND `meta_value`='$subscription_id'" );
+                        $subscription = \Stripe\Subscription::retrieve( $subscription_id );
+
+                        $period_start = date( 'Y-m-d H:i:s', $subscription->current_period_start );
+                        $period_end   = date( 'Y-m-d H:i:s', $subscription->current_period_end );
                         $order_id     = get_user_meta( $user_id, 'product_order_id', true );
 
                         if ( $invoice->paid ) {
@@ -788,6 +800,46 @@ class Dokan_Stripe {
         $refund->update_status( $refund_id, $refund->get_status_code( 'completed' ) );
 
         return wp_send_json_success( __( 'Your refund request has been processed.', 'dokan' ) );
+    }
+
+    /**
+     * Trigger update checkout on field change
+     *
+     * @since 2.9.13
+     *
+     * @param array $fileds
+     *
+     * @return array
+     */
+    public function trigger_update_checkout_on_change( $fields ) {
+        if ( is_user_logged_in() ) {
+            return $fields;
+        }
+
+        $fields['billing']['billing_email']['class'][] = 'update_totals_on_change';
+
+        return $fields;
+    }
+
+    /**
+     * Set guest customer email to session
+     *
+     * @since 2.9.13
+     *
+     * @param string $post_data
+     *
+     * @return void
+     */
+    public function set_email_prop_to_session( $post_data ) {
+        if ( is_user_logged_in() ) {
+            return;
+        }
+
+        parse_str( $post_data, $data );
+        $billing_email = ! empty( $data['billing_email'] ) ? wc_clean( $data['billing_email'] ) : 'guest@customer.com';
+
+        WC()->session->__unset( 'billing_email' );
+        WC()->session->set( 'billing_email', $billing_email );
     }
 }
 

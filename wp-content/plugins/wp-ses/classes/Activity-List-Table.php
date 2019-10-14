@@ -82,8 +82,6 @@ class Activity_List_Table extends \WP_List_Table {
 	 * @return array
 	 */
 	public function get_columns() {
-		global $wp_offload_ses;
-
 		$columns = array(
 			'cb'        => '<input type="checkbox" />',
 			'date'      => __( 'Date', 'wp-offload-ses' ),
@@ -91,10 +89,6 @@ class Activity_List_Table extends \WP_List_Table {
 			'recipient' => __( 'Recipient', 'wp-offload-ses' ),
 			'status'    => __( 'Status', 'wp-offload-ses' ),
 		);
-
-		if ( ! $wp_offload_ses->is_pro() ) {
-			unset( $columns['cb'] );
-		}
 
 		return $columns;
 	}
@@ -165,7 +159,7 @@ class Activity_List_Table extends \WP_List_Table {
 		$actions = $wp_offload_ses->get_email_action_links( $email['id'], $email['status'] );
 
 		if ( $wp_offload_ses->is_pro() ) {
-			$subject = '<a href="#activity" class="wposes-view-email" data-email="' . $email['id'] . '">' . $email['subject'] . '</a>';
+			$subject = '<a href="#activity" class="wposes-view-email wposes-subject-link" data-email="' . $email['id'] . '">' . $email['subject'] . '</a>';
 		}
 
 		return $subject . $this->row_actions( $actions );
@@ -411,8 +405,6 @@ class Activity_List_Table extends \WP_List_Table {
 	 * @since 3.1.0
 	 */
 	public function render_views() {
-		global $wp_offload_ses;
-
 		$views = $this->get_views();
 
 		if ( ! $views ) {
@@ -435,9 +427,7 @@ class Activity_List_Table extends \WP_List_Table {
 		}
 		$this->screen->render_screen_reader_content( 'heading_views' );
 
-		$style = $wp_offload_ses->is_pro() ? '' : 'margin-bottom:6px;';
-
-		echo "<ul class='subsubsub' style='$style'>\n";
+		echo "<ul class='subsubsub'>\n";
 		foreach ( $views as $class => $view ) {
 			if ( isset( $_REQUEST['status'] ) ) {
 				$current = esc_attr( $_REQUEST['status'] );
@@ -480,9 +470,7 @@ class Activity_List_Table extends \WP_List_Table {
 	 * Display the bulk actions.
 	 */
 	public function bulk_actions( $which = 'top' ) {
-		global $wp_offload_ses;
-
-		if ( 'top' !== $which || ! $wp_offload_ses->is_pro() ) {
+		if ( 'top' !== $which ) {
 			return;
 		}
 
@@ -546,9 +534,7 @@ class Activity_List_Table extends \WP_List_Table {
 	 * @param string $which Top or bottom.
 	 */
 	public function display_tablenav( $which = 'top' ) {
-		global $wp_offload_ses;
-
-		if ( ( 'top' === $which && ! $wp_offload_ses->is_pro() ) || ! $this->has_items() ) {
+		if ( ! $this->has_items() ) {
 			return false;
 		}
 
@@ -561,9 +547,7 @@ class Activity_List_Table extends \WP_List_Table {
 	 * @param string $which Top or bottom.
 	 */
 	public function extra_tablenav( $which = 'top' ) {
-		global $wp_offload_ses;
-
-		if ( 'top' !== $which || ! $this->has_items() || ! $wp_offload_ses->is_pro() ) {
+		if ( 'top' !== $which || ! $this->has_items() ) {
 			return;
 		}
 		?>

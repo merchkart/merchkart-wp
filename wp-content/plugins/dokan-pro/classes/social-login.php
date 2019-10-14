@@ -68,6 +68,8 @@ Class Dokan_Social_Login {
         // add social buttons on registration form and login form
         add_action( 'woocommerce_register_form_end', array( $this, 'render_social_logins' ) );
         add_action( 'woocommerce_login_form_end', array( $this, 'render_social_logins' ) );
+        add_action( 'dokan_vendor_reg_form_end', array( $this, 'render_social_logins' ) );
+        add_action( 'dokan_vendor_reg_form_end', array( $this, 'enqueue_style' ) );
 
         //add custom my account end-point
         add_filter( 'dokan_query_var_filter', array( $this, 'register_support_queryvar' ) );
@@ -211,7 +213,12 @@ Class Dokan_Social_Login {
             $user_profile = $adapter->getUserProfile();
 
             if ( ! $user_profile ) {
-                wc_add_notice( __( 'Something went wrong! please try again', 'dokan' ), 'success' );
+                wc_add_notice( __( 'Something went wrong! please try again', 'dokan' ), 'error' );
+                wp_redirect( $this->callback );
+            }
+
+            if ( empty( $user_profile->email ) ) {
+                wc_add_notice( __( 'User email is not found. Try again.', 'dokan' ), 'error' );
                 wp_redirect( $this->callback );
             }
 
@@ -520,4 +527,15 @@ Class Dokan_Social_Login {
         exit;
     }
 
+    /**
+     * Enqueue social style on vendor registration page created via [dokan-vendor-registration] shortcode
+     *
+     * @since 2.9.13
+     *
+     * @return void
+     */
+    public function enqueue_style() {
+        wp_enqueue_style( 'dokan-social-style' );
+        wp_enqueue_style( 'dokan-social-theme-flat' );
+    }
 }

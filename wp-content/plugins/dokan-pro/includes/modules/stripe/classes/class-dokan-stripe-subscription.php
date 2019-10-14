@@ -5,7 +5,7 @@ use DokanPro\Modules\Subscription\Helper;
 /**
  * Dokan Stripe Subscriptoin Class
  *
- * @since DOKAN_PRO_SINCE
+ * @since 2.9.13
  */
 class Dokan_Stripe_Subscription {
     /**
@@ -30,9 +30,16 @@ class Dokan_Stripe_Subscription {
     public $product_id = '';
 
     /**
+     * Vendor email address holder
+     *
+     * @var string
+     */
+    public $vendor_email = '';
+
+    /**
      * Constructor method
      *
-     * @since DOKAN_PRO_SINCE
+     * @since 2.9.13
      */
     public function __construct() {
         $this->load_stripe_SDK();
@@ -42,7 +49,7 @@ class Dokan_Stripe_Subscription {
     /**
      * Load stripe SDK
      *
-     * @since DOKAN_PRO_SINCE
+     * @since 2.9.13
      *
      * @return void
      */
@@ -69,7 +76,7 @@ class Dokan_Stripe_Subscription {
     /**
      * All the hooks
      *
-     * @since DOKAN_PRO_SINCE
+     * @since 2.9.13
      *
      * @return void
      */
@@ -80,7 +87,7 @@ class Dokan_Stripe_Subscription {
     /**
      * Prepare subscriptoin data
      *
-     * @since DOKAN_PRO_SINCE
+     * @since 2.9.13
      *
      * @return object
      */
@@ -99,8 +106,9 @@ class Dokan_Stripe_Subscription {
             return;
         }
 
-        $this->token      = ! empty( $data['token'] ) ? wc_clean( $data['token'] ) : '';
-        $this->product_id = ! empty( $data['product_id'] ) ? wc_clean( $data['product_id'] ) : '';
+        $this->token        = ! empty( $data['token'] ) ? wc_clean( $data['token'] ) : '';
+        $this->product_id   = ! empty( $data['product_id'] ) ? wc_clean( $data['product_id'] ) : '';
+        $this->vendor_email = ! empty( $data['email'] ) && is_email( $data['email'] ) ? $data['email'] : '';
 
         $product_pack       = wc_get_product( $this->product_id );
         $product_pack_name  = $product_pack->get_title() . ' #' . $product_pack->get_id();
@@ -116,7 +124,7 @@ class Dokan_Stripe_Subscription {
             // if vendor already has used a trial pack, create a new plan without trial period
             if ( Helper::has_used_trial_pack( get_current_user_id() ) ) {
                 $trial_period_days = 0;
-                $product_pack_id   = $product_pack_id . '-' . random_int( 1, 99999 );
+                $product_pack_id   = $product_pack_id . '-' . random_int( 1, 999999 );
             }
 
             if ( Stripe_Helper::is_3d_secure_enabled() ) {
@@ -168,9 +176,14 @@ class Dokan_Stripe_Subscription {
             update_user_meta( $customer_user_id, 'has_pending_subscription', true );
 
             $admin_commission      = get_post_meta( $product_pack->get_id(), '_subscription_product_admin_commission', true );
+            $admin_additional_fee  = get_post_meta( $product_pack->get_id(), '_subscription_product_admin_additional_fee', true );
             $admin_commission_type = get_post_meta( $product_pack->get_id(), '_subscription_product_admin_commission_type', true );
 
-            if ( ! empty( $admin_commission ) && ! empty( $admin_commission_type ) ) {
+            if ( ! empty( $admin_commission ) && ! empty( $admin_additional_fee ) && ! empty( $admin_commission_type ) ) {
+                update_user_meta( $customer_user_id, 'dokan_admin_percentage', $admin_commission );
+                update_user_meta( $customer_user_id, 'dokan_admin_additional_fee', $admin_additional_fee );
+                update_user_meta( $customer_user_id, 'dokan_admin_percentage_type', $admin_commission_type );
+            } else if ( ! empty( $admin_commission ) && ! empty( $admin_commission_type ) ) {
                 update_user_meta( $customer_user_id, 'dokan_admin_percentage', $admin_commission );
                 update_user_meta( $customer_user_id, 'dokan_admin_percentage_type', $admin_commission_type );
             } else {
@@ -198,7 +211,7 @@ class Dokan_Stripe_Subscription {
             try {
                 $subscription = \Stripe\Subscription::retrieve( $already_has_subscription );
             } catch ( Exception $e ) {
-                throw new Exception( __( 'Unable to find previous subscription', 'dokan' ), 404 );
+                return $this->create_subscription();
             }
 
             // if subscription status is incomplete, cancel it first as incomplete subscription can't be updated
@@ -215,7 +228,8 @@ class Dokan_Stripe_Subscription {
                         'plan' => $this->plan_id
                     ]
                 ],
-                'prorate' => true
+                'prorate' => true,
+                'coupon'  => $this->get_coupon()
             ] );
 
             return $upgrade;
@@ -227,7 +241,7 @@ class Dokan_Stripe_Subscription {
     /**
      * Create subscription
      *
-     * @since DOKAN_PRO_SINCE
+     * @since 2.9.13
      *
      * @return Stripe\Subscription
      */
@@ -240,7 +254,8 @@ class Dokan_Stripe_Subscription {
                     'plan' => $this->plan_id,
                 ],
             ],
-            'trial_from_plan' => true
+            'coupon'          => $this->get_coupon(),
+            'trial_from_plan' => true,
         ] );
 
         return $subscription;
@@ -249,7 +264,7 @@ class Dokan_Stripe_Subscription {
     /**
      * Create customer
      *
-     * @since DOKAN_PRO_SINCE
+     * @since 2.9.13
      *
      * @return void
      */
@@ -259,10 +274,36 @@ class Dokan_Stripe_Subscription {
         }
 
         $customer = \Stripe\Customer::create( [
-            'source' => $this->token
+            'email'       => $this->vendor_email,
+            'description' => __( 'Vendor', 'dokan' ),
+            'source'      => $this->token
         ] );
 
         $this->customer_id = $customer->id;
+    }
+
+    /**
+     * Get coupon id for a subscription
+     *
+     * @since  2.9.14
+     *
+     * @return Stripe\Coupon::id |null on failure
+     */
+    protected function get_coupon() {
+        $discount = WC()->cart->get_discount_total();
+
+        if ( ! $discount ) {
+            return;
+        }
+
+        $coupon = \Stripe\Coupon::create( [
+            'duration'   => 'once',
+            'id'         => $discount .'_OFF_' . random_int( 1, 999999 ),
+            'amount_off' => 100 * $discount,
+            'currency'   => strtolower( get_woocommerce_currency() )
+        ] );
+
+        return $coupon->id;
     }
 }
 

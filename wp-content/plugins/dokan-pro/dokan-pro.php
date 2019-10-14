@@ -3,11 +3,11 @@
   Plugin Name: Dokan Pro - professional
   Plugin URI: https://wedevs.com/dokan/
   Description: An e-commerce marketplace plugin for WordPress. Powered by WooCommerce and weDevs.
-  Version: 2.9.12
+  Version: 2.9.14
   Author: weDevs
   Author URI: https://wedevs.com/
   WC requires at least: 3.0
-  WC tested up to: 3.6.5
+  WC tested up to: 3.7.0
   License: GPL2
   TextDomain: dokan
  */
@@ -36,7 +36,7 @@ class Dokan_Pro {
      *
      * @var string
      */
-    public $version = '2.9.12';
+    public $version = '2.9.14';
 
     /**
      * Constructor for the Dokan_Pro class
@@ -474,7 +474,9 @@ class Dokan_Pro {
             'ajaxurl'      => admin_url( 'admin-ajax.php' ),
             'nonce'        => wp_create_nonce( 'dokan-admin-nonce' ),
             'activating'   => __( 'Activating', 'dokan' ),
-            'deactivating' => __( 'Deactivating', 'dokan' )
+            'deactivating' => __( 'Deactivating', 'dokan' ),
+            'combine_commission_desc' => __( 'Amount you will get from sales in both percentage and fixed fee', 'dokan' ),
+            'default_commission_desc' => __( 'It will override the default commission admin gets from each sales', 'dokan' )
         ) );
 
         wp_localize_script( 'dokan_slider_admin', 'dokan_refund', $dokan_refund );

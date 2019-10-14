@@ -158,13 +158,7 @@ class Email {
 		/** @var WP_Offload_SES $wp_offload_ses */
 		global $wp_offload_ses;
 
-		$domain = strtolower( $_SERVER['SERVER_NAME'] ); // phpcs:ignore
-
-		if ( substr( $domain, 0, 4 ) === 'www.' ) {
-			$domain = substr( $domain, 4 );
-		}
-
-		$wp_default_email = 'wordpress@' . $domain;
+		$wp_default_email = Utils::get_wordpress_default_email( false );
 
 		if ( is_null( $this->from ) || $wp_default_email === $this->from ) {
 

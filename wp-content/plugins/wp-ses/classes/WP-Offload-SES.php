@@ -432,6 +432,10 @@ class WP_Offload_SES extends Plugin_Base {
 		$text          = __( 'Settings', 'wp-offload-ses' );
 		$settings_link = '<a href="' . $url . '">' . esc_html( $text ) . '</a>';
 
+		if ( is_multisite() && ! is_network_admin() && ! $this->settings->get_setting( 'enable-subsite-settings' ) ) {
+			return $links;
+		}
+
 		if ( $file === $this->plugin_basename ) {
 			array_unshift( $links, $settings_link );
 		}
@@ -921,7 +925,7 @@ class WP_Offload_SES extends Plugin_Base {
 			$username
 		);
 
-		$email  = new Email( $to, $subject, $content, '', '', $this->settings->get_settings() );
+		$email  = new Email( $to, $subject, $content, '', '' );
 		$raw    = $email->prepare();
 		$result = $this->get_ses_api()->send_email( $raw );
 
