@@ -21,17 +21,17 @@ if ( $withdraw_requests ) {
         <?php foreach ( $withdraw_requests as $request ) { ?>
 
             <tr>
-                <td><?php echo wc_price( $request->amount ); ?></td>
+                <td><?php echo wp_kses_post( wc_price( $request->amount ) ); ?></td>
                 <td><?php echo esc_html( dokan_withdraw_get_method_title( $request->method ) ); ?></td>
                 <td><?php echo esc_html( dokan_format_time( $request->date ) ); ?></td>
                 <td>
                     <?php
                     $url = add_query_arg( array(
-                        'action' => 'dokan_cancel_withdrow',
+                        'dokan_handle_withdraw_request' => 'cancel',
                         'id'     => $request->id
                     ), dokan_get_navigation_url( 'withdraw' ) );
                     ?>
-                    <a href="<?php echo esc_url( wp_nonce_url( $url, 'dokan_cancel_withdrow' ) ); ?>">
+                    <a href="<?php echo esc_url( wp_nonce_url( $url, 'dokan_cancel_withdraw' ) ); ?>">
                         <?php esc_html_e( 'Cancel', 'dokan-lite' ); ?>
                     </a>
                 </td>

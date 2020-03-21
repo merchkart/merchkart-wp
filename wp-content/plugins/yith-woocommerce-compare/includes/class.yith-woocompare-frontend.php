@@ -507,7 +507,7 @@ if( !class_exists( 'YITH_Woocompare_Frontend' ) ) {
                 $button_text = apply_filters( 'wpml_translate_single_string', $button_text, 'Plugins', 'plugin_yit_compare_button_text' );
             }
 
-            printf( '<a href="%s" class="%s" data-product_id="%d" rel="nofollow">%s</a>', $this->add_product_url( $product_id ), 'compare' . ( $is_button == 'button' ? ' button' : '' ), $product_id, $button_text );
+            printf( '<a href="%s" class="%s" data-product_id="%d" rel="nofollow">%s</a>', $this->add_product_url( $product_id ), 'compare' . ( $is_button == 'button' ? ' button' : '' ), $product_id, $button_text ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         }
 
         /**
@@ -654,7 +654,7 @@ if( !class_exists( 'YITH_Woocompare_Frontend' ) ) {
             header('Content-Type: text/html; charset=utf-8');
 
             if ( isset( $_REQUEST['responseType'] ) && $_REQUEST['responseType'] == 'product_list' ) {
-                echo $this->list_products_html( $lang );
+                echo wp_kses_post( $this->list_products_html( $lang ) );
             } else {
                 $this->compare_table_html();
             }
@@ -673,7 +673,7 @@ if( !class_exists( 'YITH_Woocompare_Frontend' ) ) {
 
             $lang = isset( $_REQUEST['lang'] ) ? $_REQUEST['lang'] : false;
 
-            echo $this->list_products_html( $lang );
+            echo wp_kses_post( $this->list_products_html( $lang ) );
             die();
         }
 
@@ -693,7 +693,7 @@ if( !class_exists( 'YITH_Woocompare_Frontend' ) ) {
             }
 
             if ( empty( $this->products_list ) ) {
-                echo '<li class="list_empty">' . __( 'No products to compare', 'yith-woocommerce-compare' ) . '</li>';
+                echo '<li class="list_empty">' . esc_html__( 'No products to compare', 'yith-woocommerce-compare' ) . '</li>';
                 return ob_get_clean();
             }
 
@@ -706,8 +706,8 @@ if( !class_exists( 'YITH_Woocompare_Frontend' ) ) {
 	                continue;
                 ?>
                 <li>
-                    <a href="<?php echo $this->remove_product_url( $product_id ) ?>" data-product_id="<?php echo $product_id; ?>" class="remove" title="<?php _e( 'Remove', 'yith-woocommerce-compare' ) ?>">x</a>
-                    <a class="title" href="<?php echo get_permalink( $product_id ) ?>"><?php echo $product->get_title() ?></a>
+                    <a href="<?php echo esc_attr( $this->remove_product_url( $product_id ) ); ?>" data-product_id="<?php echo esc_attr( $product_id ); ?>" class="remove" title="<?php esc_html_e( 'Remove', 'yith-woocommerce-compare' ) ?>">x</a>
+                    <a class="title" href="<?php echo esc_attr( get_permalink( $product_id ) ); ?>"><?php echo esc_html( $product->get_title() ) ?></a>
                 </li>
             <?php
             }

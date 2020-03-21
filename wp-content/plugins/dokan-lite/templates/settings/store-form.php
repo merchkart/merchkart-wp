@@ -29,14 +29,12 @@
     $store_tnc      = isset( $profile_info['store_tnc'] ) ? $profile_info['store_tnc'] : '';
 
     if ( is_wp_error( $validate ) ) {
-        $get_data = wp_unslash( $_POST );
+        $posted_data = wp_unslash( $_POST ); // WPCS: CSRF ok, Input var ok.
 
-        $storename    = sanitize_text_field( $get_data['dokan_store_name'] ); // WPCS: CSRF ok, Input var ok.
-        $map_location = sanitize_text_field( $get_data['location'] );         // WPCS: CSRF ok, Input var ok.
-        $map_address  = sanitize_text_field( $get_data['find_address'] );     // WPCS: CSRF ok, Input var ok.
-
-        $posted_address = wc_clean( $get_data['dokan_address'] ); // WPCS: CSRF ok, Input var ok.
-
+        $storename       = sanitize_text_field( $posted_data['dokan_store_name'] );
+        $map_location    = sanitize_text_field( $posted_data['location'] );
+        $map_address     = sanitize_text_field( $posted_data['find_address'] );
+        $posted_address  = sanitize_text_field( $posted_data['dokan_address'] );
         $address_street1 = sanitize_text_field( $posted_address['street_1'] );
         $address_street2 = sanitize_text_field( $posted_address['street_2'] );
         $address_city    = sanitize_text_field( $posted_address['city'] );
@@ -64,7 +62,7 @@
 
                 <div class="image-wrap<?php echo $banner_id ? '' : ' dokan-hide'; ?>">
                     <?php $banner_url = $banner_id ? wp_get_attachment_url( $banner_id ) : ''; ?>
-                    <input type="hidden" class="dokan-file-field" value="<?php echo $banner_id; ?>" name="dokan_banner">
+                    <input type="hidden" class="dokan-file-field" value="<?php echo esc_attr( $banner_id ); ?>" name="dokan_banner">
                     <img class="dokan-banner-img" src="<?php echo esc_url( $banner_url ); ?>">
 
                     <a class="close dokan-remove-banner-image">&times;</a>
@@ -183,16 +181,12 @@
             <label class="dokan-w3 dokan-control-label" for="setting_map"><?php esc_html_e( 'Map', 'dokan-lite' ); ?></label>
 
             <div class="dokan-w6 dokan-text-left">
-                <input id="dokan-map-lat" type="hidden" name="location" value="<?php echo esc_attr( $map_location ); ?>" size="30" />
-
-                <div class="dokan-map-wrap">
-                    <div class="dokan-map-search-bar">
-                        <input id="dokan-map-add" type="text" class="dokan-map-search" value="<?php echo esc_attr( $map_address ); ?>" name="find_address" placeholder="<?php esc_attr_e( 'Type an address to find', 'dokan-lite' ); ?>" size="30" />
-                        <a href="#" class="dokan-map-find-btn" id="dokan-location-find-btn" type="button"><?php esc_html_e( 'Find Address', 'dokan-lite' ); ?></a>
-                    </div>
-
-                    <div class="dokan-google-map" id="dokan-map"></div>
-                </div>
+                <?php
+                    dokan_get_template( 'maps/dokan-maps-with-search.php', array(
+                        'map_location' => $map_location,
+                        'map_address'  => $map_address,
+                    ) );
+                ?>
             </div> <!-- col.md-4 -->
         </div> <!-- .dokan-form-group -->
 
@@ -267,10 +261,10 @@
                             </select>
                         </label>
                         <label for="opening-time" class="time" style="visibility: <?php echo isset( $status ) && $status == 'open' ? 'visible' : 'hidden' ?>" >
-                            <input type="text" class="dokan-form-control" name="<?php echo esc_attr( strtolower( $day ) ); ?>_opening_time" id="<?php echo esc_attr( $day ) ?>-opening-time" placeholder="<?php echo date_i18n( get_option( 'time_format', 'g:i a' ), current_time( 'timestamp' ) ); ?>" value="<?php echo isset( $all_times[$day]['opening_time'] ) ? esc_attr( $all_times[$day]['opening_time'] ) : '' ?>" >
+                            <input type="text" class="dokan-form-control" name="<?php echo esc_attr( strtolower( $day ) ); ?>_opening_time" id="<?php echo esc_attr( $day ) ?>-opening-time" placeholder="<?php echo esc_attr( date_i18n( get_option( 'time_format', 'g:i a' ), current_time( 'timestamp' ) ) ); ?>" value="<?php echo isset( $all_times[$day]['opening_time'] ) ? esc_attr( $all_times[$day]['opening_time'] ) : '' ?>" >
                         </label>
                         <label for="closing-time" class="time" style="visibility: <?php echo isset( $status ) && $status == 'open' ? 'visible' : 'hidden' ?>" >
-                            <input type="text" class="dokan-form-control" name="<?php echo esc_attr( $day ) ?>_closing_time" id="<?php echo esc_attr( $day ) ?>-closing-time" placeholder="<?php echo date_i18n( get_option( 'time_format', 'g:i a' ), current_time( 'timestamp' ) ); ?>" value="<?php echo isset( $all_times[$day]['closing_time'] ) ? esc_attr( $all_times[$day]['closing_time'] ) : '' ?>">
+                            <input type="text" class="dokan-form-control" name="<?php echo esc_attr( $day ) ?>_closing_time" id="<?php echo esc_attr( $day ) ?>-closing-time" placeholder="<?php echo esc_attr( date_i18n( get_option( 'time_format', 'g:i a' ), current_time( 'timestamp' ) ) ); ?>" value="<?php echo isset( $all_times[$day]['closing_time'] ) ? esc_attr( $all_times[$day]['closing_time'] ) : '' ?>">
                         </label>
                     </div>
                 <?php endforeach; ?>
@@ -293,7 +287,7 @@
             </label>
             <div class="dokan-w6" style="width: auto">
                 <div class="dokan-form-group">
-                    <input type="text" class="dokan-form-control input-md" name="dokan_store_close_notice" placeholder="<?php esc_attr_e( 'Store is closed', 'dokan' ) ?>" value="<?php echo esc_attr( $dokan_store_close_notice ); ?>">
+                    <input type="text" class="dokan-form-control input-md" name="dokan_store_close_notice" placeholder="<?php esc_attr_e( 'Store is closed', 'dokan-lite' ) ?>" value="<?php echo esc_attr( $dokan_store_close_notice ); ?>">
                 </div>
             </div>
         </div>
@@ -389,7 +383,7 @@
         } );
         $( '.time .dokan-form-control' ).timepicker({
             scrollDefault: 'now',
-            timeFormat: '<?php echo get_option( 'time_format' ); ?>',
+            timeFormat: '<?php echo esc_attr( get_option( 'time_format' ) ); ?>',
             step: <?php echo 'h' === strtolower( get_option( 'time_format' ) ) ? '60' : '30'; ?>
         });
         // dokan store open close scripts end //
@@ -495,121 +489,6 @@
                     e.preventDefault();
                 }
             });
-            <?php
-            $locations = explode( ',', $map_location );
-            $def_lat = isset( $locations[0] ) ? $locations[0] : 90.40714300000002;
-            $def_long = isset( $locations[1] ) ? $locations[1] : 23.709921;
-            ?>
-            var def_zoomval = 12;
-            var def_longval = '<?php echo esc_attr( $def_long ); ?>';
-            var def_latval = '<?php echo esc_attr( $def_lat ); ?>';
-
-            try {
-                var curpoint = new google.maps.LatLng(def_latval, def_longval),
-                    geocoder   = new window.google.maps.Geocoder(),
-                    $map_area = $('#dokan-map'),
-                    $input_area = $( '#dokan-map-lat' ),
-                    $input_add = $( '#dokan-map-add' ),
-                    $find_btn = $( '#dokan-location-find-btn' );
-
-                $find_btn.on('click', function(e) {
-                    e.preventDefault();
-
-                    geocodeAddress( $input_add.val() );
-                });
-
-                var gmap = new google.maps.Map( $map_area[0], {
-                    center: curpoint,
-                    zoom: def_zoomval,
-                    mapTypeId: window.google.maps.MapTypeId.ROADMAP
-                });
-
-                var marker = new window.google.maps.Marker({
-                    position: curpoint,
-                    map: gmap,
-                    draggable: true
-                });
-
-                window.google.maps.event.addListener( gmap, 'click', function ( event ) {
-                    marker.setPosition( event.latLng );
-                    updatePositionInput( event.latLng );
-                } );
-
-                window.google.maps.event.addListener( marker, 'drag', function ( event ) {
-                    updatePositionInput(event.latLng );
-                } );
-
-            } catch( e ) {
-                console.log( 'Google API not found.' );
-            }
-
-            autoCompleteAddress();
-
-            function updatePositionInput( latLng ) {
-                $input_area.val( latLng.lat() + ',' + latLng.lng() );
-            }
-
-            function updatePositionMarker() {
-                var coord = $input_area.val(),
-                    pos, zoom;
-
-                if ( coord ) {
-                    pos = coord.split( ',' );
-                    marker.setPosition( new window.google.maps.LatLng( pos[0], pos[1] ) );
-
-                    zoom = pos.length > 2 ? parseInt( pos[2], 10 ) : 12;
-
-                    gmap.setCenter( marker.position );
-                    gmap.setZoom( zoom );
-                }
-            }
-
-            function geocodeAddress( address ) {
-                geocoder.geocode( {'address': address}, function ( results, status ) {
-                    if ( status == window.google.maps.GeocoderStatus.OK ) {
-                        updatePositionInput( results[0].geometry.location );
-                        marker.setPosition( results[0].geometry.location );
-                        gmap.setCenter( marker.position );
-                        gmap.setZoom( 15 );
-                    }
-                } );
-            }
-
-            function autoCompleteAddress(){
-                if (!$input_add) return null;
-
-                $input_add.autocomplete({
-                    source: function(request, response) {
-                        // TODO: add 'region' option, to help bias geocoder.
-                        geocoder.geocode( {'address': request.term }, function(results, status) {
-                            response(jQuery.map(results, function(item) {
-                                return {
-                                    label     : item.formatted_address,
-                                    value     : item.formatted_address,
-                                    latitude  : item.geometry.location.lat(),
-                                    longitude : item.geometry.location.lng()
-                                };
-                            }));
-                        });
-                    },
-                    select: function(event, ui) {
-
-                        $input_area.val(ui.item.latitude + ',' + ui.item.longitude );
-
-                        var location = new window.google.maps.LatLng(ui.item.latitude, ui.item.longitude);
-
-                        gmap.setCenter(location);
-                        // Drop the Marker
-                        setTimeout( function(){
-                            marker.setValues({
-                                position    : location,
-                                animation   : window.google.maps.Animation.DROP
-                            });
-                        }, 1500);
-                    }
-                });
-            }
-
         });
     })(jQuery);
 </script>

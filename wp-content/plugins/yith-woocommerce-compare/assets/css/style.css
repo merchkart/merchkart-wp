@@ -116,11 +116,6 @@ table.compare-list tbody td.last-column {
     border-right: 0;
 }
 
-table.compare-list tr.image td,
-table.compare-list tr.image th {
-    border-top: 0;
-}
-
 #yith-woocompare-table_wrapper {
     margin: 10px 0;
 }

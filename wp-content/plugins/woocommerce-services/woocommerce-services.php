@@ -7,11 +7,11 @@
  * Author URI: https://woocommerce.com/
  * Text Domain: woocommerce-services
  * Domain Path: /i18n/languages/
- * Version: 1.21.1
+ * Version: 1.22.5
  * WC requires at least: 3.0.0
- * WC tested up to: 3.7
+ * WC tested up to: 4.0
  *
- * Copyright (c) 2017-2019 Automattic
+ * Copyright (c) 2017-2020 Automattic
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -185,6 +185,8 @@ if ( ! class_exists( 'WC_Connect_Loader' ) ) {
 
 		protected $wc_connect_base_url;
 
+		protected static $wcs_version;
+
 		static function plugin_deactivation() {
 			wp_clear_scheduled_hook( 'wc_connect_fetch_service_schemas' );
 		}
@@ -199,8 +201,38 @@ if ( ! class_exists( 'WC_Connect_Loader' ) ) {
 		 * @return string
 		 */
 		static function get_wcs_version() {
-			$plugin_data = get_file_data( __FILE__, array( 'Version' => 'Version' ) );
-			return $plugin_data[ 'Version' ];
+			if ( null === self::$wcs_version ) {
+				$plugin_data = get_file_data( __FILE__, array( 'Version' => 'Version' ) );
+				self::$wcs_version = $plugin_data[ 'Version' ];
+			}
+			return self::$wcs_version;
+		}
+
+		/**
+		 * Get base url.
+		 *
+		 * @return string
+		 */
+		static function get_wc_connect_base_url() {
+			return trailingslashit( defined( 'WOOCOMMERCE_CONNECT_DEV_SERVER_URL' ) ? WOOCOMMERCE_CONNECT_DEV_SERVER_URL : plugins_url( 'dist/', __FILE__ ) );
+		}
+
+		/**
+		 * Get WCS admin script url.
+		 *
+		 * @return string
+		 */
+		static function get_wcs_admin_script_url() {
+			return self::get_wc_connect_base_url() . 'woocommerce-services-' . self::get_wcs_version() . '.js';
+		}
+
+		/**
+		 * Get WCS admin css url.
+		 *
+		 * @return string
+		 */
+		static function get_wcs_admin_style_url() {
+			return self::get_wc_connect_base_url() . 'woocommerce-services-' . self::get_wcs_version() . '.css';
 		}
 
 		function wpcom_static_url($file) {
@@ -210,9 +242,8 @@ if ( ! class_exists( 'WC_Connect_Loader' ) ) {
 		}
 
 		public function __construct() {
-			$this->wc_connect_base_url = trailingslashit( defined( 'WOOCOMMERCE_CONNECT_DEV_SERVER_URL' ) ? WOOCOMMERCE_CONNECT_DEV_SERVER_URL : plugins_url( 'dist/', __FILE__ ) );
-			add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
-			add_action( 'before_woocommerce_init', array( $this, 'pre_wc_init' ) );
+			$this->wc_connect_base_url = self::get_wc_connect_base_url();
+			add_action( 'plugins_loaded', array( $this, 'on_plugins_loaded' ) );
 		}
 
 		public function get_logger() {
@@ -277,6 +308,10 @@ if ( ! class_exists( 'WC_Connect_Loader' ) ) {
 
 		public function set_rest_tos_controller( WC_REST_Connect_Tos_Controller $rest_tos_controller ) {
 			$this->rest_tos_controller = $rest_tos_controller;
+		}
+
+		public function set_rest_assets_controller( WC_REST_Connect_Assets_Controller $rest_assets_controller ) {
+			$this->rest_assets_controller = $rest_assets_controller;
 		}
 
 		public function set_rest_packages_controller( WC_REST_Connect_Packages_Controller $rest_packages_controller ) {
@@ -406,6 +441,19 @@ if ( ! class_exists( 'WC_Connect_Loader' ) ) {
 		 */
 		public function load_textdomain() {
 			load_plugin_textdomain( 'woocommerce-services', false, dirname( plugin_basename( __FILE__ ) ) . '/i18n/languages' );
+		}
+
+		public function on_plugins_loaded() {
+			$this->load_textdomain();
+
+			if ( ! class_exists( 'WooCommerce' ) ) {
+				add_action( 'admin_notices', function() {
+					/* translators: %s WC download URL link. */
+					echo '<div class="error"><p><strong>' . sprintf( esc_html__( 'WooCommerce Services requires the WooCommerce plugin to be installed and active. You can download %s here.', 'woocommerce-services' ), '<a href="https://wordpress.org/plugins/woocommerce/" target="_blank">WooCommerce</a>' ) . '</strong></p></div>';
+				} );
+				return;
+			}
+			add_action( 'before_woocommerce_init', array( $this, 'pre_wc_init') );
 		}
 
 		/**
@@ -828,6 +876,11 @@ if ( ! class_exists( 'WC_Connect_Loader' ) ) {
 			$this->set_rest_address_normalization_controller( $rest_address_normalization_controller );
 			$rest_address_normalization_controller->register_routes();
 
+			require_once( plugin_basename( 'classes/class-wc-rest-connect-assets-controller.php' ) );
+			$rest_assets_controller = new WC_REST_Connect_Assets_Controller( $this->api_client, $settings_store, $logger );
+			$this->set_rest_assets_controller( $rest_assets_controller );
+			$rest_assets_controller->register_routes();
+
 			if ( $this->stripe->is_stripe_plugin_enabled() ) {
 				require_once( plugin_basename( 'classes/class-wc-rest-connect-stripe-account-controller.php' ) );
 				$rest_stripe_account_controller = new WC_REST_Connect_Stripe_Account_Controller( $this->stripe, $this->api_client, $settings_store, $logger );
@@ -1162,17 +1215,13 @@ if ( ! class_exists( 'WC_Connect_Loader' ) ) {
 		 * Registers the React UI bundle
 		 */
 		public function admin_enqueue_scripts() {
-			// Note: This will break outside of wp-admin, if/when we put user-facing JS/CSS we'll have to figure out another way to version them
-			$plugin_data = get_plugin_data( __FILE__, false, false );
-			$plugin_version = $plugin_data[ 'Version' ];
+			$plugin_version = self::get_wcs_version();
 
-			// Use the same version as Jetpack
-			$jetpack_version = defined( 'JETPACK__VERSION' ) ? JETPACK__VERSION : '0';
-			wp_register_style( 'wc_connect_admin', $this->wc_connect_base_url . 'woocommerce-services.css', array(), $plugin_version );
-			wp_register_script( 'wc_connect_admin', $this->wc_connect_base_url . 'woocommerce-services.js', array(), $plugin_version, true );
-			wp_register_script( 'wc_services_admin_pointers', $this->wc_connect_base_url . 'woocommerce-services-admin-pointers.js', array( 'wp-pointer', 'jquery' ), $plugin_version );
-			wp_register_style( 'wc_connect_banner', $this->wc_connect_base_url . 'woocommerce-services-banner.css', array(), $plugin_version );
-			wp_register_script( 'wc_connect_banner', $this->wc_connect_base_url . 'woocommerce-services-banner.js', array( 'updates' ), $plugin_version );
+			wp_register_style( 'wc_connect_admin', self::get_wcs_admin_style_url(), array(), null );
+			wp_register_script( 'wc_connect_admin', self::get_wcs_admin_script_url(), array(), null, true );
+			wp_register_script( 'wc_services_admin_pointers', $this->wc_connect_base_url . 'woocommerce-services-admin-pointers-' . $plugin_version . '.js', array( 'wp-pointer', 'jquery' ), null );
+			wp_register_style( 'wc_connect_banner', $this->wc_connect_base_url . 'woocommerce-services-banner-' . $plugin_version . '.css', array(), null );
+			wp_register_script( 'wc_connect_banner', $this->wc_connect_base_url . 'woocommerce-services-banner-' . $plugin_version . '.js', array( 'updates' ), null );
 
 			$i18n_json = $this->get_i18n_json();
 			/** @var array $i18nStrings defined in i18n/strings.php */
@@ -1249,11 +1298,13 @@ if ( ! class_exists( 'WC_Connect_Loader' ) ) {
 
 		public function add_meta_boxes( $post_type, $post ) {
 			if ( $this->shipping_label->should_show_meta_box() ) {
-				add_meta_box( 'woocommerce-order-label', __( 'Shipping Label', 'woocommerce-services' ), array( $this->shipping_label, 'meta_box' ), null, 'side', 'default' );
+				wp_enqueue_style( 'wc_connect_admin' );
+				add_meta_box( 'woocommerce-order-shipment-tracking', __( 'Shipment Tracking', 'woocommerce-services' ), array( $this->shipping_label, 'meta_box' ), null, 'side', 'default', array( 'context' => 'shipment_tracking' ) );
+
+				add_meta_box( 'woocommerce-order-label', __( 'Shipping Label', 'woocommerce-services' ), array( $this->shipping_label, 'meta_box' ), null, 'normal', 'high', array( 'context' => 'shipping_label' ) );
 			}
 
 			if ( $this->should_show_shipping_debug_meta_box( $post ) ) {
-				wp_enqueue_style( 'wc_connect_admin' );
 				add_meta_box( 'woocommerce-services-shipping-debug', __( 'Shipping Debug', 'woocommerce-services' ), array( $this, 'shipping_rate_packaging_debug_log_meta_box' ), 'shop_order', 'normal', 'default' );
 			}
 		}
@@ -1372,9 +1423,12 @@ if ( ! class_exists( 'WC_Connect_Loader' ) ) {
 		}
 
 		function enqueue_wc_connect_script( $root_view, $extra_args = array() ) {
+			$is_alive = $this->api_client->is_alive_cached();
+
 			$payload = array(
-				'nonce'        => wp_create_nonce( 'wp_rest' ),
-				'baseURL'      => get_rest_url(),
+				'nonce'                 => wp_create_nonce( 'wp_rest' ),
+				'baseURL'               => get_rest_url(),
+				'wcs_server_connection' => $is_alive,
 			);
 
 			wp_localize_script( 'wc_connect_admin', 'wcConnectData', $payload );

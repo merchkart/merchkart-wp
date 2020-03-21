@@ -37,7 +37,7 @@ class WC_Taxjar_Integration extends WC_Settings_API {
 		$this->integration_uri    = $this->app_uri . 'account/apps/add/woo';
 		$this->regions_uri        = $this->app_uri . 'account#states';
 		$this->uri                = 'https://api.taxjar.com/v2/';
-		$this->ua                 = 'TaxJarWordPressPlugin/3.0.10/WordPress/' . get_bloginfo( 'version' ) . '+WooCommerce/' . WC()->version . '; ' . get_bloginfo( 'url' );
+		$this->ua                 = 'TaxJarWordPressPlugin/3.0.15/WordPress/' . get_bloginfo( 'version' ) . '+WooCommerce/' . WC()->version . '; ' . get_bloginfo( 'url' );
 		$this->debug              = filter_var( $this->get_option( 'debug' ), FILTER_VALIDATE_BOOLEAN );
 		$this->download_orders    = new WC_Taxjar_Download_Orders( $this );
 		$this->transaction_sync   = new WC_Taxjar_Transaction_Sync( $this );
@@ -1543,11 +1543,11 @@ class WC_Taxjar_Integration extends WC_Settings_API {
 			'wc-taxjar-admin',
 			'woocommerce_taxjar_admin',
 			array(
-				'ajax_url'         => admin_url( 'admin-ajax.php' ),
-				'update_api_nonce' => wp_create_nonce( 'update-api-key' ),
-				'current_user'     => get_current_user_id(),
-				'integration_uri'  => $this->integration_uri,
-				'api_token'        => $this->post_or_setting( 'api_token' ),
+				'ajax_url'                      => admin_url( 'admin-ajax.php' ),
+				'transaction_backfill_nonce'    => wp_create_nonce( 'taxjar-transaction-backfill' ),
+				'update_nexus_nonce'            => wp_create_nonce( 'taxjar-update-nexus' ),
+				'current_user'                  => get_current_user_id(),
+				'integration_uri'               => $this->integration_uri,
 			)
 		);
 

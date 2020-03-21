@@ -3,11 +3,11 @@
  * Plugin Name: TaxJar - Sales Tax Automation for WooCommerce
  * Plugin URI: https://www.taxjar.com/woocommerce-sales-tax-plugin/
  * Description: Save hours every month by putting your sales tax on autopilot. Automated, multi-state sales tax calculation, collection, and filing.
- * Version: 3.0.10
+ * Version: 3.0.15
  * Author: TaxJar
  * Author URI: https://www.taxjar.com
  * WC requires at least: 3.0.0
- * WC tested up to: 3.7.0
+ * WC tested up to: 4.0.0
  *
  * Copyright: © 2014-2019 TaxJar. TaxJar is a trademark of TPS Unlimited, Inc.
  * License: GNU General Public License v2.0 or later
@@ -42,13 +42,14 @@ if ( ! $woocommerce_active || version_compare( get_option( 'woocommerce_db_versi
  */
 final class WC_Taxjar {
 
-	static $version = '3.0.10';
+	static $version = '3.0.15';
 	public static $minimum_woocommerce_version = '3.0.0';
 
 	/**
 	 * Construct the plugin.
 	 */
 	public function __construct() {
+	    add_action( 'plugins_loaded', array( $this, 'load_action_scheduler' ), -10 );
 		add_action( 'plugins_loaded', array( $this, 'init' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'plugin_settings_link' ) );
 		register_activation_hook( __FILE__, array( 'WC_Taxjar', 'plugin_registration_hook' ) );
@@ -77,9 +78,6 @@ final class WC_Taxjar {
 			include_once 'includes/class-taxjar-customer-record.php';
 			include_once 'includes/class-wc-taxjar-queue-list.php';
 
-			// Load Action Scheduler library
-			require_once( 'libraries/action-scheduler/action-scheduler.php' );
-
 			// Register the integration.
 			add_action( 'woocommerce_integrations_init', array( $this, 'add_integration' ), 20 );
 
@@ -87,6 +85,13 @@ final class WC_Taxjar {
 			add_action( 'admin_notices', array( $this, 'maybe_display_admin_notices' ) );
 		}
 	}
+
+	/**
+	 * Load Action Scheduler library
+	 */
+	public function load_action_scheduler() {
+		require_once( 'libraries/action-scheduler/action-scheduler.php' );
+    }
 
 	/**
 	 * Add a new integration to WooCommerce.

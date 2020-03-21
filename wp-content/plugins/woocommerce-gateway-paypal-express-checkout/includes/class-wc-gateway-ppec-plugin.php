@@ -76,17 +76,12 @@ class WC_Gateway_PPEC_Plugin {
 		$this->plugin_path   = trailingslashit( plugin_dir_path( $this->file ) );
 		$this->plugin_url    = trailingslashit( plugin_dir_url( $this->file ) );
 		$this->includes_path = $this->plugin_path . trailingslashit( 'includes' );
-
-		// Updates
-		if ( version_compare( $version, get_option( 'wc_ppec_version' ), '>' ) ) {
-			$this->run_updater( $version );
-		}
 	}
 
 	/**
 	 * Handle updates.
-	 * @param  [type] $new_version [description]
-	 * @return [type]              [description]
+	 *
+	 * @param string $new_version The plugin's new version.
 	 */
 	private function run_updater( $new_version ) {
 		// Map old settings to settings API
@@ -133,6 +128,12 @@ class WC_Gateway_PPEC_Plugin {
 			delete_option( 'pp_woo_enabled' );
 		}
 
+		// Check the the WC version on plugin update to determine if we need to display a warning.
+		// The option was added in 1.6.19 so we only need to check stores updating from before that version. Updating from 1.6.19 or greater would already have it set.
+		if ( version_compare( get_option( 'wc_ppec_version' ), '1.6.19', '<' ) && version_compare( WC_VERSION, '3.0', '<' ) ) {
+			update_option( 'wc_ppec_display_wc_3_0_warning', 'true' );
+		}
+
 		update_option( 'wc_ppec_version', $new_version );
 	}
 
@@ -157,6 +158,11 @@ class WC_Gateway_PPEC_Plugin {
 			}
 
 			$this->_check_dependencies();
+
+			if ( $this->needs_update() ) {
+				$this->run_updater( $this->version );
+			}
+
 			$this->_run();
 			$this->_check_credentials();
 
@@ -233,26 +239,13 @@ class WC_Gateway_PPEC_Plugin {
 			return;
 		}
 
-		if ( 'yes' !== get_option( 'wc_gateway_ppec_spb_notice_dismissed', 'no' ) ) {
-			$setting_link = $this->get_admin_setting_link();
-			$message = sprintf( __( '<p>PayPal&nbsp;Checkout with new <strong>Smart&nbsp;Payment&nbsp;Buttons™</strong> gives your customers the power to pay the way they want without leaving your site.</p><p>The <strong>existing buttons will be deprecated and removed</strong> in future releases. Upgrade to Smart&nbsp;Payment&nbsp;Buttons in the <a href="%s">PayPal&nbsp;Checkout settings</a>.</p>', 'woocommerce-gateway-paypal-express-checkout' ), esc_url( $setting_link ) );
-			?>
-			<div class="notice notice-warning is-dismissible ppec-dismiss-spb-notice">
-				<?php echo wp_kses( $message, array( 'a' => array( 'href' => array() ), 'strong' => array(), 'p' => array() ) ); ?>
-			</div>
-			<script>
-			( function( $ ) {
-				$( '.ppec-dismiss-spb-notice' ).on( 'click', '.notice-dismiss', function() {
-					jQuery.post( "<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>", {
-						action: "ppec_dismiss_notice_message",
-						dismiss_action: "ppec_dismiss_spb_notice",
-						nonce: "<?php echo esc_js( wp_create_nonce( 'ppec_dismiss_notice' ) ); ?>"
-					} );
-				} );
-			} )( jQuery );
-			</script>
-			<?php
-		}
+		$setting_link = $this->get_admin_setting_link();
+		$message = sprintf( __( '<p>PayPal Checkout with new <strong>Smart Payment Buttons™</strong> gives your customers the power to pay the way they want without leaving your site.</p><p>The <strong>existing buttons will be removed</strong> in the <strong>next release</strong>. Please upgrade to Smart Payment Buttons on the <a href="%s">PayPal Checkout settings page</a>.</p>', 'woocommerce-gateway-paypal-express-checkout' ), esc_url( $setting_link ) );
+		?>
+		<div class="notice notice-error">
+			<?php echo wp_kses( $message, array( 'a' => array( 'href' => array() ), 'strong' => array(), 'p' => array() ) ); ?>
+		</div>
+		<?php
 	}
 
 	/**
@@ -273,9 +266,6 @@ class WC_Gateway_PPEC_Plugin {
 				break;
 			case 'ppec_dismiss_prompt_to_connect':
 				update_option( 'wc_gateway_ppec_prompt_to_connect_message_dismissed', 'yes' );
-				break;
-			case 'ppec_dismiss_spb_notice':
-				update_option( 'wc_gateway_ppec_spb_notice_dismissed', 'yes' );
 				break;
 		}
 		wp_die();
@@ -397,6 +387,15 @@ class WC_Gateway_PPEC_Plugin {
 	}
 
 	/**
+	 * Checks if the plugin needs to record an update.
+	 *
+	 * @return bool Whether the plugin needs to be updated.
+	 */
+	protected function needs_update() {
+		return version_compare( $this->version, get_option( 'wc_ppec_version' ), '>' );
+	}
+
+	/**
 	 * Link to settings screen.
 	 */
 	public function get_admin_setting_link() {
@@ -466,11 +465,10 @@ class WC_Gateway_PPEC_Plugin {
 	 * @return bool
 	 */
 	public static function needs_shipping() {
-		$cart_contents  = WC()->cart->cart_contents;
 		$needs_shipping = false;
 
-		if ( ! empty( $cart_contents ) ) {
-			foreach ( $cart_contents as $cart_item_key => $values ) {
+		if ( ! empty( WC()->cart->cart_contents ) ) {
+			foreach ( WC()->cart->cart_contents as $cart_item_key => $values ) {
 				if ( $values['data']->needs_shipping() ) {
 					$needs_shipping = true;
 					break;

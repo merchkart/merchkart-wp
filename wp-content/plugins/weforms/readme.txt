@@ -1,11 +1,10 @@
 === weForms - Easy Drag & Drop Contact Form Builder For WordPress ===
-Contributors: tareq1988, nizamuddinbabu, wedevs, rabbii, itowhid06
-Donate link: https://tareq.co/donate/
+Contributors: tareq1988, nizamuddinbabu, boldgrid
 Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation,
 Requires at least: 4.4
 Requires PHP: 5.6.20
-Tested up to: 5.2
-Stable tag: 1.4.1
+Tested up to: 5.3
+Stable tag: 1.4.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +13,7 @@ The easiest & fastest Contact Form on WordPress. Multiple templates, drag-&-drop
 == Description ==
 
 =  weForms- The easy-to-use WordPress Contact Form Builder plugin  =
-When we think about using any contact form builder plugin, the first concern is always about how user-friendly and adaptable it actually is. So, we the makers have developed [weForms](https://wedevs.com/weforms/) keeping this demand in mind. It is undoubtedly one of the most easy-to-use form builders for WordPress. This contact form plugin is not just a form builder, it can do a lot more than you can imagine. It actually brings all your forms created in your imagination into reality. Think of creating any form in your head and you can build it with a few clicks with weForms absolutely hassle-free.
+When we think about using any contact form builder plugin, the first concern is always about how user-friendly and adaptable it actually is. So, we the makers have developed [weForms](https://weformspro.com/) keeping this demand in mind. It is undoubtedly one of the most easy-to-use form builders for WordPress. This contact form plugin is not just a form builder, it can do a lot more than you can imagine. It actually brings all your forms created in your imagination into reality. Think of creating any form in your head and you can build it with a few clicks with weForms absolutely hassle-free.
 
 Get the best experience of drag & drop form building while creating any form of your imagination. Not to forget its wide range of customizable pre-defined form templates that makes managing and designing any type of form a walk in the park.
 
@@ -105,7 +104,6 @@ Craft your next form without a glitch. With weForms, stay organized and hassle-f
 * Sync email data with MailPoet, MailChimp & Email Campaign.
 * Multi-step/Multi-part Forms.
 * Geolocation & SMS notifications.
-* Free demo site to help users give the perfect idea of how it works.
 * And much more.
 
 = Don’t just take our word for it, here is what some of the big names in the community have to say about weForms =
@@ -119,11 +117,7 @@ Craft your next form without a glitch. With weForms, stay organized and hassle-f
 
 Still not convinced? Then...
 
-[Check out this contact form comparison including some of the best in the business form builder for WordPress](https://wedevs.com/weforms/compare/)
-
-Or
-
-Try out its [Free Official Demo](https://weformsdemo.wedevs.com/)
+[Check out this contact form comparison including some of the best in the business form builder for WordPress](https://weformspro.com/)
 
 = AVAILABLE MODULES & WEFORMS INTEGRATIONS =
 
@@ -156,10 +150,10 @@ Need More Features? Then you might want to upgrade to weForms PRO. This amazing 
 
 =  The four PRO pricing plan includes:  =
 
-* [Personal](https://wedevs.com/weforms/pricing/)
-* [Business](https://wedevs.com/weforms/pricing/)
-* [Professional](https://wedevs.com/weforms/pricing/)
-* [Developer](https://wedevs.com/weforms/pricing/)
+* [Personal](https://weformspro.com/pricing/)
+* [Business](https://weformspro.com/pricing/)
+* [Professional](https://weformspro.com/pricing/)
+* [Developer](https://weformspro.com/pricing/)
 
 =  And these tailored plans consists of some highly essential & cutting-edge PRO features and integrations that include:  =
 
@@ -192,8 +186,6 @@ Need More Features? Then you might want to upgrade to weForms PRO. This amazing 
     * Zoho
     * Hubspot
 
-If you are impressed with weForms so far, then you can also check out its [Official Demo](https://weformsdemo.wedevs.com/wp-admin/) for a much better and practical idea.
-
 =  Our Other Popular Creations For WordPress  =
 
 If you feel we have a solid contact form builder plugin for WordPress in the form of weForms then you must be wondering what else we are up to. So here is a sneak peek into all the other exclusive & popular WordPress plugins that we have proudly created to serve thousands of our loyal clients worldwide.
@@ -203,6 +195,13 @@ If you feel we have a solid contact form builder plugin for WordPress in the for
 * [WP User Frontend:](https://wedevs.com/wp-user-frontend-pro/) Lets your site users or subscribers to manage their account from the frontend without letting them access in the backend to keep the website safe & secure.
 * [WP ERP:](https://wperp.com/) The most complete user-friendly business management solution for WordPress enables you to manage & organize all your company’s HR, CR & Accounting related issues.
 * [WC Conversion Tracking:](https://wedevs.com/woocommerce-conversion-tracking/) Now retargeting your potential customers is easier than ever with this preeminent solution to track your WooCommerce conversion data connecting it with all your favorite ads platforms like Facebook, Twitter, Perfect Audience etc.
+
+= Privacy Policy =
+weForms uses [Appsero](https://appsero.com) SDK to collect some telemetry data upon user's confirmation. This helps us to troubleshoot problems faster & make product improvements.
+
+Appsero SDK **does not gather any data by default.** The SDK only starts gathering basic telemetry data **when a user allows it via the admin notice**. We collect the data to ensure great user experience for all our users.
+
+Integrating Appsero SDK **DOES NOT IMMEDIATELY** start gathering data, **without confirmation from users in any case.**
 
 == Installation ==
 
@@ -259,6 +258,37 @@ weForms is the most beginner friendly and fastest WordPress contact form plugin 
 17. Event registration form displayed on the site
 
 == Changelog ==
+
+= Version 1.4.7 (10 March, 2020) =
+**Update:** Links now point to new https://weformspro.com/
+
+= Version 1.4.6 (20 February, 2020) =
+
+* **Fix:** image upload field issue
+* **Fix:** widget not rendering properyly
+* **Fix:** HTML Tags are not rendering the HTML format for the Radio or Checkbox Field
+* **Fix:** submit issue with image and recaptcha.
+
+= Version 1.4.5 (31 January, 2020) =
+* **Feature:** Added Recaptcha v3 support
+* **Fix:** Fixed Some regressions after phpcs fixes
+
+= Version 1.4.4 (14 January, 2020) =
+* **Improvement:** Imporve Code Quality
+
+= Version 1.4.3 (10 January, 2020) =
+
+* **Fix:**  Field display issue in form entries page
+* **Fix:**  Hidden Field not working properly in builder
+* **Fix:**  Some Column field issue
+* **Fix:**  Sanitize and Escape data before saving and rendering
+* **Improvement:** Add privacy policy in readme
+
+= Version 1.4.2 (18 November, 2019) =
+
+* **Fix:** Fixed Form was not showing immediately after duplicating.
+* **Fix:** Fixed some column field issues. Closes #172
+* **Fix:** Fixed a csv export issue. closes #175
 
 = Version 1.4.1 (24 September, 2019) =
 

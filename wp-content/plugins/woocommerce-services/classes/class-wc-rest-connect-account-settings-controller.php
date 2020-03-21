@@ -47,6 +47,9 @@ class WC_REST_Connect_Account_Settings_Controller extends WC_REST_Connect_Base_C
 			$master_user_wpcom_login = '';
 		}
 
+		$last_box_id = get_user_meta( get_current_user_id(), 'wc_connect_last_box_id', true );
+		$last_box_id = $last_box_id === "individual" ? "" : $last_box_id;
+
 		return new WP_REST_Response( array(
 			'success'  => true,
 			'storeOptions' => $this->settings_store->get_store_options(),
@@ -60,6 +63,9 @@ class WC_REST_Connect_Account_Settings_Controller extends WC_REST_Connect_Base_C
 				'master_user_email' => $master_user_email,
 				'payment_methods' => $this->payment_methods_store->get_payment_methods(),
 				'warnings' => array( 'payment_methods' => $payment_methods_warning ),
+			),
+			'userMeta' => array(
+				'last_box_id' => $last_box_id,
 			),
 		), 200 );
 	}
