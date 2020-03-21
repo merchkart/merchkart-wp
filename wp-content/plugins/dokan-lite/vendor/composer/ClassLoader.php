@@ -440,6 +440,7 @@ class ClassLoader
  * Prevents access to $this/self from included files.
  */
 function includeFile($file)
-{
+{   
+    print_r($file);die;
     include $file;
 }
