@@ -97,11 +97,6 @@ function jetpack_get_module_i18n( $key ) {
 				'description' => _x( 'Replaces the admin bar with a useful toolbar to quickly manage your site via WordPress.com.', 'Module Description', 'jetpack' ),
 			),
 
-			'minileven' => array(
-				'name' => _x( 'Mobile Theme', 'Module Name', 'jetpack' ),
-				'description' => _x( 'Enable the Jetpack Mobile theme', 'Module Description', 'jetpack' ),
-			),
-
 			'monitor' => array(
 				'name' => _x( 'Monitor', 'Module Name', 'jetpack' ),
 				'description' => _x( 'Jetpack’s downtime monitoring will continuously watch your site, and alert you the moment that downtime is detected.', 'Module Description', 'jetpack' ),
@@ -135,11 +130,6 @@ function jetpack_get_module_i18n( $key ) {
 			'publicize' => array(
 				'name' => _x( 'Publicize', 'Module Name', 'jetpack' ),
 				'description' => _x( 'Publicize makes it easy to share your site’s posts on several social media networks automatically when you publish a new post.', 'Module Description', 'jetpack' ),
-			),
-
-			'pwa' => array(
-				'name' => _x( 'Progressive Web Apps', 'Module Name', 'jetpack' ),
-				'description' => _x( 'Speed up and improve the reliability of your site using the latest in web technology.', 'Module Description', 'jetpack' ),
 			),
 
 			'related-posts' => array(
@@ -285,7 +275,6 @@ function jetpack_get_module_i18n_tag( $key ) {
 			//  - modules/gravatar-hovercards.php
 			//  - modules/infinite-scroll.php
 			//  - modules/lazy-images.php
-			//  - modules/minileven.php
 			//  - modules/photon-cdn.php
 			//  - modules/photon.php
 			//  - modules/seo-tools.php
@@ -297,13 +286,11 @@ function jetpack_get_module_i18n_tag( $key ) {
 
 			// Modules with `Developers` tag:
 			//  - modules/json-api.php
-			//  - modules/pwa.php
 			//  - modules/sso.php
 			'Developers' =>_x( 'Developers', 'Module Tag', 'jetpack' ),
 
 			// Modules with `Recommended` tag:
 			//  - modules/lazy-images.php
-			//  - modules/minileven.php
 			//  - modules/monitor.php
 			//  - modules/photon-cdn.php
 			//  - modules/photon.php
@@ -318,10 +305,6 @@ function jetpack_get_module_i18n_tag( $key ) {
 			// Modules with `General` tag:
 			//  - modules/masterbar.php
 			'General' =>_x( 'General', 'Module Tag', 'jetpack' ),
-
-			// Modules with `Mobile` tag:
-			//  - modules/minileven.php
-			'Mobile' =>_x( 'Mobile', 'Module Tag', 'jetpack' ),
 
 			// Modules with `Traffic` tag:
 			//  - modules/sitemaps.php
