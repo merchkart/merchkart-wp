@@ -32,9 +32,9 @@
     </td>
     <td data-title="<?php esc_attr_e( 'Image', 'dokan-lite' ); ?>">
         <?php if ( current_user_can( 'dokan_edit_product' ) ): ?>
-            <a href="<?php echo esc_url( dokan_edit_product_url( $post->ID ) ); ?>"><?php echo wp_kses( $product->get_image(), $img_kses ); ?></a>
+            <a href="<?php echo esc_url( dokan_edit_product_url( $post->ID ) ); ?>"><?php echo wp_kses( $product->get_image( 'thumbnail' ), $img_kses ); ?></a>
         <?php else: ?>
-            <?php echo wp_kses( $product->get_image(), $img_kses ); ?>
+            <?php echo wp_kses( $product->get_image( 'thumbnail' ), $img_kses ); ?>
         <?php endif ?>
     </td>
     <td data-title="<?php esc_attr_e( 'Name', 'dokan-lite' ); ?>">
@@ -85,11 +85,11 @@
     </td>
     <td data-title="<?php esc_attr_e( 'Earning', 'dokan-lite' ); ?>">
         <?php
-        if ( $product->get_type() == 'simple' ) {
-            $price = wc_price( dokan()->commission->get_earning_by_product( $product ) );
+        if ( $product->get_type() == 'variable' ) {
+            $price = dokan_get_variable_product_earning( $product->get_id() );
             echo wp_kses( $price, $price_kses );
         } else {
-            $price = dokan_get_variable_product_earning( $product->get_id() );
+            $price = wc_price( dokan()->commission->get_earning_by_product( $product ) );
             echo wp_kses( $price, $price_kses );
         }
         ?>

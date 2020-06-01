@@ -52,6 +52,10 @@ body #yith-woocompare {
     padding: 10px;
 }
 
+table.dataTable.compare-list tr {
+    display: table-row;
+}
+
 table.dataTable.compare-list thead th,
 table.dataTable.compare-list thead td,
 table.dataTable.compare-list tfoot td,
@@ -164,7 +168,7 @@ table.compare-list .remove td a:hover .remove {
     color: #ffffff;
 }
 
-table.compare-list .add-to-cart td a {
+table.compare-list .add-to-cart td a:not(.unstyled_button) {
     display: inline-block;
     margin: 10px 0;
     background-color: #4F4F4F;
@@ -178,7 +182,7 @@ table.compare-list .add-to-cart td a {
     cursor: pointer;
 }
 
-table.compare-list .add-to-cart td a:hover {
+table.compare-list .add-to-cart td a:not(.unstyled_button):hover {
     background: #868686;
     color: #fff;
 }

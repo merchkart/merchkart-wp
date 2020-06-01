@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: YITH Plugin Starter 1.0.0 Plugin FW\n"
 "Report-Msgid-Bugs-To: YITH <plugins@yithemes.com>\n"
-"POT-Creation-Date: 2020-03-11 14:03:11+00:00\n"
-"PO-Revision-Date: 2020-03-02 13:49+0000\n"
+"POT-Creation-Date: 2020-04-23 06:38:32+00:00\n"
+"PO-Revision-Date: 2020-04-06 10:45+0200\n"
 "Last-Translator: \n"
 "Language-Team: Your Inspiration Themes <info@yithemes.com>\n"
 "Language: el_GR\n"
@@ -211,16 +211,16 @@ msgstr ""
 msgid "Plugin Settings"
 msgstr "Ρυθμίσεις Προσθέτου"
 
-#: lib/yit-plugin-panel.php:425 lib/yit-plugin-panel.php:428
+#: lib/yit-plugin-panel.php:455 lib/yit-plugin-panel.php:458
 msgid "How to install premium version"
 msgstr "Πώς να εγκαταστήσετε την προηγμένη έκδοση"
 
-#: lib/yit-plugin-panel.php:572 lib/yit-plugin-subpanel.php:151
+#: lib/yit-plugin-panel.php:603 lib/yit-plugin-subpanel.php:151
 #: templates/panel/woocommerce/woocommerce-form.php:14
 msgid "Save Changes"
 msgstr "Αποθήκευση Αλλαγών"
 
-#: lib/yit-plugin-panel.php:575 lib/yit-plugin-subpanel.php:154
+#: lib/yit-plugin-panel.php:606 lib/yit-plugin-subpanel.php:154
 #: templates/panel/woocommerce/woocommerce-form.php:17
 msgid ""
 "If you continue with this action, you will reset all options in this page."
@@ -228,70 +228,70 @@ msgstr ""
 "Αν συνεχίσετε με αυτή την ενέργεια θα επαναφέρετε όλες τις επιλογές στη "
 "σελίδα."
 
-#: lib/yit-plugin-panel.php:577 lib/yit-plugin-subpanel.php:156
+#: lib/yit-plugin-panel.php:608 lib/yit-plugin-subpanel.php:156
 msgid "Reset to default"
 msgstr "Επαναφορά σε προεπιλεγμένο"
 
-#: lib/yit-plugin-panel.php:578 lib/yit-plugin-subpanel.php:157
+#: lib/yit-plugin-panel.php:609 lib/yit-plugin-subpanel.php:157
 #: templates/panel/woocommerce/woocommerce-form.php:21
 msgid "Are you sure?"
 msgstr "Είστε σίγουρος;"
 
-#: lib/yit-plugin-panel.php:776
+#: lib/yit-plugin-panel.php:807
 msgid ""
 "The element you have entered already exists. Please, enter another name."
-msgstr "Το στοιχείο που εισάγατε υπάρχει ήδη. Παρακαλώ, εισάγετε άλλο όνομα. "
+msgstr "Το στοιχείο που εισάγατε υπάρχει ήδη. Παρακαλώ, εισάγετε άλλο όνομα."
 
-#: lib/yit-plugin-panel.php:777
+#: lib/yit-plugin-panel.php:808
 msgid "Settings saved"
 msgstr "Ρυθμίσεις αποθηκεύτηκαν"
 
-#: lib/yit-plugin-panel.php:778
+#: lib/yit-plugin-panel.php:809
 msgid "Settings reset"
 msgstr "Επαναφορά ρυθμίσεων"
 
-#: lib/yit-plugin-panel.php:779
+#: lib/yit-plugin-panel.php:810
 msgid "Element deleted correctly."
 msgstr "Το στοιχείο διαγράφηκε επιτυχώς."
 
-#: lib/yit-plugin-panel.php:780 lib/yit-plugin-panel.php:781
+#: lib/yit-plugin-panel.php:811 lib/yit-plugin-panel.php:812
 msgid "Element updated correctly."
 msgstr "Το στοιχείο αναβαθμίστηκε επιτυχώς."
 
-#: lib/yit-plugin-panel.php:782
+#: lib/yit-plugin-panel.php:813
 msgid "Database imported correctly."
 msgstr "Επιτυχής εισαγωγή βάσης δεδομένων."
 
-#: lib/yit-plugin-panel.php:783
+#: lib/yit-plugin-panel.php:814
 msgid "An error has occurred during import. Please try again."
 msgstr "Παρουσιάστηκε σφάλμα κατά την εισαγωγή. Παρακαλώ προσπαθήστε ξανά."
 
-#: lib/yit-plugin-panel.php:784
+#: lib/yit-plugin-panel.php:815
 msgid "The added file is not valid."
 msgstr "Το προστιθέμενο αρχείο δεν είναι έγκυρο."
 
-#: lib/yit-plugin-panel.php:785
+#: lib/yit-plugin-panel.php:816
 msgid "Sorry, import is disabled."
 msgstr "Συγνώμη, η εισαγωγή είναι απενεργοποιημένη."
 
-#: lib/yit-plugin-panel.php:786
+#: lib/yit-plugin-panel.php:817
 msgid "Sorting successful."
 msgstr "Διαλογή επιτυχής."
 
-#: lib/yit-plugin-panel.php:1234
+#: lib/yit-plugin-panel.php:1265
 msgid "We need your support"
 msgstr "Χρειαζόμαστε την υποστήριξή σας"
 
-#: lib/yit-plugin-panel.php:1235
+#: lib/yit-plugin-panel.php:1266
 msgid "to keep updating and improving the plugin. Please,"
 msgstr ""
-"για να διατηρήσετε την ενημέρωση και τη βελτίωση του πρόσθετου. Παρακαλώ"
+"για να διατηρήσετε την ενημέρωση και τη βελτίωση του πρόσθετου. Παρακαλώ,"
 
-#: lib/yit-plugin-panel.php:1237
+#: lib/yit-plugin-panel.php:1268
 msgid "help us by leaving a five-star rating"
-msgstr "Βοηθήστε μας αφήνοντας μια βαθμολογία πέντε αστέρων"
+msgstr "βοηθήστε μας αφήνοντας μια βαθμολογία πέντε αστέρων"
 
-#: lib/yit-plugin-panel.php:1238
+#: lib/yit-plugin-panel.php:1269
 msgid ":) Thanks!"
 msgstr ":) Ευχαριστώ!"
 
@@ -316,7 +316,7 @@ msgstr "Ανακαλύψτε όλα τα διαθέσιμά μας πρόσθε�
 
 #: lib/yit-pointers.php:74 lib/yit-pointers.php:90
 msgid "and"
-msgstr "Και"
+msgstr "και"
 
 #: lib/yit-pointers.php:84
 msgid "Plugins Upgraded"
@@ -678,7 +678,6 @@ msgid "License"
 msgstr "Άδεια χρήσης προϊόντος"
 
 #. Author of the plugin/theme
-#, fuzzy
 msgid "YITH"
 msgstr "YITH"
 
@@ -756,15 +755,40 @@ msgctxt "[gutenberg]: Category Name"
 msgid "YITH"
 msgstr "YITH"
 
+#: templates/fields/dimensions.php:16
+msgctxt "Position in the \"Dimensions\" field"
+msgid "Top"
+msgstr ""
+
+#: templates/fields/dimensions.php:17
+msgctxt "Position in the \"Dimensions\" field"
+msgid "Right"
+msgstr ""
+
+#: templates/fields/dimensions.php:18
+msgctxt "Position in the \"Dimensions\" field"
+msgid "Bottom"
+msgstr ""
+
+#: templates/fields/dimensions.php:19
+msgctxt "Position in the \"Dimensions\" field"
+msgid "Left"
+msgstr ""
+
+#: templates/fields/dimensions.php:117
+msgctxt "Tooltip in the \"Dimensions\" field"
+msgid "Link values together"
+msgstr ""
+
 #: templates/fields/onoff.php:24
-msgctxt "ON/OFF button: use MAX 3 characters!"
-msgid "ON"
-msgstr "ΕΝΕΡΓΟΠΟΙΗΣΗ"
+msgctxt "YES/NO button: use MAX 3 characters!"
+msgid "YES"
+msgstr "ΝΑΙ"
 
 #: templates/fields/onoff.php:25
-msgctxt "ON/OFF button: use MAX 3 characters!"
-msgid "OFF"
-msgstr "ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ"
+msgctxt "YES/NO button: use MAX 3 characters!"
+msgid "NO"
+msgstr "ΟΧΙ"
 
 #: yit-plugin.php:83
 msgctxt "Plugin Row Meta"
@@ -790,3 +814,11 @@ msgstr "Premium έκδοση"
 msgctxt "Action links"
 msgid "Settings"
 msgstr "Ρυθμίσεις"
+
+#~ msgctxt "ON/OFF button: use MAX 3 characters!"
+#~ msgid "ON"
+#~ msgstr "ΕΝΕΡΓΟΠΟΙΗΣΗ"
+
+#~ msgctxt "ON/OFF button: use MAX 3 characters!"
+#~ msgid "OFF"
+#~ msgstr "ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ"

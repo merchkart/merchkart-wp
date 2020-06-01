@@ -632,6 +632,10 @@ if ( ! function_exists( 'storefront_handheld_footer_bar' ) ) {
 			),
 		);
 
+		if ( did_action( 'woocommerce_blocks_enqueue_cart_block_scripts_after' ) || did_action( 'woocommerce_blocks_enqueue_checkout_block_scripts_after' ) ) {
+			return;
+		}
+
 		if ( wc_get_page_id( 'myaccount' ) === -1 ) {
 			unset( $links['my-account'] );
 		}
@@ -788,7 +792,7 @@ if ( ! function_exists( 'storefront_sticky_single_add_to_cart' ) ) {
 							<span class="storefront-sticky-add-to-cart__content-price"><?php echo wp_kses_post( $product->get_price_html() ); ?></span>
 							<?php echo wp_kses_post( wc_get_rating_html( $product->get_average_rating() ) ); ?>
 						</div>
-						<a href="<?php echo esc_url( $product->add_to_cart_url() ); ?>" class="storefront-sticky-add-to-cart__content-button button alt">
+						<a href="<?php echo esc_url( $product->add_to_cart_url() ); ?>" class="storefront-sticky-add-to-cart__content-button button alt" rel="nofollow">
 							<?php echo esc_attr( $product->add_to_cart_text() ); ?>
 						</a>
 					</div>

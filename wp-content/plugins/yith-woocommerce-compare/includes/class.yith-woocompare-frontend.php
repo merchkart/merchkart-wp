@@ -745,7 +745,10 @@ if( !class_exists( 'YITH_Woocompare_Frontend' ) ) {
          */
         public function remove_all_styles() {
             global $wp_styles;
-            $wp_styles->queue = array();
+
+            $wp_styles->queue = array_filter( $wp_styles->queue, function( $v ){
+            	return strpos( $v, 'yith-proteo' ) !== false;
+			});
         }
 
         /**

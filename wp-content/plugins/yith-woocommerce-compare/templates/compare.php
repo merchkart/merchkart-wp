@@ -70,7 +70,7 @@ $localized_table_text = apply_filters('wpml_translate_single_string', $table_tex
 <?php global $product; ?>
 
 <!-- START BODY -->
-<body <?php body_class('woocommerce') ?>>
+<body <?php body_class('woocommerce yith-woocompare-popup') ?>>
 
 <h1>
     <?php echo wp_kses_post($localized_table_text); ?>

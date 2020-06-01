@@ -1,3 +1,20 @@
+# 3.2.0 (2020-05-28)
+* Add support for tax calculation on orders created through WooCommerce REST API V2 & V3
+* Include plugin parameter for requests to TaxJar API
+* Increment supported WooCommerce version to 4.1.1
+
+# 3.1.1 (2020-05-15)
+* Update WordPress listing content
+* Fix bad link in connect TaxJar notification
+* Fix TaxJar product exemption codes being altered before sending to TaxJar
+
+# 3.1.0 (2020-04-10)
+* Update to settings page using SmartCalcs Connect
+* Update User Agent header for requests to TaxJar
+* Prevent unnecessary logging when tax calculation not required
+* Fix orders created through the WooCommerce API with a fee not syncing
+* Confirm compatibility with WooCommerce 4.0.1 and WordPress 5.4.0
+
 # 3.0.15 (2020-03-11)
 * Ensure referer and user permissions are validated for ajax methods
 * Confirm compatibility with WooCommerce 4.0

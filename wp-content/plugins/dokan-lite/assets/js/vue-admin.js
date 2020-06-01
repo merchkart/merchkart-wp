@@ -444,7 +444,7 @@ if (false) {(function () {
     'vendorInfo.user_login': function vendorInfoUser_login(value) {
       this.checkUsername();
     },
-    'vendorInfo.user_email': function vendorInfoUser_email(value) {
+    'vendorInfo.email': function vendorInfoEmail(value) {
       this.checkEmail();
     }
   },
@@ -573,7 +573,7 @@ if (false) {(function () {
     searchEmail: function searchEmail() {
       var _this4 = this;
 
-      var userEmail = this.vendorInfo.user_email;
+      var userEmail = this.vendorInfo.email;
 
       if (!userEmail) {
         return;
@@ -581,7 +581,7 @@ if (false) {(function () {
 
       this.emailAvailabilityText = this.__('Searching...', 'dokan-lite');
       dokan.api.get("/stores/check", {
-        user_email: userEmail
+        email: userEmail
       }).then(function (response) {
         if (response.available) {
           _this4.emailAvailable = true;
@@ -1292,8 +1292,20 @@ if (false) {(function () {
       enabled: false,
       trusted: false,
       featured: false,
-      commissionTypes: [this.__('Flat', 'dokan-lite'), this.__('Percentage', 'dokan-lite'), this.__('Combine', 'dokan-lite')],
-      selectedCommissionType: this.__('Flat', 'dokan-lite'),
+      commissionTypes: [{
+        name: 'flat',
+        label: this.__('Flat', 'dokan-lite')
+      }, {
+        name: 'percentage',
+        label: this.__('Percentage', 'dokan-lite')
+      }, {
+        name: 'combine',
+        label: this.__('Combine', 'dokan-lite')
+      }],
+      selectedCommissionType: {
+        name: 'flat',
+        label: this.__('Flat', 'dokan-lite')
+      },
       getBankFields: dokan.hooks.applyFilters('getVendorBankFields', []),
       getPyamentFields: dokan.hooks.applyFilters('AfterPyamentFields', [])
     };
@@ -1317,7 +1329,14 @@ if (false) {(function () {
     var commissionType = this.vendorInfo.admin_commission_type;
 
     if (commissionType) {
-      this.selectedCommissionType = commissionType.charAt(0).toUpperCase() + commissionType.slice(1);
+      var _$findWhere = _.findWhere(this.commissionTypes, {
+        name: commissionType
+      }),
+          name = _$findWhere.name,
+          label = _$findWhere.label;
+
+      this.selectedCommissionType.name = name;
+      this.selectedCommissionType.label = label;
     }
   },
   methods: {
@@ -1349,12 +1368,14 @@ if (false) {(function () {
     getId: function getId() {
       return this.$route.params.id;
     },
-    saveCommissionType: function saveCommissionType(value) {
-      if (!value) {
+    saveCommissionType: function saveCommissionType(_ref) {
+      var name = _ref.name;
+
+      if (!name) {
         this.vendorInfo.admin_commission_type = 'flat';
       }
 
-      this.vendorInfo.admin_commission_type = value.toLowerCase();
+      this.vendorInfo.admin_commission_type = name;
     }
   }
 });
@@ -2190,27 +2211,27 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.vendorInfo.user_email,
-                  expression: "vendorInfo.user_email"
+                  value: _vm.vendorInfo.email,
+                  expression: "vendorInfo.email"
                 }
               ],
               class: {
                 "dokan-form-input": true,
-                "has-error": _vm.getError("user_email")
+                "has-error": _vm.getError("email")
               },
               attrs: {
                 type: "email",
-                placeholder: _vm.getError("user_email")
+                placeholder: _vm.getError("email")
                   ? _vm.__("Email is required", "dokan-lite")
                   : _vm.__("store@email.com", "dokan-lite")
               },
-              domProps: { value: _vm.vendorInfo.user_email },
+              domProps: { value: _vm.vendorInfo.email },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.vendorInfo, "user_email", $event.target.value)
+                  _vm.$set(_vm.vendorInfo, "email", $event.target.value)
                 }
               }
             }),
@@ -2314,7 +2335,7 @@ var render = function() {
                   { staticClass: "column" },
                   [
                     _c("label", { attrs: { for: "store-password" } }, [
-                      _vm._v(_vm._s(_vm.__("Passwrod", "dokan-lite")))
+                      _vm._v(_vm._s(_vm.__("Password", "dokan-lite")))
                     ]),
                     _vm._v(" "),
                     _vm.showPassword
@@ -3110,6 +3131,9 @@ var render = function() {
                           _c("Multiselect", {
                             attrs: {
                               options: _vm.commissionTypes,
+                              "track-by": "name",
+                              label: "label",
+                              "allow-empty": false,
                               multiselect: false,
                               searchable: false,
                               showLabels: false
@@ -3128,7 +3152,7 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    "Combine" === _vm.selectedCommissionType
+                    "combine" === _vm.selectedCommissionType.name
                       ? _c(
                           "div",
                           { staticClass: "column combine-commission" },
@@ -4602,7 +4626,7 @@ var Currency = dokan_get_lib('Currency');
         }
       }, {
         "title": "WC Booking Integration",
-        "url": "https:\/\/wedevs.com\/dokan\/modules\/woocommerce-booking-integration\/",
+        "url": "https:\/\/wedevs.com\/dokan\/extensions\/woocommerce-booking-integration\/",
         "starter": {
           "type": "icon",
           "value": dokan.urls.assetsUrl + '/images/premium/unavailable@2x.png'
@@ -6163,7 +6187,7 @@ var Loading = dokan_get_lib('Loading');
         user_pass: '',
         store_url: '',
         user_login: '',
-        user_email: '',
+        email: '',
         user_nicename: '',
         notify_vendor: true,
         phone: '',
@@ -6203,7 +6227,7 @@ var Loading = dokan_get_lib('Loading');
           country: ''
         }
       },
-      requiredFields: ['store_name', 'user_login', 'user_email'],
+      requiredFields: ['store_name', 'user_login', 'email'],
       errors: [],
       storeAvailable: false,
       userNameAvailable: false,

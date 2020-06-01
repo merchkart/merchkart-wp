@@ -26,11 +26,13 @@ class SetupWizard {
      * Hook in tabs.
      */
     public function __construct() {
+        if ( ! dokan()->has_woocommerce() ) {
+            add_filter( 'user_has_cap', [ $this, 'set_user_cap' ] );
+        }
+
         if ( current_user_can( 'manage_woocommerce' ) ) {
             add_action( 'admin_menu', array( $this, 'admin_menus' ) );
             add_action( 'admin_init', array( $this, 'setup_wizard' ), 99 );
-            add_action( 'activated_plugin', array( $this, 'activated_plugin' ) );
-            add_action( 'weforms_loaded', [ $this, 'after_weforms_activate' ] );
 
             if ( get_transient( 'dokan_setup_wizard_no_wc' ) ) {
                 add_filter( 'dokan_admin_setup_wizard_steps', array( SetupWizardNoWC::class, 'add_wc_steps_to_wizard' ) );
@@ -39,6 +41,21 @@ class SetupWizard {
                 add_action( 'dokan_admin_setup_wizard_save_step_store', array( SetupWizardNoWC::class, 'save_wc_store_setup_data' ) );
             }
         }
+    }
+
+    /**
+     * Give manage_woocommerce cap to admin if not there.
+     *
+     * @param array $caps
+     *
+     * @return array
+     */
+    public function set_user_cap( $caps ) {
+        if ( ! empty( $caps[ 'manage_options' ] ) ) {
+            $caps[ 'manage_woocommerce' ] = true;
+        }
+
+        return $caps;
     }
 
     /**
@@ -437,44 +454,23 @@ class SetupWizard {
                 <tr>
                     <td colspan="2">
                         <ul class="wc-wizard-payment-gateways wc-wizard-services">
-                            <li class="wc-wizard-service-item">
-                                <div class="wc-wizard-service-name">
-                                    <p><?php esc_html_e( 'PayPal', 'dokan-lite' ); ?></p>
-                                </div>
-                                <div class="wc-wizard-service-description">
-                                    <?php esc_html_e( 'Enable PayPal for your vendor as a withdraw method', 'dokan-lite' ); ?>
-                                </div>
-                                <div class="dokan-wizard-service-enable">
-                                    <input type="checkbox" name="withdraw_methods[paypal]" id="withdraw_methods[paypal]" class="switch-input" value="paypal" checked>
-                                    <label for="withdraw_methods[paypal]" class="switch-label"></label>
-                                </div>
-                            </li>
-
-                            <li class="wc-wizard-service-item <?php echo ( array_key_exists( 'paypal', $withdraw_methods ) ) ? 'checked="checked"' : ''; ?>">
-                                <div class="wc-wizard-service-name">
-                                    <p><?php esc_html_e( 'Bank', 'dokan-lite' ); ?></p>
-                                </div>
-                                <div class="wc-wizard-service-description">
-                                    <?php esc_html_e( 'Enable bank transfer for your vendor as a withdraw method', 'dokan-lite' ); ?>
-                                </div>
-                                <div class="dokan-wizard-service-enable">
-                                    <input type="checkbox" name="withdraw_methods[bank]" id="withdraw_methods[bank]" value="bank" class="switch-input" checked>
-                                    <label for="withdraw_methods[bank]" class="switch-label"></label>
-                                </div>
-                            </li>
-
-                            <li class="wc-wizard-service-item <?php echo ( array_key_exists( 'paypal', $withdraw_methods ) ) ? 'checked="checked"' : ''; ?>">
-                                <div class="wc-wizard-service-name">
-                                    <p><?php esc_html_e( 'Skrill', 'dokan-lite' ); ?></p>
-                                </div>
-                                <div class="wc-wizard-service-description">
-                                    <?php esc_html_e( 'Enable skrill for your vendor as a withdraw method', 'dokan-lite' ); ?>
-                                </div>
-                                <div class="dokan-wizard-service-enable">
-                                    <input type="checkbox" name="withdraw_methods[skrill]" id="withdraw_methods[skrill]" value="skrill" class="switch-input" checked>
-                                    <label for="withdraw_methods[skrill]" class="switch-label"></label>
-                                </div>
-                            </li>
+                            <?php foreach ( dokan_withdraw_register_methods() as $key => $method ): ?>
+                                <li class="wc-wizard-service-item <?php echo ( in_array( $key, array_values( $withdraw_methods ) ) ) ? 'checked="checked"' : ''; ?>">
+                                    <div class="wc-wizard-service-name">
+                                        <p><?php echo $method['title']; ?></p>
+                                    </div>
+                                    <div class="wc-wizard-service-description">
+                                        <?php printf(
+                                            esc_html__( 'Enable %s for your vendor as a withdraw method', 'dokan-lite' ),
+                                            $method['title']
+                                        ); ?>
+                                    </div>
+                                    <div class="dokan-wizard-service-enable">
+                                        <input type="checkbox" name="withdraw_methods[<?php esc_attr_e( $key ); ?>]" id="withdraw_methods[<?php esc_attr_e( $key ); ?>]" class="switch-input" value="<?php esc_attr_e( $key ); ?>" <?php echo ( in_array( $key, array_values( $withdraw_methods ) ) ) ? 'checked="checked"' : ''; ?>>
+                                        <label for="withdraw_methods[<?php esc_attr_e( $key ); ?>]" class="switch-label"></label>
+                                    </div>
+                                </li>
+                            <?php endforeach ?>
 
                             <?php
                                 /**
@@ -561,17 +557,6 @@ class SetupWizard {
                                     'plugins'     => array( array( 'name' => __( 'WooCommerce Conversion Tracking', 'dokan-lite' ), 'slug' => 'woocommerce-conversion-tracking' ) ),
                                 ) );
                             }
-
-                            if ( ! $this->is_weforms_active() ) {
-                                $this->display_recommended_item( array(
-                                    'type'        => 'weforms',
-                                    'title'       => __( 'weForms', 'dokan-lite' ),
-                                    'description' => __( 'Best Contact Form Plugin for WordPress.', 'dokan-lite' ),
-                                    'img_url'     => DOKAN_PLUGIN_ASSEST . '/images/weforms-logo.png',
-                                    'img_alt'     => __( 'weForms logo', 'dokan-lite' ),
-                                    'plugins'     => array( array( 'name' => __( 'weForms', 'dokan-lite' ), 'slug' => 'weforms' ) ),
-                                ) );
-                            }
                         };
                     ?>
                 </ul>
@@ -595,7 +580,6 @@ class SetupWizard {
         check_admin_referer( 'dokan-setup' );
 
         $setup_wc_conversion_tracking  = isset( $_POST['setup_wc_conversion_tracking'] ) && 'yes' === $_POST['setup_wc_conversion_tracking'];
-        $setup_weforms                 = isset( $_POST['setup_weforms'] ) && 'yes' === $_POST['setup_weforms'];
 
         if ( $setup_wc_conversion_tracking && ! $this->is_wc_conversion_tracking_active() ) {
             $this->install_plugin(
@@ -604,17 +588,6 @@ class SetupWizard {
                     'name'      => __( 'WooCommerce Conversion Tracking', 'dokan-lite' ),
                     'repo-slug' => 'woocommerce-conversion-tracking',
                     'file'      => 'conversion-tracking.php',
-                )
-            );
-        }
-
-        if ( $setup_weforms && ! $this->is_weforms_active() ) {
-            $this->install_plugin(
-                'weforms',
-                array(
-                    'name'      => __( 'weForms', 'dokan-lite' ),
-                    'repo-slug' => 'weforms',
-                    'file'      => 'weforms.php',
                 )
             );
         }
@@ -696,7 +669,7 @@ class SetupWizard {
             return false;
         }
 
-        if ( $this->is_wc_conversion_tracking_active() && $this->is_weforms_active() ) {
+        if ( $this->is_wc_conversion_tracking_active() ) {
             return false;
         }
 
@@ -712,17 +685,6 @@ class SetupWizard {
      */
     protected function is_wc_conversion_tracking_active() {
         return is_plugin_active( 'woocommerce-conversion-tracking/conversion-tracking.php' );
-    }
-
-    /**
-     * Check if weForms is active or not
-     *
-     * @since 2.8.7
-     *
-     * @return bool
-     */
-    protected function is_weforms_active() {
-        return is_plugin_active( 'weforms/weforms.php' );
     }
 
     /**
@@ -866,57 +828,5 @@ class SetupWizard {
             @ob_end_flush(); // @codingStandardsIgnoreLine.
             flush();
         }
-    }
-
-    /**
-     * activate_plugin hook
-     *
-     * @since 2.8.7
-     *
-     * @param string $plugin
-     *
-     * @return void
-     */
-    public function activated_plugin( $plugin ) {
-        if ( 'weforms/weforms.php' === $plugin ) {
-            update_option( 'dokan_setup_wizard_activated_weforms', true );
-        }
-    }
-
-    /**
-     * Action after weForms activate
-     *
-     * @since 2.8.7
-     *
-     * @return void
-     */
-    public function after_weforms_activate() {
-        $did_activate = get_option( 'dokan_setup_wizard_activated_weforms', false );
-
-        if ( ! $did_activate ) {
-            return;
-        }
-
-        add_action( 'shutdown', 'flush_rewrite_rules' );
-
-        $forms_data = weforms()->form->all();
-
-        $forms = $forms_data['forms'];
-
-        if ( empty( $forms_data['forms'][0] ) ) {
-            return;
-        }
-
-        $form = $forms_data['forms'][0];
-
-        $settings = array(
-            'allow_vendor_contact_form'    => 'on',
-            'vendor_contact_section_label' => __( 'Contact Admin', 'dokan-lite' ),
-            'vendor_contact_form'          => $form->id,
-        );
-
-        update_option( 'weforms_integration', $settings );
-
-        delete_option( 'dokan_setup_wizard_activated_weforms' );
     }
 }

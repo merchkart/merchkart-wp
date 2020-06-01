@@ -1,13 +1,13 @@
 === Dokan - Best WooCommerce Multivendor Marketplace Solution - Build Your Own Amazon, eBay, Etsy ===
-Contributors: tareq1988, wedevs, sabbir1991, nizamuddinbabu, sk.shaikat, ediamin, saimonh
+Contributors: tareq1988, wedevs, nizamuddinbabu
 Donate Link: http://tareq.co/donate/
 Tags: WooCommerce multivendor marketplace, multi vendor marketplace, multi seller store, product vendors, woocommerce vendor, commission rate, e-commerce, ebay, ecommerce, yith, yithemes
 Requires at least: 4.4
 Tested up to: 5.3.2
 WC requires at least: 3.0
-WC tested up to: 3.9.1
+WC tested up to: 4.1.0
 Requires PHP: 5.6
-Stable tag: 3.0.1
+Stable tag: 3.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,7 +17,7 @@ The pioneer multi-vendor plugin for WordPress. Start your own marketplace in min
 
 = DOKAN MULTIVENDOR MARKETPLACE PLUGIN FOR WORDPRESS =
 
-👉 Official Free Demo Link: [Official Demo](https://wedevs.com/dokan/demo)
+👉 Official Free Demo Link: [Official Demo](https://dokan.wedevsdemos.com/)
 👉 Learn More About Dokan(PRO): [All The Features of Dokan](https://wedevs.com/dokan/features/)
 
 = POWERED BY WooCommerce =
@@ -290,6 +290,50 @@ A. Just install and activate the PRO version without deleting the free plugin. A
 19. Frontend &rarr; Individual Seller Store-3
 
 == Changelog ==
+
+ = v3.0.4 (May 15, 2020) =
+
+ - **Fix:** Rename google plus to google as google plus is deprecated #807
+ - **Fix:** Unable to set store trams and condition settings through REST API #808
+ - **Fix:** Vendor order email does not have the TAX details #809
+ - **Fix:** Withdraw request email is not send to admin #810
+ - **Fix:** Typo in backend add and edit vendor page #811
+ - **Fix:** On updating commission type in backend vendor dashboard, translated commission type is getting saved into database #814
+ - **Fix:** Store listing filter does not work when its saved as frontpage #815
+ - **Fix:** When a product is purchased with a price of more than 8 digit the calculation is wrong #819
+ - **Fix:** Caching issue on vendor's order listing page #821
+ - **Fix:** Filter out empty seller ids when a product is deleted `dokan_get_sellers_by` function #827
+ - **Fix:** Deduct PayPal gateway fee from vendor's earning #830
+ - **Feat:** Hide vendor info if admin wants to #829
+ - **Improvement:** Pass vendor id in dokan_get_seller_active_withdraw_methods hook #813
+
+
+= v3.0.3 (April 03, 2020) =
+
+ - **Fix:** Clear caches on product update #804
+ - **Fix:** Vendor is not receiving email for new order #803
+ - **Fix:** Remove weForms promotion from admin setup wizard #798
+
+= v3.0.2 (March 23, 2020) =
+
+ - **Fix:** Unable to remove attributes in vendor product edit page #637
+ - **Fix:** Feature image is not saving on quick edit
+ - **Fix:** Vendor image issue #769
+ - **Fix:** Set vendor eamil on new vendor creation #787
+ - **Fix:** Return content from shotcode instead of being outputting #752
+ - **Fix:** Map still showing on vendor dashabord settings page even if there is no API key
+ - **Fix:** Product type not saving when quick edit #767
+ - **Fix:** Render withdraw methods dynamically in setup wizard #771
+ - **Fix:** Show vendor email to admin and actual vendor #773
+ - **Fix:** Product type error in dokan_save_product function
+ - **Fix:** Admin is unable to see the setup wizard on new dokan installation when WooCommerce is not installed #783
+ - **Fix:** Add missing add_meta_query method in dokan REST API #788
+ - **Fix:** Only render map if api key is availabe in store settings page #774
+ - **Feat:** Add dokan_get_all_cap_labels function #781
+ - **Improvement:** Added group description to exporters and updated privacy policy guide to drop use of deprecated classes #755
+ - **Improvement:** dokan_get_shipping_processing_times function #785
+ - **Improvement:** Add filter on withdraw export csv args #786
+ - **Improvement:** Get correct product thumbnail size in vendor product list page #795
 
 = v3.0.1 (February 07, 2020) =
 

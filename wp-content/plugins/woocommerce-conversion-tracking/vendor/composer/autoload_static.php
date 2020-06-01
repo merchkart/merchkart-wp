@@ -4,13 +4,9 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitbe7da76dd5d109b90bcfd5021780a51d
+class ComposerStaticInit1ee244c23bd3f7f8b8c7215834da50ae
 {
     public static $prefixLengthsPsr4 = array (
-        'D' => 
-        array (
-            'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 55,
-        ),
         'C' => 
         array (
             'Composer\\Installers\\' => 20,
@@ -18,10 +14,6 @@ class ComposerStaticInitbe7da76dd5d109b90bcfd5021780a51d
     );
 
     public static $prefixDirsPsr4 = array (
-        'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/dealerdirect/phpcodesniffer-composer-installer/src',
-        ),
         'Composer\\Installers\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
@@ -123,15 +115,14 @@ class ComposerStaticInitbe7da76dd5d109b90bcfd5021780a51d
         'Composer\\Installers\\YawikInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/YawikInstaller.php',
         'Composer\\Installers\\ZendInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/ZendInstaller.php',
         'Composer\\Installers\\ZikulaInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/ZikulaInstaller.php',
-        'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin' => __DIR__ . '/..' . '/dealerdirect/phpcodesniffer-composer-installer/src/Plugin.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitbe7da76dd5d109b90bcfd5021780a51d::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitbe7da76dd5d109b90bcfd5021780a51d::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitbe7da76dd5d109b90bcfd5021780a51d::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit1ee244c23bd3f7f8b8c7215834da50ae::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit1ee244c23bd3f7f8b8c7215834da50ae::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit1ee244c23bd3f7f8b8c7215834da50ae::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -4,15 +4,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: YITH Plugin Starter 1.0.0 Plugin FW\n"
 "Report-Msgid-Bugs-To: YITH <plugins@yithemes.com>\n"
-"POT-Creation-Date: 2020-03-11 14:03:11+00:00\n"
-"PO-Revision-Date: 2020-01-14 10:29+0000\n"
+"POT-Creation-Date: 2020-04-23 06:38:32+00:00\n"
+"PO-Revision-Date: 2020-04-06 15:05+0200\n"
 "Last-Translator: \n"
 "Language-Team: Your Inspiration Themes <info@yithemes.com>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
 "_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
 "esc_html_x:1,2c;_x;_ex\n"
@@ -214,84 +214,84 @@ msgstr "Als je deze pagina verlaat zullen alle wijzigingen verloren gaan."
 msgid "Plugin Settings"
 msgstr "Plugin instellingen"
 
-#: lib/yit-plugin-panel.php:425 lib/yit-plugin-panel.php:428
+#: lib/yit-plugin-panel.php:455 lib/yit-plugin-panel.php:458
 msgid "How to install premium version"
 msgstr "Hoe installeer ik de premium versie"
 
-#: lib/yit-plugin-panel.php:572 lib/yit-plugin-subpanel.php:151
+#: lib/yit-plugin-panel.php:603 lib/yit-plugin-subpanel.php:151
 #: templates/panel/woocommerce/woocommerce-form.php:14
 msgid "Save Changes"
 msgstr "Wijzigingen opslaan"
 
-#: lib/yit-plugin-panel.php:575 lib/yit-plugin-subpanel.php:154
+#: lib/yit-plugin-panel.php:606 lib/yit-plugin-subpanel.php:154
 #: templates/panel/woocommerce/woocommerce-form.php:17
 msgid ""
 "If you continue with this action, you will reset all options in this page."
 msgstr "Als u deze actie voortzet, zult u alle opties op deze pagina resetten."
 
-#: lib/yit-plugin-panel.php:577 lib/yit-plugin-subpanel.php:156
+#: lib/yit-plugin-panel.php:608 lib/yit-plugin-subpanel.php:156
 msgid "Reset to default"
 msgstr "Resetten naar standaard"
 
-#: lib/yit-plugin-panel.php:578 lib/yit-plugin-subpanel.php:157
+#: lib/yit-plugin-panel.php:609 lib/yit-plugin-subpanel.php:157
 #: templates/panel/woocommerce/woocommerce-form.php:21
 msgid "Are you sure?"
 msgstr "Weet u het zeker?"
 
-#: lib/yit-plugin-panel.php:776
+#: lib/yit-plugin-panel.php:807
 msgid ""
 "The element you have entered already exists. Please, enter another name."
 msgstr "Het element dat u hebt ingevoerd bestaat al. Voer een andere naam in."
 
-#: lib/yit-plugin-panel.php:777
+#: lib/yit-plugin-panel.php:808
 msgid "Settings saved"
 msgstr "Instellingen opgeslagen"
 
-#: lib/yit-plugin-panel.php:778
+#: lib/yit-plugin-panel.php:809
 msgid "Settings reset"
 msgstr "Instellingen resetten"
 
-#: lib/yit-plugin-panel.php:779
+#: lib/yit-plugin-panel.php:810
 msgid "Element deleted correctly."
 msgstr "Element succesvol verwijderd."
 
-#: lib/yit-plugin-panel.php:780 lib/yit-plugin-panel.php:781
+#: lib/yit-plugin-panel.php:811 lib/yit-plugin-panel.php:812
 msgid "Element updated correctly."
 msgstr "Element juist bijgewerkt."
 
-#: lib/yit-plugin-panel.php:782
+#: lib/yit-plugin-panel.php:813
 msgid "Database imported correctly."
 msgstr "Database juist geïmporteerd."
 
-#: lib/yit-plugin-panel.php:783
+#: lib/yit-plugin-panel.php:814
 msgid "An error has occurred during import. Please try again."
 msgstr "Er is een fout opgetreden tijdens importeren. Probeer opnieuw."
 
-#: lib/yit-plugin-panel.php:784
+#: lib/yit-plugin-panel.php:815
 msgid "The added file is not valid."
 msgstr "Het toegevoegde bestand is ongeldig."
 
-#: lib/yit-plugin-panel.php:785
+#: lib/yit-plugin-panel.php:816
 msgid "Sorry, import is disabled."
 msgstr "Sorry, importeren is uitgeschakeld."
 
-#: lib/yit-plugin-panel.php:786
+#: lib/yit-plugin-panel.php:817
 msgid "Sorting successful."
 msgstr "Sorteren succesvol."
 
-#: lib/yit-plugin-panel.php:1234
+#: lib/yit-plugin-panel.php:1265
 msgid "We need your support"
 msgstr "We hebben uw hulp nodig"
 
-#: lib/yit-plugin-panel.php:1235
+#: lib/yit-plugin-panel.php:1266
 msgid "to keep updating and improving the plugin. Please,"
 msgstr "om de plugin te blijven updaten en verbeteren. A.u.b.,"
 
-#: lib/yit-plugin-panel.php:1237
+#: lib/yit-plugin-panel.php:1268
 msgid "help us by leaving a five-star rating"
 msgstr "help ons door een vijf-sterenbeoordeling achter te laten"
 
-#: lib/yit-plugin-panel.php:1238
+#: lib/yit-plugin-panel.php:1269
 msgid ":) Thanks!"
 msgstr ":) Bedankt!"
 
@@ -753,15 +753,40 @@ msgctxt "[gutenberg]: Category Name"
 msgid "YITH"
 msgstr "YITH"
 
+#: templates/fields/dimensions.php:16
+msgctxt "Position in the \"Dimensions\" field"
+msgid "Top"
+msgstr ""
+
+#: templates/fields/dimensions.php:17
+msgctxt "Position in the \"Dimensions\" field"
+msgid "Right"
+msgstr ""
+
+#: templates/fields/dimensions.php:18
+msgctxt "Position in the \"Dimensions\" field"
+msgid "Bottom"
+msgstr ""
+
+#: templates/fields/dimensions.php:19
+msgctxt "Position in the \"Dimensions\" field"
+msgid "Left"
+msgstr ""
+
+#: templates/fields/dimensions.php:117
+msgctxt "Tooltip in the \"Dimensions\" field"
+msgid "Link values together"
+msgstr ""
+
 #: templates/fields/onoff.php:24
-msgctxt "ON/OFF button: use MAX 3 characters!"
-msgid "ON"
-msgstr "AAN"
+msgctxt "YES/NO button: use MAX 3 characters!"
+msgid "YES"
+msgstr "JA"
 
 #: templates/fields/onoff.php:25
-msgctxt "ON/OFF button: use MAX 3 characters!"
-msgid "OFF"
-msgstr "UIT"
+msgctxt "YES/NO button: use MAX 3 characters!"
+msgid "NO"
+msgstr "NEE"
 
 #: yit-plugin.php:83
 msgctxt "Plugin Row Meta"
@@ -787,6 +812,14 @@ msgstr "Premium Versie"
 msgctxt "Action links"
 msgid "Settings"
 msgstr "Instellingen"
+
+#~ msgctxt "ON/OFF button: use MAX 3 characters!"
+#~ msgid "ON"
+#~ msgstr "AAN"
+
+#~ msgctxt "ON/OFF button: use MAX 3 characters!"
+#~ msgid "OFF"
+#~ msgstr "UIT"
 
 #~ msgid "An unexpected error occurred, please try again later. Thanks!"
 #~ msgstr ""

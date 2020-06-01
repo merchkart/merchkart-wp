@@ -99,7 +99,21 @@ class Manager {
             unset( $data['store_open_close'] );
         }
 
-        if ( empty( $data['show_email'] ) ) {
+        $vendor_id = ! empty( $data['id'] ) ? absint( $data['id'] ) : 0;
+
+        if ( current_user_can( 'manage_woocommerce' ) || $vendor_id === absint( dokan_get_current_user_id() ) ) {
+            return $data;
+        }
+
+        if ( dokan_is_vendor_info_hidden( 'address' ) ) {
+            unset( $data['address'] );
+        }
+
+        if ( dokan_is_vendor_info_hidden( 'phone' ) ) {
+            unset( $data['phone'] );
+        }
+
+        if ( dokan_is_vendor_info_hidden( 'email' ) || empty( $data['show_email'] ) ) {
             unset( $data['email'] );
         }
 

@@ -461,6 +461,8 @@ if ( ! class_exists( 'YITH_Woocompare_Admin' ) ) {
 		 */
 		public function enqueue_styles_scripts() {
 
+			$min = ! ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '.min' : '';
+
 			if ( isset( $_GET['page'] ) && $_GET['page'] == 'yith_woocompare_panel' ) {
 				wp_enqueue_script( 'jquery-ui' );
 				wp_enqueue_script( 'jquery-ui-core' );
@@ -469,7 +471,7 @@ if ( ! class_exists( 'YITH_Woocompare_Admin' ) ) {
 				wp_enqueue_script( 'jquery-ui-sortable' );
 
 				wp_enqueue_style( 'yith_woocompare_admin', YITH_WOOCOMPARE_URL . 'assets/css/admin.css' );
-				wp_enqueue_script( 'yith_woocompare', YITH_WOOCOMPARE_URL . 'assets/js/woocompare-admin.js', array( 'jquery', 'jquery-ui-sortable' ) );
+				wp_enqueue_script( 'yith_woocompare', YITH_WOOCOMPARE_URL . 'assets/js/woocompare-admin'.$min.'.js', array( 'jquery', 'jquery-ui-sortable' ) );
 			}
 
 			do_action( 'yith_woocompare_enqueue_styles_scripts' );

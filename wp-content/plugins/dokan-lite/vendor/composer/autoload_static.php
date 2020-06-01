@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit8bc0b3a6d9089b38a86e8cbf20228744
+class ComposerStaticInit7c5d12db56d4a4a6d60281b579f34d67
 {
     public static $prefixLengthsPsr4 = array (
         'W' => 
@@ -68,6 +68,7 @@ class ComposerStaticInit8bc0b3a6d9089b38a86e8cbf20228744
         'WeDevs\\Dokan\\Emails\\NewProductPending' => __DIR__ . '/../..' . '/includes/Emails/NewProductPending.php',
         'WeDevs\\Dokan\\Emails\\NewSeller' => __DIR__ . '/../..' . '/includes/Emails/NewSeller.php',
         'WeDevs\\Dokan\\Emails\\ProductPublished' => __DIR__ . '/../..' . '/includes/Emails/ProductPublished.php',
+        'WeDevs\\Dokan\\Emails\\VendorNewOrder' => __DIR__ . '/../..' . '/includes/Emails/VendorNewOrder.php',
         'WeDevs\\Dokan\\Emails\\VendorWithdrawRequest' => __DIR__ . '/../..' . '/includes/Emails/VendorWithdrawRequest.php',
         'WeDevs\\Dokan\\Emails\\WithdrawApproved' => __DIR__ . '/../..' . '/includes/Emails/WithdrawApproved.php',
         'WeDevs\\Dokan\\Emails\\WithdrawCancelled' => __DIR__ . '/../..' . '/includes/Emails/WithdrawCancelled.php',
@@ -135,6 +136,7 @@ class ComposerStaticInit8bc0b3a6d9089b38a86e8cbf20228744
         'WeDevs\\Dokan\\Upgrade\\Upgrades\\V_2_9_19' => __DIR__ . '/../..' . '/includes/Upgrade/Upgrades/V_2_9_19.php',
         'WeDevs\\Dokan\\Upgrade\\Upgrades\\V_2_9_23' => __DIR__ . '/../..' . '/includes/Upgrade/Upgrades/V_2_9_23.php',
         'WeDevs\\Dokan\\Upgrade\\Upgrades\\V_2_9_4' => __DIR__ . '/../..' . '/includes/Upgrade/Upgrades/V_2_9_4.php',
+        'WeDevs\\Dokan\\Upgrade\\Upgrades\\V_3_0_4' => __DIR__ . '/../..' . '/includes/Upgrade/Upgrades/V_3_0_4.php',
         'WeDevs\\Dokan\\Vendor\\Manager' => __DIR__ . '/../..' . '/includes/Vendor/Manager.php',
         'WeDevs\\Dokan\\Vendor\\SetupWizard' => __DIR__ . '/../..' . '/includes/Vendor/SetupWizard.php',
         'WeDevs\\Dokan\\Vendor\\StoreListsFilter' => __DIR__ . '/../..' . '/includes/Vendor/StoreListsFilter.php',
@@ -162,9 +164,9 @@ class ComposerStaticInit8bc0b3a6d9089b38a86e8cbf20228744
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit8bc0b3a6d9089b38a86e8cbf20228744::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit8bc0b3a6d9089b38a86e8cbf20228744::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit8bc0b3a6d9089b38a86e8cbf20228744::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit7c5d12db56d4a4a6d60281b579f34d67::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit7c5d12db56d4a4a6d60281b579f34d67::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit7c5d12db56d4a4a6d60281b579f34d67::$classMap;
 
         }, null, ClassLoader::class);
     }

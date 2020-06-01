@@ -3,11 +3,11 @@
  * Plugin Name: TaxJar - Sales Tax Automation for WooCommerce
  * Plugin URI: https://www.taxjar.com/woocommerce-sales-tax-plugin/
  * Description: Save hours every month by putting your sales tax on autopilot. Automated, multi-state sales tax calculation, collection, and filing.
- * Version: 3.0.15
+ * Version: 3.2.0
  * Author: TaxJar
  * Author URI: https://www.taxjar.com
  * WC requires at least: 3.0.0
- * WC tested up to: 4.0.0
+ * WC tested up to: 4.1.1
  *
  * Copyright: © 2014-2019 TaxJar. TaxJar is a trademark of TPS Unlimited, Inc.
  * License: GNU General Public License v2.0 or later
@@ -42,7 +42,7 @@ if ( ! $woocommerce_active || version_compare( get_option( 'woocommerce_db_versi
  */
 final class WC_Taxjar {
 
-	static $version = '3.0.15';
+	static $version = '3.2.0';
 	public static $minimum_woocommerce_version = '3.0.0';
 
 	/**
@@ -77,6 +77,7 @@ final class WC_Taxjar {
 			include_once 'includes/class-taxjar-refund-record.php';
 			include_once 'includes/class-taxjar-customer-record.php';
 			include_once 'includes/class-wc-taxjar-queue-list.php';
+			include_once 'includes/class-wc-taxjar-api-calculation.php';
 
 			// Register the integration.
 			add_action( 'woocommerce_integrations_init', array( $this, 'add_integration' ), 20 );
@@ -291,8 +292,7 @@ final class WC_Taxjar {
 	public function get_settings_url() {
 		$url = admin_url( 'admin.php' );
 		$url = add_query_arg( 'page', 'wc-settings', $url );
-		$url = add_query_arg( 'tab', 'integration', $url );
-		$url = add_query_arg( 'section', 'taxjar-integration', $url );
+		$url = add_query_arg( 'tab', 'taxjar-integration', $url );
 
 		return $url;
 	}
