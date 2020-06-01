@@ -300,15 +300,21 @@ class Dokan_Pro_Products {
         </style>
 
         <script type="text/javascript">
-            $('#_per_product_admin_commission_type').on('change', function() {
-                if ( 'combine' === $(this).val() ) {
-                    $('.additional_fee').removeClass('dokan-hide');
-                    $('.combine-commission-description').text( dokan_admin.combine_commission_desc );
-                } else {
-                    $('.additional_fee').addClass('dokan-hide');
-                    $('.combine-commission-description').text( dokan_admin.default_commission_desc );
-                }
-            }).trigger('change');
+            ;(function($) {
+                $('#_per_product_admin_commission_type').on('change', function() {
+                    if ( 'combine' === $(this).val() ) {
+                        $('.additional_fee').removeClass('dokan-hide');
+                        $('.combine-commission-description').text( dokan_admin.combine_commission_desc );
+                        $('input[name=_per_product_admin_commission]').attr('required', true);
+                        $('input[name=_per_product_admin_additional_fee]').attr('required', true);
+                    } else {
+                        $('.additional_fee').addClass('dokan-hide');
+                        $('.combine-commission-description').text( dokan_admin.default_commission_desc );
+                        $('input[name=_per_product_admin_commission]').removeAttr('required');
+                        $('input[name=_per_product_admin_additional_fee]').removeAttr('required');
+                    }
+                }).trigger('change');
+            })(jQuery);
         </script>
         <?php
     }
@@ -328,19 +334,30 @@ class Dokan_Pro_Products {
             return;
         }
 
+        $commission_type  = '';
+        $admin_commission = '';
+        $additional_fee   = '';
+
         if ( isset( $_POST['_per_product_admin_commission_type'] ) ) {
-            $value = empty( $_POST['_per_product_admin_commission_type'] ) ? 'percentage' : $_POST['_per_product_admin_commission_type'];
-            update_post_meta( $post_id, '_per_product_admin_commission_type', $value );
+            $commission_type = ! empty( $_POST['_per_product_admin_commission_type'] ) ? $_POST['_per_product_admin_commission_type'] : 'percentage';
+            update_post_meta( $post_id, '_per_product_admin_commission_type', $commission_type );
         }
 
         if ( isset( $_POST['_per_product_admin_commission'] ) ) {
-            $value = '' === $_POST['_per_product_admin_commission'] ? '' : (float) $_POST['_per_product_admin_commission'];
-            update_post_meta( $post_id, '_per_product_admin_commission', $value );
+            $admin_commission = '' === $_POST['_per_product_admin_commission'] ? '' : (float) $_POST['_per_product_admin_commission'] ;
         }
 
         if ( isset( $_POST['_per_product_admin_additional_fee'] ) ) {
-            $value = '' === $_POST['_per_product_admin_additional_fee'] ? '' : (float) $_POST['_per_product_admin_additional_fee'];
-            update_post_meta( $post_id, '_per_product_admin_additional_fee', $value );
+            $additional_fee = '' === $_POST['_per_product_admin_additional_fee'] ? '' : (float) $_POST['_per_product_admin_additional_fee'];
+        }
+
+        // Combine commission requires both fields to be field.
+        if ( 'combine' === $commission_type && ( '' === $admin_commission || '' === $additional_fee ) ) {
+            update_post_meta( $post_id, '_per_product_admin_commission', '' );
+            update_post_meta( $post_id, '_per_product_admin_additional_fee', '' );
+        } else {
+            update_post_meta( $post_id, '_per_product_admin_commission', $admin_commission );
+            update_post_meta( $post_id, '_per_product_admin_additional_fee', $additional_fee );
         }
     }
 
@@ -536,7 +553,7 @@ class Dokan_Pro_Products {
             return;
         }
 
-        if ( ! dokan_is_user_seller( get_current_user_id() ) ) {
+        if ( ! dokan_is_user_seller( dokan_get_current_user_id() ) ) {
             return;
         }
 
@@ -574,7 +591,13 @@ class Dokan_Pro_Products {
                 $clone_product_id =  $wo_dup->duplicate_product( $post );
             }
 
-            $product_status = dokan_get_new_post_status();
+            // If vendor is disabled, make product status pending
+            if ( ! dokan_is_seller_enabled( dokan_get_current_user_id() ) ) {
+                $product_status = 'pending';
+            } else {
+                $product_status = dokan_get_new_post_status();
+            }
+
             wp_update_post( array( 'ID' => intval( $clone_product_id ), 'post_status' => $product_status ) );
 
             $redirect = apply_filters( 'dokan_redirect_after_product_duplicating', dokan_get_navigation_url( 'products' ), $product_id, $clone_product_id );

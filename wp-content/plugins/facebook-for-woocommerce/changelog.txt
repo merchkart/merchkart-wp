@@ -1,5 +1,31 @@
 *** Facebook for WooCommerce Changelog ***
 
+2020.05.20 - version 1.11.3
+ * Tweak - Write product feed to a temporary file and rename it when done, to prevent Facebook from downloading an incomplete feed file
+ * Tweak - Hide Facebook options for virtual products and virtual variations
+ * Tweak - Do not allow merchant to bulk enable sync for virtual products
+ * Tweak - On upgrade, automatically disable sync for virtual products and virtual variations
+ * Tweak - When using checkboxes for tags, make sure the modal is displayed when trying to enable sync for a product with an excluded tag
+ * Fix - Prevent tracking of a duplicated purchase event in some circumstances such as when the customer reloads the "Thank You" page after completing an order
+ * Fix - Fix a JavaScript issue that was causing a notice to be displayed when bulk editing product variations
+
+2020.05.04 - version 1.11.2
+ * Misc - Add support for WooCommerce 4.1
+
+2020.04.27 - version 1.11.1
+ * Fix - Fix integration with WPML
+
+2020.04.23 - version 1.11.0
+ * Tweak - Sync products using Facebook's feed pull method
+ * Fix - When filtering products by sync enabled status, make sure variable products with sync disabled status do not show up in results
+ * Fix - Make sure that the Facebook sync enabled and catalog visibility columns are properly displayed on narrow screen sizes on some browsers
+ * Fix - Do not show a confirmation modal when saving a variable product that was previously synced but belongs now to a term excluded from sync
+ * Fix - Ensure variable products excluded from sync are not synced in Facebook
+ * Fix - Trigger a modal prompt when attempting to enable sync for variations of a variable product that belongs to a term excluded from sync
+ * Fix - Address potential PHP warnings in the product feed with non-standard product variations introduced by third party plugins
+ * Fix - Fix a JavaScript error triggered on the settings page while trying to excluded terms from sync
+ * Fix - Fix a JavaScript error triggered when saving a product and using checkboxes for tags
+
 2020.03.17 - version 1.10.2
  * Tweak - Add a setting to easily enable debug logging
  * Tweak - Allow third party plugins and themes to track an add-to-cart event on added_to_cart JS event

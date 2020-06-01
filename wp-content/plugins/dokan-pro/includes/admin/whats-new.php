@@ -1,6 +1,181 @@
 <?php
 $changelog = array(
     array(
+        'version'  => 'Version 2.9.19',
+        'released' => '2020-02-03',
+        'changes'  => array(
+            array(
+                'title'       => 'Product Variation Exporting Issue',
+                'type'        => 'Fix',
+                'description' => 'Attach vendor id while exporting product variations (Import Export)'
+            ),
+            array(
+                'title'       => 'Product Addon Template Override',
+                'type'        => 'Fix',
+                'description' => 'Add template overwriting support in product addon module (Product Addon)'
+            ),
+            array(
+                'title'       => 'Proxy Bidding Option',
+                'type'        => 'Fix',
+                'description' => 'Enabling proxy bidding by default option is not taking effect on the frontend (Auction)'
+            ),
+            array(
+                'title'       => 'Inclusive Tax Support for RMA',
+                'type'        => 'Fix',
+                'description' => 'Add inclusive tax support for RMA (RMA)'
+            ),
+            array(
+                'title'       => 'Store Listing Page Style',
+                'type'        => 'Improvement',
+                'description' => 'Store listing filter styles so that it works almost any theme'
+            ),
+            array(
+                'title'       => 'Store Listing Page Style',
+                'type'        => 'Improvement',
+                'description' => 'Subscription installment count issue for paypal (Subscription)'
+            ),
+        )
+    ),
+    array(
+        'version'  => 'Version 2.9.18',
+        'released' => '2020-01-15',
+        'changes'  => array(
+            array(
+                'title'       => 'JS Loading issue',
+                'type'        => 'Fix',
+                'description' => 'Dokan Pro core js loading issue in some pages'
+            ),
+        )
+    ),
+    array(
+        'version'  => 'Version 2.9.17',
+        'released' => '2020-01-13',
+        'changes'  => array(
+            array(
+                'title'       => 'Mapbox Support',
+                'type'        => 'New',
+                'description' => 'Mapbox support for geolocation. (Geolocation)'
+            ),
+            array(
+                'title'       => 'Store List Filtering',
+                'type'        => 'New',
+                'description' => 'Add store filtering option in store listing page.'
+            ),
+            array(
+                'title'       => 'Auction Stock Management',
+                'type'        => 'New',
+                'description' => 'Add stock management for auction product. (Auction)'
+            ),
+            array(
+                'title'       => 'RMA Support for Bookable Product',
+                'type'        => 'New',
+                'description' => 'Add RMA support for bookable product. (RMA)'
+            ),
+            array(
+                'title'       => 'Shipping Issues',
+                'type'        => 'Fix',
+                'description' => 'Various shipping zone issue'
+            ),
+            array(
+                'title'       => 'Linkedin API Issue',
+                'type'        => 'Fix',
+                'description' => 'Update linkedin API to version 2.0 (Social Login)'
+            ),
+            array(
+                'title'       => 'Store Support',
+                'type'        => 'Fix',
+                'description' => 'Make support-tickets template overridable and remove depricated warning. (Store Support)'
+            ),
+            array(
+                'title'       => 'Verification Email Issue',
+                'type'        => 'Fix',
+                'description' => 'If subscription on registration option is enabled the verification email is not working for customer.'
+            ),
+            array(
+                'title'       => 'Non Connected Vendor',
+                'type'        => 'Fix',
+                'description' => 'If a vendor is not connected to stripe, don\'t deduct his withdraw balance. (Stripe Connect)'
+            ),
+            array(
+                'title'       => 'Non Connected Vendor',
+                'type'        => 'Fix',
+                'description' => 'Update Stripe SDK to make it compatible with PHP v7.4'
+            ),
+        )
+    ),
+    array(
+        'version'  => 'Version 2.9.16',
+        'released' => '2019-12-05',
+        'changes'  => array(
+            array(
+                'title'         => 'Product Addon',
+                'type'          => 'New',
+                'description'   => 'We have integrated WooCommerce product addon with dokan. (Product Addon)'
+            ),
+            array(
+                'title'         => 'Store Review Edit',
+                'type'          => 'Improvement',
+                'description'   => 'Admin will be able to view and edit store review from now on. (Store Review)'
+            ),
+            array(
+                'title'         => 'Single Product Multivendor Product Listing Issue',
+                'type'          => 'fix',
+                'description'   => 'Single product multiple vendor was showing multiple product on the category page. This issue has been fixed in this release. (SPMV)'
+            ),
+        )
+    ),
+    array(
+        'version'  => 'Version 2.9.15',
+        'released' => '2019-11-19',
+        'changes'  => array(
+            array(
+                'title'         => 'Dokan Shortcode Gutenberg Block',
+                'type'          => 'New',
+                'description'   => 'Admin now will be able to insert dokan shortcode with ease.'
+            ),
+            array(
+                'title'         => 'Single Seller Mode Option',
+                'type'          => 'New',
+                'description'   => 'If this option is enabled, customer can no longer purchase product from multiple vendor at once.'
+            ),
+            array(
+                'title'         => 'Show Warranty Policy Tab in Single Product Page',
+                'type'          => 'New',
+                'description'   => 'If there is any warranty policy for a product, customer will get to see the policy before placing the order (RMA).'
+            ),
+            array(
+                'title'         => 'Shipping, Tax and Discount Data in Staff Order Email',
+                'type'          => 'Fix',
+                'description'   => 'Shipping, tax and discount data weren\'t included in the order email. These data will be attached with the order email from now on (Vendor Staff).'
+            ),
+            array(
+                'title'         => 'Geolocation Search Issue',
+                'type'          => 'Fix',
+                'description'   => 'When store-listing page is set to home page, geolocaion search redirected to a wrong page which has been fixed in this release (Geolocation).'
+            ),
+            array(
+                'title'         => 'Vendor Verification Issue With Social Media Account',
+                'type'          => 'Fix',
+                'description'   => 'Vendor verifiation with social media account wasn\'t working which has been resolved in this release (Vendor Verification).'
+            ),
+            array(
+                'title'         => 'Booking Overlapping Issue',
+                'type'          => 'Fix',
+                'description'   => 'Same day bookings was overlapping in calendar day view in vendor dashboard which has been fixed now (Bookings).'
+            ),
+            array(
+                'title'         => 'Hide Ended & Won Auction Products',
+                'type'          => 'Fix',
+                'description'   => 'Ended and won auction products in vendor store page will be hidden if admin wants to (Auctions).'
+            ),
+            array(
+                'title'         => 'Warranty Add-on Price Issue',
+                'type'          => 'Fix',
+                'description'   => 'Warranty add-on price wasn\'t being applied on variable products which has been fixed now (RMA).'
+            ),
+        )
+    ),
+    array(
         'version'  => 'Version 2.9.14',
         'released' => '2019-10-02',
         'changes'  => array(

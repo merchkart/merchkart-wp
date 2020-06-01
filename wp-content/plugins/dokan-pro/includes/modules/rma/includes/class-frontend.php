@@ -15,10 +15,10 @@ class Dokan_RMA_Frontend {
     public function __construct() {
         add_action( 'woocommerce_before_add_to_cart_button', [ $this, 'show_product_warranty' ] );
         add_filter( 'woocommerce_add_cart_item_data', [ $this, 'add_cart_item_data' ], 10, 2 );
-        add_filter( 'woocommerce_add_cart_item', [ $this, 'add_cart_item' ], 10, 1 );
+        add_filter( 'woocommerce_add_cart_item', [ $this, 'add_cart_item' ], 15, 1 );
         add_filter( 'woocommerce_add_to_cart_validation', [ $this, 'add_cart_validation' ], 10, 2 );
 
-        add_filter( 'woocommerce_get_cart_item_from_session', [ $this, 'get_cart_item_from_session' ], 10, 2 );
+        add_filter( 'woocommerce_get_cart_item_from_session', [ $this, 'get_cart_item_from_session' ], 15, 2 );
         add_filter( 'woocommerce_get_item_data', [ $this, 'get_item_data' ], 10, 2 );
         add_action( 'woocommerce_add_to_cart', [ $this, 'add_warranty_index' ], 10, 6 );
 
@@ -73,7 +73,7 @@ class Dokan_RMA_Frontend {
                         if ( $amount == 0 ) {
                             $amount = __( 'Free', 'dokan' );
                         } else {
-                            $amount = wc_price( $amount );
+                            $amount = wc_price( wc_get_price_to_display( $product, [ 'price' => $amount ] ) );
                         }
                         echo '<option value="'. $x .'">'. $value .' '. $duration . ' &mdash; '. $amount .'</option>';
                     }
@@ -122,8 +122,13 @@ class Dokan_RMA_Frontend {
             $warranty_index = $item_data['dokan_warranty_index'];
         }
 
-        $product_id = ( version_compare( WC_VERSION, '3.0', '<' ) && isset( $_product->variation_id ) ) ? $_product->variation_id : $_product->get_id();
-        $warranty   = $this->get_settings( $product_id );
+        $product_id = $_product->get_id();
+
+        if ( $_product->get_parent_id() ) {
+            $product_id = $_product->get_parent_id();
+        }
+
+        $warranty = $this->get_settings( $product_id );
 
         if ( $warranty ) {
             if ( $warranty['type'] == 'addon_warranty' && $warranty_index !== false ) {
@@ -205,6 +210,10 @@ class Dokan_RMA_Frontend {
         $_product   = $cart_item['data'];
         $product_id = $_product->get_id();
 
+        if ( $_product->get_parent_id() ) {
+            $product_id = $_product->get_parent_id();
+        }
+
         $warranty       = $this->get_settings( $product_id );
         $warranty_label = $warranty['label'];
 
@@ -220,7 +229,7 @@ class Dokan_RMA_Frontend {
                     $value         = $addon['length'] . ' ' . $duration_unit;
 
                     if ( $addon['price'] > 0 ) {
-                        $value .= ' (' . wc_price( $addon['price'] ) . ')';
+                        $value .= ' (' . wc_price( wc_get_price_to_display( $_product, [ 'price' => $addon['price'] ] ) ) . ')';
                     }
 
                     $other_data[] = array(

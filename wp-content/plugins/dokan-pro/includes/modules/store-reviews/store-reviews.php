@@ -72,7 +72,7 @@ class Dokan_Store_Reviews {
 
         // Loads frontend scripts and styles
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-
+        add_filter( 'dokan_rest_api_class_map', [ $this, 'rest_api_class_map' ] );
     }
 
     /**
@@ -111,6 +111,10 @@ class Dokan_Store_Reviews {
             wp_enqueue_script( 'dsr-scripts', plugins_url( 'assets/js/script.js', __FILE__ ), array( 'jquery', 'dokan-popup' ), false, true );
             wp_enqueue_script( 'dokan-rateyo', plugins_url( 'assets/js/rateyo.min.js', __FILE__ ) );
         }
+
+        if ( dokan_is_store_listing() ) {
+            wp_enqueue_style( 'dsr-styles', plugins_url( 'assets/css/style.css', __FILE__ ), false, date( 'Ymd' ) );
+        }
     }
 
     /**
@@ -119,13 +123,38 @@ class Dokan_Store_Reviews {
      * @return void
      */
     function includes() {
+        if ( is_admin() ) {
+            require_once DOKAN_SELLER_RATINGS_DIR.'/classes/admin.php';
+        }
         require_once DOKAN_SELLER_RATINGS_DIR.'/classes/DSR_View.php';
         require_once DOKAN_SELLER_RATINGS_DIR.'/classes/DSR_SPMV.php';
         require_once DOKAN_SELLER_RATINGS_DIR . '/functions.php';
     }
 
+    /**
+     * Initiate all class
+     *
+     * @return void
+     */
     public function instances() {
         new DSR_SPMV();
+
+        if ( is_admin() ) {
+            new DSR_Admin();
+        }
+    }
+
+    /**
+     * REST API classes Mapping
+     *
+     * @since 2.9.5
+     *
+     * @return void
+     */
+    public function rest_api_class_map( $class_map ) {
+        $class_map[ DOKAN_SELLER_RATINGS_DIR.'/classes/class-rest-controller.php'] = 'Dokan_REST_Store_Review_Controller';
+
+        return $class_map;
     }
 
      /**
@@ -155,20 +184,20 @@ class Dokan_Store_Reviews {
             'not_found_in_trash' => __( 'Not found in Trash', 'dokan' ),
         );
         $args   = array(
-            'label'             => __( 'Store Reviews', 'dokan' ),
-            'description'       => __( 'Store Reviews by customer', 'dokan' ),
-            'labels'            => $labels,
-            'supports'          => array( 'title', 'author', 'editor' ),
-            'hierarchical'      => false,
-            'public'            => false,
+            'label'              => __( 'Store Reviews', 'dokan' ),
+            'description'        => __( 'Store Reviews by customer', 'dokan' ),
+            'labels'             => $labels,
+            'supports'           => array( 'title', 'author', 'editor' ),
+            'hierarchical'       => false,
+            'public'             => true,
             'publicly_queryable' => true,
-            'show_in_menu'      => false,
-            'show_in_rest'      => true,
-            'menu_position'     => 5,
-            'show_in_admin_bar' => false,
-            'rewrite'           => array( 'slug' => '' ),
-            'can_export'        => true,
-            'has_archive'       => true,
+            'show_in_menu'       => false ,
+            'show_in_rest'       => true,
+            'menu_position'      => 5,
+            'show_in_admin_bar'  => false,
+            'rewrite'            => array( 'slug' => '' ),
+            'can_export'         => true,
+            'has_archive'        => true,
         );
         register_post_type( 'dokan_store_reviews', $args );
     }
