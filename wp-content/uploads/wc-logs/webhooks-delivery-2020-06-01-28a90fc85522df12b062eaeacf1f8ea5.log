@@ -1,0 +1,60 @@
+2020-06-01T01:49:26+00:00 INFO Array
+(
+    [Webhook Delivery] => Array
+        (
+            [Delivery ID] => a44642172c4c6e727a1359df392db6c5
+            [Date] => Jun 1, 2020 @ 1:49
+            [URL] => https://webhook.artofwhere.net/woocommerce/products/update
+            [Duration] => 3.76588
+            [Request] => Array
+                (
+                    [Method] => POST
+                    [Headers] => Array
+                        (
+                            [User-Agent] => WooCommerce/4.0.1 Hookshot (WordPress/5.4.1)
+                            [Content-Type] => application/json
+                            [X-WC-Webhook-Source] => https://merchkart.com/
+                            [X-WC-Webhook-Topic] => product.updated
+                            [X-WC-Webhook-Resource] => product
+                            [X-WC-Webhook-Event] => updated
+                            [X-WC-Webhook-Signature] => l9osI+0BGdxUyhiuMwk9P6n4Yz2OkfxiLC+lwTpqqtw=
+                            [X-WC-Webhook-ID] => 4
+                            [X-WC-Webhook-Delivery-ID] => a44642172c4c6e727a1359df392db6c5
+                        )
+
+                )
+
+            [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+            [Response] => Array
+                (
+                    [Code] => 200
+                    [Message] => OK
+                    [Headers] => Requests_Utility_CaseInsensitiveDictionary Object
+                        (
+                            [data:protected] => Array
+                                (
+                                    [date] => Mon, 01 Jun 2020 01:49:26 GMT
+                                    [content-type] => text/html; charset=UTF-8
+                                    [set-cookie] => __cfduid=da9736ee1eb00ac9a1db0a23323647b091590976163; expires=Wed, 01-Jul-20 01:49:23 GMT; path=/; domain=.artofwhere.net; HttpOnly; SameSite=Lax; Secure
+                                    [vary] => Accept-Encoding
+                                    [strict-transport-security] => max-age=15552000; includeSubDomains; preload
+                                    [x-frame-options] => DENY
+                                    [x-content-type-options] => nosniff
+                                    [x-xss-protection] => 1; mode=block
+                                    [cf-cache-status] => DYNAMIC
+                                    [cf-request-id] => 030f2ac6ee0000ca5b53299200000001
+                                    [expect-ct] => max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+                                    [server] => cloudflare
+                                    [cf-ray] => 59c5471e4975ca5b-YUL
+                                    [content-encoding] => gzip
+                                )
+
+                        )
+
+                    [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+                )
+
+        )
+
+)
+
