@@ -572,6 +572,8 @@ class RevSliderFunctionsAdmin extends RevSliderFunctions {
 	 */
 	public function get_javascript_multilanguage(){
 		$lang = array(
+			'previewnotworking' => __('The preview could not be loaded due to some conflict with another WordPress theme or plugin', 'revslider'),
+			'checksystemnotworking' => __('Server connection issues, contact your hosting provider for further assistance', 'revslider'),
 			'editskins' => __('Edit Skin List', 'revslider'),
 			'globalcoloractive' => __('Color Skin Active', 'revslider'),
 			'corejs' => __('Core JavaScript', 'revslider'),

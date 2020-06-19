@@ -7,6 +7,8 @@
 
 if(!defined('ABSPATH')) exit();
 
+$revslider_rev_start_size_loaded = false;
+
 class RevSliderFront extends RevSliderFunctions {
 
 	const TABLE_SLIDER			 = 'revslider_sliders';
@@ -348,6 +350,9 @@ class RevSliderFront extends RevSliderFunctions {
 		  };
 	 */
 	public static function js_set_start_size(){
+		global $revslider_rev_start_size_loaded;
+		if($revslider_rev_start_size_loaded === true) return false;
+		
 		$script = '<script type="text/javascript">';		
 		$script .= 'function setREVStartSize(e){
 			//window.requestAnimationFrame(function() {				 
@@ -396,6 +401,8 @@ class RevSliderFront extends RevSliderFunctions {
 		  };';
 		$script .= '</script>' . "\n";
 		echo apply_filters('revslider_add_setREVStartSize', $script);
+		
+		$revslider_rev_start_size_loaded = true;
 	}
 	
 	/**

@@ -4,7 +4,7 @@ Tags: shipping, woocommerce, automattic
 Requires at least: 4.4
 Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 4.1.36
+Stable tag: 4.1.37
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -46,7 +46,7 @@ If you get stuck, you can ask for help in the Plugin Forum.
 
 == Changelog ==
 
-= 4.1.36 2020-04-29 =
-* Tweak - WC 4.1 compatibility.
+= 4.1.37 - 2020-06-05 =
+* Tweak - Dismiss activation notice independent of user.
 
 [See changelog for all versions](https://github.com/woocommerce/woocommerce-shipstation/raw/master/changelog.txt).

@@ -264,10 +264,12 @@ $api = 'revapi'; // . $slider_id;
 						<span class="linebreak"></span>
 						<label_a><?php _e('by PX or %', 'revslider');?></label_a><input data-numeric="true" data-allowed="px,%" data-r="size.fullScreenOffset" type="text" id="sr_fs_height_decrease" class="sliderinput easyinit">
 						<span class="linebreak"></span>
-						<longoption><i class="material-icons">select_all</i><label_a><?php _e('Dont Force Fullwidth', 'revslider');?></label_a><input type="checkbox"  id="sr_keepautowidth" class="easyinit sliderinput" data-evt="" data-r="size.disableForceFullWidth"/></longoption>						
+						<longoption><i class="material-icons">select_all</i><label_a><?php _e('Dont Force Fullwidth', 'revslider');?></label_a><input type="checkbox"  id="sr_keepautowidth" class="easyinit sliderinput" data-evt="" data-r="size.disableForceFullWidth"/></longoption>
+						<longoption><i class="material-icons">settings_cell</i><label_a style="overflow:visible"><?php _e('Ignore Mobile Height Changes', 'revslider');?></label_a><input type="checkbox"  id="sr_ignHeCha" class="sliderinput easyinit" data-r="size.ignoreHeightChanges"/></longoption>
 					</div>
 				</div>
 			</div>
+
 
 			<!-- SLIDER LAYOUT ADVANCED-->
 			<div id="form_slider_layout_adv" class="form_inner open">
@@ -1228,8 +1230,6 @@ if ($wpml->wpml_exists()) {
 					<label_a><?php _e('Lazy Loading', 'revslider')?></label_a><select id="sr_adv_performance_load" class="sliderinput tos2 nosearchbox easyinit" data-r="general.lazyLoad" data-show=".tp-monitor-*val*-speed" data-hide=".tp-monitor-speeds"><option value="all"><?php _e("All", 'revslider');?></option><option value="smart"><?php _e("Smart", 'revslider');?></option><option value="single"><?php _e("Single", 'revslider');?></option><option value="none"><?php _e("No Lazy Loading", 'revslider');?></option></select>
 				</div>
 			</div>
-
-
 
 			<!-- SLIDER FALLBACK SETTINGS -->
 			<div id="form_slidergeneral_advanced_fallback" class="form_inner">

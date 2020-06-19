@@ -1,4 +1,52 @@
 <div class="slider-revolution-update-list">	
+
+	<h3 class="version-number">Version 6.2.13 (20th June 2020)</h3>
+	<div class="newfeature"><strong style="font-weight:700">New Features</strong></div>
+	<ul>
+		<li>Added further warnings in editor in case of a conflict with themes/plugins and server accessability</li>
+	</ul>
+	<div class="bugfix"><strong style="font-weight:700">Bugfixes</strong></div>
+	<ul>
+		<li>Fixed a bug where WPML slides of a slider would not be duplicated</li>
+		<li>Fixed issue with ":" special chars in call back actions</li>
+		<li>Fixed an issue where opening a modal with slide "x" multiple times was breaking the opening process</li>		
+		<li>Fixed an odd zIndex issue where not focused slides in the editor with more layers than current editing slide may loose their zindex on layers after saving the full module</li>
+		<li>TypeWriter AddOn fixes version 2.0.3:<ul>
+			<li>Added support for inline style on span tags</li>
+			<li>Added option to change the cursor color</li>
+		</ul></li>
+		<li>Fixed a bug where action triggered loop animations did not start the animation. Also fixed loop animated elements which jumped to loop animation frame 0 during the slide out animation</li>
+		<li>Fixed issues with row/column heights where images that were added with padding into the first column, and the height of the image may negatively influence the calculation of the module height on slide swap</li>
+		<li>Fixed horizontal and vertical slide transition issues</li>		
+	</ul>
+	
+	<h3 class="version-number">Version 6.2.12 (6th June 2020)</h3>
+	<div class="bugfix"><strong style="font-weight:700">Bugfixes</strong></div>
+	<ul>
+		<li>Fixed a bug that leads to broken post based sliders</li>
+	</ul>
+	
+	<h3 class="version-number">Version 6.2.11 (6th June 2020)</h3>
+	<div class="newfeature"><strong style="font-weight:700">New Features</strong></div>
+	<ul>
+		<li>Added an option to ignore mobile browser height changes based on scrolls. The urlbar and toolbar do disappear based on scroll, which would resize the fullscreen sliders. Set per module if you wish to ignore these behaviour of the mobile browser. This option is enabled by default</li>
+	</ul>
+	<div class="bugfix"><strong style="font-weight:700">Bugfixes</strong></div>
+	<ul>
+		<li>Video poster will show up if video has not started and the video has been resetted (just like coming from another slide) even if "Show Poster on Pause" is not selected</li>
+		<li>Video timeline now can be dragged even if "Show Poster on Pause" is selected, which is showing up with delay in this case if needed</li>
+		<li>Video click will now honor original clicks and start/play videos correctly</li>
+		<li>Fixed HTML5 video fullscreen playback on IE11</li>
+		<li>Fixed JavasScript error if an Essential Grid exists on the page and the Slider tries to recall Essential Grid's refreshing method</li>
+		<li>Fixed an issue where the loading of modules with ajax, removing them (with or without revkill method) and readding them to a later point in time did not start the modules correctly</li>
+		<li>Fixed an issue where the excerpt limit for WooCommerce was not correct</li>
+		<li>Fixed an issue where the alt for slide images was not written if it was empty</li>
+		<li>Fixed an issue where AddOn downloads showed up as success and after reload the AddOn is not installed</li>
+		<li>Fixed an issue not displaying photos from a Facebook albums</li>
+		<li>Fixed a bug where static layers with custom animations may do not appear in certain situations</li>
+		<li>Panorama Addon 2.1.2: Added support for external images</li>
+	</ul>
+
 	<h3 class="version-number">Version 6.2.10 (28th May 2020)</h3>
 	<div class="bugfix"><strong style="font-weight:700">Bugfixes</strong></div>
 	<ul>

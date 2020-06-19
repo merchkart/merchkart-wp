@@ -1,5 +1,8 @@
 *** ShipStation for WooCommerce ***
 
+= 4.1.37 - 2020-06-05 =
+* Tweak - Dismiss activation notice independent of user.
+
 = 4.1.36 - 2020-04-29 =
 * Tweak - WC 4.1 compatibility.
 

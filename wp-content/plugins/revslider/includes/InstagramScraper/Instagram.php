@@ -273,7 +273,7 @@ class Instagram
      */
     public function getAccount($username)
     {
-    	
+
         $response = Request::get(Endpoints::getAccountPageLink($username), $this->generateHeaders($this->userSession));
         if (static::HTTP_NOT_FOUND === $response->code) {
             throw new InstagramNotFoundException('Account with given username does not exist.');
@@ -283,7 +283,7 @@ class Instagram
         }
 
         $userArray = self::extractSharedDataFromBody($response->raw_body);
-		
+
         if (!isset($userArray['entry_data']['ProfilePage'][0]['graphql']['user'])) {
         	$userStructure = $this->getTopUser($username);
         } else {
@@ -291,11 +291,11 @@ class Instagram
         }
         return Account::create($userStructure);
     }
-    
+
     public function getTopUser($username) {
     	try {
     		$file = "https://www.instagram.com/web/search/topsearch/?context=user&count=0&query=$username";
-            
+
             if (function_exists('curl_version'))
             {
                 $curl = curl_init();
@@ -312,14 +312,14 @@ class Instagram
             {
                 throw new InstagramNotFoundException('Your server have neither cUrl installed nor allow_url_fopen activated. Please contact hosting company!', 404);
             }
-            
+
             $jsonResult = json_decode($get, true);
     		$userModel = $jsonResult["users"][0]["user"];
     		return $userModel;
     	} catch (\Exception $exception) {
     		throw new InstagramNotFoundException('Account with this username does not exist', 404);
     	}
-    
+
     }
 
     /**
@@ -442,7 +442,7 @@ class Instagram
 
         return $medias;
     }
-    
+
     /**
      * @param $mediaId
      *
@@ -1360,7 +1360,7 @@ class Instagram
         return $response;
     }
 
-  
+
 
     private static function extractSharedDataFromBody($body)
     {

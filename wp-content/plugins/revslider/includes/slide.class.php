@@ -617,7 +617,8 @@ class RevSliderSlide extends RevSliderFunctions {
 		
 		//check if we are woocommerce or not
 		$slider_source = $this->get_slider_param($slider_id, 'source', array());
-		if($this->get_slider_param($slider_id, 'sourcetype', 'gallery') == 'woocommerce'){
+		$source_type = $this->get_slider_param($slider_id, 'sourcetype', 'gallery');
+		if($source_type == 'woocommerce' || $source_type == 'woo'){
 			$excerpt_limit = str_replace('char', '', $this->get_val($slider_source, array('woo', 'excerptLimit'), 55));
 		}else{
 			$excerpt_limit = str_replace('char', '', $this->get_val($slider_source, array('post', 'excerptLimit'), 55));
@@ -1037,7 +1038,9 @@ class RevSliderSlide extends RevSliderFunctions {
 		
 		if($this->get_val($this->params, array('bg', 'type')) == 'image'){ //if image is choosen, use featured image as background
 			if($additions['fb_type'] == 'album'){
-				$this->image_url	= 'https://graph.facebook.com/'.$this->get_val($this->post_data, 'id').'/picture';
+				//$this->image_url	= 'https://graph.facebook.com/'.$this->get_val($this->post_data, 'id').'/picture';
+				$image_array = $this->get_val($this->post_data, 'images');
+				$this->image_url	=  isset($image_array[0]->source) ? $image_array[0]->source : $this->get_val($this->post_data, 'picture', $this->image_thumb);
 				$this->image_thumb	= $this->get_val($this->post_data, 'picture', $this->image_thumb);
 			}else{
 				$img = $this->get_facebook_timeline_image();

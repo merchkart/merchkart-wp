@@ -1733,7 +1733,7 @@ class RevSliderAdmin extends RevSliderFunctionsAdmin {
 					$addons = $addon->get_addon_list();
 					
 					update_option('rs-addons-counter', 0); //set the counter back to 0
-					
+										
 					$this->ajax_response_data(array('addons' => $addons));
 				break;
 				case 'get_layers_by_slide':

@@ -526,7 +526,7 @@ class RevSliderSlider extends RevSliderFunctions {
 	public function is_stream(){
 		$source = $this->get_param('sourcetype', 'gallery');
 		
-		return (!in_array($source, array('post', 'posts', 'specific_posts', 'specific_post', 'current_post', 'woocommerce', 'gallery'), true)) ? $source : false;
+		return (!in_array($source, array('post', 'posts', 'specific_posts', 'specific_post', 'current_post', 'woocommerce', 'woo', 'gallery'), true)) ? $source : false;
 	}
 	
 	
@@ -537,7 +537,7 @@ class RevSliderSlider extends RevSliderFunctions {
 	public function is_stream_pre60(){
 		$source = $this->get_param('source_type', 'gallery');
 		
-		return (!in_array($source, array('post', 'posts', 'specific_posts', 'specific_post', 'current_post', 'woocommerce', 'gallery'), true)) ? $source : false;
+		return (!in_array($source, array('post', 'posts', 'specific_posts', 'specific_post', 'current_post', 'woocommerce', 'woo', 'gallery'), true)) ? $source : false;
 	}
 	
 	/**
@@ -1046,6 +1046,26 @@ class RevSliderSlider extends RevSliderFunctions {
 				$c_slide	= new RevSliderSlide();
 				$c_slide->init_by_data($slide);
 				$layers		= $c_slide->get_layers();
+				
+				//change for WPML the parent IDs if necessary
+				$parent_id	= $this->get_val($c_slide, array('params', 'child', 'parentId'), false);
+				
+				if(!in_array($parent_id, array(false, ''), true) && isset($this->map[$parent_id])){
+					$create = array('params' => $this->get_val($c_slide, 'params', array()));
+					
+					$this->set_val($create, array('params', 'child', 'parentId'), $this->map[$parent_id]);
+					
+					$new_params = json_encode($create['params']);
+					$new_params = (empty($new_params)) ? stripslashes(json_encode($create['params'])) : $new_params;
+					$create['params'] = $new_params;
+					
+					$wpdb->update(
+						$wpdb->prefix . RevSliderFront::TABLE_SLIDES,
+						$create,
+						array('id' => $slide['id'])
+					);
+				}
+				
 				$did_change	= false;
 				if(!empty($layers)){
 					foreach($layers as $key => $value){

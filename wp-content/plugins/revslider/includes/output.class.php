@@ -1227,6 +1227,7 @@ class RevSliderOutput extends RevSliderFunctions {
 			
 			switch($slide->get_param(array('attributes', 'altOption'), $slide->get_param(array('attributes', 'titleOption'), 'media_library'))){
 				case 'media_library':
+				default:
 					$img['alt'] = get_post_meta($img['id'], '_wp_attachment_image_alt', true);
 				break;
 				case 'file_name':
@@ -1240,6 +1241,7 @@ class RevSliderOutput extends RevSliderFunctions {
 			
 			switch($slide->get_param(array('attributes', 'titleOption'), 'media_library')){
 				case 'media_library':
+				default:
 					$img['title'] = get_the_title($img['id']);
 				break;
 				case 'file_name':
@@ -1276,15 +1278,19 @@ class RevSliderOutput extends RevSliderFunctions {
 			$img['height']	= $slide->get_param(array('bg', 'height'), '1080');
 		}
 		
-		if(isset($slide->ignore_alt)) $img['alt'] = '';
-		
 		switch($bg_type){
 			case 'trans':
 			case 'transparent':
 			case 'solid':
 				$img['src'] = $url_trans;
+				if(isset($img['alt']) && trim($img['alt']) === ''){
+					$img['alt'] = $this->get_html_slide_title(true);
+					$img['alt'] = (empty($img['alt'])) ? __('Slide Background', 'revslider') : $img['alt'];
+				}
 			break;
 		}
+		
+		if(isset($slide->ignore_alt)) $img['alt'] = '';
 		
 		$img['src']			 = (trim($img['src']) == '') ? $url_trans : $img['src']; //go back to transparent if img is empty
 		$img['data-lazyload']= ($this->slider->get_param(array('general', 'lazyLoad'), false) != 'none') ? $this->remove_http($img['src']) : '';
@@ -1726,6 +1732,8 @@ class RevSliderOutput extends RevSliderFunctions {
 		//$this->push_layer_class();
 		$check_continue		= $this->check_layer_continue($special_type, $row_group_uid);
 		if(!$check_continue) return false;
+		$check_continue		= $this->check_layer_video_continue();
+		if(!$check_continue) return false;
 		$html_type			= $this->get_html_layer_type();
 		$class				= $this->get_layer_class();
 		$html_simple_link	= $this->get_action_link();
@@ -1897,6 +1905,40 @@ class RevSliderOutput extends RevSliderFunctions {
 		
 		return true;
 	}
+	
+	
+	/**
+	 * check if the layer is okay to be added or if we should move to the next layer
+	 **/
+	/**
+	 * check if the layer is okay to be added or if we should move to the next layer
+	 **/
+	public function check_layer_video_continue(){
+		$layer	= $this->get_layer();
+		
+		if($this->get_val($layer, 'type', 'text') !== 'video') return true;
+		$video_type = trim($this->get_val($layer, array('media', 'mediaType')));
+		$video_type = ($video_type === '') ? 'html5' : $video_type;
+		
+		if(!in_array($video_type, array('streamyoutube', 'streamyoutubeboth', 'youtube', 'streamvimeo', 'streamvimeoboth', 'vimeo', 'streaminstagram', 'streaminstagramboth', 'html5'), true)) return true;
+		
+		if($video_type === 'streaminstagram' || $video_type === 'streaminstagramboth' || $video_type === 'html5'){
+			$ogv = trim($this->get_val($layer, array('media', 'ogvUrl'), ''));
+			$webm = trim($this->get_val($layer, array('media', 'webmUrl'), ''));
+			$mp4 = trim($this->remove_http($this->get_val($layer, array('media', 'mp4Url'), '')));
+			
+			if(empty($ogv) && empty($webm) && empty($mp4)){
+				$vid = trim($this->get_val($layer, array('media', 'id')));
+				return (empty($vid)) ?  false : true;
+			}
+			
+			return true;
+		}else{
+			$vid = trim($this->get_val($layer, array('media', 'id')));
+			return (empty($vid)) ?  false : true;
+		}
+	}
+	
 	
 	/**
 	 * push the current layer class into the class usage array
@@ -5381,7 +5423,7 @@ rs-module .material-icons {
 	/**
 	 * get slide title
 	 **/
-	public function get_html_slide_title(){
+	public function get_html_slide_title($raw = false){
 		$slide = $this->get_slide();
 		
 		if($this->slider->is_posts()){ //check if we are post based or normal slider
@@ -5389,8 +5431,10 @@ rs-module .material-icons {
 		}else{
 			$title = $slide->get_param('title', 'Slide');
 		}
+		$pre = ($raw === false) ? ' data-title="' : '';
+		$post = ($raw === false) ? '"' : '';
 		
-		return ($title !== '') ? ' data-title="'.stripslashes(esc_attr($title)).'"' : '';
+		return ($title !== '') ? $pre.stripslashes(esc_attr($title)).$post : '';
 	}
 	
 	/**
@@ -6744,23 +6788,15 @@ rs-module .material-icons {
 		
 		$dpz = $s->get_param(array('general', 'disablePanZoomMobile'), false);
 		$sii = $s->get_param(array('troubleshooting', 'simplify_ie8_ios4'), true); //was false
-		$dfl = $s->get_param(array('general', 'disableFocusListener'), false);
-		$ihc = $s->get_param(array('troubleshooting', 'ignoreHeightChanges'), false);
-		$apvom = $s->get_param(array('general', 'autoPlayVideoOnMobile'), true);
-		
+		$dfl = $s->get_param(array('general', 'disableFocusListener'), false);		
+		$apvom = $s->get_param(array('general', 'autoPlayVideoOnMobile'), true);		
 		if($dpz !== false) $fb['panZoomDisableOnMobile'] = $dpz;
 		if($sii !== false) $fb['simplifyAll'] = $sii;
 		if($s->get_param('type', 'standard') !== 'hero'){
 			$nsof = $s->get_param(array('general', 'nextSlideOnFocus'), false);
 			if($nsof !== false) $fb['nextSlideOnWindowFocus'] = $nsof;
 		}
-		if($dfl !== false) $fb['disableFocusListener'] = $dfl;
-		if($ihc !== false){
-			$ihcul = $s->get_param(array('troubleshooting', 'ignoreHeightChangesUnderLimit'), 0);
-			
-			$fb['ignoreHeightChanges'] = $ihc;
-			if(!in_array($ihcul, array(0, '0', '0px'), true)) $fb['ignoreHeightChangesSize'] = $ihcul;
-		}
+		if($dfl !== false) $fb['disableFocusListener'] = $dfl;		
 		if($apvom !== false) $fb['allowHTML5AutoPlayOnAndroid'] = $apvom;
 		
 		if(!empty($fb)){
@@ -7392,6 +7428,7 @@ rs-module .material-icons {
 		}
 		if($l_type == 'fullscreen'){
 			$keys['disableForceFullWidth'] = array('v' => $s->get_param(array('size', 'disableForceFullWidth'), false), 'd' => false);
+			$keys['ignoreHeightChange'] = array('v' => $s->get_param(array('size', 'ignoreHeightChanges'), true), 'd' => true);
 			$keys['gridEQModule'] = array('v' => $s->get_param(array('size', 'gridEQModule'), false), 'd' => false);
 			$keys['fullScreenOffsetContainer'] = array('v' => $s->get_param(array('size', 'fullScreenOffsetContainer'), ''), 'd' => '');
 			$keys['fullScreenOffset'] = array('v' => $s->get_param(array('size', 'fullScreenOffset'), ''), 'd' => '');
@@ -8045,3 +8082,4 @@ rs-module .material-icons {
 		return (is_numeric($v) || substr($v, 0, 1) === '[' || in_array($v, array('true', 'false'))) ? $v : $pp.$v.$pp;
 	}
 }
+?>
