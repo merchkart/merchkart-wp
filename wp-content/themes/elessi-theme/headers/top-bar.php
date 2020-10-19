@@ -16,9 +16,9 @@ $class_topbar .= trim($topbar_left) != '' ? '' : ' hide-for-mobile';
                     </div>
                     <div class="right-text nasa-hide-for-mobile right rtl-left">
                         <div class="topbar-menu-container">
-                            <?php do_action('elessi_support_multi_languages'); ?>
+                            <?php do_action('nasa_support_multi_languages'); ?>
                             <?php elessi_get_menu('topbar-menu', 'nasa-topbar-menu', 1); ?>
-                            <?php echo !$mobile ? elessi_tiny_account(true) : ''; ?>
+                            <?php echo elessi_tiny_account(true); ?>
                         </div>
                     </div>
                 </div>
@@ -29,7 +29,8 @@ $class_topbar .= trim($topbar_left) != '' ? '' : ' hide-for-mobile';
                 <?php echo $topbar_left; ?>
             </div>
             <div class="topbar-menu-container hidden-tag">
-                <?php do_action('elessi_support_multi_languages'); ?>
+                <?php do_action('nasa_support_multi_languages'); ?>
+                <?php elessi_get_menu('topbar-menu', 'nasa-topbar-menu', 1); ?>
             </div>
         <?php endif; ?>
     </div>

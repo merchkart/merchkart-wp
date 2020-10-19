@@ -181,7 +181,7 @@ function sbi_add_resized_image_data( $instagram_feed, $feed_id ) {
 		SB_Instagram_Feed::update_last_requested( $instagram_feed->get_image_ids_post_set() );
 	}
 	?>
-    <span class="sbi_resized_image_data" data-feed-id="<?php echo esc_attr( $feed_id ); ?>" data-resized="<?php echo esc_attr( wp_json_encode( SB_Instagram_Feed::get_resized_images_source_set( $instagram_feed->get_image_ids_post_set(), 0, $feed_id ) ) ); ?>">
+    <span class="sbi_resized_image_data" data-feed-id="<?php echo esc_attr( $feed_id ); ?>" data-resized="<?php echo esc_attr( sbi_json_encode( SB_Instagram_Feed::get_resized_images_source_set( $instagram_feed->get_image_ids_post_set(), 0, $feed_id ) ) ); ?>">
 	</span>
 	<?php
 }
@@ -325,7 +325,7 @@ function sbi_get_next_post_set() {
         'resizedImages' => SB_Instagram_Feed::get_resized_images_source_set( $instagram_feed->get_image_ids_post_set(), 0, $feed_id )
 	);
 
-	echo wp_json_encode( $return );
+	echo sbi_json_encode( $return );
 
 	global $sb_instagram_posts_manager;
 
@@ -737,10 +737,12 @@ function sbi_get_resized_uploads_url() {
 	$home_url = home_url();
 
 	if ( strpos( $home_url, 'https:' ) !== false ) {
-	    str_replace( 'http:', 'https:', $base_url );
-    }
+		str_replace( 'http:', 'https:', $base_url );
+	}
 
-	return trailingslashit( $base_url ) . trailingslashit( SBI_UPLOADS_NAME );
+	$resize_url = apply_filters( 'sbi_resize_url', trailingslashit( $base_url ) . trailingslashit( SBI_UPLOADS_NAME ) );
+
+	return $resize_url;
 }
 
 /**
@@ -783,7 +785,7 @@ function sbi_sanitize_emoji( $string ) {
 	$encoded = array(
 		'jsonencoded' => $string
 	);
-	return wp_json_encode( $encoded );
+	return sbi_json_encode( $encoded );
 }
 
 /**
@@ -815,9 +817,37 @@ function sbi_get_current_timestamp() {
 }
 
 function sbi_is_after_deprecation_deadline() {
-	$current_time = sbi_get_current_timestamp();
+	return true;
+}
 
-	return $current_time > strtotime( 'June 29, 2020' );
+function sbi_json_encode( $thing ) {
+    if ( function_exists( 'wp_json_encode' ) ) {
+        return wp_json_encode( $thing );
+    } else {
+        return json_encode( $thing );
+    }
+}
+
+function sbi_private_account_near_expiration( $connected_account ) {
+	$expires_in = max( 0, floor( ($connected_account['expires_timestamp'] - time()) / DAY_IN_SECONDS ) );
+	return $expires_in < 10;
+}
+
+function sbi_update_connected_account( $account_id, $to_update ) {
+	$if_database_settings = sbi_get_database_settings();
+
+	$connected_accounts = $if_database_settings['connected_accounts'];
+
+	if ( isset( $connected_accounts[ $account_id ] ) ) {
+
+		foreach ( $to_update as $key => $value ) {
+			$connected_accounts[ $account_id ][ $key ] = $value;
+		}
+
+		$if_database_settings['connected_accounts'] = $connected_accounts;
+
+		update_option( 'sb_instagram_settings', $if_database_settings );
+	}
 }
 
 /**
@@ -867,6 +897,12 @@ function sb_instagram_cron_clear_cache() {
  * clear or errors occur or changes will not be seen
  */
 function sb_instagram_clear_page_caches() {
+
+    $clear_page_caches = apply_filters( 'sbi_clear_page_caches', true );
+    if ( ! $clear_page_caches ) {
+        return;
+    }
+
 	if ( isset( $GLOBALS['wp_fastest_cache'] ) && method_exists( $GLOBALS['wp_fastest_cache'], 'deleteCache' ) ){
 		/* Clear WP fastest cache*/
 		$GLOBALS['wp_fastest_cache']->deleteCache();
@@ -907,9 +943,9 @@ function sb_instagram_scripts_enqueue() {
 	//Options to pass to JS file
 	$sb_instagram_settings = get_option( 'sb_instagram_settings' );
 
-	$js_file = 'js/sb-instagram-2-2.min.js';
+	$js_file = 'js/sbi-scripts.min.js';
 	if ( isset( $_GET['sbi_debug'] ) ) {
-		$js_file = 'js/sb-instagram.js';
+		$js_file = 'js/sbi-scripts.js';
 	}
 
 	if ( isset( $sb_instagram_settings['enqueue_js_in_head'] ) && $sb_instagram_settings['enqueue_js_in_head'] ) {
@@ -919,9 +955,9 @@ function sb_instagram_scripts_enqueue() {
 	}
 
 	if ( isset( $sb_instagram_settings['enqueue_css_in_shortcode'] ) && $sb_instagram_settings['enqueue_css_in_shortcode'] ) {
-		wp_register_style( 'sb_instagram_styles', trailingslashit( SBI_PLUGIN_URL ) . 'css/sb-instagram-2-2.min.css', array(), SBIVER );
+		wp_register_style( 'sb_instagram_styles', trailingslashit( SBI_PLUGIN_URL ) . 'css/sbi-styles.min.css', array(), SBIVER );
 	} else {
-		wp_enqueue_style( 'sb_instagram_styles', trailingslashit( SBI_PLUGIN_URL ) . 'css/sb-instagram-2-2.min.css', array(), SBIVER );
+		wp_enqueue_style( 'sb_instagram_styles', trailingslashit( SBI_PLUGIN_URL ) . 'css/sbi-styles.min.css', array(), SBIVER );
 	}
 
 	$font_method = isset( $sb_instagram_settings['sbi_font_method'] ) ? $sb_instagram_settings['sbi_font_method'] : 'svg';
@@ -1252,12 +1288,34 @@ function sbi_send_report_email() {
 	$headers = array( 'Content-Type: text/html; charset=utf-8', $header_from );
 
 	$header_image = SBI_PLUGIN_URL . 'img/balloon-120.png';
-	$title = __( 'Instagram Feed Report for ' . home_url() );
+
 	$link = admin_url( '?page=sb-instagram-feed');
-	$footer_link = admin_url('admin.php?page=sb-instagram-feed&tab=customize&flag=emails');
-	$bold = __( 'There\'s an Issue with an Instagram Feed on Your Website', 'instagram-feed' );
-	$details = '<p>' . __( 'An Instagram feed on your website is currently unable to connect to Instagram to retrieve new posts. Don\'t worry, your feed is still being displayed using a cached version, but is no longer able to display new posts.', 'instagram-feed' ) . '</p>';
-	$details .= '<p>' . sprintf( __( 'This is caused by an issue with your Instagram account connecting to the Instagram API. For information on the exact issue and directions on how to resolve it, please visit the %sInstagram Feed settings page%s on your website.', 'instagram-feed' ), '<a href="' . esc_url( $link ) . '">', '</a>' ). '</p>';
+	//&tab=customize-advanced
+	$footer_link = admin_url('admin.php?page=sb-instagram-feed&tab=customize-advanced&flag=emails');
+
+	$is_expiration_notice = false;
+
+	if ( isset( $options['connected_accounts'] ) ) {
+		foreach ( $options['connected_accounts'] as $account ) {
+			if ( $account['type'] === 'basic'
+			     && isset( $account['private'] )
+			     && sbi_private_account_near_expiration( $account ) ) {
+				$is_expiration_notice = true;
+			}
+		}
+	}
+
+	if ( ! $is_expiration_notice ) {
+		$title = sprintf( __( 'Instagram Feed Report for %s', 'instagram-feed' ), str_replace( array( 'http://', 'https://' ), '', home_url() ) );
+		$bold = __( 'There\'s an Issue with an Instagram Feed on Your Website', 'instagram-feed' );
+		$details = '<p>' . __( 'An Instagram feed on your website is currently unable to connect to Instagram to retrieve new posts. Don\'t worry, your feed is still being displayed using a cached version, but is no longer able to display new posts.', 'instagram-feed' ) . '</p>';
+		$details .= '<p>' . sprintf( __( 'This is caused by an issue with your Instagram account connecting to the Instagram API. For information on the exact issue and directions on how to resolve it, please visit the %sInstagram Feed settings page%s on your website.', 'instagram-feed' ), '<a href="' . esc_url( $link ) . '">', '</a>' ). '</p>';
+	} else {
+		$title = __( 'Your Private Instagram Feed Account Needs to be Reauthenticated', 'instagram-feed' );
+		$bold = __( 'Access Token Refresh Needed', 'instagram-feed' );
+		$details = '<p>' . __( 'As your Instagram account is set to be "Private", Instagram requires that you reauthenticate your account every 60 days. This a courtesy email to let you know that you need to take action to allow the Instagram feed on your website to continue updating. If you don\'t refresh your account, then a backup cache will be displayed instead.', 'instagram-feed' ) . '</p>';
+		$details .= '<p>' . sprintf( __( 'To prevent your account expiring every 60 days %sswitch your account to be public%s. For more information and to refresh your account, click here to visit the %sInstagram Feed settings page%s on your website.', 'instagram-feed' ), '<a href="https://help.instagram.com/116024195217477/In">', '</a>', '<a href="' . esc_url( $link ) . '">', '</a>' ). '</p>';
+	}
 	$message_content = '<h6 style="padding:0;word-wrap:normal;font-family:\'Helvetica Neue\',Helvetica,Arial,sans-serif;font-weight:bold;line-height:130%;font-size: 16px;color:#444444;text-align:inherit;margin:0 0 20px 0;Margin:0 0 20px 0;">' . $bold . '</h6>' . $details;
 	include_once SBI_PLUGIN_DIR . 'inc/class-sb-instagram-education.php';
 	$educator = new SB_Instagram_Education();
@@ -1266,6 +1324,7 @@ function sbi_send_report_email() {
 	include SBI_PLUGIN_DIR . 'inc/email.php';
 	$email_body = ob_get_contents();
 	ob_get_clean();
+
 	$sent = wp_mail( $to_array, $title, $email_body, $headers );
 
 	return $sent;

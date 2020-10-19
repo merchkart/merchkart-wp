@@ -1,5 +1,7 @@
 /*global nasa_params_variations */
-;(function ($, window, document, undefined) {
+var _nasa_calling_gallery = 0,
+    _nasa_calling_countdown = 0;
+(function ($, window, document, undefined) {
     /**
      * VariationForm_QickView class which handles variation forms and attributes.
      */
@@ -129,8 +131,8 @@
      */
     VariationForm_QickView.prototype.onFindVariation = function (event) {
         var form = event.data.variationForm,
-                attributes = form.getChosenAttributes(),
-                currentAttributes = attributes.data;
+            attributes = form.getChosenAttributes(),
+            currentAttributes = attributes.data;
 
         if (attributes.count === attributes.chosenCount) {
             if (form.useAjax) {
@@ -198,10 +200,9 @@
             $dimensions = form.$product.find('.product_dimensions'),
             $qty = form.$singleVariationWrap.find('.quantity'),
             purchasable = true,
-            variation_id = '',
             template = false,
             $template_html = '';
-
+        
         if (variation.sku) {
             $sku.wc_set_content(variation.sku);
         } else {
@@ -227,7 +228,6 @@
             template = nasa_template('unavailable-variation-template');
         } else {
             template = nasa_template('variation-template');
-            variation_id = variation.variation_id;
         }
 
         $template_html = nasa_replace_template({
@@ -331,18 +331,13 @@
             // The attribute of this select field should not be taken into account when calculating its matching variations:
             // The constraints of this attribute are shaped by the values of the other attributes.
             var checkAttributes = $.extend(true, {}, currentAttributes);
-            // console.log(currentAttributes);
-
-            checkAttributes[ current_attr_name ] = '';
-            // console.log(checkAttributes);
-
+            checkAttributes[current_attr_name] = '';
             var variations = form.findMatchingVariations(form.variationData, checkAttributes);
-            // console.log(variations);
 
             // Loop through variations.
             for (var num in variations) {
-                if (typeof (variations[ num ]) !== 'undefined') {
-                    var variationAttributes = variations[ num ].attributes;
+                if (typeof (variations[num]) !== 'undefined') {
+                    var variationAttributes = variations[num].attributes;
 
                     for (var attr_name in variationAttributes) {
                         if (variationAttributes.hasOwnProperty(attr_name)) {
@@ -350,7 +345,7 @@
                                 variation_active = '';
 
                             if (attr_name === current_attr_name) {
-                                if (variations[ num ].variation_is_active) {
+                                if (variations[num].variation_is_active) {
                                     variation_active = 'enabled';
                                 }
 
@@ -415,6 +410,7 @@
             if(!_quicked_gallery && typeof _lightbox_variations[0] !== 'undefined') {
                 _quicked_gallery = true;
                 var result = _lightbox_variations[0];
+                
                 /**
                  * Main image
                  */
@@ -422,12 +418,15 @@
                     $('.nasa-product-gallery-lightbox').find('.main-image-slider').replaceWith(result.quickview_gallery);
                 }
 
-                loadLightboxCarousel($);
+                /**
+                 * Trigger after changed gallery
+                 */
+                $('body').trigger('nasa_changed_gallery_variable_quickview');
             }
         }
 
         /**
-         * deal time
+         * Support Deal time - Countdown
          */
         if ($('.nasa-quickview-product-deal-countdown').length) {
             $('.nasa-quickview-product-deal-countdown').html('');
@@ -456,7 +455,7 @@
             }
 
             count++;
-            data[ attribute_name ] = value;
+            data[attribute_name] = value;
         });
 
         return {
@@ -490,8 +489,8 @@
         var match = true;
         for (var attr_name in variation_attributes) {
             if (variation_attributes.hasOwnProperty(attr_name)) {
-                var val1 = variation_attributes[ attr_name ];
-                var val2 = attributes[ attr_name ];
+                var val1 = variation_attributes[attr_name];
+                var val2 = attributes[attr_name];
                 if (val1 !== undefined && val2 !== undefined && val1.length !== 0 && val2.length !== 0 && val1 !== val2) {
                     match = false;
                 }
@@ -587,7 +586,7 @@
     /**
      * Sets product images for the chosen variation
      */
-    $.fn.lightbox_wc_variations_image_update = function (variation) {
+    $.fn.lightbox_wc_variations_image_update = function(variation) {
         var $form = this;
         
         if (variation && variation.image && variation.image.src && variation.image.src.length > 1) {
@@ -595,91 +594,127 @@
              * Support Gallery images
              */
             if($('.product-lightbox').find('.nasa-gallery-variation-supported').length) {
-                var _data = {
-                    'variation_id': variation.variation_id,
-                    'is_purchasable': variation.is_purchasable,
-                    'is_in_stock': variation.is_in_stock,
-                    'main_id': typeof variation.image_id !== 'undefined' ? variation.image_id : 0,
-                    'gallery': typeof variation.nasa_gallery_variation !== 'undefined' ?
-                        variation.nasa_gallery_variation : [],
-                    'show_images': $('.product-lightbox').find('.main-image-slider').attr('data-items')
-                };
+                if (_nasa_calling_gallery == 0) {
+                    _nasa_calling_gallery = 1;
+                    var _data = {
+                        'variation_id': variation.variation_id,
+                        'is_purchasable': variation.is_purchasable,
+                        'is_in_stock': variation.is_in_stock,
+                        'main_id': typeof variation.image_id !== 'undefined' ? variation.image_id : 0,
+                        'gallery': typeof variation.nasa_gallery_variation !== 'undefined' ?
+                            variation.nasa_gallery_variation : [],
+                        'show_images': $('.product-lightbox').find('.main-image-slider').attr('data-items')
+                    };
+
+                    change_gallery_variable_quickview($, _data, $form);
+                }
+            }
+            
+            else {
+                _nasa_calling_gallery = 0;
                 
-                changeGalleryVariableQuickviewProduct($, _data);
-            } else {
                 var _src_large = typeof variation.image_single_page !== 'undefined' ?
                     variation.image_single_page : variation.image.url;
 
-                $('.main-image-slider .owl-item:eq(0) img').attr('src', _src_large);
-                $('.main-image-slider .owl-item:eq(0) img').removeAttr('srcset');
+                $('.main-image-slider img:eq(0)').attr('src', _src_large);
+                $('.main-image-slider img:eq(0)').removeAttr('srcset');
             }
-        } else {
-            $form.wc_variations_image_reset();
-        }
+            
+            /**
+             * deal time
+             */
+            if ($('.product-lightbox').find('.nasa-gallery-variation-supported').length < 1 && $('.nasa-quickview-product-deal-countdown').length) {
+                if (
+                    variation && variation.variation_id &&
+                    variation.is_in_stock && variation.is_purchasable
+                ) {
+                    if (typeof _single_variations[variation.variation_id] === 'undefined' && _nasa_calling_countdown == 0) {
+                        _nasa_calling_countdown = 1;
+                        
+                        if (
+                            typeof nasa_params_variations !== 'undefined' &&
+                            typeof nasa_params_variations.wc_ajax_url !== 'undefined'
+                        ) {
+                            var _urlAjax = nasa_params_variations.wc_ajax_url.toString().replace('%%endpoint%%', 'nasa_get_deal_variation');
 
-        /**
-         * deal time
-         */
-        if ($('.product-lightbox').find('.nasa-gallery-variation-supported').length < 1 && $('.nasa-quickview-product-deal-countdown').length) {
-            if (
-                variation && variation.variation_id &&
-                variation.is_in_stock && variation.is_purchasable
-            ) {
-                if(typeof _single_variations[variation.variation_id] === 'undefined') {
-                    var _urlAjax = null;
-                    if(
-                        typeof wc_add_to_cart_params !== 'undefined' &&
-                        typeof wc_add_to_cart_params.wc_ajax_url !== 'undefined'
-                    ) {
-                        _urlAjax = wc_add_to_cart_params.wc_ajax_url.toString().replace('%%endpoint%%', 'nasa_get_deal_variation');
-                    }
-
-                    if(_urlAjax) {
-                        $.ajax({
-                            // url: ajaxurl,
-                            url: _urlAjax,
-                            type: 'post',
-                            cache: false,
-                            data: {
-                                pid: variation.variation_id
-                            },
-                            beforeSend: function () {
-                                $('.nasa-quickview-product-deal-countdown').html('');
-                                $('.nasa-quickview-product-deal-countdown').removeClass('nasa-show');
-                            },
-                            success: function (res) {
-                                if(typeof res.success !== 'undefined' && res.success === '1') {
-                                    _single_variations[variation.variation_id] = res.content;
-                                } else {
-                                    _single_variations[variation.variation_id] = '';
-                                }
-                                $('.nasa-quickview-product-deal-countdown').html(_single_variations[variation.variation_id]);
-                                if(_single_variations[variation.variation_id] !== '') {
-                                    loadCountDown($);
-                                    if(!$('.nasa-quickview-product-deal-countdown').hasClass('nasa-show')) {
-                                        $('.nasa-quickview-product-deal-countdown').addClass('nasa-show');
+                            $.ajax({
+                                url: _urlAjax,
+                                type: 'post',
+                                cache: false,
+                                data: {
+                                    pid: variation.variation_id
+                                },
+                                beforeSend: function () {
+                                    if (!$form.hasClass('nasa-processing-countdown')) {
+                                        $form.addClass('nasa-processing-countdown');
                                     }
-                                } else {
+                                    
+                                    $('.nasa-quickview-product-deal-countdown').html('');
                                     $('.nasa-quickview-product-deal-countdown').removeClass('nasa-show');
+                                },
+                                success: function (res) {
+                                    _nasa_calling_countdown = 0;
+                                    
+                                    $form.removeClass('nasa-processing-countdown');
+
+                                    if(typeof res.success !== 'undefined' && res.success === '1') {
+                                        _single_variations[variation.variation_id] = res.content;
+                                    } else {
+                                        _single_variations[variation.variation_id] = '';
+                                    }
+                                    $('.nasa-quickview-product-deal-countdown').html(_single_variations[variation.variation_id]);
+
+                                    if(_single_variations[variation.variation_id] !== '') {
+                                        /**
+                                         * Trigger after changed Countdown
+                                         */
+                                        $('body').trigger('nasa_changed_countdown_variable_single');
+
+                                        if(!$('.nasa-quickview-product-deal-countdown').hasClass('nasa-show')) {
+                                            $('.nasa-quickview-product-deal-countdown').addClass('nasa-show');
+                                        }
+                                    }
+
+                                    else {
+                                        $('.nasa-quickview-product-deal-countdown').removeClass('nasa-show');
+                                    }
+                                },
+                                error: function() {
+                                    $form.removeClass('nasa-processing-countdown');
                                 }
-                            }
-                        });
-                    }
-                } else {
-                    $('.nasa-quickview-product-deal-countdown').html(_single_variations[variation.variation_id]);
-                    if(_single_variations[variation.variation_id] !== '') {
-                        loadCountDown($);
-                        if(!$('.nasa-quickview-product-deal-countdown').hasClass('nasa-show')) {
-                            $('.nasa-quickview-product-deal-countdown').addClass('nasa-show');
+                            });
                         }
                     } else {
-                        $('.nasa-quickview-product-deal-countdown').removeClass('nasa-show');
+                        $('.nasa-quickview-product-deal-countdown').html(_single_variations[variation.variation_id]);
+                        if(_single_variations[variation.variation_id] !== '') {
+
+                            /**
+                             * Trigger after changed Countdown
+                             */
+                            $('body').trigger('nasa_changed_countdown_variable_single');
+
+                            if(!$('.nasa-quickview-product-deal-countdown').hasClass('nasa-show')) {
+                                $('.nasa-quickview-product-deal-countdown').addClass('nasa-show');
+                            }
+                        }
+
+                        else {
+                            $('.nasa-quickview-product-deal-countdown').removeClass('nasa-show');
+                        }
+                        
+                        _nasa_calling_countdown = 0;
                     }
                 }
-            } else {
-                $('.nasa-quickview-product-deal-countdown').html('');
-                $('.nasa-quickview-product-deal-countdown').removeClass('nasa-show');
+
+                else {
+                    $('.nasa-quickview-product-deal-countdown').html('');
+                    $('.nasa-quickview-product-deal-countdown').removeClass('nasa-show');
+                }
             }
+        }
+        
+        else {
+            $form.wc_variations_image_reset();
         }
     };
 
@@ -691,21 +726,25 @@
             if(!_quicked_gallery && typeof _lightbox_variations[0] !== 'undefined') {
                 _quicked_gallery = true;
                 var result = _lightbox_variations[0];
+                
                 /**
                  * Main image
                  */
                 if(typeof result.quickview_gallery !== 'undefined') {
                     $('.nasa-product-gallery-lightbox').find('.main-image-slider').replaceWith(result.quickview_gallery);
                 }
-
-                loadLightboxCarousel($);
             }
         }
         
         else {
             var image_large = $('.nasa-product-gallery-lightbox').attr('data-o_href');
-            $('.main-image-slider .owl-item:eq(0) img').attr('src', image_large).removeAttr('srcset');
+            $('.main-image-slider img:eq(0)').attr('src', image_large).removeAttr('srcset');
         }
+        
+        /**
+         * Trigger after changed gallery
+         */
+        $('body').trigger('nasa_changed_gallery_variable_quickview');
     };
 
     /**
@@ -751,6 +790,18 @@
 
 })(jQuery, window, document);
 
+var _lightbox_variations;
+jQuery(document).ready(function($) {
+    "use strict";
+    $('body').on('nasa_init_product_gallery_lightbox', function() {
+        if ($('.product-lightbox').find('.nasa-product-gallery-lightbox').length) {
+            _lightbox_variations[0] = {
+                'quickview_gallery': $('.product-lightbox').find('.nasa-product-gallery-lightbox').html()
+            };
+        }
+    });
+});
+
 function nasa_replace_template(data, html) {
     var variation = data.variation || {};
 
@@ -769,4 +820,156 @@ function nasa_replace_template(data, html) {
     }
     
     return html;
+}
+
+/**
+ * Support for Quick-view
+ */
+var _timeout_quickviewGallery;
+function change_gallery_variable_quickview($, _data, _form) {
+    _quicked_gallery = false;
+
+    if (typeof _lightbox_variations[_data.variation_id] === 'undefined') {
+        if (
+            typeof nasa_ajax_params !== 'undefined' &&
+            typeof nasa_ajax_params.wc_ajax_url !== 'undefined'
+        ) {
+            var _urlAjax = nasa_ajax_params.wc_ajax_url.toString().replace('%%endpoint%%', 'nasa_quickview_gallery_variation');
+
+            $.ajax({
+                url: _urlAjax,
+                type: 'post',
+                dataType: 'json',
+                cache: false,
+                data: {
+                    data: _data
+                },
+                beforeSend: function () {
+                    if (!$(_form).hasClass('nasa-processing')) {
+                        $(_form).addClass('nasa-processing');
+                    }
+                    
+                    $('.nasa-quickview-product-deal-countdown').html('');
+                    $('.nasa-quickview-product-deal-countdown').removeClass('nasa-show');
+
+                    if ($('.nasa-product-gallery-lightbox').find('.nasa-loading').length <= 0) {
+                        $('.nasa-product-gallery-lightbox').append('<div class="nasa-loading"></div>');
+                    }
+                    
+                    if ($('.nasa-product-gallery-lightbox').find('.nasa-loader').length <= 0) {
+                        $('.nasa-product-gallery-lightbox').append('<div class="nasa-loader" style="top:45%"></div>');
+                    }
+                    
+                    $('.nasa-product-gallery-lightbox').css({'min-height': $('.nasa-product-gallery-lightbox').outerHeight()});
+                },
+                success: function (result) {
+                    _nasa_calling_gallery = 0;
+                    
+                    $(_form).removeClass('nasa-processing');
+                    
+                    $('.nasa-product-gallery-lightbox').find('.nasa-loading, .nasa-loader').remove();
+
+                    _lightbox_variations[_data.variation_id] = result;
+
+                    /**
+                     * Deal
+                     */
+                    if (typeof result.deal_variation !== 'undefined') {
+                        $('.nasa-quickview-product-deal-countdown').html(result.deal_variation);
+
+                        if (result.deal_variation !== '') {
+                            /**
+                             * Trigger after changed Countdown
+                             */
+                            $('body').trigger('nasa_changed_countdown_variable_single');
+                            
+                            if (!$('.nasa-quickview-product-deal-countdown').hasClass('nasa-show')) {
+                                $('.nasa-quickview-product-deal-countdown').addClass('nasa-show');
+                            }
+                        }
+
+                        else {
+                            $('.nasa-quickview-product-deal-countdown').removeClass('nasa-show');
+                        }
+                    } else {
+                        $('.nasa-quickview-product-deal-countdown').removeClass('nasa-show');
+                    }
+
+                    /**
+                     * Main image
+                     */
+                    if (typeof result.quickview_gallery !== 'undefined') {
+                        $('.nasa-product-gallery-lightbox').find('.main-image-slider').replaceWith(result.quickview_gallery);
+                    }
+
+                    if (typeof _timeout_quickviewGallery !== 'undefined') {
+                        clearTimeout(_timeout_quickviewGallery);
+                    }
+                    
+                    _timeout_quickviewGallery = setTimeout(function (){
+                        $('.nasa-product-gallery-lightbox').css({'min-height': 'auto'});
+                    }, 200);
+
+                    /**
+                     * Trigger after changed gallery
+                     */
+                    $('body').trigger('nasa_changed_gallery_variable_quickview');
+                },
+                error: function() {
+                    _nasa_calling_gallery = 0;
+                    $(_form).removeClass('nasa-processing');
+                }
+            });
+        }
+    } else {
+        var result = _lightbox_variations[_data.variation_id];
+
+        /**
+         * Deal
+         */
+        if (typeof result.deal_variation !== 'undefined') {
+            $('.nasa-quickview-product-deal-countdown').html(result.deal_variation);
+
+            if (result.deal_variation !== '') {
+                if ($('body').hasClass('nasa-core-actived')) {
+                    loadCountDownNasaCore($);
+                }
+                if (!$('.nasa-quickview-product-deal-countdown').hasClass('nasa-show')) {
+                    $('.nasa-quickview-product-deal-countdown').addClass('nasa-show');
+                }
+            }
+
+            else {
+                $('.nasa-quickview-product-deal-countdown').removeClass('nasa-show');
+            }
+        } else {
+            $('.nasa-quickview-product-deal-countdown').removeClass('nasa-show');
+        }
+
+        /**
+         * Main image
+         */
+        if (typeof result.quickview_gallery !== 'undefined') {
+            $('.nasa-product-gallery-lightbox').append('<div class="nasa-loading"></div>');
+            $('.nasa-product-gallery-lightbox').append('<div class="nasa-loader" style="top:45%"></div>');
+            $('.nasa-product-gallery-lightbox').css({'min-height': $('.nasa-product-gallery-lightbox').height()});
+            
+            $('.nasa-product-gallery-lightbox').find('.main-image-slider').replaceWith(result.quickview_gallery);
+            if (typeof _timeout_changed !== 'undefined') {
+                clearTimeout(_timeout_changed);
+            }
+
+            _timeout_changed = setTimeout(function() {
+                $('.nasa-product-gallery-lightbox').find('.nasa-loader, .nasa-loading').remove();
+                $('.nasa-product-gallery-lightbox').css({'min-height': 'auto'});
+            }, 200);
+        }
+        
+        _nasa_calling_gallery = 0;
+
+        /**
+         * Trigger after changed gallery
+         */
+        $('body').trigger('nasa_changed_gallery_variable_quickview');
+    }
 }

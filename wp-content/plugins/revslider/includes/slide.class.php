@@ -518,13 +518,17 @@ class RevSliderSlide extends RevSliderFunctions {
 	/**
 	 * init slide by post data
 	 * @before: RevSliderSlide::initByPostData();
+	  * @removed in 6.2.18 -> @change 6.2.16: $template_id will not be written if the current post id is not the post_id to prevent malfunctioning
 	 */
 	public function init_by_post_data($data, RevSliderSlide $template, $slider_id){
 		//global $rs_slide_template;
 		
-		$post_id		 = $this->get_val($data, 'ID');
-		$template_id	 = get_post_meta($post_id, 'slide_template', true);
-		$template_id	 = ($template_id == '') ? 'default' : $template_id;
+		$post_id	 = $this->get_val($data, 'ID');
+		$c_post_id	 = @get_the_ID();
+		$template_id = get_post_meta($post_id, 'slide_template', true);
+		//only change the template if we are in the post itself, not if we are in another revslider that is post based!
+		$template_id = ($template_id == '') ? 'default' : $template_id; // || (intval($c_post_id) !== 0 && intval($post_id) !== intval($c_post_id))
+	
 		$this->post_data = apply_filters('revslider_slide_initByPostData', $data, $template, $slider_id, $this);
 		
 		if(!empty($template_id) && is_numeric($template_id)){ //init by local template, if this fails, init by global (slider) template
@@ -588,21 +592,22 @@ class RevSliderSlide extends RevSliderFunctions {
 		}
 		$this->params['publish']['state'] = ($data['post_status'] == 'publish') ? 'published' : $this->params['publish']['state'] = 'unpublished';
 		
-		if($this->get_val($this->params, array('bg', 'imageFromStream'), false) === true){ //if image is choosen, use featured image as background // && $this->get_val($this->params, array('bg', 'type')) == 'image'
-			$tid = get_post_thumbnail_id($post_id);
-			
-			if(!empty($tid)){
-				$this->set_image_by_image_id($tid);
+		if(!in_array($this->get_val($this->params, array('bg', 'type'), 'trans'), array('trans', 'solid'), true)){
+			if($this->get_val($this->params, array('bg', 'imageFromStream'), false) === true){ //if image is choosen, use featured image as background // && $this->get_val($this->params, array('bg', 'type')) == 'image'
+				$tid = get_post_thumbnail_id($post_id);
 				
-				//set the thumbnail image
-				$thumbnail_url = wp_get_attachment_image_src($tid, 'thumbnail');
-				if($thumbnail_url !== false){
-					if(!isset($this->params['thumb'])) $this->params['thumb'] = array();
-					$this->params['thumb']['customThumbSrc'] = $this->get_val($thumbnail_url, 0);
+				if(!empty($tid)){
+					$this->set_image_by_image_id($tid);
+					
+					//set the thumbnail image
+					$thumbnail_url = wp_get_attachment_image_src($tid, 'thumbnail');
+					if($thumbnail_url !== false){
+						if(!isset($this->params['thumb'])) $this->params['thumb'] = array();
+						$this->params['thumb']['customThumbSrc'] = $this->get_val($thumbnail_url, 0);
+					}
 				}
 			}
 		}
-		
 		//replace placeholders in layers:
 		$this->set_layers_by_post($data, $slider_id);
 	}
@@ -1076,8 +1081,7 @@ class RevSliderSlide extends RevSliderFunctions {
 			$this->set_param(array('seo', 'link'), str_replace(array('%link%', '{{link}}'), $link, $this->params['seo']['link']));
 		}
 		
-		$bg_type = $this->get_val($this->params, array('bg', 'type'));
-		if($bg_type == 'trans' || $bg_type == 'image' || $bg_type == 'streamtwitter' || $bg_type == 'streamtwitterboth'){ //if image is choosen, use featured image as background
+		if(in_array($this->get_val($this->params, array('bg', 'type')), array('html5', 'trans', 'image', 'streamtwitter', 'streamtwitterboth'), true)){ //if image is choosen, use featured image as background
 			$img_sizes		 = $this->get_all_image_sizes('twitter');
 			$img_res		 = $this->get_val($this->params, array('bg', 'imageSourceType'), reset($img_sizes));
 			$this->image_id	 = $this->get_val($this->post_data, 'id');
@@ -1182,8 +1186,7 @@ class RevSliderSlide extends RevSliderFunctions {
 			$this->set_param(array('seo', 'link'), str_replace(array('%link%', '{{link}}'), $link, $this->params['seo']['link']));
 		}
 		
-		if(in_array($this->get_val($this->params, array('bg', 'type')), array('trans', 'image', 'streaminstagram', 'streaminstagramboth'), true)){ //if image is choosen, use featured image as background
-			
+		if(in_array($this->get_val($this->params, array('bg', 'type')), array('html5', 'trans', 'image', 'streaminstagram', 'streaminstagramboth'), true)){ //if image is choosen, use featured image as background
 			$is			= array();
 			$img_sizes	= $this->get_all_image_sizes('instagram');
 			$img_res	= $this->get_val($this->params, array('bg', 'imageSourceType'), reset($img_sizes));
@@ -1217,6 +1220,7 @@ class RevSliderSlide extends RevSliderFunctions {
 		$videos = $this->get_val($this->post_data, array('videos', 'standard_resolution', 'url'));
 		if(!empty($videos)){
 			$this->set_param('slide_bg_instagram', $videos); //set video for background video
+			//$this->set_param(array('bg', 'type'), 'streaminstagram'); //set background type
 			$this->set_param(array('bg', 'mpeg'), $videos); //set video for background video
 		}
 		
@@ -1242,7 +1246,7 @@ class RevSliderSlide extends RevSliderFunctions {
 			$this->set_param(array('seo', 'link'), str_replace(array('%link%', '{{link}}'), $link, $this->params['seo']['link']));
 		}
 		
-		if($this->get_val($this->params, array('bg', 'type')) == 'image'){ //if image is choosen, use featured image as background
+		if(in_array($this->get_val($this->params, array('bg', 'type')), array('html5', 'image'), true)){ //if image is choosen, use featured image as background
 			//facebook check which image size is choosen
 			$img_sizes	= $this->get_all_image_sizes('flickr');
 			$img_res	= $this->get_val($this->params, array('bg', 'imageSourceType'), reset($img_sizes));
@@ -2218,6 +2222,12 @@ class RevSliderSlide extends RevSliderFunctions {
 		return $slides;
 	}
 	
+	/**
+	 * get all slides of all given slider_ids raw
+	 **/
+	public function get_all_slides_raw($slider_ids){
+		return $this->get_slides_by_slider_id($slider_ids, false, false, false, false);
+	}
 	
 	/**
 	 * get all slides from specific slider id
@@ -2228,8 +2238,12 @@ class RevSliderSlide extends RevSliderFunctions {
 		
 		$slides		 = array();
 		$children	 = array();
-		$slides_data = $wpdb->get_results($wpdb->prepare("SELECT * FROM ".$wpdb->prefix . RevSliderFront::TABLE_SLIDES." WHERE slider_id = %d ORDER BY slide_order ASC", $slider_id), ARRAY_A);
-		
+		if(is_array($slider_id) && !empty($slider_id)){
+			$in  = str_repeat('%d,', count($slider_id) - 1) . '%d';
+			$slides_data = $wpdb->get_results($wpdb->prepare("SELECT * FROM ".$wpdb->prefix . RevSliderFront::TABLE_SLIDES." WHERE slider_id IN(".$in.") ORDER BY slider_id,slide_order ASC", $slider_id), ARRAY_A);
+		}else{
+			$slides_data = $wpdb->get_results($wpdb->prepare("SELECT * FROM ".$wpdb->prefix . RevSliderFront::TABLE_SLIDES." WHERE slider_id = %d ORDER BY slide_order ASC", $slider_id), ARRAY_A);
+		}
 		foreach($slides_data as $slide_data){
 			$slide	= new RevSliderSlide();
 			$slide->init_layer = $init_layer;

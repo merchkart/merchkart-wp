@@ -286,6 +286,41 @@ jQuery(document).ready(function($){
 	}
     });
     
+    $('body').on('click', '.nasa-check-intagram', function() {
+        var _wrap = $(this).parents('.section');
+        var _token = $(_wrap).find('input.nasa_instagram').val();
+        if (_token) {
+            $.ajax({
+                url: ajaxurl,
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    action: 'nasa_check_instagram_token',
+                    access_token: _token
+                },
+                success: function(res){
+                    if (res.error === '0') {
+                        $(_wrap).find('.of-intagram-acc').html(res.output);
+                        $(_wrap).find('input.nasa_instagram_info').val(res.info);
+                        $(_wrap).find('.nasa-remove-intagram').removeClass('hidden-tag');
+                        $(_wrap).find('.nasa-check-intagram, .nasa-get-intagram, input.nasa_instagram').addClass('hidden-tag');
+                    }
+                }
+            });
+        } else {
+            alert('Please Get and Enter Instagram Access Token!');
+        }
+    });
+    
+    $('body').on('click', '.nasa-remove-intagram', function() {
+        var _wrap = $(this).parents('.section');
+        $(_wrap).find('input.nasa_instagram').val('');
+        $(_wrap).find('input.nasa_instagram_info').val('');
+        $(_wrap).find('.of-intagram-acc').html('');
+        $(this).addClass('hidden-tag');
+        $(_wrap).find('.nasa-check-intagram, .nasa-get-intagram, input.nasa_instagram').removeClass('hidden-tag');
+    });
+    
     /* =============== End document ready !!! ================== */
 });
 

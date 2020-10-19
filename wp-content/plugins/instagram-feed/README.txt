@@ -2,18 +2,19 @@
 Contributors: smashballoon, craig-at-smash-balloon
 Tags: Instagram, Instagram feed, Instagram photos, Instagram widget, Instagram gallery
 Requires at least: 3.4
-Tested up to: 5.4
-Stable tag: 2.4.3
+Tested up to: 5.5
+Stable tag: 2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Formerly "Instagram Feed". Display beautifully clean, customizable, and responsive Instagram feeds from multiple Instagram accounts
+Formerly "Instagram Feed". Display clean, customizable, and responsive Instagram feeds from multiple accounts. Supports Instagram oEmbeds.
 
 == Description ==
 
 Display Instagram posts from your Instagram accounts, either in the same single feed or in multiple different ones.
 
 = Features =
+* **New:** Now automatically powers your **Instagram oEmbeds**
 * Super **simple to set up**
 * Display photos from **multiple Instagram accounts** in the same feed or in separate feeds
 * Completely **responsive** and mobile ready - layout looks great on any screen size and in any container width
@@ -34,10 +35,11 @@ Display Instagram posts from your Instagram accounts, either in the same single 
 * **Display Your Content Your Way** - Customize your Instagram feeds to look exactly the way you want, so that they blend seemlessly into your site or pop out at your visitors!
 * **Keep Your Site Looking Fresh** - Automatically push your new Instagram content straight to your site to keep it looking fresh and keeping your audience engaged.
 * **Super simple to set up** - Once installed, you can be displaying your Instagram photos within 30 seconds! No confusing steps or Instagram Developer account needed.
+* **Powers all Instagram oEmbeds on your site** - With WordPress removing support for Instagram oEmbeds, the plugin will now power all Instagram embeds on your site, old and new, to allow them to continue working.
 
 = Pro Version =
 In order to maintain the free version of the plugin on an ongoing basis, and to provide quick and effective support for free, we offer a Pro version of the plugin. The Pro version allows you to:
-* Display Hashtag feeds (fully compatible with the Instagram December 11, 2018, API changes)
+* Display Hashtag feeds
 * View photos and videos in a popup lightbox directly on your site
 * View post comments for user feeds
 * Display the number of like and comments for each post
@@ -159,6 +161,10 @@ Yep. You can display multiple Instagram feeds by using our built-in shortcode op
 = Can I display photos from more than one Instagram account in one single feed? =
 
 Yep. You can add multiple user names from the connected accounts on the plugin's Settings page, or directly in the shortcode, separated by commas, like so: `[instagram-feed user="smashballoon, instagramfeed"]`.
+
+= Does the plugin work with Instagram oEmbeds? =
+
+In version 2.5, support was added to allow the plugin to power your Instagram oEmbeds as official support for these is no longer available in WordPress core. Just connect your account on the oEmbeds settings page inside the plugin and we'll do the rest. No developer app or account required.
 
 = How do I find my Instagram Access Token and Instagram User ID =
 
@@ -325,6 +331,33 @@ We understand that sometimes you need help, have issues or just have questions. 
 * Plus more customization options added all the time!
 
 == Changelog ==
+= 2.5 =
+* New: Added support for Instagram oEmbeds. When you share a link to a Instagram post, WordPress automatically converts it into an embedded Instagram post for you (an "oEmbed"). However, on October 24, 2020, WordPress is discontinuing support for Instagram oEmbeds and so any existing or new embeds will no longer work. Don't worry though, we have your back! This update adds support for Instagram oEmbeds and so, after updating, the Instagram Feed plugin will automatically keep your oEmbeds working. It will also power any new oEmbeds you post going forward.
+* New: Install our other free social media plugins right from the Instagram Feed settings menu. Use our Facebook, YouTube, and Twitter plugins to add even more social content to your website and help further engage your viewers and increase your followers.
+* Tweak: Changed the names of the CSS and JavaScript files to prevent certain ad blockers from hiding the feed. Original files with original names still included in this update.
+* Tweak: Background caching and favoring local images are now the default settings for new installs.
+* Fix: Fixed PHP warning too few arguments when using Spanish translation files.
+
+= 2.4.7 =
+* Important: Due to recent Instagram changes, private accounts will need to be manually refreshed every 60 days. If you have a private Instagram account, consider making it public to avoid needing to manually reconnect your account.
+* New: Added a notice for accounts that are private which lets you know how long until the account needs to be refreshed. You will also be alerted using our admin notice and email notification system if a private account will soon need to be refreshed.
+
+= 2.4.6 =
+* New: Added a PHP hook "sbi_clear_page_caches" which allows you to dynamically disable the Instagram Feed code that clears caches created by common page caching plugins.
+* New: Added a PHP hook "sbi_resize_url" which allows you to change the default URL of locally stored images. This can be helpful for sites using CDNs.
+* Tweak: Added a workaround for the wp_json_encode function used in older versions of WordPress.
+* Fix: Compatibility updates for the upcoming WordPress version 5.5 release.
+
+= 2.4.5 =
+* Fix: Accounts can be connected without the use of JavaScript.
+* Fix: Default URL for connecting an account changed to prevent "Invalid Scope" connection issue.
+
+= 2.4.4 =
+* Fix: Workaround added for PHP warning related to an undefined media_url index.
+* Fix: Connecting a business account on a mobile device when more than 2 pages where returned was not possible.
+* Fix: After connecting an account, the warning that there were no connected accounts would still be visible.
+* Fix: URL for retrieving image files from Instagram using a redirect method was changed to prevent an extra, unnecessary redirect.
+
 = 2.4.3 =
 * Fix: The opt-in notice to help improve the plugin was not dismissing as expected for some sites due to the admin JavaScript file being cached by the browser.
 * Fix: Disabled the “About Us” page plugin installation if using a version of WordPress earlier than 4.6.

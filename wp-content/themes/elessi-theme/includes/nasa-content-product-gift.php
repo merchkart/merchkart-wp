@@ -60,7 +60,7 @@ echo '<div class="' . esc_attr($class_wrap) . '" data-wow-duration="1s" data-wow
         <div class="info">
             <div class="name nasa-name text-center">
                 <a href="<?php echo esc_url($nasa_link); ?>" title="<?php echo esc_attr($nasa_title); ?>">
-                    <?php echo ($nasa_title); ?>
+                    <?php echo $nasa_title; ?>
                 </a>
                 <?php do_action('woocommerce_after_shop_loop_item_title'); ?>
             </div>

@@ -10,6 +10,8 @@
 
 namespace SkyVerge\WooCommerce\Facebook;
 
+use WC_Facebook_Product;
+
 defined( 'ABSPATH' ) or exit;
 
 /**
@@ -73,12 +75,6 @@ class Products {
 
 						if ( $product_variation instanceof \WC_Product ) {
 
-							if ( $enabled && $product_variation->is_virtual() ) {
-
-								// never enable sync for virtual variations
-								continue;
-							}
-
 							$product_variation->update_meta_data( self::SYNC_ENABLED_META_KEY, $enabled );
 							$product_variation->save_meta_data();
 						}
@@ -121,11 +117,54 @@ class Products {
 
 
 	/**
+	 * Disables sync for products that belong to the given category or tag.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param array $args {
+	 *     @type string|array $taxonomy product_cat or product_tag
+	 *     @type string|array $include array or comma/space-separated string of term IDs to include
+	 * }
+	 */
+	public static function disable_sync_for_products_with_terms( array $args ) {
+
+		$args = wp_parse_args( $args, [
+			'taxonomy' => 'product_cat',
+			'include'  => [],
+		] );
+
+		$products = [];
+
+		// get all products belonging to the given terms
+		if ( is_array( $args['include'] ) && ! empty( $args['include'] ) ) {
+
+			$terms = get_terms( [
+				'taxonomy'   => $args['taxonomy'],
+				'fields'     => 'slugs',
+				'include'    => array_map( 'intval', $args['include'] ),
+			] );
+
+			if ( ! is_wp_error( $terms ) && ! empty( $terms ) ) {
+
+				$taxonomy = $args['taxonomy'] === 'product_tag' ? 'tag' : 'category';
+
+				$products = wc_get_products( [
+					$taxonomy => $terms,
+					'limit'   => -1,
+				] );
+			}
+		}
+
+		if ( ! empty( $products ) ) {
+			Products::disable_sync_for_products( $products );
+		}
+	}
+
+
+	/**
 	 * Determines whether the given product should be synced.
 	 *
-	 * If a product is enabled for sync, but belongs to an excluded term, it will return as excluded from sync:
-	 * @see Products::is_sync_enabled_for_product()
-	 * @see Products::is_sync_excluded_for_product_terms()
+	 * @see Products::published_product_should_be_synced()
 	 *
 	 * @since 1.10.0
 	 *
@@ -134,10 +173,65 @@ class Products {
 	 */
 	public static function product_should_be_synced( \WC_Product $product ) {
 
-		// define the product to check terms on
-		$terms_product = $product->is_type( 'variation' ) ? wc_get_product( $product->get_parent_id() ) : $product;
+		return 'publish' === $product->get_status() && self::published_product_should_be_synced( $product );
+	}
 
-		return self::is_sync_enabled_for_product( $product ) && $terms_product && ! self::is_sync_excluded_for_product_terms( $terms_product );
+
+	/**
+	 * Determines whether the given product should be synced assuming the product is published.
+	 *
+	 * If a product is enabled for sync, but belongs to an excluded term, it will return as excluded from sync:
+	 * @see Products::is_sync_enabled_for_product()
+	 * @see Products::is_sync_excluded_for_product_terms()
+	 *
+	 * @since 2.0.0-dev.1
+	 *
+	 * @param \WC_Product $product
+	 * @return bool
+	 */
+	public static function published_product_should_be_synced( \WC_Product $product ) {
+
+		$should_sync = self::is_sync_enabled_for_product( $product );
+
+		// define the product to check terms on
+		if ( $should_sync ) {
+			$terms_product = $product->is_type( 'variation' ) ? wc_get_product( $product->get_parent_id() ) : $product;
+		} else {
+			$terms_product = null;
+		}
+
+		// allow simple or variable products (and their variations) with zero or empty price - exclude other product types with zero or empty price
+		if ( $should_sync && ( ! $terms_product || ( ! self::get_product_price( $product ) && ! in_array( $terms_product->get_type(), [ 'simple', 'variable' ] ) ) ) ) {
+			$should_sync = false;
+		}
+
+		// exclude products that are excluded from the store catalog or from search results
+		if ( $should_sync && ( ! $terms_product || has_term( [ 'exclude-from-catalog', 'exclude-from-search' ], 'product_visibility', $terms_product->get_id() ) ) ) {
+			$should_sync = false;
+		}
+
+		// exclude products that belong to one of the excluded terms
+		if ( $should_sync && ( ! $terms_product || self::is_sync_excluded_for_product_terms( $terms_product ) ) ) {
+			$should_sync = false;
+		}
+
+		return $should_sync;
+	}
+
+
+	/**
+	 * Determines whether the given product should be removed from the catalog.
+	 *
+	 * A product should be removed if it is no longer in stock and the user has opted-in to hide products that are out of stock.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param \WC_Product $product
+	 * @return bool
+	 */
+	public static function product_should_be_deleted( \WC_Product $product ) {
+
+		return 'yes' === get_option( 'woocommerce_hide_out_of_stock_items' ) && ! $product->is_in_stock();
 	}
 
 
@@ -250,10 +344,88 @@ class Products {
 
 		// accounts for a legacy bool value, current should be (string) 'yes' or (string) 'no'
 		if ( ! isset( self::$products_visibility[ $product->get_id() ] ) ) {
-			self::$products_visibility[ $product->get_id() ] = wc_string_to_bool( $product->get_meta( self::VISIBILITY_META_KEY ) );
+
+			if ( $product->is_type( 'variable' ) ) {
+
+				// assume variable products are not visible until a visible child is found
+				$is_visible = false;
+
+				foreach ( $product->get_children() as $child_id ) {
+
+					$child_product = wc_get_product( $child_id );
+
+					if ( $child_product && self::is_product_visible( $child_product ) ) {
+
+						$is_visible = true;
+						break;
+					}
+				}
+
+			} elseif ( $meta = $product->get_meta( self::VISIBILITY_META_KEY ) ) {
+
+				$is_visible = wc_string_to_bool( $product->get_meta( self::VISIBILITY_META_KEY ) );
+
+			} else {
+
+				$is_visible = true;
+			}
+
+			self::$products_visibility[ $product->get_id() ] = $is_visible;
 		}
 
 		return self::$products_visibility[ $product->get_id() ];
+	}
+
+
+	/**
+	 * Gets the product price used for Facebook sync.
+	 *
+	 * TODO: Consider adding memoization, but ensure we can protect the implementation against price changes during the same request {WV-2020-08-20}
+	 *       See https://github.com/facebookincubator/facebook-for-woocommerce/pull/1468
+	 *
+	 * @since 2.0.0-dev.1
+	 *
+	 * @param int $price product price in cents
+	 * @param \WC_Product $product product object
+	 * @return int
+	 */
+	public static function get_product_price( \WC_Product $product ) {
+
+		$facebook_price = $product->get_meta( WC_Facebook_Product::FB_PRODUCT_PRICE );
+
+		// use the user defined Facebook price if set
+		if ( is_numeric( $facebook_price ) ) {
+
+			$price = $facebook_price;
+
+		} elseif ( class_exists( 'WC_Product_Composite' ) && $product instanceof \WC_Product_Composite ) {
+
+			$price = get_option( 'woocommerce_tax_display_shop' ) === 'incl' ? $product->get_composite_price_including_tax() : $product->get_composite_price();
+
+		} elseif ( class_exists( 'WC_Product_Bundle' )
+		     && empty( $product->get_regular_price() )
+		     && 'bundle' === $product->get_type() ) {
+
+			// if product is a product bundle with individually priced items, we rely on their pricing
+			$price = wc_get_price_to_display( $product, [ 'price' => $product->get_bundle_price() ] );
+
+		} else {
+
+			$price = wc_get_price_to_display( $product, [ 'price' => $product->get_regular_price() ] );
+		}
+
+		$price = (int) ( $price ? round( $price * 100 ) : 0 );
+
+		/**
+		 * Filters the product price used for Facebook sync.
+		 *
+		 * @since 2.0.0-dev.1
+		 *
+		 * @param int $price product price in cents
+		 * @param float $facebook_price user defined facebook price
+		 * @param \WC_Product $product product object
+		 */
+		return (int) apply_filters( 'wc_facebook_product_price', $price, (float) $facebook_price, $product );
 	}
 
 

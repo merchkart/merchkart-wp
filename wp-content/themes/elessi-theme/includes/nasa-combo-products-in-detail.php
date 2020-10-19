@@ -15,24 +15,19 @@ $file_content = is_file($file_content) ? $file_content : ELESSI_THEME_PATH . '/i
     <div class="nasa-slide-left-info-wrap">
         <h4 class="nasa-combo-gift"><?php echo esc_html__('Bundle product for', 'elessi-theme'); ?></h4>
         <h3><?php echo ($product->get_name()); ?><span class="nasa-count-items">(<?php echo count($combo) . ' ' . esc_html__('Items', 'elessi-theme'); ?>)</span></h3>
-        <div class="nasa-nav-carousel-wrap" data-id="#nasa-slider-<?php echo esc_attr($id_sc); ?>">
-            <div class="nasa-nav-carousel-prev nasa-nav-carousel-div">
-                <a class="nasa-nav-icon-slider" href="javascript:void(0);" data-do="prev">
-                    <span class="icon-nasa-left-arrow"></span>
-                </a>
-            </div>
-            <div class="nasa-nav-carousel-next nasa-nav-carousel-div">
-                <a class="nasa-nav-icon-slider" href="javascript:void(0);" data-do="next">
-                    <span class="icon-nasa-right-arrow"></span>
-                </a>
-            </div>
-        </div>
     </div>
 </div>
 
 <div class="large-<?php echo esc_attr($coulums_slide); ?> columns">
     <div class="row group-slider">
-        <div id="nasa-slider-<?php echo esc_attr($id_sc); ?>" class="slider products-group nasa-combo-slider owl-carousel" data-margin="10px" data-columns="4" data-columns-small="1" data-columns-tablet="2" data-padding="65px" data-disable-nav="true">
+        <div
+            id="nasa-slider-<?php echo esc_attr($id_sc); ?>"
+            class="nasa-slider-items-margin nasa-slick-slider nasa-slick-nav nasa-combo-slider"
+            data-columns="4"
+            data-columns-small="2"
+            data-columns-tablet="3"
+            data-switch-tablet="<?php echo elessi_switch_tablet(); ?>"
+            data-switch-desktop="<?php echo elessi_switch_desktop(); ?>">
             <?php
             foreach ($combo as $bundle_item) :
                 include $file_content;

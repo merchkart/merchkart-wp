@@ -17,4 +17,4 @@ $this->setGlobalTtaInfo();
 $prepareContent = $this->getTemplateVariable('content');
 
 $file = ELESSI_CHILD_PATH . '/vc_templates/tta_global_layout/' . $this->layout . '_layout.php';
-require is_file($file) ? $file : ELESSI_THEME_PATH . '/vc_templates/tta_global_layout/' . $this->layout . '_layout.php';
+include is_file($file) ? $file : ELESSI_THEME_PATH . '/vc_templates/tta_global_layout/' . $this->layout . '_layout.php';

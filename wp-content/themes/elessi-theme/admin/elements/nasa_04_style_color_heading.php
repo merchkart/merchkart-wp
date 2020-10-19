@@ -1,13 +1,10 @@
 <?php
+add_action('init', 'elessi_style_color_heading');
 if (!function_exists('elessi_style_color_heading')) {
-    add_action('init', 'elessi_style_color_heading');
     function elessi_style_color_heading() {
-        /* ----------------------------------------------------------------------------------- */
-        /* The Options Array */
-        /* ----------------------------------------------------------------------------------- */
         // Set the Options Array
         global $of_options;
-        if(empty($of_options)) {
+        if (empty($of_options)) {
             $of_options = array();
         }
         
@@ -32,16 +29,7 @@ if (!function_exists('elessi_style_color_heading')) {
         );
 
         $of_options[] = array(
-            "name" => esc_html__("Secondary Color", 'elessi-theme'),
-            // "desc" => esc_html__("Change secondary color. Used for sale bubble.", 'elessi-theme'),
-            "id" => "color_secondary",
-            "std" => "",
-            "type" => "color"
-        );
-
-        $of_options[] = array(
             "name" => esc_html__("Success Color", 'elessi-theme'),
-            // "desc" => esc_html__("Change the success color. Used for global success messages.", 'elessi-theme'),
             "id" => "color_success",
             "std" => "",
             "type" => "color"
@@ -49,7 +37,6 @@ if (!function_exists('elessi_style_color_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Custom Badge Color", 'elessi-theme'),
-            // "desc" => esc_html__("Change the hot label color. Used for product Custom-Badge.", 'elessi-theme'),
             "id" => "color_hot_label",
             "std" => "",
             "type" => "color"
@@ -57,7 +44,6 @@ if (!function_exists('elessi_style_color_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Deal Badge Color", 'elessi-theme'),
-            // "desc" => esc_html__("Change the deal label color. Used for product Deal-Badge.", 'elessi-theme'),
             "id" => "color_deal_label",
             "std" => "",
             "type" => "color"
@@ -65,15 +51,20 @@ if (!function_exists('elessi_style_color_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Sale Badge Color", 'elessi-theme'),
-            // "desc" => esc_html__("Change the sale label color. Used for product Sale-Badge.", 'elessi-theme'),
             "id" => "color_sale_label",
+            "std" => "",
+            "type" => "color"
+        );
+        
+        $of_options[] = array(
+            "name" => esc_html__("Variants Badge Color", 'elessi-theme'),
+            "id" => "color_variants_label",
             "std" => "",
             "type" => "color"
         );
 
         $of_options[] = array(
             "name" => esc_html__("Price Color", 'elessi-theme'),
-            // "desc" => esc_html__("Change the Price color. Used for product.", 'elessi-theme'),
             "id" => "color_price_label",
             "std" => "",
             "type" => "color"
@@ -87,7 +78,6 @@ if (!function_exists('elessi_style_color_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Buttons Background Color", 'elessi-theme'),
-            // "desc" => esc_html__("Change background color for buttons.", 'elessi-theme'),
             "id" => "color_button",
             "std" => "",
             "type" => "color"
@@ -103,7 +93,6 @@ if (!function_exists('elessi_style_color_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Buttons Border Color", 'elessi-theme'),
-            // "desc" => esc_html__("Change border color for buttons.", 'elessi-theme'),
             "id" => "button_border_color",
             "std" => "",
             "type" => "color"
@@ -111,7 +100,6 @@ if (!function_exists('elessi_style_color_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Buttons Border Color Hover", 'elessi-theme'),
-            // "desc" => esc_html__("Change border color hover for buttons.", 'elessi-theme'),
             "id" => "button_border_color_hover",
             "std" => "",
             "type" => "color"
@@ -119,7 +107,6 @@ if (!function_exists('elessi_style_color_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Buttons Text Color", 'elessi-theme'),
-            // "desc" => esc_html__("Change text color for buttons. Default is primary color", 'elessi-theme'),
             "id" => "button_text_color",
             "std" => "",
             "type" => "color"
@@ -127,14 +114,13 @@ if (!function_exists('elessi_style_color_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Buttons Text Color Hover", 'elessi-theme'),
-            // "desc" => esc_html__("Change text color hover for buttons.", 'elessi-theme'),
             "id" => "button_text_color_hover",
             "std" => "",
             "type" => "color"
         );
+        
         $of_options[] = array(
             "name" => esc_html__("Buttons Radius", 'elessi-theme'),
-            // "desc" => esc_html__("Change Buttons Radius. (px)", 'elessi-theme'),
             "id" => "button_radius",
             "std" => "0",
             "step" => "1",
@@ -144,7 +130,6 @@ if (!function_exists('elessi_style_color_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Buttons Border Width", 'elessi-theme'),
-            // "desc" => esc_html__("Change Buttons Border. (px)", 'elessi-theme'),
             "id" => "button_border",
             "std" => "1",
             "step" => "1",
@@ -153,8 +138,7 @@ if (!function_exists('elessi_style_color_heading')) {
         );
 
         $of_options[] = array(
-            "name" => esc_html__("Inputs radius", 'elessi-theme'),
-            // "desc" => esc_html__("Change Radius Inputs. (px)", 'elessi-theme'),
+            "name" => esc_html__("Inputs Radius", 'elessi-theme'),
             "id" => "input_radius",
             "std" => "0",
             "step" => "1",

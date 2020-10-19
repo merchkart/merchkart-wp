@@ -31,7 +31,7 @@ if (!empty($breadcrumb)) {
         else {
             $queried_object = $wp_query->get_queried_object();
 
-            if(isset($queried_object->taxonomy) && $queried_object->taxonomy == 'portfolio_category') {
+            if (isset($queried_object->taxonomy) && $queried_object->taxonomy == 'portfolio_category') {
                 $breadcrumb = elessi_rebuilt_breadcrumb_portfolio($breadcrumb, false);
             }
         }
@@ -46,8 +46,7 @@ if (!empty($breadcrumb)) {
             echo (!empty($crumb[1]) && $sizeof !== $key + 1) ?
                 '<a href="' . esc_url($crumb[1]) . '" title="' . esc_attr($crumb[0]) . '">' .
                     esc_html($crumb[0]) .
-                '</a>' :
-                esc_html($crumb[0]);
+                '</a>' : esc_html($crumb[0]);
 
             echo $after;
 
@@ -71,46 +70,19 @@ if (!empty($breadcrumb)) {
         $count = count($breadcrumb);
 
         /**
-         * Single product
+         * Single product - Single post
          */
-        if(is_product()) {
-            if(isset($breadcrumb[$count-1][1])) {
+        if (is_product() || is_singular('post')) {
+            if (isset($breadcrumb[$count-1][1])) {
                 unset($breadcrumb[$count-1][1]);
             }
 
-            $shop_page_id = wc_get_page_id('shop');
-            if ($shop_page_id > 0) {
-                $shop_page_title = get_the_title($shop_page_id);
-                $shop_page_url = get_permalink($shop_page_id);
+            $h2 = $breadcrumb[$count-1];
+            unset($breadcrumb[$count-1]);
 
-
-                $h2 = $breadcrumb[1];
-                unset($breadcrumb[1]);
-
-                $title = !empty($h2[1]) ?
-                    '<a href="' . esc_url($h2[1]) . '" title="' . esc_attr($h2[0]) . '">' . esc_html($h2[0]) . '</a>' :
-                    esc_html($h2[0]);
-            }
+            $title = isset($h2[0]) ? esc_html($h2[0]) : '';
         }
-
-        /**
-         * Single post
-         */
-        elseif(is_singular('post')) {
-            $blogs_page_id = get_option('page_for_posts');
-            if($blogs_page_id) {
-                $blogs_page = get_page($blogs_page_id);
-                if($blogs_page) {
-                    $blogs_page_title = $blogs_page->post_title;
-                    $blogs_page_url = get_permalink($blogs_page_id);
-                    $title = '<a href="' . esc_url($blogs_page_url) . '" title="' . esc_attr($blogs_page_title) . '">' . $blogs_page_title . '</a>';
-                }
-            }
-
-            if(isset($breadcrumb[$count-1][1])) {
-                unset($breadcrumb[$count-1][1]);
-            }
-        }
+        
 
         /**
          * Single Portfolio
@@ -123,7 +95,7 @@ if (!empty($breadcrumb)) {
         /**
          * Archive Portfolio
          */
-        elseif(isset($queried_object->taxonomy) && $queried_object->taxonomy == 'portfolio_category') {
+        elseif (isset($queried_object->taxonomy) && $queried_object->taxonomy == 'portfolio_category') {
             $title = $queried_object->name;
             $breadcrumb = elessi_rebuilt_breadcrumb_portfolio($breadcrumb, false);
         }
@@ -132,7 +104,7 @@ if (!empty($breadcrumb)) {
          * page Other
          */
         else {
-            if($count > 1) {
+            if ($count > 1) {
                 $endBreadcrumb = $breadcrumb[$count - 1];
                 unset($breadcrumb[$count - 1]);
                 $title = esc_html($endBreadcrumb[0]);
@@ -140,13 +112,13 @@ if (!empty($breadcrumb)) {
                 /**
                  * Page search
                  */
-                if(is_search() && $count > 2 && isset($breadcrumb[$count-2][1])) {
+                if (is_search() && $count > 2 && isset($breadcrumb[$count-2][1])) {
                     unset($breadcrumb[$count-2][1]);
                 }
             }
         }
 
-        echo $title ? '<h2>' . $before . $title . $after . '</h2>' : '';
+        echo $title ? '<span class="nasa-first-breadcrumb">' . $before . $title . $after . '</span>' : '';
 
         echo $wrap_before;
 

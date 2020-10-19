@@ -1,10 +1,10 @@
 === weForms - Easy Drag & Drop Contact Form Builder For WordPress ===
-Contributors: tareq1988, nizamuddinbabu, boldgrid
+Contributors: tareq1988, nizamuddinbabu, boldgrid, joemoto
 Tags: forms, contact form, contact form plugin, custom form, form builder, form, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation
 Requires at least: 4.4
 Requires PHP: 5.6.20
-Tested up to: 5.4
-Stable tag: 1.4.8
+Tested up to: 5.5
+Stable tag: 1.5.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -119,7 +119,7 @@ Still not convinced? Then...
 
 [Check out this contact form comparison including some of the best in the business form builder for WordPress](https://weformspro.com/)
 
-= AVAILABLE MODULES & WEFORMS INTEGRATIONS = 
+= AVAILABLE MODULES & WEFORMS INTEGRATIONS =
 
 * [AWeber:](https://weformspro.com/docs/integrations/aweber/) Connect weForms with AWeber mail lists to reach submitters via email campaigns. Easily grow your contact base & do more with emails.
 * [Calculation:](https://weformspro.com/docs/modules/calculation/) Enable users to add calculating capabilities to their forms of numeric fields.
@@ -248,6 +248,27 @@ weForms is the most beginner friendly and fastest WordPress contact form plugin 
 17. Event registration form displayed on the site
 
 == Changelog ==
+
+= Version 1.5.2 (13 October, 2020) =
+* **Fix:** Fixed JS Issues.
+* **Fix:** Email Header Formatting.
+* **Update:** Added Fortress DB Integration.
+
+= Version 1.5.1 (1 September, 2020) =
+* **Fix:** Fixed Fortress DB tab.
+
+
+= Version 1.5.0 (1 September, 2020) =
+* **Update:** Added Fortress DB and Conditional Banner.
+* **Update:** Removed Diagnostic Pop Up.
+* **Fix:** JSON import issue fixed.
+* **Fix:** Double Column not working, issue fixed.
+* **Fix:** File Upload issue fixed.
+* **Fix:** Signature field issue fixed.
+
+
+= Version 1.4.9 (30 June, 2020) =
+* **Update:** Added a privacy page.
 
 = Version 1.4.8 (30 March, 2020) =
 * **Fix:** Fixed escaping of select options when adding a form to a page.

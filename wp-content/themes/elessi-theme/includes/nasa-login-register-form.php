@@ -5,6 +5,12 @@
  * and open the template in the editor.
  */
 
+if (!defined('ABSPATH')){
+    exit; // Exit if accessed directly
+}
+
+do_action('nasa_init_login_register_form');
+
 $loginAjax = (bool) $prefix;
 $prefix = $prefix ? 'nasa_' : '';
 
@@ -17,7 +23,6 @@ $nasa_keyRememberme = $prefix . 'rememberme';
 $nasa_keyRegUsername = $prefix . 'reg_username';
 $nasa_keyRegEmail = $prefix . 'reg_email';
 $nasa_keyRegPass = $prefix . 'reg_password';
-// $nasa_keyRegEmail2 = $prefix . 'email_2';
 $nasa_keyReg = $prefix . 'register';
 
 $nasa_register = get_option('woocommerce_enable_myaccount_registration') == 'yes' ? true : false;
@@ -42,12 +47,16 @@ if (isset($_REQUEST['register'])) {
                         <?php esc_html_e('Username or email', 'elessi-theme'); ?> <span class="required">*</span>
                     </label>
 
-                    <label for="<?php echo esc_attr($nasa_keyRememberme); ?>" class="inline-block right rtl-left">
-                        <input name="<?php echo esc_attr($nasa_keyRememberme); ?>" type="checkbox" id="<?php echo esc_attr($nasa_keyRememberme); ?>" value="forever" /> <?php esc_html_e('Remember', 'elessi-theme'); ?>
+                    <!-- Remember -->
+                    <label for="<?php echo esc_attr($nasa_keyRememberme); ?>" class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme inline-block right rtl-left">
+                        <input class="woocommerce-form__input woocommerce-form__input-checkbox" name="<?php echo esc_attr($nasa_keyRememberme); ?>" type="checkbox" id="<?php echo esc_attr($nasa_keyRememberme); ?>" value="forever" /> <?php esc_html_e('Remember', 'elessi-theme'); ?>
                     </label>
                 </span>
-                <input type="text" class="input-text" name="<?php echo esc_attr($nasa_keyUserName); ?>" id="<?php echo esc_attr($nasa_keyUserName); ?>" />
+                
+                <!-- Username -->
+                <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="<?php echo esc_attr($nasa_keyUserName); ?>" id="<?php echo esc_attr($nasa_keyUserName); ?>" autocomplete="username" value="<?php echo (!empty($_POST[$nasa_keyUserName])) ? esc_attr(wp_unslash($_POST[$nasa_keyUserName])) : ''; ?>" />
             </p>
+            
             <p class="form-row form-row-wide">
                 <span>
                     <label for="<?php echo esc_attr($nasa_keyPass); ?>" class="inline-block left rtl-right">
@@ -56,14 +65,14 @@ if (isset($_REQUEST['register'])) {
                     <a class="lost_password inline-block right rtl-left" href="<?php echo esc_url(wc_lostpassword_url()); ?>"><?php esc_html_e('Lost?', 'elessi-theme'); ?></a>
                 </span>
                 
-                <input class="input-text" type="password" name="<?php echo esc_attr($nasa_keyPass); ?>" id="<?php echo esc_attr($nasa_keyPass); ?>" />
+                <input class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="<?php echo esc_attr($nasa_keyPass); ?>" id="<?php echo esc_attr($nasa_keyPass); ?>" autocomplete="current-password" />
             </p>
 
             <?php do_action('woocommerce_login_form'); ?>
 
             <p class="form-row row-submit">
                 <?php wp_nonce_field('woocommerce-login', 'woocommerce-login-nonce'); ?>
-                <input type="submit" class="button" name="<?php echo esc_attr($nasa_keyLogin); ?>" value="<?php esc_attr_e('SIGN IN TO YOUR ACCOUNT', 'elessi-theme'); ?>" />
+                <button type="submit" class="woocommerce-button button woocommerce-form-login__submit nasa-fullwidth margin-top-10" name="<?php echo esc_attr($nasa_keyLogin); ?>" value="<?php esc_attr_e('SIGN IN TO YOUR ACCOUNT', 'elessi-theme'); ?>"><?php esc_html_e('SIGN IN TO YOUR ACCOUNT', 'elessi-theme'); ?></button>
             </p>
 
             <?php do_action('woocommerce_login_form_end'); ?>
@@ -82,17 +91,23 @@ if (isset($_REQUEST['register'])) {
     <?php if ($nasa_register) : ?>
         <div class="large-12 columns <?php echo esc_attr($prefix); ?>register-form"<?php echo $styleRegister; ?>>
 
-            <h2 class="nasa-form-title"><?php esc_html_e('Great to see you here !', 'elessi-theme'); ?></h2>
+            <h2 class="nasa-form-title">
+                <?php esc_html_e('Great to see you here !', 'elessi-theme'); ?>
+            </h2>
+            
             <form method="post" class="woocommerce-form woocommerce-form-register register">
                 
                 <?php do_action('woocommerce_register_form_start'); ?>
+                
                 <?php if ('no' === get_option('woocommerce_registration_generate_username')) : ?>
 
                     <p class="form-row form-row-wide">
                         <label for="<?php echo esc_attr($nasa_keyRegUsername); ?>" class="left rtl-right">
                             <?php esc_html_e('Username', 'elessi-theme'); ?> <span class="required">*</span>
                         </label>
-                        <input type="text" class="input-text" name="<?php echo esc_attr($nasa_keyUserName); ?>" id="<?php echo esc_attr($nasa_keyRegUsername); ?>" value="<?php echo !empty($_POST[$nasa_keyUserName]) ? esc_attr($_POST[$nasa_keyUserName]) : ''; ?>" />
+                        
+                        <!-- Username -->
+                        <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="<?php echo esc_attr($nasa_keyUserName); ?>" id="<?php echo esc_attr($nasa_keyRegUsername); ?>" autocomplete="username" value="<?php echo (!empty($_POST[$nasa_keyUserName])) ? esc_attr(wp_unslash($_POST[$nasa_keyUserName])) : ''; ?>" />
                     </p>
 
                 <?php endif; ?>
@@ -102,30 +117,39 @@ if (isset($_REQUEST['register'])) {
                         <?php esc_html_e('Email address', 'elessi-theme'); ?> <span class="required">*</span>
                     </label>
                     
-                    <input type="email" class="input-text" name="<?php echo esc_attr($nasa_keyEmail); ?>" id="<?php echo esc_attr($nasa_keyRegEmail); ?>" value="<?php echo !empty($_POST[$nasa_keyEmail]) ? esc_attr($_POST[$nasa_keyEmail]) : ''; ?>" />
+                    <!-- Email -->
+                    <input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="<?php echo esc_attr($nasa_keyEmail); ?>" id="<?php echo esc_attr($nasa_keyRegEmail); ?>" autocomplete="email" value="<?php echo (!empty($_POST[$nasa_keyEmail]) ) ? esc_attr(wp_unslash($_POST[$nasa_keyEmail])) : ''; ?>" />
                 </p>
 
-                <?php if('no' === get_option('woocommerce_registration_generate_password')) : ?>
+                <?php if ('no' === get_option('woocommerce_registration_generate_password')) : ?>
                     <p class="form-row form-row-wide">
                         <label for="<?php echo esc_attr($nasa_keyRegPass); ?>" class="left rtl-right">
                             <?php esc_html_e('Password', 'elessi-theme'); ?> <span class="required">*</span>
                         </label>
-
-                        <input type="password" class="input-text" name="<?php echo esc_attr($nasa_keyPass); ?>" id="<?php echo esc_attr($nasa_keyRegPass); ?>" value="<?php echo !empty($_POST['password']) ? esc_attr($_POST['password']) : ''; ?>" />
+                        
+                        <!-- Password -->
+                        <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="<?php echo esc_attr($nasa_keyPass); ?>" id="<?php echo esc_attr($nasa_keyRegPass); ?>" autocomplete="new-password" />
                     </p>
+                    
                 <?php else : ?>
-                    <p class="form-row form-row-wide"><?php esc_html_e( 'A password will be sent to your email address.', 'elessi-theme' ); ?></p>
+                    
+                    <p class="form-row form-row-wide">
+                        <?php esc_html_e( 'A password will be sent to your email address.', 'elessi-theme' ); ?>
+                    </p>
+                    
                 <?php endif; ?>
 
                 <?php do_action('woocommerce_register_form'); ?>
 
                 <p class="form-row">
                     <?php wp_nonce_field('woocommerce-register', 'woocommerce-register-nonce'); ?>
-                    <input type="submit" class="button" name="<?php echo esc_attr($nasa_keyReg); ?>" value="<?php esc_attr_e('SETUP YOUR ACCOUNT', 'elessi-theme'); ?>" />
+                    
+                    <!-- Submit button -->
+                    <button type="submit" class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit nasa-fullwidth" name="<?php echo esc_attr($nasa_keyReg); ?>" value="<?php esc_attr_e('SETUP YOUR ACCOUNT', 'elessi-theme'); ?>"><?php esc_html_e('SETUP YOUR ACCOUNT', 'elessi-theme'); ?></button>
                 </p>
 
                 <?php do_action('woocommerce_register_form_end'); ?>
-
+                
             </form>
             
             <p class="nasa-switch-form">
@@ -134,6 +158,7 @@ if (isset($_REQUEST['register'])) {
                     <?php esc_html_e('Sign in here', 'elessi-theme'); ?>
                 </a>
             </p>
+            
         </div>
     <?php endif; ?>
 </div>

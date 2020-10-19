@@ -5,24 +5,9 @@
  * @package nasatheme
  */
 
-$nasa_sidebar = isset($nasa_opt['blog_layout']) ? $nasa_opt['blog_layout'] : '';
-
-// Check sidebar
-if (isset($_GET['sidebar'])):
-    switch ($_GET['sidebar']) :
-        case 'right' :
-            $nasa_sidebar = 'right';
-            break;
-        
-        case 'no' :
-            $nasa_sidebar = 'no';
-            break;
-        
-        case 'left' :
-        default:
-            $nasa_sidebar = 'left';
-            break;
-    endswitch;
+$nasa_sidebar = isset($nasa_opt['blog_layout']) ? $nasa_opt['blog_layout'] : 'left';
+if (!is_active_sidebar('blog-sidebar')) :
+    $nasa_sidebar = 'no';
 endif;
 
 $hasSidebar = true;
@@ -45,16 +30,26 @@ switch ($nasa_sidebar):
         break;
 endswitch;
 
-$class_wrap = 'container-wrap';
-$class_wrap .= $nasa_sidebar ? ' page-' . $nasa_sidebar . '-sidebar' : ' page-left-sidebar';
+if (isset($nasa_opt['nasa_in_mobile']) && $nasa_opt['nasa_in_mobile']) :
+    $attr .= ' nasa-blog-in-mobile';
+endif;
+
+$class_wrap = 'container-wrap mobile-padding-top-10 page-' . $nasa_sidebar . '-sidebar';
 
 get_header();
+
+/**
+ * Hook: nasa_before_archive_blog.
+ */
+do_action('nasa_before_archive_blogs');
 ?>
 
 <div class="<?php echo esc_attr($class_wrap); ?>">
-    <?php if($hasSidebar):?>
+    <?php if ($hasSidebar):?>
         <div class="div-toggle-sidebar nasa-blog-sidebar center">
-            <a class="toggle-sidebar" href="javascript:void(0);"><i class="fa fa-bars"></i> <?php esc_html_e('Sidebar', 'elessi-theme');?></a>
+            <a class="toggle-sidebar" href="javascript:void(0);">
+                <i class="fa fa-bars"></i>
+            </a>
         </div>
     <?php endif;?>
         
@@ -69,8 +64,11 @@ get_header();
             </div>
         </div>
 
-        <?php if($nasa_sidebar != 'no'):?>
+        <?php if ($nasa_sidebar != 'no'):?>
             <div class="large-3 columns <?php echo ($left) ? 'left' : 'right'; ?> col-sidebar">
+                <a href="javascript:void(0);" title="<?php echo esc_attr__('Close', 'elessi-theme'); ?>" class="hidden-tag nasa-close-sidebar">
+                    <?php echo esc_html__('Close', 'elessi-theme'); ?>
+                </a>
                 <?php get_sidebar(); ?>
             </div>
         <?php endif;?>

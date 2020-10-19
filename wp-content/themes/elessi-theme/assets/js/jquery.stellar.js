@@ -1,3 +1,12 @@
+/*!
+ * Stellar.js v0.6.2
+ * http://markdalgleish.com/projects/stellar.js
+ * 
+ * Copyright 2013, Mark Dalgleish
+ * This content is released under the MIT license
+ * http://markdalgleish.mit-license.org
+ */
+
 ;(function ($, window, document, undefined) {
 
     var pluginName = 'stellar',
@@ -27,6 +36,7 @@
                 setLeft: function ($elem, val) {
                     $elem.scrollLeft(val);
                 },
+
                 getTop: function ($elem) {
                     return $elem.scrollTop();
                 },
@@ -79,9 +89,9 @@
         // Returns a function which adds a vendor prefix to any CSS property name
         vendorPrefix = (function () {
             var prefixes = /^(Moz|Webkit|Khtml|O|ms|Icab)(?=[A-Z])/,
-                    style = $('script')[0].style,
-                    prefix = '',
-                    prop;
+                style = $('script')[0].style,
+                prefix = '',
+                prop;
 
             for (prop in style) {
                 if (prefixes.test(prop)) {
@@ -173,7 +183,7 @@
         },
         _defineGetters: function () {
             var self = this,
-                    scrollPropertyAdapter = scrollProperty[self.options.scrollProperty];
+                scrollPropertyAdapter = scrollProperty[self.options.scrollProperty];
 
             this._getScrollLeft = function () {
                 return scrollPropertyAdapter.getLeft(self.$scrollElement);
@@ -185,10 +195,10 @@
         },
         _defineSetters: function () {
             var self = this,
-                    scrollPropertyAdapter = scrollProperty[self.options.scrollProperty],
-                    positionPropertyAdapter = positionProperty[self.options.positionProperty],
-                    setScrollLeft = scrollPropertyAdapter.setLeft,
-                    setScrollTop = scrollPropertyAdapter.setTop;
+                scrollPropertyAdapter = scrollProperty[self.options.scrollProperty],
+                positionPropertyAdapter = positionProperty[self.options.positionProperty],
+                setScrollLeft = scrollPropertyAdapter.setLeft,
+                setScrollTop = scrollPropertyAdapter.setTop;
 
             this._setScrollLeft = (typeof setScrollLeft === 'function' ? function (val) {
                 setScrollLeft(self.$scrollElement, val);
@@ -211,7 +221,7 @@
         },
         _handleWindowLoadAndResize: function () {
             var self = this,
-                    $window = $(window);
+                $window = $(window);
 
             if (self.options.responsive) {
                 $window.bind('load.' + this.name, function () {
@@ -388,88 +398,82 @@
             }
 
             $backgroundElements.each(function () {
-                var $this = $(this);
-                
-                if(!$this.hasClass('nasa-stellared')) {
-                    
-                    $this.addClass('nasa-stellared');
+                var $this = $(this),
+                    backgroundPosition = getBackgroundPosition($this),
+                    horizontalOffset,
+                    verticalOffset,
+                    positionLeft,
+                    positionTop,
+                    marginLeft,
+                    marginTop,
+                    offsetLeft,
+                    offsetTop,
+                    $offsetParent,
+                    parentOffsetLeft = 0,
+                    parentOffsetTop = 0,
+                    tempParentOffsetLeft = 0,
+                    tempParentOffsetTop = 0;
 
-                    var backgroundPosition = getBackgroundPosition($this),
-                        horizontalOffset,
-                        verticalOffset,
-                        positionLeft,
-                        positionTop,
-                        marginLeft,
-                        marginTop,
-                        offsetLeft,
-                        offsetTop,
-                        $offsetParent,
-                        parentOffsetLeft = 0,
-                        parentOffsetTop = 0,
-                        tempParentOffsetLeft = 0,
-                        tempParentOffsetTop = 0;
-
-                    // Ensure this element isn't already part of another scrolling element
-                    if (!$this.data('stellar-backgroundIsActive')) {
-                        $this.data('stellar-backgroundIsActive', this);
-                    } else if ($this.data('stellar-backgroundIsActive') !== this) {
-                        return;
-                    }
-
-                    // Save/restore the original top and left CSS values in case we destroy the instance
-                    if (!$this.data('stellar-backgroundStartingLeft')) {
-                        $this.data('stellar-backgroundStartingLeft', backgroundPosition[0]);
-                        $this.data('stellar-backgroundStartingTop', backgroundPosition[1]);
-                    } else {
-                        setBackgroundPosition($this, $this.data('stellar-backgroundStartingLeft'), $this.data('stellar-backgroundStartingTop'));
-                    }
-
-                    // Catch-all for margin top/left properties (these evaluate to 'auto' in IE7 and IE8)
-                    marginLeft = ($this.css('margin-left') === 'auto') ? 0 : parseInt($this.css('margin-left'), 10);
-                    marginTop = ($this.css('margin-top') === 'auto') ? 0 : parseInt($this.css('margin-top'), 10);
-
-                    offsetLeft = $this.offset().left - marginLeft - scrollLeft;
-                    offsetTop = $this.offset().top - marginTop - scrollTop;
-
-                    // Calculate the offset parent
-                    $this.parents().each(function () {
-                        var $this = $(this);
-
-                        if ($this.data('stellar-offset-parent') === true) {
-                            parentOffsetLeft = tempParentOffsetLeft;
-                            parentOffsetTop = tempParentOffsetTop;
-                            $offsetParent = $this;
-
-                            return false;
-                        } else {
-                            tempParentOffsetLeft += $this.position().left;
-                            tempParentOffsetTop += $this.position().top;
-                        }
-                    });
-
-                    // Detect the offsets
-                    horizontalOffset = ($this.data('stellar-horizontal-offset') !== undefined ? $this.data('stellar-horizontal-offset') : ($offsetParent !== undefined && $offsetParent.data('stellar-horizontal-offset') !== undefined ? $offsetParent.data('stellar-horizontal-offset') : self.horizontalOffset));
-                    verticalOffset = ($this.data('stellar-vertical-offset') !== undefined ? $this.data('stellar-vertical-offset') : ($offsetParent !== undefined && $offsetParent.data('stellar-vertical-offset') !== undefined ? $offsetParent.data('stellar-vertical-offset') : self.verticalOffset));
-
-                    self.backgrounds.push({
-                        $element: $this,
-                        $offsetParent: $offsetParent,
-                        isFixed: $this.css('background-attachment') === 'fixed',
-                        horizontalOffset: horizontalOffset,
-                        verticalOffset: verticalOffset,
-                        startingValueLeft: backgroundPosition[0],
-                        startingValueTop: backgroundPosition[1],
-                        startingBackgroundPositionLeft: (isNaN(parseInt(backgroundPosition[0], 10)) ? 0 : parseInt(backgroundPosition[0], 10)),
-                        startingBackgroundPositionTop: (isNaN(parseInt(backgroundPosition[1], 10)) ? 0 : parseInt(backgroundPosition[1], 10)),
-                        startingPositionLeft: $this.position().left,
-                        startingPositionTop: $this.position().top,
-                        startingOffsetLeft: offsetLeft,
-                        startingOffsetTop: offsetTop,
-                        parentOffsetLeft: parentOffsetLeft,
-                        parentOffsetTop: parentOffsetTop,
-                        stellarRatio: ($this.data('stellar-background-ratio') === undefined ? 1 : $this.data('stellar-background-ratio'))
-                    });
+                // Ensure this element isn't already part of another scrolling element
+                if (!$this.data('stellar-backgroundIsActive')) {
+                    $this.data('stellar-backgroundIsActive', this);
+                } else if ($this.data('stellar-backgroundIsActive') !== this) {
+                    return;
                 }
+
+                // Save/restore the original top and left CSS values in case we destroy the instance
+                if (!$this.data('stellar-backgroundStartingLeft')) {
+                    $this.data('stellar-backgroundStartingLeft', backgroundPosition[0]);
+                    $this.data('stellar-backgroundStartingTop', backgroundPosition[1]);
+                } else {
+                    setBackgroundPosition($this, $this.data('stellar-backgroundStartingLeft'), $this.data('stellar-backgroundStartingTop'));
+                }
+
+                // Catch-all for margin top/left properties (these evaluate to 'auto' in IE7 and IE8)
+                marginLeft = ($this.css('margin-left') === 'auto') ? 0 : parseInt($this.css('margin-left'), 10);
+                marginTop = ($this.css('margin-top') === 'auto') ? 0 : parseInt($this.css('margin-top'), 10);
+
+                offsetLeft = $this.offset().left - marginLeft - scrollLeft;
+                offsetTop = $this.offset().top - marginTop - scrollTop;
+
+                // Calculate the offset parent
+                $this.parents().each(function () {
+                    var $this = $(this);
+
+                    if ($this.data('stellar-offset-parent') === true) {
+                        parentOffsetLeft = tempParentOffsetLeft;
+                        parentOffsetTop = tempParentOffsetTop;
+                        $offsetParent = $this;
+
+                        return false;
+                    } else {
+                        tempParentOffsetLeft += $this.position().left;
+                        tempParentOffsetTop += $this.position().top;
+                    }
+                });
+
+                // Detect the offsets
+                horizontalOffset = ($this.data('stellar-horizontal-offset') !== undefined ? $this.data('stellar-horizontal-offset') : ($offsetParent !== undefined && $offsetParent.data('stellar-horizontal-offset') !== undefined ? $offsetParent.data('stellar-horizontal-offset') : self.horizontalOffset));
+                verticalOffset = ($this.data('stellar-vertical-offset') !== undefined ? $this.data('stellar-vertical-offset') : ($offsetParent !== undefined && $offsetParent.data('stellar-vertical-offset') !== undefined ? $offsetParent.data('stellar-vertical-offset') : self.verticalOffset));
+
+                self.backgrounds.push({
+                    $element: $this,
+                    $offsetParent: $offsetParent,
+                    isFixed: $this.css('background-attachment') === 'fixed',
+                    horizontalOffset: horizontalOffset,
+                    verticalOffset: verticalOffset,
+                    startingValueLeft: backgroundPosition[0],
+                    startingValueTop: backgroundPosition[1],
+                    startingBackgroundPositionLeft: (isNaN(parseInt(backgroundPosition[0], 10)) ? 0 : parseInt(backgroundPosition[0], 10)),
+                    startingBackgroundPositionTop: (isNaN(parseInt(backgroundPosition[1], 10)) ? 0 : parseInt(backgroundPosition[1], 10)),
+                    startingPositionLeft: $this.position().left,
+                    startingPositionTop: $this.position().top,
+                    startingOffsetLeft: offsetLeft,
+                    startingOffsetTop: offsetTop,
+                    parentOffsetLeft: parentOffsetLeft,
+                    parentOffsetTop: parentOffsetTop,
+                    stellarRatio: ($this.data('stellar-background-ratio') === undefined ? 1 : $this.data('stellar-background-ratio'))
+                });
             });
         },
         _reset: function () {
@@ -509,7 +513,7 @@
         },
         _setOffsets: function () {
             var self = this,
-                    $window = $(window);
+                $window = $(window);
 
             $window.unbind('resize.horizontal-' + this.name).unbind('resize.vertical-' + this.name);
 
@@ -616,7 +620,7 @@
         },
         _handleScrollEvent: function () {
             var self = this,
-                ticking = false;
+                    ticking = false;
 
             var update = function () {
                 self._repositionElements();
@@ -677,3 +681,17 @@
     // Expose the plugin class so it can be modified
     window.Stellar = Plugin;
 }(jQuery, this, document));
+
+jQuery(document).ready(function($){
+    "use strict";
+
+    if ($('.nasa-parallax-stellar').length) {
+        $(window).stellar();
+    }
+
+    $('body').on('nasa_parallax_breadcrum', function() {
+        if ($('.nasa-parallax-stellar').length) {
+            $(window).stellar('refresh');
+        }
+    });
+});

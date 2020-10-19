@@ -40,7 +40,7 @@ if(!defined('ABSPATH')) exit();
 				<div class="form_inner_header"><i class="material-icons">timelapse</i><?php _e('Progress Bar', 'revslider');?></div>
 				<div class="on_off_navig_wrap"><input type="checkbox"  id="sr_pb_set" class="sliderinput easyinit" data-evt="sliderProgressUpdate" data-r="general.progressbar.set" data-showhide="#slider_pb_settings, #slider_pb_settings_arrow" data-showhidedep="true"/></div>
 				<div id="slider_pb_settings" class="collapsable" style="display:block">
-					<label_a><?php _e('Based On', 'revslider');?></label_a><select data-evt="sliderProgressUpdate" id="sr_pb_basedon" data-show=".progressgaps_*val*" data-hide=".progressgaps" class="sliderinput tos2 nosearchbox easyinit"  data-r="general.progressbar.basedon"><option value="slide"><?php _e('Current Slide Progress', 'revslider');?></option><option value="module"><?php _e('Module Progress', 'revslider');?></option></select><span class="linebreak"></span>
+					<label_a><?php _e('Based On', 'revslider');?></label_a><select data-evt="sliderProgressUpdate" id="sr_pb_basedon" data-show=".progressgaps_*val*" data-hide=".progressgaps" class="sliderinput tos2 nosearchbox easyinit"  data-r="general.progressbar.basedon"><option value="slide"><?php _e('Current Slide Progress', 'revslider');?></option><option value="module"><?php _e('Module Progress', 'revslider');?></option></select><span class="linebreak"></span>					
 					<label_a><?php _e('Style', 'revslider');?></label_a><select data-evt="sliderProgressUpdate" id="sr_pb_style" class="sliderinput tos2 nosearchbox easyinit"  data-r="general.progressbar.style" data-show=".progressoffsets_*val*" data-hide=".progressoffsets"><option value="horizontal"><?php _e('Horizontal', 'revslider');?></option><option value="vertical"><?php _e('Vertical', 'revslider');?></option><option value="cw"><?php _e('Circle CW', 'revslider');?></option><option value="ccw"><?php _e('Circle CCW', 'revslider');?></option></select><span class="linebreak"></span>
 					<div class="progressoffsets progressoffsets_horizontal progressoffsets_vertical">
 						<div class="progressgaps progressgaps_module">
@@ -54,9 +54,16 @@ if(!defined('ABSPATH')) exit();
 					<div class="div5"></div>										
 					<label_a><?php _e('Progress Bar', 'revslider');?></label_a><input type="text" data-editing="Progressbar Color" data-evt="sliderProgressUpdate" name="sliderprogresscolor" data-visible="true" id="sliderprogresscolor" class="my-color-field sliderinput" data-r="general.progressbar.color" value="transparent">
 					<label_a><?php _e('Background', 'revslider');?></label_a><input type="text" data-editing="Progressbar Color BG" data-evt="sliderProgressUpdate" name="sliderprogresscolorbg" data-visible="true" id="sliderprogresscolorbg" class="my-color-field sliderinput" data-r="general.progressbar.bgcolor" value="transparent">
+					<div class="div5"></div>
+					<label_a>Aligned by</label_a>
+					<div class="radiooption">
+						<div><input class="sliderinput easyinit" data-evt="sliderProgressUpdate" type="radio" value="slider" name="sr_pr_alignscene" data-r="general.progressbar.alignby"><label_sub>Module Dimension</label_sub></div>
+						<div><input class="sliderinput easyinit" data-evt="sliderProgressUpdate" type="radio" value="grid" name="sr_pr_alignscene" data-r="general.progressbar.alignby"><label_sub>Content</label_sub></div>
+					</div>
+					<div class="div20"></div>
 					<div class="div5"></div>					
 					<select style="display:none" id="sr_progbaralignrhor" data-evt="sliderProgressUpdate" data-evtparam="progressbar" data-unselect=".progressbar_selector" data-select="#progressbar_selector_*val*-*RVAL*" data-rval="settings.general.progressbar.vertical" class="sliderinput easyinit" data-r="general.progressbar.horizontal" data-triggerinp="#generalprogressbaroffsetx" data-triggerinpval="0"><option value="left"><?php _e('Left', 'revslider');?></option><option value="center"><?php _e('Center', 'revslider');?></option><option value="right"><?php _e('Right', 'revslider');?></option></select>
-					<select style="display:none" id="sr_progbaralignrver" data-evt="sliderProgressUpdate" data-evtparam="progressbar" data-unselect=".progressbar_selector" data-select="#progressbar_selector_*RVAL*-*val*" data-rval="settings.general.progressbar.horizontal" class="sliderinput easyinit" data-r="general.progressbar.vertical" data-triggerinp="#generalprogressbaroffsety"  data-triggerinpval="0"><option value="top"><?php _e('Top', 'revslider');?></option><option value="center"><?php _e('Center', 'revslider');?></option><option value="bottom"><?php _e('Bottom', 'revslider');?></option></select>
+					<select style="display:none" id="sr_progbaralignrver" data-evt="sliderProgressUpdate" data-evtparam="progressbar" data-unselect=".progressbar_selector" data-select="#progressbar_selector_*RVAL*-*val*" data-rval="settings.general.progressbar.horizontal" class="sliderinput easyinit" data-r="general.progressbar.vertical" data-triggerinp="#generalprogressbaroffsety"  data-triggerinpval="0"><option value="top"><?php _e('Top', 'revslider');?></option><option value="center"><?php _e('Center', 'revslider');?></option><option value="bottom"><?php _e('Bottom', 'revslider');?></option></select>					
 					<row class="direktrow">
 						<onelong>
 							<label_a><?php _e('Aligment', 'revslider');?></label_a>

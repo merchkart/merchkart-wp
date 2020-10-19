@@ -10,17 +10,33 @@
 if (!defined('ABSPATH')){
     exit; // Exit if accessed directly
 }
+
 global $nasa_opt, $wp_query;
+
+/**
+ * Override cat side-bar layout
+ */
+$rootCatId = elessi_get_root_term_id();
+if ($rootCatId) {
+    $sidebar_style = get_term_meta($rootCatId, 'cat_sidebar_layout', true);
+    if ($sidebar_style != '') {
+        $nasa_opt['category_sidebar'] = $sidebar_style;
+    }
+}
 
 $typeView = !isset($nasa_opt['products_type_view']) ?
     'grid' : ($nasa_opt['products_type_view'] == 'list' ? 'list' : 'grid');
 
 $nasa_opt['products_per_row'] = isset($nasa_opt['products_per_row']) && (int) $nasa_opt['products_per_row'] ?
     (int) $nasa_opt['products_per_row'] : 4;
-$nasa_opt['products_per_row'] = $nasa_opt['products_per_row'] > 5 || $nasa_opt['products_per_row'] < 3 ? 4 : $nasa_opt['products_per_row'];
+$nasa_opt['products_per_row'] = $nasa_opt['products_per_row'] > 6 || $nasa_opt['products_per_row'] < 2 ? 4 : $nasa_opt['products_per_row'];
+
 $nasa_change_view = !isset($nasa_opt['enable_change_view']) || $nasa_opt['enable_change_view'] ? true : false;
+$grid_cookie_name = 'archive_grid_view';
+$siteurl = get_option('siteurl');
+$grid_cookie_name .= $siteurl ? '_' . md5($siteurl) : '';
 $typeShow = $typeView == 'grid' ? ($typeView . '-' . ((int) $nasa_opt['products_per_row'])) : 'list';
-$typeShow = $nasa_change_view && isset($_COOKIE['gridcookie']) ? $_COOKIE['gridcookie'] : $typeShow;
+$typeShow = $nasa_change_view && isset($_COOKIE[$grid_cookie_name]) ? $_COOKIE[$grid_cookie_name] : $typeShow;
 
 $nasa_cat_obj = $wp_query->get_queried_object();
 $nasa_term_id = 0;
@@ -32,43 +48,17 @@ if (isset($nasa_cat_obj->term_id) && isset($nasa_cat_obj->taxonomy)) {
     $nasa_href_page = esc_url(get_term_link($nasa_cat_obj, $nasa_type_page));
 }
 
-$nasa_description = elessi_term_description($nasa_term_id, $nasa_type_page);
+$nasa_ajax_product = true;
+if ((isset($nasa_opt['disable_ajax_product']) && $nasa_opt['disable_ajax_product']) || get_option('woocommerce_shop_page_display', '') != '' || get_option('woocommerce_category_archive_display', '') != '') :
+    $nasa_ajax_product = false;
+endif;
+defined('NASA_AJAX_SHOP') or define('NASA_AJAX_SHOP', $nasa_ajax_product);
+
 $nasa_sidebar = isset($nasa_opt['category_sidebar']) ? $nasa_opt['category_sidebar'] : 'left-classic';
 $nasa_has_get_sidebar = false;
 
-if (isset($_REQUEST['sidebar'])):
+if (isset($_REQUEST['sidebar']) && defined('NASATHEME_DEMO') && NASATHEME_DEMO):
     $nasa_has_get_sidebar = true;
-
-    switch ($_REQUEST['sidebar']) :
-        case 'left' :
-            $nasa_sidebar = 'left';
-            break;
-        
-        case 'right' :
-            $nasa_sidebar = 'right';
-            break;
-        
-        case 'right-classic' :
-            $nasa_sidebar = 'right-classic';
-            break;
-        
-        case 'no' :
-            $nasa_sidebar = 'no';
-            break;
-        
-        case 'top' :
-            $nasa_sidebar = 'top';
-            break;
-        
-        case 'top-2' :
-            $nasa_sidebar = 'top-2';
-            break;
-        
-        case 'left-classic' :
-        default:
-            $nasa_sidebar = 'left-classic';
-            break;
-    endswitch;
 endif;
 
 $hasSidebar = true;
@@ -76,6 +66,7 @@ $topSidebar = false;
 $topSidebar2 = false;
 $topbarWrap_class = 'row filters-container nasa-filter-wrap';
 $attr = 'nasa-products-page-wrap ';
+$class_wrap_archive = 'row fullwidth category-page';
 switch ($nasa_sidebar):
     case 'right':
     case 'left':
@@ -84,6 +75,7 @@ switch ($nasa_sidebar):
     
     case 'right-classic':
         $attr .= 'large-9 columns left has-sidebar';
+        $class_wrap_archive .= ' nasa-with-sidebar-classic';
         break;
     
     case 'no':
@@ -96,6 +88,7 @@ switch ($nasa_sidebar):
         $topSidebar = true;
         $topbarWrap_class .= ' top-bar-wrap-type-1';
         $attr .= 'large-12 columns no-sidebar top-sidebar';
+        $class_wrap_archive .= ' nasa-top-sidebar-style';
         break;
     
     case 'top-2':
@@ -108,30 +101,25 @@ switch ($nasa_sidebar):
     case 'left-classic':
     default :
         $attr .= 'large-9 columns right has-sidebar';
+        $class_wrap_archive .= ' nasa-with-sidebar-classic';
         break;
 endswitch;
 
 $nasa_recom_pos = isset($nasa_opt['recommend_product_position']) ? $nasa_opt['recommend_product_position'] : 'bot';
 
 $layout_style = '';
-if(
-    (isset($_REQUEST['layout-style']) && $_REQUEST['layout-style'] == 'masonry') ||
-    (isset($nasa_opt['products_layout_style']) && $nasa_opt['products_layout_style'] == 'masonry-isotope')
-) :
+if (isset($nasa_opt['products_layout_style']) && $nasa_opt['products_layout_style'] == 'masonry-isotope') :
     $layout_style = ' nasa-products-masonry-isotope';
+    $layout_style .= isset($nasa_opt['products_masonry_mode']) ? ' nasa-mode-' . $nasa_opt['products_masonry_mode'] : '';
 endif;
 
 get_header('shop');
 ?>
-
-<div class="row fullwidth category-page">
+<div class="<?php echo esc_attr($class_wrap_archive); ?>">
     <?php do_action('woocommerce_before_main_content'); ?>
     
-    <div class="nasa_shop_description-wrap">
-        <span id="position-nasa-cat-header" class="hidden-tag"></span>
+    <div class="nasa_shop_description-wrap large-12 columns">
         <?php
-        echo elessi_get_cat_header($nasa_term_id);
-        
         /**
          * Hook: woocommerce_archive_description.
          *
@@ -139,13 +127,15 @@ get_header('shop');
          * @hooked woocommerce_product_archive_description - 10
          */
         do_action('woocommerce_archive_description');
-        
-        if($nasa_description != '') : ?>
-            <div class="large-12 columns nasa_shop_description padding-top-20 text-justify">
-                <?php echo $nasa_description; ?>
-            </div>
-        <?php endif; ?>
+        ?>
     </div>
+    
+    <?php
+    /**
+     * Hook: nasa_before_archive_products.
+     */
+    do_action('nasa_before_archive_products');
+    ?>
     
     <div class="large-12 columns">
         <div class="<?php echo esc_attr($topbarWrap_class); ?>">
@@ -153,10 +143,10 @@ get_header('shop');
             /**
              * Top Side bar Type 1
              */
-            if($topSidebar) :
+            if ($topSidebar) :
                 $topSidebar_wrap = $nasa_change_view ? 'large-10 ' : 'large-12 ';
 
-                if(!isset($nasa_opt['showing_info_top']) || $nasa_opt['showing_info_top']) :
+                if (!isset($nasa_opt['showing_info_top']) || $nasa_opt['showing_info_top']) :
                     echo '<div class="showing_info_top hidden-tag">';
                     do_action('nasa_shop_category_count');
                     echo '</div>';
@@ -174,7 +164,7 @@ get_header('shop');
                                 <a class="toggle-topbar-shop-mobile hidden-tag" href="javascript:void(0);">
                                     <i class="pe-7s-filter"></i><?php echo esc_attr__('&nbsp;Filters', 'elessi-theme'); ?>
                                 </a>
-                                <span class="nasa-labels-filter-accordion hidden-tag"></span>
+                                <span class="nasa-labels-filter-accordion"></span>
                             </div>
                         </div>
                         
@@ -191,16 +181,21 @@ get_header('shop');
                     </div>
                 </div>
                 
-                <?php if($nasa_change_view) : ?>
+                <?php if ($nasa_change_view) : ?>
                     <div class="large-2 columns nasa-topbar-change-view-wrap">
-                        <?php /* Change view ICONS */
+                        <?php
+                        /**
+                         * Change view ICONS
+                         */
                         $type_sidebar = (!isset($nasa_opt['top_bar_cat_pos']) || $nasa_opt['top_bar_cat_pos'] == 'left-bar') ? 'top-push-cat' : 'no';
                         do_action('nasa_change_view', $nasa_change_view, $typeShow, $type_sidebar); ?>
                     </div>
                 <?php endif; ?>
 
                 <?php
-                /* Sidebar TOP */
+                /**
+                 * Sidebar TOP
+                 */
                 do_action('nasa_top_sidebar_shop');
                 
             /**
@@ -217,17 +212,17 @@ get_header('shop');
                         </div>
                         
                         <div class="large-4 columns nasa-topbar-change-view-wrap hide-for-medium hide-for-small text-center rtl-right">
-                            <?php if($nasa_change_view) : ?>
-                                <?php /* Change view ICONS */
+                            <?php if ($nasa_change_view) : ?>
+                                <?php
+                                /**
+                                 * Change view ICONS
+                                 */
                                 do_action('nasa_change_view', $nasa_change_view, $typeShow); ?>
                             <?php endif; ?>
                         </div>
                         
                         <div class="large-4 medium-6 small-6 columns nasa-sort-by-action nasa-clear-none text-right rtl-text-left">
                             <ul class="sort-bar nasa-float-none margin-top-0">
-                                <li class="sort-bar-text nasa-order-label hidden-tag">
-                                    <?php esc_html_e('Sort by: ', 'elessi-theme'); ?>
-                                </li>
                                 <li class="nasa-filter-order filter-order">
                                     <?php do_action('woocommerce_before_shop_loop'); ?>
                                 </li>
@@ -248,13 +243,16 @@ get_header('shop');
                 <div class="large-4 medium-6 small-6 columns nasa-toggle-layout-side-sidebar">
                     <div class="li-toggle-sidebar">
                         <a class="toggle-sidebar-shop" href="javascript:void(0);">
-                            <i class="pe-7s-filter"></i><?php esc_html_e('Filters', 'elessi-theme'); ?>
+                            <i class="pe-7s-filter"></i><?php esc_html_e('&nbsp;Filters', 'elessi-theme'); ?>
                         </a>
                     </div>
                 </div>
                 
-                <div class="large-4 columns hide-for-medium hide-for-small nasa-change-view-layout-side-sidebar">
-                    <?php /* Change view ICONS */
+                <div class="large-4 columns hide-for-medium hide-for-small nasa-change-view-layout-side-sidebar nasa-min-height">
+                    <?php
+                    /**
+                     * Change view ICONS
+                     */
                     do_action('nasa_change_view', $nasa_change_view, $typeShow); ?>
                 </div>
             
@@ -274,25 +272,33 @@ get_header('shop');
              * No | left-classic | right-classic side bar
              */
             else : ?>
-                <div class="large-4 columns hide-for-small">
+                <div class="large-4 medium-6 columns hide-for-small text-left">
                     <?php
-                        if(!isset($nasa_opt['showing_info_top']) || $nasa_opt['showing_info_top']) :
-                            echo '<div class="showing_info_top">';
-                            do_action('nasa_shop_category_count');
-                            echo '</div>';
+                        $toggle_sidebar = !isset($nasa_opt['toggle_sidebar_classic']) || $nasa_opt['toggle_sidebar_classic'] ? true : false;
+                        if (!$toggle_sidebar) :
+                            if (!isset($nasa_opt['showing_info_top']) || $nasa_opt['showing_info_top']) :
+                                echo '<div class="showing_info_top">';
+                                do_action('nasa_shop_category_count');
+                                echo '</div>';
+                            else :
+                                echo '&nbsp;';
+                            endif;
                         else :
-                            echo '&nbsp;';
+                            echo '<a href="javascript:void(0);" class="nasa-toogle-sidebar-classic nasa-hide-in-mobile rtl-text-right">' . esc_html__('Filters', 'elessi-theme') . '</a>';
                         endif;
                     ?>
                 </div>
                 
-                <div class="large-4 columns hide-for-medium hide-for-small nasa-change-view-layout-side-sidebar">
-                    <?php /* Change view ICONS */
+                <div class="large-4 columns hide-for-medium hide-for-small nasa-change-view-layout-side-sidebar nasa-min-height">
+                    <?php
+                    /**
+                     * Change view ICONS
+                     */
                     do_action('nasa_change_view', $nasa_change_view, $typeShow, $nasa_sidebar);
                     ?>
                 </div>
             
-                <div class="large-4 medium-12 small-12 columns nasa-sort-bar-layout-side-sidebar">
+                <div class="large-4 medium-6 small-12 columns nasa-clear-none nasa-sort-bar-layout-side-sidebar">
                     <ul class="sort-bar">
                         <?php if ($hasSidebar): ?>
                             <li class="li-toggle-sidebar">
@@ -315,24 +321,24 @@ get_header('shop');
     </div>
     
     <div class="nasa-archive-product-content">
-        <?php if($topSidebar && (!isset($nasa_opt['top_bar_cat_pos']) || $nasa_opt['top_bar_cat_pos'] == 'left-bar')) :
+        <?php if ($topSidebar && (!isset($nasa_opt['top_bar_cat_pos']) || $nasa_opt['top_bar_cat_pos'] == 'left-bar')) :
             $attr .= ' nasa-has-push-cat';
             $class_cat_top = 'nasa-push-cat-filter';
-            if(isset ($_REQUEST['push_cat_filter']) && $_REQUEST['push_cat_filter']) :
+            if (isset($_REQUEST['push_cat_filter']) && $_REQUEST['push_cat_filter']) :
                 $class_cat_top .= ' nasa-push-cat-show';
                 $attr .= ' nasa-push-cat-show';
-            endif;
-            ?>
+            endif; ?>
+            
             <div class="<?php echo esc_attr($class_cat_top); ?>"></div>
         <?php endif; ?>
         
         <div class="<?php echo esc_attr($attr); ?>">
 
-            <?php if(!isset($nasa_opt['disable_ajax_product_progress_bar']) || $nasa_opt['disable_ajax_product_progress_bar'] != 1) : ?>
+            <?php if (!isset($nasa_opt['disable_ajax_product_progress_bar']) || $nasa_opt['disable_ajax_product_progress_bar'] != 1) : ?>
                 <div class="nasa-progress-bar-load-shop"><div class="nasa-progress-per"></div></div>
             <?php endif; ?>
 
-            <?php if($nasa_recom_pos !== 'bot' && defined('NASA_CORE_ACTIVED') && NASA_CORE_ACTIVED) : ?>
+            <?php if ($nasa_recom_pos !== 'bot' && defined('NASA_CORE_ACTIVED') && NASA_CORE_ACTIVED) : ?>
                 <span id="position-nasa-recommend-product" class="hidden-tag"></span>
                 <?php do_action('nasa_recommend_product', $nasa_term_id); ?>
             <?php endif; ?>
@@ -340,8 +346,10 @@ get_header('shop');
             <div class="nasa-archive-product-warp<?php echo esc_attr($layout_style); ?>">
                 <?php
                 if (woocommerce_product_loop()) :
-                    // Content products in shop
-                    if(NASA_WOO_ACTIVED && version_compare(WC()->version, '3.3.0', "<")) :
+                    /**
+                     * Content products in shop
+                     */
+                    if (NASA_WOO_ACTIVED && version_compare(WC()->version, '3.3.0', "<")) :
                         do_action('nasa_archive_get_sub_categories');
                     endif;
                     
@@ -349,27 +357,32 @@ get_header('shop');
                     do_action('nasa_get_content_products', $nasa_sidebar);
                     woocommerce_product_loop_end();
                 else :
-                    echo '<div class="row"><div class="large-12 columns">';
+                    echo '<div class="row"><div class="large-12 columns nasa-archive-no-result">';
                     do_action('woocommerce_no_products_found');
                     echo '</div></div>';
                 endif;
                 ?>
             </div>
 
-            <div class="row nasa-paginations-warp filters-container-down">
-                <?php
-                // Pagination -->
-                do_action('woocommerce_after_shop_loop');
-                ?>
-            </div>
+            <?php
+            /**
+             * Hook: woocommerce_after_shop_loop.
+             *
+             * @hooked woocommerce_pagination - 10
+             */
+            do_action('woocommerce_after_shop_loop');
+            ?>
 
-            <?php if($nasa_recom_pos == 'bot' && defined('NASA_CORE_ACTIVED') && NASA_CORE_ACTIVED) :?>
+            <?php if ($nasa_recom_pos == 'bot' && defined('NASA_CORE_ACTIVED') && NASA_CORE_ACTIVED) :?>
                 <span id="position-nasa-recommend-product" class="hidden-tag"></span>
                 <?php do_action('nasa_recommend_product', $nasa_term_id); ?>
             <?php endif; ?>
         </div>
 
-        <?php /* Sidebar LEFT | RIGHT */
+        <?php
+        /**
+         * Sidebar LEFT | RIGHT
+         */
         if ($hasSidebar && !$topSidebar && !$topSidebar2) :
             do_action('nasa_sidebar_shop', $nasa_sidebar);
         endif;
@@ -380,24 +393,33 @@ get_header('shop');
 </div>
 
 <?php
-$disable_ajax_product = false;
-if((isset($nasa_opt['disable_ajax_product']) && $nasa_opt['disable_ajax_product']) || get_option('woocommerce_shop_page_display', '') != '' || get_option('woocommerce_category_archive_display', '') != '') :
-    $disable_ajax_product = true;
-endif;
-
-if(!$disable_ajax_product) : ?>
+if ($nasa_ajax_product) :
+    $default_sort = get_option('woocommerce_default_catalog_orderby', 'menu_order');
+    ?>
     <div class="nasa-has-filter-ajax hidden-tag">
-        <div class="current-cat hidden-tag">
-            <a data-id="<?php echo (int) $nasa_term_id; ?>" href="<?php echo esc_url($nasa_href_page); ?>" class="nasa-filter-by-cat" id="nasa-hidden-current-cat" data-taxonomy="<?php echo esc_attr($nasa_type_page); ?>" data-sidebar="<?php echo esc_attr($nasa_sidebar); ?>"></a>
+        <div class="current-tax-item hidden-tag">
+            <a data-id="<?php echo (int) $nasa_term_id; ?>" href="<?php echo esc_url($nasa_href_page); ?>" class="nasa-filter-by-tax" id="nasa-hidden-current-tax" data-taxonomy="<?php echo esc_attr($nasa_type_page); ?>" data-sidebar="<?php echo esc_attr($nasa_sidebar); ?>"></a>
         </div>
         <p><?php esc_html_e('No products were found matching your selection.', 'elessi-theme'); ?></p>
         <?php if ($s = get_search_query()): ?>
             <input type="hidden" name="nasa_hasSearch" id="nasa_hasSearch" value="<?php echo esc_attr($s); ?>" />
         <?php endif; ?>
-        <?php if($nasa_has_get_sidebar) : ?>
+        <?php if ($nasa_has_get_sidebar) : ?>
             <input type="hidden" name="nasa_getSidebar" id="nasa_getSidebar" value="<?php echo esc_attr($nasa_sidebar); ?>" />
         <?php endif; ?>
+            
+        <?php
+        // <!-- Current URL -->
+        $slug_nopaging = elessi_nopaging_url();
+        echo $slug_nopaging ? '<input type="hidden" name="nasa_current-slug" id="nasa_current-slug" value="' . esc_url($slug_nopaging) . '" />' : '';
+        
+        /**
+         * Default Sorting
+         */
+        echo '<input type="hidden" name="nasa_default_sort" id="nasa_default_sort" value="' . esc_attr($default_sort) . '" />'
+        ?>
     </div>
-<?php endif;
+    <?php
+endif;
 
 get_footer('shop');

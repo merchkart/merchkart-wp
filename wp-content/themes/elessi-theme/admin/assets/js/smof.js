@@ -8,6 +8,13 @@ var _total = 25;
 
 jQuery.noConflict();
 
+_msie = false;
+_msie_version = 0;
+if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+    _msie = true;
+    _msie_version = RegExp.$1;
+}
+
 /** Fire up jQuery - let's dance! 
  */
 jQuery(document).ready(function ($) {
@@ -153,7 +160,7 @@ jQuery(document).ready(function ($) {
                 $('body').on('change', '.select', function () {
                     $(this).prev('span').replaceWith('<span>' + $(this).find('option:selected').text() + '</span>');
                 });
-                $('.select').bind($.browser.msie ? 'click' : 'change', function (event) {
+                $('.select').on('change', function (event) {
                     $(this).prev('span').replaceWith('<span>' + $(this).find('option:selected').text() + '</span>');
                 });
             }
@@ -584,10 +591,6 @@ jQuery(document).ready(function ($) {
         var $fold = '.f_' + obj.data('id');
         $($fold).slideUp('normal', "swing");
     });
-    //disable text select(for modern chrome, safari and firefox is done via CSS)
-    if (($.browser.msie && $.browser.version < 10) || $.browser.opera) {
-        $('.cb-enable span, .cb-disable span').find().attr('unselectable', 'on');
-    }
 
 
     /**
@@ -804,7 +807,7 @@ function import_contents(_file, jQuery, loading_img) {
 }
 
 function import_end_importer(jQuery, loading_img) {
-    jQuery('.mess-reponse-import').prepend('<div style="clear:both;padding-bottom: 20px;">' + '<p>Please wait. The system is importing Slides and installing Theme-child.<\/p><\/div>');
+    jQuery('.mess-reponse-import').prepend('<div style="clear:both;padding-bottom: 20px;">' + '<p>Please wait. The system is installing Theme-child.<\/p><\/div>');
     jQuery.ajax({
         url: ajaxurl,
         type: 'post',
@@ -817,7 +820,7 @@ function import_end_importer(jQuery, loading_img) {
                 jQuery('.bg-success').css({'width': '100%'});
                 jQuery('.success-import').html('100');
                 loading_img.hide();
-                jQuery('.mess-reponse-import').prepend('<div style="clear:both"><h3>/* ======== 100% ========= */' + '<\/h3><p>All done. Please Go to Settings > save Permalink your site.<\/p><\/div>');
+                jQuery('.mess-reponse-import').prepend('<div style="clear:both"><h3>/* ======== 100% ========= */' + '<\/h3><p>All done. Please Go to Settings > Save Permalink your site.<\/p><\/div>');
                 return true;
             } else {
                 return false;

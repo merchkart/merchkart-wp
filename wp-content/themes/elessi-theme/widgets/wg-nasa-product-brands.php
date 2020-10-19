@@ -1,5 +1,5 @@
 <?php
-if (class_exists('WC_Widget') && class_exists('YITH_WCBR')) {
+if (NASA_WOO_ACTIVED && class_exists('YITH_WCBR')) {
     
     add_action('widgets_init', 'elessi_product_brands_widget');
 
@@ -30,9 +30,9 @@ if (class_exists('WC_Widget') && class_exists('YITH_WCBR')) {
          */
         public function __construct() {
             $this->widget_cssclass = 'woocommerce widget_product_brands';
-            $this->widget_description = esc_html__('Display product brands with Accordion.', 'elessi-theme');
+            $this->widget_description = esc_html__('Display yith product brands with Accordion.', 'elessi-theme');
             $this->widget_id = 'nasa_product_brands';
-            $this->widget_name = esc_html__('Nasa Product Brands', 'elessi-theme');
+            $this->widget_name = esc_html__('Nasa Yith Product Brands', 'elessi-theme');
             $this->settings = array(
                 'title' => array(
                     'type' => 'text',
@@ -250,10 +250,10 @@ if (class_exists('WC_Widget') && class_exists('YITH_WCBR')) {
             $accordion = $a ? ' nasa-accordion' : '';
 
             echo '<ul class="nasa-root-cat product-categories' . $accordion . '">';
-            wp_list_categories(apply_filters('woocommerce_product_brands_widget_args', $list_args));
+            wp_list_categories(apply_filters('woocommerce_yith_product_brands_widget_args', $list_args));
 
             if ($show_items && ($menu_cat->getTotalRoot() > $show_items)) {
-                echo '<li class="nasa_show_manual"><a data-show="1" class="nasa-show" href="javascript:void(0);">' . esc_html__('+ Show more', 'elessi-theme') . '</a><a data-show="0" class="nasa-hidden" href="javascript:void(0);">' . esc_html__('- Show less', 'elessi-theme') . '</a></li>';
+                echo '<li class="nasa_show_manual"><a data-show="1" class="nasa-show" href="javascript:void(0);" data-text="' . esc_attr__('- Show less', 'elessi-theme') . '">' . esc_html__('+ Show more', 'elessi-theme') . '</a></li>';
             }
 
             echo '</ul>';
@@ -264,7 +264,7 @@ if (class_exists('WC_Widget') && class_exists('YITH_WCBR')) {
     }
 
     if (!class_exists('WC_Product_Cat_List_Walker')) {
-        include_once WC()->plugin_path() . '/includes/walkers/class-product-cat-list-walker.php';
+        require_once WC()->plugin_path() . '/includes/walkers/class-product-cat-list-walker.php';
     }
 
     class Elessi_Product_Brand_List_Walker extends WC_Product_Cat_List_Walker {
@@ -306,7 +306,7 @@ if (class_exists('WC_Widget') && class_exists('YITH_WCBR')) {
          */
         public function start_el(&$output, $brand, $depth = 0, $args = array(), $current_object_id = 0) {
             $output .= '<li class="cat-item cat-item-' . $brand->term_id . ' cat-item-' . $brand->slug;
-            $nasa_active = $accodion = $icon = '';
+            $nasa_active = $accordion = $icon = '';
             if ($depth == 0) {
                 $output .= ' root-item';
                 if ($this->_show_default && ($this->_k >= $this->_show_default)) {
@@ -315,7 +315,7 @@ if (class_exists('WC_Widget') && class_exists('YITH_WCBR')) {
                 $this->_k++;
             }
             if (isset($this->_icons['brand_' . $brand->slug]) && trim($this->_icons['brand_' . $brand->slug]) != '') {
-                $icon = '<i class="nasa-brand-icon ' . $this->_icons['brand_' . $brand->slug] . '"></i>';
+                $icon = '<i class="nasa-icon nasa-brand-icon ' . $this->_icons['brand_' . $brand->slug] . '"></i>&nbsp;&nbsp;';
             }
 
             if ($args['current_brand'] == $brand->term_id) {
@@ -325,29 +325,26 @@ if (class_exists('WC_Widget') && class_exists('YITH_WCBR')) {
 
             if ($args['has_children'] && $args['hierarchical']) {
                 $output .= ' cat-parent li_accordion';
-                $accodion = $args['current_brand'] == $brand->term_id ? 
-                    '<a href="javascript:void(0);" class="accordion" data-class_show="pe-7s-plus" data-class_hide="pe-7s-less"><span class="icon pe-7s-less"></span></a>':
-                    '<a href="javascript:void(0);" class="accordion" data-class_show="pe-7s-plus" data-class_hide="pe-7s-less"><span class="icon pe-7s-plus"></span></a>';
+                $accordion = '<a href="javascript:void(0);" class="accordion"></a>';
             }
 
             if ($args['current_brand_ancestors'] && $args['current_brand'] && in_array($brand->term_id, $args['current_brand_ancestors'])) {
                 $output .= ' current-cat-parent active';
-                $accodion = '<a href="javascript:void(0);" class="accordion" data-class_show="pe-7s-plus" data-class_hide="pe-7s-less"><span class="icon pe-7s-less"></span></a>';
             }
             
-            $output .= '">' . $accodion;
+            $output .= '">' . $accordion;
 
             $href = get_term_link($brand, $this->tree_type);
-            $output .= '<a href="' . esc_url($href) . '" ' .
+            $output .= '<a ' .
+                'href="' . esc_url($href) . '" ' .
+                'title="' . esc_attr($brand->name) . '" ' .
                 'data-id="' . esc_attr((int) $brand->term_id) . '" ' .
                 'data-slug="' . esc_attr($brand->slug) . '" ' .
-                'class="' . $this->_class_ajax . $nasa_active . '" ' .
+                'class="nasa-filter-item ' . $this->_class_ajax . $nasa_active . '" ' .
                 'data-taxonomy="' . $this->tree_type . '">' . 
                     $icon . $brand->name;
-            $output .= $args['show_count'] ? ' <span class="count">(' . $brand->count . ')</span>' : '';
+            $output .= $args['show_count'] ? ' <span class="count">' . $brand->count . '</span>' : '';
             $output .= '</a>';
         }
-
     }
-
 }

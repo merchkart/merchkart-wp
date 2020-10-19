@@ -12,9 +12,9 @@
                             <?php 
                             $k = 0;
                             $class_item = $max_compare == 4 ? 'large-3 small-3 columns' : 'large-4 small-4 columns';
-                            if($nasa_compare_list) :
+                            if ($nasa_compare_list) :
                                 foreach ($nasa_compare_list as $product) :
-                                    if($k > $max_compare - 1):
+                                    if ($k > $max_compare - 1):
                                         break;
                                     endif;
                                     $productId = $product->get_id();

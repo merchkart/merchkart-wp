@@ -1,13 +1,13 @@
 <?php
+add_action('init', 'elessi_backup_options_heading', 9999);
 if (!function_exists('elessi_backup_options_heading')) {
-    add_action('init', 'elessi_backup_options_heading', 9999);
     function elessi_backup_options_heading() {
         /* ----------------------------------------------------------------------------------- */
         /* The Options Array */
         /* ----------------------------------------------------------------------------------- */
         // Set the Options Array
         global $of_options;
-        if(empty($of_options)) {
+        if (empty($of_options)) {
             $of_options = array();
         }
         

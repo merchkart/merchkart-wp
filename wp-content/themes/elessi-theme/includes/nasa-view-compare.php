@@ -36,6 +36,7 @@ $fields = $nasa_compare->fields();
                                     echo '<div class="image-wrap">' . $product->get_image('thumbnail', array('alt' => esc_attr($nasa_title))) . '</div>';
                                     echo ($nasa_title != '') ? '<h5 class="compare-product-title">' . $nasa_title . '</h5>' : '';
                                     echo '</a>';
+                                    
                                     break;
 
                                 case 'title':
@@ -44,7 +45,8 @@ $fields = $nasa_compare->fields();
 
                                 case 'add-to-cart':
                                     $add_to_cart[$product_id] = elessi_product_group_button('popup');
-                                    echo ($add_to_cart[$product_id]);
+                                    echo $add_to_cart[$product_id] ? '<div class="nasa-group-btns">' . $add_to_cart[$product_id] . '</div>' : '';
+                                    
                                     break;
 
                                 default:
@@ -90,10 +92,10 @@ $fields = $nasa_compare->fields();
                     foreach ($products as $product_id => $product) :
                         $product_class = ($index % 2 == 0 ? 'odd' : 'even') . ' nasa-compare-view-product_' . $product_id
                         ?>
-                        <td class="<?php echo ($product_class); ?>">
+                        <td class="<?php echo ($product_class); ?> nasa-group-btns">
                             <?php
                             if (isset($add_to_cart[$product_id])) :
-                                echo ($add_to_cart[$product_id]);
+                                echo '<div class="nasa-group-btns">' . $add_to_cart[$product_id] . '</div>';
                             else:
                                 woocommerce_template_loop_add_to_cart();
                             endif;

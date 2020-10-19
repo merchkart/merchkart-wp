@@ -49,7 +49,7 @@ if ( ! class_exists( 'WC_Connect_Stripe' ) ) {
 			}
 
 			if ( substr( $return_url, 0, 8 ) !== 'https://' ) {
-				return new WP_Error( 'invalid_url_protocol', __( 'Your site must be served over HTTPS in order to connect your Stripe account via WooCommerce Services', 'woocommerce-services' ) );
+				return new WP_Error( 'invalid_url_protocol', __( 'Your site must be served over HTTPS in order to connect your Stripe account via WooCommerce Shipping & Tax', 'woocommerce-services' ) );
 			}
 
 			$result = $this->api->get_stripe_oauth_init( $return_url );
@@ -61,43 +61,6 @@ if ( ! class_exists( 'WC_Connect_Stripe' ) ) {
 			$this->options->update_option( self::STATE_VAR_NAME, $result->state );
 
 			return $result->oauthUrl;
-		}
-
-		public function create_account( $email, $country ) {
-			$response = $this->api->create_stripe_account( $email, $country );
-			if ( is_wp_error( $response ) ) {
-				return $response;
-			}
-			return $this->save_stripe_keys( $response );
-		}
-
-		public function get_account_details() {
-			if ( ! $this->is_connected() ) {
-				return new WP_Error(
-					'not_using_wcs_for_stripe_connection',
-					__( 'Not using WooCommerce Services for Stripe keys. Maybe using user supplied keys.', 'woocommerce-services' ),
-					array(
-						'status' => 400
-					)
-				);
-			}
-
-			$response = $this->api->get_stripe_account_details();
-			if ( is_wp_error( $response ) ) {
-				return $response;
-			}
-
-			return array(
-				'account_id'      => $response->accountId,
-				'display_name'    => $response->displayName,
-				'email'           => $response->email,
-				'business_logo'   => $response->businessLogo,
-				'legal_entity'    => array(
-					'first_name'      => $response->legalEntity->firstName,
-					'last_name'       => $response->legalEntity->lastName
-				),
-				'payouts_enabled' => $response->payoutsEnabled,
-			);
 		}
 
 		public function deauthorize_account() {
@@ -386,9 +349,9 @@ if ( ! class_exists( 'WC_Connect_Stripe' ) ) {
 
 			// Display a different title based on the connection status.
 			if ( $this->is_connected() ) {
-				$title = __( 'Stripe Account (connected to WooCommerce Services)', 'woocommerce-services' );
+				$title = __( 'Stripe Account (connected to WooCommerce Shipping & Tax)', 'woocommerce-services' );
 			} else {
-				$title = __( 'Connect via WooCommerce Services', 'woocommerce-services' );
+				$title = __( 'Connect via WooCommerce Shipping & Tax', 'woocommerce-services' );
 			}
 
 			$new_settings = array(

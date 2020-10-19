@@ -20,25 +20,8 @@ if (!isset($content_width)){
  */
 require_once ELESSI_THEME_PATH . '/options/nasa-options.php';
 
-/**
-Remove Stripe Buy Now from Single Product Page
-**/
-add_filter( 'wc_stripe_hide_payment_request_on_product_page', '__return_true' );
-add_filter( 'woocommerce_product_tabs', 'merchkart_remove_product_tabs', 98 );
- 
-function merchkart_remove_product_tabs( $tabs ) {
-    unset( $tabs['additional_information'] ); 
-    unset( $tabs['shipping'] ); 
-    unset( $tabs['seller'] );
-    return $tabs;
-}
-/* 
-End Of Custom Code
-*/
-
 add_action('after_setup_theme', 'elessi_setup');
 if (!function_exists('elessi_setup')) :
-
     function elessi_setup() {
         load_theme_textdomain('elessi-theme', ELESSI_THEME_PATH . '/languages');
         add_theme_support('woocommerce');
@@ -57,15 +40,38 @@ if (!function_exists('elessi_setup')) :
             )
         );
         
-        require_once ELESSI_THEME_PATH . '/cores/nasa-custom-wc-ajax.php';
-        require_once ELESSI_THEME_PATH . '/cores/nasa-dynamic-style.php';
-        require_once ELESSI_THEME_PATH . '/cores/nasa-widget-functions.php';
-        require_once ELESSI_THEME_PATH . '/cores/nasa-theme-options.php';
-        require_once ELESSI_THEME_PATH . '/cores/nasa-theme-functions.php';
-        require_once ELESSI_THEME_PATH . '/cores/nasa-woo-functions.php';
-        require_once ELESSI_THEME_PATH . '/cores/nasa-shop-ajax.php';
-        require_once ELESSI_THEME_PATH . '/cores/nasa-theme-headers.php';
-        require_once ELESSI_THEME_PATH . '/cores/nasa-theme-footers.php';
-    }
+        /**
+         * Register Font family
+         */
+        require_once ELESSI_THEME_PATH . '/cores/nasa-register-fonts.php';
 
+        /**
+         * Libraries of theme
+         */
+        require ELESSI_THEME_PATH . '/cores/nasa-custom-wc-ajax.php';
+        require ELESSI_THEME_PATH . '/cores/nasa-dynamic-style.php';
+        require ELESSI_THEME_PATH . '/cores/nasa-widget-functions.php';
+        require ELESSI_THEME_PATH . '/cores/nasa-theme-options.php';
+        require ELESSI_THEME_PATH . '/cores/nasa-theme-functions.php';
+        require ELESSI_THEME_PATH . '/cores/nasa-woo-functions.php';
+        require ELESSI_THEME_PATH . '/cores/nasa-woo-actions.php';
+        require ELESSI_THEME_PATH . '/cores/nasa-shop-ajax.php';
+        require ELESSI_THEME_PATH . '/cores/nasa-theme-headers.php';
+        require ELESSI_THEME_PATH . '/cores/nasa-theme-footers.php';
+        require ELESSI_THEME_PATH . '/cores/nasa-yith-wcwl-ext.php';
+        require ELESSI_THEME_PATH . '/cores/nasa-wishlist.php';
+        require ELESSI_THEME_PATH . '/cores/nasa-outdate-functions.php';
+
+        /**
+         * Includes widgets custom
+         */
+        require ELESSI_THEME_PATH . '/widgets/wg-nasa-recent-posts.php';
+        require ELESSI_THEME_PATH . '/widgets/wg-nasa-product-categories.php';
+        require ELESSI_THEME_PATH . '/widgets/wg-nasa-product-brands.php';
+        require ELESSI_THEME_PATH . '/widgets/wg-nasa-product-filter-price.php';
+        require ELESSI_THEME_PATH . '/widgets/wg-nasa-product-filter-price-list.php';
+        require ELESSI_THEME_PATH . '/widgets/wg-nasa-product-filter-variations.php';
+        require ELESSI_THEME_PATH . '/widgets/wg-nasa-tag-cloud.php';
+        require ELESSI_THEME_PATH . '/widgets/wg-nasa-reset-filter.php';
+    }
 endif;

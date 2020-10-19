@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div  class="container-wrap page-left-sidebar page-featured-item">
+<div class="container-wrap page-left-sidebar page-featured-item">
     <div class="row">
         <div id="content" class="large-3 columns left">
             <header class="entry-header">

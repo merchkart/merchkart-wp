@@ -1,13 +1,10 @@
 <?php
+add_action('init', 'elessi_product_detail_heading');
 if (!function_exists('elessi_product_detail_heading')) {
-    add_action('init', 'elessi_product_detail_heading');
     function elessi_product_detail_heading() {
-        /* ----------------------------------------------------------------------------------- */
-        /* The Options Array */
-        /* ----------------------------------------------------------------------------------- */
         // Set the Options Array
         global $of_options;
-        if(empty($of_options)) {
+        if (empty($of_options)) {
             $of_options = array();
         }
         
@@ -23,10 +20,10 @@ if (!function_exists('elessi_product_detail_heading')) {
             "std" => "new",
             "type" => "select",
             "options" => array(
-                "new" => esc_html__("New layout (sidebar - holder)", 'elessi-theme'),
-                "classic" => esc_html__("Classic layout (Sidebar - columns)", 'elessi-theme')
+                "new" => esc_html__("New layout (sidebar - Off-Canvas)", 'elessi-theme'),
+                "classic" => esc_html__("Classic layout (Sidebar - columns)", 'elessi-theme'),
+                'full' => esc_html__("Slider - No Thumbs (sidebar - Off-Canvas)", 'elessi-theme'),
             ),
-            
             'class' => 'nasa-theme-option-parent'
         );
         
@@ -36,10 +33,9 @@ if (!function_exists('elessi_product_detail_heading')) {
             "std" => "double",
             "type" => "select",
             "options" => array(
-                "double" => esc_html__("Double", 'elessi-theme'),
-                "single" => esc_html__("Single", 'elessi-theme')
+                "double" => esc_html__("Double images", 'elessi-theme'),
+                "single" => esc_html__("Single images", 'elessi-theme')
             ),
-            
             'class' => 'nasa-theme-option-child nasa-product_detail_layout nasa-product_detail_layout-new'
         );
         
@@ -52,7 +48,6 @@ if (!function_exists('elessi_product_detail_heading')) {
                 "slide" => esc_html__("Slide images", 'elessi-theme'),
                 "scroll" => esc_html__("Scroll images", 'elessi-theme')
             ),
-            
             'class' => 'nasa-theme-option-child nasa-product_detail_layout nasa-product_detail_layout-new'
         );
         
@@ -65,14 +60,26 @@ if (!function_exists('elessi_product_detail_heading')) {
                 "ver" => esc_html__("Vertical", 'elessi-theme'),
                 "hoz" => esc_html__("Horizontal", 'elessi-theme')
             ),
-            
             'class' => 'nasa-theme-option-child nasa-product_detail_layout nasa-product_detail_layout-classic'
+        );
+        
+        $of_options[] = array(
+            "name" => esc_html__("Dots for Main Slide", 'elessi-theme'),
+            "id" => "product_slide_dot",
+            "std" => 0,
+            "type" => "switch"
+        );
+        
+        $of_options[] = array(
+            "name" => esc_html__("Arrows for Main Slide", 'elessi-theme'),
+            "id" => "product_slide_arrows",
+            "std" => 0,
+            "type" => "switch"
         );
         
         $of_options[] = array(
             "name" => esc_html__("Hover Zoom Image", 'elessi-theme'),
             "id" => "product-zoom",
-            // "desc" => esc_html__("Enable product hover zoom on single product page", 'elessi-theme'),
             "std" => 1,
             "type" => "switch"
         );
@@ -80,7 +87,6 @@ if (!function_exists('elessi_product_detail_heading')) {
         $of_options[] = array(
             "name" => esc_html__("Lightbox Image When click", 'elessi-theme'),
             "id" => "product-image-lightbox",
-            // "desc" => esc_html__("Enable Lightbox product image on single product page", 'elessi-theme'),
             "std" => 1,
             "type" => "switch"
         );
@@ -108,7 +114,6 @@ if (!function_exists('elessi_product_detail_heading')) {
         $of_options[] = array(
             "name" => esc_html__("Deal Time in Single or Quickview", 'elessi-theme'),
             "id" => "single-product-deal",
-            // "desc" => esc_html__("Enable deal on single product page", 'elessi-theme'),
             "std" => 1,
             "type" => "switch"
         );
@@ -116,14 +121,12 @@ if (!function_exists('elessi_product_detail_heading')) {
         $of_options[] = array(
             "name" => esc_html__("Buy Now", 'elessi-theme'),
             "id" => "enable_buy_now",
-            // "desc" => esc_html__("Buy Now product", 'elessi-theme'),
             "std" => "1",
             "type" => "switch"
         );
         
         $of_options[] = array(
             "name" => esc_html__("Buy Now Background Color", 'elessi-theme'),
-            // "desc" => esc_html__("Change Buy Now Background Color.", 'elessi-theme'),
             "id" => "buy_now_bg_color",
             "std" => "",
             "type" => "color"
@@ -131,7 +134,6 @@ if (!function_exists('elessi_product_detail_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Buy Now Background Color Hover", 'elessi-theme'),
-            // "desc" => esc_html__("Change Buy Now Background Color Hover.", 'elessi-theme'),
             "id" => "buy_now_bg_color_hover",
             "std" => "",
             "type" => "color"
@@ -139,7 +141,6 @@ if (!function_exists('elessi_product_detail_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Buy Now Shadow Color", 'elessi-theme'),
-            // "desc" => esc_html__("Change Buy Now Shadow Color.", 'elessi-theme'),
             "id" => "buy_now_color_shadow",
             "std" => "",
             "type" => "color"
@@ -148,8 +149,14 @@ if (!function_exists('elessi_product_detail_heading')) {
         $of_options[] = array(
             "name" => esc_html__("Sticky Add To Cart", 'elessi-theme'),
             "id" => "enable_fixed_add_to_cart",
-           //  "desc" => esc_html__("Fixed Add To Cart In Bottom", 'elessi-theme'),
             "std" => "1",
+            "type" => "switch"
+        );
+        
+        $of_options[] = array(
+            "name" => esc_html__("Sticky Buy Now - Desktop", 'elessi-theme'),
+            "id" => "enable_fixed_buy_now_desktop",
+            "std" => "0",
             "type" => "switch"
         );
         
@@ -173,23 +180,6 @@ if (!function_exists('elessi_product_detail_heading')) {
         $of_options[] = array(
             "name" => esc_html__("Stock Progress Bar", 'elessi-theme'),
             "id" => "enable_progess_stock",
-            // "desc" => esc_html__("Show Stock with Process Bar", 'elessi-theme'),
-            "std" => "1",
-            "type" => "switch"
-        );
-        
-        $of_options[] = array(
-            "name" => esc_html__("Technical Specifications", 'elessi-theme'),
-            "id" => "enable_specifications",
-            // "desc" => esc_html__("Enable Technical Specifications", 'elessi-theme'),
-            "std" => "1",
-            "type" => "switch"
-        );
-
-        $of_options[] = array(
-            "name" => esc_html__("Show the Specifications in the Desciption tab", 'elessi-theme'),
-            "id" => "merge_specifi_to_desc",
-            // "desc" => esc_html__("Show the Specifications in the Desciption tab", 'elessi-theme'),
             "std" => "1",
             "type" => "switch"
         );
@@ -201,10 +191,13 @@ if (!function_exists('elessi_product_detail_heading')) {
             "type" => "select",
             "options" => array(
                 "2d-no-border" => esc_html__("Classic 2D - No border", 'elessi-theme'),
+                "2d-radius" => esc_html__("Classic 2D - Radius", 'elessi-theme'),
+                "2d-radius-dashed" => esc_html__("Classic 2D - Radius - Dash", 'elessi-theme'),
                 "2d" => esc_html__("Classic 2D", 'elessi-theme'),
                 "3d" => esc_html__("Classic 3D", 'elessi-theme'),
                 "slide" => esc_html__("Slide", 'elessi-theme'),
-                "accordion" => esc_html__("Accordion", 'elessi-theme')
+                "accordion" => esc_html__("Accordion", 'elessi-theme'),
+                'scroll-down' => esc_html__("Scroll Down", 'elessi-theme'),
             ),
             'class' => 'nasa-theme-option-parent'
         );
@@ -219,12 +212,34 @@ if (!function_exists('elessi_product_detail_heading')) {
                 "left" => esc_html__("Left", 'elessi-theme'),
                 "right" => esc_html__("Right", 'elessi-theme')
             ),
-            'class' => 'nasa-tab_style_info nasa-tab_style_info-2d-no-border nasa-tab_style_info-2d nasa-tab_style_info-3d nasa-tab_style_info-slide nasa-theme-option-child'
+            'class' => 'nasa-tab_style_info nasa-tab_style_info-2d-no-border nasa-tab_style_info-2d-radius nasa-tab_style_info-2d nasa-tab_style_info-3d nasa-tab_style_info-slide nasa-tab_style_info-scroll-down nasa-theme-option-child'
+        );
+        
+        $of_options[] = array(
+            "name" => esc_html__('WooCommerce Tabs Off - Canvas in Mobile', 'elessi-theme'),
+            "id" => "woo_tabs_off_canvas",
+            "std" => 0,
+            "type" => "switch"
+        );
+        
+        $of_options[] = array(
+            "name" => esc_html__("Hide Additional Information Tab", 'elessi-theme'),
+            "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
+            "id" => "hide_additional_tab",
+            "std" => 0,
+            "type" => "checkbox"
+        );
+        
+        $of_options[] = array(
+            "name" => esc_html__('Relate Products', 'elessi-theme'),
+            "id" => "relate_product",
+            "std" => 1,
+            "type" => "switch"
         );
         
         $of_options[] = array(
             "name" => esc_html__("Number for relate products", 'elessi-theme'),
-            "id" => "release_product_number",
+            "id" => "relate_product_number",
             "std" => "12",
             "type" => "text"
         );
@@ -235,20 +250,21 @@ if (!function_exists('elessi_product_detail_heading')) {
             "std" => "5-cols",
             "type" => "select",
             "options" => array(
-                "3-cols" => esc_html__("3 columns", 'elessi-theme'),
+                "5-cols" => esc_html__("5 columns", 'elessi-theme'),
                 "4-cols" => esc_html__("4 columns", 'elessi-theme'),
-                "5-cols" => esc_html__("5 columns", 'elessi-theme')
+                "3-cols" => esc_html__("3 columns", 'elessi-theme'),
             )
         );
         
         $of_options[] = array(
             "name" => esc_html__("Columns Relate | Upsell Products for Mobile", 'elessi-theme'),
             "id" => "relate_columns_small",
-            "std" => "1-col",
+            "std" => "2-cols",
             "type" => "select",
             "options" => array(
-                "1-cols" => esc_html__("1 column", 'elessi-theme'),
-                "2-cols" => esc_html__("2 columns", 'elessi-theme')
+                "2-cols" => esc_html__("2 columns", 'elessi-theme'),
+                "1.5-cols" => esc_html__("1,5 column", 'elessi-theme'),
+                "1-col" => esc_html__("1 column", 'elessi-theme')
             )
         );
         
@@ -258,9 +274,9 @@ if (!function_exists('elessi_product_detail_heading')) {
             "std" => "3-cols",
             "type" => "select",
             "options" => array(
-                "1-col" => esc_html__("1 column", 'elessi-theme'),
-                "2-cols" => esc_html__("2 columns", 'elessi-theme'),
-                "3-cols" => esc_html__("3 columns", 'elessi-theme')
+                "4-cols" => esc_html__("4 columns", 'elessi-theme'),
+                "3-cols" => esc_html__("3 columns", 'elessi-theme'),
+                "2-cols" => esc_html__("2 columns", 'elessi-theme')
             )
         );
         
@@ -268,9 +284,9 @@ if (!function_exists('elessi_product_detail_heading')) {
         $of_options[] = array(
             "name" => esc_html__("AJAX add to cart button on Single And Quickview", 'elessi-theme'),
             "id" => "enable_ajax_addtocart",
-            // "desc" => esc_html__("Enable AJAX add to cart button on Detail And Quickview", 'elessi-theme'),
             "std" => "1",
-            "type" => "switch"
+            "type" => "switch",
+            "desc" => '<span class="nasa-warning red-color">' . esc_html__('Note: Consider disabling this feature if you are using a third-party plugin developed for the Add to Cart feature in the Single Product Page!', 'elessi-theme') . '</span>'
         );
         
         $of_options[] = array(

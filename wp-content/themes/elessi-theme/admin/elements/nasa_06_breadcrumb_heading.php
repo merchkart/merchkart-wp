@@ -1,13 +1,10 @@
 <?php
+add_action('init', 'elessi_breadcrumb_heading');
 if (!function_exists('elessi_breadcrumb_heading')) {
-    add_action('init', 'elessi_breadcrumb_heading');
     function elessi_breadcrumb_heading() {
-        /* ----------------------------------------------------------------------------------- */
-        /* The Options Array */
-        /* ----------------------------------------------------------------------------------- */
         // Set the Options Array
         global $of_options;
-        if(empty($of_options)) {
+        if (empty($of_options)) {
             $of_options = array();
         }
         
@@ -19,7 +16,6 @@ if (!function_exists('elessi_breadcrumb_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Enable", 'elessi-theme'),
-            // "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "id" => "breadcrumb_show",
             "std" => 1,
             "type" => "switch",
@@ -52,24 +48,20 @@ if (!function_exists('elessi_breadcrumb_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Background Image", 'elessi-theme'),
-            // "desc" => esc_html__("background image.", 'elessi-theme'),
             "id" => "breadcrumb_bg",
             "std" => ELESSI_ADMIN_DIR_URI . 'assets/images/breadcrumb-bg.jpg',
-            "type" => "media",
-            "mod" => "min"
+            "type" => "media"
         );
         
         $of_options[] = array(
             "name" => esc_html__("Background Parallax", 'elessi-theme'),
-            // "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "id" => "breadcrumb_bg_lax",
-            "std" => 1,
+            "std" => 0,
             "type" => "switch"
         );
 
         $of_options[] = array(
             "name" => esc_html__("Background Color", 'elessi-theme'),
-            // "desc" => esc_html__("Breadcrumb background color.", 'elessi-theme'),
             "id" => "breadcrumb_bg_color",
             "std" => "",
             "type" => "color"
@@ -77,7 +69,6 @@ if (!function_exists('elessi_breadcrumb_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Text Color", 'elessi-theme'),
-            // "desc" => esc_html__("Change Breadcrumb Text Color", 'elessi-theme'),
             "id" => "breadcrumb_color",
             "std" => "",
             "type" => "color"
@@ -85,7 +76,6 @@ if (!function_exists('elessi_breadcrumb_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Text Align", 'elessi-theme'),
-            // "desc" => esc_html__("Select if you want change Text Align.", 'elessi-theme'),
             "id" => "breadcrumb_align",
             "std" => "text-center",
             "type" => "select",

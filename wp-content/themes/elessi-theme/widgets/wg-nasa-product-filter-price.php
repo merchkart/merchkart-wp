@@ -1,6 +1,6 @@
 <?php
 
-if (class_exists('WooCommerce')) {
+if (NASA_WOO_ACTIVED) {
 
     add_action('widgets_init', 'elessi_product_filter_price_widget');
     function elessi_product_filter_price_widget() {
@@ -23,7 +23,7 @@ if (class_exists('WooCommerce')) {
          * Constructor
          */
         public function __construct() {
-            $this->widget_cssclass = 'woocommerce widget_price_filter';
+            $this->widget_cssclass = 'woocommerce widget_price_filter nasa-widget-has-active';
             $this->widget_description = esc_html__('Shows a price filter slider in a widget which lets you narrow down the list of shown products when viewing product categories.', 'elessi-theme');
             $this->widget_id = 'nasa_woocommerce_price_filter';
             $this->widget_name = esc_html__('Nasa Product Price Filter', 'elessi-theme');
@@ -69,8 +69,7 @@ if (class_exists('WooCommerce')) {
          * @return string
          */
         public function current_widget_start($args) {
-
-            echo ($args['before_widget']);
+            echo $args['before_widget'];
         }
 
         /**

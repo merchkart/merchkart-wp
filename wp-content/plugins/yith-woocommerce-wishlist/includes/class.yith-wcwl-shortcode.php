@@ -513,7 +513,7 @@ if( ! class_exists( 'YITH_WCWL_Shortcode' ) ) {
 			}
 
 			// filter params.
-			$additional_params = apply_filters( 'yith_wcwl_wishlist_params', $additional_params, $action, $action_params, $pagination, $per_page );
+			$additional_params = apply_filters( 'yith_wcwl_wishlist_params', $additional_params, $action, $action_params, $pagination, $per_page, $atts );
 
 			$atts = array_merge(
 				$atts,
@@ -555,7 +555,7 @@ if( ! class_exists( 'YITH_WCWL_Shortcode' ) ) {
 			$current_product = ( isset( $atts['product_id'] ) ) ? wc_get_product( $atts['product_id'] ) : false;
 			$current_product = $current_product ? $current_product : $product;
 
-			if ( ! $current_product ) {
+			if ( ! $current_product || ! $current_product instanceof WC_Product ) {
 				return '';
 			}
 
@@ -647,7 +647,6 @@ if( ! class_exists( 'YITH_WCWL_Shortcode' ) ) {
 				'loop_position' => $loop_position,
 				'template_part' => $template_part,
 			);
-
 			// let third party developer filter options.
 			$additional_params = apply_filters( 'yith_wcwl_add_to_wishlist_params', $additional_params, $atts );
 
@@ -676,6 +675,7 @@ if( ! class_exists( 'YITH_WCWL_Shortcode' ) ) {
 
 			if ( 'custom' == $atts['icon'] && $atts['exists'] && $custom_added_icon ) {
 				$icon_html = '<img class="yith-wcwl-icon" src="' . $custom_added_icon . '" width="32" />';
+				$heading_icon_html = ! empty( $custom_icon ) ? '<img class="yith-wcwl-icon" src="' . $custom_icon . '" width="32" />' : '';
 			} elseif ( 'custom' == $atts['icon'] && $custom_icon ) {
 				$icon_html = '<img class="yith-wcwl-icon" src="' . $custom_icon . '" width="32" />';
 				$heading_icon_html = $icon_html;
@@ -684,6 +684,7 @@ if( ! class_exists( 'YITH_WCWL_Shortcode' ) ) {
 				$heading_icon_html = ! empty( $atts['heading_icon'] ) ? '<i class="yith-wcwl-icon fa ' . $atts['heading_icon'] . '"></i>' : '';
 			} else {
 				$icon_html = '';
+				$heading_icon_html = '';
 			}
 
 			// set fragment options.

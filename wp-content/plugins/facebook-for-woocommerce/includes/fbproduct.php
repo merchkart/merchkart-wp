@@ -9,6 +9,7 @@
  */
 
 use SkyVerge\WooCommerce\Facebook\Products;
+use SkyVerge\WooCommerce\PluginFramework\v5_5_4 as Framework;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -123,47 +124,23 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 		}
 
 		public function get_fb_price() {
-			// Cache the price in this object in case of multiple calls.
-			if ( $this->fb_price ) {
-				return $this->fb_price;
-			}
 
-			$price = get_post_meta(
-				$this->id,
-				self::FB_PRODUCT_PRICE,
-				true
-			);
+			return Products::get_product_price( $this->woo_product );
+		}
 
-			if ( is_numeric( $price ) ) {
-				return intval( round( $price * 100 ) );
-			}
 
-			// If product is composite product, we rely on their pricing.
-			if ( class_exists( 'WC_Product_Composite' )
-			&& $this->woo_product->get_type() === 'composite' ) {
-				$price          = get_option( 'woocommerce_tax_display_shop' ) === 'incl'
-				? $this->woo_product->get_composite_price_including_tax()
-				: $this->woo_product->get_composite_price();
-				$this->fb_price = intval( round( $price * 100 ) );
-				return $this->fb_price;
-			}
+		/**
+		 * Determines whether the current product is a WooCommerce Bookings product.
+		 *
+		 * TODO: add an integration that filters the Facebook price instead {WV 2020-07-22}
+		 *
+		 * @since 2.0.0
+		 *
+		 * @return bool
+		 */
+		private function is_bookable_product() {
 
-			// Get regular price: regular price doesn't include sales
-			$regular_price = floatval( $this->get_regular_price() );
-
-			// If it's a bookable product, the normal price is null/0.
-			if ( ! $regular_price &&
-			  class_exists( 'WC_Product_Booking' ) &&
-			  is_wc_booking_product( $this ) ) {
-				$product       = new WC_Product_Booking( $this->woo_product );
-				$regular_price = $product->get_display_cost();
-			}
-
-			// Get regular price plus tax, if it's set to display and taxable
-			// whether price includes tax is based on 'woocommerce_tax_display_shop'
-			$price          = $this->get_price_plus_tax( $regular_price );
-			$this->fb_price = intval( round( $price * 100 ) );
-			return $this->fb_price;
+			return facebook_for_woocommerce()->is_plugin_active( 'woocommerce-bookings.php') && class_exists( 'WC_Product_Booking' ) && is_callable( 'is_wc_booking_product' ) && is_wc_booking_product( $this );
 		}
 
 
@@ -214,6 +191,24 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 
 			return $image_urls;
 		}
+
+
+		/**
+		 * Gets the list of additional image URLs for the product from the complete list of image URLs.
+		 *
+		 * It assumes the first URL will be used as the product image.
+		 * It returns 20 or less image URLs because Facebook doesn't allow more items on the additional_image_urls field.
+		 *
+		 * @since 2.0.2
+		 *
+		 * @param array $image_urls all image URLs for the product
+		 * @return array
+		 */
+		private function get_additional_image_urls( $image_urls ) {
+
+			return array_slice( $image_urls, 1, 20 );
+		}
+
 
 		// Returns the parent image id for variable products only.
 		public function get_parent_image_id() {
@@ -366,27 +361,22 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 			return $product_data;
 		}
 
+
+		/**
+		 * Determines whether a product should be excluded from all-products sync or the feed file.
+		 *
+		 * @see SkyVerge\WooCommerce\Facebook\Products\Sync::create_or_update_all_products()
+		 * @see WC_Facebook_Product_Feed::write_product_feed_file()
+		 *
+		 * @deprecated 2.0.2
+		 */
 		public function is_hidden() {
-			$wpid = $this->id;
-			if ( WC_Facebookcommerce_Utils::is_variation_type( $this->get_type() ) ) {
-				$wpid = $this->get_parent_id();
-			}
-			$hidden_from_catalog = has_term(
-				'exclude-from-catalog',
-				'product_visibility',
-				$wpid
-			);
-			$hidden_from_search  = has_term(
-				'exclude-from-search',
-				'product_visibility',
-				$wpid
-			);
-			// fb_visibility === '': after initial sync by feed
-			// fb_visibility === false: set hidden on FB metadata
-			// Explicitly check whether flip 'hide' before.
-			return ( $hidden_from_catalog && $hidden_from_search ) ||
-			$this->fb_visibility === false || ! $this->get_fb_price();
+
+			wc_deprecated_function( __METHOD__,  '2.0.2', 'Products::product_should_be_synced()' );
+
+			return $this->woo_product instanceof \WC_Product && ! Products::product_should_be_synced( $this->woo_product );
 		}
+
 
 		public function get_price_plus_tax( $price ) {
 			$woo_product = $this->woo_product;
@@ -410,7 +400,7 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 			// Convert all slug_names in $option_values into the visible names that
 			// advertisers have set to be the display names for a given attribute value
 			$terms = get_the_terms( $this->id, $key );
-			return array_map(
+			return ! is_array( $terms ) ? [] : array_map(
 				function ( $slug_name ) use ( $terms ) {
 					foreach ( $terms as $term ) {
 						if ( $term->slug === $slug_name ) {
@@ -541,10 +531,9 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 			}
 			$categories =
 			WC_Facebookcommerce_Utils::get_product_categories( $id );
-			$brand      = get_the_term_list( $id, 'product_brand', '', ', ' );
-			$brand      = is_wp_error( $brand ) || ! $brand
-			? WC_Facebookcommerce_Utils::get_store_name()
-			: WC_Facebookcommerce_Utils::clean_string( $brand );
+
+			$brand = get_the_term_list( $id, 'product_brand', '', ', ' );
+			$brand = is_wp_error( $brand ) || ! $brand ? wp_strip_all_tags( WC_Facebookcommerce_Utils::get_store_name() ) : WC_Facebookcommerce_Utils::clean_string( $brand );
 
 			$product_data = array(
 				'name'                  => WC_Facebookcommerce_Utils::clean_string(
@@ -552,18 +541,15 @@ if ( ! class_exists( 'WC_Facebook_Product' ) ) :
 				),
 				'description'           => $this->get_fb_description(),
 				'image_url'             => $image_urls[0], // The array can't be empty.
-				'additional_image_urls' => array_slice( $image_urls, 1 ),
+				'additional_image_urls' => $this->get_additional_image_urls( $image_urls ),
 				'url'                   => $product_url,
 				'category'              => $categories['categories'],
-				'brand'                 => $brand,
+				'brand'                 => Framework\SV_WC_Helper::str_truncate( $brand, 100 ),
 				'retailer_id'           => $retailer_id,
 				'price'                 => $this->get_fb_price(),
 				'currency'              => get_woocommerce_currency(),
-				'availability'          => $this->is_in_stock() ? 'in stock' :
-				'out of stock',
-				'visibility'            => ! $this->is_hidden()
-				? \WC_Facebookcommerce_Integration::FB_SHOP_PRODUCT_VISIBLE
-				: \WC_Facebookcommerce_Integration::FB_SHOP_PRODUCT_HIDDEN,
+				'availability'          => $this->is_in_stock() ? 'in stock' : 'out of stock',
+				'visibility'            => Products::is_product_visible( $this->woo_product ) ? \WC_Facebookcommerce_Integration::FB_SHOP_PRODUCT_VISIBLE : \WC_Facebookcommerce_Integration::FB_SHOP_PRODUCT_HIDDEN,
 			);
 
 			// Only use checkout URLs if they exist.

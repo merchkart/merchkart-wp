@@ -3,11 +3,11 @@ Contributors: tareq1988, wedevs, nizamuddinbabu
 Donate Link: http://tareq.co/donate/
 Tags: WooCommerce multivendor marketplace, multi vendor marketplace, multi seller store, product vendors, woocommerce vendor, commission rate, e-commerce, ebay, ecommerce, yith, yithemes
 Requires at least: 4.4
-Tested up to: 5.4.2
+Tested up to: 5.5
 WC requires at least: 3.0
-WC tested up to: 4.2.0
+WC tested up to: 4.4.1
 Requires PHP: 5.6
-Stable tag: 3.0.5
+Stable tag: 3.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -291,14 +291,40 @@ A. Just install and activate the PRO version without deleting the free plugin. A
 
 == Changelog ==
 
+= v3.0.9 (August 25, 2020) =
+
+- **Fix:** Some security issues fixed
+- **Fix:** Loading issue when long tags list on add/edit product page (Vendor Dashboard)
+- **Fix:** Add missing permission callback in REST routes to make WordPress 5.5 compatible
+- **Fix:** Vendor can send multiple withdraw request from vendor dashboard
+- **Fix:** API endpoint added
+
+= v3.0.8 (August 12, 2020) =
+
+- **Fix:** WordPress v5.5 compatibility issue fixed
+- **Fix:** Namespacing issues on class declaration
+
+= v3.0.7 (July 23, 2020) =
+
+- **Fix:** Showing fatal error for user switching
+
+= v3.0.6 (July 23, 2020) =
+
+- **Feat:** Vendor user switching (User Switching plugin support)
+- **Feat:** Decimal and Thousand Separator with Comma
+- **Fix:** Add system to refresh options for select fields in admin settings
+- **Fix:** Admin settings input field type for common types of fields
+- **Fix:** Shop name not showing on product listing quick edit section
+- **Fix:** Order notes in vendor dashboard insert wrong author data
+
  = v3.0.5 (June 11, 2020) =
 
-- [new] Exclude cash on delivery payments from vendor withdrawal balance (COD)
-- [fix] Remove vendor folder from the excluded list
-- [fix] Earning column missing on vendor dashboard order list
-- [fix] Default location not working in vendor dashboard
-- [fix] Remove link from customer name in vendor order details
-- [fix] Custom header, footer template does not work in Dokan store page (Divi Theme)
+- **New:** Exclude cash on delivery payments from vendor withdrawal balance (COD)
+- **Fix:** Remove vendor folder from the excluded list
+- **Fix:** Earning column missing on vendor dashboard order list
+- **Fix:** Default location not working in vendor dashboard
+- **Fix:** Remove link from customer name in vendor order details
+- **Fix:** Custom header, footer template does not work in Dokan store page (Divi Theme)
 
  = v3.0.4 (May 15, 2020) =
 

@@ -85,14 +85,21 @@ if (!$parallax && $has_video_bg) {
     $wrapper_attributes[] = 'data-vc-video-bg="' . esc_attr($video_bg_url) . '"';
 }
 
-$css_class = preg_replace('/\s+/', ' ', apply_filters(VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, implode(' ', array_filter(array_unique($css_classes))), $this->settings('base'), $atts));
+$css_class = preg_replace(
+    '/\s+/',
+    ' ',
+    apply_filters(
+        VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG,
+        implode(' ', array_filter(array_unique($css_classes))),
+        $this->settings('base'),
+        $atts
+    )
+);
 
 $wrapper_attributes[] = 'class="' . esc_attr(trim($css_class)) . '"';
 
 $output .= '<div ' . implode(' ', $wrapper_attributes) . '>';
-// $output .= '<div class="wpb_wrapper">';
 $output .= wpb_js_remove_wpautop($content);
-// $output .= '</div>';
 $output .= '</div>';
 
 echo $output;

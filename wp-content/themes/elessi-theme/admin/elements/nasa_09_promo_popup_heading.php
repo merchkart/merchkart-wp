@@ -1,12 +1,8 @@
 <?php
-
+add_action('init', 'elessi_promo_popup_heading');
 if (!function_exists('elessi_promo_popup_heading')) {
-    add_action('init', 'elessi_promo_popup_heading');
 
     function elessi_promo_popup_heading() {
-        /* ------------------------------------------ */
-        /* The Options Array */
-        /* ------------------------------------------ */
         // Set the Options Array
         global $of_options;
         if (empty($of_options)) {
@@ -14,21 +10,20 @@ if (!function_exists('elessi_promo_popup_heading')) {
         }
 
         $of_options[] = array(
-            "name" => esc_html__("Promo Popup", 'elessi-theme'),
+            "name" => esc_html__("Newsletter Popup", 'elessi-theme'),
             "target" => 'promo-popup',
             "type" => "heading"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Promo popup", 'elessi-theme'),
-            // "desc" => esc_html__("Enable promo popup", 'elessi-theme'),
+            "name" => esc_html__("Newsletter", 'elessi-theme'),
             "id" => "promo_popup",
             "std" => 0,
             "type" => "switch"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Hide in Mobile (Width site <= 640px OR Mobile Layout)", 'elessi-theme'),
+            "name" => esc_html__("Hide in Mobile (width site small less 640px OR Mobile Layout)", 'elessi-theme'),
             "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "id" => "disable_popup_mobile",
             "std" => 0,
@@ -36,38 +31,43 @@ if (!function_exists('elessi_promo_popup_heading')) {
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Popup width", 'elessi-theme'),
+            "name" => esc_html__("Only Display 1 Time", 'elessi-theme'),
+            "id" => "promo_popup_1_time",
+            "std" => 0,
+            "type" => "switch"
+        );
+        
+        $of_options[] = array(
+            "name" => esc_html__("Popup Width", 'elessi-theme'),
             "id" => "pp_width",
             "std" => "734",
             "type" => "text"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Popup height", 'elessi-theme'),
+            "name" => esc_html__("Popup Height", 'elessi-theme'),
             "id" => "pp_height",
             "std" => "501",
             "type" => "text"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Popup content", 'elessi-theme'),
+            "name" => esc_html__("Popup Content", 'elessi-theme'),
             "id" => "pp_content",
             "std" => '<h3>Newsletter</h3><p>Be the first to know about our new arrivals, exclusive offers and the latest fashion update.</p>',
             "type" => "textarea"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Select contact form", 'elessi-theme'),
-            // "desc" => esc_html__("Select contact form", 'elessi-theme'),
+            "name" => esc_html__("Select Contact Form", 'elessi-theme'),
             "id" => "pp_contact_form",
             "type" => "select",
             'override_numberic' => true,
-            "options" => elessi_get_contactForm7Items()
+            "options" => elessi_get_contact_form7()
         );
         
         $of_options[] = array(
             "name" => esc_html__("Content Width", 'elessi-theme'),
-            // "desc" => esc_html__("Content Width.", 'elessi-theme'),
             "id" => "pp_style",
             "std" => "simple",
             "type" => "select",
@@ -79,7 +79,6 @@ if (!function_exists('elessi_promo_popup_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Popup Background Color", 'elessi-theme'),
-            // "desc" => esc_html__("Insert popup background color.", 'elessi-theme'),
             "id" => "pp_background_color",
             "std" => "#fff",
             "type" => "color"
@@ -87,44 +86,35 @@ if (!function_exists('elessi_promo_popup_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Popup Background", 'elessi-theme'),
-            // "desc" => esc_html__("Insert popup background.", 'elessi-theme'),
             "id" => "pp_background_image",
             "std" => ELESSI_THEME_URI . '/assets/images/newsletter_bg.jpg',
-            "type" => "media",
-            "mod" => "min"
+            "type" => "media"
         );
         
         $of_options[] = array(
-            "name" => esc_html__("Delay time to show", 'elessi-theme'),
-            // "desc" => esc_html__("Delay time (seconds)", 'elessi-theme'),
+            "name" => esc_html__("Delay time to show (seconds)", 'elessi-theme'),
             "id" => "delay_promo_popup",
             "std" => 0,
             "type" => "text"
         );
     }
-
 }
 
-function elessi_get_contactForm7Items() {
-    $items = array('default' => esc_html__('Select the Contact form', 'elessi-theme'));
-    $contacts = array();
+/**
+ * Get list Contact Form 7
+ * @return type
+ */
+function elessi_get_contact_form7() {
+    $contacts_form = function_exists('nasa_get_contact_form7') ? nasa_get_contact_form7() : array();
+    $contacts = array('default' => esc_html__('Select the Contact Form', 'elessi-theme'));
     
-    if(class_exists('WPCF7_ContactForm')) {
-        $contacts = get_posts(array(
-            'posts_per_page' => -1,
-            'post_type' => WPCF7_ContactForm::post_type
-        ));
-
-        if (!empty($contacts)) {
-            foreach ($contacts as $value) {
-                $items[$value->ID] = $value->post_title;
+    if (!empty($contacts_form)) {
+        foreach ($contacts_form as $id => $form) {
+            if ($id) {
+                $contacts[$id] = $form;
             }
         }
     }
     
-    if(empty($contacts)) {
-        $items = array('default' => esc_html__('You need install plugin Contact Form 7 and Create Newsletter form', 'elessi-theme'));
-    }
-    
-    return $items;
+    return $contacts;
 }

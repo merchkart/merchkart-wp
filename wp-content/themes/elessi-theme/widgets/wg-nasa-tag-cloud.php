@@ -1,10 +1,15 @@
 <?php
-
+/**
+ * Register Widget
+ */
 add_action('widgets_init', 'elessi_tag_cloud_widget');
 function elessi_tag_cloud_widget() {
     register_widget('Elessi_Widget_Tag_Cloud');
 }
 
+/**
+ * Tags Cloud Widget
+ */
 class Elessi_Widget_Tag_Cloud extends WP_Widget {
 
     /**
@@ -14,9 +19,10 @@ class Elessi_Widget_Tag_Cloud extends WP_Widget {
         $widget_ops = array(
             'description' => esc_html__('A cloud of your most used tags.', 'elessi-theme'),
             'customize_selective_refresh' => true,
-            'title' => 'Tag cloud',
+            'title' => esc_html__('Tags', 'elessi-theme'),
             'show_items' => 'All'
         );
+        
         parent::__construct('nasa_tag_cloud', esc_html__('Nasa Tag Cloud', 'elessi-theme'), $widget_ops);
     }
 
@@ -32,33 +38,41 @@ class Elessi_Widget_Tag_Cloud extends WP_Widget {
             $class .= $instance['taxonomy'] == 'product_tag' ? ' nasa-tag-products-cloud' : '';
             $data_taxonomy = ' data-taxonomy="' . esc_attr($instance['taxonomy']) . '"';
         }
+        
         $current_taxonomy = $this->_get_current_taxonomy($instance);
-        $title = (!empty($instance['title'])) ? $instance['title'] : ('post_tag' == $current_taxonomy ?
-            esc_html__('Tags', 'elessi-theme') :
-            get_taxonomy($current_taxonomy)->labels->name);
+        $title_widget = (!empty($instance['title'])) ? $instance['title'] : ('post_tag' == $current_taxonomy ? esc_html__('Tags', 'elessi-theme') : get_taxonomy($current_taxonomy)->labels->name);
 
         /** This filter is documented in wp-includes/default-widgets.php */
-        $title = apply_filters('widget_title', $title, $instance, $this->id_base);
+        $title = apply_filters('widget_title', $title_widget, $instance, $this->id_base);
 
         echo $args['before_widget'];
         echo $title ? $args['before_title'] . $title . $args['after_title'] : '';
         echo '<div class="tagcloud' . $class . '"' . $data_taxonomy . '>';
 
+        $show_items = isset($instance['show_items']) ? (int) $instance['show_items'] : 0;
+        
         $tags = wp_tag_cloud(apply_filters('widget_tag_cloud_args', array(
             'taxonomy' => $current_taxonomy,
             'format' => 'array'
         )));
-        $show_items = isset($instance['show_items']) ? (int) $instance['show_items'] : 0;
+        
         if ($tags) {
             echo '<ul class="nasa-tag-cloud-ul">';
+            
             foreach ($tags as $k => $tag) {
                 $class = ($show_items && $k+1 > $show_items) ? ' class="nasa-show-less"' : '';
                 echo '<li' . $class . '>' . $tag . '</li>';
             }
 
             if ($show_items) {
-                echo '<li class="nasa_show_manual" data-delay="500" data-fadein="1"><a data-show="1" class="nasa-show" href="javascript:void(0);">' . esc_html__('+ Show more', 'elessi-theme') . '</a><a data-show="0" class="nasa-hidden" href="javascript:void(0);">' . esc_html__('- Show less', 'elessi-theme') . '</a></li>';
+                echo 
+                '<li class="nasa_show_manual" data-delay="500" data-fadein="1">' .
+                    '<a data-show="1" class="nasa-show" href="javascript:void(0);" data-text="' . esc_attr__('- Show less', 'elessi-theme') . '">' .
+                        esc_html__('+ Show more', 'elessi-theme') .
+                    '</a>' .
+                '</li>';
             }
+            
             echo '</ul>';
         }
 
@@ -82,6 +96,7 @@ class Elessi_Widget_Tag_Cloud extends WP_Widget {
         $instance['title'] = sanitize_text_field($new_instance['title']);
         $instance['taxonomy'] = stripslashes($new_instance['taxonomy']);
         $instance['show_items'] = sanitize_text_field($new_instance['show_items']);
+        
         return $instance;
     }
 
@@ -98,7 +113,8 @@ class Elessi_Widget_Tag_Cloud extends WP_Widget {
         $title_id = esc_attr($this->get_field_id('title'));
         $title = isset($instance['title']) ? esc_attr($instance['title']) : '';
 
-        echo '<p>' .
+        echo 
+        '<p>' .
             '<label for="' . $title_id . '">' . esc_html__('Title:', 'elessi-theme') . '</label>' .
             '<input type="text" class="widefat" id="' . $title_id . '" name="' . esc_attr($this->get_field_name('title')) . '" value="' . $title . '" />' .
         '</p>';
@@ -138,9 +154,12 @@ class Elessi_Widget_Tag_Cloud extends WP_Widget {
                 echo '</select></p>';
         }
 
-        $title_id = $this->get_field_id('show_items');
-        echo '<p><label for="' . esc_attr($title_id) . '">' . esc_html__('Show items (<= 0 ~ All)', 'elessi-theme') . '</label>' .
-            '<input type="text" class="widefat" id="' . esc_attr($title_id) . '" name="' . esc_attr($this->get_field_name('show_items')) . '" value="' . (isset($instance['show_items']) && is_numeric($instance['show_items']) ? $instance['show_items'] : esc_attr__('All', 'elessi-theme')) . '" />' .
+        $show_items = $this->get_field_id('show_items');
+        $val_show = (isset($instance['show_items']) && is_numeric($instance['show_items']) ? $instance['show_items'] : esc_attr__('All', 'elessi-theme'));
+        echo 
+        '<p>' .
+            '<label for="' . esc_attr($show_items) . '">' . esc_html__('Show items (0 ~ All)', 'elessi-theme') . '</label>' .
+            '<input type="text" class="widefat" id="' . esc_attr($show_items) . '" name="' . esc_attr($this->get_field_name('show_items')) . '" value="' . $val_show . '" />' .
         '</p>';
     }
 
@@ -160,5 +179,4 @@ class Elessi_Widget_Tag_Cloud extends WP_Widget {
 
         return 'post_tag';
     }
-
 }

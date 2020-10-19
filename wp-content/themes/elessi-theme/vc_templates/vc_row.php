@@ -1,5 +1,6 @@
 <?php
 $output = '';
+$base_row = $this->settings('base');
 $atts = vc_map_get_attributes($this->getShortcode(), $atts);
 extract(shortcode_atts(array(
     'el_class'              => '',
@@ -25,12 +26,12 @@ $css_classes = array(
     vc_shortcode_custom_css_class($css)
 );
 
-if($el_id != '') {
+if ($el_id != '') {
     $wrapper_attributes[] = 'id="' . esc_attr($el_id) . '"';
 }
 
 $el_class = $this->getExtraClass($el_class) . $this->getCSSAnimation($css_animation);
-if($el_class != '') {
+if ($el_class != '') {
     $css_classes[] = $el_class;
 }
 
@@ -56,7 +57,7 @@ if ($has_video_bg) {
 }
 
 // Support js parallax
-if(!empty($parallax)) {
+if (!empty($parallax)) {
     wp_enqueue_script('vc_jquery_skrollr_js');
     $wrapper_attributes[] = 'data-vc-parallax="' . esc_attr($parallax_speed) . '"'; // parallax speed
     $css_classes[] = 'vc_general vc_parallax vc_parallax-' . $parallax;
@@ -88,25 +89,26 @@ if (!$parallax && $has_video_bg) {
 $css_class = preg_replace(
     '/\s+/',
     ' ',
-    apply_filters(VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG,
+    apply_filters(
+        VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG,
         implode(' ', array_filter(array_unique($css_classes))),
-        $this->settings('base'),
+        $base_row,
         $atts
     )
 );
 
 $wrapper_attributes[] = 'class="' . esc_attr(trim($css_class)) . '"';
 
-if($this->settings('base') === 'vc_row'){
+if ($base_row === 'vc_row'){
     $output .='<div ' . implode(' ', $wrapper_attributes) . '>';
     $output .= ($fullwidth == '1') ? '<div class="nasa-row fullwidth clearfix">' : '<div class="row">';
     $output .= wpb_js_remove_wpautop($content);
-    $output .= ($fullwidth == '1') ? '</div>' : '</div>';
+    $output .= '</div>';
     $output .= '</div>';
 }
 
 else {
-    $output.='<div ' . implode(' ', $wrapper_attributes) . '>';
+    $output .= '<div ' . implode(' ', $wrapper_attributes) . '>';
     $output .= '<div class="row">';
     $output .= wpb_js_remove_wpautop($content);
     $output .= '</div>';

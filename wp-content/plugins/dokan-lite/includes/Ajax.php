@@ -5,6 +5,7 @@ namespace WeDevs\Dokan;
 use WC_Customer;
 use WC_Data_Store;
 use WC_Order;
+use WP_Query;
 
 /**
  * Ajax handler for Dokan
@@ -47,6 +48,8 @@ class Ajax {
         add_action( 'wp_ajax_dokan_create_new_product', array( $this, 'create_product' ) );
 
         add_action( 'wp_ajax_custom-header-crop', array( $this, 'crop_store_banner' ) );
+
+        add_action( 'wp_ajax_dokan_json_search_products_tags', array( $this, 'dokan_json_search_products_tags' ) );
 
         add_action( 'wp_ajax_dokan_json_search_products_and_variations', array( $this, 'json_search_product' ), 10 );
         add_action( 'wp_ajax_nopriv_dokan_json_search_products_and_variations', array( $this, 'json_search_product' ), 10 );
@@ -391,7 +394,7 @@ class Ajax {
 
         if ( $post_id > 0 ) {
             $order      = dokan()->order->get( $post_id );
-            $comment_id = $order->add_order_note( $note, $is_customer_note );
+            $comment_id = $order->add_order_note( $note, $is_customer_note, true );
 
             echo '<li rel="' . esc_attr( $comment_id ) . '" class="note ';
             if ( $is_customer_note ) {
@@ -658,6 +661,42 @@ class Ajax {
         }
 
         wp_send_json( apply_filters( 'dokan_json_search_found_products', $products ) );
+    }
+
+
+    /**
+     * Search product tags
+     *
+     * @since 3.0.5
+     *
+     * @return array
+     */
+    public function dokan_json_search_products_tags() {
+        check_ajax_referer( 'search-products-tags', 'security' );
+
+        $return = array();
+        $name   = ! empty( $_GET['q'] ) ? sanitize_text_field( wp_unslash( $_GET['q'] ) ) : '';
+        $page   = ! empty( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : 1;
+        $offset = ( $page-1 ) * 10;
+
+        $drop_down_tags = array(
+            'name__like' => $name,
+            'hide_empty' => 0,
+            'orderby'    => 'name',
+            'order'      => 'ASC',
+            'number'     => 10,
+            'offset'     => $offset
+        );
+
+        $product_tags = get_terms( 'product_tag', $drop_down_tags );
+
+        if ( $product_tags ) :
+            foreach ( $product_tags as $pro_term ) {
+                $return[] = array( $pro_term->term_id, $pro_term->name );
+            }
+        endif;
+        echo json_encode( $return );
+        die;
     }
 
     /**
@@ -929,7 +968,7 @@ class Ajax {
 
         $vendor_earning = dokan()->commission->calculate_commission( $product_id, $product_price, $vendor_id );
 
-        wp_send_json( $vendor_earning );
+        wp_send_json( wc_format_localized_price( $vendor_earning ) );
     }
 
     /**

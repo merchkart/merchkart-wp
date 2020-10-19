@@ -24,26 +24,39 @@ endif;
         <?php
         $class_order_review = 'large-12 columns';
         if ($checkout->get_checkout_fields()) :
-            $class_order_review = 'large-6 columns';
+            $class_order_review = 'large-5 columns';
             ?>
-            <div class="large-6 columns">
+            <div class="large-7 columns">
                 <div class="checkout-group woo-billing">
                     <?php do_action('woocommerce_checkout_before_customer_details'); ?>
+                    
                     <div class="col2-set" id="customer_details">
                         <div class="col-1">
                             <?php do_action('woocommerce_checkout_billing'); ?>
                         </div>
+                        
                         <div class="col-2">
                             <?php do_action('woocommerce_checkout_shipping'); ?>
                         </div>
                     </div>
+                    
                     <?php do_action('woocommerce_checkout_after_customer_details'); ?>
                 </div>
             </div>
         <?php endif; ?>
 
         <div class="<?php echo esc_attr($class_order_review); ?>">
+            
+            <?php
+            /**
+             * Custom action
+             */
+            do_action('nasa_checkout_before_order_review');
+            ?>
+            
             <div class="order-review">
+                <?php do_action('woocommerce_checkout_before_order_review_heading'); ?>
+                
                 <h3 id="order_review_heading">
                     <?php esc_html_e('Your order', 'elessi-theme'); ?>
                 </h3>
@@ -56,6 +69,14 @@ endif;
 
                 <?php do_action('woocommerce_checkout_after_order_review'); ?>
             </div>
+            
+            <?php
+            /**
+             * Custom action
+             */
+            do_action('nasa_checkout_after_order_review');
+            ?>
+            
         </div>
     </div>
 </form>

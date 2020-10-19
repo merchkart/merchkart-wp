@@ -3,7 +3,7 @@ $image_link = $main_id ? wp_get_attachment_url($main_id) : wc_placeholder_img_sr
 $image_large = wp_get_attachment_image_src($main_id, 'shop_single');
 $src_large = $image_link;
 $dimention = '';
-if(isset($image_large[0])) {
+if (isset($image_large[0])) {
     $src_large = $image_large[0];
     $dimention .= 'width="' . $image_large[1] . '" height="' . $image_large[2] . '" ';
 }
@@ -39,7 +39,7 @@ if(isset($image_large[0])) {
                         $image = wp_get_attachment_image_src($id, 'shop_single');
                         $src_large = $image_link;
                         $dimention = '';
-                        if(isset($image[0])) {
+                        if (isset($image[0])) {
                             $src_large = $image[0];
                             $dimention .= 'width="' . $image[1] . '" height="' . $image[2] . '" ';
                         }

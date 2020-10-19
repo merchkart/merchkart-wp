@@ -2,14 +2,14 @@
 
 Contributors: yithemes
 Tags: wishlist, woocommerce, products, yit, e-commerce, shop, ecommerce wishlist, yith, woocommerce wishlist, shop wishlist
-Requires at least: 4.0
-Tested up to: 5.4
-Stable tag: 3.0.11
+Requires at least: 4.5
+Tested up to: 5.5
+Stable tag: 3.0.15
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 YITH WooCommerce Wishlist add all Wishlist features to your website. Needs WooCommerce to work.
-WooCommerce 4.2.x compatible.
+WooCommerce 4.6.x compatible.
 
 == Description ==
 
@@ -21,7 +21,7 @@ The wishlist is one of the most powerful and popular tools in an ecommerce shop.
 
 This means that you’ll be able to loyalise customers, push them to buy and attract new customers any time a wishlist is shared. Not bad for one plugin only, don’t you think?
 
-Our YITH WooCommerce Wishlist has more than **700,000 active installations** and that’s why it’s **the most popular wishlist plugin ever.**
+Our YITH WooCommerce Wishlist has more than **800,000 active installations** and that’s why it’s **the most popular wishlist plugin ever.**
 
 To celebrate this record and say thanks to all the plugin users, we’ve decided to release a new 3.0 version that has improved the design tremendously  and added many new options.
 
@@ -112,6 +112,42 @@ Yes, of course you can. To avoid Wishlist page to show product prices, you can h
 
 
 == Changelog ==
+
+= 3.0.15 - Released on 16 October 2020 =
+
+* New: support for WooCommerce 4.6
+* Update: plugin framework
+* Tweak: return product price as float in item class
+* Fix: prevent possible fatal error when printing ATW button
+* Fix: original price being sent to database as int instead of float
+* Dev: added new filter yith_wcwl_set_session_cookie
+* Dev: added new filter yith_wcwl_privacy_value
+* Dev: added new parameter to yith_wcwl_{privacy}_wishlist_visibility filter
+
+= 3.0.14 - Released on 19 September 2020 =
+
+* New: support for WooCommerce 4.5
+* Update: plugin framework
+* Tweak: filter fragments to update only visible ATW when reset_data js event occurs
+* Tweak: added error message when trying to add variable products to cart
+* Fix: issue with cart redirect when using YITH WCCL
+
+= 3.0.13 - Released on 17 August 2020 =
+
+* Fix: moved check over Ajax Loading option on first wishlist init only, to avoid problems when dynamically loading ATW on variable products
+
+= 3.0.12 - Released on 14 August 2020 =
+
+* New: support for WordPress 5.5
+* New: support for WooCommerce 4.4
+* New: support for Polylang PRO
+* New: load correct Add to Wishlist (ATW) template for selected variation, and refresh it when changing variations on product page
+* Update: plugin framework
+* Fix: upsells are now correctly identified as loop by wishlist
+* Fix: icon select at backend showing [Object object]
+* Fix: changed fragments indexes to work with a greater set of configurations
+* Fix: notice when using custom icons for ATW buttons
+* Dev: added new filter yith_wcwl_fragments_index_glue
 
 = 3.0.11 - Released on 08 Jun 2020 =
 

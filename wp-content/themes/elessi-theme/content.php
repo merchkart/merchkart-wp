@@ -5,14 +5,11 @@
 
 global $nasa_opt;
 
-if (isset($_GET['layout']) && in_array($_GET['layout'], array('masonry-isotope', 'blog-grid', 'blog-standard', 'blog-list'))) :
-    $nasa_opt['blog_type'] = $_GET['layout'];
-endif;
-
 $show_author_info = (!isset($nasa_opt['show_author_info']) || $nasa_opt['show_author_info']) ? true : false;
 $show_date_info = (!isset($nasa_opt['show_date_info']) || $nasa_opt['show_date_info']) ? true : false;
 $show_cat_info = (isset($nasa_opt['show_cat_info']) && $nasa_opt['show_cat_info']) ? true : false;
 $show_tag_info = (isset($nasa_opt['show_tag_info']) && $nasa_opt['show_tag_info']) ? true : false;
+$show_comment_info = (isset($nasa_opt['show_comment_info']) && $nasa_opt['show_comment_info']) ? true : false;
 $show_readmore = (!isset($nasa_opt['show_readmore_blog']) || $nasa_opt['show_readmore_blog']) ? true : false;
 $show_desc_blog = (!isset($nasa_opt['show_desc_blog']) || $nasa_opt['show_desc_blog']) ? true : false;
 
@@ -56,6 +53,7 @@ while (have_posts()) :
     endif;
     $k++;
 endwhile;
+
 echo (!isset($nasa_opt['blog_type']) || in_array($nasa_opt['blog_type'], array('masonry-isotope', 'blog-grid'))) ? '</ul>' : '';
 ?>
 
@@ -68,3 +66,5 @@ echo (!isset($nasa_opt['blog_type']) || in_array($nasa_opt['blog_type'], array('
         'mid_size' => 1
     )); ?>
 </div>
+<?php
+wp_reset_postdata();

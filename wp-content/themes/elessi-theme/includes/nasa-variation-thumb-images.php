@@ -4,7 +4,7 @@ $image_thumb = wp_get_attachment_image_src($main_id, 'thumbnail');
 
 $src_thumb = $image_link;
 $dimention = '';
-if(isset($image_thumb[0])) {
+if (isset($image_thumb[0])) {
     $src_thumb = $image_thumb[0];
     $dimention .= 'width="' . $image_thumb[1] . '" height="' . $image_thumb[2] . '" ';
 }
@@ -20,7 +20,7 @@ if(isset($image_thumb[0])) {
         $dimention
     );
 
-    if(!empty($attachment_count)) :
+    if (!empty($attachment_count)) :
         $loop = 0;
 
         foreach ($gallery_id as $attachment_id) :

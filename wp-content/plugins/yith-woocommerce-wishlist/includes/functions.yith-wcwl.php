@@ -11,6 +11,8 @@ if ( ! defined( 'YITH_WCWL' ) ) {
 	exit;
 } // Exit if accessed directly
 
+/* === TESTER FUNCTIONS === */
+
 if ( ! function_exists( 'yith_wcwl_is_wishlist' ) ) {
 	/**
 	 * Check if we're printing wishlist shortcode
@@ -33,7 +35,7 @@ if ( ! function_exists( 'yith_wcwl_is_wishlist_page' ) ) {
 	 * @since 2.0.13
 	 */
 	function yith_wcwl_is_wishlist_page() {
-		$wishlist_page_id = yith_wcwl_object_id( get_option( 'yith_wcwl_wishlist_page_id' ) );
+		$wishlist_page_id = YITH_WCWL()->get_wishlist_page_id();
 
 		if ( ! $wishlist_page_id ) {
 			return false;
@@ -42,6 +44,35 @@ if ( ! function_exists( 'yith_wcwl_is_wishlist_page' ) ) {
 		return apply_filters( 'yith_wcwl_is_wishlist_page', is_page( $wishlist_page_id ) );
 	}
 }
+
+if ( ! function_exists( 'yith_wcwl_is_single' ) ) {
+	/**
+	 * Returns true if it finds that you're printing a single product
+	 * Should return false in any loop (including the ones inside single product page)
+	 *
+	 * @return bool Whether you're currently on single product template
+	 * @since 3.0.0
+	 */
+	function yith_wcwl_is_single() {
+		return apply_filters( 'yith_wcwl_is_single', is_product() && ! in_array( wc_get_loop_prop( 'name' ), array( 'related', 'up-sells' ) ) && ! wc_get_loop_prop( 'is_shortcode' ) );
+	}
+}
+
+if ( ! function_exists( 'yith_wcwl_is_mobile' ) ) {
+	/**
+	 * Returns true if we're currently on mobile view
+	 *
+	 * @return bool Whether you're currently on mobile view
+	 * @since 3.0.0
+	 */
+	function yith_wcwl_is_mobile() {
+		global $yith_wcwl_is_mobile;
+
+		return apply_filters( 'yith_wcwl_is_wishlist_responsive', true ) && ( wp_is_mobile() || $yith_wcwl_is_mobile );
+	}
+}
+
+/* === TEMPLATE FUNCTIONS === */
 
 if ( ! function_exists( 'yith_wcwl_locate_template' ) ) {
 	/**
@@ -156,6 +187,8 @@ if ( ! function_exists( 'yith_wcwl_get_template_part' ) ) {
 	}
 }
 
+/* === COUNT FUNCTIONS === */
+
 if ( ! function_exists( 'yith_wcwl_count_products' ) ) {
 	/**
 	 * Retrieve the number of products in the wishlist.
@@ -221,7 +254,7 @@ if ( ! function_exists( 'yith_wcwl_get_count_text' ) ) {
 		} else {
 			$other_count = $count - $current_user_count;
 			// translators: 1. Count of users when many, or "another" when only one.
-			$count_text = sprintf( _n( 'You and %s user', 'You and %d users', $other_count, 'yith-woocommerce-wishlist' ), 1 == $other_count ? 'another' : $other_count );
+			$count_text = sprintf( _n( 'You and %s user', 'You and %d users', $other_count, 'yith-woocommerce-wishlist' ), 1 == $other_count ? __( 'another', 'yith-woocommerce-wishlist' ) : $other_count );
 			$text       = __( 'have this item in wishlist', 'yith-woocommerce-wishlist' );
 		}
 
@@ -231,39 +264,7 @@ if ( ! function_exists( 'yith_wcwl_get_count_text' ) ) {
 	}
 }
 
-if ( ! function_exists( 'yith_frontend_css_color_picker' ) ) {
-	/**
-	 * Output a colour picker input box.
-	 *
-	 * This function is not of the plugin YITH WCWL. It is from WooCommerce.
-	 * We redeclare it only because it is needed in the tab "Styles" where it is not available.
-	 * The original function name is woocommerce_frontend_css_colorpicker and it is declared in
-	 * wp-content/plugins/woocommerce/admin/settings/settings-frontend-styles.php
-	 *
-	 * @access public
-	 *
-	 * @param mixed  $name  Name for the input field.
-	 * @param mixed  $id    Id for the input field.
-	 * @param mixed  $value Value for the input field.
-	 * @param string $desc  Description to show under input field (default '').
-	 *
-	 * @return void
-	 * @deprecated
-	 */
-	function yith_frontend_css_color_picker( $name, $id, $value, $desc = '' ) {
-		_deprecated_function( 'yith_frontend_css_color_picker', '3.0.0' );
-
-		$value = ! empty( $value ) ? $value : '#ffffff';
-
-		echo '<div  class="color_box">
-				  <table><tr><td>
-				  <strong>' . esc_html( $name ) . '</strong>
-				  <input name="' . esc_attr( $id ) . '" id="' . esc_attr( $id ) . '" type="text" value="' . esc_attr( $value ) . '" class="colorpick colorpickpreview" style="background-color: ' . esc_attr( $value ) . '" /> <div id="colorPickerDiv_' . esc_attr( $id ) . '" class="colorpickdiv"></div>
-				  </td></tr></table>
-			  </div>';
-
-	}
-}
+/* === COOKIE FUNCTIONS === */
 
 if ( ! function_exists( 'yith_wcwl_get_cookie_expiration' ) ) {
 	/**
@@ -338,25 +339,7 @@ if ( ! function_exists( 'yith_destroycookie' ) ) {
 	}
 }
 
-if ( ! function_exists( 'yith_wcwl_object_id' ) ) {
-	/**
-	 * Retrieve translated page id, if wpml is installed
-	 *
-	 * @param int $id Original page id.
-	 *
-	 * @return int Translation id
-	 * @since 1.0.0
-	 */
-	function yith_wcwl_object_id( $id ) {
-		if ( function_exists( 'wpml_object_id_filter' ) ) {
-			return wpml_object_id_filter( $id, 'page', true );
-		} elseif ( function_exists( 'icl_object_id' ) ) {
-			return icl_object_id( $id, 'page', true );
-		} else {
-			return $id;
-		}
-	}
-}
+/* === GET FUNCTIONS === */
 
 if ( ! function_exists( 'yith_wcwl_get_hidden_products' ) ) {
 	/**
@@ -417,6 +400,123 @@ if ( ! function_exists( 'yith_wcwl_get_wishlist' ) ) {
 	}
 }
 
+if ( ! function_exists( 'yith_wcwl_get_plugin_icons' ) ) {
+	/**
+	 * Return array of available icons
+	 *
+	 * @param string $none_label   Label to use for none option.
+	 * @param string $custom_label Label to use for custom option.
+	 *
+	 * @return array Array of available icons, in class => name format
+	 */
+	function yith_wcwl_get_plugin_icons( $none_label = '', $custom_label = '' ) {
+		$icons = json_decode( file_get_contents( YITH_WCWL_DIR . 'assets/js/admin/yith-wcwl-icons.json' ), true );
+
+		$icons['none']   = $none_label ? $none_label : __( 'None', 'yith-woocommerce-wishlist' );
+		$icons['custom'] = $custom_label ? $custom_label : __( 'Custom', 'yith-woocommerce-wishlist' );
+
+		return $icons;
+	}
+}
+
+if ( ! function_exists( 'yith_wcwl_get_privacy_label' ) ) {
+	/**
+	 * Returns privacy label
+	 *
+	 * @param int  $privacy  Privacy value.
+	 * @param bool $extended Whether to show extended or simplified label.
+	 *
+	 * @return string Privacy label
+	 * @since 3.0.0
+	 */
+	function yith_wcwl_get_privacy_label( $privacy, $extended = false ) {
+
+		switch ( $privacy ) {
+			case 1:
+				$privacy_label = 'shared';
+				$privacy_text  = __( 'Shared', 'yith-woocommerce-wishlist' );
+
+				if ( $extended ) {
+					$privacy_text = '<b>' . $privacy_text . '</b> - ';
+					$privacy_text .= __( 'Only people with a link to this list can see it', 'yith-woocommerce-wishlist' );
+				}
+
+				break;
+			case 2:
+				$privacy_label = 'private';
+				$privacy_text  = __( 'Private', 'yith-woocommerce-wishlist' );
+
+				if ( $extended ) {
+					$privacy_text = '<b>' . $privacy_text . '</b> - ';
+					$privacy_text .= __( 'Only you can see this list', 'yith-woocommerce-wishlist' );
+				}
+
+				break;
+			default:
+				$privacy_label = 'public';
+				$privacy_text  = __( 'Public', 'yith-woocommerce-wishlist' );
+
+				if ( $extended ) {
+					$privacy_text = '<b>' . $privacy_text . '</b> - ';
+					$privacy_text .= __( 'Anyone can search for and see this list', 'yith-woocommerce-wishlist' );
+				}
+
+				break;
+		}
+
+		return apply_filters( "yith_wcwl_{$privacy_label}_wishlist_visibility", $privacy_text, $extended, $privacy );
+	}
+}
+
+if ( ! function_exists( 'yith_wcwl_get_privacy_value' ) ) {
+	/**
+	 * Returns privacy numeric value
+	 *
+	 * @param string $privacy_label Privacy label.
+	 *
+	 * @return int Privacy value
+	 * @since 3.0.0
+	 */
+	function yith_wcwl_get_privacy_value( $privacy_label ) {
+
+		switch ( $privacy_label ) {
+			case 'shared':
+				$privacy_value = 1;
+				break;
+			case 'private':
+				$privacy_value = 2;
+				break;
+			default:
+				$privacy_value = 0;
+				break;
+		}
+
+		return apply_filters( 'yith_wcwl_privacy_value', $privacy_value, $privacy_label );
+	}
+}
+
+if ( ! function_exists( 'yith_wcwl_get_current_url' ) ) {
+	/**
+	 * Retrieves current url
+	 *
+	 * @return string Current url
+	 * @since 3.0.0
+	 */
+	function yith_wcwl_get_current_url() {
+		global $wp;
+
+		/**
+		 * Returns empty string by default, to avoid problems with unexpected redirects
+		 * Added filter to change default behaviour, passing what we think is current page url
+		 *
+		 * @since 3.0.12
+		 */
+		return apply_filters( 'yith_wcwl_current_url', '', add_query_arg( $wp->query_vars, home_url( $wp->request ) ) );
+	}
+}
+
+/* === UTILITY FUNCTIONS === */
+
 if ( ! function_exists( 'yith_wcwl_merge_in_array' ) ) {
 	/**
 	 * Merges an array of items into a specific position of an array
@@ -442,25 +542,6 @@ if ( ! function_exists( 'yith_wcwl_merge_in_array' ) ) {
 		$part_2 = array_slice( $array, $pos + $i );
 
 		return array_merge( $part_1, $element, $part_2 );
-	}
-}
-
-if ( ! function_exists( 'yith_wcwl_get_plugin_icons' ) ) {
-	/**
-	 * Return array of available icons
-	 *
-	 * @param string $none_label   Label to use for none option.
-	 * @param string $custom_label Label to use for custom option.
-	 *
-	 * @return array Array of available icons, in class => name format
-	 */
-	function yith_wcwl_get_plugin_icons( $none_label = '', $custom_label = '' ) {
-		$icons = json_decode( file_get_contents( YITH_WCWL_DIR . 'assets/js/admin/yith-wcwl-icons.json' ), true );
-
-		$icons['none']   = $none_label ? $none_label : __( 'None', 'yith-woocommerce-wishlist' );
-		$icons['custom'] = $custom_label ? $custom_label : __( 'Custom', 'yith-woocommerce-wishlist' );
-
-		return $icons;
 	}
 }
 
@@ -535,123 +616,6 @@ if ( ! function_exists( 'yith_wcwl_maybe_format_field_array' ) ) {
 	}
 }
 
-if ( ! function_exists( 'yith_wcwl_get_privacy_label' ) ) {
-	/**
-	 * Returns privacy label
-	 *
-	 * @param int  $privacy  Privacy value.
-	 * @param bool $extended Whether to show extended or simplified label.
-	 *
-	 * @return string Privacy label
-	 * @since 3.0.0
-	 */
-	function yith_wcwl_get_privacy_label( $privacy, $extended = false ) {
-
-		switch ( $privacy ) {
-			case 1:
-				$privacy_label = 'shared';
-				$privacy_text  = __( 'Shared', 'yith-woocommerce-wishlist' );
-
-				if ( $extended ) {
-					$privacy_text = '<b>' . $privacy_text . '</b> - ';
-					$privacy_text .= __( 'Only people with a link to this list can see it', 'yith-woocommerce-wishlist' );
-				}
-
-				break;
-			case 2:
-				$privacy_label = 'private';
-				$privacy_text  = __( 'Private', 'yith-woocommerce-wishlist' );
-
-				if ( $extended ) {
-					$privacy_text = '<b>' . $privacy_text . '</b> - ';
-					$privacy_text .= __( 'Only you can see this list', 'yith-woocommerce-wishlist' );
-				}
-
-				break;
-			default:
-				$privacy_label = 'public';
-				$privacy_text  = __( 'Public', 'yith-woocommerce-wishlist' );
-
-				if ( $extended ) {
-					$privacy_text = '<b>' . $privacy_text . '</b> - ';
-					$privacy_text .= __( 'Anyone can search for and see this list', 'yith-woocommerce-wishlist' );
-				}
-
-				break;
-		}
-
-		return apply_filters( "yith_wcwl_{$privacy_label}_wishlist_visibility", $privacy_text, $extended );
-	}
-}
-
-if ( ! function_exists( 'yith_wcwl_get_privacy_value' ) ) {
-	/**
-	 * Returns privacy numeric value
-	 *
-	 * @param string $privacy_label Privacy label.
-	 *
-	 * @return int Privacy value
-	 * @since 3.0.0
-	 */
-	function yith_wcwl_get_privacy_value( $privacy_label ) {
-
-		switch ( $privacy_label ) {
-			case 'shared':
-				$privacy_value = 1;
-				break;
-			case 'private':
-				$privacy_value = 2;
-				break;
-			default:
-				$privacy_value = 0;
-				break;
-		}
-
-		return $privacy_value;
-	}
-}
-
-if ( ! function_exists( 'yith_wcwl_get_current_url' ) ) {
-	/**
-	 * Retrieves current url
-	 *
-	 * @return string Current url
-	 * @since 3.0.0
-	 */
-	function yith_wcwl_get_current_url() {
-		global $wp;
-
-		return add_query_arg( $wp->query_vars, home_url( $wp->request ) );
-	}
-}
-
-if ( ! function_exists( 'yith_wcwl_is_single' ) ) {
-	/**
-	 * Returns true if it finds that you're printing a single product
-	 * Should return false in any loop (including the ones inside single product page)
-	 *
-	 * @return bool Whether you're currently on single product template
-	 * @since 3.0.0
-	 */
-	function yith_wcwl_is_single() {
-		return apply_filters( 'yith_wcwl_is_single', is_product() && 'related' != wc_get_loop_prop( 'name' ) && ! wc_get_loop_prop( 'is_shortcode' ) );
-	}
-}
-
-if ( ! function_exists( 'yith_wcwl_is_mobile' ) ) {
-	/**
-	 * Returns true if we're currently on mobile view
-	 *
-	 * @return bool Whether you're currently on mobile view
-	 * @since 3.0.0
-	 */
-	function yith_wcwl_is_mobile() {
-		global $yith_wcwl_is_mobile;
-
-		return apply_filters( 'yith_wcwl_is_wishlist_responsive', true ) && ( wp_is_mobile() || $yith_wcwl_is_mobile );
-	}
-}
-
 if ( ! function_exists( 'yith_wcwl_add_notice' ) ) {
 	/**
 	 * Calls wc_add_notice, when it exists
@@ -664,5 +628,77 @@ if ( ! function_exists( 'yith_wcwl_add_notice' ) ) {
 	 */
 	function yith_wcwl_add_notice( $message, $notice_type = 'success', $data = array() ) {
 		function_exists( 'wc_add_notice' ) && wc_add_notice( $message, $notice_type, $data );
+	}
+}
+
+if ( ! function_exists( 'yith_wcwl_object_id' ) ) {
+	/**
+	 * Retrieve translated object id, if a translation plugin is active
+	 *
+	 * @param int    $id              Original object id.
+	 * @param string $type            Object type.
+	 * @param bool   $return_original Whether to return original object if no translation is found.
+	 * @param string $lang            Language to use for translation ().
+	 *
+	 * @return int Translation id
+	 * @since 1.0.0
+	 */
+	function yith_wcwl_object_id( $id, $type = 'page', $return_original = true, $lang = null ) {
+
+		// process special value for $lang.
+		if ( 'default' === $lang ) {
+			if ( defined('ICL_SITEPRESS_VERSION') ) { // wpml default language.
+				global $sitepress;
+				$lang = $sitepress->get_default_language();
+			} elseif( function_exists( 'pll_default_language' ) ) { // polylang default language.
+				$lang = pll_default_language( 'locale' );
+			} else { // cannot determine default language.
+				$lang = null;
+			}
+		}
+
+		// Should work with WPML and PolyLang.
+		$id = apply_filters( 'wpml_object_id', $id, $type, $return_original, $lang );
+
+		// Space for additional translations
+		$id = apply_filters( 'yith_wcwl_object_id', $id, $type, $return_original, $lang );
+
+		return $id;
+	}
+}
+
+/* === DEPRECATED FUNCTIONS === */
+
+if ( ! function_exists( 'yith_frontend_css_color_picker' ) ) {
+	/**
+	 * Output a colour picker input box.
+	 *
+	 * This function is not of the plugin YITH WCWL. It is from WooCommerce.
+	 * We redeclare it only because it is needed in the tab "Styles" where it is not available.
+	 * The original function name is woocommerce_frontend_css_colorpicker and it is declared in
+	 * wp-content/plugins/woocommerce/admin/settings/settings-frontend-styles.php
+	 *
+	 * @access public
+	 *
+	 * @param mixed  $name  Name for the input field.
+	 * @param mixed  $id    Id for the input field.
+	 * @param mixed  $value Value for the input field.
+	 * @param string $desc  Description to show under input field (default '').
+	 *
+	 * @return void
+	 * @deprecated
+	 */
+	function yith_frontend_css_color_picker( $name, $id, $value, $desc = '' ) {
+		_deprecated_function( 'yith_frontend_css_color_picker', '3.0.0' );
+
+		$value = ! empty( $value ) ? $value : '#ffffff';
+
+		echo '<div  class="color_box">
+				  <table><tr><td>
+				  <strong>' . esc_html( $name ) . '</strong>
+				  <input name="' . esc_attr( $id ) . '" id="' . esc_attr( $id ) . '" type="text" value="' . esc_attr( $value ) . '" class="colorpick colorpickpreview" style="background-color: ' . esc_attr( $value ) . '" /> <div id="colorPickerDiv_' . esc_attr( $id ) . '" class="colorpickdiv"></div>
+				  </td></tr></table>
+			  </div>';
+
 	}
 }

@@ -19,26 +19,29 @@ if ((WPBakeryShortCode_VC_Tta_Section::$self_count == 0)) {
     $class_acc[] = 'active first';
 }
 
-if($atts['el_class'] != '') {
+if ($atts['el_class'] != '') {
     $class_tab[] = $atts['el_class'];
     $class_acc[] = $atts['el_class'];
 }
 
-$class_tab_str = implode(' ', $class_tab);
-$class_acc_str = implode(' ', $class_acc);
-
 $this->resetVariables($atts, $content);
 WPBakeryShortCode_VC_Tta_Section::$self_count++;
 WPBakeryShortCode_VC_Tta_Section::$section_info[] = $atts;
+
 $isPageEditable = vc_is_page_editable();
 $tabId = $this->getTemplateVariable('tab_id');
+
+$class_tab[] = 'nasa-section-' . esc_attr($tabId);
+$class_tab_str = implode(' ', $class_tab);
+$class_acc_str = implode(' ', $class_acc);
+
 $output = '';
 
 $output .= '<div class="nasa-accordion-title">';
-$output .= '<a class="' . $class_acc_str . '" data-id="' . esc_attr($tabId) . '" href="javascript:void(0);">' . $this->getTemplateVariable('title') . '</a>';
+$output .= '<a class="' . $class_acc_str . '" data-index="nasa-section-' . esc_attr($tabId) . '" href="javascript:void(0);">' . $this->getTemplateVariable('title') . '</a>';
 $output .= '</div>';
 
-$output .= '<div class="' . $class_tab_str . '" id="nasa-secion-' . esc_attr($tabId) . '">';
+$output .= '<div class="' . $class_tab_str . '">';
 $output .= $this->getTemplateVariable('content');
 $output .= '</div>';
 

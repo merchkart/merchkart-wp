@@ -1,7 +1,7 @@
 <?php
 if (class_exists('WP_Widget')) {
+    
     add_action('widgets_init', 'elessi_posts_widget');
-
     function elessi_posts_widget() {
         register_widget('Elessi_Post_Widget');
     }
@@ -51,21 +51,18 @@ if (class_exists('WP_Widget')) {
                         <li class="nasa-recent-posts-li">
                             <div class="row">
                                 <?php if (has_post_thumbnail()) : ?>
-                                    <div class="large-4 medium-4 small-4 columns nasa-thumbnail-post">
-                                        <div class="entry-image">
-                                            <a href="<?php echo esc_url($link_post); ?>" title="<?php echo esc_attr($title_post); ?>">
-                                                <?php the_post_thumbnail('thumbnail'); ?>
-                                                <div class="image-overlay"></div>
-                                            </a>
-                                        </div>
+                                    <div class="large-4 medium-4 small-4 columns nasa-thumbnail-post rtl-right">
+                                        <a href="<?php echo esc_url($link_post); ?>" title="<?php echo esc_attr($title_post); ?>">
+                                            <?php the_post_thumbnail('thumbnail'); ?>
+                                        </a>
                                     </div>
                                     <?php
-                                    $class_col = 'large-8 medium-8 small-8 columns';
+                                    $class_col = 'large-8 medium-8 small-8 columns rtl-right';
                                 endif; ?>
                                 <div class="<?php echo esc_attr($class_col); ?> nasa-info-post">
-                                    <div class="nasa-post-cats-wrap"><?php echo ($categories); ?></div>
+                                    <div class="nasa-post-cats-wrap"><?php echo $categories; ?></div>
                                     <a class="nasa-wg-recent-post-title" href="<?php echo esc_url($link_post); ?>" title="<?php echo esc_attr($title_post); ?>">
-                                        <?php echo ($title_post); ?>
+                                        <?php echo $title_post; ?>
                                     </a>
                                 </div>
                             </div>
@@ -111,6 +108,5 @@ if (class_exists('WP_Widget')) {
             </p>
             <?php
         }
-
     }
 }

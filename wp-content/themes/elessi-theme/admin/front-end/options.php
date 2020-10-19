@@ -28,7 +28,7 @@
 
         <div class="updated error importer-notice importer-notice-1" style="display: none;"><p><strong><?php echo sprintf(esc_html__('Seems like an error has occured. Please double check the imported data. If incorrect, please use %s and try again', 'elessi-theme'), '<a href="' . admin_url('plugin-install.php?tab=plugin-information&amp;plugin=wordpress-reset&amp;TB_iframe=true&amp;width=830&amp;height=472') . '" class="thickbox" title="' . esc_attr__('Reset WordPress plugin', 'elessi-theme') . '">' . esc_html__('Reset WordPress plugin', 'elessi-theme') . '</a>'); ?> </strong></p></div>
 
-        <div class="updated importer-notice importer-notice-2" style="display: none;"><p><strong><?php echo sprintf(esc_html__('Demo data successfully imported. Please Refress your site and Click Save All Changes NasaTheme options.', 'elessi-theme')); ?></strong></p></div>
+        <div class="updated importer-notice importer-notice-2" style="display: none;"><p><strong><?php echo sprintf(esc_html__('Demo data successfully imported. Please refresh your site and Click Save All Changes NasaTheme options.', 'elessi-theme')); ?></strong></p></div>
 
         <div class="updated error importer-notice importer-notice-3" style="display: none;"><p><strong><?php esc_html_e('Sorry but your import failed. Most likely, it cannot work with your webhost. You will have to ask your webhost to increase your PHP max_execution_time (or any other webserver timeout to at least 300 secs) and memory_limit (to at least 196M) temporarily.', 'elessi-theme'); ?></strong></p></div>
 

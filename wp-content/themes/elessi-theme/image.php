@@ -95,8 +95,7 @@ $allowed_html = array(
                             <?php endif; ?>
                             <?php edit_post_link(esc_html__('Edit', 'elessi-theme'), ' <span class="edit-link">', '</span>'); ?>
                         </footer>
-
-
+                        
                         <nav role="navigation" id="image-navigation" class="navigation-image">
                             <div class="nav-previous"><?php previous_image_link(false, wp_kses(__('<span class="meta-nav">&larr;</span> Previous', 'elessi-theme'), $allowed_html)); ?></div>
                             <div class="nav-next"><?php next_image_link(false, wp_kses(__('Next <span class="meta-nav">&rarr;</span>', 'elessi-theme'), $allowed_html)); ?></div>
@@ -106,7 +105,10 @@ $allowed_html = array(
                     if (comments_open() || '0' != get_comments_number()) :
                         comments_template();
                     endif; ?>
-                <?php endwhile; ?>
+                <?php
+                endwhile;
+                wp_reset_postdata();
+                ?>
             </div>
         </div>
     </div>

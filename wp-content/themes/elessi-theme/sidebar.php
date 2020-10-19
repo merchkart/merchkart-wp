@@ -6,14 +6,10 @@
  */
 ?>
 
-<div id="secondary" class="widget-area" role="complementary">
+<div id="secondary" class="widget-area nasa-sidebar-off-canvas">
     <?php
     do_action('before_sidebar');
-    
-    if (is_active_sidebar('blog-sidebar')) :
-        dynamic_sidebar('blog-sidebar');
-    endif;
-    
+    dynamic_sidebar('blog-sidebar');
     do_action('after_sidebar');
     ?>
 </div>

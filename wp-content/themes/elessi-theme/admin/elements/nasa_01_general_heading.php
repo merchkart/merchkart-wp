@@ -1,13 +1,10 @@
 <?php
+add_action('init', 'elessi_general_heading');
 if (!function_exists('elessi_general_heading')) {
-    add_action('init', 'elessi_general_heading');
     function elessi_general_heading() {
-        /* --------------------------------------------------------------------- */
-        /* The Options Array */
-        /* --------------------------------------------------------------------- */
         // Set the Options Array
         global $of_options;
-        if(empty($of_options)) {
+        if (empty($of_options)) {
             $of_options = array();
         }
         
@@ -17,7 +14,7 @@ if (!function_exists('elessi_general_heading')) {
             "type" => "heading"
         );
 
-        if(get_option('nasatheme_imported') !== 'imported') {
+        if (get_option('nasatheme_imported') !== 'imported') {
             $of_options[] = array(
                 "name" => esc_html__("Import Demo Content", 'elessi-theme'),
                 "desc" => esc_html__("Click for import. Please ensure our plugins are activated before content is imported.", 'elessi-theme'),
@@ -38,7 +35,6 @@ if (!function_exists('elessi_general_heading')) {
 
         $of_options[] = array(
             "name" => esc_html__("Site Layout", 'elessi-theme'),
-            // "desc" => esc_html__("Selects site layout.", 'elessi-theme'),
             "id" => "site_layout",
             "std" => "wide",
             "type" => "select",
@@ -58,7 +54,7 @@ if (!function_exists('elessi_general_heading')) {
         );
 
         $of_options[] = array(
-            "name" => esc_html__("Site Background Color - Only use for Site Layout => Wide", 'elessi-theme'),
+            "name" => esc_html__("Site Background Color - Only use for Site Layout => Boxed", 'elessi-theme'),
             "id" => "site_bg_color",
             "std" => "#eee",
             "type" => "color",
@@ -66,20 +62,11 @@ if (!function_exists('elessi_general_heading')) {
         );
 
         $of_options[] = array(
-            "name" => esc_html__("Site Background Image - Only use for Site Layout => Wide", 'elessi-theme'),
+            "name" => esc_html__("Site Background Image - Only use for Site Layout => Boxed", 'elessi-theme'),
             "id" => "site_bg_image",
             "std" => ELESSI_THEME_URI . "/assets/images/bkgd1.jpg",
             "type" => "media",
-            'class' => 'nasa-site_layout nasa-site_layout-boxed nasa-theme-option-child',
-            "mod" => "min"
-        );
-        
-        $of_options[] = array(
-            "name" => esc_html__("Site RTL", 'elessi-theme'),
-            // "desc" => esc_html__("Yes, please!", 'elessi-theme'),
-            "id" => "nasa_rtl",
-            "std" => 0,
-            "type" => "switch"
+            'class' => 'nasa-site_layout nasa-site_layout-boxed nasa-theme-option-child'
         );
         
         $of_options[] = array(
@@ -92,15 +79,27 @@ if (!function_exists('elessi_general_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Login/Register by Ajax form", 'elessi-theme'),
-            // "desc" => esc_html__("Enable Login or Register by Ajax form", 'elessi-theme'),
             "id" => "login_ajax",
             "std" => 1,
             "type" => "switch"
         );
         
         $of_options[] = array(
+            "name" => esc_html__("Account On Main Screen - Mobile Layout", 'elessi-theme'),
+            "id" => "main_screen_acc_mobile",
+            "std" => 1,
+            "type" => "switch"
+        );
+        
+        $of_options[] = array(
+            "name" => esc_html__("Captcha For Register Form", 'elessi-theme'),
+            "id" => "register_captcha",
+            "std" => 0,
+            "type" => "switch"
+        );
+        
+        $of_options[] = array(
             "name" => esc_html__("Mobile Menu Layout", 'elessi-theme'),
-            // "desc" => esc_html__("Selects Mobile Menu Layout.", 'elessi-theme'),
             "id" => "mobile_menu_layout",
             "std" => "light-new",
             "type" => "select",
@@ -121,7 +120,6 @@ if (!function_exists('elessi_general_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Delay Overlay (ms)", 'elessi-theme'),
-            // "desc" => esc_html__("(ms) Delay overlay items.", 'elessi-theme'),
             "id" => "delay_overlay",
             "std" => "100",
             "type" => "text"
@@ -129,10 +127,43 @@ if (!function_exists('elessi_general_heading')) {
         
         $of_options[] = array(
             "name" => esc_html__("Effect Before Load Site", 'elessi-theme'),
-            // "desc" => esc_html__("Yes, Please!", 'elessi-theme'),
             "id" => "effect_before_load",
             "std" => 1,
             "type" => "switch"
+        );
+        
+        $of_options[] = array(
+            "name" => esc_html__("Toggle Widgets Content", 'elessi-theme'),
+            "id" => "toggle_widgets",
+            "std" => "1",
+            "type" => "switch"
+        );
+        
+        $of_options[] = array(
+            "name" => esc_html__("Include Theme Version when call Main js", 'elessi-theme'),
+            "id" => "js_theme_version",
+            "std" => 0,
+            "type" => "switch"
+        );
+        
+        $of_options[] = array(
+            "name" => esc_html__("GDPR Options", 'elessi-theme'),
+            "std" => "<h4>" . esc_html__("GDPR Options", 'elessi-theme') . "</h4>",
+            "type" => "info"
+        );
+        
+        $of_options[] = array(
+            "name" => esc_html__("GDPR Notice", 'elessi-theme'),
+            "id" => "nasa_gdpr_notice",
+            "std" => 0,
+            "type" => "switch"
+        );
+        
+        $of_options[] = array(
+            "name" => esc_html__("GDPR Policies Link", 'elessi-theme'),
+            "id" => "nasa_gdpr_policies",
+            "std" => "https://policies.google.com",
+            "type" => "text"
         );
     }
 }

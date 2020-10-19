@@ -82,12 +82,19 @@ this["wc"] = this["wc"] || {}; this["wc"]["onboardingProductImportNotice"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 701);
+/******/ 	return __webpack_require__(__webpack_require__.s = 680);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 26:
+/***/ 3:
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["i18n"]; }());
+
+/***/ }),
+
+/***/ 33:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -131,7 +138,6 @@ var WC_ASSET_URL = SOURCE.wcAssetUrl;
 /**
  * Retrieves a setting value from the setting state.
  *
- * @export
  * @param {string}   name                         The identifier for the setting.
  * @param {*}    [fallback=false]             The value to use as a fallback
  *                                                if the setting is not in the
@@ -167,7 +173,6 @@ function getSetting(name) {
  *
  * @deprecated
  *
- * @export
  * @param {string}   name                        The setting property key for the
  *                                               setting being mutated.
  * @param {*}    value                       The value to set.
@@ -200,13 +205,6 @@ function getAdminLink(path) {
 
 /***/ }),
 
-/***/ 3:
-/***/ (function(module, exports) {
-
-(function() { module.exports = this["wp"]["i18n"]; }());
-
-/***/ }),
-
 /***/ 43:
 /***/ (function(module, exports) {
 
@@ -230,7 +228,44 @@ module.exports = _typeof;
 
 /***/ }),
 
-/***/ 65:
+/***/ 680:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(77);
+/* harmony import */ var _woocommerce_wc_admin_settings__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(33);
+/**
+ * External dependencies
+ */
+
+
+
+Object(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(function () {
+  var actionButtons = document.querySelector('.wc-actions');
+
+  if (actionButtons) {
+    var primaryButton = document.querySelector('.wc-actions .button-primary');
+
+    if (primaryButton) {
+      primaryButton.classList.remove('button');
+      primaryButton.classList.remove('button-primary');
+    }
+
+    var continueButton = document.createElement('a');
+    continueButton.classList.add('button');
+    continueButton.classList.add('button-primary');
+    continueButton.setAttribute('href', Object(_woocommerce_wc_admin_settings__WEBPACK_IMPORTED_MODULE_2__[/* getAdminLink */ "f"])('admin.php?page=wc-admin'));
+    continueButton.innerText = Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Continue setup', 'woocommerce-admin');
+    actionButtons.appendChild(continueButton);
+  }
+});
+
+/***/ }),
+
+/***/ 77:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -276,47 +311,6 @@ function domReady(callback) {
   document.addEventListener('DOMContentLoaded', callback);
 }
 //# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ 701:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(65);
-/* harmony import */ var _woocommerce_wc_admin_settings__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(26);
-/**
- * External dependencies
- */
-
-
-/**
- * WooCommerce dependencies
- */
-
-
-Object(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(function () {
-  var actionButtons = document.querySelector('.wc-actions');
-
-  if (actionButtons) {
-    var primaryButton = document.querySelector('.wc-actions .button-primary');
-
-    if (primaryButton) {
-      primaryButton.classList.remove('button');
-      primaryButton.classList.remove('button-primary');
-    }
-
-    var continueButton = document.createElement('a');
-    continueButton.classList.add('button');
-    continueButton.classList.add('button-primary');
-    continueButton.setAttribute('href', Object(_woocommerce_wc_admin_settings__WEBPACK_IMPORTED_MODULE_2__[/* getAdminLink */ "f"])('admin.php?page=wc-admin'));
-    continueButton.innerText = Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Continue setup', 'woocommerce-admin');
-    actionButtons.appendChild(continueButton);
-  }
-});
 
 /***/ })
 

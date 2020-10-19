@@ -82,7 +82,7 @@ this["wc"] = this["wc"] || {}; this["wc"]["printShippingLabelBanner"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 707);
+/******/ 	return __webpack_require__(__webpack_require__.s = 685);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -107,72 +107,411 @@ this["wc"] = this["wc"] || {}; this["wc"]["printShippingLabelBanner"] =
 if (false) { var throwOnDirectAccess, ReactIs; } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(138)();
+  module.exports = __webpack_require__(142)();
 }
 
 
 /***/ }),
 
 /***/ 10:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-/*!
-  Copyright (c) 2017 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-/* global define */
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
 
-(function () {
-	'use strict';
+  return self;
+}
 
-	var hasOwn = {}.hasOwnProperty;
-
-	function classNames () {
-		var classes = [];
-
-		for (var i = 0; i < arguments.length; i++) {
-			var arg = arguments[i];
-			if (!arg) continue;
-
-			var argType = typeof arg;
-
-			if (argType === 'string' || argType === 'number') {
-				classes.push(arg);
-			} else if (Array.isArray(arg) && arg.length) {
-				var inner = classNames.apply(null, arg);
-				if (inner) {
-					classes.push(inner);
-				}
-			} else if (argType === 'object') {
-				for (var key in arg) {
-					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(key);
-					}
-				}
-			}
-		}
-
-		return classes.join(' ');
-	}
-
-	if ( true && module.exports) {
-		classNames.default = classNames;
-		module.exports = classNames;
-	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
-		// register as 'classnames', consistent with npm package name
-		define('classnames', [], function () {
-			return classNames;
-		});
-	} else {
-		window.classNames = classNames;
-	}
-}());
-
+module.exports = _assertThisInitialized;
 
 /***/ }),
 
 /***/ 100:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// UNUSED EXPORTS: Provider
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 3 modules
+var toConsumableArray = __webpack_require__(28);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/classCallCheck.js
+var classCallCheck = __webpack_require__(20);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/createClass.js
+var createClass = __webpack_require__(21);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js
+var possibleConstructorReturn = __webpack_require__(23);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js
+var getPrototypeOf = __webpack_require__(7);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/inherits.js + 1 modules
+var inherits = __webpack_require__(22);
+
+// EXTERNAL MODULE: external {"this":["wp","element"]}
+var external_this_wp_element_ = __webpack_require__(0);
+
+// EXTERNAL MODULE: external "lodash"
+var external_lodash_ = __webpack_require__(2);
+
+// EXTERNAL MODULE: ./node_modules/@wordpress/compose/build-module/utils/create-higher-order-component/index.js
+var create_higher_order_component = __webpack_require__(74);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
+var assertThisInitialized = __webpack_require__(18);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/higher-order/with-focus-return/context.js
+
+
+
+
+
+
+
+
+
+function _createSuper(Derived) { return function () { var Super = Object(getPrototypeOf["a" /* default */])(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = Object(getPrototypeOf["a" /* default */])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(possibleConstructorReturn["a" /* default */])(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+/**
+ * External dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+
+
+var _createContext = Object(external_this_wp_element_["createContext"])({
+  focusHistory: []
+}),
+    Provider = _createContext.Provider,
+    Consumer = _createContext.Consumer;
+
+Provider.displayName = 'FocusReturnProvider';
+Consumer.displayName = 'FocusReturnConsumer';
+/**
+ * The maximum history length to capture for the focus stack. When exceeded,
+ * items should be shifted from the stack for each consecutive push.
+ *
+ * @type {number}
+ */
+
+var MAX_STACK_LENGTH = 100;
+
+var context_FocusReturnProvider = /*#__PURE__*/function (_Component) {
+  Object(inherits["a" /* default */])(FocusReturnProvider, _Component);
+
+  var _super = _createSuper(FocusReturnProvider);
+
+  function FocusReturnProvider() {
+    var _this;
+
+    Object(classCallCheck["a" /* default */])(this, FocusReturnProvider);
+
+    _this = _super.apply(this, arguments);
+    _this.onFocus = _this.onFocus.bind(Object(assertThisInitialized["a" /* default */])(_this));
+    _this.state = {
+      focusHistory: []
+    };
+    return _this;
+  }
+
+  Object(createClass["a" /* default */])(FocusReturnProvider, [{
+    key: "onFocus",
+    value: function onFocus(event) {
+      var focusHistory = this.state.focusHistory; // Push the focused element to the history stack, keeping only unique
+      // members but preferring the _last_ occurrence of any duplicates.
+      // Lodash's `uniq` behavior favors the first occurrence, so the array
+      // is temporarily reversed prior to it being called upon. Uniqueness
+      // helps avoid situations where, such as in a constrained tabbing area,
+      // the user changes focus enough within a transient element that the
+      // stack may otherwise only consist of members pending destruction, at
+      // which point focus might have been lost.
+
+      var nextFocusHistory = Object(external_lodash_["uniq"])([].concat(Object(toConsumableArray["a" /* default */])(focusHistory), [event.target]).slice(-1 * MAX_STACK_LENGTH).reverse()).reverse();
+      this.setState({
+        focusHistory: nextFocusHistory
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          children = _this$props.children,
+          className = _this$props.className;
+      return Object(external_this_wp_element_["createElement"])(Provider, {
+        value: this.state
+      }, Object(external_this_wp_element_["createElement"])("div", {
+        onFocus: this.onFocus,
+        className: className
+      }, children));
+    }
+  }]);
+
+  return FocusReturnProvider;
+}(external_this_wp_element_["Component"]);
+
+/* harmony default export */ var with_focus_return_context = (context_FocusReturnProvider);
+
+//# sourceMappingURL=context.js.map
+// CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/higher-order/with-focus-return/index.js
+
+
+
+
+
+
+
+
+function with_focus_return_createSuper(Derived) { return function () { var Super = Object(getPrototypeOf["a" /* default */])(Derived), result; if (with_focus_return_isNativeReflectConstruct()) { var NewTarget = Object(getPrototypeOf["a" /* default */])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(possibleConstructorReturn["a" /* default */])(this, result); }; }
+
+function with_focus_return_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+/**
+ * External dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+
+
+/**
+ * Internal dependencies
+ */
+
+
+/**
+ * Returns true if the given object is component-like. An object is component-
+ * like if it is an instance of wp.element.Component, or is a function.
+ *
+ * @param {*} object Object to test.
+ *
+ * @return {boolean} Whether object is component-like.
+ */
+
+function isComponentLike(object) {
+  return object instanceof external_this_wp_element_["Component"] || typeof object === 'function';
+}
+/**
+ * Higher Order Component used to be used to wrap disposable elements like
+ * sidebars, modals, dropdowns. When mounting the wrapped component, we track a
+ * reference to the current active element so we know where to restore focus
+ * when the component is unmounted.
+ *
+ * @param {(WPComponent|Object)} options The component to be enhanced with
+ *                                      focus return behavior, or an object
+ *                                      describing the component and the
+ *                                      focus return characteristics.
+ *
+ * @return {WPComponent} Component with the focus restauration behaviour.
+ */
+
+
+function withFocusReturn(options) {
+  // Normalize as overloaded form `withFocusReturn( options )( Component )`
+  // or as `withFocusReturn( Component )`.
+  if (isComponentLike(options)) {
+    var WrappedComponent = options;
+    return withFocusReturn({})(WrappedComponent);
+  }
+
+  var _options$onFocusRetur = options.onFocusReturn,
+      onFocusReturn = _options$onFocusRetur === void 0 ? external_lodash_["stubTrue"] : _options$onFocusRetur;
+  return function (WrappedComponent) {
+    var FocusReturn = /*#__PURE__*/function (_Component) {
+      Object(inherits["a" /* default */])(FocusReturn, _Component);
+
+      var _super = with_focus_return_createSuper(FocusReturn);
+
+      function FocusReturn() {
+        var _this;
+
+        Object(classCallCheck["a" /* default */])(this, FocusReturn);
+
+        _this = _super.apply(this, arguments);
+        _this.ownFocusedElements = new Set();
+        _this.activeElementOnMount = document.activeElement;
+
+        _this.setIsFocusedFalse = function () {
+          return _this.isFocused = false;
+        };
+
+        _this.setIsFocusedTrue = function (event) {
+          _this.ownFocusedElements.add(event.target);
+
+          _this.isFocused = true;
+        };
+
+        return _this;
+      }
+
+      Object(createClass["a" /* default */])(FocusReturn, [{
+        key: "componentWillUnmount",
+        value: function componentWillUnmount() {
+          var activeElementOnMount = this.activeElementOnMount,
+              isFocused = this.isFocused,
+              ownFocusedElements = this.ownFocusedElements;
+
+          if (!isFocused) {
+            return;
+          } // Defer to the component's own explicit focus return behavior,
+          // if specified. The function should return `false` to prevent
+          // the default behavior otherwise occurring here. This allows
+          // for support that the `onFocusReturn` decides to allow the
+          // default behavior to occur under some conditions.
+
+
+          if (onFocusReturn() === false) {
+            return;
+          }
+
+          var stack = [].concat(Object(toConsumableArray["a" /* default */])(external_lodash_["without"].apply(void 0, [this.props.focus.focusHistory].concat(Object(toConsumableArray["a" /* default */])(ownFocusedElements)))), [activeElementOnMount]);
+          var candidate;
+
+          while (candidate = stack.pop()) {
+            if (document.body.contains(candidate)) {
+              candidate.focus();
+              return;
+            }
+          }
+        }
+      }, {
+        key: "render",
+        value: function render() {
+          return Object(external_this_wp_element_["createElement"])("div", {
+            onFocus: this.setIsFocusedTrue,
+            onBlur: this.setIsFocusedFalse
+          }, Object(external_this_wp_element_["createElement"])(WrappedComponent, this.props.childProps));
+        }
+      }]);
+
+      return FocusReturn;
+    }(external_this_wp_element_["Component"]);
+
+    return function (props) {
+      return Object(external_this_wp_element_["createElement"])(Consumer, null, function (context) {
+        return Object(external_this_wp_element_["createElement"])(FocusReturn, {
+          childProps: props,
+          focus: context
+        });
+      });
+    };
+  };
+}
+
+/* harmony default export */ var with_focus_return = __webpack_exports__["a"] = (Object(create_higher_order_component["a" /* default */])(withFocusReturn, 'withFocusReturn'));
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 101:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return useMediaQuery; });
+/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(27);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+/**
+ * Runs a media query and returns its value when it changes.
+ *
+ * @param {string} [query] Media Query.
+ * @return {boolean} return value of the media query.
+ */
+
+function useMediaQuery(query) {
+  var _useState = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useState"])(query && window.matchMedia(query).matches),
+      _useState2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_useState, 2),
+      match = _useState2[0],
+      setMatch = _useState2[1];
+
+  Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    if (!query) {
+      return;
+    }
+
+    var updateMatch = function updateMatch() {
+      return setMatch(window.matchMedia(query).matches);
+    };
+
+    updateMatch();
+    var list = window.matchMedia(query);
+    list.addListener(updateMatch);
+    return function () {
+      list.removeListener(updateMatch);
+    };
+  }, [query]);
+  return query && match;
+}
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 102:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return warning; });
+function isDev() {
+  return typeof process !== 'undefined' && process.env && "production" !== 'production';
+}
+/**
+ * Shows a warning with `message` if environment is not `production`.
+ *
+ * @param {string} message Message to show in the warning.
+ *
+ * @example
+ * ```js
+ * import warning from '@wordpress/warning';
+ *
+ * function MyComponent( props ) {
+ *   if ( ! props.title ) {
+ *     warning( '`props.title` was not passed' );
+ *   }
+ *   ...
+ * }
+ * ```
+ */
+
+
+function warning(message) {
+  if (!isDev()) {
+    return;
+  } // eslint-disable-next-line no-console
+
+
+  console.warn(message); // Throwing an error and catching it immediately to improve debugging
+  // A consumer can use 'pause on caught exceptions'
+  // https://github.com/facebook/react/issues/4216
+
+  try {
+    throw Error(message);
+  } catch (x) {// do nothing
+  }
+}
+//# sourceMappingURL=index.js.map
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(34)))
+
+/***/ }),
+
+/***/ 103:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -218,350 +557,7 @@ function Shortcut(_ref) {
 
 /***/ }),
 
-/***/ 101:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(105);
-/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(41);
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(40);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(59);
-/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(44);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(29);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(42);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(0);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(2);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _wordpress_is_shallow_equal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(77);
-/* harmony import */ var _wordpress_is_shallow_equal__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_wordpress_is_shallow_equal__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(53);
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(19);
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_11__);
-
-
-
-
-
-
-
-
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function () { var Super = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5___default()(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5___default()(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4___default()(this, result); }; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-/**
- * NOTE: This is temporary code. It exists only until a version of `@wordpress/data`
- * is released which supports this functionality.
- *
- * @todo Remove this and use `@wordpress/data` `withSelect` instead after
- * this PR is merged: https://github.com/WordPress/gutenberg/pull/11460
- */
-
-/**
- * External dependencies
- */
-
-
-
-
-
-/**
- * Higher-order component used to inject state-derived props using registered
- * selectors.
- *
- * @param {Function} mapSelectToProps Function called on every state change,
- *                                   expected to return object of props to
- *                                   merge with the component's own props.
- *
- * @return {Component} Enhanced component with merged state data props.
- */
-
-var withSelect = function withSelect(mapSelectToProps) {
-  return Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"])(function (WrappedComponent) {
-    /**
-     * Default merge props. A constant value is used as the fallback since it
-     * can be more efficiently shallow compared in case component is repeatedly
-     * rendered without its own merge props.
-     *
-     * @type {Object}
-     */
-    var DEFAULT_MERGE_PROPS = {};
-
-    var ComponentWithSelect = /*#__PURE__*/function (_Component) {
-      _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6___default()(ComponentWithSelect, _Component);
-
-      var _super = _createSuper(ComponentWithSelect);
-
-      function ComponentWithSelect(props) {
-        var _this;
-
-        _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, ComponentWithSelect);
-
-        _this = _super.call(this, props);
-        _this.onStoreChange = _this.onStoreChange.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3___default()(_this));
-
-        _this.subscribe(props.registry);
-
-        _this.onUnmounts = {};
-        _this.mergeProps = _this.getNextMergeProps(props);
-        return _this;
-      }
-      /**
-       * Given a props object, returns the next merge props by mapSelectToProps.
-       *
-       * @param {Object} props Props to pass as argument to mapSelectToProps.
-       *
-       * @return {Object} Props to merge into rendered wrapped element.
-       */
-
-
-      _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(ComponentWithSelect, [{
-        key: "getNextMergeProps",
-        value: function getNextMergeProps(props) {
-          var _this2 = this;
-
-          var storeSelectors = {};
-          var onCompletes = [];
-          var componentContext = {
-            component: this
-          };
-
-          var getStoreFromRegistry = function getStoreFromRegistry(key, registry, context) {
-            // This is our first time selecting from this store.
-            // Do some lazy-loading of handling at this time.
-            var selectorsForKey = registry.select(key);
-
-            if (Object(lodash__WEBPACK_IMPORTED_MODULE_8__["isFunction"])(selectorsForKey)) {
-              // This store has special handling for its selectors.
-              // We give it a context, and we check for a "resolve"
-              var _selectorsForKey = selectorsForKey(context),
-                  selectors = _selectorsForKey.selectors,
-                  onComplete = _selectorsForKey.onComplete,
-                  onUnmount = _selectorsForKey.onUnmount;
-
-              if (onComplete) {
-                onCompletes.push(onComplete);
-              }
-
-              if (onUnmount) {
-                _this2.onUnmounts[key] = onUnmount;
-              }
-
-              storeSelectors[key] = selectors;
-            } else {
-              storeSelectors[key] = selectorsForKey;
-            }
-          };
-
-          var select = function select(key) {
-            if (!storeSelectors[key]) {
-              getStoreFromRegistry(key, props.registry, componentContext);
-            }
-
-            return storeSelectors[key];
-          };
-
-          var selectedProps = mapSelectToProps(select, props.ownProps) || DEFAULT_MERGE_PROPS; // Complete the select for those stores which support it.
-
-          onCompletes.forEach(function (onComplete) {
-            return onComplete();
-          });
-          return selectedProps;
-        }
-      }, {
-        key: "componentDidMount",
-        value: function componentDidMount() {
-          this.canRunSelection = true; // A state change may have occurred between the constructor and
-          // mount of the component (e.g. during the wrapped component's own
-          // constructor), in which case selection should be rerun.
-
-          if (this.hasQueuedSelection) {
-            this.hasQueuedSelection = false;
-            this.onStoreChange();
-          }
-        }
-      }, {
-        key: "componentWillUnmount",
-        value: function componentWillUnmount() {
-          var _this3 = this;
-
-          this.canRunSelection = false;
-          this.unsubscribe();
-          Object.keys(this.onUnmounts).forEach(function (key) {
-            return _this3.onUnmounts[key]();
-          });
-        }
-      }, {
-        key: "shouldComponentUpdate",
-        value: function shouldComponentUpdate(nextProps, nextState) {
-          // Cycle subscription if registry changes.
-          var hasRegistryChanged = nextProps.registry !== this.props.registry;
-
-          if (hasRegistryChanged) {
-            this.unsubscribe();
-            this.subscribe(nextProps.registry);
-          } // Treat a registry change as equivalent to `ownProps`, to reflect
-          // `mergeProps` to rendered component if and only if updated.
-
-
-          var hasPropsChanged = hasRegistryChanged || !_wordpress_is_shallow_equal__WEBPACK_IMPORTED_MODULE_9___default()(this.props.ownProps, nextProps.ownProps); // Only render if props have changed or merge props have been updated
-          // from the store subscriber.
-
-          if (this.state === nextState && !hasPropsChanged) {
-            return false;
-          }
-
-          if (hasPropsChanged) {
-            var nextMergeProps = this.getNextMergeProps(nextProps);
-
-            if (!_wordpress_is_shallow_equal__WEBPACK_IMPORTED_MODULE_9___default()(this.mergeProps, nextMergeProps)) {
-              // If merge props change as a result of the incoming props,
-              // they should be reflected as such in the upcoming render.
-              // While side effects are discouraged in lifecycle methods,
-              // this component is used heavily, and prior efforts to use
-              // `getDerivedStateFromProps` had demonstrated miserable
-              // performance.
-              this.mergeProps = nextMergeProps;
-            } // Regardless whether merge props are changing, fall through to
-            // incur the render since the component will need to receive
-            // the changed `ownProps`.
-
-          }
-
-          return true;
-        }
-      }, {
-        key: "onStoreChange",
-        value: function onStoreChange() {
-          if (!this.canRunSelection) {
-            this.hasQueuedSelection = true;
-            return;
-          }
-
-          var nextMergeProps = this.getNextMergeProps(this.props);
-
-          if (_wordpress_is_shallow_equal__WEBPACK_IMPORTED_MODULE_9___default()(this.mergeProps, nextMergeProps)) {
-            return;
-          }
-
-          this.mergeProps = nextMergeProps; // Schedule an update. Merge props are not assigned to state since
-          // derivation of merge props from incoming props occurs within
-          // shouldComponentUpdate, where setState is not allowed. setState
-          // is used here instead of forceUpdate because forceUpdate bypasses
-          // shouldComponentUpdate altogether, which isn't desireable if both
-          // state and props change within the same render. Unfortunately,
-          // this requires that next merge props are generated twice.
-
-          this.setState({});
-        }
-      }, {
-        key: "subscribe",
-        value: function subscribe(registry) {
-          this.unsubscribe = registry.subscribe(this.onStoreChange);
-        }
-      }, {
-        key: "render",
-        value: function render() {
-          return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(WrappedComponent, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({}, this.props.ownProps, this.mergeProps));
-        }
-      }]);
-
-      return ComponentWithSelect;
-    }(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["Component"]);
-
-    return function (ownProps) {
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_data__WEBPACK_IMPORTED_MODULE_11__["RegistryConsumer"], null, function (registry) {
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(ComponentWithSelect, {
-          ownProps: ownProps,
-          registry: registry
-        });
-      });
-    };
-  }, 'withSelect');
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (withSelect);
-
-/***/ }),
-
-/***/ 105:
-/***/ (function(module, exports) {
-
-function _extends() {
-  module.exports = _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-module.exports = _extends;
-
-/***/ }),
-
 /***/ 106:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
-
-function makeEmptyFunction(arg) {
-  return function () {
-    return arg;
-  };
-}
-
-/**
- * This function accepts and discards inputs; it has no side effects. This is
- * primarily useful idiomatically for overridable function endpoints which
- * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
- */
-var emptyFunction = function emptyFunction() {};
-
-emptyFunction.thatReturns = makeEmptyFunction;
-emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
-emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
-emptyFunction.thatReturnsNull = makeEmptyFunction(null);
-emptyFunction.thatReturnsThis = function () {
-  return this;
-};
-emptyFunction.thatReturnsArgument = function (arg) {
-  return arg;
-};
-
-module.exports = emptyFunction;
-
-/***/ }),
-
-/***/ 107:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -572,9 +568,12 @@ module.exports = emptyFunction;
 /* unused harmony export placeCaretAtHorizontalEdge */
 /* unused harmony export placeCaretAtVerticalEdge */
 /* unused harmony export isTextField */
+/* unused harmony export isNumberInput */
+/* unused harmony export documentHasTextSelection */
+/* unused harmony export documentHasUncollapsedSelection */
 /* unused harmony export documentHasSelection */
 /* unused harmony export isEntirelySelected */
-/* unused harmony export getScrollContainer */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getScrollContainer; });
 /* unused harmony export getOffsetParent */
 /* unused harmony export replace */
 /* unused harmony export remove */
@@ -583,11 +582,19 @@ module.exports = emptyFunction;
 /* unused harmony export replaceTag */
 /* unused harmony export wrap */
 /* unused harmony export __unstableStripHTML */
+/* unused harmony export isEmpty */
+/* unused harmony export removeInvalidHTML */
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _phrasing_content__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(53);
 /**
  * External dependencies
  */
+
+/**
+ * Internal dependencies
+ */
+
 
 /**
  * Browser dependencies
@@ -1002,11 +1009,64 @@ function placeCaretAtVerticalEdge(container, isReverse, rect) {
  */
 
 function isTextField(element) {
+  var nodeName = element.nodeName,
+      contentEditable = element.contentEditable;
+  var nonTextInputs = ['button', 'checkbox', 'hidden', 'file', 'radio', 'image', 'range', 'reset', 'submit', 'number'];
+  return nodeName === 'INPUT' && !nonTextInputs.includes(element.type) || nodeName === 'TEXTAREA' || contentEditable === 'true';
+}
+/**
+ * Check whether the given element is an input field of type number
+ * and has a valueAsNumber
+ *
+ * @param {HTMLElement} element The HTML element.
+ *
+ * @return {boolean} True if the element is input and holds a number.
+ */
+
+function isNumberInput(element) {
+  var nodeName = element.nodeName,
+      type = element.type,
+      valueAsNumber = element.valueAsNumber;
+  return nodeName === 'INPUT' && type === 'number' && !!valueAsNumber;
+}
+/**
+ * Check whether the current document has selected text. This applies to ranges
+ * of text in the document, and not selection inside <input> and <textarea>
+ * elements.
+ *
+ * See: https://developer.mozilla.org/en-US/docs/Web/API/Window/getSelection#Related_objects.
+ *
+ * @return {boolean} True if there is selection, false if not.
+ */
+
+function documentHasTextSelection() {
+  var selection = window.getSelection();
+  var range = selection.rangeCount ? selection.getRangeAt(0) : null;
+  return range && !range.collapsed;
+}
+/**
+ * Check whether the given element, assumed an input field or textarea,
+ * contains a (uncollapsed) selection of text.
+ *
+ * Note: this is perhaps an abuse of the term "selection", since these elements
+ * manage selection differently and aren't covered by Selection#collapsed.
+ *
+ * See: https://developer.mozilla.org/en-US/docs/Web/API/Window/getSelection#Related_objects.
+ *
+ * @param {HTMLElement} element The HTML element.
+ *
+ * @return {boolean} Whether the input/textareaa element has some "selection".
+ */
+
+function inputFieldHasUncollapsedSelection(element) {
+  if (!isTextField(element) && !isNumberInput(element)) {
+    return false;
+  }
+
   try {
-    var nodeName = element.nodeName,
-        selectionStart = element.selectionStart,
-        contentEditable = element.contentEditable;
-    return nodeName === 'INPUT' && selectionStart !== null || nodeName === 'TEXTAREA' || contentEditable === 'true';
+    var selectionStart = element.selectionStart,
+        selectionEnd = element.selectionEnd;
+    return selectionStart !== null && selectionStart !== selectionEnd;
   } catch (error) {
     // Safari throws an exception when trying to get `selectionStart`
     // on non-text <input> elements (which, understandably, don't
@@ -1020,20 +1080,26 @@ function isTextField(element) {
   }
 }
 /**
- * Check wether the current document has a selection.
- * This checks both for focus in an input field and general text selection.
+ * Check whether the current document has any sort of selection. This includes
+ * ranges of text across elements and any selection inside <input> and
+ * <textarea> elements.
+ *
+ * @return {boolean} Whether there is any sort of "selection" in the document.
+ */
+
+
+function documentHasUncollapsedSelection() {
+  return documentHasTextSelection() || inputFieldHasUncollapsedSelection(document.activeElement);
+}
+/**
+ * Check whether the current document has a selection. This checks for both
+ * focus in an input field and general text selection.
  *
  * @return {boolean} True if there is selection, false if not.
  */
 
 function documentHasSelection() {
-  if (isTextField(document.activeElement)) {
-    return true;
-  }
-
-  var selection = window.getSelection();
-  var range = selection.rangeCount ? selection.getRangeAt(0) : null;
-  return range && !range.collapsed;
+  return isTextField(document.activeElement) || isNumberInput(document.activeElement) || documentHasTextSelection();
 }
 /**
  * Check whether the contents of the element have been entirely selected.
@@ -1228,33 +1294,214 @@ function __unstableStripHTML(html) {
   var document = new DOMParser().parseFromString(html, 'text/html');
   return document.body.textContent || '';
 }
+/**
+ * Given a schema, unwraps or removes nodes, attributes and classes on a node
+ * list.
+ *
+ * @param {NodeList} nodeList The nodeList to filter.
+ * @param {Document} doc      The document of the nodeList.
+ * @param {Object}   schema   An array of functions that can mutate with the provided node.
+ * @param {Object}   inline   Whether to clean for inline mode.
+ */
+
+function cleanNodeList(nodeList, doc, schema, inline) {
+  Array.from(nodeList).forEach(function (node) {
+    var tag = node.nodeName.toLowerCase(); // It's a valid child, if the tag exists in the schema without an isMatch
+    // function, or with an isMatch function that matches the node.
+
+    if (schema.hasOwnProperty(tag) && (!schema[tag].isMatch || schema[tag].isMatch(node))) {
+      if (node.nodeType === ELEMENT_NODE) {
+        var _schema$tag = schema[tag],
+            _schema$tag$attribute = _schema$tag.attributes,
+            attributes = _schema$tag$attribute === void 0 ? [] : _schema$tag$attribute,
+            _schema$tag$classes = _schema$tag.classes,
+            classes = _schema$tag$classes === void 0 ? [] : _schema$tag$classes,
+            children = _schema$tag.children,
+            _schema$tag$require = _schema$tag.require,
+            require = _schema$tag$require === void 0 ? [] : _schema$tag$require,
+            allowEmpty = _schema$tag.allowEmpty; // If the node is empty and it's supposed to have children,
+        // remove the node.
+
+
+        if (children && !allowEmpty && isEmpty(node)) {
+          remove(node);
+          return;
+        }
+
+        if (node.hasAttributes()) {
+          // Strip invalid attributes.
+          Array.from(node.attributes).forEach(function (_ref) {
+            var name = _ref.name;
+
+            if (name !== 'class' && !Object(lodash__WEBPACK_IMPORTED_MODULE_0__["includes"])(attributes, name)) {
+              node.removeAttribute(name);
+            }
+          }); // Strip invalid classes.
+          // In jsdom-jscore, 'node.classList' can be undefined.
+          // TODO: Explore patching this in jsdom-jscore.
+
+          if (node.classList && node.classList.length) {
+            var mattchers = classes.map(function (item) {
+              if (typeof item === 'string') {
+                return function (className) {
+                  return className === item;
+                };
+              } else if (item instanceof RegExp) {
+                return function (className) {
+                  return item.test(className);
+                };
+              }
+
+              return lodash__WEBPACK_IMPORTED_MODULE_0__["noop"];
+            });
+            Array.from(node.classList).forEach(function (name) {
+              if (!mattchers.some(function (isMatch) {
+                return isMatch(name);
+              })) {
+                node.classList.remove(name);
+              }
+            });
+
+            if (!node.classList.length) {
+              node.removeAttribute('class');
+            }
+          }
+        }
+
+        if (node.hasChildNodes()) {
+          // Do not filter any content.
+          if (children === '*') {
+            return;
+          } // Continue if the node is supposed to have children.
+
+
+          if (children) {
+            // If a parent requires certain children, but it does
+            // not have them, drop the parent and continue.
+            if (require.length && !node.querySelector(require.join(','))) {
+              cleanNodeList(node.childNodes, doc, schema, inline);
+              unwrap(node); // If the node is at the top, phrasing content, and
+              // contains children that are block content, unwrap
+              // the node because it is invalid.
+            } else if (node.parentNode.nodeName === 'BODY' && Object(_phrasing_content__WEBPACK_IMPORTED_MODULE_1__[/* isPhrasingContent */ "a"])(node)) {
+              cleanNodeList(node.childNodes, doc, schema, inline);
+
+              if (Array.from(node.childNodes).some(function (child) {
+                return !Object(_phrasing_content__WEBPACK_IMPORTED_MODULE_1__[/* isPhrasingContent */ "a"])(child);
+              })) {
+                unwrap(node);
+              }
+            } else {
+              cleanNodeList(node.childNodes, doc, children, inline);
+            } // Remove children if the node is not supposed to have any.
+
+          } else {
+            while (node.firstChild) {
+              remove(node.firstChild);
+            }
+          }
+        }
+      } // Invalid child. Continue with schema at the same place and unwrap.
+
+    } else {
+      cleanNodeList(node.childNodes, doc, schema, inline); // For inline mode, insert a line break when unwrapping nodes that
+      // are not phrasing content.
+
+      if (inline && !Object(_phrasing_content__WEBPACK_IMPORTED_MODULE_1__[/* isPhrasingContent */ "a"])(node) && node.nextElementSibling) {
+        insertAfter(doc.createElement('br'), node);
+      }
+
+      unwrap(node);
+    }
+  });
+}
+/**
+ * Recursively checks if an element is empty. An element is not empty if it
+ * contains text or contains elements with attributes such as images.
+ *
+ * @param {Element} element The element to check.
+ *
+ * @return {boolean} Wether or not the element is empty.
+ */
+
+
+function isEmpty(element) {
+  if (!element.hasChildNodes()) {
+    return true;
+  }
+
+  return Array.from(element.childNodes).every(function (node) {
+    if (node.nodeType === TEXT_NODE) {
+      return !node.nodeValue.trim();
+    }
+
+    if (node.nodeType === ELEMENT_NODE) {
+      if (node.nodeName === 'BR') {
+        return true;
+      } else if (node.hasAttributes()) {
+        return false;
+      }
+
+      return isEmpty(node);
+    }
+
+    return true;
+  });
+}
+/**
+ * Given a schema, unwraps or removes nodes, attributes and classes on HTML.
+ *
+ * @param {string} HTML   The HTML to clean up.
+ * @param {Object} schema Schema for the HTML.
+ * @param {Object} inline Whether to clean for inline mode.
+ *
+ * @return {string} The cleaned up HTML.
+ */
+
+function removeInvalidHTML(HTML, schema, inline) {
+  var doc = document.implementation.createHTMLDocument('');
+  doc.body.innerHTML = HTML;
+  cleanNodeList(doc.body.childNodes, doc, schema, inline);
+  return doc.body.innerHTML;
+}
 //# sourceMappingURL=dom.js.map
 
 /***/ }),
 
-/***/ 109:
+/***/ 11:
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["React"]; }());
+
+/***/ }),
+
+/***/ 115:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _babel_runtime_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(27);
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(11);
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(16);
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9);
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8);
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(19);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(0);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _dashicon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(80);
-/* harmony import */ var _primitives__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(62);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(44);
+/* harmony import */ var _dashicon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(85);
 
 
 
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 /**
  * WordPress dependencies
  */
 
+
 /**
  * Internal dependencies
  */
-
 
 
 
@@ -1268,14 +1515,14 @@ function Icon(_ref) {
   var dashiconSize = size || 20;
 
   if ('string' === typeof icon) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_dashicon__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])({
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_dashicon__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])({
       icon: icon,
       size: dashiconSize
     }, additionalProps));
   }
 
-  if (icon && _dashicon__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"] === icon.type) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["cloneElement"])(icon, Object(_babel_runtime_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({
+  if (icon && _dashicon__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"] === icon.type) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["cloneElement"])(icon, _objectSpread({
       size: dashiconSize
     }, additionalProps));
   } // Icons should be 24x24 by default.
@@ -1285,27 +1532,27 @@ function Icon(_ref) {
 
   if ('function' === typeof icon) {
     if (icon.prototype instanceof _wordpress_element__WEBPACK_IMPORTED_MODULE_3__["Component"]) {
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(icon, Object(_babel_runtime_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(icon, _objectSpread({
         size: iconSize
       }, additionalProps));
     }
 
-    return icon(Object(_babel_runtime_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({
+    return icon(_objectSpread({
       size: iconSize
     }, additionalProps));
   }
 
-  if (icon && (icon.type === 'svg' || icon.type === _primitives__WEBPACK_IMPORTED_MODULE_5__[/* SVG */ "b"])) {
-    var appliedProps = Object(_babel_runtime_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({
+  if (icon && (icon.type === 'svg' || icon.type === _wordpress_primitives__WEBPACK_IMPORTED_MODULE_4__[/* SVG */ "c"])) {
+    var appliedProps = _objectSpread({
       width: iconSize,
       height: iconSize
-    }, icon.props, additionalProps);
+    }, icon.props, {}, additionalProps);
 
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_primitives__WEBPACK_IMPORTED_MODULE_5__[/* SVG */ "b"], appliedProps);
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_4__[/* SVG */ "c"], appliedProps);
   }
 
   if (Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["isValidElement"])(icon)) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["cloneElement"])(icon, Object(_babel_runtime_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["cloneElement"])(icon, _objectSpread({
       size: iconSize
     }, additionalProps));
   }
@@ -1318,52 +1565,31 @@ function Icon(_ref) {
 
 /***/ }),
 
-/***/ 11:
+/***/ 116:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _extends; });
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-/***/ }),
-
-/***/ 110:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7);
-/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
-/* harmony import */ var _babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8);
-/* harmony import */ var _babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4);
-/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9);
+/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(20);
+/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(21);
+/* harmony import */ var _babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(23);
+/* harmony import */ var _babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(7);
+/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(22);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(0);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(2);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _popover__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(92);
-/* harmony import */ var _shortcut__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(100);
+/* harmony import */ var _popover__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(96);
+/* harmony import */ var _shortcut__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(103);
 
 
 
 
 
 
+
+function _createSuper(Derived) { return function () { var Super = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 /**
  * External dependencies
@@ -1388,17 +1614,17 @@ function _extends() {
 
 var TOOLTIP_DELAY = 700;
 
-var Tooltip =
-/*#__PURE__*/
-function (_Component) {
+var Tooltip = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(Tooltip, _Component);
+
+  var _super = _createSuper(Tooltip);
 
   function Tooltip() {
     var _this;
 
     Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this, Tooltip);
 
-    _this = Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(this, Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(Tooltip).apply(this, arguments));
+    _this = _super.apply(this, arguments);
     _this.delayedSetIsOver = Object(lodash__WEBPACK_IMPORTED_MODULE_6__["debounce"])(function (isOver) {
       return _this.setState({
         isOver: isOver
@@ -1548,7 +1774,8 @@ function (_Component) {
           position: position,
           className: "components-tooltip",
           "aria-hidden": "true",
-          animate: false
+          animate: false,
+          noArrow: true
         }, text, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_5__["createElement"])(_shortcut__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"], {
           className: "components-tooltip__shortcut",
           shortcut: shortcut
@@ -1565,104 +1792,874 @@ function (_Component) {
 
 /***/ }),
 
-/***/ 119:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ 117:
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectSpread.js
-var objectSpread = __webpack_require__(27);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
-var objectWithoutProperties = __webpack_require__(16);
-
-// EXTERNAL MODULE: external {"this":["wp","element"]}
-var external_this_wp_element_ = __webpack_require__(0);
-
-// CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/visually-hidden/utils.js
-
-
-
-/**
- * Utility Functions
- */
-
-/**
- * renderAsRenderProps is used to wrap a component and convert
- * the passed property "as" either a string or component, to the
- * rendered tag if a string, or component.
- *
- * See VisuallyHidden hidden for example.
- *
- * @param {string|WPComponent} as A tag or component to render.
- * @return {WPComponent} The rendered component.
- */
-function renderAsRenderProps(_ref) {
-  var _ref$as = _ref.as,
-      Component = _ref$as === void 0 ? 'div' : _ref$as,
-      props = Object(objectWithoutProperties["a" /* default */])(_ref, ["as"]);
-
-  if (typeof props.children === 'function') {
-    return props.children(props);
-  }
-
-  return Object(external_this_wp_element_["createElement"])(Component, props);
-}
-
-
-//# sourceMappingURL=utils.js.map
-// CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/visually-hidden/index.js
-
-
-
-/**
- * Internal dependencies
- */
-
-/**
- * VisuallyHidden component to render text out non-visually
- * for use in devices such as a screen reader.
- */
-
-function VisuallyHidden(_ref) {
-  var _ref$as = _ref.as,
-      as = _ref$as === void 0 ? 'div' : _ref$as,
-      props = Object(objectWithoutProperties["a" /* default */])(_ref, ["as"]);
-
-  return renderAsRenderProps(Object(objectSpread["a" /* default */])({
-    as: as,
-    className: 'components-visually-hidden'
-  }, props));
-}
-
-/* harmony default export */ var visually_hidden = __webpack_exports__["a"] = (VisuallyHidden);
+var e=__webpack_require__(11),n={display:"block",opacity:0,position:"absolute",top:0,left:0,height:"100%",width:"100%",overflow:"hidden",pointerEvents:"none",zIndex:-1},t=function(t){var r=t.onResize,u=e.useRef();return function(n,t){var r=function(){return n.current&&n.current.contentDocument&&n.current.contentDocument.defaultView};function u(){t();var e=r();e&&e.addEventListener("resize",t)}e.useEffect((function(){return r()?u():n.current&&n.current.addEventListener&&n.current.addEventListener("load",u),function(){var e=r();e&&"function"==typeof e.removeEventListener&&e.removeEventListener("resize",t)}}),[])}(u,(function(){return r(u)})),e.createElement("iframe",{style:n,src:"about:blank",ref:u,"aria-hidden":!0,tabIndex:-1,frameBorder:0})},r=function(e){return{width:null!=e?e.offsetWidth:null,height:null!=e?e.offsetHeight:null}};module.exports=function(n){void 0===n&&(n=r);var u=e.useState(n(null)),o=u[0],i=u[1],c=e.useCallback((function(e){return i(n(e.current))}),[n]);return[e.useMemo((function(){return e.createElement(t,{onResize:c})}),[c]),o]};
 //# sourceMappingURL=index.js.map
+
 
 /***/ }),
 
-/***/ 13:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ 12:
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _defineProperty; });
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
+module.exports = __webpack_require__(120);
+
+
+/***/ }),
+
+/***/ 120:
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var runtime = (function (exports) {
+  "use strict";
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  function define(obj, key, value) {
     Object.defineProperty(obj, key, {
       value: value,
       enumerable: true,
       configurable: true,
       writable: true
     });
-  } else {
-    obj[key] = value;
+    return obj[key];
+  }
+  try {
+    // IE 8 has a broken Object.defineProperty that only works on DOM objects.
+    define({}, "");
+  } catch (err) {
+    define = function(obj, key, value) {
+      return obj[key] = value;
+    };
   }
 
-  return obj;
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+    return generator;
+  }
+  exports.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
+    try {
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  IteratorPrototype[iteratorSymbol] = function () {
+    return this;
+  };
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype &&
+      NativeIteratorPrototype !== Op &&
+      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype =
+    Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunction.displayName = define(
+    GeneratorFunctionPrototype,
+    toStringTagSymbol,
+    "GeneratorFunction"
+  );
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function(method) {
+      define(prototype, method, function(arg) {
+        return this._invoke(method, arg);
+      });
+    });
+  }
+
+  exports.isGeneratorFunction = function(genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor
+      ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
+        (ctor.displayName || ctor.name) === "GeneratorFunction"
+      : false;
+  };
+
+  exports.mark = function(genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      define(genFun, toStringTagSymbol, "GeneratorFunction");
+    }
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  exports.awrap = function(arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator, PromiseImpl) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value &&
+            typeof value === "object" &&
+            hasOwn.call(value, "__await")) {
+          return PromiseImpl.resolve(value.__await).then(function(value) {
+            invoke("next", value, resolve, reject);
+          }, function(err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return PromiseImpl.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
+          result.value = unwrapped;
+          resolve(result);
+        }, function(error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new PromiseImpl(function(resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
+        previousPromise ? previousPromise.then(
+          callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
+          callInvokeWithMethodAndArg
+        ) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+    return this;
+  };
+  exports.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  exports.async = function(innerFn, outerFn, self, tryLocsList, PromiseImpl) {
+    if (PromiseImpl === void 0) PromiseImpl = Promise;
+
+    var iter = new AsyncIterator(
+      wrap(innerFn, outerFn, self, tryLocsList),
+      PromiseImpl
+    );
+
+    return exports.isGeneratorFunction(outerFn)
+      ? iter // If outerFn is a generator, return the full iterator.
+      : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done
+            ? GenStateCompleted
+            : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        // Note: ["return"] must be used for ES3 parsing compatibility.
+        if (delegate.iterator["return"]) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError(
+          "The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (! info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  define(Gp, toStringTagSymbol, "Generator");
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  Gp[iteratorSymbol] = function() {
+    return this;
+  };
+
+  Gp.toString = function() {
+    return "[object Generator]";
+  };
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  exports.keys = function(object) {
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1, next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    // Return an iterator with no values.
+    return { next: doneResult };
+  }
+  exports.values = values;
+
+  function doneResult() {
+    return { value: undefined, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" &&
+              hasOwn.call(this, name) &&
+              !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+
+    stop: function() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !! caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev &&
+            hasOwn.call(entry, "finallyLoc") &&
+            this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry &&
+          (type === "break" ||
+           type === "continue") &&
+          finallyEntry.tryLoc <= arg &&
+          arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" ||
+          record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+
+  // Regardless of whether this script is executing as a CommonJS module
+  // or not, return the runtime object so that we can declare the variable
+  // regeneratorRuntime in the outer scope, which allows this module to be
+  // injected easily by `bin/regenerator --include-runtime script.js`.
+  return exports;
+
+}(
+  // If this script is executing as a CommonJS module, use module.exports
+  // as the regeneratorRuntime namespace. Otherwise create a new empty
+  // object. Either way, the resulting object will be used to initialize
+  // the regeneratorRuntime variable at the top of this file.
+   true ? module.exports : undefined
+));
+
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  // This module should not be running in strict mode, so the above
+  // assignment should always work unless something is misconfigured. Just
+  // in case runtime.js accidentally runs in strict mode, we can escape
+  // strict mode using a global Function call. This could conceivably fail
+  // if a Content Security Policy forbids using Function, but in that case
+  // the proper solution is to fix the accidental strict mode problem. If
+  // you've misconfigured your bundler to force strict mode and applied a
+  // CSP to forbid Function, and you're not willing to fix either of those
+  // problems, please detail your unique predicament in a GitHub issue.
+  Function("r", "regeneratorRuntime = r")(runtime);
 }
+
+
+/***/ }),
+
+/***/ 13:
+/***/ (function(module, exports) {
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+module.exports = _createClass;
 
 /***/ }),
 
 /***/ 138:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+function makeEmptyFunction(arg) {
+  return function () {
+    return arg;
+  };
+}
+
+/**
+ * This function accepts and discards inputs; it has no side effects. This is
+ * primarily useful idiomatically for overridable function endpoints which
+ * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
+ */
+var emptyFunction = function emptyFunction() {};
+
+emptyFunction.thatReturns = makeEmptyFunction;
+emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
+emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
+emptyFunction.thatReturnsNull = makeEmptyFunction(null);
+emptyFunction.thatReturnsThis = function () {
+  return this;
+};
+emptyFunction.thatReturnsArgument = function (arg) {
+  return arg;
+};
+
+module.exports = emptyFunction;
+
+/***/ }),
+
+/***/ 14:
+/***/ (function(module, exports) {
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+module.exports = _classCallCheck;
+
+/***/ }),
+
+/***/ 141:
+/***/ (function(module, exports) {
+
+function _setPrototypeOf(o, p) {
+  module.exports = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+module.exports = _setPrototypeOf;
+
+/***/ }),
+
+/***/ 142:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1675,7 +2672,7 @@ function _defineProperty(obj, key, value) {
 
 
 
-var ReactPropTypesSecret = __webpack_require__(139);
+var ReactPropTypesSecret = __webpack_require__(143);
 
 function emptyFunction() {}
 function emptyFunctionWithReset() {}
@@ -1734,7 +2731,7 @@ module.exports = function() {
 
 /***/ }),
 
-/***/ 139:
+/***/ 143:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1754,14 +2751,7 @@ module.exports = ReactPropTypesSecret;
 
 /***/ }),
 
-/***/ 14:
-/***/ (function(module, exports) {
-
-(function() { module.exports = this["React"]; }());
-
-/***/ }),
-
-/***/ 140:
+/***/ 146:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1820,7 +2810,7 @@ module.exports = isShallowEqualObjects;
 
 /***/ }),
 
-/***/ 141:
+/***/ 147:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1859,7 +2849,227 @@ module.exports = isShallowEqualArrays;
 
 /***/ }),
 
-/***/ 142:
+/***/ 16:
+/***/ (function(module, exports, __webpack_require__) {
+
+var setPrototypeOf = __webpack_require__(141);
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) setPrototypeOf(subClass, superClass);
+}
+
+module.exports = _inherits;
+
+/***/ }),
+
+/***/ 17:
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = __webpack_require__(43);
+
+var assertThisInitialized = __webpack_require__(10);
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return assertThisInitialized(self);
+}
+
+module.exports = _possibleConstructorReturn;
+
+/***/ }),
+
+/***/ 172:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
+var defineProperty = __webpack_require__(9);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
+var objectWithoutProperties = __webpack_require__(19);
+
+// EXTERNAL MODULE: ./node_modules/classnames/index.js
+var classnames = __webpack_require__(4);
+var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
+
+// EXTERNAL MODULE: external {"this":["wp","element"]}
+var external_this_wp_element_ = __webpack_require__(0);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/visually-hidden/utils.js
+
+
+
+/**
+ * Utility Functions
+ */
+
+/**
+ * renderAsRenderProps is used to wrap a component and convert
+ * the passed property "as" either a string or component, to the
+ * rendered tag if a string, or component.
+ *
+ * See VisuallyHidden hidden for example.
+ *
+ * @param {string|WPComponent} as A tag or component to render.
+ * @return {WPComponent} The rendered component.
+ */
+function renderAsRenderProps(_ref) {
+  var _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'div' : _ref$as,
+      props = Object(objectWithoutProperties["a" /* default */])(_ref, ["as"]);
+
+  if (typeof props.children === 'function') {
+    return props.children(props);
+  }
+
+  return Object(external_this_wp_element_["createElement"])(Component, props);
+}
+
+
+//# sourceMappingURL=utils.js.map
+// CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/visually-hidden/index.js
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(defineProperty["a" /* default */])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+/**
+ * External dependencies
+ */
+
+/**
+ * Internal dependencies
+ */
+
+
+/**
+ * VisuallyHidden component to render text out non-visually
+ * for use in devices such as a screen reader.
+ *
+ * @param {Object}             props             Component props.
+ * @param {string|WPComponent} [props.as="div"]  A tag or component to render.
+ * @param {string}             [props.className] Class to set on the container.
+ */
+
+function VisuallyHidden(_ref) {
+  var _ref$as = _ref.as,
+      as = _ref$as === void 0 ? 'div' : _ref$as,
+      className = _ref.className,
+      props = Object(objectWithoutProperties["a" /* default */])(_ref, ["as", "className"]);
+
+  return renderAsRenderProps(_objectSpread({
+    as: as,
+    className: classnames_default()('components-visually-hidden', className)
+  }, props));
+}
+
+/* harmony default export */ var visually_hidden = __webpack_exports__["a"] = (VisuallyHidden);
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 175:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return useInstanceId; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/**
+ * WordPress dependencies
+ */
+
+var instanceMap = new WeakMap();
+/**
+ * Creates a new id for a given object.
+ *
+ * @param {Object} object Object reference to create an id for.
+ */
+
+function createId(object) {
+  var instances = instanceMap.get(object) || 0;
+  instanceMap.set(object, instances + 1);
+  return instances;
+}
+/**
+ * Provides a unique instance ID.
+ *
+ * @param {Object} object Object reference to create an id for.
+ * @param {string} prefix Prefix for the unique id.
+ */
+
+
+function useInstanceId(object, prefix) {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["useMemo"])(function () {
+    var id = createId(object);
+    return prefix ? "".concat(prefix, "-").concat(id) : id;
+  }, [object]);
+}
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 18:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _assertThisInitialized; });
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+/***/ }),
+
+/***/ 19:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _objectWithoutProperties; });
+/* harmony import */ var _objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(57);
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+  var target = Object(_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(source, excluded);
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+/***/ }),
+
+/***/ 190:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1872,15 +3082,15 @@ module.exports = isShallowEqualArrays;
 
 
 
-var React = __webpack_require__(14);
+var React = __webpack_require__(11);
 
 var REACT_ELEMENT_TYPE =
   (typeof Symbol === 'function' && Symbol.for && Symbol.for('react.element')) ||
   0xeac7;
 
-var emptyFunction = __webpack_require__(106);
-var invariant = __webpack_require__(143);
-var warning = __webpack_require__(144);
+var emptyFunction = __webpack_require__(138);
+var invariant = __webpack_require__(191);
+var warning = __webpack_require__(192);
 
 var SEPARATOR = '.';
 var SUBSEPARATOR = ':';
@@ -2188,7 +3398,7 @@ module.exports = createReactFragment;
 
 /***/ }),
 
-/***/ 143:
+/***/ 191:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2242,7 +3452,7 @@ module.exports = invariant;
 
 /***/ }),
 
-/***/ 144:
+/***/ 192:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2256,7 +3466,7 @@ module.exports = invariant;
 
 
 
-var emptyFunction = __webpack_require__(106);
+var emptyFunction = __webpack_require__(138);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -2273,7 +3483,7 @@ module.exports = warning;
 
 /***/ }),
 
-/***/ 145:
+/***/ 193:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2315,945 +3525,6 @@ module.exports = function (mixedString) {
 
 /***/ }),
 
-/***/ 146:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * This is the common logic for both the Node.js and web browser
- * implementations of `debug()`.
- */
-function setup(env) {
-  createDebug.debug = createDebug;
-  createDebug.default = createDebug;
-  createDebug.coerce = coerce;
-  createDebug.disable = disable;
-  createDebug.enable = enable;
-  createDebug.enabled = enabled;
-  createDebug.humanize = __webpack_require__(147);
-  Object.keys(env).forEach(function (key) {
-    createDebug[key] = env[key];
-  });
-  /**
-  * Active `debug` instances.
-  */
-
-  createDebug.instances = [];
-  /**
-  * The currently active debug mode names, and names to skip.
-  */
-
-  createDebug.names = [];
-  createDebug.skips = [];
-  /**
-  * Map of special "%n" handling functions, for the debug "format" argument.
-  *
-  * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
-  */
-
-  createDebug.formatters = {};
-  /**
-  * Selects a color for a debug namespace
-  * @param {String} namespace The namespace string for the for the debug instance to be colored
-  * @return {Number|String} An ANSI color code for the given namespace
-  * @api private
-  */
-
-  function selectColor(namespace) {
-    var hash = 0;
-
-    for (var i = 0; i < namespace.length; i++) {
-      hash = (hash << 5) - hash + namespace.charCodeAt(i);
-      hash |= 0; // Convert to 32bit integer
-    }
-
-    return createDebug.colors[Math.abs(hash) % createDebug.colors.length];
-  }
-
-  createDebug.selectColor = selectColor;
-  /**
-  * Create a debugger with the given `namespace`.
-  *
-  * @param {String} namespace
-  * @return {Function}
-  * @api public
-  */
-
-  function createDebug(namespace) {
-    var prevTime;
-
-    function debug() {
-      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      // Disabled?
-      if (!debug.enabled) {
-        return;
-      }
-
-      var self = debug; // Set `diff` timestamp
-
-      var curr = Number(new Date());
-      var ms = curr - (prevTime || curr);
-      self.diff = ms;
-      self.prev = prevTime;
-      self.curr = curr;
-      prevTime = curr;
-      args[0] = createDebug.coerce(args[0]);
-
-      if (typeof args[0] !== 'string') {
-        // Anything else let's inspect with %O
-        args.unshift('%O');
-      } // Apply any `formatters` transformations
-
-
-      var index = 0;
-      args[0] = args[0].replace(/%([a-zA-Z%])/g, function (match, format) {
-        // If we encounter an escaped % then don't increase the array index
-        if (match === '%%') {
-          return match;
-        }
-
-        index++;
-        var formatter = createDebug.formatters[format];
-
-        if (typeof formatter === 'function') {
-          var val = args[index];
-          match = formatter.call(self, val); // Now we need to remove `args[index]` since it's inlined in the `format`
-
-          args.splice(index, 1);
-          index--;
-        }
-
-        return match;
-      }); // Apply env-specific formatting (colors, etc.)
-
-      createDebug.formatArgs.call(self, args);
-      var logFn = self.log || createDebug.log;
-      logFn.apply(self, args);
-    }
-
-    debug.namespace = namespace;
-    debug.enabled = createDebug.enabled(namespace);
-    debug.useColors = createDebug.useColors();
-    debug.color = selectColor(namespace);
-    debug.destroy = destroy;
-    debug.extend = extend; // Debug.formatArgs = formatArgs;
-    // debug.rawLog = rawLog;
-    // env-specific initialization logic for debug instances
-
-    if (typeof createDebug.init === 'function') {
-      createDebug.init(debug);
-    }
-
-    createDebug.instances.push(debug);
-    return debug;
-  }
-
-  function destroy() {
-    var index = createDebug.instances.indexOf(this);
-
-    if (index !== -1) {
-      createDebug.instances.splice(index, 1);
-      return true;
-    }
-
-    return false;
-  }
-
-  function extend(namespace, delimiter) {
-    var newDebug = createDebug(this.namespace + (typeof delimiter === 'undefined' ? ':' : delimiter) + namespace);
-    newDebug.log = this.log;
-    return newDebug;
-  }
-  /**
-  * Enables a debug mode by namespaces. This can include modes
-  * separated by a colon and wildcards.
-  *
-  * @param {String} namespaces
-  * @api public
-  */
-
-
-  function enable(namespaces) {
-    createDebug.save(namespaces);
-    createDebug.names = [];
-    createDebug.skips = [];
-    var i;
-    var split = (typeof namespaces === 'string' ? namespaces : '').split(/[\s,]+/);
-    var len = split.length;
-
-    for (i = 0; i < len; i++) {
-      if (!split[i]) {
-        // ignore empty strings
-        continue;
-      }
-
-      namespaces = split[i].replace(/\*/g, '.*?');
-
-      if (namespaces[0] === '-') {
-        createDebug.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
-      } else {
-        createDebug.names.push(new RegExp('^' + namespaces + '$'));
-      }
-    }
-
-    for (i = 0; i < createDebug.instances.length; i++) {
-      var instance = createDebug.instances[i];
-      instance.enabled = createDebug.enabled(instance.namespace);
-    }
-  }
-  /**
-  * Disable debug output.
-  *
-  * @return {String} namespaces
-  * @api public
-  */
-
-
-  function disable() {
-    var namespaces = [].concat(createDebug.names.map(toNamespace), createDebug.skips.map(toNamespace).map(function (namespace) {
-      return '-' + namespace;
-    })).join(',');
-    createDebug.enable('');
-    return namespaces;
-  }
-  /**
-  * Returns true if the given mode name is enabled, false otherwise.
-  *
-  * @param {String} name
-  * @return {Boolean}
-  * @api public
-  */
-
-
-  function enabled(name) {
-    if (name[name.length - 1] === '*') {
-      return true;
-    }
-
-    var i;
-    var len;
-
-    for (i = 0, len = createDebug.skips.length; i < len; i++) {
-      if (createDebug.skips[i].test(name)) {
-        return false;
-      }
-    }
-
-    for (i = 0, len = createDebug.names.length; i < len; i++) {
-      if (createDebug.names[i].test(name)) {
-        return true;
-      }
-    }
-
-    return false;
-  }
-  /**
-  * Convert regexp to namespace
-  *
-  * @param {RegExp} regxep
-  * @return {String} namespace
-  * @api private
-  */
-
-
-  function toNamespace(regexp) {
-    return regexp.toString().substring(2, regexp.toString().length - 2).replace(/\.\*\?$/, '*');
-  }
-  /**
-  * Coerce `val`.
-  *
-  * @param {Mixed} val
-  * @return {Mixed}
-  * @api private
-  */
-
-
-  function coerce(val) {
-    if (val instanceof Error) {
-      return val.stack || val.message;
-    }
-
-    return val;
-  }
-
-  createDebug.enable(createDebug.load());
-  return createDebug;
-}
-
-module.exports = setup;
-
-/***/ }),
-
-/***/ 147:
-/***/ (function(module, exports) {
-
-/**
- * Helpers.
- */
-
-var s = 1000;
-var m = s * 60;
-var h = m * 60;
-var d = h * 24;
-var w = d * 7;
-var y = d * 365.25;
-
-/**
- * Parse or format the given `val`.
- *
- * Options:
- *
- *  - `long` verbose formatting [false]
- *
- * @param {String|Number} val
- * @param {Object} [options]
- * @throws {Error} throw an error if val is not a non-empty string or a number
- * @return {String|Number}
- * @api public
- */
-
-module.exports = function(val, options) {
-  options = options || {};
-  var type = typeof val;
-  if (type === 'string' && val.length > 0) {
-    return parse(val);
-  } else if (type === 'number' && isFinite(val)) {
-    return options.long ? fmtLong(val) : fmtShort(val);
-  }
-  throw new Error(
-    'val is not a non-empty string or a valid number. val=' +
-      JSON.stringify(val)
-  );
-};
-
-/**
- * Parse the given `str` and return milliseconds.
- *
- * @param {String} str
- * @return {Number}
- * @api private
- */
-
-function parse(str) {
-  str = String(str);
-  if (str.length > 100) {
-    return;
-  }
-  var match = /^(-?(?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|years?|yrs?|y)?$/i.exec(
-    str
-  );
-  if (!match) {
-    return;
-  }
-  var n = parseFloat(match[1]);
-  var type = (match[2] || 'ms').toLowerCase();
-  switch (type) {
-    case 'years':
-    case 'year':
-    case 'yrs':
-    case 'yr':
-    case 'y':
-      return n * y;
-    case 'weeks':
-    case 'week':
-    case 'w':
-      return n * w;
-    case 'days':
-    case 'day':
-    case 'd':
-      return n * d;
-    case 'hours':
-    case 'hour':
-    case 'hrs':
-    case 'hr':
-    case 'h':
-      return n * h;
-    case 'minutes':
-    case 'minute':
-    case 'mins':
-    case 'min':
-    case 'm':
-      return n * m;
-    case 'seconds':
-    case 'second':
-    case 'secs':
-    case 'sec':
-    case 's':
-      return n * s;
-    case 'milliseconds':
-    case 'millisecond':
-    case 'msecs':
-    case 'msec':
-    case 'ms':
-      return n;
-    default:
-      return undefined;
-  }
-}
-
-/**
- * Short format for `ms`.
- *
- * @param {Number} ms
- * @return {String}
- * @api private
- */
-
-function fmtShort(ms) {
-  var msAbs = Math.abs(ms);
-  if (msAbs >= d) {
-    return Math.round(ms / d) + 'd';
-  }
-  if (msAbs >= h) {
-    return Math.round(ms / h) + 'h';
-  }
-  if (msAbs >= m) {
-    return Math.round(ms / m) + 'm';
-  }
-  if (msAbs >= s) {
-    return Math.round(ms / s) + 's';
-  }
-  return ms + 'ms';
-}
-
-/**
- * Long format for `ms`.
- *
- * @param {Number} ms
- * @return {String}
- * @api private
- */
-
-function fmtLong(ms) {
-  var msAbs = Math.abs(ms);
-  if (msAbs >= d) {
-    return plural(ms, msAbs, d, 'day');
-  }
-  if (msAbs >= h) {
-    return plural(ms, msAbs, h, 'hour');
-  }
-  if (msAbs >= m) {
-    return plural(ms, msAbs, m, 'minute');
-  }
-  if (msAbs >= s) {
-    return plural(ms, msAbs, s, 'second');
-  }
-  return ms + ' ms';
-}
-
-/**
- * Pluralization helper.
- */
-
-function plural(ms, msAbs, n, name) {
-  var isPlural = msAbs >= n * 1.5;
-  return Math.round(ms / n) + ' ' + name + (isPlural ? 's' : '');
-}
-
-
-/***/ }),
-
-/***/ 15:
-/***/ (function(module, exports) {
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-module.exports = _defineProperty;
-
-/***/ }),
-
-/***/ 16:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _objectWithoutProperties; });
-/* harmony import */ var _objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(54);
-
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-  var target = Object(_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(source, excluded);
-  var key, i;
-
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
-  }
-
-  return target;
-}
-
-/***/ }),
-
-/***/ 17:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ _toConsumableArray; });
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
-var arrayLikeToArray = __webpack_require__(37);
-
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return Object(arrayLikeToArray["a" /* default */])(arr);
-}
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArray.js
-function _iterableToArray(iter) {
-  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
-}
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
-var unsupportedIterableToArray = __webpack_require__(52);
-
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js
-
-
-
-
-function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || Object(unsupportedIterableToArray["a" /* default */])(arr) || _nonIterableSpread();
-}
-
-/***/ }),
-
-/***/ 173:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
-var esm_extends = __webpack_require__(11);
-
-// EXTERNAL MODULE: external {"this":["wp","element"]}
-var external_this_wp_element_ = __webpack_require__(0);
-
-// EXTERNAL MODULE: ./node_modules/@wordpress/compose/build-module/utils/create-higher-order-component/index.js
-var create_higher_order_component = __webpack_require__(53);
-
-// CONCATENATED MODULE: ./node_modules/@wordpress/compose/build-module/hooks/use-instance-id/index.js
-/**
- * WordPress dependencies
- */
-
-var instanceMap = new WeakMap();
-/**
- * Creates a new id for a given object.
- *
- * @param {Object} object Object reference to create an id for.
- */
-
-function createId(object) {
-  var instances = instanceMap.get(object) || 0;
-  instanceMap.set(object, instances + 1);
-  return instances;
-}
-/**
- * Provides a unique instance ID.
- *
- * @param {Object} object Object reference to create an id for.
- */
-
-
-function useInstanceId(object) {
-  return Object(external_this_wp_element_["useMemo"])(function () {
-    return createId(object);
-  }, [object]);
-}
-//# sourceMappingURL=index.js.map
-// CONCATENATED MODULE: ./node_modules/@wordpress/compose/build-module/higher-order/with-instance-id/index.js
-
-
-
-/**
- * Internal dependencies
- */
-
-
-/**
- * A Higher Order Component used to be provide a unique instance ID by
- * component.
- *
- * @param {WPComponent} WrappedComponent The wrapped component.
- *
- * @return {WPComponent} Component with an instanceId prop.
- */
-
-/* harmony default export */ var with_instance_id = __webpack_exports__["a"] = (Object(create_higher_order_component["a" /* default */])(function (WrappedComponent) {
-  return function (props) {
-    var instanceId = useInstanceId(WrappedComponent);
-    return Object(external_this_wp_element_["createElement"])(WrappedComponent, Object(esm_extends["a" /* default */])({}, props, {
-      instanceId: instanceId
-    }));
-  };
-}, 'withInstanceId'));
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ 18:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ BACKSPACE; });
-__webpack_require__.d(__webpack_exports__, "h", function() { return /* binding */ TAB; });
-__webpack_require__.d(__webpack_exports__, "c", function() { return /* binding */ ENTER; });
-__webpack_require__.d(__webpack_exports__, "d", function() { return /* binding */ ESCAPE; });
-__webpack_require__.d(__webpack_exports__, "g", function() { return /* binding */ SPACE; });
-__webpack_require__.d(__webpack_exports__, "e", function() { return /* binding */ LEFT; });
-__webpack_require__.d(__webpack_exports__, "i", function() { return /* binding */ UP; });
-__webpack_require__.d(__webpack_exports__, "f", function() { return /* binding */ RIGHT; });
-__webpack_require__.d(__webpack_exports__, "b", function() { return /* binding */ DOWN; });
-
-// UNUSED EXPORTS: DELETE, F10, ALT, CTRL, COMMAND, SHIFT, modifiers, rawShortcut, displayShortcutList, displayShortcut, shortcutAriaLabel, isKeyboardEvent
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
-var defineProperty = __webpack_require__(13);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 3 modules
-var toConsumableArray = __webpack_require__(17);
-
-// EXTERNAL MODULE: external "lodash"
-var external_lodash_ = __webpack_require__(2);
-
-// EXTERNAL MODULE: external {"this":["wp","i18n"]}
-var external_this_wp_i18n_ = __webpack_require__(3);
-
-// CONCATENATED MODULE: ./node_modules/@wordpress/keycodes/build-module/platform.js
-/**
- * External dependencies
- */
-
-/**
- * Return true if platform is MacOS.
- *
- * @param {Object} _window   window object by default; used for DI testing.
- *
- * @return {boolean}         True if MacOS; false otherwise.
- */
-
-function isAppleOS() {
-  var _window = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window;
-
-  var platform = _window.navigator.platform;
-  return platform.indexOf('Mac') !== -1 || Object(external_lodash_["includes"])(['iPad', 'iPhone'], platform);
-}
-//# sourceMappingURL=platform.js.map
-// CONCATENATED MODULE: ./node_modules/@wordpress/keycodes/build-module/index.js
-
-
-
-/**
- * Note: The order of the modifier keys in many of the [foo]Shortcut()
- * functions in this file are intentional and should not be changed. They're
- * designed to fit with the standard menu keyboard shortcuts shown in the
- * user's platform.
- *
- * For example, on MacOS menu shortcuts will place Shift before Command, but
- * on Windows Control will usually come first. So don't provide your own
- * shortcut combos directly to keyboardShortcut().
- */
-
-/**
- * External dependencies
- */
-
-/**
- * WordPress dependencies
- */
-
-
-/**
- * Internal dependencies
- */
-
-
-/**
- * @typedef {'primary'|'primaryShift'|'primaryAlt'|'secondary'|'access'|'ctrl'|'alt'|'ctrlShift'|'shift'|'shiftAlt'} WPKeycodeModifier
- */
-
-/**
- * An object of handler functions for each of the possible modifier
- * combinations. A handler will return a value for a given key.
- *
- * @typedef {{[M in WPKeycodeModifier]:(key:string)=>any}} WPKeycodeHandlerByModifier
- */
-
-/**
- * Keycode for BACKSPACE key.
- */
-
-var BACKSPACE = 8;
-/**
- * Keycode for TAB key.
- */
-
-var TAB = 9;
-/**
- * Keycode for ENTER key.
- */
-
-var ENTER = 13;
-/**
- * Keycode for ESCAPE key.
- */
-
-var ESCAPE = 27;
-/**
- * Keycode for SPACE key.
- */
-
-var SPACE = 32;
-/**
- * Keycode for LEFT key.
- */
-
-var LEFT = 37;
-/**
- * Keycode for UP key.
- */
-
-var UP = 38;
-/**
- * Keycode for RIGHT key.
- */
-
-var RIGHT = 39;
-/**
- * Keycode for DOWN key.
- */
-
-var DOWN = 40;
-/**
- * Keycode for DELETE key.
- */
-
-var DELETE = 46;
-/**
- * Keycode for F10 key.
- */
-
-var F10 = 121;
-/**
- * Keycode for ALT key.
- */
-
-var ALT = 'alt';
-/**
- * Keycode for CTRL key.
- */
-
-var CTRL = 'ctrl';
-/**
- * Keycode for COMMAND/META key.
- */
-
-var COMMAND = 'meta';
-/**
- * Keycode for SHIFT key.
- */
-
-var SHIFT = 'shift';
-/**
- * Object that contains functions that return the available modifier
- * depending on platform.
- *
- * - `primary`: takes a isApple function as a parameter.
- * - `primaryShift`: takes a isApple function as a parameter.
- * - `primaryAlt`: takes a isApple function as a parameter.
- * - `secondary`: takes a isApple function as a parameter.
- * - `access`: takes a isApple function as a parameter.
- * - `ctrl`
- * - `alt`
- * - `ctrlShift`
- * - `shift`
- * - `shiftAlt`
- */
-
-var modifiers = {
-  primary: function primary(_isApple) {
-    return _isApple() ? [COMMAND] : [CTRL];
-  },
-  primaryShift: function primaryShift(_isApple) {
-    return _isApple() ? [SHIFT, COMMAND] : [CTRL, SHIFT];
-  },
-  primaryAlt: function primaryAlt(_isApple) {
-    return _isApple() ? [ALT, COMMAND] : [CTRL, ALT];
-  },
-  secondary: function secondary(_isApple) {
-    return _isApple() ? [SHIFT, ALT, COMMAND] : [CTRL, SHIFT, ALT];
-  },
-  access: function access(_isApple) {
-    return _isApple() ? [CTRL, ALT] : [SHIFT, ALT];
-  },
-  ctrl: function ctrl() {
-    return [CTRL];
-  },
-  alt: function alt() {
-    return [ALT];
-  },
-  ctrlShift: function ctrlShift() {
-    return [CTRL, SHIFT];
-  },
-  shift: function shift() {
-    return [SHIFT];
-  },
-  shiftAlt: function shiftAlt() {
-    return [SHIFT, ALT];
-  }
-};
-/**
- * An object that contains functions to get raw shortcuts.
- * E.g. rawShortcut.primary( 'm' ) will return 'meta+m' on Mac.
- * These are intended for user with the KeyboardShortcuts component or TinyMCE.
- *
- * @type {WPKeycodeHandlerByModifier} Keyed map of functions to raw shortcuts.
- */
-
-var rawShortcut = Object(external_lodash_["mapValues"])(modifiers, function (modifier) {
-  return function (character) {
-    var _isApple = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : isAppleOS;
-
-    return [].concat(Object(toConsumableArray["a" /* default */])(modifier(_isApple)), [character.toLowerCase()]).join('+');
-  };
-});
-/**
- * Return an array of the parts of a keyboard shortcut chord for display
- * E.g displayShortcutList.primary( 'm' ) will return [ '⌘', 'M' ] on Mac.
- *
- * @type {WPKeycodeHandlerByModifier} Keyed map of functions to shortcut
- *                                    sequences.
- */
-
-var displayShortcutList = Object(external_lodash_["mapValues"])(modifiers, function (modifier) {
-  return function (character) {
-    var _replacementKeyMap;
-
-    var _isApple = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : isAppleOS;
-
-    var isApple = _isApple();
-
-    var replacementKeyMap = (_replacementKeyMap = {}, Object(defineProperty["a" /* default */])(_replacementKeyMap, ALT, isApple ? '⌥' : 'Alt'), Object(defineProperty["a" /* default */])(_replacementKeyMap, CTRL, isApple ? '^' : 'Ctrl'), Object(defineProperty["a" /* default */])(_replacementKeyMap, COMMAND, '⌘'), Object(defineProperty["a" /* default */])(_replacementKeyMap, SHIFT, isApple ? '⇧' : 'Shift'), _replacementKeyMap);
-    var modifierKeys = modifier(_isApple).reduce(function (accumulator, key) {
-      var replacementKey = Object(external_lodash_["get"])(replacementKeyMap, key, key); // If on the Mac, adhere to platform convention and don't show plus between keys.
-
-      if (isApple) {
-        return [].concat(Object(toConsumableArray["a" /* default */])(accumulator), [replacementKey]);
-      }
-
-      return [].concat(Object(toConsumableArray["a" /* default */])(accumulator), [replacementKey, '+']);
-    }, []);
-    var capitalizedCharacter = Object(external_lodash_["capitalize"])(character);
-    return [].concat(Object(toConsumableArray["a" /* default */])(modifierKeys), [capitalizedCharacter]);
-  };
-});
-/**
- * An object that contains functions to display shortcuts.
- * E.g. displayShortcut.primary( 'm' ) will return '⌘M' on Mac.
- *
- * @type {WPKeycodeHandlerByModifier} Keyed map of functions to display
- *                                    shortcuts.
- */
-
-var displayShortcut = Object(external_lodash_["mapValues"])(displayShortcutList, function (shortcutList) {
-  return function (character) {
-    var _isApple = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : isAppleOS;
-
-    return shortcutList(character, _isApple).join('');
-  };
-});
-/**
- * An object that contains functions to return an aria label for a keyboard shortcut.
- * E.g. shortcutAriaLabel.primary( '.' ) will return 'Command + Period' on Mac.
- *
- * @type {WPKeycodeHandlerByModifier} Keyed map of functions to shortcut ARIA
- *                                    labels.
- */
-
-var shortcutAriaLabel = Object(external_lodash_["mapValues"])(modifiers, function (modifier) {
-  return function (character) {
-    var _replacementKeyMap2;
-
-    var _isApple = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : isAppleOS;
-
-    var isApple = _isApple();
-
-    var replacementKeyMap = (_replacementKeyMap2 = {}, Object(defineProperty["a" /* default */])(_replacementKeyMap2, SHIFT, 'Shift'), Object(defineProperty["a" /* default */])(_replacementKeyMap2, COMMAND, isApple ? 'Command' : 'Control'), Object(defineProperty["a" /* default */])(_replacementKeyMap2, CTRL, 'Control'), Object(defineProperty["a" /* default */])(_replacementKeyMap2, ALT, isApple ? 'Option' : 'Alt'), Object(defineProperty["a" /* default */])(_replacementKeyMap2, ',', Object(external_this_wp_i18n_["__"])('Comma')), Object(defineProperty["a" /* default */])(_replacementKeyMap2, '.', Object(external_this_wp_i18n_["__"])('Period')), Object(defineProperty["a" /* default */])(_replacementKeyMap2, '`', Object(external_this_wp_i18n_["__"])('Backtick')), _replacementKeyMap2);
-    return [].concat(Object(toConsumableArray["a" /* default */])(modifier(_isApple)), [character]).map(function (key) {
-      return Object(external_lodash_["capitalize"])(Object(external_lodash_["get"])(replacementKeyMap, key, key));
-    }).join(isApple ? ' ' : ' + ');
-  };
-});
-/**
- * An object that contains functions to check if a keyboard event matches a
- * predefined shortcut combination.
- * E.g. isKeyboardEvent.primary( event, 'm' ) will return true if the event
- * signals pressing ⌘M.
- *
- * @type {WPKeycodeHandlerByModifier} Keyed map of functions to match events.
- */
-
-var isKeyboardEvent = Object(external_lodash_["mapValues"])(modifiers, function (getModifiers) {
-  return function (event, character) {
-    var _isApple = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : isAppleOS;
-
-    var mods = getModifiers(_isApple);
-
-    if (!mods.every(function (key) {
-      return event["".concat(key, "Key")];
-    })) {
-      return false;
-    }
-
-    if (!character) {
-      return Object(external_lodash_["includes"])(mods, event.key.toLowerCase());
-    }
-
-    return event.key === character;
-  };
-});
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ 19:
-/***/ (function(module, exports) {
-
-(function() { module.exports = this["wp"]["data"]; }());
-
-/***/ }),
-
 /***/ 2:
 /***/ (function(module, exports) {
 
@@ -3262,29 +3533,104 @@ var isKeyboardEvent = Object(external_lodash_["mapValues"])(modifiers, function 
 /***/ }),
 
 /***/ 20:
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-(function() { module.exports = this["wp"]["apiFetch"]; }());
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _classCallCheck; });
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
 
 /***/ }),
 
-/***/ 209:
-/***/ (function(module, exports) {
+/***/ 21:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _createClass; });
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+/***/ }),
+
+/***/ 22:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ _inherits; });
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js
 function _setPrototypeOf(o, p) {
-  module.exports = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
     o.__proto__ = p;
     return o;
   };
 
   return _setPrototypeOf(o, p);
 }
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/inherits.js
 
-module.exports = _setPrototypeOf;
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
 
 /***/ }),
 
-/***/ 21:
+/***/ 23:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _possibleConstructorReturn; });
+/* harmony import */ var _helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(55);
+/* harmony import */ var _assertThisInitialized__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(18);
+
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (Object(_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return Object(_assertThisInitialized__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(self);
+}
+
+/***/ }),
+
+/***/ 24:
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["data"]; }());
+
+/***/ }),
+
+/***/ 27:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3324,7 +3670,7 @@ function _iterableToArrayLimit(arr, i) {
   return _arr;
 }
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
-var unsupportedIterableToArray = __webpack_require__(52);
+var unsupportedIterableToArray = __webpack_require__(70);
 
 // CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/nonIterableRest.js
 function _nonIterableRest() {
@@ -3341,7 +3687,7 @@ function _slicedToArray(arr, i) {
 
 /***/ }),
 
-/***/ 256:
+/***/ 270:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3365,126 +3711,51 @@ function _slicedToArray(arr, i) {
 
 /***/ }),
 
-/***/ 26:
+/***/ 28:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ADMIN_URL; });
-/* unused harmony export COUNTRIES */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CURRENCY; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return LOCALE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return ORDER_STATUSES; });
-/* unused harmony export SITE_TITLE */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return WC_ASSET_URL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return getSetting; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return setSetting; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return getAdminLink; });
-/* harmony import */ var _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(43);
-/* harmony import */ var _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ _toConsumableArray; });
 
-/**
- * External dependencies
- */
- // Remove mutable data from settings object to prevent access. Data stores should be used instead.
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
+var arrayLikeToArray = __webpack_require__(62);
 
-var mutableSources = ['wcAdminSettings', 'preloadSettings'];
-var settings = (typeof wcSettings === "undefined" ? "undefined" : _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0___default()(wcSettings)) === 'object' ? wcSettings : {};
-var SOURCE = Object.keys(settings).reduce(function (source, key) {
-  if (!mutableSources.includes(key)) {
-    source[key] = settings[key];
-  }
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js
 
-  return source;
-}, {});
-var ADMIN_URL = SOURCE.adminUrl;
-var COUNTRIES = SOURCE.countries;
-var CURRENCY = SOURCE.currency;
-var LOCALE = SOURCE.locale;
-var ORDER_STATUSES = SOURCE.orderStatuses;
-var SITE_TITLE = SOURCE.siteTitle;
-var WC_ASSET_URL = SOURCE.wcAssetUrl;
-/**
- * Retrieves a setting value from the setting state.
- *
- * @export
- * @param {string}   name                         The identifier for the setting.
- * @param {*}    [fallback=false]             The value to use as a fallback
- *                                                if the setting is not in the
- *                                                state.
- * @param {Function} [filter=( val ) => val]  	  A callback for filtering the
- *                                                value before it's returned.
- *                                                Receives both the found value
- *                                                (if it exists for the key) and
- *                                                the provided fallback arg.
- *
- * @return {*}  The value present in the settings state for the given
- *                   name.
- */
-
-function getSetting(name) {
-  var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-  var filter = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function (val) {
-    return val;
-  };
-
-  if (mutableSources.includes(name)) {
-    throw new Error(Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Mutable settings should be accessed via data store.'));
-  }
-
-  var value = SOURCE.hasOwnProperty(name) ? SOURCE[name] : fallback;
-  return filter(value, fallback);
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return Object(arrayLikeToArray["a" /* default */])(arr);
 }
-/**
- * Sets a value to a property on the settings state.
- *
- * NOTE: This feature is to be removed in favour of data stores when a full migration
- * is complete.
- *
- * @deprecated
- *
- * @export
- * @param {string}   name                        The setting property key for the
- *                                               setting being mutated.
- * @param {*}    value                       The value to set.
- * @param {Function} [filter=( val ) => val]     Allows for providing a callback
- *                                               to sanitize the setting (eg.
- *                                               ensure it's a number)
- */
-
-function setSetting(name, value) {
-  var filter = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function (val) {
-    return val;
-  };
-
-  if (mutableSources.includes(name)) {
-    throw new Error(Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Mutable settings should be mutated via data store.'));
-  }
-
-  SOURCE[name] = filter(value);
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArray.js
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
 }
-/**
- * Returns a string with the site's wp-admin URL appended. JS version of `admin_url`.
- *
- * @param {string} path Relative path.
- * @return {string} Full admin URL.
- */
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
+var unsupportedIterableToArray = __webpack_require__(70);
 
-function getAdminLink(path) {
-  return (ADMIN_URL || '') + path;
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js
+
+
+
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || Object(unsupportedIterableToArray["a" /* default */])(arr) || _nonIterableSpread();
 }
 
 /***/ }),
 
-/***/ 268:
+/***/ 280:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _use_media_query__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(99);
+/* harmony import */ var _use_media_query__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(101);
 /**
  * WordPress dependencies
  */
@@ -3578,45 +3849,27 @@ useViewportMatch.__experimentalWidthProvider = ViewportMatchWidthContext.Provide
 
 /***/ }),
 
-/***/ 27:
+/***/ 281:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _objectSpread; });
-/* harmony import */ var _defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(13);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(44);
 
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? Object(arguments[i]) : {};
-    var ownKeys = Object.keys(source);
 
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
-    }
+/**
+ * WordPress dependencies
+ */
 
-    ownKeys.forEach(function (key) {
-      Object(_defineProperty__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(target, key, source[key]);
-    });
-  }
-
-  return target;
-}
-
-/***/ }),
-
-/***/ 29:
-/***/ (function(module, exports) {
-
-function _getPrototypeOf(o) {
-  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-module.exports = _getPrototypeOf;
+var close = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__[/* SVG */ "c"], {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__[/* Path */ "b"], {
+  d: "M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"
+}));
+/* harmony default export */ __webpack_exports__["a"] = (close);
+//# sourceMappingURL=close.js.map
 
 /***/ }),
 
@@ -3627,1719 +3880,118 @@ module.exports = _getPrototypeOf;
 
 /***/ }),
 
-/***/ 35:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
-                                                                                                                                                                                                                                                                               * External Dependencies
-                                                                                                                                                                                                                                                                               */
-
-
-/**
- * Internal Dependencies
- */
-
-
-var _react = __webpack_require__(14);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactAddonsCreateFragment = __webpack_require__(142);
-
-var _reactAddonsCreateFragment2 = _interopRequireDefault(_reactAddonsCreateFragment);
-
-var _tokenize = __webpack_require__(145);
-
-var _tokenize2 = _interopRequireDefault(_tokenize);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var currentMixedString = void 0;
-
-function getCloseIndex(openIndex, tokens) {
-	var openToken = tokens[openIndex],
-	    nestLevel = 0,
-	    token,
-	    i;
-	for (i = openIndex + 1; i < tokens.length; i++) {
-		token = tokens[i];
-		if (token.value === openToken.value) {
-			if (token.type === 'componentOpen') {
-				nestLevel++;
-				continue;
-			}
-			if (token.type === 'componentClose') {
-				if (nestLevel === 0) {
-					return i;
-				}
-				nestLevel--;
-			}
-		}
-	}
-	// if we get this far, there was no matching close token
-	throw new Error('Missing closing component token `' + openToken.value + '`');
-}
-
-function buildChildren(tokens, components) {
-	var children = [],
-	    childrenObject = {},
-	    openComponent,
-	    clonedOpenComponent,
-	    openIndex,
-	    closeIndex,
-	    token,
-	    i,
-	    grandChildTokens,
-	    grandChildren,
-	    siblingTokens,
-	    siblings;
-
-	for (i = 0; i < tokens.length; i++) {
-		token = tokens[i];
-		if (token.type === 'string') {
-			children.push(token.value);
-			continue;
-		}
-		// component node should at least be set
-		if (!components.hasOwnProperty(token.value) || typeof components[token.value] === 'undefined') {
-			throw new Error('Invalid interpolation, missing component node: `' + token.value + '`');
-		}
-		// should be either ReactElement or null (both type "object"), all other types deprecated
-		if (_typeof(components[token.value]) !== 'object') {
-			throw new Error('Invalid interpolation, component node must be a ReactElement or null: `' + token.value + '`', '\n> ' + currentMixedString);
-		}
-		// we should never see a componentClose token in this loop
-		if (token.type === 'componentClose') {
-			throw new Error('Missing opening component token: `' + token.value + '`');
-		}
-		if (token.type === 'componentOpen') {
-			openComponent = components[token.value];
-			openIndex = i;
-			break;
-		}
-		// componentSelfClosing token
-		children.push(components[token.value]);
-		continue;
-	}
-
-	if (openComponent) {
-		closeIndex = getCloseIndex(openIndex, tokens);
-		grandChildTokens = tokens.slice(openIndex + 1, closeIndex);
-		grandChildren = buildChildren(grandChildTokens, components);
-		clonedOpenComponent = _react2.default.cloneElement(openComponent, {}, grandChildren);
-		children.push(clonedOpenComponent);
-
-		if (closeIndex < tokens.length - 1) {
-			siblingTokens = tokens.slice(closeIndex + 1);
-			siblings = buildChildren(siblingTokens, components);
-			children = children.concat(siblings);
-		}
-	}
-
-	if (children.length === 1) {
-		return children[0];
-	}
-
-	children.forEach(function (child, index) {
-		if (child) {
-			childrenObject['interpolation-child-' + index] = child;
-		}
-	});
-
-	return (0, _reactAddonsCreateFragment2.default)(childrenObject);
-}
-
-function interpolate(options) {
-	var mixedString = options.mixedString,
-	    components = options.components,
-	    throwErrors = options.throwErrors;
-
-
-	currentMixedString = mixedString;
-
-	if (!components) {
-		return mixedString;
-	}
-
-	if ((typeof components === 'undefined' ? 'undefined' : _typeof(components)) !== 'object') {
-		if (throwErrors) {
-			throw new Error('Interpolation Error: unable to process `' + mixedString + '` because components is not an object');
-		}
-
-		return mixedString;
-	}
-
-	var tokens = (0, _tokenize2.default)(mixedString);
-
-	try {
-		return buildChildren(tokens, components);
-	} catch (error) {
-		if (throwErrors) {
-			throw new Error('Interpolation Error: unable to process `' + mixedString + '` because of error `' + error.message + '`');
-		}
-
-		return mixedString;
-	}
-};
-
-exports.default = interpolate;
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ 37:
+/***/ 33:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _arrayLikeToArray; });
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-
-  return arr2;
-}
-
-/***/ }),
-
-/***/ 4:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _getPrototypeOf; });
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-/***/ }),
-
-/***/ 40:
-/***/ (function(module, exports) {
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-module.exports = _createClass;
-
-/***/ }),
-
-/***/ 41:
-/***/ (function(module, exports) {
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-module.exports = _classCallCheck;
-
-/***/ }),
-
-/***/ 411:
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ 42:
-/***/ (function(module, exports, __webpack_require__) {
-
-var setPrototypeOf = __webpack_require__(209);
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) setPrototypeOf(subClass, superClass);
-}
-
-module.exports = _inherits;
-
-/***/ }),
-
-/***/ 43:
-/***/ (function(module, exports) {
-
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    module.exports = _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    module.exports = _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
-module.exports = _typeof;
-
-/***/ }),
-
-/***/ 44:
-/***/ (function(module, exports, __webpack_require__) {
-
-var _typeof = __webpack_require__(43);
-
-var assertThisInitialized = __webpack_require__(59);
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return assertThisInitialized(self);
-}
-
-module.exports = _possibleConstructorReturn;
-
-/***/ }),
-
-/***/ 46:
-/***/ (function(module, exports) {
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-  try {
-    var info = gen[key](arg);
-    var value = info.value;
-  } catch (error) {
-    reject(error);
-    return;
-  }
-
-  if (info.done) {
-    resolve(value);
-  } else {
-    Promise.resolve(value).then(_next, _throw);
-  }
-}
-
-function _asyncToGenerator(fn) {
-  return function () {
-    var self = this,
-        args = arguments;
-    return new Promise(function (resolve, reject) {
-      var gen = fn.apply(self, args);
-
-      function _next(value) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-      }
-
-      function _throw(err) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-      }
-
-      _next(undefined);
-    });
-  };
-}
-
-module.exports = _asyncToGenerator;
-
-/***/ }),
-
-/***/ 48:
-/***/ (function(module, exports) {
-
-(function() { module.exports = this["wp"]["hooks"]; }());
-
-/***/ }),
-
-/***/ 5:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _assertThisInitialized; });
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-/***/ }),
-
-/***/ 50:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ build_module_focus; });
-
-// UNUSED EXPORTS: isHorizontalEdge, isVerticalEdge, getRectangleFromRange, computeCaretRect, placeCaretAtHorizontalEdge, placeCaretAtVerticalEdge, isTextField, documentHasSelection, isEntirelySelected, getScrollContainer, getOffsetParent, replace, remove, insertAfter, unwrap, replaceTag, wrap, __unstableStripHTML
-
-// NAMESPACE OBJECT: ./node_modules/@wordpress/dom/build-module/focusable.js
-var focusable_namespaceObject = {};
-__webpack_require__.r(focusable_namespaceObject);
-__webpack_require__.d(focusable_namespaceObject, "find", function() { return find; });
-
-// NAMESPACE OBJECT: ./node_modules/@wordpress/dom/build-module/tabbable.js
-var tabbable_namespaceObject = {};
-__webpack_require__.r(tabbable_namespaceObject);
-__webpack_require__.d(tabbable_namespaceObject, "isTabbableIndex", function() { return isTabbableIndex; });
-__webpack_require__.d(tabbable_namespaceObject, "find", function() { return tabbable_find; });
-__webpack_require__.d(tabbable_namespaceObject, "findPrevious", function() { return findPrevious; });
-__webpack_require__.d(tabbable_namespaceObject, "findNext", function() { return findNext; });
-
-// CONCATENATED MODULE: ./node_modules/@wordpress/dom/build-module/focusable.js
-/**
- * References:
- *
- * Focusable:
- *  - https://www.w3.org/TR/html5/editing.html#focus-management
- *
- * Sequential focus navigation:
- *  - https://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
- *
- * Disabled elements:
- *  - https://www.w3.org/TR/html5/disabled-elements.html#disabled-elements
- *
- * getClientRects algorithm (requiring layout box):
- *  - https://www.w3.org/TR/cssom-view-1/#extension-to-the-element-interface
- *
- * AREA elements associated with an IMG:
- *  - https://w3c.github.io/html/editing.html#data-model
- */
-var SELECTOR = ['[tabindex]', 'a[href]', 'button:not([disabled])', 'input:not([type="hidden"]):not([disabled])', 'select:not([disabled])', 'textarea:not([disabled])', 'iframe', 'object', 'embed', 'area[href]', '[contenteditable]:not([contenteditable=false])'].join(',');
-/**
- * Returns true if the specified element is visible (i.e. neither display: none
- * nor visibility: hidden).
- *
- * @param {Element} element DOM element to test.
- *
- * @return {boolean} Whether element is visible.
- */
-
-function isVisible(element) {
-  return element.offsetWidth > 0 || element.offsetHeight > 0 || element.getClientRects().length > 0;
-}
-/**
- * Returns true if the specified area element is a valid focusable element, or
- * false otherwise. Area is only focusable if within a map where a named map
- * referenced by an image somewhere in the document.
- *
- * @param {Element} element DOM area element to test.
- *
- * @return {boolean} Whether area element is valid for focus.
- */
-
-
-function isValidFocusableArea(element) {
-  var map = element.closest('map[name]');
-
-  if (!map) {
-    return false;
-  }
-
-  var img = document.querySelector('img[usemap="#' + map.name + '"]');
-  return !!img && isVisible(img);
-}
-/**
- * Returns all focusable elements within a given context.
- *
- * @param {Element} context Element in which to search.
- *
- * @return {Element[]} Focusable elements.
- */
-
-
-function find(context) {
-  var elements = context.querySelectorAll(SELECTOR);
-  return Array.from(elements).filter(function (element) {
-    if (!isVisible(element)) {
-      return false;
-    }
-
-    var nodeName = element.nodeName;
-
-    if ('AREA' === nodeName) {
-      return isValidFocusableArea(element);
-    }
-
-    return true;
-  });
-}
-//# sourceMappingURL=focusable.js.map
-// EXTERNAL MODULE: external "lodash"
-var external_lodash_ = __webpack_require__(2);
-
-// CONCATENATED MODULE: ./node_modules/@wordpress/dom/build-module/tabbable.js
-/**
- * External dependencies
- */
-
-/**
- * Internal dependencies
- */
-
-
-/**
- * Returns the tab index of the given element. In contrast with the tabIndex
- * property, this normalizes the default (0) to avoid browser inconsistencies,
- * operating under the assumption that this function is only ever called with a
- * focusable node.
- *
- * @see https://bugzilla.mozilla.org/show_bug.cgi?id=1190261
- *
- * @param {Element} element Element from which to retrieve.
- *
- * @return {?number} Tab index of element (default 0).
- */
-
-function getTabIndex(element) {
-  var tabIndex = element.getAttribute('tabindex');
-  return tabIndex === null ? 0 : parseInt(tabIndex, 10);
-}
-/**
- * Returns true if the specified element is tabbable, or false otherwise.
- *
- * @param {Element} element Element to test.
- *
- * @return {boolean} Whether element is tabbable.
- */
-
-
-function isTabbableIndex(element) {
-  return getTabIndex(element) !== -1;
-}
-/**
- * Returns a stateful reducer function which constructs a filtered array of
- * tabbable elements, where at most one radio input is selected for a given
- * name, giving priority to checked input, falling back to the first
- * encountered.
- *
- * @return {Function} Radio group collapse reducer.
- */
-
-function createStatefulCollapseRadioGroup() {
-  var CHOSEN_RADIO_BY_NAME = {};
-  return function collapseRadioGroup(result, element) {
-    var nodeName = element.nodeName,
-        type = element.type,
-        checked = element.checked,
-        name = element.name; // For all non-radio tabbables, construct to array by concatenating.
-
-    if (nodeName !== 'INPUT' || type !== 'radio' || !name) {
-      return result.concat(element);
-    }
-
-    var hasChosen = CHOSEN_RADIO_BY_NAME.hasOwnProperty(name); // Omit by skipping concatenation if the radio element is not chosen.
-
-    var isChosen = checked || !hasChosen;
-
-    if (!isChosen) {
-      return result;
-    } // At this point, if there had been a chosen element, the current
-    // element is checked and should take priority. Retroactively remove
-    // the element which had previously been considered the chosen one.
-
-
-    if (hasChosen) {
-      var hadChosenElement = CHOSEN_RADIO_BY_NAME[name];
-      result = Object(external_lodash_["without"])(result, hadChosenElement);
-    }
-
-    CHOSEN_RADIO_BY_NAME[name] = element;
-    return result.concat(element);
-  };
-}
-/**
- * An array map callback, returning an object with the element value and its
- * array index location as properties. This is used to emulate a proper stable
- * sort where equal tabIndex should be left in order of their occurrence in the
- * document.
- *
- * @param {Element} element Element.
- * @param {number}  index   Array index of element.
- *
- * @return {Object} Mapped object with element, index.
- */
-
-
-function mapElementToObjectTabbable(element, index) {
-  return {
-    element: element,
-    index: index
-  };
-}
-/**
- * An array map callback, returning an element of the given mapped object's
- * element value.
- *
- * @param {Object} object Mapped object with index.
- *
- * @return {Element} Mapped object element.
- */
-
-
-function mapObjectTabbableToElement(object) {
-  return object.element;
-}
-/**
- * A sort comparator function used in comparing two objects of mapped elements.
- *
- * @see mapElementToObjectTabbable
- *
- * @param {Object} a First object to compare.
- * @param {Object} b Second object to compare.
- *
- * @return {number} Comparator result.
- */
-
-
-function compareObjectTabbables(a, b) {
-  var aTabIndex = getTabIndex(a.element);
-  var bTabIndex = getTabIndex(b.element);
-
-  if (aTabIndex === bTabIndex) {
-    return a.index - b.index;
-  }
-
-  return aTabIndex - bTabIndex;
-}
-/**
- * Givin focusable elements, filters out tabbable element.
- *
- * @param {Array} focusables Focusable elements to filter.
- *
- * @return {Array} Tabbable elements.
- */
-
-
-function filterTabbable(focusables) {
-  return focusables.filter(isTabbableIndex).map(mapElementToObjectTabbable).sort(compareObjectTabbables).map(mapObjectTabbableToElement).reduce(createStatefulCollapseRadioGroup(), []);
-}
-
-function tabbable_find(context) {
-  return filterTabbable(find(context));
-}
-/**
- * Given a focusable element, find the preceding tabbable element.
- *
- * @param {Element} element The focusable element before which to look. Defaults
- *                          to the active element.
- */
-
-function findPrevious() {
-  var element = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document.activeElement;
-  var focusables = find(document.body);
-  var index = focusables.indexOf(element); // Remove all focusables after and including `element`.
-
-  focusables.length = index;
-  return Object(external_lodash_["last"])(filterTabbable(focusables));
-}
-/**
- * Given a focusable element, find the next tabbable element.
- *
- * @param {Element} element The focusable element after which to look. Defaults
- *                          to the active element.
- */
-
-function findNext() {
-  var element = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document.activeElement;
-  var focusables = find(document.body);
-  var index = focusables.indexOf(element); // Remove all focusables before and inside `element`.
-
-  var remaining = focusables.slice(index + 1).filter(function (node) {
-    return !element.contains(node);
-  });
-  return Object(external_lodash_["first"])(filterTabbable(remaining));
-}
-//# sourceMappingURL=tabbable.js.map
-// CONCATENATED MODULE: ./node_modules/@wordpress/dom/build-module/index.js
-/**
- * Internal dependencies
- */
-
-
-/**
- * Object grouping `focusable` and `tabbable` utils
- * under the keys with the same name.
- */
-
-var build_module_focus = {
-  focusable: focusable_namespaceObject,
-  tabbable: tabbable_namespaceObject
-};
-
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ 51:
-/***/ (function(module, exports) {
-
-(function() { module.exports = this["wc"]["data"]; }());
-
-/***/ }),
-
-/***/ 52:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _unsupportedIterableToArray; });
-/* harmony import */ var _arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(37);
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return Object(_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(n);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return Object(_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(o, minLen);
-}
-
-/***/ }),
-
-/***/ 53:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
-/**
- * External dependencies
- */
-
-/**
- * Given a function mapping a component to an enhanced component and modifier
- * name, returns the enhanced component augmented with a generated displayName.
- *
- * @param {Function} mapComponentToEnhancedComponent Function mapping component
- *                                                   to enhanced component.
- * @param {string}   modifierName                    Seed name from which to
- *                                                   generated display name.
- *
- * @return {WPComponent} Component class with generated display name assigned.
- */
-
-function createHigherOrderComponent(mapComponentToEnhancedComponent, modifierName) {
-  return function (OriginalComponent) {
-    var EnhancedComponent = mapComponentToEnhancedComponent(OriginalComponent);
-    var _OriginalComponent$di = OriginalComponent.displayName,
-        displayName = _OriginalComponent$di === void 0 ? OriginalComponent.name || 'Component' : _OriginalComponent$di;
-    EnhancedComponent.displayName = "".concat(Object(lodash__WEBPACK_IMPORTED_MODULE_0__["upperFirst"])(Object(lodash__WEBPACK_IMPORTED_MODULE_0__["camelCase"])(modifierName)), "(").concat(displayName, ")");
-    return EnhancedComponent;
-  };
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (createHigherOrderComponent);
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ 54:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _objectWithoutPropertiesLoose; });
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  return target;
-}
-
-/***/ }),
-
-/***/ 55:
-/***/ (function(module, exports) {
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    "default": obj
-  };
-}
-
-module.exports = _interopRequireDefault;
-
-/***/ }),
-
-/***/ 59:
-/***/ (function(module, exports) {
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-module.exports = _assertThisInitialized;
-
-/***/ }),
-
-/***/ 6:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _createClass; });
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-/***/ }),
-
-/***/ 62:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export Circle */
-/* unused harmony export G */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Path; });
-/* unused harmony export Polygon */
-/* unused harmony export Rect */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SVG; });
-/* harmony import */ var _babel_runtime_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(27);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(0);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ADMIN_URL; });
+/* unused harmony export COUNTRIES */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CURRENCY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return LOCALE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return ORDER_STATUSES; });
+/* unused harmony export SITE_TITLE */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return WC_ASSET_URL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return getSetting; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return setSetting; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return getAdminLink; });
+/* harmony import */ var _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(43);
+/* harmony import */ var _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 
 
 /**
  * External dependencies
  */
+ // Remove mutable data from settings object to prevent access. Data stores should be used instead.
 
+var mutableSources = ['wcAdminSettings', 'preloadSettings'];
+var settings = (typeof wcSettings === "undefined" ? "undefined" : _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0___default()(wcSettings)) === 'object' ? wcSettings : {};
+var SOURCE = Object.keys(settings).reduce(function (source, key) {
+  if (!mutableSources.includes(key)) {
+    source[key] = settings[key];
+  }
+
+  return source;
+}, {});
+var ADMIN_URL = SOURCE.adminUrl;
+var COUNTRIES = SOURCE.countries;
+var CURRENCY = SOURCE.currency;
+var LOCALE = SOURCE.locale;
+var ORDER_STATUSES = SOURCE.orderStatuses;
+var SITE_TITLE = SOURCE.siteTitle;
+var WC_ASSET_URL = SOURCE.wcAssetUrl;
 /**
- * WordPress dependencies
+ * Retrieves a setting value from the setting state.
+ *
+ * @param {string}   name                         The identifier for the setting.
+ * @param {*}    [fallback=false]             The value to use as a fallback
+ *                                                if the setting is not in the
+ *                                                state.
+ * @param {Function} [filter=( val ) => val]  	  A callback for filtering the
+ *                                                value before it's returned.
+ *                                                Receives both the found value
+ *                                                (if it exists for the key) and
+ *                                                the provided fallback arg.
+ *
+ * @return {*}  The value present in the settings state for the given
+ *                   name.
  */
 
+function getSetting(name) {
+  var fallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var filter = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function (val) {
+    return val;
+  };
 
-var Circle = function Circle(props) {
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])('circle', props);
-};
-var G = function G(props) {
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])('g', props);
-};
-var Path = function Path(props) {
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])('path', props);
-};
-var Polygon = function Polygon(props) {
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])('polygon', props);
-};
-var Rect = function Rect(props) {
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])('rect', props);
-};
-var SVG = function SVG(props) {
-  var appliedProps = Object(_babel_runtime_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({}, props, {
-    role: 'img',
-    'aria-hidden': 'true',
-    focusable: 'false'
-  }); // Disable reason: We need to have a way to render HTML tag for web.
-  // eslint-disable-next-line react/forbid-elements
+  if (mutableSources.includes(name)) {
+    throw new Error(Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Mutable settings should be accessed via data store.'));
+  }
 
+  var value = SOURCE.hasOwnProperty(name) ? SOURCE[name] : fallback;
+  return filter(value, fallback);
+}
+/**
+ * Sets a value to a property on the settings state.
+ *
+ * NOTE: This feature is to be removed in favour of data stores when a full migration
+ * is complete.
+ *
+ * @deprecated
+ *
+ * @param {string}   name                        The setting property key for the
+ *                                               setting being mutated.
+ * @param {*}    value                       The value to set.
+ * @param {Function} [filter=( val ) => val]     Allows for providing a callback
+ *                                               to sanitize the setting (eg.
+ *                                               ensure it's a number)
+ */
 
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("svg", Object(lodash__WEBPACK_IMPORTED_MODULE_1__["omit"])(appliedProps, '__unstableActive'));
-};
-//# sourceMappingURL=index.js.map
+function setSetting(name, value) {
+  var filter = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function (val) {
+    return val;
+  };
+
+  if (mutableSources.includes(name)) {
+    throw new Error(Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Mutable settings should be mutated via data store.'));
+  }
+
+  SOURCE[name] = filter(value);
+}
+/**
+ * Returns a string with the site's wp-admin URL appended. JS version of `admin_url`.
+ *
+ * @param {string} path Relative path.
+ * @return {string} Full admin URL.
+ */
+
+function getAdminLink(path) {
+  return (ADMIN_URL || '') + path;
+}
 
 /***/ }),
 
-/***/ 7:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _classCallCheck; });
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-/***/ }),
-
-/***/ 707:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/defineProperty.js
-var defineProperty = __webpack_require__(15);
-var defineProperty_default = /*#__PURE__*/__webpack_require__.n(defineProperty);
-
-// EXTERNAL MODULE: external {"this":["wp","element"]}
-var external_this_wp_element_ = __webpack_require__(0);
-
-// EXTERNAL MODULE: external {"this":["wc","data"]}
-var external_this_wc_data_ = __webpack_require__(51);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/asyncToGenerator.js
-var asyncToGenerator = __webpack_require__(46);
-var asyncToGenerator_default = /*#__PURE__*/__webpack_require__.n(asyncToGenerator);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/classCallCheck.js
-var classCallCheck = __webpack_require__(41);
-var classCallCheck_default = /*#__PURE__*/__webpack_require__.n(classCallCheck);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/createClass.js
-var createClass = __webpack_require__(40);
-var createClass_default = /*#__PURE__*/__webpack_require__.n(createClass);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js
-var possibleConstructorReturn = __webpack_require__(44);
-var possibleConstructorReturn_default = /*#__PURE__*/__webpack_require__.n(possibleConstructorReturn);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/getPrototypeOf.js
-var getPrototypeOf = __webpack_require__(29);
-var getPrototypeOf_default = /*#__PURE__*/__webpack_require__.n(getPrototypeOf);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/inherits.js
-var inherits = __webpack_require__(42);
-var inherits_default = /*#__PURE__*/__webpack_require__.n(inherits);
-
-// EXTERNAL MODULE: external {"this":["wp","i18n"]}
-var external_this_wp_i18n_ = __webpack_require__(3);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
-var esm_extends = __webpack_require__(11);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 3 modules
-var toConsumableArray = __webpack_require__(17);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
-var objectWithoutProperties = __webpack_require__(16);
-
-// EXTERNAL MODULE: ./node_modules/classnames/index.js
-var classnames = __webpack_require__(10);
-var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
-
-// EXTERNAL MODULE: external "lodash"
-var external_lodash_ = __webpack_require__(2);
-
-// EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/dashicon/index.js
-var dashicon = __webpack_require__(80);
-
-// EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/visually-hidden/index.js + 1 modules
-var visually_hidden = __webpack_require__(119);
-
-// CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/external-link/index.js
-
-
-
-
-
-/**
- * External dependencies
- */
-
-
-/**
- * WordPress dependencies
- */
-
-
-
-/**
- * Internal dependencies
- */
-
-
-
-function ExternalLink(_ref, ref) {
-  var href = _ref.href,
-      children = _ref.children,
-      className = _ref.className,
-      _ref$rel = _ref.rel,
-      rel = _ref$rel === void 0 ? '' : _ref$rel,
-      additionalProps = Object(objectWithoutProperties["a" /* default */])(_ref, ["href", "children", "className", "rel"]);
-
-  rel = Object(external_lodash_["uniq"])(Object(external_lodash_["compact"])([].concat(Object(toConsumableArray["a" /* default */])(rel.split(' ')), ['external', 'noreferrer', 'noopener']))).join(' ');
-  var classes = classnames_default()('components-external-link', className);
-  return (// eslint-disable-next-line react/jsx-no-target-blank
-    Object(external_this_wp_element_["createElement"])("a", Object(esm_extends["a" /* default */])({}, additionalProps, {
-      className: classes,
-      href: href,
-      target: "_blank",
-      rel: rel,
-      ref: ref
-    }), children, Object(external_this_wp_element_["createElement"])(visually_hidden["a" /* default */], {
-      as: "span"
-    },
-    /* translators: accessibility text */
-    Object(external_this_wp_i18n_["__"])('(opens in a new tab)')), Object(external_this_wp_element_["createElement"])(dashicon["a" /* default */], {
-      icon: "external",
-      className: "components-external-link__icon"
-    }))
-  );
-}
-/* harmony default export */ var external_link = (Object(external_this_wp_element_["forwardRef"])(ExternalLink));
-//# sourceMappingURL=index.js.map
-// EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/button/index.js
-var build_module_button = __webpack_require__(88);
-
-// EXTERNAL MODULE: ./node_modules/@wordpress/compose/build-module/higher-order/compose.js
-var compose = __webpack_require__(256);
-
-// EXTERNAL MODULE: ./client/lib/tracks.js
-var tracks = __webpack_require__(79);
-
-// EXTERNAL MODULE: ./node_modules/interpolate-components/lib/index.js
-var lib = __webpack_require__(35);
-var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
-
-// EXTERNAL MODULE: ./node_modules/prop-types/index.js
-var prop_types = __webpack_require__(1);
-var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
-
-// EXTERNAL MODULE: ./client/wp-admin-scripts/print-shipping-label-banner/style.scss
-var style = __webpack_require__(411);
-
-// EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/modal/index.js + 3 modules
-var modal = __webpack_require__(721);
-
-// EXTERNAL MODULE: external {"this":["wp","data"]}
-var external_this_wp_data_ = __webpack_require__(19);
-
-// CONCATENATED MODULE: ./client/wp-admin-scripts/print-shipping-label-banner/dismiss-modal/index.js
-
-
-
-
-
-
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function () { var Super = getPrototypeOf_default()(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = getPrototypeOf_default()(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return possibleConstructorReturn_default()(this, result); }; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-/**
- * External dependencies
- */
-
-
-
-
-
-/**
- * Internal dependencies
- */
-
-
-var dismiss_modal_DismissModal = /*#__PURE__*/function (_Component) {
-  inherits_default()(DismissModal, _Component);
-
-  var _super = _createSuper(DismissModal);
-
-  function DismissModal() {
-    var _temp, _this;
-
-    classCallCheck_default()(this, DismissModal);
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return possibleConstructorReturn_default()(_this, (_temp = _this = _super.call.apply(_super, [this].concat(args)), _this.setDismissed = function (timestamp) {
-      _this.props.updateOptions({
-        woocommerce_shipping_dismissed_timestamp: timestamp
-      });
-    }, _this.hideBanner = function () {
-      document.getElementById('woocommerce-admin-print-label').style.display = 'none';
-    }, _this.remindMeLaterClicked = function () {
-      var _this$props = _this.props,
-          onCloseAll = _this$props.onCloseAll,
-          trackElementClicked = _this$props.trackElementClicked;
-
-      _this.setDismissed(Date.now());
-
-      onCloseAll();
-
-      _this.hideBanner();
-
-      trackElementClicked('shipping_banner_dismiss_modal_remind_me_later');
-    }, _this.closeForeverClicked = function () {
-      var _this$props2 = _this.props,
-          onCloseAll = _this$props2.onCloseAll,
-          trackElementClicked = _this$props2.trackElementClicked;
-
-      _this.setDismissed(-1);
-
-      onCloseAll();
-
-      _this.hideBanner();
-
-      trackElementClicked('shipping_banner_dismiss_modal_close_forever');
-    }, _temp));
-  }
-
-  createClass_default()(DismissModal, [{
-    key: "render",
-    value: function render() {
-      var _this$props3 = this.props,
-          onClose = _this$props3.onClose,
-          visible = _this$props3.visible;
-
-      if (!visible) {
-        return null;
-      }
-
-      return Object(external_this_wp_element_["createElement"])(modal["a" /* default */], {
-        title: Object(external_this_wp_i18n_["__"])('Are you sure?', 'woocommerce-admin'),
-        onRequestClose: onClose,
-        className: "wc-admin-shipping-banner__dismiss-modal"
-      }, Object(external_this_wp_element_["createElement"])("p", {
-        className: "wc-admin-shipping-banner__dismiss-modal-help-text"
-      }, Object(external_this_wp_i18n_["__"])('With WooCommerce Shipping you can Print shipping labels from your WooCommerce dashboard at the lowest USPS rates.', 'woocommerce-admin')), Object(external_this_wp_element_["createElement"])("div", {
-        className: "wc-admin-shipping-banner__dismiss-modal-actions"
-      }, Object(external_this_wp_element_["createElement"])(build_module_button["a" /* default */], {
-        isDefault: true,
-        onClick: this.remindMeLaterClicked
-      }, Object(external_this_wp_i18n_["__"])('Remind me later', 'woocommerce-admin')), Object(external_this_wp_element_["createElement"])(build_module_button["a" /* default */], {
-        isPrimary: true,
-        onClick: this.closeForeverClicked
-      }, Object(external_this_wp_i18n_["__"])("I don't need this", 'woocommerce-admin'))));
-    }
-  }]);
-
-  return DismissModal;
-}(external_this_wp_element_["Component"]);
-/* harmony default export */ var dismiss_modal = (Object(compose["a" /* default */])(Object(external_this_wp_data_["withDispatch"])(function (dispatch) {
-  var _dispatch = dispatch('wc-api'),
-      updateOptions = _dispatch.updateOptions;
-
-  return {
-    updateOptions: updateOptions
-  };
-}))(dismiss_modal_DismissModal));
-// EXTERNAL MODULE: ./client/settings/index.js
-var settings = __webpack_require__(26);
-
-// EXTERNAL MODULE: ./client/wc-api/with-select.js
-var with_select = __webpack_require__(101);
-
-// CONCATENATED MODULE: ./client/wp-admin-scripts/print-shipping-label-banner/setup-notice/index.js
-
-
-var _setupErrorDescriptio;
-
-
-
-/**
- * External dependencies
- */
-
-
-var setupErrorTypes = {
-  DOWNLOAD: 'download',
-  INSTALL: 'install',
-  ACTIVATE: 'activate',
-  SETUP: 'setup',
-  START: 'start'
-};
-var setupErrorDescriptions = (_setupErrorDescriptio = {}, defineProperty_default()(_setupErrorDescriptio, setupErrorTypes.DOWNLOAD, Object(external_this_wp_i18n_["__"])('download', 'woocommerce-admin')), defineProperty_default()(_setupErrorDescriptio, setupErrorTypes.INSTALL, Object(external_this_wp_i18n_["__"])('install', 'woocommerce-admin')), defineProperty_default()(_setupErrorDescriptio, setupErrorTypes.ACTIVATE, Object(external_this_wp_i18n_["__"])('activate', 'woocommerce-admin')), defineProperty_default()(_setupErrorDescriptio, setupErrorTypes.SETUP, Object(external_this_wp_i18n_["__"])('set up', 'woocommerce-admin')), defineProperty_default()(_setupErrorDescriptio, setupErrorTypes.START, Object(external_this_wp_i18n_["__"])('start', 'woocommerce-admin')), _setupErrorDescriptio);
-function SetupNotice(_ref) {
-  var isSetupError = _ref.isSetupError,
-      errorReason = _ref.errorReason;
-
-  var getErrorMessage = function getErrorMessage(errorType) {
-    // Default to 'set up' description if the error type somehow doesn't exist.
-    var description = errorType in setupErrorDescriptions ? setupErrorDescriptions[errorType] : setupErrorDescriptions[setupErrorTypes.SETUP];
-    return Object(external_this_wp_i18n_["sprintf"])(Object(external_this_wp_i18n_["__"])('Unable to %s the plugin. Refresh the page and try again.', 'woocommerce-admin'), description);
-  };
-
-  if (!isSetupError) {
-    return null;
-  }
-
-  return Object(external_this_wp_element_["createElement"])("div", {
-    className: "wc-admin-shipping-banner-install-error"
-  }, Object(external_this_wp_element_["createElement"])(dashicon["a" /* default */], {
-    icon: "warning"
-  }), getErrorMessage(errorReason));
-}
-// EXTERNAL MODULE: external {"this":["wp","apiFetch"]}
-var external_this_wp_apiFetch_ = __webpack_require__(20);
-var external_this_wp_apiFetch_default = /*#__PURE__*/__webpack_require__.n(external_this_wp_apiFetch_);
-
-// CONCATENATED MODULE: ./client/wp-admin-scripts/print-shipping-label-banner/wcs-api.js
-/**
- * External dependencies
- */
-
-function acceptWcsTos() {
-  var path = '/wc/v1/connect/tos';
-  return external_this_wp_apiFetch_default()({
-    path: path,
-    method: 'POST',
-    data: {
-      accepted: true
-    }
-  });
-}
-function getWcsAssets() {
-  var path = '/wc/v1/connect/assets';
-  return external_this_wp_apiFetch_default()({
-    path: path,
-    method: 'GET'
-  });
-}
-// CONCATENATED MODULE: ./client/wp-admin-scripts/print-shipping-label-banner/shipping-banner/index.js
-
-
-
-
-
-
-
-
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function shipping_banner_createSuper(Derived) { var hasNativeReflectConstruct = shipping_banner_isNativeReflectConstruct(); return function () { var Super = getPrototypeOf_default()(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = getPrototypeOf_default()(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return possibleConstructorReturn_default()(this, result); }; }
-
-function shipping_banner_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-/**
- * External dependencies
- */
-
-
-
-
-
-
-
-
-/**
- * WooCommerce dependencies
- */
-
-
-/**
- * Internal dependencies
- */
-
-
-
-
-
-
-
-
-var wcAdminAssetUrl = Object(settings["g" /* getSetting */])('wcAdminAssetUrl', '');
-var wcsPluginSlug = 'woocommerce-services';
-var shipping_banner_ShippingBanner = /*#__PURE__*/function (_Component) {
-  inherits_default()(ShippingBanner, _Component);
-
-  var _super = shipping_banner_createSuper(ShippingBanner);
-
-  function ShippingBanner(props) {
-    var _this;
-
-    classCallCheck_default()(this, ShippingBanner);
-
-    _this = _super.call(this, props);
-
-    _this.isSetupError = function () {
-      return _this.state.wcsSetupError;
-    };
-
-    _this.closeDismissModal = function () {
-      _this.setState({
-        isDismissModalOpen: false
-      });
-
-      _this.trackElementClicked('shipping_banner_dismiss_modal_close_button');
-    };
-
-    _this.openDismissModal = function () {
-      _this.setState({
-        isDismissModalOpen: true
-      });
-
-      _this.trackElementClicked('shipping_banner_dimiss');
-    };
-
-    _this.hideBanner = function () {
-      _this.setState({
-        showShippingBanner: false
-      });
-    };
-
-    _this.createShippingLabelClicked = function () {
-      var activePlugins = _this.props.activePlugins;
-
-      _this.setState({
-        isShippingLabelButtonBusy: true
-      });
-
-      _this.trackElementClicked('shipping_banner_create_label');
-
-      if (!activePlugins.includes(wcsPluginSlug)) {
-        _this.installAndActivatePlugins(wcsPluginSlug);
-      } else {
-        _this.acceptTosAndGetWCSAssets();
-      }
-    };
-
-    _this.woocommerceServiceLinkClicked = function () {
-      _this.trackElementClicked('shipping_banner_woocommerce_service_link');
-    };
-
-    _this.trackBannerEvent = function (eventName) {
-      var customProps = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      var _this$props = _this.props,
-          activePlugins = _this$props.activePlugins,
-          isJetpackConnected = _this$props.isJetpackConnected;
-      Object(tracks["b" /* recordEvent */])(eventName, _objectSpread({
-        banner_name: 'wcadmin_install_wcs_prompt',
-        jetpack_installed: activePlugins.includes('jetpack'),
-        jetpack_connected: isJetpackConnected,
-        wcs_installed: activePlugins.includes(wcsPluginSlug)
-      }, customProps));
-    };
-
-    _this.trackImpression = function () {
-      _this.trackBannerEvent('banner_impression');
-    };
-
-    _this.trackElementClicked = function (element) {
-      _this.trackBannerEvent('banner_element_clicked', {
-        element: element
-      });
-    };
-
-    _this.getInstallText = function () {
-      var activePlugins = _this.props.activePlugins;
-
-      if (activePlugins.includes(wcsPluginSlug)) {
-        // If WCS is active, then the only remaining step is to agree to the ToS.
-        return Object(external_this_wp_i18n_["__"])('You\'ve already installed WooCommerce Shipping. By clicking "Create shipping label", you agree to its {{tosLink}}Terms of Service{{/tosLink}}.', 'woocommerce-admin');
-      }
-
-      return Object(external_this_wp_i18n_["__"])('By clicking "Create shipping label", {{wcsLink}}WooCommerce Shipping{{/wcsLink}} will be installed and you agree to its {{tosLink}}Terms of Service{{/tosLink}}.', 'woocommerce-admin');
-    };
-
-    var orderId = new URL(window.location.href).searchParams.get('post');
-    _this.state = {
-      showShippingBanner: true,
-      isDismissModalOpen: false,
-      setupErrorReason: setupErrorTypes.SETUP,
-      orderId: parseInt(orderId, 10),
-      wcsAssetsLoaded: false,
-      wcsAssetsLoading: false,
-      wcsSetupError: false,
-      isShippingLabelButtonBusy: false,
-      installText: _this.getInstallText(),
-      isWcsModalOpen: false
-    };
-    return _this;
-  }
-
-  createClass_default()(ShippingBanner, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var showShippingBanner = this.state.showShippingBanner;
-
-      if (showShippingBanner) {
-        this.trackImpression();
-      }
-    }
-  }, {
-    key: "installAndActivatePlugins",
-    value: function () {
-      var _installAndActivatePlugins = asyncToGenerator_default()( /*#__PURE__*/regeneratorRuntime.mark(function _callee(pluginSlug) {
-        var _this$props2, installPlugin, activatePlugins, isRequesting, install, activation;
-
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                // Avoid double activating.
-                _this$props2 = this.props, installPlugin = _this$props2.installPlugin, activatePlugins = _this$props2.activatePlugins, isRequesting = _this$props2.isRequesting;
-
-                if (!isRequesting) {
-                  _context.next = 3;
-                  break;
-                }
-
-                return _context.abrupt("return", false);
-
-              case 3:
-                _context.next = 5;
-                return installPlugin(pluginSlug);
-
-              case 5:
-                install = _context.sent;
-
-                if (!(install.status !== 'success')) {
-                  _context.next = 9;
-                  break;
-                }
-
-                this.setState({
-                  setupErrorReason: setupErrorTypes.INSTALL,
-                  wcsSetupError: true
-                });
-                return _context.abrupt("return");
-
-              case 9:
-                _context.next = 11;
-                return activatePlugins([pluginSlug]);
-
-              case 11:
-                activation = _context.sent;
-
-                if (!(activation.status !== 'success')) {
-                  _context.next = 15;
-                  break;
-                }
-
-                this.setState({
-                  setupErrorReason: setupErrorTypes.ACTIVATE,
-                  wcsSetupError: true
-                });
-                return _context.abrupt("return");
-
-              case 15:
-                this.acceptTosAndGetWCSAssets();
-
-              case 16:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function installAndActivatePlugins(_x) {
-        return _installAndActivatePlugins.apply(this, arguments);
-      }
-
-      return installAndActivatePlugins;
-    }()
-  }, {
-    key: "acceptTosAndGetWCSAssets",
-    value: function acceptTosAndGetWCSAssets() {
-      var _this2 = this;
-
-      return acceptWcsTos().then(function () {
-        return getWcsAssets();
-      }).then(function (wcsAssets) {
-        return _this2.loadWcsAssets(wcsAssets);
-      }).catch(function () {
-        return _this2.setState({
-          wcsSetupError: true
-        });
-      });
-    }
-  }, {
-    key: "generateMetaBoxHtml",
-    value: function generateMetaBoxHtml(nodeId, title, args) {
-      var argsJsonString = JSON.stringify(args).replace(/"/g, '&quot;'); // JS has no native html_entities so we just replace.
-
-      var togglePanelText = Object(external_this_wp_i18n_["__"])('Toggle panel:', 'woocommerce-admin');
-
-      return "\n<div id=\"".concat(nodeId, "\" class=\"postbox\">\n\t<button type=\"button\" class=\"handlediv\" aria-expanded=\"true\">\n\t\t<span class=\"screen-reader-text\">").concat(togglePanelText, " ").concat(title, "</span>\n\t\t<span class=\"toggle-indicator\" aria-hidden=\"true\"></span>\n\t</button>\n\t<h2 class=\"hndle\"><span>").concat(title, "</span></h2>\n\t<div class=\"inside\">\n\t\t<div class=\"wcc-root woocommerce wc-connect-create-shipping-label\" data-args=\"").concat(argsJsonString, "\">\n\t\t</div>\n\t</div>\n</div>\n");
-    }
-  }, {
-    key: "loadWcsAssets",
-    value: function loadWcsAssets(_ref) {
-      var _this3 = this;
-
-      var assets = _ref.assets;
-
-      if (this.state.wcsAssetsLoaded || this.state.wcsAssetsLoading) {
-        this.openWcsModal();
-        return;
-      }
-
-      this.setState({
-        wcsAssetsLoading: true
-      });
-      var js = assets.wc_connect_admin_script;
-      var styles = assets.wc_connect_admin_style;
-      var orderId = this.state.orderId;
-      var itemsCount = this.props.itemsCount;
-      var shippingLabelContainerHtml = this.generateMetaBoxHtml('woocommerce-order-label', Object(external_this_wp_i18n_["__"])('Shipping Label', 'woocommerce-admin'), {
-        orderId: orderId,
-        context: 'shipping_label',
-        items: itemsCount
-      }); // Insert shipping label metabox just above main order details box.
-
-      document.getElementById('woocommerce-order-data').insertAdjacentHTML('beforebegin', shippingLabelContainerHtml);
-      var shipmentTrackingHtml = this.generateMetaBoxHtml('woocommerce-order-shipment-tracking', Object(external_this_wp_i18n_["__"])('Shipment Tracking', 'woocommerce-admin'), {
-        orderId: orderId,
-        context: 'shipment_tracking',
-        items: itemsCount
-      }); // Insert tracking metabox in the side after the order actions.
-
-      document.getElementById('woocommerce-order-actions').insertAdjacentHTML('afterend', shipmentTrackingHtml);
-
-      if (window.jQuery) {
-        // Need to refresh so the new metaboxes are sortable.
-        window.jQuery('#normal-sortables').sortable('refresh');
-        window.jQuery('#side-sortables').sortable('refresh');
-        window.jQuery('#woocommerce-order-label').hide();
-      }
-
-      Promise.all([new Promise(function (resolve, reject) {
-        var script = document.createElement('script');
-        script.src = js;
-        script.async = true;
-        script.onload = resolve;
-        script.onerror = reject;
-        document.body.appendChild(script);
-      }), new Promise(function (resolve, reject) {
-        var head = document.getElementsByTagName('head')[0];
-        var link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = styles;
-        link.media = 'all';
-        link.onload = resolve;
-        link.onerror = reject;
-        head.appendChild(link);
-      })]).then(function () {
-        _this3.setState({
-          wcsAssetsLoaded: true,
-          wcsAssetsLoading: false,
-          isShippingLabelButtonBusy: false
-        });
-
-        _this3.openWcsModal();
-      });
-    }
-  }, {
-    key: "openWcsModal",
-    value: function openWcsModal() {
-      var _this4 = this;
-
-      if (window.wcsGetAppStore) {
-        var wcsStore = window.wcsGetAppStore('wc-connect-create-shipping-label');
-        var state = wcsStore.getState();
-        var orderId = this.state.orderId;
-        var siteId = state.ui.selectedSiteId;
-        var wcsStoreUnsubscribe = wcsStore.subscribe(function () {
-          var latestState = wcsStore.getState();
-          var shippingLabelState = Object(external_lodash_["get"])(latestState, ['extensions', 'woocommerce', 'woocommerceServices', siteId, 'shippingLabel', orderId], null);
-          var labelSettingsState = Object(external_lodash_["get"])(latestState, ['extensions', 'woocommerce', 'woocommerceServices', siteId, 'labelSettings'], null);
-          var packageState = Object(external_lodash_["get"])(latestState, ['extensions', 'woocommerce', 'woocommerceServices', siteId, 'packages'], null);
-          var locationsState = Object(external_lodash_["get"])(latestState, ['extensions', 'woocommerce', 'sites', siteId, 'data', 'locations']);
-
-          if (shippingLabelState && labelSettingsState && labelSettingsState.meta && packageState && locationsState) {
-            if (shippingLabelState.loaded && labelSettingsState.meta.isLoaded && packageState.isLoaded && Object(external_lodash_["isArray"])(locationsState) && !_this4.state.isWcsModalOpen) {
-              if (window.jQuery) {
-                _this4.setState({
-                  isWcsModalOpen: true
-                });
-
-                window.jQuery('.shipping-label__new-label-button').click();
-              }
-
-              wcsStore.dispatch({
-                type: 'NOTICE_CREATE',
-                notice: {
-                  duration: 10000,
-                  status: 'is-success',
-                  text: Object(external_this_wp_i18n_["__"])('Plugin installed and activated', 'woocommerce-admin')
-                }
-              });
-            } else if (shippingLabelState.showPurchaseDialog) {
-              wcsStoreUnsubscribe();
-
-              if (window.jQuery) {
-                window.jQuery('#woocommerce-order-label').show();
-              }
-            }
-          }
-        });
-        document.getElementById('woocommerce-admin-print-label').style.display = 'none';
-      }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$state = this.state,
-          isDismissModalOpen = _this$state.isDismissModalOpen,
-          showShippingBanner = _this$state.showShippingBanner,
-          isShippingLabelButtonBusy = _this$state.isShippingLabelButtonBusy;
-
-      if (!showShippingBanner) {
-        return null;
-      }
-
-      return Object(external_this_wp_element_["createElement"])("div", null, Object(external_this_wp_element_["createElement"])("div", {
-        className: "wc-admin-shipping-banner-container"
-      }, Object(external_this_wp_element_["createElement"])("img", {
-        className: "wc-admin-shipping-banner-illustration",
-        src: wcAdminAssetUrl + 'shippingillustration.svg',
-        alt: Object(external_this_wp_i18n_["__"])('Shipping ', 'woocommerce-admin')
-      }), Object(external_this_wp_element_["createElement"])("div", {
-        className: "wc-admin-shipping-banner-blob"
-      }, Object(external_this_wp_element_["createElement"])("h3", null, Object(external_this_wp_i18n_["__"])('Print discounted shipping labels with a click.', 'woocommerce-admin')), Object(external_this_wp_element_["createElement"])("p", null, lib_default()({
-        mixedString: this.state.installText,
-        components: {
-          tosLink: Object(external_this_wp_element_["createElement"])(external_link, {
-            href: "https://wordpress.com/tos",
-            target: "_blank",
-            type: "external"
-          }),
-          wcsLink: Object(external_this_wp_element_["createElement"])(external_link, {
-            href: "https://woocommerce.com/products/shipping/",
-            target: "_blank",
-            type: "external",
-            onClick: this.woocommerceServiceLinkClicked
-          })
-        }
-      })), Object(external_this_wp_element_["createElement"])(SetupNotice, {
-        isSetupError: this.isSetupError(),
-        errorReason: this.setupErrorReason
-      })), Object(external_this_wp_element_["createElement"])(build_module_button["a" /* default */], {
-        disabled: isShippingLabelButtonBusy,
-        isPrimary: true,
-        isBusy: isShippingLabelButtonBusy,
-        onClick: this.createShippingLabelClicked
-      }, Object(external_this_wp_i18n_["__"])('Create shipping label', 'woocommerce-admin')), Object(external_this_wp_element_["createElement"])("button", {
-        onClick: this.openDismissModal,
-        type: "button",
-        className: "notice-dismiss",
-        disabled: this.state.isShippingLabelButtonBusy
-      }, Object(external_this_wp_element_["createElement"])("span", {
-        className: "screen-reader-text"
-      }, Object(external_this_wp_i18n_["__"])('Close Print Label Banner.', 'woocommerce-admin')))), Object(external_this_wp_element_["createElement"])(dismiss_modal, {
-        visible: isDismissModalOpen,
-        onClose: this.closeDismissModal,
-        onCloseAll: this.hideBanner,
-        trackElementClicked: this.trackElementClicked
-      }));
-    }
-  }]);
-
-  return ShippingBanner;
-}(external_this_wp_element_["Component"]);
-shipping_banner_ShippingBanner.propTypes = {
-  itemsCount: prop_types_default.a.number.isRequired,
-  isJetpackConnected: prop_types_default.a.bool.isRequired,
-  activePlugins: prop_types_default.a.array.isRequired,
-  activatePlugins: prop_types_default.a.func.isRequired,
-  installPlugin: prop_types_default.a.func.isRequired,
-  isRequesting: prop_types_default.a.bool.isRequired
-};
-/* harmony default export */ var shipping_banner = (Object(compose["a" /* default */])(Object(with_select["a" /* default */])(function (select) {
-  var _select = select(external_this_wc_data_["PLUGINS_STORE_NAME"]),
-      isPluginsRequesting = _select.isPluginsRequesting,
-      isJetpackConnected = _select.isJetpackConnected,
-      getActivePlugins = _select.getActivePlugins;
-
-  var isRequesting = isPluginsRequesting('activatePlugins') || isPluginsRequesting('installPlugin');
-  return {
-    isRequesting: isRequesting,
-    isJetpackConnected: isJetpackConnected(),
-    activePlugins: getActivePlugins()
-  };
-}), Object(external_this_wp_data_["withDispatch"])(function (dispatch) {
-  var _dispatch = dispatch(external_this_wc_data_["PLUGINS_STORE_NAME"]),
-      activatePlugins = _dispatch.activatePlugins,
-      installPlugin = _dispatch.installPlugin;
-
-  return {
-    activatePlugins: activatePlugins,
-    installPlugin: installPlugin
-  };
-}))(shipping_banner_ShippingBanner));
-// CONCATENATED MODULE: ./client/wp-admin-scripts/print-shipping-label-banner/index.js
-
-
-
-function print_shipping_label_banner_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function print_shipping_label_banner_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { print_shipping_label_banner_ownKeys(Object(source), true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { print_shipping_label_banner_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-/**
- * External dependencies
- */
-
-/**
- * WooCommerce dependencies
- */
-
-
-/**
- * Internal dependencies
- */
-
-
-var metaBox = document.getElementById('wc-admin-shipping-banner-root');
-var print_shipping_label_banner_args = metaBox.dataset.args && JSON.parse(metaBox.dataset.args) || {}; // Render the header.
-
-var HydratedShippingBanner = Object(external_this_wc_data_["withPluginsHydration"])(print_shipping_label_banner_objectSpread({}, window.wcSettings.plugins, {
-  jetpackStatus: window.wcSettings.dataEndpoints.jetpackStatus
-}))(shipping_banner);
-Object(external_this_wp_element_["render"])(Object(external_this_wp_element_["createElement"])(HydratedShippingBanner, {
-  itemsCount: print_shipping_label_banner_args.shippable_items_count
-}), metaBox);
-
-/***/ }),
-
-/***/ 72:
+/***/ 34:
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -5530,73 +4182,1588 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ 721:
+/***/ 39:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
-var esm_extends = __webpack_require__(11);
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "e", function() { return /* binding */ TAB; });
+__webpack_require__.d(__webpack_exports__, "b", function() { return /* binding */ ESCAPE; });
+__webpack_require__.d(__webpack_exports__, "c", function() { return /* binding */ LEFT; });
+__webpack_require__.d(__webpack_exports__, "f", function() { return /* binding */ UP; });
+__webpack_require__.d(__webpack_exports__, "d", function() { return /* binding */ RIGHT; });
+__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ DOWN; });
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
-var objectWithoutProperties = __webpack_require__(16);
+// UNUSED EXPORTS: BACKSPACE, ENTER, SPACE, DELETE, F10, ALT, CTRL, COMMAND, SHIFT, ZERO, modifiers, rawShortcut, displayShortcutList, displayShortcut, shortcutAriaLabel, isKeyboardEvent
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/classCallCheck.js
-var classCallCheck = __webpack_require__(7);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
+var defineProperty = __webpack_require__(9);
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/createClass.js
-var createClass = __webpack_require__(6);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 3 modules
+var toConsumableArray = __webpack_require__(28);
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js
-var possibleConstructorReturn = __webpack_require__(8);
+// EXTERNAL MODULE: external "lodash"
+var external_lodash_ = __webpack_require__(2);
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js
-var getPrototypeOf = __webpack_require__(4);
+// EXTERNAL MODULE: external {"this":["wp","i18n"]}
+var external_this_wp_i18n_ = __webpack_require__(3);
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/inherits.js + 1 modules
-var inherits = __webpack_require__(9);
+// CONCATENATED MODULE: ./node_modules/@wordpress/components/node_modules/@wordpress/keycodes/build-module/platform.js
+/**
+ * External dependencies
+ */
+
+/**
+ * Return true if platform is MacOS.
+ *
+ * @param {Object} _window   window object by default; used for DI testing.
+ *
+ * @return {boolean}         True if MacOS; false otherwise.
+ */
+
+function isAppleOS() {
+  var _window = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window;
+
+  var platform = _window.navigator.platform;
+  return platform.indexOf('Mac') !== -1 || Object(external_lodash_["includes"])(['iPad', 'iPhone'], platform);
+}
+//# sourceMappingURL=platform.js.map
+// CONCATENATED MODULE: ./node_modules/@wordpress/components/node_modules/@wordpress/keycodes/build-module/index.js
+
+
+
+/**
+ * Note: The order of the modifier keys in many of the [foo]Shortcut()
+ * functions in this file are intentional and should not be changed. They're
+ * designed to fit with the standard menu keyboard shortcuts shown in the
+ * user's platform.
+ *
+ * For example, on MacOS menu shortcuts will place Shift before Command, but
+ * on Windows Control will usually come first. So don't provide your own
+ * shortcut combos directly to keyboardShortcut().
+ */
+
+/**
+ * External dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+
+/**
+ * Internal dependencies
+ */
+
+
+/**
+ * @typedef {'primary'|'primaryShift'|'primaryAlt'|'secondary'|'access'|'ctrl'|'alt'|'ctrlShift'|'shift'|'shiftAlt'} WPKeycodeModifier
+ */
+
+/**
+ * An object of handler functions for each of the possible modifier
+ * combinations. A handler will return a value for a given key.
+ *
+ * @typedef {Record<WPKeycodeModifier, (key:string)=>any>} WPKeycodeHandlerByModifier
+ */
+
+/**
+ * Keycode for BACKSPACE key.
+ */
+
+var BACKSPACE = 8;
+/**
+ * Keycode for TAB key.
+ */
+
+var TAB = 9;
+/**
+ * Keycode for ENTER key.
+ */
+
+var ENTER = 13;
+/**
+ * Keycode for ESCAPE key.
+ */
+
+var ESCAPE = 27;
+/**
+ * Keycode for SPACE key.
+ */
+
+var SPACE = 32;
+/**
+ * Keycode for LEFT key.
+ */
+
+var LEFT = 37;
+/**
+ * Keycode for UP key.
+ */
+
+var UP = 38;
+/**
+ * Keycode for RIGHT key.
+ */
+
+var RIGHT = 39;
+/**
+ * Keycode for DOWN key.
+ */
+
+var DOWN = 40;
+/**
+ * Keycode for DELETE key.
+ */
+
+var DELETE = 46;
+/**
+ * Keycode for F10 key.
+ */
+
+var F10 = 121;
+/**
+ * Keycode for ALT key.
+ */
+
+var ALT = 'alt';
+/**
+ * Keycode for CTRL key.
+ */
+
+var CTRL = 'ctrl';
+/**
+ * Keycode for COMMAND/META key.
+ */
+
+var COMMAND = 'meta';
+/**
+ * Keycode for SHIFT key.
+ */
+
+var SHIFT = 'shift';
+/**
+ * Keycode for ZERO key.
+ */
+
+var ZERO = 48;
+/**
+ * Object that contains functions that return the available modifier
+ * depending on platform.
+ *
+ * - `primary`: takes a isApple function as a parameter.
+ * - `primaryShift`: takes a isApple function as a parameter.
+ * - `primaryAlt`: takes a isApple function as a parameter.
+ * - `secondary`: takes a isApple function as a parameter.
+ * - `access`: takes a isApple function as a parameter.
+ * - `ctrl`
+ * - `alt`
+ * - `ctrlShift`
+ * - `shift`
+ * - `shiftAlt`
+ */
+
+var modifiers = {
+  primary: function primary(_isApple) {
+    return _isApple() ? [COMMAND] : [CTRL];
+  },
+  primaryShift: function primaryShift(_isApple) {
+    return _isApple() ? [SHIFT, COMMAND] : [CTRL, SHIFT];
+  },
+  primaryAlt: function primaryAlt(_isApple) {
+    return _isApple() ? [ALT, COMMAND] : [CTRL, ALT];
+  },
+  secondary: function secondary(_isApple) {
+    return _isApple() ? [SHIFT, ALT, COMMAND] : [CTRL, SHIFT, ALT];
+  },
+  access: function access(_isApple) {
+    return _isApple() ? [CTRL, ALT] : [SHIFT, ALT];
+  },
+  ctrl: function ctrl() {
+    return [CTRL];
+  },
+  alt: function alt() {
+    return [ALT];
+  },
+  ctrlShift: function ctrlShift() {
+    return [CTRL, SHIFT];
+  },
+  shift: function shift() {
+    return [SHIFT];
+  },
+  shiftAlt: function shiftAlt() {
+    return [SHIFT, ALT];
+  }
+};
+/**
+ * An object that contains functions to get raw shortcuts.
+ * E.g. rawShortcut.primary( 'm' ) will return 'meta+m' on Mac.
+ * These are intended for user with the KeyboardShortcuts component or TinyMCE.
+ *
+ * @type {WPKeycodeHandlerByModifier} Keyed map of functions to raw shortcuts.
+ */
+
+var rawShortcut = Object(external_lodash_["mapValues"])(modifiers, function (modifier) {
+  return function (character) {
+    var _isApple = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : isAppleOS;
+
+    return [].concat(Object(toConsumableArray["a" /* default */])(modifier(_isApple)), [character.toLowerCase()]).join('+');
+  };
+});
+/**
+ * Return an array of the parts of a keyboard shortcut chord for display
+ * E.g displayShortcutList.primary( 'm' ) will return [ '⌘', 'M' ] on Mac.
+ *
+ * @type {WPKeycodeHandlerByModifier} Keyed map of functions to shortcut
+ *                                    sequences.
+ */
+
+var displayShortcutList = Object(external_lodash_["mapValues"])(modifiers, function (modifier) {
+  return function (character) {
+    var _replacementKeyMap;
+
+    var _isApple = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : isAppleOS;
+
+    var isApple = _isApple();
+
+    var replacementKeyMap = (_replacementKeyMap = {}, Object(defineProperty["a" /* default */])(_replacementKeyMap, ALT, isApple ? '⌥' : 'Alt'), Object(defineProperty["a" /* default */])(_replacementKeyMap, CTRL, isApple ? '⌃' : 'Ctrl'), Object(defineProperty["a" /* default */])(_replacementKeyMap, COMMAND, '⌘'), Object(defineProperty["a" /* default */])(_replacementKeyMap, SHIFT, isApple ? '⇧' : 'Shift'), _replacementKeyMap);
+    var modifierKeys = modifier(_isApple).reduce(function (accumulator, key) {
+      var replacementKey = Object(external_lodash_["get"])(replacementKeyMap, key, key); // If on the Mac, adhere to platform convention and don't show plus between keys.
+
+      if (isApple) {
+        return [].concat(Object(toConsumableArray["a" /* default */])(accumulator), [replacementKey]);
+      }
+
+      return [].concat(Object(toConsumableArray["a" /* default */])(accumulator), [replacementKey, '+']);
+    }, []);
+    var capitalizedCharacter = Object(external_lodash_["capitalize"])(character);
+    return [].concat(Object(toConsumableArray["a" /* default */])(modifierKeys), [capitalizedCharacter]);
+  };
+});
+/**
+ * An object that contains functions to display shortcuts.
+ * E.g. displayShortcut.primary( 'm' ) will return '⌘M' on Mac.
+ *
+ * @type {WPKeycodeHandlerByModifier} Keyed map of functions to display
+ *                                    shortcuts.
+ */
+
+var displayShortcut = Object(external_lodash_["mapValues"])(displayShortcutList, function (shortcutList) {
+  return function (character) {
+    var _isApple = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : isAppleOS;
+
+    return shortcutList(character, _isApple).join('');
+  };
+});
+/**
+ * An object that contains functions to return an aria label for a keyboard shortcut.
+ * E.g. shortcutAriaLabel.primary( '.' ) will return 'Command + Period' on Mac.
+ *
+ * @type {WPKeycodeHandlerByModifier} Keyed map of functions to shortcut ARIA
+ *                                    labels.
+ */
+
+var shortcutAriaLabel = Object(external_lodash_["mapValues"])(modifiers, function (modifier) {
+  return function (character) {
+    var _replacementKeyMap2;
+
+    var _isApple = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : isAppleOS;
+
+    var isApple = _isApple();
+
+    var replacementKeyMap = (_replacementKeyMap2 = {}, Object(defineProperty["a" /* default */])(_replacementKeyMap2, SHIFT, 'Shift'), Object(defineProperty["a" /* default */])(_replacementKeyMap2, COMMAND, isApple ? 'Command' : 'Control'), Object(defineProperty["a" /* default */])(_replacementKeyMap2, CTRL, 'Control'), Object(defineProperty["a" /* default */])(_replacementKeyMap2, ALT, isApple ? 'Option' : 'Alt'), Object(defineProperty["a" /* default */])(_replacementKeyMap2, ',', Object(external_this_wp_i18n_["__"])('Comma')), Object(defineProperty["a" /* default */])(_replacementKeyMap2, '.', Object(external_this_wp_i18n_["__"])('Period')), Object(defineProperty["a" /* default */])(_replacementKeyMap2, '`', Object(external_this_wp_i18n_["__"])('Backtick')), _replacementKeyMap2);
+    return [].concat(Object(toConsumableArray["a" /* default */])(modifier(_isApple)), [character]).map(function (key) {
+      return Object(external_lodash_["capitalize"])(Object(external_lodash_["get"])(replacementKeyMap, key, key));
+    }).join(isApple ? ' ' : ' + ');
+  };
+});
+/**
+ * From a given KeyboardEvent, returns an array of active modifier constants for
+ * the event.
+ *
+ * @param {KeyboardEvent} event Keyboard event.
+ *
+ * @return {Array<ALT|CTRL|COMMAND|SHIFT>} Active modifier constants.
+ */
+
+function getEventModifiers(event) {
+  return [ALT, CTRL, COMMAND, SHIFT].filter(function (key) {
+    return event["".concat(key, "Key")];
+  });
+}
+/**
+ * An object that contains functions to check if a keyboard event matches a
+ * predefined shortcut combination.
+ * E.g. isKeyboardEvent.primary( event, 'm' ) will return true if the event
+ * signals pressing ⌘M.
+ *
+ * @type {WPKeycodeHandlerByModifier} Keyed map of functions to match events.
+ */
+
+
+var isKeyboardEvent = Object(external_lodash_["mapValues"])(modifiers, function (getModifiers) {
+  return function (event, character) {
+    var _isApple = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : isAppleOS;
+
+    var mods = getModifiers(_isApple);
+    var eventMods = getEventModifiers(event);
+
+    if (Object(external_lodash_["xor"])(mods, eventMods).length) {
+      return false;
+    }
+
+    if (!character) {
+      return Object(external_lodash_["includes"])(mods, event.key.toLowerCase());
+    }
+
+    return event.key === character;
+  };
+});
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 4:
+/***/ (function(module, exports, __webpack_require__) {
+
+/*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg) && arg.length) {
+				var inner = classNames.apply(null, arg);
+				if (inner) {
+					classes.push(inner);
+				}
+			} else if (argType === 'object') {
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(key);
+					}
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if ( true && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
+		// register as 'classnames', consistent with npm package name
+		define('classnames', [], function () {
+			return classNames;
+		});
+	} else {
+		window.classNames = classNames;
+	}
+}());
+
+
+/***/ }),
+
+/***/ 40:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
+                                                                                                                                                                                                                                                                               * External Dependencies
+                                                                                                                                                                                                                                                                               */
+
+
+/**
+ * Internal Dependencies
+ */
+
+
+var _react = __webpack_require__(11);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactAddonsCreateFragment = __webpack_require__(190);
+
+var _reactAddonsCreateFragment2 = _interopRequireDefault(_reactAddonsCreateFragment);
+
+var _tokenize = __webpack_require__(193);
+
+var _tokenize2 = _interopRequireDefault(_tokenize);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var currentMixedString = void 0;
+
+function getCloseIndex(openIndex, tokens) {
+	var openToken = tokens[openIndex],
+	    nestLevel = 0,
+	    token,
+	    i;
+	for (i = openIndex + 1; i < tokens.length; i++) {
+		token = tokens[i];
+		if (token.value === openToken.value) {
+			if (token.type === 'componentOpen') {
+				nestLevel++;
+				continue;
+			}
+			if (token.type === 'componentClose') {
+				if (nestLevel === 0) {
+					return i;
+				}
+				nestLevel--;
+			}
+		}
+	}
+	// if we get this far, there was no matching close token
+	throw new Error('Missing closing component token `' + openToken.value + '`');
+}
+
+function buildChildren(tokens, components) {
+	var children = [],
+	    childrenObject = {},
+	    openComponent,
+	    clonedOpenComponent,
+	    openIndex,
+	    closeIndex,
+	    token,
+	    i,
+	    grandChildTokens,
+	    grandChildren,
+	    siblingTokens,
+	    siblings;
+
+	for (i = 0; i < tokens.length; i++) {
+		token = tokens[i];
+		if (token.type === 'string') {
+			children.push(token.value);
+			continue;
+		}
+		// component node should at least be set
+		if (!components.hasOwnProperty(token.value) || typeof components[token.value] === 'undefined') {
+			throw new Error('Invalid interpolation, missing component node: `' + token.value + '`');
+		}
+		// should be either ReactElement or null (both type "object"), all other types deprecated
+		if (_typeof(components[token.value]) !== 'object') {
+			throw new Error('Invalid interpolation, component node must be a ReactElement or null: `' + token.value + '`', '\n> ' + currentMixedString);
+		}
+		// we should never see a componentClose token in this loop
+		if (token.type === 'componentClose') {
+			throw new Error('Missing opening component token: `' + token.value + '`');
+		}
+		if (token.type === 'componentOpen') {
+			openComponent = components[token.value];
+			openIndex = i;
+			break;
+		}
+		// componentSelfClosing token
+		children.push(components[token.value]);
+		continue;
+	}
+
+	if (openComponent) {
+		closeIndex = getCloseIndex(openIndex, tokens);
+		grandChildTokens = tokens.slice(openIndex + 1, closeIndex);
+		grandChildren = buildChildren(grandChildTokens, components);
+		clonedOpenComponent = _react2.default.cloneElement(openComponent, {}, grandChildren);
+		children.push(clonedOpenComponent);
+
+		if (closeIndex < tokens.length - 1) {
+			siblingTokens = tokens.slice(closeIndex + 1);
+			siblings = buildChildren(siblingTokens, components);
+			children = children.concat(siblings);
+		}
+	}
+
+	if (children.length === 1) {
+		return children[0];
+	}
+
+	children.forEach(function (child, index) {
+		if (child) {
+			childrenObject['interpolation-child-' + index] = child;
+		}
+	});
+
+	return (0, _reactAddonsCreateFragment2.default)(childrenObject);
+}
+
+function interpolate(options) {
+	var mixedString = options.mixedString,
+	    components = options.components,
+	    throwErrors = options.throwErrors;
+
+
+	currentMixedString = mixedString;
+
+	if (!components) {
+		return mixedString;
+	}
+
+	if ((typeof components === 'undefined' ? 'undefined' : _typeof(components)) !== 'object') {
+		if (throwErrors) {
+			throw new Error('Interpolation Error: unable to process `' + mixedString + '` because components is not an object');
+		}
+
+		return mixedString;
+	}
+
+	var tokens = (0, _tokenize2.default)(mixedString);
+
+	try {
+		return buildChildren(tokens, components);
+	} catch (error) {
+		if (throwErrors) {
+			throw new Error('Interpolation Error: unable to process `' + mixedString + '` because of error `' + error.message + '`');
+		}
+
+		return mixedString;
+	}
+};
+
+exports.default = interpolate;
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 41:
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wc"]["data"]; }());
+
+/***/ }),
+
+/***/ 42:
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["apiFetch"]; }());
+
+/***/ }),
+
+/***/ 43:
+/***/ (function(module, exports) {
+
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    module.exports = _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    module.exports = _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+module.exports = _typeof;
+
+/***/ }),
+
+/***/ 44:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Circle; });
+/* unused harmony export G */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Path; });
+/* unused harmony export Polygon */
+/* unused harmony export Rect */
+/* unused harmony export Defs */
+/* unused harmony export RadialGradient */
+/* unused harmony export LinearGradient */
+/* unused harmony export Stop */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return SVG; });
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9);
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(0);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+/**
+ * External dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+
+/** @typedef {{isPressed?: boolean} & import('react').ComponentPropsWithoutRef<'svg'>} SVGProps */
+
+/**
+ * @param {import('react').ComponentPropsWithoutRef<'circle'>} props
+ *
+ * @return {JSX.Element} Circle component
+ */
+
+var Circle = function Circle(props) {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])('circle', props);
+};
+/**
+ * @param {import('react').ComponentPropsWithoutRef<'g'>} props
+ *
+ * @return {JSX.Element} G component
+ */
+
+var G = function G(props) {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])('g', props);
+};
+/**
+ * @param {import('react').ComponentPropsWithoutRef<'path'>} props
+ *
+ * @return {JSX.Element} Path component
+ */
+
+var Path = function Path(props) {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])('path', props);
+};
+/**
+ * @param {import('react').ComponentPropsWithoutRef<'polygon'>} props
+ *
+ * @return {JSX.Element} Polygon component
+ */
+
+var Polygon = function Polygon(props) {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])('polygon', props);
+};
+/**
+ * @param {import('react').ComponentPropsWithoutRef<'rect'>} props
+ *
+ * @return {JSX.Element} Rect component
+ */
+
+var Rect = function Rect(props) {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])('rect', props);
+};
+/**
+ * @param {import('react').ComponentPropsWithoutRef<'defs'>} props
+ *
+ * @return {JSX.Element} Defs component
+ */
+
+var Defs = function Defs(props) {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])('defs', props);
+};
+/**
+ * @param {import('react').ComponentPropsWithoutRef<'radialGradient'>} props
+ *
+ * @return {JSX.Element} RadialGradient component
+ */
+
+var RadialGradient = function RadialGradient(props) {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])('radialGradient', props);
+};
+/**
+ * @param {import('react').ComponentPropsWithoutRef<'linearGradient'>} props
+ *
+ * @return {JSX.Element} LinearGradient component
+ */
+
+var LinearGradient = function LinearGradient(props) {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])('linearGradient', props);
+};
+/**
+ * @param {import('react').ComponentPropsWithoutRef<'stop'>} props
+ *
+ * @return {JSX.Element} Stop component
+ */
+
+var Stop = function Stop(props) {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])('stop', props);
+};
+/**
+ *
+ * @param {SVGProps} props isPressed indicates whether the SVG should appear as pressed.
+ *                         Other props will be passed through to svg component.
+ *
+ * @return {JSX.Element} Stop component
+ */
+
+var SVG = function SVG(_ref) {
+  var className = _ref.className,
+      isPressed = _ref.isPressed,
+      props = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(_ref, ["className", "isPressed"]);
+
+  var appliedProps = _objectSpread({}, props, {
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, {
+      'is-pressed': isPressed
+    }) || undefined,
+    role: 'img',
+    'aria-hidden': true,
+    focusable: false
+  }); // Disable reason: We need to have a way to render HTML tag for web.
+  // eslint-disable-next-line react/forbid-elements
+
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])("svg", appliedProps);
+};
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 49:
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["hooks"]; }());
+
+/***/ }),
+
+/***/ 498:
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ 5:
+/***/ (function(module, exports) {
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
+
+/***/ }),
+
+/***/ 51:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ build_module_focus; });
+
+// UNUSED EXPORTS: isHorizontalEdge, isVerticalEdge, getRectangleFromRange, computeCaretRect, placeCaretAtHorizontalEdge, placeCaretAtVerticalEdge, isTextField, isNumberInput, documentHasTextSelection, documentHasUncollapsedSelection, documentHasSelection, isEntirelySelected, getScrollContainer, getOffsetParent, replace, remove, insertAfter, unwrap, replaceTag, wrap, __unstableStripHTML, isEmpty, removeInvalidHTML, getPhrasingContentSchema, isPhrasingContent, isTextContent
+
+// NAMESPACE OBJECT: ./node_modules/@wordpress/components/node_modules/@wordpress/dom/build-module/focusable.js
+var focusable_namespaceObject = {};
+__webpack_require__.r(focusable_namespaceObject);
+__webpack_require__.d(focusable_namespaceObject, "find", function() { return find; });
+
+// NAMESPACE OBJECT: ./node_modules/@wordpress/components/node_modules/@wordpress/dom/build-module/tabbable.js
+var tabbable_namespaceObject = {};
+__webpack_require__.r(tabbable_namespaceObject);
+__webpack_require__.d(tabbable_namespaceObject, "isTabbableIndex", function() { return isTabbableIndex; });
+__webpack_require__.d(tabbable_namespaceObject, "find", function() { return tabbable_find; });
+__webpack_require__.d(tabbable_namespaceObject, "findPrevious", function() { return findPrevious; });
+__webpack_require__.d(tabbable_namespaceObject, "findNext", function() { return findNext; });
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/components/node_modules/@wordpress/dom/build-module/focusable.js
+/**
+ * References:
+ *
+ * Focusable:
+ *  - https://www.w3.org/TR/html5/editing.html#focus-management
+ *
+ * Sequential focus navigation:
+ *  - https://www.w3.org/TR/html5/editing.html#sequential-focus-navigation-and-the-tabindex-attribute
+ *
+ * Disabled elements:
+ *  - https://www.w3.org/TR/html5/disabled-elements.html#disabled-elements
+ *
+ * getClientRects algorithm (requiring layout box):
+ *  - https://www.w3.org/TR/cssom-view-1/#extension-to-the-element-interface
+ *
+ * AREA elements associated with an IMG:
+ *  - https://w3c.github.io/html/editing.html#data-model
+ */
+var SELECTOR = ['[tabindex]', 'a[href]', 'button:not([disabled])', 'input:not([type="hidden"]):not([disabled])', 'select:not([disabled])', 'textarea:not([disabled])', 'iframe', 'object', 'embed', 'area[href]', '[contenteditable]:not([contenteditable=false])'].join(',');
+/**
+ * Returns true if the specified element is visible (i.e. neither display: none
+ * nor visibility: hidden).
+ *
+ * @param {Element} element DOM element to test.
+ *
+ * @return {boolean} Whether element is visible.
+ */
+
+function isVisible(element) {
+  return element.offsetWidth > 0 || element.offsetHeight > 0 || element.getClientRects().length > 0;
+}
+/**
+ * Returns true if the specified element should be skipped from focusable elements.
+ * For now it rather specific for `iframes` and  if tabindex attribute is set to -1.
+ *
+ * @param {Element} element DOM element to test.
+ *
+ * @return {boolean} Whether element should be skipped from focusable elements.
+ */
+
+
+function skipFocus(element) {
+  return element.nodeName.toLowerCase() === 'iframe' && element.getAttribute('tabindex') === '-1';
+}
+/**
+ * Returns true if the specified area element is a valid focusable element, or
+ * false otherwise. Area is only focusable if within a map where a named map
+ * referenced by an image somewhere in the document.
+ *
+ * @param {Element} element DOM area element to test.
+ *
+ * @return {boolean} Whether area element is valid for focus.
+ */
+
+
+function isValidFocusableArea(element) {
+  var map = element.closest('map[name]');
+
+  if (!map) {
+    return false;
+  }
+
+  var img = document.querySelector('img[usemap="#' + map.name + '"]');
+  return !!img && isVisible(img);
+}
+/**
+ * Returns all focusable elements within a given context.
+ *
+ * @param {Element} context Element in which to search.
+ *
+ * @return {Element[]} Focusable elements.
+ */
+
+
+function find(context) {
+  var elements = context.querySelectorAll(SELECTOR);
+  return Array.from(elements).filter(function (element) {
+    if (!isVisible(element) || skipFocus(element)) {
+      return false;
+    }
+
+    var nodeName = element.nodeName;
+
+    if ('AREA' === nodeName) {
+      return isValidFocusableArea(element);
+    }
+
+    return true;
+  });
+}
+//# sourceMappingURL=focusable.js.map
+// EXTERNAL MODULE: external "lodash"
+var external_lodash_ = __webpack_require__(2);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/components/node_modules/@wordpress/dom/build-module/tabbable.js
+/**
+ * External dependencies
+ */
+
+/**
+ * Internal dependencies
+ */
+
+
+/**
+ * Returns the tab index of the given element. In contrast with the tabIndex
+ * property, this normalizes the default (0) to avoid browser inconsistencies,
+ * operating under the assumption that this function is only ever called with a
+ * focusable node.
+ *
+ * @see https://bugzilla.mozilla.org/show_bug.cgi?id=1190261
+ *
+ * @param {Element} element Element from which to retrieve.
+ *
+ * @return {?number} Tab index of element (default 0).
+ */
+
+function getTabIndex(element) {
+  var tabIndex = element.getAttribute('tabindex');
+  return tabIndex === null ? 0 : parseInt(tabIndex, 10);
+}
+/**
+ * Returns true if the specified element is tabbable, or false otherwise.
+ *
+ * @param {Element} element Element to test.
+ *
+ * @return {boolean} Whether element is tabbable.
+ */
+
+
+function isTabbableIndex(element) {
+  return getTabIndex(element) !== -1;
+}
+/**
+ * Returns a stateful reducer function which constructs a filtered array of
+ * tabbable elements, where at most one radio input is selected for a given
+ * name, giving priority to checked input, falling back to the first
+ * encountered.
+ *
+ * @return {Function} Radio group collapse reducer.
+ */
+
+function createStatefulCollapseRadioGroup() {
+  var CHOSEN_RADIO_BY_NAME = {};
+  return function collapseRadioGroup(result, element) {
+    var nodeName = element.nodeName,
+        type = element.type,
+        checked = element.checked,
+        name = element.name; // For all non-radio tabbables, construct to array by concatenating.
+
+    if (nodeName !== 'INPUT' || type !== 'radio' || !name) {
+      return result.concat(element);
+    }
+
+    var hasChosen = CHOSEN_RADIO_BY_NAME.hasOwnProperty(name); // Omit by skipping concatenation if the radio element is not chosen.
+
+    var isChosen = checked || !hasChosen;
+
+    if (!isChosen) {
+      return result;
+    } // At this point, if there had been a chosen element, the current
+    // element is checked and should take priority. Retroactively remove
+    // the element which had previously been considered the chosen one.
+
+
+    if (hasChosen) {
+      var hadChosenElement = CHOSEN_RADIO_BY_NAME[name];
+      result = Object(external_lodash_["without"])(result, hadChosenElement);
+    }
+
+    CHOSEN_RADIO_BY_NAME[name] = element;
+    return result.concat(element);
+  };
+}
+/**
+ * An array map callback, returning an object with the element value and its
+ * array index location as properties. This is used to emulate a proper stable
+ * sort where equal tabIndex should be left in order of their occurrence in the
+ * document.
+ *
+ * @param {Element} element Element.
+ * @param {number}  index   Array index of element.
+ *
+ * @return {Object} Mapped object with element, index.
+ */
+
+
+function mapElementToObjectTabbable(element, index) {
+  return {
+    element: element,
+    index: index
+  };
+}
+/**
+ * An array map callback, returning an element of the given mapped object's
+ * element value.
+ *
+ * @param {Object} object Mapped object with index.
+ *
+ * @return {Element} Mapped object element.
+ */
+
+
+function mapObjectTabbableToElement(object) {
+  return object.element;
+}
+/**
+ * A sort comparator function used in comparing two objects of mapped elements.
+ *
+ * @see mapElementToObjectTabbable
+ *
+ * @param {Object} a First object to compare.
+ * @param {Object} b Second object to compare.
+ *
+ * @return {number} Comparator result.
+ */
+
+
+function compareObjectTabbables(a, b) {
+  var aTabIndex = getTabIndex(a.element);
+  var bTabIndex = getTabIndex(b.element);
+
+  if (aTabIndex === bTabIndex) {
+    return a.index - b.index;
+  }
+
+  return aTabIndex - bTabIndex;
+}
+/**
+ * Givin focusable elements, filters out tabbable element.
+ *
+ * @param {Array} focusables Focusable elements to filter.
+ *
+ * @return {Array} Tabbable elements.
+ */
+
+
+function filterTabbable(focusables) {
+  return focusables.filter(isTabbableIndex).map(mapElementToObjectTabbable).sort(compareObjectTabbables).map(mapObjectTabbableToElement).reduce(createStatefulCollapseRadioGroup(), []);
+}
+
+function tabbable_find(context) {
+  return filterTabbable(find(context));
+}
+/**
+ * Given a focusable element, find the preceding tabbable element.
+ *
+ * @param {Element} element The focusable element before which to look. Defaults
+ *                          to the active element.
+ */
+
+function findPrevious() {
+  var element = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document.activeElement;
+  var focusables = find(document.body);
+  var index = focusables.indexOf(element); // Remove all focusables after and including `element`.
+
+  focusables.length = index;
+  return Object(external_lodash_["last"])(filterTabbable(focusables));
+}
+/**
+ * Given a focusable element, find the next tabbable element.
+ *
+ * @param {Element} element The focusable element after which to look. Defaults
+ *                          to the active element.
+ */
+
+function findNext() {
+  var element = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document.activeElement;
+  var focusables = find(document.body);
+  var index = focusables.indexOf(element); // Remove all focusables before and inside `element`.
+
+  var remaining = focusables.slice(index + 1).filter(function (node) {
+    return !element.contains(node);
+  });
+  return Object(external_lodash_["first"])(filterTabbable(remaining));
+}
+//# sourceMappingURL=tabbable.js.map
+// CONCATENATED MODULE: ./node_modules/@wordpress/components/node_modules/@wordpress/dom/build-module/index.js
+/**
+ * Internal dependencies
+ */
+
+
+/**
+ * Object grouping `focusable` and `tabbable` utils
+ * under the keys with the same name.
+ */
+
+var build_module_focus = {
+  focusable: focusable_namespaceObject,
+  tabbable: tabbable_namespaceObject
+};
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 53:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export getPhrasingContentSchema */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return isPhrasingContent; });
+/* unused harmony export isTextContent */
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+/**
+ * External dependencies
+ */
+
+/**
+ * All phrasing content elements.
+ *
+ * @see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content-0
+ */
+
+/**
+ * All text-level semantic elements.
+ *
+ * @see https://html.spec.whatwg.org/multipage/text-level-semantics.html
+ */
+
+var textContentSchema = {
+  strong: {},
+  em: {},
+  s: {},
+  del: {},
+  ins: {},
+  a: {
+    attributes: ['href', 'target', 'rel']
+  },
+  code: {},
+  abbr: {
+    attributes: ['title']
+  },
+  sub: {},
+  sup: {},
+  br: {},
+  small: {},
+  // To do: fix blockquote.
+  // cite: {},
+  q: {
+    attributes: ['cite']
+  },
+  dfn: {
+    attributes: ['title']
+  },
+  data: {
+    attributes: ['value']
+  },
+  time: {
+    attributes: ['datetime']
+  },
+  var: {},
+  samp: {},
+  kbd: {},
+  i: {},
+  b: {},
+  u: {},
+  mark: {},
+  ruby: {},
+  rt: {},
+  rp: {},
+  bdi: {
+    attributes: ['dir']
+  },
+  bdo: {
+    attributes: ['dir']
+  },
+  wbr: {},
+  '#text': {}
+}; // Recursion is needed.
+// Possible: strong > em > strong.
+// Impossible: strong > strong.
+
+Object(lodash__WEBPACK_IMPORTED_MODULE_1__["without"])(Object.keys(textContentSchema), '#text', 'br').forEach(function (tag) {
+  textContentSchema[tag].children = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["omit"])(textContentSchema, tag);
+});
+/**
+ * Embedded content elements.
+ *
+ * @see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#embedded-content-0
+ */
+
+var embeddedContentSchema = {
+  audio: {
+    attributes: ['src', 'preload', 'autoplay', 'mediagroup', 'loop', 'muted']
+  },
+  canvas: {
+    attributes: ['width', 'height']
+  },
+  embed: {
+    attributes: ['src', 'type', 'width', 'height']
+  },
+  img: {
+    attributes: ['alt', 'src', 'srcset', 'usemap', 'ismap', 'width', 'height']
+  },
+  object: {
+    attributes: ['data', 'type', 'name', 'usemap', 'form', 'width', 'height']
+  },
+  video: {
+    attributes: ['src', 'poster', 'preload', 'autoplay', 'mediagroup', 'loop', 'muted', 'controls', 'width', 'height']
+  }
+};
+/**
+ * Phrasing content elements.
+ *
+ * @see https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content-0
+ */
+
+var phrasingContentSchema = _objectSpread({}, textContentSchema, {}, embeddedContentSchema);
+/**
+ * Get schema of possible paths for phrasing content.
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content
+ *
+ * @param {string} context Set to "paste" to exclude invisible elements and
+ *                         sensitive data.
+ *
+ * @return {Object} Schema.
+ */
+
+
+function getPhrasingContentSchema(context) {
+  if (context !== 'paste') {
+    return phrasingContentSchema;
+  }
+
+  return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["omit"])(_objectSpread({}, phrasingContentSchema, {
+    // We shouldn't paste potentially sensitive information which is not
+    // visible to the user when pasted, so strip the attributes.
+    ins: {
+      children: phrasingContentSchema.ins.children
+    },
+    del: {
+      children: phrasingContentSchema.del.children
+    }
+  }), ['u', // Used to mark misspelling. Shouldn't be pasted.
+  'abbr', // Invisible.
+  'data', // Invisible.
+  'time', // Invisible.
+  'wbr', // Invisible.
+  'bdi', // Invisible.
+  'bdo' // Invisible.
+  ]);
+}
+/**
+ * Find out whether or not the given node is phrasing content.
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content
+ *
+ * @param {Element} node The node to test.
+ *
+ * @return {boolean} True if phrasing content, false if not.
+ */
+
+function isPhrasingContent(node) {
+  var tag = node.nodeName.toLowerCase();
+  return getPhrasingContentSchema().hasOwnProperty(tag) || tag === 'span';
+}
+function isTextContent(node) {
+  var tag = node.nodeName.toLowerCase();
+  return textContentSchema.hasOwnProperty(tag) || tag === 'span';
+}
+//# sourceMappingURL=phrasing-content.js.map
+
+/***/ }),
+
+/***/ 54:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_warning__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(102);
+/**
+ * WordPress dependencies
+ */
+
+
+var SlotFillContext = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createContext"])({
+  slots: {},
+  fills: {},
+  registerSlot: function registerSlot() {
+    typeof process !== "undefined" && process.env && "production" !== "production" ? Object(_wordpress_warning__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])('Components must be wrapped within `SlotFillProvider`. ' + 'See https://developer.wordpress.org/block-editor/components/slot-fill/') : void 0;
+  },
+  updateSlot: function updateSlot() {},
+  unregisterSlot: function unregisterSlot() {},
+  registerFill: function registerFill() {},
+  unregisterFill: function unregisterFill() {}
+});
+/* harmony default export */ __webpack_exports__["a"] = (SlotFillContext);
+//# sourceMappingURL=slot-fill-context.js.map
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(34)))
+
+/***/ }),
+
+/***/ 55:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _typeof; });
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+/***/ }),
+
+/***/ 56:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export logged */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return deprecated; });
+/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(49);
+/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_0__);
+/**
+ * WordPress dependencies
+ */
+
+/**
+ * Object map tracking messages which have been logged, for use in ensuring a
+ * message is only logged once.
+ *
+ * @type {Object}
+ */
+
+var logged = Object.create(null);
+/**
+ * Logs a message to notify developers about a deprecated feature.
+ *
+ * @param {string}  feature             Name of the deprecated feature.
+ * @param {?Object} options             Personalisation options
+ * @param {?string} options.version     Version in which the feature will be removed.
+ * @param {?string} options.alternative Feature to use instead
+ * @param {?string} options.plugin      Plugin name if it's a plugin feature
+ * @param {?string} options.link        Link to documentation
+ * @param {?string} options.hint        Additional message to help transition away from the deprecated feature.
+ *
+ * @example
+ * ```js
+ * import deprecated from '@wordpress/deprecated';
+ *
+ * deprecated( 'Eating meat', {
+ * 	version: 'the future',
+ * 	alternative: 'vegetables',
+ * 	plugin: 'the earth',
+ * 	hint: 'You may find it beneficial to transition gradually.',
+ * } );
+ *
+ * // Logs: 'Eating meat is deprecated and will be removed from the earth in the future. Please use vegetables instead. Note: You may find it beneficial to transition gradually.'
+ * ```
+ */
+
+function deprecated(feature) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var version = options.version,
+      alternative = options.alternative,
+      plugin = options.plugin,
+      link = options.link,
+      hint = options.hint;
+  var pluginMessage = plugin ? " from ".concat(plugin) : '';
+  var versionMessage = version ? " and will be removed".concat(pluginMessage, " in version ").concat(version) : '';
+  var useInsteadMessage = alternative ? " Please use ".concat(alternative, " instead.") : '';
+  var linkMessage = link ? " See: ".concat(link) : '';
+  var hintMessage = hint ? " Note: ".concat(hint) : '';
+  var message = "".concat(feature, " is deprecated").concat(versionMessage, ".").concat(useInsteadMessage).concat(linkMessage).concat(hintMessage); // Skip if already logged.
+
+  if (message in logged) {
+    return;
+  }
+  /**
+   * Fires whenever a deprecated feature is encountered
+   *
+   * @param {string}  feature             Name of the deprecated feature.
+   * @param {?Object} options             Personalisation options
+   * @param {?string} options.version     Version in which the feature will be removed.
+   * @param {?string} options.alternative Feature to use instead
+   * @param {?string} options.plugin      Plugin name if it's a plugin feature
+   * @param {?string} options.link        Link to documentation
+   * @param {?string} options.hint        Additional message to help transition away from the deprecated feature.
+   * @param {?string} message             Message sent to console.warn
+   */
+
+
+  Object(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_0__["doAction"])('deprecated', feature, options, message); // eslint-disable-next-line no-console
+
+  console.warn(message);
+  logged[message] = true;
+}
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 57:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _objectWithoutPropertiesLoose; });
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+/***/ }),
+
+/***/ 6:
+/***/ (function(module, exports) {
+
+function _getPrototypeOf(o) {
+  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+module.exports = _getPrototypeOf;
+
+/***/ }),
+
+/***/ 61:
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wc"]["tracks"]; }());
+
+/***/ }),
+
+/***/ 62:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _arrayLikeToArray; });
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+/***/ }),
+
+/***/ 685:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/defineProperty.js
+var defineProperty = __webpack_require__(5);
+var defineProperty_default = /*#__PURE__*/__webpack_require__.n(defineProperty);
 
 // EXTERNAL MODULE: external {"this":["wp","element"]}
 var external_this_wp_element_ = __webpack_require__(0);
 
-// EXTERNAL MODULE: ./node_modules/@wordpress/compose/build-module/higher-order/with-instance-id/index.js + 1 modules
-var with_instance_id = __webpack_require__(173);
+// EXTERNAL MODULE: external {"this":["wc","data"]}
+var external_this_wc_data_ = __webpack_require__(41);
 
-// EXTERNAL MODULE: ./node_modules/@wordpress/deprecated/build-module/index.js
-var build_module = __webpack_require__(94);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
+var regenerator = __webpack_require__(12);
+var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
-var assertThisInitialized = __webpack_require__(5);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/asyncToGenerator.js
+var asyncToGenerator = __webpack_require__(86);
+var asyncToGenerator_default = /*#__PURE__*/__webpack_require__.n(asyncToGenerator);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/classCallCheck.js
+var classCallCheck = __webpack_require__(14);
+var classCallCheck_default = /*#__PURE__*/__webpack_require__.n(classCallCheck);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/createClass.js
+var createClass = __webpack_require__(13);
+var createClass_default = /*#__PURE__*/__webpack_require__.n(createClass);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/assertThisInitialized.js
+var assertThisInitialized = __webpack_require__(10);
+var assertThisInitialized_default = /*#__PURE__*/__webpack_require__.n(assertThisInitialized);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/inherits.js
+var inherits = __webpack_require__(16);
+var inherits_default = /*#__PURE__*/__webpack_require__.n(inherits);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js
+var possibleConstructorReturn = __webpack_require__(17);
+var possibleConstructorReturn_default = /*#__PURE__*/__webpack_require__.n(possibleConstructorReturn);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/getPrototypeOf.js
+var getPrototypeOf = __webpack_require__(6);
+var getPrototypeOf_default = /*#__PURE__*/__webpack_require__.n(getPrototypeOf);
+
+// EXTERNAL MODULE: external {"this":["wp","i18n"]}
+var external_this_wp_i18n_ = __webpack_require__(3);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
+var esm_extends = __webpack_require__(8);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 3 modules
+var toConsumableArray = __webpack_require__(28);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
+var objectWithoutProperties = __webpack_require__(19);
 
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
-var classnames = __webpack_require__(10);
+var classnames = __webpack_require__(4);
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 
-// EXTERNAL MODULE: ./node_modules/@wordpress/keycodes/build-module/index.js + 1 modules
-var keycodes_build_module = __webpack_require__(18);
+// EXTERNAL MODULE: external "lodash"
+var external_lodash_ = __webpack_require__(2);
 
-// EXTERNAL MODULE: ./node_modules/@wordpress/dom/build-module/index.js + 2 modules
-var dom_build_module = __webpack_require__(50);
+// EXTERNAL MODULE: ./node_modules/@wordpress/components/node_modules/@wordpress/icons/build-module/icon/index.js
+var icon = __webpack_require__(688);
 
-// EXTERNAL MODULE: ./node_modules/@wordpress/compose/build-module/higher-order/compose.js
-var compose = __webpack_require__(256);
+// EXTERNAL MODULE: ./node_modules/@wordpress/primitives/build-module/svg/index.js
+var svg = __webpack_require__(44);
 
-// EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/isolated-event-container/index.js
-var isolated_event_container = __webpack_require__(96);
-
-// EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/higher-order/with-focus-outside/index.js
-var with_focus_outside = __webpack_require__(95);
-
-// EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/higher-order/with-focus-return/index.js + 1 modules
-var with_focus_return = __webpack_require__(97);
-
-// EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/higher-order/with-constrained-tabbing/index.js
-var with_constrained_tabbing = __webpack_require__(93);
-
-// CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/modal/frame.js
+// CONCATENATED MODULE: ./node_modules/@wordpress/components/node_modules/@wordpress/icons/build-module/library/external.js
 
 
+/**
+ * WordPress dependencies
+ */
 
+var external = Object(external_this_wp_element_["createElement"])(svg["c" /* SVG */], {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, Object(external_this_wp_element_["createElement"])(svg["b" /* Path */], {
+  d: "M18.2 17c0 .7-.6 1.2-1.2 1.2H7c-.7 0-1.2-.6-1.2-1.2V7c0-.7.6-1.2 1.2-1.2h3.2V4.2H7C5.5 4.2 4.2 5.5 4.2 7v10c0 1.5 1.2 2.8 2.8 2.8h10c1.5 0 2.8-1.2 2.8-2.8v-3.6h-1.5V17zM14.9 3v1.5h3.7l-6.4 6.4 1.1 1.1 6.4-6.4v3.7h1.5V3h-6.3z"
+}));
+/* harmony default export */ var library_external = (external);
+//# sourceMappingURL=external.js.map
+// EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/visually-hidden/index.js + 1 modules
+var visually_hidden = __webpack_require__(172);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/external-link/index.js
 
 
 
@@ -5606,9 +5773,298 @@ var with_constrained_tabbing = __webpack_require__(93);
  * External dependencies
  */
 
+
 /**
  * WordPress dependencies
  */
+
+
+
+
+/**
+ * Internal dependencies
+ */
+
+
+function ExternalLink(_ref, ref) {
+  var href = _ref.href,
+      children = _ref.children,
+      className = _ref.className,
+      _ref$rel = _ref.rel,
+      rel = _ref$rel === void 0 ? '' : _ref$rel,
+      additionalProps = Object(objectWithoutProperties["a" /* default */])(_ref, ["href", "children", "className", "rel"]);
+
+  rel = Object(external_lodash_["uniq"])(Object(external_lodash_["compact"])([].concat(Object(toConsumableArray["a" /* default */])(rel.split(' ')), ['external', 'noreferrer', 'noopener']))).join(' ');
+  var classes = classnames_default()('components-external-link', className);
+  return Object(external_this_wp_element_["createElement"])("a", Object(esm_extends["a" /* default */])({}, additionalProps, {
+    className: classes,
+    href: href // eslint-disable-next-line react/jsx-no-target-blank
+    ,
+    target: "_blank",
+    rel: rel,
+    ref: ref
+  }), children, Object(external_this_wp_element_["createElement"])(visually_hidden["a" /* default */], {
+    as: "span"
+  },
+  /* translators: accessibility text */
+  Object(external_this_wp_i18n_["__"])('(opens in a new tab)')), Object(external_this_wp_element_["createElement"])(icon["a" /* default */], {
+    icon: library_external,
+    className: "components-external-link__icon"
+  }));
+}
+/* harmony default export */ var external_link = (Object(external_this_wp_element_["forwardRef"])(ExternalLink));
+//# sourceMappingURL=index.js.map
+// EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/button/index.js
+var build_module_button = __webpack_require__(72);
+
+// EXTERNAL MODULE: ./node_modules/@wordpress/compose/build-module/higher-order/compose.js
+var compose = __webpack_require__(270);
+
+// EXTERNAL MODULE: ./node_modules/interpolate-components/lib/index.js
+var lib = __webpack_require__(40);
+var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
+
+// EXTERNAL MODULE: ./node_modules/prop-types/index.js
+var prop_types = __webpack_require__(1);
+var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
+
+// EXTERNAL MODULE: external {"this":["wp","data"]}
+var external_this_wp_data_ = __webpack_require__(24);
+
+// EXTERNAL MODULE: ./client/settings/index.js
+var settings = __webpack_require__(33);
+
+// EXTERNAL MODULE: external {"this":["wc","tracks"]}
+var external_this_wc_tracks_ = __webpack_require__(61);
+
+// EXTERNAL MODULE: ./client/wp-admin-scripts/print-shipping-label-banner/style.scss
+var style = __webpack_require__(498);
+
+// EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/modal/index.js + 4 modules
+var modal = __webpack_require__(691);
+
+// CONCATENATED MODULE: ./client/wp-admin-scripts/print-shipping-label-banner/dismiss-modal/index.js
+
+
+
+
+
+
+
+
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = getPrototypeOf_default()(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = getPrototypeOf_default()(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return possibleConstructorReturn_default()(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+/**
+ * External dependencies
+ */
+
+
+
+
+
+
+/**
+ * Internal dependencies
+ */
+
+
+var dismiss_modal_DismissModal = /*#__PURE__*/function (_Component) {
+  inherits_default()(DismissModal, _Component);
+
+  var _super = _createSuper(DismissModal);
+
+  function DismissModal() {
+    var _this;
+
+    classCallCheck_default()(this, DismissModal);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    defineProperty_default()(assertThisInitialized_default()(_this), "setDismissed", function (timestamp) {
+      _this.props.updateOptions({
+        woocommerce_shipping_dismissed_timestamp: timestamp
+      });
+    });
+
+    defineProperty_default()(assertThisInitialized_default()(_this), "hideBanner", function () {
+      document.getElementById('woocommerce-admin-print-label').style.display = 'none';
+    });
+
+    defineProperty_default()(assertThisInitialized_default()(_this), "remindMeLaterClicked", function () {
+      var _this$props = _this.props,
+          onCloseAll = _this$props.onCloseAll,
+          trackElementClicked = _this$props.trackElementClicked;
+
+      _this.setDismissed(Date.now());
+
+      onCloseAll();
+
+      _this.hideBanner();
+
+      trackElementClicked('shipping_banner_dismiss_modal_remind_me_later');
+    });
+
+    defineProperty_default()(assertThisInitialized_default()(_this), "closeForeverClicked", function () {
+      var _this$props2 = _this.props,
+          onCloseAll = _this$props2.onCloseAll,
+          trackElementClicked = _this$props2.trackElementClicked;
+
+      _this.setDismissed(-1);
+
+      onCloseAll();
+
+      _this.hideBanner();
+
+      trackElementClicked('shipping_banner_dismiss_modal_close_forever');
+    });
+
+    return _this;
+  }
+
+  createClass_default()(DismissModal, [{
+    key: "render",
+    value: function render() {
+      var _this$props3 = this.props,
+          onClose = _this$props3.onClose,
+          visible = _this$props3.visible;
+
+      if (!visible) {
+        return null;
+      }
+
+      return Object(external_this_wp_element_["createElement"])(modal["a" /* default */], {
+        title: Object(external_this_wp_i18n_["__"])('Are you sure?', 'woocommerce-admin'),
+        onRequestClose: onClose,
+        className: "wc-admin-shipping-banner__dismiss-modal"
+      }, Object(external_this_wp_element_["createElement"])("p", {
+        className: "wc-admin-shipping-banner__dismiss-modal-help-text"
+      }, Object(external_this_wp_i18n_["__"])('With WooCommerce Shipping you can Print shipping labels from your WooCommerce dashboard at the lowest USPS rates.', 'woocommerce-admin')), Object(external_this_wp_element_["createElement"])("div", {
+        className: "wc-admin-shipping-banner__dismiss-modal-actions"
+      }, Object(external_this_wp_element_["createElement"])(build_module_button["a" /* default */], {
+        isSecondary: true,
+        onClick: this.remindMeLaterClicked
+      }, Object(external_this_wp_i18n_["__"])('Remind me later', 'woocommerce-admin')), Object(external_this_wp_element_["createElement"])(build_module_button["a" /* default */], {
+        isPrimary: true,
+        onClick: this.closeForeverClicked
+      }, Object(external_this_wp_i18n_["__"])("I don't need this", 'woocommerce-admin'))));
+    }
+  }]);
+
+  return DismissModal;
+}(external_this_wp_element_["Component"]);
+/* harmony default export */ var dismiss_modal = (Object(compose["a" /* default */])(Object(external_this_wp_data_["withDispatch"])(function (dispatch) {
+  var _dispatch = dispatch(external_this_wc_data_["OPTIONS_STORE_NAME"]),
+      updateOptions = _dispatch.updateOptions;
+
+  return {
+    updateOptions: updateOptions
+  };
+}))(dismiss_modal_DismissModal));
+// EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/dashicon/index.js
+var dashicon = __webpack_require__(85);
+
+// CONCATENATED MODULE: ./client/wp-admin-scripts/print-shipping-label-banner/setup-notice/index.js
+
+
+var _setupErrorDescriptio;
+
+
+
+/**
+ * External dependencies
+ */
+
+
+var setupErrorTypes = {
+  DOWNLOAD: 'download',
+  INSTALL: 'install',
+  ACTIVATE: 'activate',
+  SETUP: 'setup',
+  START: 'start'
+};
+var setupErrorDescriptions = (_setupErrorDescriptio = {}, defineProperty_default()(_setupErrorDescriptio, setupErrorTypes.DOWNLOAD, Object(external_this_wp_i18n_["__"])('download', 'woocommerce-admin')), defineProperty_default()(_setupErrorDescriptio, setupErrorTypes.INSTALL, Object(external_this_wp_i18n_["__"])('install', 'woocommerce-admin')), defineProperty_default()(_setupErrorDescriptio, setupErrorTypes.ACTIVATE, Object(external_this_wp_i18n_["__"])('activate', 'woocommerce-admin')), defineProperty_default()(_setupErrorDescriptio, setupErrorTypes.SETUP, Object(external_this_wp_i18n_["__"])('set up', 'woocommerce-admin')), defineProperty_default()(_setupErrorDescriptio, setupErrorTypes.START, Object(external_this_wp_i18n_["__"])('start', 'woocommerce-admin')), _setupErrorDescriptio);
+function SetupNotice(_ref) {
+  var isSetupError = _ref.isSetupError,
+      errorReason = _ref.errorReason;
+
+  var getErrorMessage = function getErrorMessage(errorType) {
+    // Default to 'set up' description if the error type somehow doesn't exist.
+    var description = errorType in setupErrorDescriptions ? setupErrorDescriptions[errorType] : setupErrorDescriptions[setupErrorTypes.SETUP];
+    return Object(external_this_wp_i18n_["sprintf"])(Object(external_this_wp_i18n_["__"])('Unable to %s the plugin. Refresh the page and try again.', 'woocommerce-admin'), description);
+  };
+
+  if (!isSetupError) {
+    return null;
+  }
+
+  return Object(external_this_wp_element_["createElement"])("div", {
+    className: "wc-admin-shipping-banner-install-error"
+  }, Object(external_this_wp_element_["createElement"])(dashicon["a" /* default */], {
+    icon: "warning"
+  }), getErrorMessage(errorReason));
+}
+// EXTERNAL MODULE: external {"this":["wp","apiFetch"]}
+var external_this_wp_apiFetch_ = __webpack_require__(42);
+var external_this_wp_apiFetch_default = /*#__PURE__*/__webpack_require__.n(external_this_wp_apiFetch_);
+
+// CONCATENATED MODULE: ./client/wp-admin-scripts/print-shipping-label-banner/wcs-api.js
+/**
+ * External dependencies
+ */
+
+function acceptWcsTos() {
+  var path = '/wc/v1/connect/tos';
+  return external_this_wp_apiFetch_default()({
+    path: path,
+    method: 'POST',
+    data: {
+      accepted: true
+    }
+  });
+}
+function getWcsAssets() {
+  var path = '/wc/v1/connect/assets';
+  return external_this_wp_apiFetch_default()({
+    path: path,
+    method: 'GET'
+  });
+}
+// CONCATENATED MODULE: ./client/wp-admin-scripts/print-shipping-label-banner/shipping-banner/index.js
+
+
+
+
+
+
+
+
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function shipping_banner_createSuper(Derived) { var hasNativeReflectConstruct = shipping_banner_isNativeReflectConstruct(); return function _createSuperInternal() { var Super = getPrototypeOf_default()(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = getPrototypeOf_default()(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return possibleConstructorReturn_default()(this, result); }; }
+
+function shipping_banner_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+/**
+ * External dependencies
+ */
+
+
+
+
+
+
 
 
 
@@ -5622,22 +6078,661 @@ var with_constrained_tabbing = __webpack_require__(93);
 
 
 
+var wcAdminAssetUrl = Object(settings["g" /* getSetting */])('wcAdminAssetUrl', '');
+var wcsPluginSlug = 'woocommerce-services';
+var shipping_banner_ShippingBanner = /*#__PURE__*/function (_Component) {
+  inherits_default()(ShippingBanner, _Component);
 
-var frame_ModalFrame =
-/*#__PURE__*/
-function (_Component) {
+  var _super = shipping_banner_createSuper(ShippingBanner);
+
+  function ShippingBanner(props) {
+    var _this;
+
+    classCallCheck_default()(this, ShippingBanner);
+
+    _this = _super.call(this, props);
+
+    defineProperty_default()(assertThisInitialized_default()(_this), "isSetupError", function () {
+      return _this.state.wcsSetupError;
+    });
+
+    defineProperty_default()(assertThisInitialized_default()(_this), "closeDismissModal", function () {
+      _this.setState({
+        isDismissModalOpen: false
+      });
+
+      _this.trackElementClicked('shipping_banner_dismiss_modal_close_button');
+    });
+
+    defineProperty_default()(assertThisInitialized_default()(_this), "openDismissModal", function () {
+      _this.setState({
+        isDismissModalOpen: true
+      });
+
+      _this.trackElementClicked('shipping_banner_dimiss');
+    });
+
+    defineProperty_default()(assertThisInitialized_default()(_this), "hideBanner", function () {
+      _this.setState({
+        showShippingBanner: false
+      });
+    });
+
+    defineProperty_default()(assertThisInitialized_default()(_this), "createShippingLabelClicked", function () {
+      var activePlugins = _this.props.activePlugins;
+
+      _this.setState({
+        isShippingLabelButtonBusy: true
+      });
+
+      _this.trackElementClicked('shipping_banner_create_label');
+
+      if (!activePlugins.includes(wcsPluginSlug)) {
+        _this.installAndActivatePlugins(wcsPluginSlug);
+      } else {
+        _this.acceptTosAndGetWCSAssets();
+      }
+    });
+
+    defineProperty_default()(assertThisInitialized_default()(_this), "woocommerceServiceLinkClicked", function () {
+      _this.trackElementClicked('shipping_banner_woocommerce_service_link');
+    });
+
+    defineProperty_default()(assertThisInitialized_default()(_this), "trackBannerEvent", function (eventName) {
+      var customProps = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var _this$props = _this.props,
+          activePlugins = _this$props.activePlugins,
+          isJetpackConnected = _this$props.isJetpackConnected;
+      Object(external_this_wc_tracks_["recordEvent"])(eventName, _objectSpread({
+        banner_name: 'wcadmin_install_wcs_prompt',
+        jetpack_installed: activePlugins.includes('jetpack'),
+        jetpack_connected: isJetpackConnected,
+        wcs_installed: activePlugins.includes(wcsPluginSlug)
+      }, customProps));
+    });
+
+    defineProperty_default()(assertThisInitialized_default()(_this), "trackImpression", function () {
+      _this.trackBannerEvent('banner_impression');
+    });
+
+    defineProperty_default()(assertThisInitialized_default()(_this), "trackElementClicked", function (element) {
+      _this.trackBannerEvent('banner_element_clicked', {
+        element: element
+      });
+    });
+
+    defineProperty_default()(assertThisInitialized_default()(_this), "getInstallText", function () {
+      var activePlugins = _this.props.activePlugins;
+
+      if (activePlugins.includes(wcsPluginSlug)) {
+        // If WCS is active, then the only remaining step is to agree to the ToS.
+        return Object(external_this_wp_i18n_["__"])('You\'ve already installed WooCommerce Shipping. By clicking "Create shipping label", you agree to its {{tosLink}}Terms of Service{{/tosLink}}.', 'woocommerce-admin');
+      }
+
+      return Object(external_this_wp_i18n_["__"])('By clicking "Create shipping label", {{wcsLink}}WooCommerce Shipping{{/wcsLink}} will be installed and you agree to its {{tosLink}}Terms of Service{{/tosLink}}.', 'woocommerce-admin');
+    });
+
+    var orderId = new URL(window.location.href).searchParams.get('post');
+    _this.state = {
+      showShippingBanner: true,
+      isDismissModalOpen: false,
+      setupErrorReason: setupErrorTypes.SETUP,
+      orderId: parseInt(orderId, 10),
+      wcsAssetsLoaded: false,
+      wcsAssetsLoading: false,
+      wcsSetupError: false,
+      isShippingLabelButtonBusy: false,
+      installText: _this.getInstallText(),
+      isWcsModalOpen: false
+    };
+    return _this;
+  }
+
+  createClass_default()(ShippingBanner, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var showShippingBanner = this.state.showShippingBanner;
+
+      if (showShippingBanner) {
+        this.trackImpression();
+      }
+    }
+  }, {
+    key: "installAndActivatePlugins",
+    value: function () {
+      var _installAndActivatePlugins = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee(pluginSlug) {
+        var _this$props2, installPlugins, activatePlugins, isRequesting, install, activation;
+
+        return regenerator_default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                // Avoid double activating.
+                _this$props2 = this.props, installPlugins = _this$props2.installPlugins, activatePlugins = _this$props2.activatePlugins, isRequesting = _this$props2.isRequesting;
+
+                if (!isRequesting) {
+                  _context.next = 3;
+                  break;
+                }
+
+                return _context.abrupt("return", false);
+
+              case 3:
+                _context.next = 5;
+                return installPlugins([pluginSlug]);
+
+              case 5:
+                install = _context.sent;
+
+                if (!(install.success !== true)) {
+                  _context.next = 9;
+                  break;
+                }
+
+                this.setState({
+                  setupErrorReason: setupErrorTypes.INSTALL,
+                  wcsSetupError: true
+                });
+                return _context.abrupt("return");
+
+              case 9:
+                _context.next = 11;
+                return activatePlugins([pluginSlug]);
+
+              case 11:
+                activation = _context.sent;
+
+                if (!(activation.success !== true)) {
+                  _context.next = 15;
+                  break;
+                }
+
+                this.setState({
+                  setupErrorReason: setupErrorTypes.ACTIVATE,
+                  wcsSetupError: true
+                });
+                return _context.abrupt("return");
+
+              case 15:
+                this.acceptTosAndGetWCSAssets();
+
+              case 16:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function installAndActivatePlugins(_x) {
+        return _installAndActivatePlugins.apply(this, arguments);
+      }
+
+      return installAndActivatePlugins;
+    }()
+  }, {
+    key: "acceptTosAndGetWCSAssets",
+    value: function acceptTosAndGetWCSAssets() {
+      var _this2 = this;
+
+      return acceptWcsTos().then(function () {
+        return getWcsAssets();
+      }).then(function (wcsAssets) {
+        return _this2.loadWcsAssets(wcsAssets);
+      }).catch(function () {
+        return _this2.setState({
+          wcsSetupError: true
+        });
+      });
+    }
+  }, {
+    key: "generateMetaBoxHtml",
+    value: function generateMetaBoxHtml(nodeId, title, args) {
+      var argsJsonString = JSON.stringify(args).replace(/"/g, '&quot;'); // JS has no native html_entities so we just replace.
+
+      var togglePanelText = Object(external_this_wp_i18n_["__"])('Toggle panel:', 'woocommerce-admin');
+
+      return "\n<div id=\"".concat(nodeId, "\" class=\"postbox\">\n\t<div class=\"postbox-header\">\n\t\t<h2 class=\"hndle\"><span>").concat(title, "</span></h2>\n\t\t<div class=\"handle-actions\">\n\t\t\t<button type=\"button\" class=\"handlediv\" aria-expanded=\"true\">\n\t\t\t\t<span class=\"screen-reader-text\">").concat(togglePanelText, " ").concat(title, "</span>\n\t\t\t\t<span class=\"toggle-indicator\" aria-hidden=\"true\"></span>\n\t\t\t</button>\n\t\t</div>\n\t</div>\n\t<div class=\"inside\">\n\t\t<div class=\"wcc-root woocommerce wc-connect-create-shipping-label\" data-args=\"").concat(argsJsonString, "\">\n\t\t</div>\n\t</div>\n</div>\n");
+    }
+  }, {
+    key: "loadWcsAssets",
+    value: function loadWcsAssets(_ref) {
+      var _this3 = this;
+
+      var assets = _ref.assets;
+
+      if (this.state.wcsAssetsLoaded || this.state.wcsAssetsLoading) {
+        this.openWcsModal();
+        return;
+      }
+
+      this.setState({
+        wcsAssetsLoading: true
+      });
+      var jsPath = assets.wc_connect_admin_script;
+      var stylePath = assets.wc_connect_admin_style;
+
+      if (undefined === window.wcsPluginData) {
+        var assetPath = jsPath.substring(0, jsPath.lastIndexOf('/') + 1);
+        window.wcsPluginData = {
+          assetPath: assetPath
+        };
+      }
+
+      var orderId = this.state.orderId;
+      var itemsCount = this.props.itemsCount;
+      var shippingLabelContainerHtml = this.generateMetaBoxHtml('woocommerce-order-label', Object(external_this_wp_i18n_["__"])('Shipping Label', 'woocommerce-admin'), {
+        order: {
+          id: orderId
+        },
+        context: 'shipping_label',
+        items: itemsCount
+      }); // Insert shipping label metabox just above main order details box.
+
+      document.getElementById('woocommerce-order-data').insertAdjacentHTML('beforebegin', shippingLabelContainerHtml);
+      var shipmentTrackingHtml = this.generateMetaBoxHtml('woocommerce-order-shipment-tracking', Object(external_this_wp_i18n_["__"])('Shipment Tracking', 'woocommerce-admin'), {
+        order: {
+          id: orderId
+        },
+        context: 'shipment_tracking',
+        items: itemsCount
+      }); // Insert tracking metabox in the side after the order actions.
+
+      document.getElementById('woocommerce-order-actions').insertAdjacentHTML('afterend', shipmentTrackingHtml);
+
+      if (window.jQuery) {
+        // Need to refresh so the new metaboxes are sortable.
+        window.jQuery('#normal-sortables').sortable('refresh');
+        window.jQuery('#side-sortables').sortable('refresh');
+        window.jQuery('#woocommerce-order-label').hide();
+      }
+
+      Promise.all([new Promise(function (resolve, reject) {
+        var script = document.createElement('script');
+        script.src = jsPath;
+        script.async = true;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.body.appendChild(script);
+      }), new Promise(function (resolve, reject) {
+        if (stylePath !== '') {
+          var head = document.getElementsByTagName('head')[0];
+          var link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.type = 'text/css';
+          link.href = stylePath;
+          link.media = 'all';
+          link.onload = resolve;
+          link.onerror = reject;
+          head.appendChild(link);
+        } else {
+          resolve();
+        }
+      })]).then(function () {
+        _this3.setState({
+          wcsAssetsLoaded: true,
+          wcsAssetsLoading: false,
+          isShippingLabelButtonBusy: false
+        });
+
+        _this3.openWcsModal();
+      });
+    }
+  }, {
+    key: "openWcsModal",
+    value: function openWcsModal() {
+      var _this4 = this;
+
+      if (window.wcsGetAppStoreAsync) {
+        window.wcsGetAppStoreAsync('wc-connect-create-shipping-label').then(function (wcsStore) {
+          var state = wcsStore.getState();
+          var orderId = _this4.state.orderId;
+          var siteId = state.ui.selectedSiteId;
+          var wcsStoreUnsubscribe = wcsStore.subscribe(function () {
+            var latestState = wcsStore.getState();
+            var shippingLabelState = Object(external_lodash_["get"])(latestState, ['extensions', 'woocommerce', 'woocommerceServices', siteId, 'shippingLabel', orderId], null);
+            var labelSettingsState = Object(external_lodash_["get"])(latestState, ['extensions', 'woocommerce', 'woocommerceServices', siteId, 'labelSettings'], null);
+            var packageState = Object(external_lodash_["get"])(latestState, ['extensions', 'woocommerce', 'woocommerceServices', siteId, 'packages'], null);
+            var locationsState = Object(external_lodash_["get"])(latestState, ['extensions', 'woocommerce', 'sites', siteId, 'data', 'locations']);
+
+            if (shippingLabelState && labelSettingsState && labelSettingsState.meta && packageState && locationsState) {
+              if (shippingLabelState.loaded && labelSettingsState.meta.isLoaded && packageState.isLoaded && Object(external_lodash_["isArray"])(locationsState) && !_this4.state.isWcsModalOpen) {
+                if (window.jQuery) {
+                  _this4.setState({
+                    isWcsModalOpen: true
+                  });
+
+                  window.jQuery('.shipping-label__new-label-button').click();
+                }
+
+                wcsStore.dispatch({
+                  type: 'NOTICE_CREATE',
+                  notice: {
+                    duration: 10000,
+                    status: 'is-success',
+                    text: Object(external_this_wp_i18n_["__"])('Plugin installed and activated', 'woocommerce-admin')
+                  }
+                });
+              } else if (shippingLabelState.showPurchaseDialog) {
+                wcsStoreUnsubscribe();
+
+                if (window.jQuery) {
+                  window.jQuery('#woocommerce-order-label').show();
+                }
+              }
+            }
+          });
+          document.getElementById('woocommerce-admin-print-label').style.display = 'none';
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$state = this.state,
+          isDismissModalOpen = _this$state.isDismissModalOpen,
+          showShippingBanner = _this$state.showShippingBanner,
+          isShippingLabelButtonBusy = _this$state.isShippingLabelButtonBusy;
+
+      if (!showShippingBanner) {
+        return null;
+      }
+
+      return Object(external_this_wp_element_["createElement"])("div", null, Object(external_this_wp_element_["createElement"])("div", {
+        className: "wc-admin-shipping-banner-container"
+      }, Object(external_this_wp_element_["createElement"])("img", {
+        className: "wc-admin-shipping-banner-illustration",
+        src: wcAdminAssetUrl + 'shippingillustration.svg',
+        alt: Object(external_this_wp_i18n_["__"])('Shipping ', 'woocommerce-admin')
+      }), Object(external_this_wp_element_["createElement"])("div", {
+        className: "wc-admin-shipping-banner-blob"
+      }, Object(external_this_wp_element_["createElement"])("h3", null, Object(external_this_wp_i18n_["__"])('Print discounted shipping labels with a click.', 'woocommerce-admin')), Object(external_this_wp_element_["createElement"])("p", null, lib_default()({
+        mixedString: this.state.installText,
+        components: {
+          tosLink: Object(external_this_wp_element_["createElement"])(external_link, {
+            href: "https://wordpress.com/tos",
+            target: "_blank",
+            type: "external"
+          }),
+          wcsLink: Object(external_this_wp_element_["createElement"])(external_link, {
+            href: "https://woocommerce.com/products/shipping/",
+            target: "_blank",
+            type: "external",
+            onClick: this.woocommerceServiceLinkClicked
+          })
+        }
+      })), Object(external_this_wp_element_["createElement"])(SetupNotice, {
+        isSetupError: this.isSetupError(),
+        errorReason: this.setupErrorReason
+      })), Object(external_this_wp_element_["createElement"])(build_module_button["a" /* default */], {
+        disabled: isShippingLabelButtonBusy,
+        isPrimary: true,
+        isBusy: isShippingLabelButtonBusy,
+        onClick: this.createShippingLabelClicked
+      }, Object(external_this_wp_i18n_["__"])('Create shipping label', 'woocommerce-admin')), Object(external_this_wp_element_["createElement"])("button", {
+        onClick: this.openDismissModal,
+        type: "button",
+        className: "notice-dismiss",
+        disabled: this.state.isShippingLabelButtonBusy
+      }, Object(external_this_wp_element_["createElement"])("span", {
+        className: "screen-reader-text"
+      }, Object(external_this_wp_i18n_["__"])('Close Print Label Banner.', 'woocommerce-admin')))), Object(external_this_wp_element_["createElement"])(dismiss_modal, {
+        visible: isDismissModalOpen,
+        onClose: this.closeDismissModal,
+        onCloseAll: this.hideBanner,
+        trackElementClicked: this.trackElementClicked
+      }));
+    }
+  }]);
+
+  return ShippingBanner;
+}(external_this_wp_element_["Component"]);
+shipping_banner_ShippingBanner.propTypes = {
+  itemsCount: prop_types_default.a.number.isRequired,
+  isJetpackConnected: prop_types_default.a.bool.isRequired,
+  activePlugins: prop_types_default.a.array.isRequired,
+  activatePlugins: prop_types_default.a.func.isRequired,
+  installPlugins: prop_types_default.a.func.isRequired,
+  isRequesting: prop_types_default.a.bool.isRequired
+};
+/* harmony default export */ var shipping_banner = (Object(compose["a" /* default */])(Object(external_this_wp_data_["withSelect"])(function (select) {
+  var _select = select(external_this_wc_data_["PLUGINS_STORE_NAME"]),
+      isPluginsRequesting = _select.isPluginsRequesting,
+      isJetpackConnected = _select.isJetpackConnected,
+      getActivePlugins = _select.getActivePlugins;
+
+  var isRequesting = isPluginsRequesting('activatePlugins') || isPluginsRequesting('installPlugins');
+  return {
+    isRequesting: isRequesting,
+    isJetpackConnected: isJetpackConnected(),
+    activePlugins: getActivePlugins()
+  };
+}), Object(external_this_wp_data_["withDispatch"])(function (dispatch) {
+  var _dispatch = dispatch(external_this_wc_data_["PLUGINS_STORE_NAME"]),
+      activatePlugins = _dispatch.activatePlugins,
+      installPlugins = _dispatch.installPlugins;
+
+  return {
+    activatePlugins: activatePlugins,
+    installPlugins: installPlugins
+  };
+}))(shipping_banner_ShippingBanner));
+// CONCATENATED MODULE: ./client/wp-admin-scripts/print-shipping-label-banner/index.js
+
+
+
+function print_shipping_label_banner_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function print_shipping_label_banner_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { print_shipping_label_banner_ownKeys(Object(source), true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { print_shipping_label_banner_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+/**
+ * External dependencies
+ */
+
+
+/**
+ * Internal dependencies
+ */
+
+
+var metaBox = document.getElementById('wc-admin-shipping-banner-root');
+var print_shipping_label_banner_args = metaBox.dataset.args && JSON.parse(metaBox.dataset.args) || {}; // Render the header.
+
+var HydratedShippingBanner = Object(external_this_wc_data_["withPluginsHydration"])(print_shipping_label_banner_objectSpread(print_shipping_label_banner_objectSpread({}, window.wcSettings.plugins), {}, {
+  jetpackStatus: window.wcSettings.dataEndpoints.jetpackStatus
+}))(shipping_banner);
+Object(external_this_wp_element_["render"])(Object(external_this_wp_element_["createElement"])(HydratedShippingBanner, {
+  itemsCount: print_shipping_label_banner_args.items
+}), metaBox);
+
+/***/ }),
+
+/***/ 688:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9);
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(0);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+/**
+ * WordPress dependencies
+ */
+ // Disable reason: JSDoc linter doesn't seem to parse the union (`&`) correctly.
+
+/** @typedef {{icon: JSX.Element, size?: number} & import('react').ComponentPropsWithoutRef<'SVG'>} IconProps */
+
+/**
+ * Return an SVG icon.
+ *
+ * @param {IconProps} props icon is the SVG component to render
+ *                          size is a number specifiying the icon size in pixels
+ *                          Other props will be passed to wrapped SVG component
+ *
+ * @return {JSX.Element}  Icon component
+ */
+
+function Icon(_ref) {
+  var icon = _ref.icon,
+      _ref$size = _ref.size,
+      size = _ref$size === void 0 ? 24 : _ref$size,
+      props = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(_ref, ["icon", "size"]);
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["cloneElement"])(icon, _objectSpread({
+    width: size,
+    height: size
+  }, props));
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (Icon);
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 691:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
+var esm_extends = __webpack_require__(8);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
+var objectWithoutProperties = __webpack_require__(19);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/classCallCheck.js
+var classCallCheck = __webpack_require__(20);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/createClass.js
+var createClass = __webpack_require__(21);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js
+var possibleConstructorReturn = __webpack_require__(23);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js
+var getPrototypeOf = __webpack_require__(7);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/inherits.js + 1 modules
+var inherits = __webpack_require__(22);
+
+// EXTERNAL MODULE: external {"this":["wp","element"]}
+var external_this_wp_element_ = __webpack_require__(0);
+
+// EXTERNAL MODULE: ./node_modules/@wordpress/compose/build-module/utils/create-higher-order-component/index.js
+var create_higher_order_component = __webpack_require__(74);
+
+// EXTERNAL MODULE: ./node_modules/@wordpress/compose/build-module/hooks/use-instance-id/index.js
+var use_instance_id = __webpack_require__(175);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/compose/build-module/higher-order/with-instance-id/index.js
+
+
+
+/**
+ * Internal dependencies
+ */
+
+
+/**
+ * A Higher Order Component used to be provide a unique instance ID by
+ * component.
+ *
+ * @param {WPComponent} WrappedComponent The wrapped component.
+ *
+ * @return {WPComponent} Component with an instanceId prop.
+ */
+
+/* harmony default export */ var with_instance_id = (Object(create_higher_order_component["a" /* default */])(function (WrappedComponent) {
+  return function (props) {
+    var instanceId = Object(use_instance_id["a" /* default */])(WrappedComponent);
+    return Object(external_this_wp_element_["createElement"])(WrappedComponent, Object(esm_extends["a" /* default */])({}, props, {
+      instanceId: instanceId
+    }));
+  };
+}, 'withInstanceId'));
+//# sourceMappingURL=index.js.map
+// EXTERNAL MODULE: ./node_modules/@wordpress/deprecated/build-module/index.js
+var build_module = __webpack_require__(56);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
+var assertThisInitialized = __webpack_require__(18);
+
+// EXTERNAL MODULE: ./node_modules/classnames/index.js
+var classnames = __webpack_require__(4);
+var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
+
+// EXTERNAL MODULE: ./node_modules/@wordpress/components/node_modules/@wordpress/keycodes/build-module/index.js + 1 modules
+var keycodes_build_module = __webpack_require__(39);
+
+// EXTERNAL MODULE: ./node_modules/@wordpress/compose/build-module/higher-order/compose.js
+var compose = __webpack_require__(270);
+
+// EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/isolated-event-container/index.js
+var isolated_event_container = __webpack_require__(99);
+
+// EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/higher-order/with-focus-outside/index.js
+var with_focus_outside = __webpack_require__(98);
+
+// EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/higher-order/with-focus-return/index.js + 1 modules
+var with_focus_return = __webpack_require__(100);
+
+// EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/higher-order/with-constrained-tabbing/index.js
+var with_constrained_tabbing = __webpack_require__(97);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/modal/frame.js
+
+
+
+
+
+
+
+
+function _createSuper(Derived) { return function () { var Super = Object(getPrototypeOf["a" /* default */])(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = Object(getPrototypeOf["a" /* default */])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(possibleConstructorReturn["a" /* default */])(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+/**
+ * External dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+
+
+
+/**
+ * Internal dependencies
+ */
+
+
+
+
+
+
+var frame_ModalFrame = /*#__PURE__*/function (_Component) {
   Object(inherits["a" /* default */])(ModalFrame, _Component);
+
+  var _super = _createSuper(ModalFrame);
 
   function ModalFrame() {
     var _this;
 
     Object(classCallCheck["a" /* default */])(this, ModalFrame);
 
-    _this = Object(possibleConstructorReturn["a" /* default */])(this, Object(getPrototypeOf["a" /* default */])(ModalFrame).apply(this, arguments));
+    _this = _super.apply(this, arguments);
     _this.containerRef = Object(external_this_wp_element_["createRef"])();
     _this.handleKeyDown = _this.handleKeyDown.bind(Object(assertThisInitialized["a" /* default */])(_this));
     _this.handleFocusOutside = _this.handleFocusOutside.bind(Object(assertThisInitialized["a" /* default */])(_this));
-    _this.focusFirstTabbable = _this.focusFirstTabbable.bind(Object(assertThisInitialized["a" /* default */])(_this));
     return _this;
   }
   /**
@@ -5650,20 +6745,7 @@ function (_Component) {
     value: function componentDidMount() {
       // Focus on mount
       if (this.props.focusOnMount) {
-        this.focusFirstTabbable();
-      }
-    }
-    /**
-     * Focuses the first tabbable element.
-     */
-
-  }, {
-    key: "focusFirstTabbable",
-    value: function focusFirstTabbable() {
-      var tabbables = dom_build_module["a" /* focus */].tabbable.find(this.containerRef.current);
-
-      if (tabbables.length) {
-        tabbables[0].focus();
+        this.containerRef.current.focus();
       }
     }
     /**
@@ -5688,7 +6770,7 @@ function (_Component) {
   }, {
     key: "handleKeyDown",
     value: function handleKeyDown(event) {
-      if (event.keyCode === keycodes_build_module["d" /* ESCAPE */]) {
+      if (event.keyCode === keycodes_build_module["b" /* ESCAPE */]) {
         this.handleEscapeKeyDown(event);
       }
     }
@@ -5766,8 +6848,11 @@ function (_Component) {
 // EXTERNAL MODULE: external {"this":["wp","i18n"]}
 var external_this_wp_i18n_ = __webpack_require__(3);
 
-// EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/icon-button/index.js
-var icon_button = __webpack_require__(85);
+// EXTERNAL MODULE: ./node_modules/@wordpress/components/node_modules/@wordpress/icons/build-module/library/close.js
+var library_close = __webpack_require__(281);
+
+// EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/button/index.js
+var build_module_button = __webpack_require__(72);
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/modal/header.js
 
@@ -5775,6 +6860,7 @@ var icon_button = __webpack_require__(85);
 /**
  * WordPress dependencies
  */
+
 
 /**
  * Internal dependencies
@@ -5800,9 +6886,9 @@ var header_ModalHeader = function ModalHeader(_ref) {
   }, icon), title && Object(external_this_wp_element_["createElement"])("h1", {
     id: headingId,
     className: "components-modal__header-heading"
-  }, title)), isDismissible && Object(external_this_wp_element_["createElement"])(icon_button["a" /* default */], {
+  }, title)), isDismissible && Object(external_this_wp_element_["createElement"])(build_module_button["a" /* default */], {
     onClick: onClose,
-    icon: "no-alt",
+    icon: library_close["a" /* default */],
     label: label
   }));
 };
@@ -5890,6 +6976,10 @@ function showApp() {
 
 
 
+function modal_createSuper(Derived) { return function () { var Super = Object(getPrototypeOf["a" /* default */])(Derived), result; if (modal_isNativeReflectConstruct()) { var NewTarget = Object(getPrototypeOf["a" /* default */])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(possibleConstructorReturn["a" /* default */])(this, result); }; }
+
+function modal_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
 /**
  * WordPress dependencies
  */
@@ -5907,17 +6997,17 @@ function showApp() {
 var parentElement,
     openModalCount = 0;
 
-var modal_Modal =
-/*#__PURE__*/
-function (_Component) {
+var modal_Modal = /*#__PURE__*/function (_Component) {
   Object(inherits["a" /* default */])(Modal, _Component);
+
+  var _super = modal_createSuper(Modal);
 
   function Modal(props) {
     var _this;
 
     Object(classCallCheck["a" /* default */])(this, Modal);
 
-    _this = Object(possibleConstructorReturn["a" /* default */])(this, Object(getPrototypeOf["a" /* default */])(Modal).call(this, props));
+    _this = _super.call(this, props);
 
     _this.prepareDOM();
 
@@ -6049,7 +7139,7 @@ function (_Component) {
         }
       }, otherProps), Object(external_this_wp_element_["createElement"])("div", {
         className: 'components-modal__content',
-        tabIndex: "0"
+        role: "document"
       }, Object(external_this_wp_element_["createElement"])(header, {
         closeLabel: closeButtonLabel,
         headingId: headingId,
@@ -6079,12 +7169,258 @@ modal_Modal.defaultProps = {
     describedby: null
   }
 };
-/* harmony default export */ var modal = __webpack_exports__["a"] = (Object(with_instance_id["a" /* default */])(modal_Modal));
+/* harmony default export */ var modal = __webpack_exports__["a"] = (with_instance_id(modal_Modal));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 77:
+/***/ 7:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _getPrototypeOf; });
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+/***/ }),
+
+/***/ 70:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _unsupportedIterableToArray; });
+/* harmony import */ var _arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(62);
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return Object(_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return Object(_arrayLikeToArray__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(o, minLen);
+}
+
+/***/ }),
+
+/***/ 72:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export Button */
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(0);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(2);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_deprecated__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(56);
+/* harmony import */ var _tooltip__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(116);
+/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(115);
+
+
+
+
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+/**
+ * External dependencies
+ */
+
+
+/**
+ * WordPress dependencies
+ */
+
+
+
+/**
+ * Internal dependencies
+ */
+
+
+
+var disabledEventsOnDisabledButton = ['onMouseDown', 'onClick'];
+function Button(props, ref) {
+  var href = props.href,
+      target = props.target,
+      isPrimary = props.isPrimary,
+      isSmall = props.isSmall,
+      isTertiary = props.isTertiary,
+      isPressed = props.isPressed,
+      isBusy = props.isBusy,
+      isDefault = props.isDefault,
+      isSecondary = props.isSecondary,
+      isLink = props.isLink,
+      isDestructive = props.isDestructive,
+      className = props.className,
+      disabled = props.disabled,
+      icon = props.icon,
+      iconSize = props.iconSize,
+      showTooltip = props.showTooltip,
+      tooltipPosition = props.tooltipPosition,
+      shortcut = props.shortcut,
+      label = props.label,
+      children = props.children,
+      isFocusable = props.__experimentalIsFocusable,
+      additionalProps = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(props, ["href", "target", "isPrimary", "isSmall", "isTertiary", "isPressed", "isBusy", "isDefault", "isSecondary", "isLink", "isDestructive", "className", "disabled", "icon", "iconSize", "showTooltip", "tooltipPosition", "shortcut", "label", "children", "__experimentalIsFocusable"]);
+
+  if (isDefault) {
+    Object(_wordpress_deprecated__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])('Button isDefault prop', {
+      alternative: 'isSecondary'
+    });
+  }
+
+  var classes = classnames__WEBPACK_IMPORTED_MODULE_3___default()('components-button', className, {
+    'is-secondary': isDefault || isSecondary,
+    'is-primary': isPrimary,
+    'is-small': isSmall,
+    'is-tertiary': isTertiary,
+    'is-pressed': isPressed,
+    'is-busy': isBusy,
+    'is-link': isLink,
+    'is-destructive': isDestructive,
+    'has-text': !!icon && !!children,
+    'has-icon': !!icon
+  });
+  var trulyDisabled = disabled && !isFocusable;
+  var Tag = href !== undefined && !trulyDisabled ? 'a' : 'button';
+  var tagProps = Tag === 'a' ? {
+    href: href,
+    target: target
+  } : {
+    type: 'button',
+    disabled: trulyDisabled,
+    'aria-pressed': isPressed
+  };
+
+  if (disabled && isFocusable) {
+    // In this case, the button will be disabled, but still focusable and
+    // perceivable by screen reader users.
+    tagProps['aria-disabled'] = true;
+
+    var _iterator = _createForOfIteratorHelper(disabledEventsOnDisabledButton),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var disabledEvent = _step.value;
+
+        additionalProps[disabledEvent] = function (event) {
+          event.stopPropagation();
+          event.preventDefault();
+        };
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  } // Should show the tooltip if...
+
+
+  var shouldShowTooltip = !trulyDisabled && ( // an explicit tooltip is passed or...
+  showTooltip && label || // there's a shortcut or...
+  shortcut || // there's a label and...
+  !!label && ( // the children are empty and...
+  !children || Object(lodash__WEBPACK_IMPORTED_MODULE_4__["isArray"])(children) && !children.length) && // the tooltip is not explicitly disabled.
+  false !== showTooltip);
+  var element = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(Tag, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({}, tagProps, additionalProps, {
+    className: classes,
+    "aria-label": additionalProps['aria-label'] || label,
+    ref: ref
+  }), icon && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_icon__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"], {
+    icon: icon,
+    size: iconSize
+  }), children);
+
+  if (!shouldShowTooltip) {
+    return element;
+  }
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_tooltip__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"], {
+    text: label,
+    shortcut: shortcut,
+    position: tooltipPosition
+  }, element);
+}
+/* harmony default export */ __webpack_exports__["a"] = (Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["forwardRef"])(Button));
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 74:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+/**
+ * External dependencies
+ */
+
+/**
+ * Given a function mapping a component to an enhanced component and modifier
+ * name, returns the enhanced component augmented with a generated displayName.
+ *
+ * @param {Function} mapComponentToEnhancedComponent Function mapping component
+ *                                                   to enhanced component.
+ * @param {string}   modifierName                    Seed name from which to
+ *                                                   generated display name.
+ *
+ * @return {WPComponent} Component class with generated display name assigned.
+ */
+
+function createHigherOrderComponent(mapComponentToEnhancedComponent, modifierName) {
+  return function (OriginalComponent) {
+    var EnhancedComponent = mapComponentToEnhancedComponent(OriginalComponent);
+    var _OriginalComponent$di = OriginalComponent.displayName,
+        displayName = _OriginalComponent$di === void 0 ? OriginalComponent.name || 'Component' : _OriginalComponent$di;
+    EnhancedComponent.displayName = "".concat(Object(lodash__WEBPACK_IMPORTED_MODULE_0__["upperFirst"])(Object(lodash__WEBPACK_IMPORTED_MODULE_0__["camelCase"])(modifierName)), "(").concat(displayName, ")");
+    return EnhancedComponent;
+  };
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (createHigherOrderComponent);
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 8:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _extends; });
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+/***/ }),
+
+/***/ 83:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6093,13 +7429,13 @@ modal_Modal.defaultProps = {
 /**
  * Internal dependencies;
  */
-var isShallowEqualObjects = __webpack_require__( 140 );
-var isShallowEqualArrays = __webpack_require__( 141 );
+var isShallowEqualObjects = __webpack_require__( 146 );
+var isShallowEqualArrays = __webpack_require__( 147 );
 
 var isArray = Array.isArray;
 
 /**
- * @typedef {{[key: string]: any}} ComparableObject
+ * @typedef {Record<string, any>} ComparableObject
  */
 
 /**
@@ -6130,185 +7466,21 @@ module.exports.isShallowEqualArrays = isShallowEqualArrays;
 
 /***/ }),
 
-/***/ 79:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return recordEvent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return queueRecordEvent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return recordPageView; });
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15);
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(43);
-/* harmony import */ var _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(98);
-/* harmony import */ var debug__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(debug__WEBPACK_IMPORTED_MODULE_2__);
-
-
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-/**
- * External dependencies
- */
-
-/**
- * Module variables
- */
-
-var tracksDebug = debug__WEBPACK_IMPORTED_MODULE_2___default()('wc-admin:tracks');
-/**
- * Record an event to Tracks
- *
- * @param {string} eventName The name of the event to record, don't include the wcadmin_ prefix
- * @param {Object} eventProperties event properties to include in the event
- */
-
-function recordEvent(eventName, eventProperties) {
-  tracksDebug('recordevent %s %o', 'wcadmin_' + eventName, eventProperties, {
-    _tqk: window._tkq,
-    shouldRecord:  true && !!window._tkq && !!window.wcTracks && !!window.wcTracks.isEnabled
-  });
-
-  if (!window.wcTracks || typeof window.wcTracks.recordEvent !== 'function' || "production" === 'development') {
-    return false;
-  }
-
-  window.wcTracks.recordEvent(eventName, eventProperties);
-}
-var tracksQueue = {
-  localStorageKey: function localStorageKey() {
-    return 'tracksQueue';
-  },
-  clear: function clear() {
-    if (!window.localStorage) {
-      return;
-    }
-
-    window.localStorage.removeItem(tracksQueue.localStorageKey());
-  },
-  get: function get() {
-    if (!window.localStorage) {
-      return [];
-    }
-
-    var items = window.localStorage.getItem(tracksQueue.localStorageKey());
-    items = items ? JSON.parse(items) : [];
-    items = Array.isArray(items) ? items : [];
-    return items;
-  },
-  add: function add() {
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    if (!window.localStorage) {
-      // If unable to queue, run it now.
-      tracksDebug('Unable to queue, running now', {
-        args: args
-      });
-      recordEvent.apply(null, args || undefined);
-      return;
-    }
-
-    var items = tracksQueue.get();
-    var newItem = {
-      args: args
-    };
-    items.push(newItem);
-    items = items.slice(-100); // Upper limit.
-
-    tracksDebug('Adding new item to queue.', newItem);
-    window.localStorage.setItem(tracksQueue.localStorageKey(), JSON.stringify(items));
-  },
-  process: function process() {
-    if (!window.localStorage) {
-      return; // Not possible.
-    }
-
-    var items = tracksQueue.get();
-    tracksQueue.clear();
-    tracksDebug('Processing items in queue.', items);
-    items.forEach(function (item) {
-      if (_babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_1___default()(item) === 'object') {
-        tracksDebug('Processing item in queue.', item);
-        recordEvent.apply(null, item.args || undefined);
-      }
-    });
-  }
-};
-/**
- * Queue a tracks event.
- *
- * This allows you to delay tracks  events that would otherwise cause a race condition.
- * For example, when we trigger `wcadmin_tasklist_appearance_continue_setup` we're simultaneously moving the user to a new page via
- * `window.location`. This is an example of a race condition that should be avoided by enqueueing the event,
- * and therefore running it on the next pageview.
- *
- * @param {string} eventName The name of the event to record, don't include the wcadmin_ prefix
- * @param {Object} eventProperties event properties to include in the event
- */
-
-function queueRecordEvent(eventName, eventProperties) {
-  tracksQueue.add(eventName, eventProperties);
-}
-/**
- * Record a page view to Tracks
- *
- * @param {string} path the page/path to record a page view for
- * @param {Object} extraProperties extra event properties to include in the event
- */
-
-function recordPageView(path, extraProperties) {
-  if (!path) {
-    return;
-  }
-
-  recordEvent('page_view', _objectSpread({
-    path: path
-  }, extraProperties)); // Process queue.
-
-  tracksQueue.process();
-}
-
-/***/ }),
-
-/***/ 8:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _possibleConstructorReturn; });
-/* harmony import */ var _helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(89);
-/* harmony import */ var _assertThisInitialized__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5);
-
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (Object(_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return Object(_assertThisInitialized__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(self);
-}
-
-/***/ }),
-
-/***/ 80:
+/***/ 85:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Dashicon; });
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(11);
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16);
-/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7);
-/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6);
-/* harmony import */ var _babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8);
-/* harmony import */ var _babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(4);
-/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(9);
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19);
+/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(20);
+/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(21);
+/* harmony import */ var _babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(23);
+/* harmony import */ var _babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(7);
+/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(22);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(0);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _primitives__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(62);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(44);
 
 
 
@@ -6317,6 +7489,10 @@ function _possibleConstructorReturn(self, call) {
 
 
 
+
+function _createSuper(Derived) { return function () { var Super = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 /* !!!
 IF YOU ARE EDITING dashicon/index.jsx
@@ -6329,21 +7505,17 @@ OR if you're looking to change now SVGs get output, you'll need to edit strings 
  * WordPress dependencies
  */
 
-/**
- * Internal dependencies
- */
 
 
-
-var Dashicon =
-/*#__PURE__*/
-function (_Component) {
+var Dashicon = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(Dashicon, _Component);
+
+  var _super = _createSuper(Dashicon);
 
   function Dashicon() {
     Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(this, Dashicon);
 
-    return Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(this, Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(Dashicon).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(Dashicon, [{
@@ -7517,7 +8689,7 @@ function (_Component) {
       }
 
       var iconClass = ['dashicon', 'dashicons-' + icon, className].filter(Boolean).join(' ');
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_primitives__WEBPACK_IMPORTED_MODULE_8__[/* SVG */ "b"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_8__[/* SVG */ "c"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({
         "aria-hidden": true,
         role: "img",
         focusable: "false",
@@ -7526,7 +8698,7 @@ function (_Component) {
         width: size,
         height: size,
         viewBox: "0 0 20 20"
-      }, extraProps), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_primitives__WEBPACK_IMPORTED_MODULE_8__[/* Path */ "a"], {
+      }, extraProps), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_8__[/* Path */ "b"], {
         d: path
       }));
     }
@@ -7540,180 +8712,46 @@ function (_Component) {
 
 /***/ }),
 
-/***/ 85:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ 86:
+/***/ (function(module, exports) {
 
-"use strict";
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(11);
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(0);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(10);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(2);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _tooltip__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(110);
-/* harmony import */ var _button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(88);
-/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(109);
-
-
-
-
-/**
- * External dependencies
- */
-
-
-/**
- * WordPress dependencies
- */
-
-
-/**
- * Internal dependencies
- */
-
-
-
-
-
-function IconButton(props, ref) {
-  var icon = props.icon,
-      children = props.children,
-      label = props.label,
-      className = props.className,
-      tooltip = props.tooltip,
-      shortcut = props.shortcut,
-      labelPosition = props.labelPosition,
-      size = props.size,
-      additionalProps = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(props, ["icon", "children", "label", "className", "tooltip", "shortcut", "labelPosition", "size"]);
-
-  var classes = classnames__WEBPACK_IMPORTED_MODULE_3___default()('components-icon-button', className, {
-    'has-text': children
-  });
-  var tooltipText = tooltip || label; // Should show the tooltip if...
-
-  var showTooltip = !additionalProps.disabled && ( // an explicit tooltip is passed or...
-  tooltip || // there's a shortcut or...
-  shortcut || // there's a label and...
-  !!label && ( // the children are empty and...
-  !children || Object(lodash__WEBPACK_IMPORTED_MODULE_4__["isArray"])(children) && !children.length) && // the tooltip is not explicitly disabled.
-  false !== tooltip);
-  var element = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_button__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({
-    "aria-label": label
-  }, additionalProps, {
-    className: classes,
-    ref: ref
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_icon__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"], {
-    icon: icon,
-    size: size
-  }), children);
-
-  if (showTooltip) {
-    element = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(_tooltip__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"], {
-      text: tooltipText,
-      shortcut: shortcut,
-      position: labelPosition
-    }, element);
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
   }
 
-  return element;
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["forwardRef"])(IconButton));
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ 88:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export Button */
-/* harmony import */ var _babel_runtime_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(27);
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(10);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(0);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
-
-
-
-/**
- * External dependencies
- */
-
-/**
- * WordPress dependencies
- */
-
-
-function Button(props, ref) {
-  var href = props.href,
-      target = props.target,
-      isPrimary = props.isPrimary,
-      isLarge = props.isLarge,
-      isSmall = props.isSmall,
-      isTertiary = props.isTertiary,
-      isToggled = props.isToggled,
-      isBusy = props.isBusy,
-      isDefault = props.isDefault,
-      isLink = props.isLink,
-      isDestructive = props.isDestructive,
-      className = props.className,
-      disabled = props.disabled,
-      additionalProps = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(props, ["href", "target", "isPrimary", "isLarge", "isSmall", "isTertiary", "isToggled", "isBusy", "isDefault", "isLink", "isDestructive", "className", "disabled"]);
-
-  var classes = classnames__WEBPACK_IMPORTED_MODULE_2___default()('components-button', className, {
-    'is-button': isDefault || isPrimary || isLarge || isSmall,
-    'is-default': isDefault || !isPrimary && (isLarge || isSmall),
-    'is-primary': isPrimary,
-    'is-large': isLarge,
-    'is-small': isSmall,
-    'is-tertiary': isTertiary,
-    'is-toggled': isToggled,
-    'is-busy': isBusy,
-    'is-link': isLink,
-    'is-destructive': isDestructive
-  });
-  var tag = href !== undefined && !disabled ? 'a' : 'button';
-  var tagProps = tag === 'a' ? {
-    href: href,
-    target: target
-  } : {
-    type: 'button',
-    disabled: disabled
-  };
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(tag, Object(_babel_runtime_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({}, tagProps, additionalProps, {
-    className: classes,
-    ref: ref
-  }));
-}
-/* harmony default export */ __webpack_exports__["a"] = (Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["forwardRef"])(Button));
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ 89:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _typeof; });
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
+  if (info.done) {
+    resolve(value);
   } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
+    Promise.resolve(value).then(_next, _throw);
   }
-
-  return _typeof(obj);
 }
+
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+        args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+
+      _next(undefined);
+    });
+  };
+}
+
+module.exports = _asyncToGenerator;
 
 /***/ }),
 
@@ -7721,108 +8759,148 @@ function _typeof(obj) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ _inherits; });
-
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/inherits.js
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _defineProperty; });
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
   }
 
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
+  return obj;
 }
 
 /***/ }),
 
-/***/ 92:
+/***/ 96:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/extends.js
-var esm_extends = __webpack_require__(11);
+var esm_extends = __webpack_require__(8);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js + 3 modules
-var slicedToArray = __webpack_require__(21);
+var slicedToArray = __webpack_require__(27);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js
-var objectWithoutProperties = __webpack_require__(16);
+var objectWithoutProperties = __webpack_require__(19);
 
 // EXTERNAL MODULE: external {"this":["wp","element"]}
 var external_this_wp_element_ = __webpack_require__(0);
 
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
-var classnames = __webpack_require__(10);
+var classnames = __webpack_require__(4);
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 
-// EXTERNAL MODULE: ./node_modules/@wordpress/dom/build-module/dom.js
-var dom = __webpack_require__(107);
+// EXTERNAL MODULE: ./node_modules/@wordpress/components/node_modules/@wordpress/dom/build-module/dom.js
+var dom = __webpack_require__(106);
 
-// EXTERNAL MODULE: ./node_modules/@wordpress/dom/build-module/index.js + 2 modules
-var build_module = __webpack_require__(50);
+// EXTERNAL MODULE: ./node_modules/@wordpress/components/node_modules/@wordpress/dom/build-module/index.js + 2 modules
+var build_module = __webpack_require__(51);
 
-// EXTERNAL MODULE: ./node_modules/@wordpress/keycodes/build-module/index.js + 1 modules
-var keycodes_build_module = __webpack_require__(18);
+// EXTERNAL MODULE: ./node_modules/@wordpress/components/node_modules/@wordpress/keycodes/build-module/index.js + 1 modules
+var keycodes_build_module = __webpack_require__(39);
 
 // EXTERNAL MODULE: ./node_modules/@wordpress/deprecated/build-module/index.js
-var deprecated_build_module = __webpack_require__(94);
+var deprecated_build_module = __webpack_require__(56);
 
 // EXTERNAL MODULE: ./node_modules/@wordpress/compose/build-module/hooks/use-viewport-match/index.js
-var use_viewport_match = __webpack_require__(268);
+var use_viewport_match = __webpack_require__(280);
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectSpread.js
-var objectSpread = __webpack_require__(27);
+// EXTERNAL MODULE: ./node_modules/react-resize-aware/dist/index.js
+var dist = __webpack_require__(117);
+var dist_default = /*#__PURE__*/__webpack_require__.n(dist);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/compose/build-module/hooks/use-resize-observer/index.js
+/**
+ * External dependencies
+ */
+
+/**
+ * Hook which allows to listen the resize event of any target element when it changes sizes.
+ * _Note: `useResizeObserver` will report `null` until after first render_
+ *
+ * @return {Array} An array of {Element} `resizeListener` and {?Object} `sizes` with properties `width` and `height`
+ *
+ * @example
+ *
+ * ```js
+ * const App = () => {
+ * 	const [ resizeListener, sizes ] = useResizeObserver();
+ *
+ * 	return (
+ * 		<div>
+ * 			{ resizeListener }
+ * 			Your content here
+ * 		</div>
+ * 	);
+ * };
+ * ```
+ *
+ */
+
+/* harmony default export */ var use_resize_observer = (dist_default.a);
+//# sourceMappingURL=index.js.map
+// EXTERNAL MODULE: ./node_modules/@wordpress/components/node_modules/@wordpress/icons/build-module/library/close.js
+var library_close = __webpack_require__(281);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
+var defineProperty = __webpack_require__(9);
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/popover/utils.js
 
 
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(defineProperty["a" /* default */])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+/**
+ * WordPress dependencies
+ */
+
 /**
  * Module constants
  */
+
 var HEIGHT_OFFSET = 10; // used by the arrow and a bit of empty space
 
-var isRTL = function isRTL() {
-  return document.documentElement.dir === 'rtl';
-};
 /**
  * Utility used to compute the popover position over the xAxis
  *
- * @param {Object} anchorRect       Anchor Rect.
- * @param {Object} contentSize      Content Size.
- * @param {string} xAxis            Desired xAxis.
- * @param {string} chosenYAxis      yAxis to be used.
+ * @param {Object}  anchorRect      Anchor Rect.
+ * @param {Object}  contentSize     Content Size.
+ * @param {string}  xAxis           Desired xAxis.
+ * @param {string}  corner          Desired corner.
+ * @param {boolean} sticky          Whether or not to stick the popover to the
+ *                                  scroll container edge when part of the anchor
+ *                                  leaves view.
+ * @param {string}  chosenYAxis     yAxis to be used.
+ * @param {Element} boundaryElement Boundary element.
  *
  * @return {Object} Popover xAxis position and constraints.
  */
 
+function computePopoverXAxisPosition(anchorRect, contentSize, xAxis, corner, sticky, chosenYAxis, boundaryElement) {
+  var width = contentSize.width;
+  var isRTL = document.documentElement.dir === 'rtl'; // Correct xAxis for RTL support
 
-function computePopoverXAxisPosition(anchorRect, contentSize, xAxis, chosenYAxis) {
-  var width = contentSize.width; // Correct xAxis for RTL support
-
-  if (xAxis === 'left' && isRTL()) {
+  if (xAxis === 'left' && isRTL) {
     xAxis = 'right';
-  } else if (xAxis === 'right' && isRTL()) {
+  } else if (xAxis === 'right' && isRTL) {
     xAxis = 'left';
+  }
+
+  if (corner === 'left' && isRTL) {
+    corner = 'right';
+  } else if (corner === 'right' && isRTL) {
+    corner = 'left';
   } // x axis alignment choices
 
 
@@ -7831,30 +8909,46 @@ function computePopoverXAxisPosition(anchorRect, contentSize, xAxis, chosenYAxis
     popoverLeft: anchorMidPoint,
     contentWidth: (anchorMidPoint - width / 2 > 0 ? width / 2 : anchorMidPoint) + (anchorMidPoint + width / 2 > window.innerWidth ? window.innerWidth - anchorMidPoint : width / 2)
   };
-  var leftAlignmentX = chosenYAxis === 'middle' ? anchorRect.left : anchorMidPoint;
+  var leftAlignmentX = anchorRect.left;
+
+  if (corner === 'right') {
+    leftAlignmentX = anchorRect.right;
+  } else if (chosenYAxis !== 'middle') {
+    leftAlignmentX = anchorMidPoint;
+  }
+
+  var rightAlignmentX = anchorRect.right;
+
+  if (corner === 'left') {
+    rightAlignmentX = anchorRect.left;
+  } else if (chosenYAxis !== 'middle') {
+    rightAlignmentX = anchorMidPoint;
+  }
+
   var leftAlignment = {
     popoverLeft: leftAlignmentX,
     contentWidth: leftAlignmentX - width > 0 ? width : leftAlignmentX
   };
-  var rightAlignmentX = chosenYAxis === 'middle' ? anchorRect.right : anchorMidPoint;
   var rightAlignment = {
     popoverLeft: rightAlignmentX,
     contentWidth: rightAlignmentX + width > window.innerWidth ? window.innerWidth - rightAlignmentX : width
   }; // Choosing the x axis
 
-  var chosenXAxis;
+  var chosenXAxis = xAxis;
   var contentWidth = null;
 
-  if (xAxis === 'center' && centerAlignment.contentWidth === width) {
-    chosenXAxis = 'center';
-  } else if (xAxis === 'left' && leftAlignment.contentWidth === width) {
-    chosenXAxis = 'left';
-  } else if (xAxis === 'right' && rightAlignment.contentWidth === width) {
-    chosenXAxis = 'right';
-  } else {
-    chosenXAxis = leftAlignment.contentWidth > rightAlignment.contentWidth ? 'left' : 'right';
-    var chosenWidth = chosenXAxis === 'left' ? leftAlignment.contentWidth : rightAlignment.contentWidth;
-    contentWidth = chosenWidth !== width ? chosenWidth : null;
+  if (!sticky) {
+    if (xAxis === 'center' && centerAlignment.contentWidth === width) {
+      chosenXAxis = 'center';
+    } else if (xAxis === 'left' && leftAlignment.contentWidth === width) {
+      chosenXAxis = 'left';
+    } else if (xAxis === 'right' && rightAlignment.contentWidth === width) {
+      chosenXAxis = 'right';
+    } else {
+      chosenXAxis = leftAlignment.contentWidth > rightAlignment.contentWidth ? 'left' : 'right';
+      var chosenWidth = chosenXAxis === 'left' ? leftAlignment.contentWidth : rightAlignment.contentWidth;
+      contentWidth = chosenWidth !== width ? chosenWidth : null;
+    }
   }
 
   var popoverLeft;
@@ -7867,6 +8961,11 @@ function computePopoverXAxisPosition(anchorRect, contentSize, xAxis, chosenYAxis
     popoverLeft = rightAlignment.popoverLeft;
   }
 
+  if (boundaryElement) {
+    var boundaryRect = boundaryElement.getBoundingClientRect();
+    popoverLeft = Math.min(popoverLeft, boundaryRect.right - width);
+  }
+
   return {
     xAxis: chosenXAxis,
     popoverLeft: popoverLeft,
@@ -7876,17 +8975,45 @@ function computePopoverXAxisPosition(anchorRect, contentSize, xAxis, chosenYAxis
 /**
  * Utility used to compute the popover position over the yAxis
  *
- * @param {Object} anchorRect       Anchor Rect.
- * @param {Object} contentSize      Content Size.
- * @param {string} yAxis            Desired yAxis.
+ * @param {Object}  anchorRect        Anchor Rect.
+ * @param {Object}  contentSize       Content Size.
+ * @param {string}  yAxis             Desired yAxis.
+ * @param {string}  corner            Desired corner.
+ * @param {boolean} sticky            Whether or not to stick the popover to the
+ *                                    scroll container edge when part of the
+ *                                    anchor leaves view.
+ * @param {Element} anchorRef         The anchor element.
+ * @param {Element} relativeOffsetTop If applicable, top offset of the relative
+ *                                    positioned parent container.
  *
  * @return {Object} Popover xAxis position and constraints.
  */
 
-function computePopoverYAxisPosition(anchorRect, contentSize, yAxis) {
-  var height = contentSize.height; // y axis alignment choices
+function computePopoverYAxisPosition(anchorRect, contentSize, yAxis, corner, sticky, anchorRef, relativeOffsetTop) {
+  var height = contentSize.height;
+
+  if (sticky) {
+    var scrollContainerEl = Object(dom["b" /* getScrollContainer */])(anchorRef) || document.body;
+    var scrollRect = scrollContainerEl.getBoundingClientRect();
+    var stickyPosition = scrollRect.top + height - relativeOffsetTop;
+
+    if (anchorRect.top <= stickyPosition) {
+      return {
+        yAxis: yAxis,
+        popoverTop: Math.min(anchorRect.bottom, stickyPosition)
+      };
+    }
+  } // y axis alignment choices
+
 
   var anchorMidPoint = anchorRect.top + anchorRect.height / 2;
+
+  if (corner === 'bottom') {
+    anchorMidPoint = anchorRect.bottom;
+  } else if (corner === 'top') {
+    anchorMidPoint = anchorRect.top;
+  }
+
   var middleAlignment = {
     popoverTop: anchorMidPoint,
     contentHeight: (anchorMidPoint - height / 2 > 0 ? height / 2 : anchorMidPoint) + (anchorMidPoint + height / 2 > window.innerHeight ? window.innerHeight - anchorMidPoint : height / 2)
@@ -7900,19 +9027,21 @@ function computePopoverYAxisPosition(anchorRect, contentSize, yAxis) {
     contentHeight: anchorRect.bottom + HEIGHT_OFFSET + height > window.innerHeight ? window.innerHeight - HEIGHT_OFFSET - anchorRect.bottom : height
   }; // Choosing the y axis
 
-  var chosenYAxis;
+  var chosenYAxis = yAxis;
   var contentHeight = null;
 
-  if (yAxis === 'middle' && middleAlignment.contentHeight === height) {
-    chosenYAxis = 'middle';
-  } else if (yAxis === 'top' && topAlignment.contentHeight === height) {
-    chosenYAxis = 'top';
-  } else if (yAxis === 'bottom' && bottomAlignment.contentHeight === height) {
-    chosenYAxis = 'bottom';
-  } else {
-    chosenYAxis = topAlignment.contentHeight > bottomAlignment.contentHeight ? 'top' : 'bottom';
-    var chosenHeight = chosenYAxis === 'top' ? topAlignment.contentHeight : bottomAlignment.contentHeight;
-    contentHeight = chosenHeight !== height ? chosenHeight : null;
+  if (!sticky) {
+    if (yAxis === 'middle' && middleAlignment.contentHeight === height) {
+      chosenYAxis = 'middle';
+    } else if (yAxis === 'top' && topAlignment.contentHeight === height) {
+      chosenYAxis = 'top';
+    } else if (yAxis === 'bottom' && bottomAlignment.contentHeight === height) {
+      chosenYAxis = 'bottom';
+    } else {
+      chosenYAxis = topAlignment.contentHeight > bottomAlignment.contentHeight ? 'top' : 'bottom';
+      var chosenHeight = chosenYAxis === 'top' ? topAlignment.contentHeight : bottomAlignment.contentHeight;
+      contentHeight = chosenHeight !== height ? chosenHeight : null;
+    }
   }
 
   var popoverTop;
@@ -7932,53 +9061,65 @@ function computePopoverYAxisPosition(anchorRect, contentSize, yAxis) {
   };
 }
 /**
- * Utility used to compute the popover position and the content max width/height for a popover
- * given its anchor rect and its content size.
+ * Utility used to compute the popover position and the content max width/height
+ * for a popover given its anchor rect and its content size.
  *
- * @param {Object} anchorRect       Anchor Rect.
- * @param {Object} contentSize      Content Size.
- * @param {string} position         Position.
+ * @param {Object}  anchorRect        Anchor Rect.
+ * @param {Object}  contentSize       Content Size.
+ * @param {string}  position          Position.
+ * @param {boolean} sticky            Whether or not to stick the popover to the
+ *                                    scroll container edge when part of the
+ *                                    anchor leaves view.
+ * @param {Element} anchorRef         The anchor element.
+ * @param {number}  relativeOffsetTop If applicable, top offset of the relative
+ *                                    positioned parent container.
+ * @param {Element} boundaryElement   Boundary element.
  *
  * @return {Object} Popover position and constraints.
  */
 
 function computePopoverPosition(anchorRect, contentSize) {
   var position = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'top';
+  var sticky = arguments.length > 3 ? arguments[3] : undefined;
+  var anchorRef = arguments.length > 4 ? arguments[4] : undefined;
+  var relativeOffsetTop = arguments.length > 5 ? arguments[5] : undefined;
+  var boundaryElement = arguments.length > 6 ? arguments[6] : undefined;
 
   var _position$split = position.split(' '),
-      _position$split2 = Object(slicedToArray["a" /* default */])(_position$split, 2),
+      _position$split2 = Object(slicedToArray["a" /* default */])(_position$split, 3),
       yAxis = _position$split2[0],
       _position$split2$ = _position$split2[1],
-      xAxis = _position$split2$ === void 0 ? 'center' : _position$split2$;
+      xAxis = _position$split2$ === void 0 ? 'center' : _position$split2$,
+      corner = _position$split2[2];
 
-  var yAxisPosition = computePopoverYAxisPosition(anchorRect, contentSize, yAxis);
-  var xAxisPosition = computePopoverXAxisPosition(anchorRect, contentSize, xAxis, yAxisPosition.yAxis);
-  return Object(objectSpread["a" /* default */])({}, xAxisPosition, yAxisPosition);
+  var yAxisPosition = computePopoverYAxisPosition(anchorRect, contentSize, yAxis, corner, sticky, anchorRef, relativeOffsetTop);
+  var xAxisPosition = computePopoverXAxisPosition(anchorRect, contentSize, xAxis, corner, sticky, yAxisPosition.yAxis, boundaryElement);
+  return _objectSpread({}, xAxisPosition, {}, yAxisPosition);
 }
 //# sourceMappingURL=utils.js.map
 // EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/higher-order/with-focus-return/index.js + 1 modules
-var with_focus_return = __webpack_require__(97);
+var with_focus_return = __webpack_require__(100);
 
 // EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/higher-order/with-constrained-tabbing/index.js
-var with_constrained_tabbing = __webpack_require__(93);
+var with_constrained_tabbing = __webpack_require__(97);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/classCallCheck.js
-var classCallCheck = __webpack_require__(7);
+var classCallCheck = __webpack_require__(20);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/createClass.js
-var createClass = __webpack_require__(6);
+var createClass = __webpack_require__(21);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js
-var possibleConstructorReturn = __webpack_require__(8);
+var possibleConstructorReturn = __webpack_require__(23);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js
-var getPrototypeOf = __webpack_require__(4);
+var getPrototypeOf = __webpack_require__(7);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/inherits.js + 1 modules
-var inherits = __webpack_require__(9);
+var inherits = __webpack_require__(22);
 
 // EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/higher-order/with-focus-outside/index.js
-var with_focus_outside = __webpack_require__(95);
+var with_focus_outside = __webpack_require__(98);
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/popover/detect-outside.js
 
@@ -7986,6 +9127,10 @@ var with_focus_outside = __webpack_require__(95);
 
 
 
+
+function _createSuper(Derived) { return function () { var Super = Object(getPrototypeOf["a" /* default */])(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = Object(getPrototypeOf["a" /* default */])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(possibleConstructorReturn["a" /* default */])(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 /**
  * WordPress dependencies
@@ -7997,15 +9142,15 @@ var with_focus_outside = __webpack_require__(95);
 
 
 
-var detect_outside_PopoverDetectOutside =
-/*#__PURE__*/
-function (_Component) {
+var detect_outside_PopoverDetectOutside = /*#__PURE__*/function (_Component) {
   Object(inherits["a" /* default */])(PopoverDetectOutside, _Component);
+
+  var _super = _createSuper(PopoverDetectOutside);
 
   function PopoverDetectOutside() {
     Object(classCallCheck["a" /* default */])(this, PopoverDetectOutside);
 
-    return Object(possibleConstructorReturn["a" /* default */])(this, Object(getPrototypeOf["a" /* default */])(PopoverDetectOutside).apply(this, arguments));
+    return _super.apply(this, arguments);
   }
 
   Object(createClass["a" /* default */])(PopoverDetectOutside, [{
@@ -8025,8 +9170,8 @@ function (_Component) {
 
 /* harmony default export */ var detect_outside = (Object(with_focus_outside["a" /* default */])(detect_outside_PopoverDetectOutside));
 //# sourceMappingURL=detect-outside.js.map
-// EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/icon-button/index.js
-var icon_button = __webpack_require__(85);
+// EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/button/index.js
+var build_module_button = __webpack_require__(72);
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/scroll-lock/index.js
 
@@ -8034,6 +9179,10 @@ var icon_button = __webpack_require__(85);
 
 
 
+
+function scroll_lock_createSuper(Derived) { return function () { var Super = Object(getPrototypeOf["a" /* default */])(Derived), result; if (scroll_lock_isNativeReflectConstruct()) { var NewTarget = Object(getPrototypeOf["a" /* default */])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(possibleConstructorReturn["a" /* default */])(this, result); }; }
+
+function scroll_lock_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 /**
  * WordPress dependencies
@@ -8122,66 +9271,269 @@ function createScrollLockComponent() {
     --lockCounter;
   }
 
-  return (
-    /*#__PURE__*/
-    function (_Component) {
-      Object(inherits["a" /* default */])(ScrollLock, _Component);
+  return /*#__PURE__*/function (_Component) {
+    Object(inherits["a" /* default */])(ScrollLock, _Component);
 
-      function ScrollLock() {
-        Object(classCallCheck["a" /* default */])(this, ScrollLock);
+    var _super = scroll_lock_createSuper(ScrollLock);
 
-        return Object(possibleConstructorReturn["a" /* default */])(this, Object(getPrototypeOf["a" /* default */])(ScrollLock).apply(this, arguments));
+    function ScrollLock() {
+      Object(classCallCheck["a" /* default */])(this, ScrollLock);
+
+      return _super.apply(this, arguments);
+    }
+
+    Object(createClass["a" /* default */])(ScrollLock, [{
+      key: "componentDidMount",
+
+      /**
+       * Requests scroll lock on mount.
+       */
+      value: function componentDidMount() {
+        requestLock();
       }
+      /**
+       * Releases scroll lock before unmount.
+       */
 
-      Object(createClass["a" /* default */])(ScrollLock, [{
-        key: "componentDidMount",
+    }, {
+      key: "componentWillUnmount",
+      value: function componentWillUnmount() {
+        releaseLock();
+      }
+      /**
+       * Render nothing as this component is merely a way to declare scroll lock.
+       *
+       * @return {null} Render nothing by returning `null`.
+       */
 
-        /**
-         * Requests scroll lock on mount.
-         */
-        value: function componentDidMount() {
-          requestLock();
-        }
-        /**
-         * Releases scroll lock before unmount.
-         */
+    }, {
+      key: "render",
+      value: function render() {
+        return null;
+      }
+    }]);
 
-      }, {
-        key: "componentWillUnmount",
-        value: function componentWillUnmount() {
-          releaseLock();
-        }
-        /**
-         * Render nothing as this component is merely a way to declare scroll lock.
-         *
-         * @return {null} Render nothing by returning `null`.
-         */
-
-      }, {
-        key: "render",
-        value: function render() {
-          return null;
-        }
-      }]);
-
-      return ScrollLock;
-    }(external_this_wp_element_["Component"])
-  );
+    return ScrollLock;
+  }(external_this_wp_element_["Component"]);
 }
 /* harmony default export */ var scroll_lock = (createScrollLockComponent());
 //# sourceMappingURL=index.js.map
 // EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/isolated-event-container/index.js
-var isolated_event_container = __webpack_require__(96);
+var isolated_event_container = __webpack_require__(99);
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 3 modules
-var toConsumableArray = __webpack_require__(17);
+// EXTERNAL MODULE: ./node_modules/@wordpress/components/build-module/slot-fill/bubbles-virtually/slot-fill-context.js
+var slot_fill_context = __webpack_require__(54);
 
+// CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/slot-fill/bubbles-virtually/use-slot.js
+
+
+function use_slot_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function use_slot_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { use_slot_ownKeys(Object(source), true).forEach(function (key) { Object(defineProperty["a" /* default */])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { use_slot_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+/**
+ * WordPress dependencies
+ */
+
+/**
+ * Internal dependencies
+ */
+
+
+function use_slot_useSlot(name) {
+  var registry = Object(external_this_wp_element_["useContext"])(slot_fill_context["a" /* default */]);
+  var slot = registry.slots[name] || {};
+  var slotFills = registry.fills[name];
+  var fills = Object(external_this_wp_element_["useMemo"])(function () {
+    return slotFills || [];
+  }, [slotFills]);
+  var updateSlot = Object(external_this_wp_element_["useCallback"])(function (fillProps) {
+    registry.updateSlot(name, fillProps);
+  }, [name, registry.updateSlot]);
+  var unregisterSlot = Object(external_this_wp_element_["useCallback"])(function (slotRef) {
+    registry.unregisterSlot(name, slotRef);
+  }, [name, registry.unregisterSlot]);
+  var registerFill = Object(external_this_wp_element_["useCallback"])(function (fillRef) {
+    registry.registerFill(name, fillRef);
+  }, [name, registry.registerFill]);
+  var unregisterFill = Object(external_this_wp_element_["useCallback"])(function (fillRef) {
+    registry.unregisterFill(name, fillRef);
+  }, [name, registry.unregisterFill]);
+  return use_slot_objectSpread({}, slot, {
+    updateSlot: updateSlot,
+    unregisterSlot: unregisterSlot,
+    fills: fills,
+    registerFill: registerFill,
+    unregisterFill: unregisterFill
+  });
+}
+//# sourceMappingURL=use-slot.js.map
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
-var assertThisInitialized = __webpack_require__(5);
+var assertThisInitialized = __webpack_require__(18);
 
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/superPropBase.js
+
+function _superPropBase(object, property) {
+  while (!Object.prototype.hasOwnProperty.call(object, property)) {
+    object = Object(getPrototypeOf["a" /* default */])(object);
+    if (object === null) break;
+  }
+
+  return object;
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/get.js
+
+function get_get(target, property, receiver) {
+  if (typeof Reflect !== "undefined" && Reflect.get) {
+    get_get = Reflect.get;
+  } else {
+    get_get = function _get(target, property, receiver) {
+      var base = _superPropBase(target, property);
+      if (!base) return;
+      var desc = Object.getOwnPropertyDescriptor(base, property);
+
+      if (desc.get) {
+        return desc.get.call(receiver);
+      }
+
+      return desc.value;
+    };
+  }
+
+  return get_get(target, property, receiver || target);
+}
 // EXTERNAL MODULE: external "lodash"
 var external_lodash_ = __webpack_require__(2);
 
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 3 modules
+var toConsumableArray = __webpack_require__(28);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/typeof.js
+var esm_typeof = __webpack_require__(55);
+
+// EXTERNAL MODULE: ./node_modules/@wordpress/is-shallow-equal/lib/index.js
+var lib = __webpack_require__(83);
+var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/slot-fill/bubbles-virtually/slot-fill-provider.js
+
+
+
+
+
+
+
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return Object(esm_typeof["a" /* default */])(key) === "symbol" ? key : String(key); }
+
+function _toPrimitive(input, hint) { if (Object(esm_typeof["a" /* default */])(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (Object(esm_typeof["a" /* default */])(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
+function slot_fill_provider_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function slot_fill_provider_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { slot_fill_provider_ownKeys(Object(source), true).forEach(function (key) { Object(defineProperty["a" /* default */])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { slot_fill_provider_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+/**
+ * WordPress dependencies
+ */
+
+
+/**
+ * Internal dependencies
+ */
+
+
+
+function useSlotRegistry() {
+  var _useState = Object(external_this_wp_element_["useState"])({}),
+      _useState2 = Object(slicedToArray["a" /* default */])(_useState, 2),
+      slots = _useState2[0],
+      setSlots = _useState2[1];
+
+  var _useState3 = Object(external_this_wp_element_["useState"])({}),
+      _useState4 = Object(slicedToArray["a" /* default */])(_useState3, 2),
+      fills = _useState4[0],
+      setFills = _useState4[1];
+
+  var registerSlot = Object(external_this_wp_element_["useCallback"])(function (name, ref, fillProps) {
+    setSlots(function (prevSlots) {
+      var slot = prevSlots[name] || {};
+      return slot_fill_provider_objectSpread({}, prevSlots, Object(defineProperty["a" /* default */])({}, name, slot_fill_provider_objectSpread({}, slot, {
+        ref: ref || slot.ref,
+        fillProps: fillProps || slot.fillProps || {}
+      })));
+    });
+  }, []);
+  var unregisterSlot = Object(external_this_wp_element_["useCallback"])(function (name, ref) {
+    setSlots(function (prevSlots) {
+      var slot = prevSlots[name],
+          nextSlots = Object(objectWithoutProperties["a" /* default */])(prevSlots, [name].map(_toPropertyKey)); // Make sure we're not unregistering a slot registered by another element
+      // See https://github.com/WordPress/gutenberg/pull/19242#issuecomment-590295412
+
+
+      if ((slot === null || slot === void 0 ? void 0 : slot.ref) === ref) {
+        return nextSlots;
+      }
+
+      return prevSlots;
+    });
+  }, []);
+  var updateSlot = Object(external_this_wp_element_["useCallback"])(function (name, fillProps) {
+    var slot = slots[name];
+
+    if (!slot) {
+      return;
+    }
+
+    if (!lib_default()(slot.fillProps, fillProps)) {
+      slot.fillProps = fillProps;
+      var slotFills = fills[name];
+
+      if (slotFills) {
+        // Force update fills
+        slotFills.map(function (fill) {
+          return fill.current.rerender();
+        });
+      }
+    }
+  }, [slots, fills]);
+  var registerFill = Object(external_this_wp_element_["useCallback"])(function (name, ref) {
+    setFills(function (prevFills) {
+      return slot_fill_provider_objectSpread({}, prevFills, Object(defineProperty["a" /* default */])({}, name, [].concat(Object(toConsumableArray["a" /* default */])(prevFills[name] || []), [ref])));
+    });
+  }, []);
+  var unregisterFill = Object(external_this_wp_element_["useCallback"])(function (name, ref) {
+    setFills(function (prevFills) {
+      if (prevFills[name]) {
+        return slot_fill_provider_objectSpread({}, prevFills, Object(defineProperty["a" /* default */])({}, name, prevFills[name].filter(function (fillRef) {
+          return fillRef !== ref;
+        })));
+      }
+
+      return prevFills;
+    });
+  }, []); // Memoizing the return value so it can be directly passed to Provider value
+
+  var registry = Object(external_this_wp_element_["useMemo"])(function () {
+    return {
+      slots: slots,
+      fills: fills,
+      registerSlot: registerSlot,
+      updateSlot: updateSlot,
+      unregisterSlot: unregisterSlot,
+      registerFill: registerFill,
+      unregisterFill: unregisterFill
+    };
+  }, [slots, fills, registerSlot, updateSlot, unregisterSlot, registerFill, unregisterFill]);
+  return registry;
+}
+
+function slot_fill_provider_SlotFillProvider(_ref) {
+  var children = _ref.children;
+  var registry = useSlotRegistry();
+  return Object(external_this_wp_element_["createElement"])(slot_fill_context["a" /* default */].Provider, {
+    value: registry
+  }, children);
+}
+//# sourceMappingURL=slot-fill-provider.js.map
 // CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/slot-fill/context.js
 
 
@@ -8193,12 +9545,21 @@ var external_lodash_ = __webpack_require__(2);
 
 
 
+function context_createSuper(Derived) { return function () { var Super = Object(getPrototypeOf["a" /* default */])(Derived), result; if (context_isNativeReflectConstruct()) { var NewTarget = Object(getPrototypeOf["a" /* default */])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(possibleConstructorReturn["a" /* default */])(this, result); }; }
+
+function context_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
 /**
  * External dependencies
  */
 
 /**
  * WordPress dependencies
+ */
+
+
+/**
+ * Internal dependencies
  */
 
 
@@ -8214,17 +9575,17 @@ var SlotFillContext = Object(external_this_wp_element_["createContext"])({
 var Provider = SlotFillContext.Provider,
     Consumer = SlotFillContext.Consumer;
 
-var context_SlotFillProvider =
-/*#__PURE__*/
-function (_Component) {
+var context_SlotFillProvider = /*#__PURE__*/function (_Component) {
   Object(inherits["a" /* default */])(SlotFillProvider, _Component);
+
+  var _super = context_createSuper(SlotFillProvider);
 
   function SlotFillProvider() {
     var _this;
 
     Object(classCallCheck["a" /* default */])(this, SlotFillProvider);
 
-    _this = Object(possibleConstructorReturn["a" /* default */])(this, Object(getPrototypeOf["a" /* default */])(SlotFillProvider).apply(this, arguments));
+    _this = _super.apply(this, arguments);
     _this.registerSlot = _this.registerSlot.bind(Object(assertThisInitialized["a" /* default */])(_this));
     _this.registerFill = _this.registerFill.bind(Object(assertThisInitialized["a" /* default */])(_this));
     _this.unregisterSlot = _this.unregisterSlot.bind(Object(assertThisInitialized["a" /* default */])(_this));
@@ -8351,7 +9712,7 @@ function (_Component) {
     value: function render() {
       return Object(external_this_wp_element_["createElement"])(Provider, {
         value: this.contextValue
-      }, this.props.children);
+      }, Object(external_this_wp_element_["createElement"])(slot_fill_provider_SlotFillProvider, null, this.props.children));
     }
   }]);
 
@@ -8387,90 +9748,6 @@ var context_useSlot = function useSlot(name) {
 /* harmony default export */ var context = (context_SlotFillProvider);
 
 //# sourceMappingURL=context.js.map
-// CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/slot-fill/fill.js
-
-
-
-/**
- * External dependencies
- */
-
-/**
- * WordPress dependencies
- */
-
-
-/**
- * Internal dependencies
- */
-
-
-var occurrences = 0;
-
-function FillComponent(_ref) {
-  var name = _ref.name,
-      children = _ref.children,
-      registerFill = _ref.registerFill,
-      unregisterFill = _ref.unregisterFill;
-  var slot = context_useSlot(name);
-  var ref = Object(external_this_wp_element_["useRef"])({
-    name: name,
-    children: children
-  });
-
-  if (!ref.current.occurrence) {
-    ref.current.occurrence = ++occurrences;
-  }
-
-  Object(external_this_wp_element_["useLayoutEffect"])(function () {
-    registerFill(name, ref.current);
-    return function () {
-      return unregisterFill(name, ref.current);
-    };
-  }, []);
-  Object(external_this_wp_element_["useLayoutEffect"])(function () {
-    ref.current.children = children;
-
-    if (slot && !slot.props.bubblesVirtually) {
-      slot.forceUpdate();
-    }
-  }, [children]);
-  Object(external_this_wp_element_["useLayoutEffect"])(function () {
-    if (name === ref.current.name) {
-      // ignore initial effect
-      return;
-    }
-
-    unregisterFill(ref.current.name, ref.current);
-    ref.current.name = name;
-    registerFill(name, ref.current);
-  }, [name]);
-
-  if (!slot || !slot.node || !slot.props.bubblesVirtually) {
-    return null;
-  } // If a function is passed as a child, provide it with the fillProps.
-
-
-  if (Object(external_lodash_["isFunction"])(children)) {
-    children = children(slot.props.fillProps);
-  }
-
-  return Object(external_this_wp_element_["createPortal"])(children, slot.node);
-}
-
-var fill_Fill = function Fill(props) {
-  return Object(external_this_wp_element_["createElement"])(Consumer, null, function (_ref2) {
-    var registerFill = _ref2.registerFill,
-        unregisterFill = _ref2.unregisterFill;
-    return Object(external_this_wp_element_["createElement"])(FillComponent, Object(esm_extends["a" /* default */])({}, props, {
-      registerFill: registerFill,
-      unregisterFill: unregisterFill
-    }));
-  });
-};
-
-/* harmony default export */ var slot_fill_fill = (fill_Fill);
-//# sourceMappingURL=fill.js.map
 // CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/slot-fill/slot.js
 
 
@@ -8481,6 +9758,11 @@ var fill_Fill = function Fill(props) {
 
 
 
+
+function slot_createSuper(Derived) { return function () { var Super = Object(getPrototypeOf["a" /* default */])(Derived), result; if (slot_isNativeReflectConstruct()) { var NewTarget = Object(getPrototypeOf["a" /* default */])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(possibleConstructorReturn["a" /* default */])(this, result); }; }
+
+function slot_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
 /**
  * External dependencies
  */
@@ -8496,17 +9778,18 @@ var fill_Fill = function Fill(props) {
 
 
 
-var slot_SlotComponent =
-/*#__PURE__*/
-function (_Component) {
+var slot_SlotComponent = /*#__PURE__*/function (_Component) {
   Object(inherits["a" /* default */])(SlotComponent, _Component);
+
+  var _super = slot_createSuper(SlotComponent);
 
   function SlotComponent() {
     var _this;
 
     Object(classCallCheck["a" /* default */])(this, SlotComponent);
 
-    _this = Object(possibleConstructorReturn["a" /* default */])(this, Object(getPrototypeOf["a" /* default */])(SlotComponent).apply(this, arguments));
+    _this = _super.apply(this, arguments);
+    _this.isUnmounted = false;
     _this.bindNode = _this.bindNode.bind(Object(assertThisInitialized["a" /* default */])(_this));
     return _this;
   }
@@ -8521,6 +9804,7 @@ function (_Component) {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       var unregisterSlot = this.props.unregisterSlot;
+      this.isUnmounted = true;
       unregisterSlot(this.props.name, this);
     }
   }, {
@@ -8542,25 +9826,23 @@ function (_Component) {
       this.node = node;
     }
   }, {
+    key: "forceUpdate",
+    value: function forceUpdate() {
+      if (this.isUnmounted) {
+        return;
+      }
+
+      get_get(Object(getPrototypeOf["a" /* default */])(SlotComponent.prototype), "forceUpdate", this).call(this);
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props2 = this.props,
           children = _this$props2.children,
           name = _this$props2.name,
-          _this$props2$bubblesV = _this$props2.bubblesVirtually,
-          bubblesVirtually = _this$props2$bubblesV === void 0 ? false : _this$props2$bubblesV,
           _this$props2$fillProp = _this$props2.fillProps,
           fillProps = _this$props2$fillProp === void 0 ? {} : _this$props2$fillProp,
-          getFills = _this$props2.getFills,
-          className = _this$props2.className;
-
-      if (bubblesVirtually) {
-        return Object(external_this_wp_element_["createElement"])("div", {
-          ref: this.bindNode,
-          className: className
-        });
-      }
-
+          getFills = _this$props2.getFills;
       var fills = Object(external_lodash_["map"])(getFills(name, this), function (fill) {
         var fillKey = fill.occurrence;
         var fillChildren = Object(external_lodash_["isFunction"])(fill.children) ? fill.children(fillProps) : fill.children;
@@ -8600,9 +9882,237 @@ var slot_Slot = function Slot(props) {
 
 /* harmony default export */ var slot_fill_slot = (slot_Slot);
 //# sourceMappingURL=slot.js.map
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
-var defineProperty = __webpack_require__(13);
+// CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/slot-fill/fill.js
 
+
+
+/**
+ * External dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+
+/**
+ * Internal dependencies
+ */
+
+
+var occurrences = 0;
+
+function fill_FillComponent(_ref) {
+  var name = _ref.name,
+      children = _ref.children,
+      registerFill = _ref.registerFill,
+      unregisterFill = _ref.unregisterFill;
+  var slot = context_useSlot(name);
+  var ref = Object(external_this_wp_element_["useRef"])({
+    name: name,
+    children: children
+  });
+
+  if (!ref.current.occurrence) {
+    ref.current.occurrence = ++occurrences;
+  }
+
+  Object(external_this_wp_element_["useLayoutEffect"])(function () {
+    registerFill(name, ref.current);
+    return function () {
+      return unregisterFill(name, ref.current);
+    };
+  }, []);
+  Object(external_this_wp_element_["useLayoutEffect"])(function () {
+    ref.current.children = children;
+
+    if (slot) {
+      slot.forceUpdate();
+    }
+  }, [children]);
+  Object(external_this_wp_element_["useLayoutEffect"])(function () {
+    if (name === ref.current.name) {
+      // ignore initial effect
+      return;
+    }
+
+    unregisterFill(ref.current.name, ref.current);
+    ref.current.name = name;
+    registerFill(name, ref.current);
+  }, [name]);
+
+  if (!slot || !slot.node) {
+    return null;
+  } // If a function is passed as a child, provide it with the fillProps.
+
+
+  if (Object(external_lodash_["isFunction"])(children)) {
+    children = children(slot.props.fillProps);
+  }
+
+  return Object(external_this_wp_element_["createPortal"])(children, slot.node);
+}
+
+var fill_Fill = function Fill(props) {
+  return Object(external_this_wp_element_["createElement"])(Consumer, null, function (_ref2) {
+    var registerFill = _ref2.registerFill,
+        unregisterFill = _ref2.unregisterFill;
+    return Object(external_this_wp_element_["createElement"])(fill_FillComponent, Object(esm_extends["a" /* default */])({}, props, {
+      registerFill: registerFill,
+      unregisterFill: unregisterFill
+    }));
+  });
+};
+
+/* harmony default export */ var slot_fill_fill = (fill_Fill);
+//# sourceMappingURL=fill.js.map
+// CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/slot-fill/bubbles-virtually/slot.js
+
+
+
+
+/**
+ * WordPress dependencies
+ */
+
+/**
+ * Internal dependencies
+ */
+
+
+function bubbles_virtually_slot_Slot(_ref) {
+  var name = _ref.name,
+      _ref$fillProps = _ref.fillProps,
+      fillProps = _ref$fillProps === void 0 ? {} : _ref$fillProps,
+      _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'div' : _ref$as,
+      props = Object(objectWithoutProperties["a" /* default */])(_ref, ["name", "fillProps", "as"]);
+
+  var registry = Object(external_this_wp_element_["useContext"])(slot_fill_context["a" /* default */]);
+  var ref = Object(external_this_wp_element_["useRef"])();
+  Object(external_this_wp_element_["useLayoutEffect"])(function () {
+    registry.registerSlot(name, ref, fillProps);
+    return function () {
+      registry.unregisterSlot(name, ref);
+    }; // We are not including fillProps in the deps because we don't want to
+    // unregister and register the slot whenever fillProps change, which would
+    // cause the fill to be re-mounted. We are only considering the initial value
+    // of fillProps.
+  }, [registry.registerSlot, registry.unregisterSlot, name]); // fillProps may be an update that interacts with the layout, so we
+  // useLayoutEffect
+
+  Object(external_this_wp_element_["useLayoutEffect"])(function () {
+    registry.updateSlot(name, fillProps);
+  });
+  return Object(external_this_wp_element_["createElement"])(Component, Object(esm_extends["a" /* default */])({
+    ref: ref
+  }, props));
+}
+//# sourceMappingURL=slot.js.map
+// CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/slot-fill/bubbles-virtually/fill.js
+
+
+/**
+ * WordPress dependencies
+ */
+
+/**
+ * Internal dependencies
+ */
+
+
+
+function useForceUpdate() {
+  var _useState = Object(external_this_wp_element_["useState"])({}),
+      _useState2 = Object(slicedToArray["a" /* default */])(_useState, 2),
+      setState = _useState2[1];
+
+  return function () {
+    return setState({});
+  };
+}
+
+function bubbles_virtually_fill_Fill(_ref) {
+  var name = _ref.name,
+      children = _ref.children;
+  var slot = use_slot_useSlot(name);
+  var ref = Object(external_this_wp_element_["useRef"])({
+    rerender: useForceUpdate()
+  });
+  Object(external_this_wp_element_["useEffect"])(function () {
+    // We register fills so we can keep track of their existance.
+    // Some Slot implementations need to know if there're already fills
+    // registered so they can choose to render themselves or not.
+    slot.registerFill(ref);
+    return function () {
+      slot.unregisterFill(ref);
+    };
+  }, [slot.registerFill, slot.unregisterFill]);
+
+  if (!slot.ref || !slot.ref.current) {
+    return null;
+  }
+
+  if (typeof children === 'function') {
+    children = children(slot.fillProps);
+  }
+
+  return Object(external_this_wp_element_["createPortal"])(children, slot.ref.current);
+}
+//# sourceMappingURL=fill.js.map
+// CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/slot-fill/index.js
+
+
+
+
+/**
+ * Internal dependencies
+ */
+
+
+
+
+
+
+function slot_fill_Slot(_ref) {
+  var bubblesVirtually = _ref.bubblesVirtually,
+      props = Object(objectWithoutProperties["a" /* default */])(_ref, ["bubblesVirtually"]);
+
+  if (bubblesVirtually) {
+    return Object(external_this_wp_element_["createElement"])(bubbles_virtually_slot_Slot, props);
+  }
+
+  return Object(external_this_wp_element_["createElement"])(slot_fill_slot, props);
+}
+function slot_fill_Fill(props) {
+  // We're adding both Fills here so they can register themselves before
+  // their respective slot has been registered. Only the Fill that has a slot
+  // will render. The other one will return null.
+  return Object(external_this_wp_element_["createElement"])(external_this_wp_element_["Fragment"], null, Object(external_this_wp_element_["createElement"])(slot_fill_fill, props), Object(external_this_wp_element_["createElement"])(bubbles_virtually_fill_Fill, props));
+}
+function createSlotFill(name) {
+  var FillComponent = function FillComponent(props) {
+    return Object(external_this_wp_element_["createElement"])(slot_fill_Fill, Object(esm_extends["a" /* default */])({
+      name: name
+    }, props));
+  };
+
+  FillComponent.displayName = name + 'Fill';
+
+  var SlotComponent = function SlotComponent(props) {
+    return Object(external_this_wp_element_["createElement"])(slot_fill_Slot, Object(esm_extends["a" /* default */])({
+      name: name
+    }, props));
+  };
+
+  SlotComponent.displayName = name + 'Slot';
+  return {
+    Fill: FillComponent,
+    Slot: SlotComponent
+  };
+}
+
+//# sourceMappingURL=index.js.map
 // CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/animate/index.js
 
 
@@ -8674,6 +10184,7 @@ function Animate(_ref) {
 
 
 
+
 /**
  * Internal dependencies
  */
@@ -8716,7 +10227,7 @@ function computeAnchorRect(anchorRefFallback, anchorRect, getAnchorRect) {
   }
 
   if (anchorRef !== false) {
-    if (!anchorRef) {
+    if (!anchorRef || !window.Range || !window.Element || !window.DOMRect) {
       return;
     }
 
@@ -8724,7 +10235,22 @@ function computeAnchorRect(anchorRefFallback, anchorRect, getAnchorRect) {
       return Object(dom["a" /* getRectangleFromRange */])(anchorRef);
     }
 
-    var _rect = anchorRef.getBoundingClientRect();
+    if (anchorRef instanceof window.Element) {
+      var _rect2 = anchorRef.getBoundingClientRect();
+
+      if (shouldAnchorIncludePadding) {
+        return _rect2;
+      }
+
+      return withoutPadding(_rect2, anchorRef);
+    }
+
+    var top = anchorRef.top,
+        bottom = anchorRef.bottom;
+    var topRect = top.getBoundingClientRect();
+    var bottomRect = bottom.getBoundingClientRect();
+
+    var _rect = new window.DOMRect(topRect.left, topRect.top, topRect.width, bottomRect.bottom - topRect.top);
 
     if (shouldAnchorIncludePadding) {
       return _rect;
@@ -8745,21 +10271,6 @@ function computeAnchorRect(anchorRefFallback, anchorRect, getAnchorRect) {
   }
 
   return withoutPadding(rect, parentNode);
-}
-
-function addBuffer(rect) {
-  var verticalBuffer = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-  var horizontalBuffer = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-  return {
-    x: rect.left - horizontalBuffer,
-    y: rect.top - verticalBuffer,
-    width: rect.width + 2 * horizontalBuffer,
-    height: rect.height + 2 * verticalBuffer,
-    left: rect.left - horizontalBuffer,
-    right: rect.right + horizontalBuffer,
-    top: rect.top - verticalBuffer,
-    bottom: rect.bottom + verticalBuffer
-  };
 }
 
 function withoutPadding(rect, element) {
@@ -8893,16 +10404,15 @@ var popover_Popover = function Popover(_ref2) {
       children = _ref2.children,
       className = _ref2.className,
       _ref2$noArrow = _ref2.noArrow,
-      noArrow = _ref2$noArrow === void 0 ? false : _ref2$noArrow,
+      noArrow = _ref2$noArrow === void 0 ? true : _ref2$noArrow,
+      isAlternate = _ref2.isAlternate,
       _ref2$position = _ref2.position,
-      position = _ref2$position === void 0 ? 'top' : _ref2$position,
+      position = _ref2$position === void 0 ? 'bottom right' : _ref2$position,
       range = _ref2.range,
       _ref2$focusOnMount = _ref2.focusOnMount,
       focusOnMount = _ref2$focusOnMount === void 0 ? 'firstElement' : _ref2$focusOnMount,
       anchorRef = _ref2.anchorRef,
       shouldAnchorIncludePadding = _ref2.shouldAnchorIncludePadding,
-      anchorVerticalBuffer = _ref2.anchorVerticalBuffer,
-      anchorHorizontalBuffer = _ref2.anchorHorizontalBuffer,
       anchorRect = _ref2.anchorRect,
       getAnchorRect = _ref2.getAnchorRect,
       expandOnMobile = _ref2.expandOnMobile,
@@ -8910,12 +10420,16 @@ var popover_Popover = function Popover(_ref2) {
       animate = _ref2$animate === void 0 ? true : _ref2$animate,
       onClickOutside = _ref2.onClickOutside,
       onFocusOutside = _ref2.onFocusOutside,
-      contentProps = Object(objectWithoutProperties["a" /* default */])(_ref2, ["headerTitle", "onClose", "onKeyDown", "children", "className", "noArrow", "position", "range", "focusOnMount", "anchorRef", "shouldAnchorIncludePadding", "anchorVerticalBuffer", "anchorHorizontalBuffer", "anchorRect", "getAnchorRect", "expandOnMobile", "animate", "onClickOutside", "onFocusOutside"]);
+      __unstableSticky = _ref2.__unstableSticky,
+      _ref2$__unstableSlotN = _ref2.__unstableSlotName,
+      __unstableSlotName = _ref2$__unstableSlotN === void 0 ? SLOT_NAME : _ref2$__unstableSlotN,
+      __unstableObserveElement = _ref2.__unstableObserveElement,
+      __unstableBoundaryParent = _ref2.__unstableBoundaryParent,
+      contentProps = Object(objectWithoutProperties["a" /* default */])(_ref2, ["headerTitle", "onClose", "onKeyDown", "children", "className", "noArrow", "isAlternate", "position", "range", "focusOnMount", "anchorRef", "shouldAnchorIncludePadding", "anchorRect", "getAnchorRect", "expandOnMobile", "animate", "onClickOutside", "onFocusOutside", "__unstableSticky", "__unstableSlotName", "__unstableObserveElement", "__unstableBoundaryParent"]);
 
   var anchorRefFallback = Object(external_this_wp_element_["useRef"])(null);
   var contentRef = Object(external_this_wp_element_["useRef"])(null);
   var containerRef = Object(external_this_wp_element_["useRef"])();
-  var contentRect = Object(external_this_wp_element_["useRef"])();
   var isMobileViewport = Object(use_viewport_match["a" /* default */])('medium', '<');
 
   var _useState = Object(external_this_wp_element_["useState"])(),
@@ -8923,37 +10437,65 @@ var popover_Popover = function Popover(_ref2) {
       animateOrigin = _useState2[0],
       setAnimateOrigin = _useState2[1];
 
+  var slot = use_slot_useSlot(__unstableSlotName);
   var isExpanded = expandOnMobile && isMobileViewport;
-  noArrow = isExpanded || noArrow;
-  Object(external_this_wp_element_["useEffect"])(function () {
-    var containerEl = containerRef.current;
-    var contentEl = contentRef.current;
 
+  var _useResizeObserver = use_resize_observer(),
+      _useResizeObserver2 = Object(slicedToArray["a" /* default */])(_useResizeObserver, 2),
+      containerResizeListener = _useResizeObserver2[0],
+      contentSize = _useResizeObserver2[1];
+
+  noArrow = isExpanded || noArrow;
+  Object(external_this_wp_element_["useLayoutEffect"])(function () {
     if (isExpanded) {
-      setClass(containerEl, 'is-without-arrow', noArrow);
-      setAttribute(containerEl, 'data-x-axis');
-      setAttribute(containerEl, 'data-y-axis');
-      setStyle(containerEl, 'top');
-      setStyle(containerEl, 'left');
-      setStyle(contentEl, 'maxHeight');
-      setStyle(contentEl, 'maxWidth');
+      setClass(containerRef.current, 'is-without-arrow', noArrow);
+      setClass(containerRef.current, 'is-alternate', isAlternate);
+      setAttribute(containerRef.current, 'data-x-axis');
+      setAttribute(containerRef.current, 'data-y-axis');
+      setStyle(containerRef.current, 'top');
+      setStyle(containerRef.current, 'left');
+      setStyle(contentRef.current, 'maxHeight');
+      setStyle(contentRef.current, 'maxWidth');
       return;
     }
 
     var refresh = function refresh() {
+      if (!containerRef.current || !contentRef.current) {
+        return;
+      }
+
       var anchor = computeAnchorRect(anchorRefFallback, anchorRect, getAnchorRect, anchorRef, shouldAnchorIncludePadding);
 
       if (!anchor) {
         return;
       }
 
-      anchor = addBuffer(anchor, anchorVerticalBuffer, anchorHorizontalBuffer);
+      var _containerRef$current = containerRef.current,
+          offsetParent = _containerRef$current.offsetParent,
+          ownerDocument = _containerRef$current.ownerDocument;
+      var relativeOffsetTop = 0; // If there is a positioned ancestor element that is not the body,
+      // subtract the position from the anchor rect. If the position of
+      // the popover is fixed, the offset parent is null or the body
+      // element, in which case the position is relative to the viewport.
+      // See https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetParent
 
-      if (!contentRect.current) {
-        contentRect.current = contentEl.getBoundingClientRect();
+      if (offsetParent && offsetParent !== ownerDocument.body) {
+        var offsetParentRect = offsetParent.getBoundingClientRect();
+        relativeOffsetTop = offsetParentRect.top;
+        anchor = new window.DOMRect(anchor.left - offsetParentRect.left, anchor.top - offsetParentRect.top, anchor.width, anchor.height);
       }
 
-      var _computePopoverPositi = computePopoverPosition(anchor, contentRect.current, position),
+      var boundaryElement;
+
+      if (__unstableBoundaryParent) {
+        var _containerRef$current2;
+
+        boundaryElement = (_containerRef$current2 = containerRef.current.closest('.popover-slot')) === null || _containerRef$current2 === void 0 ? void 0 : _containerRef$current2.parentNode;
+      }
+
+      var usedContentSize = !contentSize.height ? contentRef.current.getBoundingClientRect() : contentSize;
+
+      var _computePopoverPositi = computePopoverPosition(anchor, usedContentSize, position, __unstableSticky, containerRef.current, relativeOffsetTop, boundaryElement),
           popoverTop = _computePopoverPositi.popoverTop,
           popoverLeft = _computePopoverPositi.popoverLeft,
           xAxis = _computePopoverPositi.xAxis,
@@ -8961,13 +10503,17 @@ var popover_Popover = function Popover(_ref2) {
           contentHeight = _computePopoverPositi.contentHeight,
           contentWidth = _computePopoverPositi.contentWidth;
 
-      setClass(containerEl, 'is-without-arrow', noArrow || xAxis === 'center' && yAxis === 'middle');
-      setAttribute(containerEl, 'data-x-axis', xAxis);
-      setAttribute(containerEl, 'data-y-axis', yAxis);
-      setStyle(containerEl, 'top', typeof popoverTop === 'number' ? popoverTop + 'px' : '');
-      setStyle(containerEl, 'left', typeof popoverLeft === 'number' ? popoverLeft + 'px' : '');
-      setStyle(contentEl, 'maxHeight', typeof contentHeight === 'number' ? contentHeight + 'px' : '');
-      setStyle(contentEl, 'maxWidth', typeof contentWidth === 'number' ? contentWidth + 'px' : ''); // Compute the animation position
+      if (typeof popoverTop === 'number' && typeof popoverLeft === 'number') {
+        setStyle(containerRef.current, 'top', popoverTop + 'px');
+        setStyle(containerRef.current, 'left', popoverLeft + 'px');
+      }
+
+      setClass(containerRef.current, 'is-without-arrow', noArrow || xAxis === 'center' && yAxis === 'middle');
+      setClass(containerRef.current, 'is-alternate', isAlternate);
+      setAttribute(containerRef.current, 'data-x-axis', xAxis);
+      setAttribute(containerRef.current, 'data-y-axis', yAxis);
+      setStyle(contentRef.current, 'maxHeight', typeof contentHeight === 'number' ? contentHeight + 'px' : '');
+      setStyle(contentRef.current, 'maxWidth', typeof contentWidth === 'number' ? contentWidth + 'px' : ''); // Compute the animation position
 
       var yAxisMapping = {
         top: 'bottom',
@@ -8980,10 +10526,9 @@ var popover_Popover = function Popover(_ref2) {
       var animateYAxis = yAxisMapping[yAxis] || 'middle';
       var animateXAxis = xAxisMapping[xAxis] || 'center';
       setAnimateOrigin(animateXAxis + ' ' + animateYAxis);
-    }; // Height may still adjust between now and the next tick.
+    };
 
-
-    var timeoutId = window.setTimeout(refresh);
+    refresh();
     /*
      * There are sometimes we need to reposition or resize the popover that
      * are not handled by the resize/scroll window events (i.e. CSS changes
@@ -8993,20 +10538,45 @@ var popover_Popover = function Popover(_ref2) {
      */
 
     var intervalHandle = window.setInterval(refresh, 500);
+    var rafId;
+
+    var refreshOnAnimationFrame = function refreshOnAnimationFrame() {
+      window.cancelAnimationFrame(rafId);
+      rafId = window.requestAnimationFrame(refresh);
+    }; // Sometimes a click trigger a layout change that affects the popover
+    // position. This is an opportunity to immediately refresh rather than
+    // at the interval.
+
+
+    window.addEventListener('click', refreshOnAnimationFrame);
     window.addEventListener('resize', refresh);
     window.addEventListener('scroll', refresh, true);
+    var observer;
+
+    if (__unstableObserveElement) {
+      observer = new window.MutationObserver(refresh);
+      observer.observe(__unstableObserveElement, {
+        attributes: true
+      });
+    }
+
     return function () {
-      window.clearTimeout(timeoutId);
       window.clearInterval(intervalHandle);
       window.removeEventListener('resize', refresh);
       window.removeEventListener('scroll', refresh, true);
+      window.removeEventListener('click', refreshOnAnimationFrame);
+      window.cancelAnimationFrame(rafId);
+
+      if (observer) {
+        observer.disconnect();
+      }
     };
-  }, [isExpanded, anchorRect, getAnchorRect, anchorRef, shouldAnchorIncludePadding, anchorVerticalBuffer, anchorHorizontalBuffer, position]);
+  }, [isExpanded, anchorRect, getAnchorRect, anchorRef, shouldAnchorIncludePadding, position, contentSize, __unstableSticky, __unstableObserveElement, __unstableBoundaryParent]);
   useFocusContentOnMount(focusOnMount, contentRef); // Event handlers
 
   var maybeClose = function maybeClose(event) {
     // Close on escape
-    if (event.keyCode === keycodes_build_module["d" /* ESCAPE */] && onClose) {
+    if (event.keyCode === keycodes_build_module["b" /* ESCAPE */] && onClose) {
       event.stopPropagation();
       onClose();
     } // Preserve original content prop behavior
@@ -9075,24 +10645,29 @@ var popover_Popover = function Popover(_ref2) {
     return Object(external_this_wp_element_["createElement"])(isolated_event_container["a" /* default */], Object(esm_extends["a" /* default */])({
       className: classnames_default()('components-popover', className, animateClassName, {
         'is-expanded': isExpanded,
-        'is-without-arrow': noArrow
+        'is-without-arrow': noArrow,
+        'is-alternate': isAlternate
       })
     }, contentProps, {
       onKeyDown: maybeClose,
       ref: containerRef
-    }), isExpanded && Object(external_this_wp_element_["createElement"])("div", {
+    }), isExpanded && Object(external_this_wp_element_["createElement"])(scroll_lock, null), isExpanded && Object(external_this_wp_element_["createElement"])("div", {
       className: "components-popover__header"
     }, Object(external_this_wp_element_["createElement"])("span", {
       className: "components-popover__header-title"
-    }, headerTitle), Object(external_this_wp_element_["createElement"])(icon_button["a" /* default */], {
+    }, headerTitle), Object(external_this_wp_element_["createElement"])(build_module_button["a" /* default */], {
       className: "components-popover__close",
-      icon: "no-alt",
+      icon: library_close["a" /* default */],
       onClick: onClose
     })), Object(external_this_wp_element_["createElement"])("div", {
       ref: contentRef,
       className: "components-popover__content",
       tabIndex: "-1"
-    }, children));
+    }, Object(external_this_wp_element_["createElement"])("div", {
+      style: {
+        position: 'relative'
+      }
+    }, containerResizeListener, children)));
   })); // Apply focus to element as long as focusOnMount is truthy; false is
   // the only "disabled" value.
 
@@ -9100,29 +10675,30 @@ var popover_Popover = function Popover(_ref2) {
     content = Object(external_this_wp_element_["createElement"])(FocusManaged, null, content);
   }
 
-  return Object(external_this_wp_element_["createElement"])(Consumer, null, function (_ref4) {
-    var getSlot = _ref4.getSlot;
+  if (slot.ref) {
+    content = Object(external_this_wp_element_["createElement"])(slot_fill_Fill, {
+      name: __unstableSlotName
+    }, content);
+  }
 
-    // In case there is no slot context in which to render,
-    // default to an in-place rendering.
-    if (getSlot && getSlot(SLOT_NAME)) {
-      content = Object(external_this_wp_element_["createElement"])(slot_fill_fill, {
-        name: SLOT_NAME
-      }, content);
-    }
+  if (anchorRef || anchorRect) {
+    return content;
+  }
 
-    return Object(external_this_wp_element_["createElement"])("span", {
-      ref: anchorRefFallback
-    }, content, isMobileViewport && expandOnMobile && Object(external_this_wp_element_["createElement"])(scroll_lock, null));
-  });
+  return Object(external_this_wp_element_["createElement"])("span", {
+    ref: anchorRefFallback
+  }, content);
 };
 
 var PopoverContainer = popover_Popover;
 
-PopoverContainer.Slot = function () {
-  return Object(external_this_wp_element_["createElement"])(slot_fill_slot, {
+PopoverContainer.Slot = function (_ref4) {
+  var _ref4$name = _ref4.name,
+      name = _ref4$name === void 0 ? SLOT_NAME : _ref4$name;
+  return Object(external_this_wp_element_["createElement"])(slot_fill_Slot, {
     bubblesVirtually: true,
-    name: SLOT_NAME
+    name: name,
+    className: "popover-slot"
   });
 };
 
@@ -9131,21 +10707,21 @@ PopoverContainer.Slot = function () {
 
 /***/ }),
 
-/***/ 93:
+/***/ 97:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7);
-/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
-/* harmony import */ var _babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8);
-/* harmony import */ var _babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4);
-/* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(5);
-/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(9);
+/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(20);
+/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(21);
+/* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(18);
+/* harmony import */ var _babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(23);
+/* harmony import */ var _babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(7);
+/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(22);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(0);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(53);
-/* harmony import */ var _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(18);
-/* harmony import */ var _wordpress_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(50);
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(74);
+/* harmony import */ var _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(39);
+/* harmony import */ var _wordpress_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(51);
 
 
 
@@ -9153,6 +10729,10 @@ PopoverContainer.Slot = function () {
 
 
 
+
+function _createSuper(Derived) { return function () { var Super = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 /**
  * WordPress dependencies
@@ -9162,180 +10742,93 @@ PopoverContainer.Slot = function () {
 
 
 var withConstrainedTabbing = Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"])(function (WrappedComponent) {
-  return (
-    /*#__PURE__*/
-    function (_Component) {
-      Object(_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(_class, _Component);
+  return /*#__PURE__*/function (_Component) {
+    Object(_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(_class, _Component);
 
-      function _class() {
-        var _this;
+    var _super = _createSuper(_class);
 
-        Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this, _class);
+    function _class() {
+      var _this;
 
-        _this = Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(this, Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(_class).apply(this, arguments));
-        _this.focusContainRef = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createRef"])();
-        _this.handleTabBehaviour = _this.handleTabBehaviour.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(_this));
-        return _this;
+      Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(this, _class);
+
+      _this = _super.apply(this, arguments);
+      _this.focusContainRef = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createRef"])();
+      _this.handleTabBehaviour = _this.handleTabBehaviour.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_this));
+      return _this;
+    }
+
+    Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(_class, [{
+      key: "handleTabBehaviour",
+      value: function handleTabBehaviour(event) {
+        if (event.keyCode !== _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_8__[/* TAB */ "e"]) {
+          return;
+        }
+
+        var tabbables = _wordpress_dom__WEBPACK_IMPORTED_MODULE_9__[/* focus */ "a"].tabbable.find(this.focusContainRef.current);
+
+        if (!tabbables.length) {
+          return;
+        }
+
+        var firstTabbable = tabbables[0];
+        var lastTabbable = tabbables[tabbables.length - 1];
+
+        if (event.shiftKey && event.target === firstTabbable) {
+          event.preventDefault();
+          lastTabbable.focus();
+        } else if (!event.shiftKey && event.target === lastTabbable) {
+          event.preventDefault();
+          firstTabbable.focus();
+          /*
+           * When pressing Tab and none of the tabbables has focus, the keydown
+           * event happens on the wrapper div: move focus on the first tabbable.
+           */
+        } else if (!tabbables.includes(event.target)) {
+          event.preventDefault();
+          firstTabbable.focus();
+        }
       }
+    }, {
+      key: "render",
+      value: function render() {
+        // Disable reason: this component is non-interactive, but must capture
+        // events from the wrapped component to determine when the Tab key is used.
 
-      Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(_class, [{
-        key: "handleTabBehaviour",
-        value: function handleTabBehaviour(event) {
-          if (event.keyCode !== _wordpress_keycodes__WEBPACK_IMPORTED_MODULE_8__[/* TAB */ "h"]) {
-            return;
-          }
+        /* eslint-disable jsx-a11y/no-static-element-interactions */
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("div", {
+          onKeyDown: this.handleTabBehaviour,
+          ref: this.focusContainRef,
+          tabIndex: "-1"
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(WrappedComponent, this.props));
+        /* eslint-enable jsx-a11y/no-static-element-interactions */
+      }
+    }]);
 
-          var tabbables = _wordpress_dom__WEBPACK_IMPORTED_MODULE_9__[/* focus */ "a"].tabbable.find(this.focusContainRef.current);
-
-          if (!tabbables.length) {
-            return;
-          }
-
-          var firstTabbable = tabbables[0];
-          var lastTabbable = tabbables[tabbables.length - 1];
-
-          if (event.shiftKey && event.target === firstTabbable) {
-            event.preventDefault();
-            lastTabbable.focus();
-          } else if (!event.shiftKey && event.target === lastTabbable) {
-            event.preventDefault();
-            firstTabbable.focus();
-            /*
-             * When pressing Tab and none of the tabbables has focus, the keydown
-             * event happens on the wrapper div: move focus on the first tabbable.
-             */
-          } else if (!tabbables.includes(event.target)) {
-            event.preventDefault();
-            firstTabbable.focus();
-          }
-        }
-      }, {
-        key: "render",
-        value: function render() {
-          // Disable reason: this component is non-interactive, but must capture
-          // events from the wrapped component to determine when the Tab key is used.
-
-          /* eslint-disable jsx-a11y/no-static-element-interactions */
-          return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])("div", {
-            onKeyDown: this.handleTabBehaviour,
-            ref: this.focusContainRef,
-            tabIndex: "-1"
-          }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["createElement"])(WrappedComponent, this.props));
-          /* eslint-enable jsx-a11y/no-static-element-interactions */
-        }
-      }]);
-
-      return _class;
-    }(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["Component"])
-  );
+    return _class;
+  }(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__["Component"]);
 }, 'withConstrainedTabbing');
 /* harmony default export */ __webpack_exports__["a"] = (withConstrainedTabbing);
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 94:
+/***/ 98:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export logged */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return deprecated; });
-/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(48);
-/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_0__);
-/**
- * WordPress dependencies
- */
-
-/**
- * Object map tracking messages which have been logged, for use in ensuring a
- * message is only logged once.
- *
- * @type {Object}
- */
-
-var logged = Object.create(null);
-/**
- * Logs a message to notify developers about a deprecated feature.
- *
- * @param {string}  feature             Name of the deprecated feature.
- * @param {?Object} options             Personalisation options
- * @param {?string} options.version     Version in which the feature will be removed.
- * @param {?string} options.alternative Feature to use instead
- * @param {?string} options.plugin      Plugin name if it's a plugin feature
- * @param {?string} options.link        Link to documentation
- * @param {?string} options.hint        Additional message to help transition away from the deprecated feature.
- *
- * @example
- * ```js
- * import deprecated from '@wordpress/deprecated';
- *
- * deprecated( 'Eating meat', {
- * 	version: 'the future',
- * 	alternative: 'vegetables',
- * 	plugin: 'the earth',
- * 	hint: 'You may find it beneficial to transition gradually.',
- * } );
- *
- * // Logs: 'Eating meat is deprecated and will be removed from the earth in the future. Please use vegetables instead. Note: You may find it beneficial to transition gradually.'
- * ```
- */
-
-function deprecated(feature) {
-  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var version = options.version,
-      alternative = options.alternative,
-      plugin = options.plugin,
-      link = options.link,
-      hint = options.hint;
-  var pluginMessage = plugin ? " from ".concat(plugin) : '';
-  var versionMessage = version ? " and will be removed".concat(pluginMessage, " in version ").concat(version) : '';
-  var useInsteadMessage = alternative ? " Please use ".concat(alternative, " instead.") : '';
-  var linkMessage = link ? " See: ".concat(link) : '';
-  var hintMessage = hint ? " Note: ".concat(hint) : '';
-  var message = "".concat(feature, " is deprecated").concat(versionMessage, ".").concat(useInsteadMessage).concat(linkMessage).concat(hintMessage); // Skip if already logged.
-
-  if (message in logged) {
-    return;
-  }
-  /**
-   * Fires whenever a deprecated feature is encountered
-   *
-   * @param {string}  feature             Name of the deprecated feature.
-   * @param {?Object} options             Personalisation options
-   * @param {?string} options.version     Version in which the feature will be removed.
-   * @param {?string} options.alternative Feature to use instead
-   * @param {?string} options.plugin      Plugin name if it's a plugin feature
-   * @param {?string} options.link        Link to documentation
-   * @param {?string} options.hint        Additional message to help transition away from the deprecated feature.
-   * @param {?string} message             Message sent to console.warn
-   */
-
-
-  Object(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_0__["doAction"])('deprecated', feature, options, message); // eslint-disable-next-line no-console
-
-  console.warn(message);
-  logged[message] = true;
-}
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ 95:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(11);
-/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
-/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6);
-/* harmony import */ var _babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8);
-/* harmony import */ var _babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(4);
-/* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(5);
-/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(9);
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
+/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(20);
+/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(21);
+/* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(18);
+/* harmony import */ var _babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(23);
+/* harmony import */ var _babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(7);
+/* harmony import */ var _babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(22);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(0);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(2);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(53);
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(74);
 
 
 
@@ -9344,6 +10837,10 @@ function deprecated(feature) {
 
 
 
+
+function _createSuper(Derived) { return function () { var Super = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 /**
  * External dependencies
@@ -9388,132 +10885,131 @@ function isFocusNormalizedButton(element) {
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])(function (WrappedComponent) {
-  return (
-    /*#__PURE__*/
-    function (_Component) {
-      Object(_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(_class, _Component);
+  return /*#__PURE__*/function (_Component) {
+    Object(_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(_class, _Component);
 
-      function _class() {
-        var _this;
+    var _super = _createSuper(_class);
 
-        Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(this, _class);
+    function _class() {
+      var _this;
 
-        _this = Object(_babel_runtime_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(this, Object(_babel_runtime_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])(_class).apply(this, arguments));
-        _this.bindNode = _this.bindNode.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(_this));
-        _this.cancelBlurCheck = _this.cancelBlurCheck.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(_this));
-        _this.queueBlurCheck = _this.queueBlurCheck.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(_this));
-        _this.normalizeButtonFocus = _this.normalizeButtonFocus.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(_this));
-        return _this;
+      Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(this, _class);
+
+      _this = _super.apply(this, arguments);
+      _this.bindNode = _this.bindNode.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(_this));
+      _this.cancelBlurCheck = _this.cancelBlurCheck.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(_this));
+      _this.queueBlurCheck = _this.queueBlurCheck.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(_this));
+      _this.normalizeButtonFocus = _this.normalizeButtonFocus.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])(_this));
+      return _this;
+    }
+
+    Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_class, [{
+      key: "componentWillUnmount",
+      value: function componentWillUnmount() {
+        this.cancelBlurCheck();
       }
-
-      Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_class, [{
-        key: "componentWillUnmount",
-        value: function componentWillUnmount() {
+    }, {
+      key: "bindNode",
+      value: function bindNode(node) {
+        if (node) {
+          this.node = node;
+        } else {
+          delete this.node;
           this.cancelBlurCheck();
         }
-      }, {
-        key: "bindNode",
-        value: function bindNode(node) {
-          if (node) {
-            this.node = node;
-          } else {
-            delete this.node;
-            this.cancelBlurCheck();
-          }
+      }
+    }, {
+      key: "queueBlurCheck",
+      value: function queueBlurCheck(event) {
+        var _this2 = this;
+
+        // React does not allow using an event reference asynchronously
+        // due to recycling behavior, except when explicitly persisted.
+        event.persist(); // Skip blur check if clicking button. See `normalizeButtonFocus`.
+
+        if (this.preventBlurCheck) {
+          return;
         }
-      }, {
-        key: "queueBlurCheck",
-        value: function queueBlurCheck(event) {
-          var _this2 = this;
 
-          // React does not allow using an event reference asynchronously
-          // due to recycling behavior, except when explicitly persisted.
-          event.persist(); // Skip blur check if clicking button. See `normalizeButtonFocus`.
-
-          if (this.preventBlurCheck) {
+        this.blurCheckTimeout = setTimeout(function () {
+          // If document is not focused then focus should remain
+          // inside the wrapped component and therefore we cancel
+          // this blur event thereby leaving focus in place.
+          // https://developer.mozilla.org/en-US/docs/Web/API/Document/hasFocus.
+          if (!document.hasFocus()) {
+            event.preventDefault();
             return;
           }
 
-          this.blurCheckTimeout = setTimeout(function () {
-            // If document is not focused then focus should remain
-            // inside the wrapped component and therefore we cancel
-            // this blur event thereby leaving focus in place.
-            // https://developer.mozilla.org/en-US/docs/Web/API/Document/hasFocus.
-            if (!document.hasFocus()) {
-              event.preventDefault();
-              return;
-            }
-
-            if ('function' === typeof _this2.node.handleFocusOutside) {
-              _this2.node.handleFocusOutside(event);
-            }
-          }, 0);
-        }
-      }, {
-        key: "cancelBlurCheck",
-        value: function cancelBlurCheck() {
-          clearTimeout(this.blurCheckTimeout);
-        }
-        /**
-         * Handles a mousedown or mouseup event to respectively assign and
-         * unassign a flag for preventing blur check on button elements. Some
-         * browsers, namely Firefox and Safari, do not emit a focus event on
-         * button elements when clicked, while others do. The logic here
-         * intends to normalize this as treating click on buttons as focus.
-         *
-         * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
-         *
-         * @param {MouseEvent} event Event for mousedown or mouseup.
-         */
-
-      }, {
-        key: "normalizeButtonFocus",
-        value: function normalizeButtonFocus(event) {
-          var type = event.type,
-              target = event.target;
-          var isInteractionEnd = Object(lodash__WEBPACK_IMPORTED_MODULE_8__["includes"])(['mouseup', 'touchend'], type);
-
-          if (isInteractionEnd) {
-            this.preventBlurCheck = false;
-          } else if (isFocusNormalizedButton(target)) {
-            this.preventBlurCheck = true;
+          if ('function' === typeof _this2.node.handleFocusOutside) {
+            _this2.node.handleFocusOutside(event);
           }
-        }
-      }, {
-        key: "render",
-        value: function render() {
-          // Disable reason: See `normalizeButtonFocus` for browser-specific
-          // focus event normalization.
+        }, 0);
+      }
+    }, {
+      key: "cancelBlurCheck",
+      value: function cancelBlurCheck() {
+        clearTimeout(this.blurCheckTimeout);
+      }
+      /**
+       * Handles a mousedown or mouseup event to respectively assign and
+       * unassign a flag for preventing blur check on button elements. Some
+       * browsers, namely Firefox and Safari, do not emit a focus event on
+       * button elements when clicked, while others do. The logic here
+       * intends to normalize this as treating click on buttons as focus.
+       *
+       * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
+       *
+       * @param {MouseEvent} event Event for mousedown or mouseup.
+       */
 
-          /* eslint-disable jsx-a11y/no-static-element-interactions */
-          return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
-            onFocus: this.cancelBlurCheck,
-            onMouseDown: this.normalizeButtonFocus,
-            onMouseUp: this.normalizeButtonFocus,
-            onTouchStart: this.normalizeButtonFocus,
-            onTouchEnd: this.normalizeButtonFocus,
-            onBlur: this.queueBlurCheck
-          }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(WrappedComponent, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({
-            ref: this.bindNode
-          }, this.props)));
-          /* eslint-enable jsx-a11y/no-static-element-interactions */
-        }
-      }]);
+    }, {
+      key: "normalizeButtonFocus",
+      value: function normalizeButtonFocus(event) {
+        var type = event.type,
+            target = event.target;
+        var isInteractionEnd = Object(lodash__WEBPACK_IMPORTED_MODULE_8__["includes"])(['mouseup', 'touchend'], type);
 
-      return _class;
-    }(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["Component"])
-  );
+        if (isInteractionEnd) {
+          this.preventBlurCheck = false;
+        } else if (isFocusNormalizedButton(target)) {
+          this.preventBlurCheck = true;
+        }
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        // Disable reason: See `normalizeButtonFocus` for browser-specific
+        // focus event normalization.
+
+        /* eslint-disable jsx-a11y/no-static-element-interactions */
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", {
+          onFocus: this.cancelBlurCheck,
+          onMouseDown: this.normalizeButtonFocus,
+          onMouseUp: this.normalizeButtonFocus,
+          onTouchStart: this.normalizeButtonFocus,
+          onTouchEnd: this.normalizeButtonFocus,
+          onBlur: this.queueBlurCheck
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(WrappedComponent, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({
+          ref: this.bindNode
+        }, this.props)));
+        /* eslint-enable jsx-a11y/no-static-element-interactions */
+      }
+    }]);
+
+    return _class;
+  }(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["Component"]);
 }, 'withFocusOutside'));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 96:
+/***/ 99:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(11);
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16);
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(0);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
 
@@ -9543,523 +11039,6 @@ function stopPropagation(event) {
   }), children);
   /* eslint-enable jsx-a11y/no-static-element-interactions */
 }));
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ 97:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// UNUSED EXPORTS: Provider
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 3 modules
-var toConsumableArray = __webpack_require__(17);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/classCallCheck.js
-var classCallCheck = __webpack_require__(7);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/createClass.js
-var createClass = __webpack_require__(6);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js
-var possibleConstructorReturn = __webpack_require__(8);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js
-var getPrototypeOf = __webpack_require__(4);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/inherits.js + 1 modules
-var inherits = __webpack_require__(9);
-
-// EXTERNAL MODULE: external {"this":["wp","element"]}
-var external_this_wp_element_ = __webpack_require__(0);
-
-// EXTERNAL MODULE: external "lodash"
-var external_lodash_ = __webpack_require__(2);
-
-// EXTERNAL MODULE: ./node_modules/@wordpress/compose/build-module/utils/create-higher-order-component/index.js
-var create_higher_order_component = __webpack_require__(53);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
-var assertThisInitialized = __webpack_require__(5);
-
-// CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/higher-order/with-focus-return/context.js
-
-
-
-
-
-
-
-
-
-/**
- * External dependencies
- */
-
-/**
- * WordPress dependencies
- */
-
-
-
-var _createContext = Object(external_this_wp_element_["createContext"])({
-  focusHistory: []
-}),
-    Provider = _createContext.Provider,
-    Consumer = _createContext.Consumer;
-
-Provider.displayName = 'FocusReturnProvider';
-Consumer.displayName = 'FocusReturnConsumer';
-/**
- * The maximum history length to capture for the focus stack. When exceeded,
- * items should be shifted from the stack for each consecutive push.
- *
- * @type {number}
- */
-
-var MAX_STACK_LENGTH = 100;
-
-var context_FocusReturnProvider =
-/*#__PURE__*/
-function (_Component) {
-  Object(inherits["a" /* default */])(FocusReturnProvider, _Component);
-
-  function FocusReturnProvider() {
-    var _this;
-
-    Object(classCallCheck["a" /* default */])(this, FocusReturnProvider);
-
-    _this = Object(possibleConstructorReturn["a" /* default */])(this, Object(getPrototypeOf["a" /* default */])(FocusReturnProvider).apply(this, arguments));
-    _this.onFocus = _this.onFocus.bind(Object(assertThisInitialized["a" /* default */])(_this));
-    _this.state = {
-      focusHistory: []
-    };
-    return _this;
-  }
-
-  Object(createClass["a" /* default */])(FocusReturnProvider, [{
-    key: "onFocus",
-    value: function onFocus(event) {
-      var focusHistory = this.state.focusHistory; // Push the focused element to the history stack, keeping only unique
-      // members but preferring the _last_ occurrence of any duplicates.
-      // Lodash's `uniq` behavior favors the first occurrence, so the array
-      // is temporarily reversed prior to it being called upon. Uniqueness
-      // helps avoid situations where, such as in a constrained tabbing area,
-      // the user changes focus enough within a transient element that the
-      // stack may otherwise only consist of members pending destruction, at
-      // which point focus might have been lost.
-
-      var nextFocusHistory = Object(external_lodash_["uniq"])([].concat(Object(toConsumableArray["a" /* default */])(focusHistory), [event.target]).slice(-1 * MAX_STACK_LENGTH).reverse()).reverse();
-      this.setState({
-        focusHistory: nextFocusHistory
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          children = _this$props.children,
-          className = _this$props.className;
-      return Object(external_this_wp_element_["createElement"])(Provider, {
-        value: this.state
-      }, Object(external_this_wp_element_["createElement"])("div", {
-        onFocus: this.onFocus,
-        className: className
-      }, children));
-    }
-  }]);
-
-  return FocusReturnProvider;
-}(external_this_wp_element_["Component"]);
-
-/* harmony default export */ var with_focus_return_context = (context_FocusReturnProvider);
-
-//# sourceMappingURL=context.js.map
-// CONCATENATED MODULE: ./node_modules/@wordpress/components/build-module/higher-order/with-focus-return/index.js
-
-
-
-
-
-
-
-
-/**
- * External dependencies
- */
-
-/**
- * WordPress dependencies
- */
-
-
-
-/**
- * Internal dependencies
- */
-
-
-/**
- * Returns true if the given object is component-like. An object is component-
- * like if it is an instance of wp.element.Component, or is a function.
- *
- * @param {*} object Object to test.
- *
- * @return {boolean} Whether object is component-like.
- */
-
-function isComponentLike(object) {
-  return object instanceof external_this_wp_element_["Component"] || typeof object === 'function';
-}
-/**
- * Higher Order Component used to be used to wrap disposable elements like
- * sidebars, modals, dropdowns. When mounting the wrapped component, we track a
- * reference to the current active element so we know where to restore focus
- * when the component is unmounted.
- *
- * @param {(WPComponent|Object)} options The component to be enhanced with
- *                                      focus return behavior, or an object
- *                                      describing the component and the
- *                                      focus return characteristics.
- *
- * @return {WPComponent} Component with the focus restauration behaviour.
- */
-
-
-function withFocusReturn(options) {
-  // Normalize as overloaded form `withFocusReturn( options )( Component )`
-  // or as `withFocusReturn( Component )`.
-  if (isComponentLike(options)) {
-    var WrappedComponent = options;
-    return withFocusReturn({})(WrappedComponent);
-  }
-
-  var _options$onFocusRetur = options.onFocusReturn,
-      onFocusReturn = _options$onFocusRetur === void 0 ? external_lodash_["stubTrue"] : _options$onFocusRetur;
-  return function (WrappedComponent) {
-    var FocusReturn =
-    /*#__PURE__*/
-    function (_Component) {
-      Object(inherits["a" /* default */])(FocusReturn, _Component);
-
-      function FocusReturn() {
-        var _this;
-
-        Object(classCallCheck["a" /* default */])(this, FocusReturn);
-
-        _this = Object(possibleConstructorReturn["a" /* default */])(this, Object(getPrototypeOf["a" /* default */])(FocusReturn).apply(this, arguments));
-        _this.ownFocusedElements = new Set();
-        _this.activeElementOnMount = document.activeElement;
-
-        _this.setIsFocusedFalse = function () {
-          return _this.isFocused = false;
-        };
-
-        _this.setIsFocusedTrue = function (event) {
-          _this.ownFocusedElements.add(event.target);
-
-          _this.isFocused = true;
-        };
-
-        return _this;
-      }
-
-      Object(createClass["a" /* default */])(FocusReturn, [{
-        key: "componentWillUnmount",
-        value: function componentWillUnmount() {
-          var activeElementOnMount = this.activeElementOnMount,
-              isFocused = this.isFocused,
-              ownFocusedElements = this.ownFocusedElements;
-
-          if (!isFocused) {
-            return;
-          } // Defer to the component's own explicit focus return behavior,
-          // if specified. The function should return `false` to prevent
-          // the default behavior otherwise occurring here. This allows
-          // for support that the `onFocusReturn` decides to allow the
-          // default behavior to occur under some conditions.
-
-
-          if (onFocusReturn() === false) {
-            return;
-          }
-
-          var stack = [].concat(Object(toConsumableArray["a" /* default */])(external_lodash_["without"].apply(void 0, [this.props.focus.focusHistory].concat(Object(toConsumableArray["a" /* default */])(ownFocusedElements)))), [activeElementOnMount]);
-          var candidate;
-
-          while (candidate = stack.pop()) {
-            if (document.body.contains(candidate)) {
-              candidate.focus();
-              return;
-            }
-          }
-        }
-      }, {
-        key: "render",
-        value: function render() {
-          return Object(external_this_wp_element_["createElement"])("div", {
-            onFocus: this.setIsFocusedTrue,
-            onBlur: this.setIsFocusedFalse
-          }, Object(external_this_wp_element_["createElement"])(WrappedComponent, this.props.childProps));
-        }
-      }]);
-
-      return FocusReturn;
-    }(external_this_wp_element_["Component"]);
-
-    return function (props) {
-      return Object(external_this_wp_element_["createElement"])(Consumer, null, function (context) {
-        return Object(external_this_wp_element_["createElement"])(FocusReturn, {
-          childProps: props,
-          focus: context
-        });
-      });
-    };
-  };
-}
-
-/* harmony default export */ var with_focus_return = __webpack_exports__["a"] = (Object(create_higher_order_component["a" /* default */])(withFocusReturn, 'withFocusReturn'));
-
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ 98:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-var _interopRequireDefault = __webpack_require__(55);
-
-var _typeof2 = _interopRequireDefault(__webpack_require__(43));
-
-/* eslint-env browser */
-
-/**
- * This is the web browser implementation of `debug()`.
- */
-exports.log = log;
-exports.formatArgs = formatArgs;
-exports.save = save;
-exports.load = load;
-exports.useColors = useColors;
-exports.storage = localstorage();
-/**
- * Colors.
- */
-
-exports.colors = ['#0000CC', '#0000FF', '#0033CC', '#0033FF', '#0066CC', '#0066FF', '#0099CC', '#0099FF', '#00CC00', '#00CC33', '#00CC66', '#00CC99', '#00CCCC', '#00CCFF', '#3300CC', '#3300FF', '#3333CC', '#3333FF', '#3366CC', '#3366FF', '#3399CC', '#3399FF', '#33CC00', '#33CC33', '#33CC66', '#33CC99', '#33CCCC', '#33CCFF', '#6600CC', '#6600FF', '#6633CC', '#6633FF', '#66CC00', '#66CC33', '#9900CC', '#9900FF', '#9933CC', '#9933FF', '#99CC00', '#99CC33', '#CC0000', '#CC0033', '#CC0066', '#CC0099', '#CC00CC', '#CC00FF', '#CC3300', '#CC3333', '#CC3366', '#CC3399', '#CC33CC', '#CC33FF', '#CC6600', '#CC6633', '#CC9900', '#CC9933', '#CCCC00', '#CCCC33', '#FF0000', '#FF0033', '#FF0066', '#FF0099', '#FF00CC', '#FF00FF', '#FF3300', '#FF3333', '#FF3366', '#FF3399', '#FF33CC', '#FF33FF', '#FF6600', '#FF6633', '#FF9900', '#FF9933', '#FFCC00', '#FFCC33'];
-/**
- * Currently only WebKit-based Web Inspectors, Firefox >= v31,
- * and the Firebug extension (any Firefox version) are known
- * to support "%c" CSS customizations.
- *
- * TODO: add a `localStorage` variable to explicitly enable/disable colors
- */
-// eslint-disable-next-line complexity
-
-function useColors() {
-  // NB: In an Electron preload script, document will be defined but not fully
-  // initialized. Since we know we're in Chrome, we'll just detect this case
-  // explicitly
-  if (typeof window !== 'undefined' && window.process && (window.process.type === 'renderer' || window.process.__nwjs)) {
-    return true;
-  } // Internet Explorer and Edge do not support colors.
-
-
-  if (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/(edge|trident)\/(\d+)/)) {
-    return false;
-  } // Is webkit? http://stackoverflow.com/a/16459606/376773
-  // document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
-
-
-  return typeof document !== 'undefined' && document.documentElement && document.documentElement.style && document.documentElement.style.WebkitAppearance || // Is firebug? http://stackoverflow.com/a/398120/376773
-  typeof window !== 'undefined' && window.console && (window.console.firebug || window.console.exception && window.console.table) || // Is firefox >= v31?
-  // https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages
-  typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31 || // Double check webkit in userAgent just in case we are in a worker
-  typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/);
-}
-/**
- * Colorize log arguments if enabled.
- *
- * @api public
- */
-
-
-function formatArgs(args) {
-  args[0] = (this.useColors ? '%c' : '') + this.namespace + (this.useColors ? ' %c' : ' ') + args[0] + (this.useColors ? '%c ' : ' ') + '+' + module.exports.humanize(this.diff);
-
-  if (!this.useColors) {
-    return;
-  }
-
-  var c = 'color: ' + this.color;
-  args.splice(1, 0, c, 'color: inherit'); // The final "%c" is somewhat tricky, because there could be other
-  // arguments passed either before or after the %c, so we need to
-  // figure out the correct index to insert the CSS into
-
-  var index = 0;
-  var lastC = 0;
-  args[0].replace(/%[a-zA-Z%]/g, function (match) {
-    if (match === '%%') {
-      return;
-    }
-
-    index++;
-
-    if (match === '%c') {
-      // We only are interested in the *last* %c
-      // (the user may have provided their own)
-      lastC = index;
-    }
-  });
-  args.splice(lastC, 0, c);
-}
-/**
- * Invokes `console.log()` when available.
- * No-op when `console.log` is not a "function".
- *
- * @api public
- */
-
-
-function log() {
-  var _console;
-
-  // This hackery is required for IE8/9, where
-  // the `console.log` function doesn't have 'apply'
-  return (typeof console === "undefined" ? "undefined" : (0, _typeof2.default)(console)) === 'object' && console.log && (_console = console).log.apply(_console, arguments);
-}
-/**
- * Save `namespaces`.
- *
- * @param {String} namespaces
- * @api private
- */
-
-
-function save(namespaces) {
-  try {
-    if (namespaces) {
-      exports.storage.setItem('debug', namespaces);
-    } else {
-      exports.storage.removeItem('debug');
-    }
-  } catch (error) {// Swallow
-    // XXX (@Qix-) should we be logging these?
-  }
-}
-/**
- * Load `namespaces`.
- *
- * @return {String} returns the previously persisted debug modes
- * @api private
- */
-
-
-function load() {
-  var r;
-
-  try {
-    r = exports.storage.getItem('debug');
-  } catch (error) {} // Swallow
-  // XXX (@Qix-) should we be logging these?
-  // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
-
-
-  if (!r && typeof process !== 'undefined' && 'env' in process) {
-    r = process.env.DEBUG;
-  }
-
-  return r;
-}
-/**
- * Localstorage attempts to return the localstorage.
- *
- * This is necessary because safari throws
- * when a user disables cookies/localstorage
- * and you attempt to access it.
- *
- * @return {LocalStorage}
- * @api private
- */
-
-
-function localstorage() {
-  try {
-    // TVMLKit (Apple TV JS Runtime) does not have a window object, just localStorage in the global context
-    // The Browser also has localStorage in the global context.
-    return localStorage;
-  } catch (error) {// Swallow
-    // XXX (@Qix-) should we be logging these?
-  }
-}
-
-module.exports = __webpack_require__(146)(exports);
-var formatters = module.exports.formatters;
-/**
- * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
- */
-
-formatters.j = function (v) {
-  try {
-    return JSON.stringify(v);
-  } catch (error) {
-    return '[UnexpectedJSONParseError]: ' + error.message;
-  }
-};
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(72)))
-
-/***/ }),
-
-/***/ 99:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return useMediaQuery; });
-/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(21);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-
-
-/**
- * WordPress dependencies
- */
-
-/**
- * Runs a media query and returns its value when it changes.
- *
- * @param {string} [query] Media Query.
- * @return {boolean} return value of the media query.
- */
-
-function useMediaQuery(query) {
-  var _useState = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
-      _useState2 = Object(_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_useState, 2),
-      match = _useState2[0],
-      setMatch = _useState2[1];
-
-  Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    if (!query) {
-      return;
-    }
-
-    var updateMatch = function updateMatch() {
-      return setMatch(window.matchMedia(query).matches);
-    };
-
-    updateMatch();
-    var list = window.matchMedia(query);
-    list.addListener(updateMatch);
-    return function () {
-      list.removeListener(updateMatch);
-    };
-  }, [query]);
-  return query && match;
-}
 //# sourceMappingURL=index.js.map
 
 /***/ })

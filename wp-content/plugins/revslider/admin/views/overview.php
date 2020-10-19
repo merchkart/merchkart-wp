@@ -219,10 +219,19 @@ $rs_languages	= $rs_slider->get_available_languages();
 </div>
 
 <script type="text/javascript">
-	window.sliderLibrary = jQuery.parseJSON(<?php echo $rs_slider->json_encode_client_side(array('sliders' => $overview_data)); ?>);
-	window.rs_system = jQuery.parseJSON(<?php echo $rs_slider->json_encode_client_side($system_config); ?>);
-	jQuery(document).on("ready",function() {
-		RVS.ENV.code = "<?php echo $code; ?>";
+	window.sliderLibrary = JSON.parse(<?php echo $rs_slider->json_encode_client_side(array('sliders' => $overview_data)); ?>);
+	window.rs_system = JSON.parse(<?php echo $rs_slider->json_encode_client_side($system_config); ?>);
+	var rvs_f_initOverView_Once = false
+	if (document.readyState === "loading") 
+		document.addEventListener('readystatechange',function(){
+			if ((document.readyState === "interactive" || document.readyState === "complete") && !rvs_f_initOverView_Once) {
+				rvs_f_initOverView_Once = true;
+				RVS.ENV.code = "<?php echo $code; ?>";
+				RVS.F.initOverView();
+			}
+		});
+	else {
+		rvs_f_initOverView_Once = true;
 		RVS.F.initOverView();
-	});
+	}			
 </script>

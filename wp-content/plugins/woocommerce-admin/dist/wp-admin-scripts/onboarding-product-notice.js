@@ -82,19 +82,26 @@ this["wc"] = this["wc"] || {}; this["wc"]["onboardingProductNotice"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 700);
+/******/ 	return __webpack_require__(__webpack_require__.s = 679);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 19:
+/***/ 24:
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["wp"]["data"]; }());
 
 /***/ }),
 
-/***/ 26:
+/***/ 3:
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["i18n"]; }());
+
+/***/ }),
+
+/***/ 33:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -138,7 +145,6 @@ var WC_ASSET_URL = SOURCE.wcAssetUrl;
 /**
  * Retrieves a setting value from the setting state.
  *
- * @export
  * @param {string}   name                         The identifier for the setting.
  * @param {*}    [fallback=false]             The value to use as a fallback
  *                                                if the setting is not in the
@@ -174,7 +180,6 @@ function getSetting(name) {
  *
  * @deprecated
  *
- * @export
  * @param {string}   name                        The setting property key for the
  *                                               setting being mutated.
  * @param {*}    value                       The value to set.
@@ -207,13 +212,6 @@ function getAdminLink(path) {
 
 /***/ }),
 
-/***/ 3:
-/***/ (function(module, exports) {
-
-(function() { module.exports = this["wp"]["i18n"]; }());
-
-/***/ }),
-
 /***/ 43:
 /***/ (function(module, exports) {
 
@@ -237,7 +235,45 @@ module.exports = _typeof;
 
 /***/ }),
 
-/***/ 65:
+/***/ 679:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(24);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(77);
+/* harmony import */ var _woocommerce_wc_admin_settings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(33);
+/**
+ * External dependencies
+ */
+
+
+
+
+/**
+ * Displays a notice after product creation.
+ */
+
+var showProductCompletionNotice = function showProductCompletionNotice() {
+  Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__["dispatch"])('core/notices').createSuccessNotice(Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('🎉 Congrats on adding your first product!', 'woocommerce-admin'), {
+    id: 'WOOCOMMERCE_ONBOARDING_PRODUCT_NOTICE',
+    actions: [{
+      url: Object(_woocommerce_wc_admin_settings__WEBPACK_IMPORTED_MODULE_3__[/* getAdminLink */ "f"])('admin.php?page=wc-admin'),
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Continue setup.', 'woocommerce-admin')
+    }]
+  });
+};
+
+Object(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(function () {
+  showProductCompletionNotice();
+});
+
+/***/ }),
+
+/***/ 77:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -283,48 +319,6 @@ function domReady(callback) {
   document.addEventListener('DOMContentLoaded', callback);
 }
 //# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ 700:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(19);
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(65);
-/* harmony import */ var _woocommerce_wc_admin_settings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(26);
-/**
- * External dependencies
- */
-
-
-
-/**
- * WooCommerce dependencies
- */
-
-
-/**
- * Displays a notice after product creation.
- */
-
-var showProductCompletionNotice = function showProductCompletionNotice() {
-  Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__["dispatch"])('core/notices').createSuccessNotice(Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('🎉 Congrats on adding your first product!', 'woocommerce-admin'), {
-    id: 'WOOCOMMERCE_ONBOARDING_PRODUCT_NOTICE',
-    actions: [{
-      url: Object(_woocommerce_wc_admin_settings__WEBPACK_IMPORTED_MODULE_3__[/* getAdminLink */ "f"])('admin.php?page=wc-admin'),
-      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])('Continue setup.', 'woocommerce-admin')
-    }]
-  });
-};
-
-Object(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(function () {
-  showProductCompletionNotice();
-});
 
 /***/ })
 

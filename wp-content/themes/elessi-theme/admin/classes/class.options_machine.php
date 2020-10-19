@@ -9,14 +9,17 @@
  * @author      Syamil MJ
  */
 class Options_Machine {
+    
+    public $Inputs;
+    public $Menu;
+    public $Defaults;
 
     /**
-     * PHP5 contructor
+     * PHP5 Contructor
      *
      * @since 1.0.0
      */
-    function __construct($options) {
-
+    public function __construct($options) {
         $return = self::optionsframework_machine($options);
 
         $this->Inputs = $return[0];
@@ -35,7 +38,7 @@ class Options_Machine {
       - The ultimate objective of this function is to prevent the "undefined index"
       errors some authors are having due to malformed options array
      */
-    static function sanitize_option($value) {
+    public static function sanitize_option($value) {
         $defaults = array(
             "name" => "",
             "desc" => "",
@@ -175,13 +178,16 @@ class Options_Machine {
                         $output .= '<div class="select_wrapper ' . $mini . '">';
                         $output .= '<select class="select of-input" name="' . $value['id'] . '" id="' . $value['id'] . '">';
 
-                        foreach ($value['options'] as $select_ID => $option) {
-                            $theValue = $option;
-                            if (!is_numeric($select_ID) || isset($value['override_numberic'])) {
-                                $theValue = $select_ID;
+                        if (!empty($value['options'])) {
+                            foreach ($value['options'] as $select_ID => $option) {
+                                $theValue = $option;
+                                if (!is_numeric($select_ID) || isset($value['override_numberic'])) {
+                                    $theValue = $select_ID;
+                                }
+                                $output .= '<option value="' . $theValue . '" ' . selected($smof_data[$value['id']], $theValue, false) . ' />' . $option . '</option>';
                             }
-                            $output .= '<option id="' . $select_ID . '" value="' . $theValue . '" ' . selected($smof_data[$value['id']], $theValue, false) . ' />' . $option . '</option>';
                         }
+                        
                         $output .= '</select></div>';
                         break;
 
@@ -205,7 +211,7 @@ class Options_Machine {
                     case "radio":
                         $checked = (isset($smof_data[$value['id']])) ? checked($smof_data[$value['id']], $option, false) : '';
                         foreach ($value['options'] as $option => $name) {
-                            $output .= '<input class="of-input of-radio" name="' . $value['id'] . '" type="radio" value="' . $option . '" ' . checked($smof_data[$value['id']], $option, false) . ' /><label class="radio">' . $name . '</label><br/>';
+                            $output .= '<input class="of-input of-radio" name="' . $value['id'] . '" type="radio" value="' . $option . '" ' . checked($smof_data[$value['id']], $option, false) . ' /><label class="radio">' . $name . '</label><br />';
                         }
                         break;
 
@@ -220,7 +226,7 @@ class Options_Machine {
                             $fold = "fld ";
                         }
 
-                        $output .= '<input type="hidden" class="' . $fold . 'checkbox of-input" name="' . $value['id'] . '" id="' . $value['id'] . '" value="0" />';
+                        $output .= '<input type="hidden" class="' . $fold . 'checkbox of-input" name="' . $value['id'] . '" value="0" />';
                         $output .= '<input type="checkbox" class="' . $fold . 'checkbox of-input" name="' . $value['id'] . '" id="' . $value['id'] . '" value="1" ' . checked($smof_data[$value['id']], 1, false) . ' />';
                         break;
 
@@ -243,7 +249,7 @@ class Options_Machine {
                         if (isset($value['std'])) {
                             $default_color = ' data-default-color="' . $value['std'] . '" ';
                         }
-                        $output .= '<input name="' . $value['id'] . '" id="' . $value['id'] . '" class="of-color"  type="text" value="' . $smof_data[$value['id']] . '"' . $default_color . ' />';
+                        $output .= '<input name="' . $value['id'] . '" id="' . $value['id'] . '" class="of-color" type="text" value="' . $smof_data[$value['id']] . '"' . $default_color . ' />';
 
                         break;
 
@@ -385,6 +391,69 @@ class Options_Machine {
                         $info_text = $value['std'];
                         $output .= '<div class="of-info">' . $info_text . '</div>';
                         break;
+                    
+                    //instagram account
+                    case "instagram_acc":
+                        $tokens = isset($smof_data[$value['id']]) ? $smof_data[$value['id']] : $value['std'];
+                        $infoInsta = $infoInsta_value = '';
+                        if ($tokens) {
+                            $instagrams = explode('.', $tokens);
+                            $acc_id = isset($instagrams[0]) ? $instagrams[0] : 0;
+                            if ($acc_id) {
+                                if (isset($smof_data[$value['id'] . '_info']) && $smof_data[$value['id'] . '_info']) {
+                                    $infoInsta_value = $smof_data[$value['id'] . '_info'];
+                                    $infoInsta = json_decode($infoInsta_value);
+                                }
+                                
+                                if (!isset($infoInsta->id) || !$infoInsta->id || $infoInsta->id != $acc_id) {
+                                    
+                                    $urlUser = 'https://api.instagram.com/v1/users/self/?access_token=' . $tokens;
+                                    $args = array(
+                                        'timeout' => 60,
+                                        'sslverify' => false
+                                    );
+                                    $result = wp_remote_get($urlUser, $args);
+
+                                    if (!is_wp_error($result)) {
+                                        
+                                        $data = json_decode($result['body']);
+                                        if (isset($data->data->id)) {
+
+                                            $infoInsta = array(
+                                                'id' => $data->data->id,
+                                                'username' => $data->data->username,
+                                                'profile_picture' => esc_url($data->data->profile_picture)
+                                            );
+
+                                            $infoInsta_value = json_encode($infoInsta);
+
+                                            $infoInsta = (object) $infoInsta;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                        $classInput = $infoInsta_value ? ' hidden-tag' : '';
+                        $classRemove = $infoInsta_value ? '' : ' hidden-tag';
+                        
+                        $output .= '<div class="of-intagram-acc">';
+                        if (is_object($infoInsta) && $infoInsta) {
+                            $output .= '<img src="' . $infoInsta->profile_picture . '" alt="' . $infoInsta->username . '" width="100" height="100" />';
+                            $output .= '<div>Username: <strong>' . $infoInsta->username . "</strong></div>";
+                        }
+                        $output .= '</div>';
+                        $output .= '<div class="clear"></div>';
+                        $output .= '<div class="controls">';
+                        $output .= '<input class="nasa_instagram' . $classInput . '" id="' . $value['id'] . '" type="text" name="' . $value['id'] . '" value="' . $smof_data[$value['id']] . '" placeholder="' . esc_attr__('Enter Your Access Token', 'elessi-theme') . '" />';
+                        $output .= "<input class='nasa_instagram_info' id='" . $value['id'] . "_info' type='hidden' name='" . $value['id'] . "_info' value='" . $infoInsta_value . "' />";
+                        $output .= '</div><div class="explain">';
+                        $output .= '<a href="' . $value['url'] . '" class="button-primary nasa-get-intagram' . $classInput . '" title="' . esc_attr__('Get Access Token', 'elessi-theme') . '" target="_blank" style="margin-top: 10px; margin-right: 10px;">' . esc_html__('Get Access Token', 'elessi-theme') . '</a>';
+                        $output .= '<a href="javascript:void(0);" class="button-primary nasa-check-intagram' . $classInput . '" title="' . esc_attr__('Check', 'elessi-theme') . '" style="margin-top: 10px; margin-right: 10px;">' . esc_html__('Check', 'elessi-theme') . '</a>';
+                        $output .= '<a href="javascript:void(0);" class="button-primary nasa-remove-intagram' . $classRemove . '" title="' . esc_attr__('Remove', 'elessi-theme') . '" style="margin-top: 10px;">' . esc_html__('Remove', 'elessi-theme') . '</a>';
+                        $output .= '</div>';
+                        $output .= '<div class="clear"></div>';
+                        break;
 
                     //display a single image
                     case "image":
@@ -410,7 +479,7 @@ class Options_Machine {
                             $icon = ' style="background-image: url(' . $value['icon'] . ');"';
                         }
                         
-                        if(isset($value['target'])){
+                        if (isset($value['target'])){
                             $header_class = 'heading-' . str_replace(' ','-', strtolower($value['target']));
                         }else{
                             $header_class = str_replace(' ', '', strtolower($value['name']));
@@ -649,7 +718,7 @@ class Options_Machine {
                         $output .= '<label class="' . $fold . 'cb-enable' . $cb_enabled . '" data-id="' . $value['id'] . '"><span>' . $on . '</span></label>';
                         $output .= '<label class="' . $fold . 'cb-disable' . $cb_disabled . '" data-id="' . $value['id'] . '"><span>' . $off . '</span></label>';
 
-                        $output .= '<input type="hidden" class="' . $fold . 'checkbox of-input" name="' . $value['id'] . '" id="' . $value['id'] . '" value="0" />';
+                        $output .= '<input type="hidden" class="' . $fold . 'checkbox of-input" name="' . $value['id'] . '" value="0" />';
                         $output .= '<input type="checkbox" id="' . $value['id'] . '" class="' . $fold . 'checkbox of-input main_checkbox" name="' . $value['id'] . '"  value="1" ' . checked($smof_data[$value['id']], 1, false) . ' />';
 
                         $output .= '</p>';

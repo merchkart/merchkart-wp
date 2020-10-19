@@ -39,7 +39,9 @@ class Lifecycle extends Framework\Plugin\Lifecycle {
 			'1.10.0',
 			'1.10.1',
 			'1.11.0',
-			'1.11.3',
+			'2.0.0',
+			'2.0.3',
+			'2.0.4',
 		];
 	}
 
@@ -219,16 +221,117 @@ class Lifecycle extends Framework\Plugin\Lifecycle {
 
 
 	/**
-	 * Upgrades to version 1.11.3.
+	 * Upgrades to version 2.0.0
 	 *
-	 * @since 1.11.3-dev.2
+	 * @since 2.0.0
 	 */
-	protected function upgrade_to_1_11_3() {
+	protected function upgrade_to_2_0_0() {
 
-		if ( $handler = $this->get_plugin()->get_background_disable_virtual_products_sync_instance() ) {
+		// handle sync enabled and visible virtual products and variations
+		if ( $handler = $this->get_plugin()->get_background_handle_virtual_products_variations_instance() ) {
 
 			// create_job() expects an non-empty array of attributes
 			$handler->create_job( [ 'created_at' => current_time( 'mysql' ) ] );
+			$handler->dispatch();
+		}
+
+		update_option( 'wc_facebook_has_connected_fbe_2', 'no' );
+
+		$settings = get_option( 'woocommerce_facebookcommerce_settings' );
+
+		if ( is_array( $settings ) ) {
+
+			$settings_map = [
+				'facebook_pixel_id'             => \WC_Facebookcommerce_Integration::SETTING_FACEBOOK_PIXEL_ID,
+				'facebook_page_id'              => \WC_Facebookcommerce_Integration::SETTING_FACEBOOK_PAGE_ID,
+				'enable_product_sync'           => \WC_Facebookcommerce_Integration::SETTING_ENABLE_PRODUCT_SYNC,
+				'excluded_product_category_ids' => \WC_Facebookcommerce_Integration::SETTING_EXCLUDED_PRODUCT_CATEGORY_IDS,
+				'excluded_product_tag_ids'      => \WC_Facebookcommerce_Integration::SETTING_EXCLUDED_PRODUCT_TAG_IDS,
+				'product_description_mode'      => \WC_Facebookcommerce_Integration::SETTING_PRODUCT_DESCRIPTION_MODE,
+				'enable_messenger'              => \WC_Facebookcommerce_Integration::SETTING_ENABLE_MESSENGER,
+				'messenger_locale'              => \WC_Facebookcommerce_Integration::SETTING_MESSENGER_LOCALE,
+				'messenger_greeting'            => \WC_Facebookcommerce_Integration::SETTING_MESSENGER_GREETING,
+				'messenger_color_hex'           => \WC_Facebookcommerce_Integration::SETTING_MESSENGER_COLOR_HEX,
+				'enable_debug_mode'             => \WC_Facebookcommerce_Integration::SETTING_ENABLE_DEBUG_MODE,
+			];
+
+			foreach ( $settings_map as $old_name => $new_name ) {
+
+				if ( ! empty( $settings[ $old_name ] ) ) {
+					update_option( $new_name, $settings[ $old_name ] );
+				}
+			}
+		}
+
+		// deletes an option that is not longer used to generate an admin notice
+		delete_option( 'fb_cart_url' );
+	}
+
+
+	/**
+	 * Upgrades to version 2.0.3
+	 *
+	 * @since 2.0.3
+	 */
+	protected function upgrade_to_2_0_3() {
+
+		if ( ! $this->should_create_remove_duplicate_visibility_meta_background_job() ) {
+			return;
+		}
+
+		// if an unfinished job is stuck, give the handler a chance to complete it
+		if ( $handler = $this->get_plugin()->get_background_handle_virtual_products_variations_instance() ) {
+			$handler->dispatch();
+		}
+
+		// create a job to remove duplicate visibility meta data entries
+		if ( $handler = $this->get_plugin()->get_background_remove_duplicate_visibility_meta_instance() ) {
+
+			// create_job() expects an non-empty array of attributes
+			$handler->create_job( [ 'created_at' => current_time( 'mysql' ) ] );
+			$handler->dispatch();
+		}
+	}
+
+
+	/**
+	 * Determines whether we need to run a background job to remove duplicate visibility meta.
+	 *
+	 * @since 2.0.3
+	 *
+	 * @return bool
+	 */
+	private function should_create_remove_duplicate_visibility_meta_background_job() {
+
+		// we should try to remove duplicate meta if the virtual product variations job ran
+		if ( 'yes' === get_option( 'wc_facebook_background_handle_virtual_products_variations_complete', 'no' ) ) {
+			return true;
+		}
+
+		$handler = $this->get_plugin()->get_background_handle_virtual_products_variations_instance();
+
+		// the virtual product variations job is not marked as complete but there is at least one job in the database
+		if ( $handler && $handler->get_jobs() ) {
+			return true;
+		}
+
+		return false;
+	}
+
+
+	/**
+	 * Upgrades to version 2.0.4
+	 *
+	 * @since 2.0.4
+	 */
+	protected function upgrade_to_2_0_4() {
+
+		// if unfinished jobs are stuck, give the handlers a chance to complete them
+		if ( $handler = $this->get_plugin()->get_background_handle_virtual_products_variations_instance() ) {
+			$handler->dispatch();
+		}
+
+		if ( $handler = $this->get_plugin()->get_background_remove_duplicate_visibility_meta_instance() ) {
 			$handler->dispatch();
 		}
 	}

@@ -1,3 +1,17 @@
+# 3.2.3 (2020-09-28)
+* Add filter to nexus check
+* Decouple tax calculation and transaction sync settings
+
+# 3.2.2 (2020-09-02)
+* Fix international store address validation
+* Fix synchronized renewal non applicable message
+
+# 3.2.1 (2020-07-09)
+* Fix for undefined settings issue
+* Fix for wrong shipping rates
+* Increment supported WooCommerce version to 4.3.0
+* Increase minimum WooCommerce version to 3.2.0
+
 # 3.2.0 (2020-05-28)
 * Add support for tax calculation on orders created through WooCommerce REST API V2 & V3
 * Include plugin parameter for requests to TaxJar API

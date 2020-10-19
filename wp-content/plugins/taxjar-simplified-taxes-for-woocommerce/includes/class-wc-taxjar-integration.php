@@ -637,9 +637,14 @@ class WC_Taxjar_Integration extends WC_Settings_API {
 			// Update Properties based on Response
 			$taxes['freight_taxable']    = (int) $taxjar_response->freight_taxable;
 			$taxes['has_nexus']          = (int) $taxjar_response->has_nexus;
-			$taxes['tax_rate']           = $taxjar_response->rate;
+			$taxes['shipping_rate']      = $taxjar_response->rate;
 
 			if ( ! empty( $taxjar_response->breakdown ) ) {
+
+			    if ( ! empty( $taxjar_response->breakdown->shipping ) ) {
+				    $taxes['shipping_rate'] = $taxjar_response->breakdown->shipping->combined_tax_rate;
+                }
+
 				if ( ! empty( $taxjar_response->breakdown->line_items ) ) {
 					$line_items = array();
 					foreach ( $taxjar_response->breakdown->line_items as $line_item ) {
@@ -689,7 +694,7 @@ class WC_Taxjar_Integration extends WC_Settings_API {
 			// Add shipping tax rate
 			$taxes['rate_ids']['shipping'] = $this->create_or_update_tax_rate(
 				$location,
-				$taxes['tax_rate'] * 100,
+				$taxes['shipping_rate'] * 100,
 				'',
 				$taxes['freight_taxable']
 			);
@@ -825,6 +830,7 @@ class WC_Taxjar_Integration extends WC_Settings_API {
 
 		$address = $this->get_address( $wc_cart_object );
 		$line_items = $this->get_line_items( $wc_cart_object );
+		$shipping_total = $wc_cart_object->get_shipping_total();
 
 		$customer_id = 0;
 		if ( is_object( WC()->customer ) ) {
@@ -839,7 +845,7 @@ class WC_Taxjar_Integration extends WC_Settings_API {
 			'to_state' => $address['to_state'],
 			'to_city' => $address['to_city'],
 			'to_street' => $address['to_street'],
-			'shipping_amount' => WC()->shipping->shipping_total,
+			'shipping_amount' => $shipping_total,
 			'line_items' => $line_items,
             'customer_id' => $customer_id,
             'exemption_type' => $exemption_type,
@@ -1127,9 +1133,6 @@ class WC_Taxjar_Integration extends WC_Settings_API {
 			// Get WC Subscription sign-up fees for calculations
 			if ( class_exists( 'WC_Subscriptions_Cart' ) ) {
 				if ( 'none' == WC_Subscriptions_Cart::get_calculation_type() ) {
-					if ( class_exists( 'WC_Subscriptions_Synchroniser' ) ) {
-						WC_Subscriptions_Synchroniser::maybe_set_free_trial();
-					}
 					$unit_price = WC_Subscriptions_Cart::set_subscription_prices_for_calculation( $unit_price, $product );
 				}
 			}
@@ -1165,14 +1168,6 @@ class WC_Taxjar_Integration extends WC_Settings_API {
 				$discount = wc_format_decimal( $item->get_subtotal() - $item->get_total() );
 				$tax_class_name = $item->get_tax_class();
 				$tax_status = $item->get_tax_status();
-			} else { // Woo 2.6
-				$id = $item['product_id'];
-				$quantity = $item['qty'];
-				$unit_price = wc_format_decimal( $item['line_subtotal'] / $quantity );
-				$discount = wc_format_decimal( $item['line_subtotal'] - $item['line_total'] );
-				$tax_class_name = $item['tax_class'];
-				$product = $order->get_product_from_item( $item );
-				$tax_status = $product ? $product->get_tax_status() : 'taxable';
 			}
 
 			$this->backend_tax_classes[$id] = $tax_class_name;
@@ -1399,7 +1394,7 @@ class WC_Taxjar_Integration extends WC_Settings_API {
 
         if ( isset( $_POST[ 'woocommerce_taxjar-integration_settings' ][ $key ] ) ) {
             $val = $_POST[ 'woocommerce_taxjar-integration_settings' ][ $key ];
-        } else {
+        } elseif ( isset( $this->settings[ $key ] ) ) {
             $val = $this->settings[ $key ];
         }
 

@@ -2,8 +2,8 @@
 Contributors: facebook, automattic, woothemes
 Tags: facebook, shop, catalog, advertise, pixel, product
 Requires at least: 4.4
-Tested up to: 5.3.2
-Stable tag: 1.11.4
+Tested up to: 5.5.1
+Stable tag: 2.0.5
 Requires PHP: 5.6 or greater
 MySQL: 5.6 or greater
 License: GPLv2 or later
@@ -38,6 +38,38 @@ When opening a bug on GitHub, please give us as many details as possible.
 * Current version of Facebook-for-WooCommerce, WooCommerce, Wordpress, PHP
 
 == Changelog ==
+
+= 2020.10.12 - version 2.0.5 =
+ * Tweak - Update product availability when stock changes in the store
+ * Fix - Don't prevent variation products from being updated when they're set to not sync with Facebook but have their categories excluded from syncing
+ * Fix - Prevent an error during the feed generation when variable products are still using deleted terms
+
+= 2020.10.08 - version 2.0.4 =
+ * Fix - Fix SQL errors triggered while trying to remove duplicate visibility meta entries from postmeta table
+
+= 2020.10.02 - version 2.0.3 =
+ * Tweak - Pixel events now can include advanced matching information
+ * Fix - Send contents parameter for ViewContent event using the correct format
+ * Fix - Remove duplicate visibility meta entries from postmeta table
+
+= 2020.09.25 - version 2.0.2 =
+ * Tweak - Allow simple and variable products with zero/empty price to sync to Facebook
+ * Tweak - Use the bundle price for Product Bundles products with individually priced items
+ * Fix - Update connection parameters to use an array to pass the Messenger domain
+ * Fix - Ensure out-of-stock products are marked as such in Facebook when the feed file replacement is run
+ * Fix - Address a potential error when connecting from a site whose title contains special characters
+
+= 2020.08.17 - version 2.0.1 =
+ * Fix - Ensure the configured business name is never empty when connecting to Facebook
+
+= 2020.07.30 - version 2.0.0 =
+ * Tweak - Show Facebook options for virtual products and variations
+ * Tweak - Hide "Sync and show" option for virtual products and variations
+ * Tweak - On upgrade, automatically set sync-enabled and visible virtual products and virtual variations to Sync and hide
+ * Tweak - Allow to bulk enable sync for virtual products, but automatically set them to Sync and hide
+ * Fix - Use the plugin version instead of a timestamp as the version number for enqueued scripts and stylesheets
+ * Fix - Use the short description of the parent product for product variations that don't have a description or Facebook description
+ * Fix - Prevent an error when YITH Booking and Appointment for WooCommerce plugin is active
 
 = 2020.06.04 - version 1.11.4 =
  * Fix - Do not sync variations for draft variable products created by duplicating products

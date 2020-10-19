@@ -1,5 +1,5 @@
-/*
- Tipr drop 1.0 | Tipue | http://www.tipue.com/tipr
+/**
+ * Tipr drop 1.0 | Tipue | http://www.tipue.com/tipr
  */
 (function ($) {
     "use strict";
@@ -263,10 +263,9 @@
 
 if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
     jQuery(function ($) {
-
         $elements = $('.nasa_banner, .nasa_bg, .parallax_img').find('[data-velocity]');
 
-        var topOffset = $('.header-wrapper').outerHeight() + $('#wpadminbar').outerHeight();
+        var topOffset = $('#header-content').outerHeight() + $('#wpadminbar').outerHeight();
 
         $(window).bind('resize.nasa-parallax', function () {
             var windowHeight = $(window).height();
@@ -287,6 +286,7 @@ if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
                 }
                 $this.css('opacity', '1');
             });
+            
             $(window).trigger('scroll.nasa-parallax');
         });
 
@@ -326,6 +326,7 @@ if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
         $(window).bind("DOMNodeInserted", function (e) {
             $(window).trigger('resize.nasa-parallax');
         });
+        
         $(window).trigger('resize');
     });
 }

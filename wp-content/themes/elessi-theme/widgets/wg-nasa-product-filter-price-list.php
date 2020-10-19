@@ -1,6 +1,6 @@
 <?php
 
-if (class_exists('WooCommerce')) {
+if (NASA_WOO_ACTIVED) {
 
     add_action('widgets_init', 'elessi_product_filter_price_list_widget');
 
@@ -14,7 +14,7 @@ if (class_exists('WooCommerce')) {
          * Constructor
          */
         public function __construct() {
-            $this->widget_cssclass = 'woocommerce widget_price_filter_list nasa-any-filter';
+            $this->widget_cssclass = 'woocommerce widget_price_filter_list nasa-any-filter nasa-widget-has-active';
             $this->widget_description = esc_html__('Display a list of prices to filter products.', 'elessi-theme');
             $this->widget_id = 'nasa_woocommerce_price_filter_list';
             $this->widget_name = esc_html__('Nasa Product Price Filter (list)', 'elessi-theme');
@@ -79,9 +79,9 @@ if (class_exists('WooCommerce')) {
                 $link = preg_replace('%\/page/[0-9]+%', '', home_url($wp->request));
             }
             
-            if(!empty($_GET)) {
+            if (!empty($_GET)) {
                 foreach ($_GET as $key => $value) {
-                    if(!in_array($key, array('min_price', 'max_price', 'paging-style'))) {
+                    if (!in_array($key, array('min_price', 'max_price', 'paging-style'))) {
                         $link = add_query_arg($key, esc_attr($value), $link);
                     }
                 }

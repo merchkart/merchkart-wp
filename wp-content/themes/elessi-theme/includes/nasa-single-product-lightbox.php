@@ -2,12 +2,12 @@
 global $nasa_opt, $product;
 
 $attachment_ids = $product->get_gallery_image_ids();
-$style_quickview = isset($nasa_opt['style_quickview']) && in_array($nasa_opt['style_quickview'], array('sidebar', 'popup')) ? $nasa_opt['style_quickview'] : 'sidebar';
-$style_quickview = isset($_REQUEST['quickview']) && in_array($_REQUEST['quickview'], array('sidebar', 'popup')) ? $_REQUEST['quickview'] : $style_quickview;
+$style_quickview = isset($style_quickview) ? $style_quickview : 'sidebar';
+
 $class = $style_quickview == 'sidebar' ? 'large-12 columns padding-left-0 padding-right-0' : 'large-6 columns padding-left-0 padding-right-0 rtl-right';
 
 $column_thumbs = isset($nasa_opt['quick_view_item_thumb']) ? (int) $nasa_opt['quick_view_item_thumb'] : 1;
-$show_images = ($style_quickview == 'sidebar' && $attachment_ids && count($attachment_ids) > 1) ?
+$show_images = ($style_quickview == 'sidebar' && $attachment_ids && count($attachment_ids)) ?
     apply_filters('nasa_quickview_number_imgs', $column_thumbs) : 1;
 
 $hasThumb = has_post_thumbnail();
@@ -16,7 +16,7 @@ $image_link = wp_get_attachment_url($thumbNailId);
 $image_large = wp_get_attachment_image_src($thumbNailId, 'shop_single');
 $src_large = isset($image_large[0]) ? $image_large[0] : $image_link;
 
-$imageMain = get_the_post_thumbnail($product->get_id(), apply_filters('single_product_large_thumbnail_size', 'shop_single'));
+$imageMain = $product->get_image(apply_filters('single_product_large_thumbnail_size', 'shop_single'));
 
 $link = $product->get_permalink();
 $title = $product->get_name();
@@ -44,6 +44,7 @@ $title = $product->get_name();
                     <?php echo $title; ?>
                 </a>
             </h1>
+            
             <?php do_action('woocommerce_single_product_lightbox_summary'); ?>
         </div>
     </div>

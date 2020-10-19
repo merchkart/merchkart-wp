@@ -74,6 +74,8 @@ class RevSliderAdmin extends RevSliderFunctionsAdmin {
 	 **/
 	public function enqueue_admin_styles(){
 		wp_enqueue_style('rs-open-sans', '//fonts.googleapis.com/css?family=Open+Sans:400,300,700,600,800');
+		wp_enqueue_style('rs-roboto', '//fonts.googleapis.com/css?family=Roboto');
+		wp_enqueue_style('tp-material-icons', '//fonts.googleapis.com/icon?family=Material+Icons');
 		//wp_enqueue_style('revslider-global-styles', RS_PLUGIN_URL . 'admin/assets/css/global.css', array(), RS_REVISION);
 		wp_enqueue_style(array('wp-jquery-ui', 'wp-jquery-ui-core', 'wp-jquery-ui-dialog', 'wp-color-picker'));
 		wp_enqueue_style('revbuilder-color-picker-css', RS_PLUGIN_URL . 'admin/assets/css/tp-color-picker.css', array(), RS_REVISION);
@@ -1580,6 +1582,8 @@ class RevSliderAdmin extends RevSliderFunctionsAdmin {
 					$rev_slider_front = new RevSliderFront();
 					
 					$post = $this->create_fake_post($content, $title);
+					
+					define('SHOW_CT_BUILDER', false); //fix for oxygen builder plugin to not remove the <html> tag and so on
 					
 					ob_start();
 					include(RS_PLUGIN_PATH . 'public/views/revslider-page-template.php');

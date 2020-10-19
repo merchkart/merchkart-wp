@@ -109,7 +109,7 @@ class Hooks {
      *
      * @global type $post
      * @global type $woocommerce
-     * @global WC_Order $the_order
+     * @global \WC_Order $the_order
      *
      * @param type $col
      *
@@ -119,7 +119,7 @@ class Hooks {
         global $post, $the_order;
 
         if ( empty( $the_order ) || $the_order->get_id() != $post->ID ) {
-            $the_order = new WC_Order( $post->ID );
+            $the_order = new \WC_Order( $post->ID );
         }
 
         if ( ! current_user_can( 'manage_woocommerce' ) ) {
@@ -388,7 +388,7 @@ class Hooks {
             <?php else: ?>
                 <option value="<?php echo esc_attr( $user_ID ); ?>" <?php selected( $selected, $user_ID ); ?>><?php echo esc_html( $admin_user->display_name ); ?></option>
                 <?php foreach ( $vendors as $key => $vendor ): ?>
-                    <option value="<?php echo esc_attr( $vendor->get_id() ) ?>" <?php selected( $selected, $vendor->get_id() ); ?>><?php echo ! empty( $vendor->get_shop_name() ) ? esc_html( $vendor->get_shop_name() ) : $vendor->get_name(); ?></option>
+                    <option value="<?php echo esc_attr( $vendor->get_id() ) ?>" <?php selected( $selected, $vendor->get_id() ); ?>><?php echo ! empty( $vendor->get_shop_name() ) ? esc_html( $vendor->get_shop_name() ) : esc_html( $vendor->get_name() ); ?></option>
                 <?php endforeach ?>
             <?php endif ?>
         </select>

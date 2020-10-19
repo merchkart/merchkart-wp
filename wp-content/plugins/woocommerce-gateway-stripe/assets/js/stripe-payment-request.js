@@ -220,7 +220,8 @@ jQuery( function( $ ) {
 				city:      address.city,
 				address:   typeof address.addressLine[0] === 'undefined' ? '' : address.addressLine[0],
 				address_2: typeof address.addressLine[1] === 'undefined' ? '' : address.addressLine[1],
-				payment_request_type: paymentRequestType
+				payment_request_type: paymentRequestType,
+				is_product_page: wc_stripe_payment_request_params.is_product_page,
 			};
 
 			return $.ajax( {
@@ -240,7 +241,8 @@ jQuery( function( $ ) {
 			var data = {
 				security: wc_stripe_payment_request_params.nonce.update_shipping,
 				shipping_method: [ shippingOption.id ],
-				payment_request_type: paymentRequestType
+				payment_request_type: paymentRequestType,
+				is_product_page: wc_stripe_payment_request_params.is_product_page,
 			};
 
 			return $.ajax( {
@@ -313,7 +315,7 @@ jQuery( function( $ ) {
 				country: wc_stripe_payment_request_params.checkout.country_code,
 				requestPayerName: true,
 				requestPayerEmail: true,
-				requestPayerPhone: true,
+				requestPayerPhone: wc_stripe_payment_request_params.checkout.needs_payer_phone,
 				requestShipping: wc_stripe_payment_request_params.product.requestShipping,
 				displayItems: wc_stripe_payment_request_params.product.displayItems
 			};
@@ -340,7 +342,7 @@ jQuery( function( $ ) {
 					country: cart.order_data.country_code,
 					requestPayerName: true,
 					requestPayerEmail: true,
-					requestPayerPhone: true,
+					requestPayerPhone: wc_stripe_payment_request_params.checkout.needs_payer_phone,
 					requestShipping: cart.shipping_required ? true : false,
 					displayItems: cart.order_data.displayItems
 				};
@@ -481,8 +483,8 @@ jQuery( function( $ ) {
 				} else {
 					// Not implemented branded buttons default to Stripe's button
 					// Apple Pay buttons can also fall back to Stripe's button, as it's already branded
-					// Set button type to default to avoid issues with Stripe
-					wc_stripe_payment_request_params.button.type = 'default';
+					// Set button type to default or buy, depending on branded type, to avoid issues with Stripe
+					wc_stripe_payment_request_params.button.type = 'long' === wc_stripe_payment_request_params.button.branded_type ? 'buy' : 'default';
 				}
 			}
 
@@ -514,7 +516,11 @@ jQuery( function( $ ) {
 		},
 
 		shouldUseGooglePayBrand: function () {
-			return window.navigator.userAgent.match(/Chrome\/([0-9]+)\./i) && 'Google Inc.' == window.navigator.vendor;
+			var ua = window.navigator.userAgent.toLowerCase();
+			var isChrome = /chrome/.test( ua ) && ! /edge|edg|opr|brave\//.test( ua ) && 'Google Inc.' === window.navigator.vendor;
+			// newer versions of Brave do not have the userAgent string
+			var isBrave = isChrome && window.navigator.brave;
+			return isChrome && ! isBrave;
 		},
 
 		createGooglePayButton: function () {
@@ -640,7 +646,7 @@ jQuery( function( $ ) {
 				$( '#wc-stripe-payment-request-wrapper, #wc-stripe-payment-request-button-separator' ).show();
 			} else if ( wc_stripe_payment_request.isBrandedPaymentRequestButton( prButton ) ) {
 				$( '#wc-stripe-payment-request-wrapper, #wc-stripe-payment-request-button-separator' ).show();
-				$( '#wc-stripe-payment-request-button' ).append( prButton );
+				$( '#wc-stripe-payment-request-button' ).html( prButton );
 			} else if ( $( '#wc-stripe-payment-request-button' ).length ) {
 				$( '#wc-stripe-payment-request-wrapper, #wc-stripe-payment-request-button-separator' ).show();
 				prButton.mount( '#wc-stripe-payment-request-button' );

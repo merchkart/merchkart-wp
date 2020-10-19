@@ -1,7 +1,10 @@
 <?php
+/**
+ * Since 1.6.5
+ */
 defined('ABSPATH') or die(); // Exit if accessed directly
 
-if(class_exists('WC_AJAX')) :
+if (class_exists('WC_AJAX')) :
     class ELESSI_WC_AJAX extends WC_AJAX {
 
         /**
@@ -10,6 +13,7 @@ if(class_exists('WC_AJAX')) :
         public static function nasa_init() {
             add_action('init', array(__CLASS__, 'define_ajax'), 0);
             add_action('template_redirect', array(__CLASS__, 'do_wc_ajax'), 0);
+            
             self::nasa_add_ajax_events();
         }
 
@@ -21,20 +25,24 @@ if(class_exists('WC_AJAX')) :
              * Register ajax event
              */
             $ajax_events = array(
-                'nasa_static_content',
+                'nasa_ajax_static_content',
                 'nasa_quick_view',
                 'nasa_quickview_gallery_variation',
                 'nasa_get_gallery_variation',
                 'nasa_get_deal_variation',
                 'nasa_single_add_to_cart',
                 'nasa_combo_products',
+                'nasa_load_compare',
                 'nasa_add_compare_product',
                 'nasa_remove_compare_product',
                 'nasa_remove_all_compare',
                 'nasa_reload_fragments',
-                'nasa_refresh_accessories_price',
-                'nasa_add_to_cart_accessories',
-                'nasa_after_add_to_cart'
+                'nasa_after_add_to_cart',
+                'nasa_load_wishlist',
+                'nasa_add_to_wishlist',
+                'nasa_remove_from_wishlist',
+                'nasa_remove_wishlist_hidden',
+                'nasa_search_products'
             );
 
             foreach ($ajax_events as $ajax_event) {
@@ -47,6 +55,15 @@ if(class_exists('WC_AJAX')) :
         }
         
         /**
+         * Init WPBakery shortcodes
+         */
+        protected static function init_wpb_shortcodes() {
+            if (class_exists('WPBMap')) {
+                WPBMap::addAllMappedShortcodes();
+            }
+        }
+
+        /**
 	 * Reload a refreshed cart fragment, including the mini cart HTML.
 	 */
 	public static function nasa_reload_fragments() {
@@ -58,47 +75,31 @@ if(class_exists('WC_AJAX')) :
          * 
          * @global type $nasa_opt
          */
-        public static function nasa_static_content() {
-            global $nasa_opt;
+        public static function nasa_ajax_static_content() {
+            $data = array('success' => '', 'content' => array());
             
-            $data = array('success' => '0', 'content' => array());
-            $data['content']['#nasa-wishlist-sidebar-content'] = elessi_mini_wishlist_sidebar(true);
+            if (isset($_REQUEST['reload_yith_wishlist']) && $_REQUEST['reload_yith_wishlist']) {
+                $yith_wishlist = true;
+            }
+            
+            if (NASA_WISHLIST_ENABLE && $yith_wishlist) {
+                $data['content']['#nasa-wishlist-sidebar-content'] = elessi_mini_wishlist_sidebar(true);
+            }
 
-            ob_start();
-            do_action('nasa_show_mini_compare');
-            $data['content']['#nasa-compare-sidebar-content'] = ob_get_clean();
-
-            if(defined('NASA_PLG_CACHE_ACTIVE') && NASA_PLG_CACHE_ACTIVE) {
-                $data['content']['.nasa-compare-count.compare-number'] = elessi_get_count_compare();
-                $data['content']['.nasa-wishlist-count.wishlist-number'] = elessi_get_count_wishlist();
-
-                if (NASA_CORE_USER_LOGIGED) {
-                    $data['content']['.nasa-menus-account'] = elessi_tiny_account(true);
+            if (defined('NASA_PLG_CACHE_ACTIVE') && NASA_PLG_CACHE_ACTIVE) {
+                if (NASA_WISHLIST_ENABLE && $yith_wishlist) {
+                    $data['content']['.nasa-wishlist-count.wishlist-number'] = elessi_get_count_wishlist();
                 }
             }
-
-            // Load compare product
-            if(isset($_REQUEST['compare']) && $_REQUEST['compare']) {
-                $data['content']['#nasa-view-compare-product'] = elessi_products_compare_content();
-            }
-
-            /**
-             * Get viewed product
-             */
-            if(defined('NASA_COOKIE_VIEWED') && shortcode_exists('nasa_products_viewed') && (!isset($nasa_opt['disable-viewed']) || !$nasa_opt['disable-viewed'])) {
-                $data['content']['#nasa-viewed-sidebar-content'] = do_shortcode('[nasa_products_viewed is_ajax="no" columns_number="1" columns_small="1" columns_number_tablet="1" default_rand="false" display_type="sidebar" animation="0"]');
-            }
-
-            /**
-             * Login form ajax
-             */
-            if(!NASA_CORE_USER_LOGIGED && shortcode_exists('woocommerce_my_account') && (!isset($nasa_opt['login_ajax']) || $nasa_opt['login_ajax'] == 1)) {
-                ob_start();
-                do_action('nasa_login_register_form', true);
-                $data['content']['#nasa_customer_login'] = ob_get_clean();
+            
+            // Reload logged in / out
+            if (
+                (NASA_CORE_USER_LOGGED && isset($_REQUEST['reload_my_account']) && $_REQUEST['reload_my_account']) ||
+                (!NASA_CORE_USER_LOGGED && isset($_REQUEST['reload_login_register']) && $_REQUEST['reload_login_register'])) {
+                $data['content']['.nasa-menus-account'] = elessi_tiny_account(true);
             }
             
-            if(!empty($data['content'])) {
+            if (!empty($data['content'])) {
                 $data['success'] = '1';
             }
 
@@ -109,43 +110,77 @@ if(class_exists('WC_AJAX')) :
          * Get a refreshed cart fragment, including the mini cart HTML.
          */
         public static function nasa_quick_view() {
+            global $nasa_opt;
+            
             $result = array(
                 'mess_unavailable' => esc_html__('Sorry, this product is unavailable.', 'elessi-theme'),
                 'content' => ''
             );
 
-            if(isset($_REQUEST["product"])) {
-                $prod_id = $_REQUEST["product"];
-                $GLOBALS['post'] = get_post($prod_id);
-                $GLOBALS['product'] = wc_get_product($prod_id);
-                $product_lightbox = $GLOBALS['product'];
+            if (isset($_REQUEST["product"])) {
+                $qv_content = false;
+                
+                $style_quickview = isset($nasa_opt['style_quickview']) && in_array($nasa_opt['style_quickview'], array('sidebar', 'popup')) ? $nasa_opt['style_quickview'] : 'sidebar';
+                
+                $prod_id = intval($_REQUEST["product"]);
+                $prod_id_org = $prod_id;
+                $key_cache = false;
+                if (function_exists('nasa_get_cache')) {
+                    $currency = function_exists('get_woocommerce_currency') ? get_woocommerce_currency() : null;
+                    if ($currency) {
+                        $key_cache = $prod_id_org  . '_' . $style_quickview . '_' . $currency;
+                        $qv_content = nasa_get_cache($key_cache, 'nasa-quickview');
+                    }
+                }
+                
+                if (!$qv_content) {
+                    global $product, $post;
 
-                if($product_lightbox) {
-                    $product_type = $product_lightbox->get_type();
-                    if($product_type == 'variation') {
-                        $variation_data = wc_get_product_variation_attributes($prod_id);
-                        $prod_id = wp_get_post_parent_id($prod_id);
-                        $GLOBALS['post'] = get_post($prod_id);
-                        $GLOBALS['product'] = wc_get_product($prod_id);
-                        if(!empty($variation_data)) {
-                            foreach ($variation_data as $key => $value) {
-                                if($value != '') {
-                                    $_REQUEST[$key] = $value;
+                    self::init_wpb_shortcodes();
+                    $post_object = get_post($prod_id);
+                    setup_postdata($GLOBALS['post'] =& $post_object);
+
+                    $GLOBALS['product'] = wc_get_product($prod_id);
+                    $product_lightbox = $GLOBALS['product'];
+
+                    if ($product_lightbox) {
+                        $product_type = $product_lightbox->get_type();
+
+                        if ($product_type == 'variation') {
+                            $variation_data = wc_get_product_variation_attributes($prod_id);
+                            $prod_id = wp_get_post_parent_id($prod_id);
+
+                            $post_object = get_post($prod_id);
+                            setup_postdata($GLOBALS['post'] =& $post_object);
+
+                            $GLOBALS['product'] = wc_get_product($prod_id);
+
+                            if (!empty($variation_data)) {
+                                foreach ($variation_data as $key => $value) {
+                                    if ($value != '') {
+                                        $_REQUEST[$key] = $value;
+                                    }
                                 }
                             }
+                        } 
+
+                        if ($product_type == 'grouped') {
+                            $GLOBALS['product_lightbox'] = $product_lightbox;
                         }
-                    } 
 
-                    if ($product_type == 'grouped') {
-                        $GLOBALS['product_lightbox'] = $product_lightbox;
+                        $file = ELESSI_CHILD_PATH . '/includes/nasa-single-product-lightbox.php';
+                        ob_start();
+                        include is_file($file) ? $file : ELESSI_THEME_PATH . '/includes/nasa-single-product-lightbox.php';
+
+                        $qv_content = ob_get_clean();
+                        
+                        if (function_exists('nasa_set_cache') && $key_cache) {
+                            nasa_set_cache($key_cache, 'nasa-quickview', $qv_content);
+                        }
                     }
-
-                    $file = ELESSI_CHILD_PATH . '/includes/nasa-single-product-lightbox.php';
-                    ob_start();
-                    include is_file($file) ? $file : ELESSI_THEME_PATH . '/includes/nasa-single-product-lightbox.php';
-
-                    $result['content'] = ob_get_clean();
                 }
+                
+                $result['content'] = $qv_content;
             }
 
             wp_send_json($result);
@@ -157,7 +192,7 @@ if(class_exists('WC_AJAX')) :
         public static function nasa_quickview_gallery_variation() {
             $data = isset($_REQUEST['data']) ? $_REQUEST['data'] : array();
 
-            if(!isset($data['variation_id'])) {
+            if (!isset($data['variation_id'])) {
                 die;
             }
 
@@ -170,13 +205,13 @@ if(class_exists('WC_AJAX')) :
             $hasThumb = (bool) $imageMain;
 
             $attachment_ids = array();
-            if(isset($data['gallery'])) {
+            if (isset($data['gallery'])) {
                 $attachments = $data['gallery'] ? explode(',', $data['gallery']) : array();
 
-                if($attachments) {
+                if ($attachments) {
                     foreach ($attachments as $img_id) {
                         $img_id = (int) trim($img_id);
-                        if($img_id) {
+                        if ($img_id) {
                             $attachment_ids[] = $img_id;
                         }
                     }
@@ -199,7 +234,7 @@ if(class_exists('WC_AJAX')) :
             /**
              * Deal time
              */
-            if(isset($data['is_purchasable']) && $data['is_purchasable'] && isset($data['is_in_stock']) && $data['is_in_stock']) {
+            if (isset($data['is_purchasable']) && $data['is_purchasable'] && isset($data['is_in_stock']) && $data['is_in_stock']) {
                 $time_from = get_post_meta($productId, '_sale_price_dates_from', true);
                 $time_to = get_post_meta($productId, '_sale_price_dates_to', true);
                 $time_sale = ((int) $time_to < NASA_TIME_NOW || (int) $time_from > NASA_TIME_NOW) ?
@@ -219,7 +254,7 @@ if(class_exists('WC_AJAX')) :
         public static function nasa_get_gallery_variation() {
             $data = isset($_REQUEST['data']) ? $_REQUEST['data'] : array();
 
-            if(!isset($data['variation_id'])) {
+            if (!isset($data['variation_id'])) {
                 die;
             }
 
@@ -227,13 +262,13 @@ if(class_exists('WC_AJAX')) :
 
             $main_id = isset($data['main_id']) && (int) $data['main_id'] ? (int) $data['main_id'] : 0;
             $gallery_id = array();
-            if(isset($data['gallery'])) {
+            if (isset($data['gallery'])) {
                 $attachments = $data['gallery'] ? explode(',', $data['gallery']) : array();
 
-                if($attachments) {
+                if ($attachments) {
                     foreach ($attachments as $img_id) {
                         $img_id = (int) trim($img_id);
-                        if($img_id) {
+                        if ($img_id) {
                             $gallery_id[] = $img_id;
                         }
                     }
@@ -265,7 +300,7 @@ if(class_exists('WC_AJAX')) :
             /**
              * Deal time
              */
-            if(isset($data['deal_variation']) && $data['deal_variation']) {
+            if (isset($data['deal_variation']) && $data['deal_variation']) {
                 $time_from = get_post_meta($productId, '_sale_price_dates_from', true);
                 $time_to = get_post_meta($productId, '_sale_price_dates_to', true);
                 $time_sale = ((int) $time_to < NASA_TIME_NOW || (int) $time_from > NASA_TIME_NOW) ?
@@ -285,7 +320,7 @@ if(class_exists('WC_AJAX')) :
         public static function nasa_get_deal_variation() {
             $result = array('success' => '0');
             
-            if(isset($_REQUEST["pid"])) {
+            if (isset($_REQUEST["pid"])) {
                 $productId = $_REQUEST["pid"];
                 $time_from = get_post_meta($productId, '_sale_price_dates_from', true);
                 $time_to = get_post_meta($productId, '_sale_price_dates_to', true);
@@ -293,7 +328,7 @@ if(class_exists('WC_AJAX')) :
                     false : (int) $time_to;
 
                 $result['content'] = elessi_time_sale($time_sale);
-                if($result['content'] !== '') {
+                if ($result['content'] !== '') {
                     $result['success'] = '1';
                 }
             }
@@ -306,7 +341,7 @@ if(class_exists('WC_AJAX')) :
          */
         protected static function nasa_validate_variation($product, $variation_id, $variation, $quantity) {
             if (empty($variation_id) || empty($product)) {
-                return false;
+                return array('validate' => false);
             }
 
             $missing_attributes = array();
@@ -329,27 +364,37 @@ if(class_exists('WC_AJAX')) :
                     } else {
                         $value = wc_clean(stripslashes($variation[$taxonomy]));
                     }
-
-                    // Get valid value from variation
-                    $valid_value = isset($variation_data[$taxonomy]) ? $variation_data[$taxonomy] : '';
-
-                    // Allow if valid or show error.
-                    if ($valid_value === $value || ('' === $valid_value && in_array($value, $attribute->get_slugs()))) {
-                        $variations[$taxonomy] = $value;
+                    
+                    if (trim($value) == '') {
+                        $missing_attributes[] = wc_attribute_label($attribute['name']);
                     } else {
-                        return false;
+                        // Get valid value from variation
+                        $valid_value = isset($variation_data[$taxonomy]) ? $variation_data[$taxonomy] : '';
+
+                        // Allow if valid or show error.
+                        if ($valid_value === $value || (in_array($value, $attribute->get_slugs()))) {
+                            $variations[$taxonomy] = $value;
+                        } else {
+                            return array('validate' => false);
+                        }
                     }
                 } else {
                     $missing_attributes[] = wc_attribute_label($attribute['name']);
                 }
             }
+            
             if (!empty($missing_attributes)) {
-                return false;
+                return array(
+                    'validate' => false,
+                    'missing_attributes' => $missing_attributes
+                );
             }
 
             $passed_validation = apply_filters('woocommerce_add_to_cart_validation', true, $product->get_id(), $quantity, $variation_id, $variations);
 
-            return $passed_validation;
+            return array(
+                'validate' => $passed_validation
+            );
         }
 
         /**
@@ -357,184 +402,197 @@ if(class_exists('WC_AJAX')) :
          */
         public static function nasa_single_add_to_cart() {
             global $woocommerce;
-
-            if(!$woocommerce || !isset($_REQUEST['product_id']) || (int)$_REQUEST['product_id'] <= 0){
-                wp_send_json(array(
-                    'error' => true,
-                    'message' => esc_html__('Sorry, Product is not existing.', 'elessi-theme')
-                ));
+            
+            /**
+             * Clear Old Notices
+             */
+            wc_clear_notices();
+            
+            /**
+             * Add to cart in single
+             */
+            if (isset($_REQUEST['add-to-cart']) && is_numeric(wp_unslash($_REQUEST['add-to-cart']))) {
+                $error = (0 === wc_notice_count('error')) ? false : true;
+                $product_id = wp_unslash($_REQUEST['add-to-cart']);
                 
-                wp_die();
+                /**
+                 * Error Add to Cart
+                 */
+                if ($error) {
+                    $data = array(
+                        'error' => $error,
+                        'message' => wc_print_notices(true),
+                        'product_url' => apply_filters('woocommerce_cart_redirect_after_error', get_permalink($product_id), $product_id)
+                    );
+                }
+                
+                /**
+                 * Added product success
+                 */
+                else {
+                    // Return fragments
+                    ob_start();
+                    woocommerce_mini_cart();
+                    $mini_cart = ob_get_clean();
+                    
+                    $woo_mess = wc_print_notices(true);
+                    $woo_mess = empty($woo_mess) ? '<div class="woocommerce-message text-center" role="alert">' . esc_html__('Product added to cart successfully!', 'elessi-theme') . '</div>' : $woo_mess;
+
+                    // Fragments and mini cart are returned
+                    $data = array(
+                        'fragments' => apply_filters(
+                            'woocommerce_add_to_cart_fragments',
+                            array(
+                                'div.widget_shopping_cart_content' => '<div class="widget_shopping_cart_content">' . $mini_cart . '</div>',
+                                '.woocommerce-message' => $woo_mess
+                            )
+                        ),
+                        'cart_hash' => $woocommerce->cart->get_cart_hash()
+                    );
+                }
+                
+                wp_send_json($data);
             }
+            
+            /**
+             * Add to cart in Loop
+             */
+            else {
+                if (!$woocommerce || !isset($_REQUEST['product_id']) || !is_numeric(wp_unslash($_REQUEST['product_id']))){
+                    wc_add_notice(esc_html__('Sorry, Product is not existing.', 'elessi-theme'), 'error');
+                    wp_send_json(array(
+                        'error' => true,
+                        'message' => wc_print_notices(true)
+                    ));
 
-            $error      = false;
-            $product_id = apply_filters('woocommerce_add_to_cart_product_id', absint($_REQUEST['product_id']));
-            $quantity   = empty($_REQUEST['quantity']) ? 1 : wc_stock_amount($_REQUEST['quantity']);
-            $type       = (!isset($_REQUEST['product_type']) || !in_array($_REQUEST['product_type'], array('simple', 'variation', 'variable', NASA_COMBO_TYPE))) ? 'simple' : $_REQUEST['product_type'];
+                    wp_die();
+                }
 
-            $variation = isset($_REQUEST['variation']) ? $_REQUEST['variation'] : array();
-            $validate_attr = true;
-            if($type == 'variation') {
-                $variation_id = $product_id;
-                $product_id = wp_get_post_parent_id($product_id);
-                $type = 'variable';
-            } else {
-                $variation_id = (int) $_REQUEST['variation_id'];
-            }
+                $error      = false;
+                $product_id = apply_filters('woocommerce_add_to_cart_product_id', absint($_REQUEST['product_id']));
+                $quantity   = empty($_REQUEST['quantity']) ? 1 : wc_stock_amount($_REQUEST['quantity']);
+                $type       = (!isset($_REQUEST['product_type']) || !in_array($_REQUEST['product_type'], array('simple', 'variation', 'variable', NASA_COMBO_TYPE))) ? 'simple' : $_REQUEST['product_type'];
 
-            $passed_validation = apply_filters('woocommerce_add_to_cart_validation', true, $product_id, $quantity);
-            $product_status    = get_post_status($product_id);
+                $variation = isset($_REQUEST['variation']) ? $_REQUEST['variation'] : array();
+                $validate_attr = array('validate' => true);
+                if ($type == 'variation') {
+                    $variation_id = $product_id;
+                    $product_id = wp_get_post_parent_id($product_id);
+                    $type = 'variable';
+                } else {
+                    $variation_id = (int) $_REQUEST['variation_id'];
+                }
 
-            $product = wc_get_product((int) $product_id);
-            if(!$product) {
-                $error = true;
-            } else {
-                $product_type = $product->get_type();
-                if(((!$variation || !$variation_id) && $product_type == 'variable') || $type != $product_type){
+                $passed_validation = apply_filters('woocommerce_add_to_cart_validation', true, $product_id, $quantity);
+                $product_status    = get_post_status($product_id);
+
+                $product = wc_get_product((int) $product_id);
+                $product_type = false;
+
+                if (!$product) {
                     $error = true;
-                }
+                } else {
+                    $product_type = $product->get_type();
+                    if (((!$variation || !$variation_id) && $product_type == 'variable') || $type != $product_type){
+                        $error = true;
+                    }
 
-                elseif($product_type == NASA_COMBO_TYPE && function_exists('YITH_WCPB_Frontend')) {
-                    YITH_WCPB_Frontend();
-                }
+                    elseif ($product_type == NASA_COMBO_TYPE && function_exists('YITH_WCPB_Frontend')) {
+                        YITH_WCPB_Frontend();
+                    }
 
-                if(!$error && $product_type == 'variable') {
-                    $validate_attr = self::nasa_validate_variation($product, $variation_id, $variation, $quantity);
-                }
-            }
-
-            if (!$error && $validate_attr && $passed_validation && 'publish' === $product_status && $woocommerce->cart->add_to_cart($product_id, $quantity, $variation_id, $variation)) {
-
-                do_action('woocommerce_ajax_added_to_cart', $product_id);
-                if (get_option('woocommerce_cart_redirect_after_add') == 'yes') {
-                    wc_add_to_cart_message($product_id);
-                }
-
-                // Return fragments
-                ob_start();
-                woocommerce_mini_cart();
-                $mini_cart = ob_get_clean();
-
-                // Fragments and mini cart are returned
-                // $cart_session = $woocommerce->cart->get_cart_for_session();
-                $data = array(
-                    'fragments' => apply_filters(
-                        'woocommerce_add_to_cart_fragments',
-                        array(
-                            'div.widget_shopping_cart_content' => '<div class="widget_shopping_cart_content">' . $mini_cart . '</div>'
-                        )
-                    ),
-                    'cart_hash' => $woocommerce->cart->get_cart_hash()
-                );
-
-                // Remove wishlist
-                $nasa_logined_id = get_current_user_id();
-                if(class_exists('YITH_WCWL') && $nasa_logined_id) {
-                    $detail = isset($_REQUEST['data_wislist']) ? $_REQUEST['data_wislist'] : array();
-                    if(!empty($detail) && isset($detail['from_wishlist']) && $detail['from_wishlist'] == '1') {
-                        $detail['remove_from_wishlist'] = $product_id;
-                        $detail['user_id'] = $nasa_logined_id ? $nasa_logined_id : false;
-                        $nasa_wishlist = new YITH_WCWL($detail);
-                        $data['wishlist'] = '';
-                        $data['wishlistcount'] = 0;
-                        if(elessi_remove_wishlist_item($nasa_wishlist)) {
-                            $data['wishlist'] = elessi_mini_wishlist_sidebar(true);
-                            $data['wishlistcount'] = $nasa_wishlist->count_products();
-                        }
+                    if (!$error && $product_type == 'variable') {
+                        $validate_attr = self::nasa_validate_variation($product, $variation_id, $variation, $quantity);
                     }
                 }
 
-                wp_send_json($data);
-            } else {
-                // If there was an error adding to the cart, redirect to the product page to show any errors
-                $data = array(
-                    'error' => true,
-                    'message' => esc_html__('Sorry, Maybe product empty in stock.', 'elessi-theme'),
-                    'product_url' => apply_filters('woocommerce_cart_redirect_after_error', get_permalink($product_id), $product_id)
-                );
-                wp_send_json($data);
-            }
-        }
-        
-        /**
-         * Add To Cart All Product + Accessories
-         */
-        public static function nasa_add_to_cart_accessories() {
-            $error = array(
-                'error' => true,
-                'message' => esc_html__('Sorry, Maybe product empty in stock.', 'elessi-theme')
-            );
-            
-            if(!isset($_REQUEST['product_ids']) || empty($_REQUEST['product_ids'])) {
-                wp_send_json($error);
-                
-                return;
-            }
-            
-            foreach ($_REQUEST['product_ids'] as $productId) {
-                $product_id = (int) $productId;
-                $product = wc_get_product($product_id);
-                
-                /**
-                 * Check Product
-                 */
-                if (!$product) {
-                    wp_send_json($error);
-                
-                    return;
-                }
-                
-                $type = $product->get_type();
-                
-                /**
-                 * Check type
-                 */
-                if (!in_array($type, array('simple', 'variation'))) {
-                    wp_send_json($error);
-                
-                    return;
-                }
-                
-                $quantity = 1;
-                $passed_validation = apply_filters('woocommerce_add_to_cart_validation', true, $product_id, $quantity);
-                $product_status    = get_post_status($product_id);
-                $variation_id      = 0;
-		$variation         = array();
-                
-                /**
-                 * Check validate for variation product
-                 */
-                if ('variation' === $type) {
-                    $variation_id = $product_id;
-                    $product_id   = $product->get_parent_id();
-                    $variation    = $product->get_variation_attributes();
-                }
-                
-                /**
-                 * Add To Cart
-                 */
-                if ($passed_validation && false !== WC()->cart->add_to_cart($product_id, $quantity, $variation_id, $variation ) && 'publish' === $product_status) {
+                if (!$error && $validate_attr['validate'] && $passed_validation && 'publish' === $product_status && $woocommerce->cart->add_to_cart($product_id, $quantity, $variation_id, $variation)) {
+
                     do_action('woocommerce_ajax_added_to_cart', $product_id);
-		} else {
-                    wp_send_json($error);
-                
-                    return;
-		}
+
+                    if ('yes' !== get_option('woocommerce_cart_redirect_after_add')) {
+                        // Return fragments
+                        ob_start();
+                        woocommerce_mini_cart();
+                        $mini_cart = ob_get_clean();
+
+                        // Fragments and mini cart are returned
+                        $data = array(
+                            'fragments' => apply_filters(
+                                'woocommerce_add_to_cart_fragments',
+                                array(
+                                    'div.widget_shopping_cart_content' => '<div class="widget_shopping_cart_content">' . $mini_cart . '</div>'
+                                )
+                            ),
+                            'cart_hash' => $woocommerce->cart->get_cart_hash()
+                        );
+                    } else {
+                        wc_add_to_cart_message(array($product_id => $quantity), true);
+                        $data = array(
+                            'redirect' => wc_get_cart_url()
+                        );
+                    }
+
+                    // Remove wishlist
+                    if (NASA_WISHLIST_ENABLE && $product_type && $product_type != 'external' && get_option('yith_wcwl_remove_after_add_to_cart') == 'yes') {
+                        $nasa_logined_id = get_current_user_id();
+                        $detail = isset($_REQUEST['data_wislist']) ? $_REQUEST['data_wislist'] : array();
+                        if (!empty($detail) && isset($detail['from_wishlist']) && $detail['from_wishlist'] == '1') {
+                            $detail['remove_from_wishlist'] = $product_id;
+                            $detail['user_id'] = $nasa_logined_id;
+
+                            $data['wishlist'] = '';
+                            $data['wishlistcount'] = 0;
+
+                            /**
+                             * WCWL 2.x or Lower
+                             */
+                            if (!NASA_WISHLIST_NEW_VER) {
+                                if ($nasa_logined_id) {
+                                    $nasa_wishlist = new YITH_WCWL($detail);
+                                    if (elessi_remove_wishlist_item($nasa_wishlist)) {
+                                        $data['wishlist'] = elessi_mini_wishlist_sidebar(true);
+                                        $count = yith_wcwl_count_products();
+                                        $data['wishlistcount'] = (int) $count > 9 ? '9+' : (int) $count;
+                                    }
+                                }
+                            }
+
+                            /**
+                             * WCWL 3x or Higher
+                             */
+                            else {
+                                try {
+                                    YITH_WCWL()->remove($detail);
+                                    $data['wishlist'] = elessi_mini_wishlist_sidebar(true);
+                                    $count = yith_wcwl_count_products();
+                                    $data['wishlistcount'] = (int) $count > 9 ? '9+' : (int) $count;
+                                }
+                                catch (Exception $e){
+                                    // $data['message'] = $e->getMessage();
+                                }
+                            }
+                        }
+                    }
+
+                    wp_send_json($data);
+                } else {
+                    // If there was an error adding to the cart, redirect to the product page to show any errors
+                    if (isset($validate_attr['missing_attributes'])) {
+                        wc_add_notice(sprintf(_n('%s is a required field', '%s are required fields', count($validate_attr['missing_attributes']), 'elessi-theme'), wc_format_list_of_items($validate_attr['missing_attributes'])), 'error');
+                    } else {
+                        wc_add_notice(esc_html__('Sorry, Maybe product empty in stock.', 'elessi-theme'), 'error');
+                    }
+
+                    $data = array(
+                        'error' => true,
+                        'message' => wc_print_notices(true),
+                        'product_url' => apply_filters('woocommerce_cart_redirect_after_error', get_permalink($product_id), $product_id)
+                    );
+
+                    wp_send_json($data);
+                }
             }
-            
-            self::get_refreshed_fragments();
-        }
-        
-        /**
-         * Get Total Price Accessories
-         */
-        public static function nasa_refresh_accessories_price() {
-            $price = 0;
-            if(isset($_REQUEST['total_price']) && $_REQUEST['total_price']) {
-                $price = $_REQUEST['total_price'];
-            }
-            
-            wp_send_json(array('total_price' => wc_price($price)));
         }
         
         /**
@@ -543,13 +601,13 @@ if(class_exists('WC_AJAX')) :
         public static function nasa_combo_products(){
             $output = array();
 
-            if(!defined('YITH_WCPB')) {
+            if (!defined('YITH_WCPB')) {
                 wp_send_json($output);
             }
 
             global $woocommerce, $nasa_opt;
 
-            if(!$woocommerce || !isset($_REQUEST['id']) || !(int) $_REQUEST['id']){
+            if (!$woocommerce || !isset($_REQUEST['id']) || !(int) $_REQUEST['id']){
                 wp_send_json($output);
             }
 
@@ -560,6 +618,7 @@ if(class_exists('WC_AJAX')) :
 
             $file = ELESSI_CHILD_PATH . '/includes/nasa-combo-products.php';
             $file = is_file($file) ? $file : ELESSI_THEME_PATH . '/includes/nasa-combo-products.php';
+            
             ob_start();
             include $file;
             $output['content'] = ob_get_clean();
@@ -567,6 +626,23 @@ if(class_exists('WC_AJAX')) :
             wp_send_json($output);
         }
         
+        /**
+         * Load compare in bottom
+         */
+        public static function nasa_load_compare() {
+            $data = array('success' => '0', 'content' => '');
+            
+            ob_start();
+            do_action('nasa_show_mini_compare');
+            $data['content'] = ob_get_clean();
+            
+            if (!empty($data['content'])) {
+                $data['success'] = '1';
+            }
+            
+            wp_send_json($data);
+        }
+
         /**
          * Add compare item
          */
@@ -584,14 +660,14 @@ if(class_exists('WC_AJAX')) :
 
             global $nasa_opt, $yith_woocompare;
             $nasa_compare = isset($yith_woocompare->obj) ? $yith_woocompare->obj : $yith_woocompare;
-            if(!$nasa_compare) {
+            if (!$nasa_compare) {
                 wp_send_json($result);
                 wp_die();
             }
 
             $max_compare = isset($nasa_opt['max_compare']) ? (int) $nasa_opt['max_compare'] : 4;
-            if(!in_array((int) $_REQUEST['pid'], $nasa_compare->products_list)) {
-                if(count($nasa_compare->products_list) >= $max_compare) {
+            if (!in_array((int) $_REQUEST['pid'], $nasa_compare->products_list)) {
+                if (count($nasa_compare->products_list) >= $max_compare) {
                     while (count($nasa_compare->products_list) >= $max_compare) {
                         array_shift($nasa_compare->products_list);
                     }
@@ -627,6 +703,7 @@ if(class_exists('WC_AJAX')) :
                 'mini_compare' => 'no-change',
                 'count_compare' => 0
             );
+            
             if (!isset($_REQUEST['pid']) || !(int) $_REQUEST['pid']) {
                 wp_send_json($result);
                 wp_die();
@@ -634,12 +711,12 @@ if(class_exists('WC_AJAX')) :
 
             global $yith_woocompare;
             $nasa_compare = isset($yith_woocompare->obj) ? $yith_woocompare->obj : $yith_woocompare;
-            if(!$nasa_compare) {
+            if (!$nasa_compare) {
                 wp_send_json($result);
                 wp_die();
             }
 
-            if(in_array((int) $_REQUEST['pid'], $nasa_compare->products_list)) {
+            if (in_array((int) $_REQUEST['pid'], $nasa_compare->products_list)) {
                 $nasa_compare->remove_product_from_compare((int) $_REQUEST['pid']);
                 $result['mess_compare'] = esc_html__('Removed product from compare !', 'elessi-theme');
 
@@ -673,12 +750,12 @@ if(class_exists('WC_AJAX')) :
 
             global $yith_woocompare;
             $nasa_compare = isset($yith_woocompare->obj) ? $yith_woocompare->obj : $yith_woocompare;
-            if(!$nasa_compare) {
+            if (!$nasa_compare) {
                 wp_send_json($result);
                 wp_die();
             }
 
-            if(!empty($nasa_compare->products_list)) {
+            if (!empty($nasa_compare->products_list)) {
                 $nasa_compare->remove_product_from_compare('all');
                 $result['mess_compare'] = esc_html__('Removed all products from compare !', 'elessi-theme');
                 ob_start();
@@ -731,14 +808,153 @@ if(class_exists('WC_AJAX')) :
             
             wp_send_json($result);
         }
+        
+        /**
+         * NasaTheme Load product of Nasa Wishlist
+         */
+        public static function nasa_load_wishlist() {
+            $data = array('success' => '0', 'content' => '');
+            
+            if (function_exists('elessi_woo_wishlist')) {
+                $nasa_wishlist = elessi_woo_wishlist();
+                
+                if ($nasa_wishlist) {
+                    $data = array(
+                        'success' => '1',
+                        'content' => elessi_mini_wishlist_sidebar(true)
+                    );
+                }
+            }
+            
+            wp_send_json($data);
+        }
+        
+        /**
+         * NasaTheme Add product to wishlist
+         */
+        public static function nasa_add_to_wishlist() {
+            $data = array('success' => '0', 'mess' => '');
+            
+            if (function_exists('elessi_woo_wishlist') && isset($_REQUEST["product_id"])) {
+                $nasa_wishlist = elessi_woo_wishlist();
+                
+                if ($nasa_wishlist->add_to_wishlist($_REQUEST["product_id"])) {
+                    $data = array(
+                        'success' => '1',
+                        'mess' => sprintf(
+                            '<div class="woocommerce-message text-center" role="alert">%s</div>',
+                            esc_html__('Product added to wishlist successfully!', 'elessi-theme')
+                        ),
+                        'count' => $nasa_wishlist->count_items()
+                    );
+                    
+                    if (isset($_REQUEST['show_content']) && $_REQUEST['show_content']) {
+                        $data['content'] = elessi_mini_wishlist_sidebar(true);
+                    }
+                }
+            }
+            
+            wp_send_json($data);
+        }
+        
+        /**
+         * NasaTheme Remove product from wishlist
+         */
+        public static function nasa_remove_from_wishlist() {
+            $data = array('success' => '0', 'mess' => '');
+            
+            if (function_exists('elessi_woo_wishlist') && isset($_REQUEST["product_id"])) {
+                $nasa_wishlist = elessi_woo_wishlist();
+                
+                if ($nasa_wishlist->remove_from_wishlist($_REQUEST["product_id"])) {
+                    $data = array(
+                        'success' => '1',
+                        'mess' => sprintf(
+                            '<div class="woocommerce-message text-center" role="alert">%s</div>',
+                            esc_html__('Product removed from wishlist successfully!', 'elessi-theme')
+                        ),
+                        'count' => $nasa_wishlist->count_items()
+                    );
+                    
+                    if (isset($_REQUEST['show_content']) && $_REQUEST['show_content']) {
+                        $data['content'] = elessi_mini_wishlist_sidebar(true);
+                    }
+                }
+            }
+            
+            wp_send_json($data);
+        }
+        /**
+         * NasaTheme Remove wishlist hidden
+         */
+        public static function nasa_remove_wishlist_hidden() {
+            $data = array('success' => '0', 'mess' => '');
+            
+            if (function_exists('elessi_woo_wishlist') && isset($_REQUEST["product_ids"]) && !empty($_REQUEST["product_ids"])) {
+                $nasa_wishlist = elessi_woo_wishlist();
+                foreach ($_REQUEST["product_ids"] as $product_id) {
+                    $nasa_wishlist->remove_from_wishlist($product_id);
+                }
+                
+                $data = array(
+                    'success' => '1',
+                    'mess' => sprintf(
+                        '<div class="woocommerce-message text-center" role="alert">%s</div>',
+                        esc_html__('Product removed from wishlist successfully!', 'elessi-theme')
+                    ),
+                    'count' => $nasa_wishlist->count_items()
+                );
+            }
+            
+            wp_send_json($data);
+        }
+        
+        /**
+         * Live Search Products
+         */
+        public static function nasa_search_products() {
+            global $nasa_opt;
+
+            $data = array();
+            if (!isset($_REQUEST['s']) || trim($_REQUEST['s']) == '') {
+                wp_send_json($data);
+                
+                return;
+            }
+
+            $limit = (isset($nasa_opt['limit_results_search']) && (int) $nasa_opt['limit_results_search'] > 0) ? (int) $nasa_opt['limit_results_search'] : 5;
+
+            $data_store = WC_Data_Store::load('product');
+            $products = $data_store->get_products(
+                array(
+                    's' => $_REQUEST['s'],
+                    'status' => array('publish'),
+                    'limit' => $limit,
+                    'orderby' => 'relevance'
+                )
+            );
+            
+            if ($products) {
+                foreach ($products as $product) {
+                    $data[] = array(
+                        'title' => $product->get_name(),
+                        'url' => $product->get_permalink(),
+                        'image' => $product->get_image('thumbnail'),
+                        'price' => $product->get_price_html()
+                    );
+                }
+            }
+
+            wp_send_json($data);
+        }
     }
 
     /**
      * Init ELESSI WC AJAX
      */
-    if(isset($_REQUEST['wc-ajax'])) {
+    if (isset($_REQUEST['wc-ajax'])) {
         add_action('init', 'elessi_init_wc_ajax');
-        if(!function_exists('elessi_init_wc_ajax')) :
+        if (!function_exists('elessi_init_wc_ajax')) :
             function elessi_init_wc_ajax() {
                 ELESSI_WC_AJAX::nasa_init();
             }

@@ -229,8 +229,7 @@ class MailChimp_WooCommerce
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
 
 		// Add menu item
-		$this->loader->add_action('admin_menu', $plugin_admin, 'add_plugin_admin_menu');
-        $this->loader->add_filter('parent_file', $plugin_admin, 'highlight_admin_menu');
+		$this->loader->add_action('admin_menu', $plugin_admin, 'add_plugin_admin_menu', 71);
 
         // Add WooCommerce Navigation Bar
         $this->loader->add_action('admin_menu', $plugin_admin, 'add_woocommerce_navigation_bar');
@@ -240,8 +239,9 @@ class MailChimp_WooCommerce
 		$this->loader->add_filter('plugin_action_links_' . $plugin_basename, $plugin_admin, 'add_action_links');
 
 		// make sure we're listening for the admin init
-		$this->loader->add_action('admin_init', $plugin_admin, 'options_update');
-
+        $this->loader->add_action('admin_init', $plugin_admin, 'options_update');
+        $this->loader->add_action('admin_notices', $plugin_admin, 'initial_notice');
+        
 		// put the menu on the admin top bar.
 		//$this->loader->add_action('admin_bar_menu', $plugin_admin, 'admin_bar', 100);
 
@@ -264,12 +264,16 @@ class MailChimp_WooCommerce
         // Create new mailchimp Account methods
         $this->loader->add_action( 'wp_ajax_mailchimp_woocommerce_create_account_check_username', $plugin_admin, 'mailchimp_woocommerce_ajax_create_account_check_username' );
         $this->loader->add_action( 'wp_ajax_mailchimp_woocommerce_create_account_signup', $plugin_admin, 'mailchimp_woocommerce_ajax_create_account_signup' );
+        $this->loader->add_action( 'wp_ajax_mailchimp_woocommerce_support_form', $plugin_admin, 'mailchimp_woocommerce_ajax_support_form' );
 
         // add Shop Manager capability to save options
         $this->loader->add_action('option_page_capability_mailchimp-woocommerce', $plugin_admin, 'mailchimp_woocommerce_option_page_capability');
 
         // set communications box status
         $this->loader->add_action( 'wp_ajax_mailchimp_woocommerce_communication_status', $plugin_admin, 'mailchimp_woocommerce_communication_status' );
+
+        // Load log file via ajax
+        $this->loader->add_action( 'wp_ajax_mailchimp_woocommerce_load_log_file', $plugin_admin, 'mailchimp_woocommerce_ajax_load_log_file' );
     }
 
 	/**
@@ -284,6 +288,9 @@ class MailChimp_WooCommerce
 		$plugin_public = new MailChimp_WooCommerce_Public( $this->get_plugin_name(), $this->get_version() );
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
         $this->loader->add_action('wp_footer', $plugin_public, 'add_inline_footer_script');
+
+        $this->loader->add_action('woocommerce_after_checkout_form', $plugin_public, 'add_JS_checkout', 10);
+        $this->loader->add_action('woocommerce_register_form', $plugin_public, 'add_JS_checkout', 10);
 	}
 
 	/**

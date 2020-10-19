@@ -17,4 +17,5 @@ $output = $this->getTemplateVariable('title');
 $output .= '<div class="nasa-accordions-content' . $el_class . '">';
     $output .= $prepareContent;
 $output .= '</div>';
+
 echo $output;

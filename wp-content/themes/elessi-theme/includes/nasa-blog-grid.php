@@ -1,5 +1,5 @@
 <?php
-if($k == 0) :
+if ($k == 0) :
     $class_wrap = 'group-blogs';
     $class_wrap .= ' large-block-grid-' . (isset($nasa_opt['masonry_blogs_columns_desk']) && (int) $nasa_opt['masonry_blogs_columns_desk'] ? (int) $nasa_opt['masonry_blogs_columns_desk'] : '3');
     $class_wrap .= ' medium-block-grid-' . (isset($nasa_opt['masonry_blogs_columns_tablet']) && (int) $nasa_opt['masonry_blogs_columns_tablet'] ? (int) $nasa_opt['masonry_blogs_columns_tablet'] : '2');
@@ -7,6 +7,10 @@ if($k == 0) :
     
     echo '<ul class="' . $class_wrap . '">';
 endif;
+
+$post_type = get_post_type();
+$post_blog = 'post' == $post_type ? true : false;
+$show_comment = $show_comment_info && comments_open() ? true : false;
 ?>
 
 <li class="nasa-item-normal nasa-item-blog-grid entry-blog">
@@ -23,83 +27,77 @@ endif;
         <?php endif; ?>
 
         <header class="entry-header">
-            <div class="row">
+            <?php
+            $categories_list = $post_blog && $show_cat_info ? get_the_category_list(esc_html__(', ', 'elessi-theme')) : false;
+            if ($categories_list) : ?>
+                <!-- Categories item -->
+                <span class="cat-links-archive nasa-archive-info">
+                    <?php echo $categories_list; ?>
+                </span>
+            <?php endif; ?>
+            
+            <h3 class="entry-title nasa-archive-info">
+                <a href="<?php echo esc_url($link); ?>" title="<?php echo esc_attr($title); ?>" rel="bookmark">
+                    <?php echo $title; ?>
+                </a>
+            </h3>
 
-                <div class="large-12 columns">
-                    <h3 class="entry-title">
-                        <a href="<?php echo esc_url($link); ?>" title="<?php echo esc_attr($title); ?>" rel="bookmark">
-                            <?php echo ($title); ?>
-                        </a>
-                    </h3>
-                </div>
-
-                <div class="large-12 columns text-left info-wrap">
-
-                    <?php if($show_author_info) : ?>
+            <?php if ($show_author_info || $show_date_info || $show_comment) : ?>
+                <div class="text-left info-wrap nasa-archive-info">
+                    <?php if ($show_author_info) : ?>
                         <a href="<?php echo esc_url($link_author); ?>" title="<?php echo esc_attr($author); ?>">
-                            <span class="meta-author inline-block">
+                            <span class="meta-author meta-item inline-block">
                                 <i class="pe-7s-user"></i>
-                                <?php echo ($author); ?>
+                                <?php echo $author; ?>
                             </span>
                         </a>
                     <?php endif; ?>
 
-                    <?php if($show_date_info) : ?>
+                    <?php if ($show_date_info) : ?>
                         <a href="<?php echo esc_url($link_date); ?>" title="<?php echo esc_attr($date_post); ?>">
-                            <span class="post-date inline-block">
+                            <span class="post-date meta-item inline-block">
                                 <i class="pe-7s-date"></i>
-                                <?php echo ($date_post); ?>
+                                <?php echo $date_post; ?>
+                            </span>
+                        </a>
+                    <?php endif; ?>
+
+                    <?php if ($show_comment) :
+                        $count_comments = get_comments_number();
+                        $class_number = 'nasa-comment-count';
+                        $class_number .= !$count_comments ? ' nasa-empty' : '';
+                        ?>
+                        <a href="<?php echo esc_url($link); ?>#respond" title="<?php echo esc_attr__('Comments', 'elessi-theme'); ?>">
+                            <span class="post-comment-count meta-item inline-block">
+                                <i class="pe-7s-comment"></i>
+                                <span class="<?php echo esc_attr($class_number); ?>"><?php echo $count_comments; ?></span>
                             </span>
                         </a>
                     <?php endif; ?>
                 </div>
+            <?php endif; ?>
                 
-                <?php if($show_desc_blog) : ?>
-                    <div class="large-12 columns margin-top-10">
-                        <div class="entry-summary">
-                            <?php the_excerpt(); ?>
-                        </div>
-                    </div>
-                <?php endif; ?>
+            <?php if ($post_type !== 'page' && $show_desc_blog) : ?>
+                <div class="entry-summary nasa-archive-info"><?php the_excerpt(); ?></div>
+            <?php endif; ?>
 
-                <?php if($show_readmore) : ?>
-                    <div class="large-12 columns">
-                        <div class="entry-readmore">
-                            <a href="<?php echo esc_url($link); ?>">
-                                <?php echo esc_html__('CONTINUE READING  ➞', 'elessi-theme'); ?>
-                            </a>
-                        </div>
-                    </div>
-                <?php endif; ?>
-
-            </div>
+            <?php if ($show_readmore) : ?>
+                <div class="entry-readmore nasa-archive-info">
+                    <a href="<?php echo esc_url($link); ?>" title="<?php echo esc_attr__('CONTINUE READING  &#10142;', 'elessi-theme'); ?>">
+                        <?php echo esc_html__('CONTINUE READING  &#10142;', 'elessi-theme'); ?>
+                    </a>
+                </div>
+            <?php endif; ?>
         </header>
 
         <?php
-        $tags_list = $show_tag_info ? get_the_tag_list('', esc_html__(', ', 'elessi-theme')) : false;
-        if($show_cat_info || ($show_tag_info && $tags_list)) : ?>
-            <footer class="entry-meta">
-                <?php if ('post' == get_post_type()) : ?>
-                    <?php if ($show_cat_info) : ?>
-                        <?php $categories_list = get_the_category_list(esc_html__(', ', 'elessi-theme')); ?>
-                        <span class="cat-links">
-                            <?php printf(esc_html__('Posted in %1$s', 'elessi-theme'), $categories_list); ?>
-                        </span>
-                    <?php endif; ?>
-
-                    <?php
-                    if ($show_tag_info) :
-                        if ($tags_list) :
-                            ?>
-                            <?php if ($show_cat_info) : ?>
-                                <span class="sep"> | </span>
-                            <?php endif; ?>
-                            <span class="tags-links">
-                                <?php printf(esc_html__('Tagged %1$s', 'elessi-theme'), $tags_list); ?>
-                            </span>
-                        <?php endif; ?>
-                    <?php endif; ?>
-                <?php endif; ?>
+        $tags_list = $post_blog && $show_tag_info ? get_the_tag_list('', esc_html__(', ', 'elessi-theme')) : false;
+        if ($tags_list) : ?>
+            <footer class="entry-meta nasa-archive-info">
+                <!-- Tagged -->
+                <span class="tags-links">
+                    <?php printf(esc_html__('Tagged %1$s', 'elessi-theme'), $tags_list); ?>
+                </span>
             </footer>
         <?php endif; ?>
 

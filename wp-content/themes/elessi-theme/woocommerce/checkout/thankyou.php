@@ -6,10 +6,12 @@
  * @see 	https://docs.woocommerce.com/document/template-structure/
  * @author 	WooThemes
  * @package 	WooCommerce/Templates
- * @version     3.2.0
+ * @version     3.7.0
  */
 
 defined('ABSPATH') or exit;
+
+echo '<div class="woocommerce-order">';
 
 if ($order) : ?>
 <div class="row nasa-order-received">
@@ -20,13 +22,11 @@ if ($order) : ?>
 
                 <p class="woocommerce-thankyou-order-failed-actions">
                     <a href="<?php echo esc_url($order->get_checkout_payment_url()); ?>" class="button pay"><?php esc_html_e('Pay', 'elessi-theme') ?></a>
-                    <?php if (NASA_CORE_USER_LOGIGED) : ?>
+                    <?php if (NASA_CORE_USER_LOGGED) : ?>
                         <a href="<?php echo esc_url(wc_get_page_permalink('myaccount')); ?>" class="button pay"><?php esc_html_e('My Account', 'elessi-theme'); ?></a>
                     <?php endif; ?>
                 </p>
-
             <?php else : ?>
-
                 <p class="woocommerce-thankyou-order-received"><?php echo apply_filters('woocommerce_thankyou_order_received_text', esc_html__('Thank you. Your order has been received.', 'elessi-theme'), $order); ?></p>
                 <ul class="woocommerce-thankyou-order-details order_details">
                     <li class="order">
@@ -49,7 +49,6 @@ if ($order) : ?>
                     <?php endif; ?>
                 </ul>
                 <div class="clear"></div>
-
             <?php endif; ?>
         </div>
     </div>
@@ -62,4 +61,7 @@ if ($order) : ?>
 </div>
 <?php else : ?>
     <p class="woocommerce-thankyou-order-received"><?php echo apply_filters('woocommerce_thankyou_order_received_text', esc_html__('Thank you. Your order has been received.', 'elessi-theme'), null); ?></p>
-<?php endif;
+<?php
+endif;
+
+echo '</div>';

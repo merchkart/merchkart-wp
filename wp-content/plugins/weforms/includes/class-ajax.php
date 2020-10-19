@@ -134,6 +134,8 @@ class WeForms_Ajax {
         ];
 
         $form_fields = weforms()->form->save( $data );
+	
+        do_action( 'weforms_update_form', $form_data['wpuf_form_id'], $form_fields, $settings );
 
         wp_send_json_success( [ 'form_fields' => $form_fields ] );
     }
@@ -1133,7 +1135,7 @@ class WeForms_Ajax {
 
         $this->check_admin();
 
-        $the_file = isset( $_FILES['importFile'] ) ? sanitize_text_field( wp_unslash( $_FILES['importFile'] ) ) : false;
+        $the_file = isset( $_FILES['importFile'] ) ? $_FILES['importFile'] : false;
 
         if ( !$the_file ) {
             wp_send_json_error( __( 'No file found to import.', 'weforms' ) );

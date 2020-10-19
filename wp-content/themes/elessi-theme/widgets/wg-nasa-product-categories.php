@@ -1,5 +1,5 @@
 <?php
-if (class_exists('WC_Widget')) {
+if (NASA_WOO_ACTIVED) {
 
     add_action('widgets_init', 'elessi_product_categories_widget');
 
@@ -160,7 +160,9 @@ if (class_exists('WC_Widget')) {
                     case 'toggle-show-icon' :
                         ?>
                         <p>
-                            <a class="toggle-choose-icon-btn" href="javascript:void(0);"><?php echo esc_html__('Add icons for categories.', 'elessi-theme'); ?></a>
+                            <a class="toggle-choose-icon-btn" href="javascript:void(0);">
+                                <?php echo esc_html__('Add icons for categories.', 'elessi-theme'); ?>
+                            </a>
                         </p>
                         <?php
                         break;
@@ -169,10 +171,23 @@ if (class_exists('WC_Widget')) {
                     case 'icons':
                         echo ($this->getTemplateAdminIcon($_name, $_id, $setting['label'], $value));
                         break;
+                    
+                    default :
+                        
+                        break;
                 }
             }
         }
         
+        /**
+         * Add Icons
+         * 
+         * @param type $_name
+         * @param type $_id
+         * @param type $label
+         * @param type $value
+         * @return string
+         */
         public function getTemplateAdminIcon($_name, $_id, $label, $value) {
             $content = '<p class="toggle-choose-icon hidden-tag">';
             $content .= '<a class="nasa-chosen-icon" data-fill="' . esc_attr($_id) . '">' . esc_html__('Click select icon for ', 'elessi-theme') . '</a>';
@@ -191,14 +206,14 @@ if (class_exists('WC_Widget')) {
             return $content;
         }
 
-
         /**
          * Init settings after post types are registered.
          */
         public function nasa_settings($instance) {
             // Default setting color
             if (empty($instance)) {
-                if ($default = get_option('widget_' . $this->widget_id, true)) {
+                $default = get_option('widget_' . $this->widget_id, true);
+                if ($default) {
                     foreach ($default as $v) {
                         $instance = $v;
                         break;
@@ -214,7 +229,8 @@ if (class_exists('WC_Widget')) {
             
             if ($top_level) {
                 $this->settings['toggle'] = array(
-                    'type' => 'toggle-show-icon'
+                    'type' => 'toggle-show-icon',
+                    'std' => ''
                 );
                 
                 foreach ($top_level as $v) {
@@ -253,7 +269,7 @@ if (class_exists('WC_Widget')) {
             
             $getSide = false;
             $is_product = is_singular('product');
-            if(!$is_product) {
+            if (!$is_product) {
                 $getSide = isset($nasa_opt['category_sidebar']) ? $nasa_opt['category_sidebar'] : 'top';
                 $getSide = isset($_GET['sidebar']) ? $_GET['sidebar'] : $getSide;
                 $getSide = in_array($getSide, array('left', 'right', 'left-classic', 'right-classic', 'top-2')) ? $getSide : 'top';
@@ -285,7 +301,9 @@ if (class_exists('WC_Widget')) {
             if (is_tax('product_cat')) {
                 $this->current_cat = $wp_query->queried_object;
                 $this->cat_ancestors = get_ancestors($this->current_cat->term_id, 'product_cat');
-            } elseif ($is_product) {
+            }
+            
+            elseif ($is_product) {
                 $productId = isset($wp_query->queried_object->ID) ? $wp_query->queried_object->ID : $post->ID;
                 
                 $terms = wc_get_product_terms($productId, 'product_cat', array(
@@ -303,9 +321,9 @@ if (class_exists('WC_Widget')) {
             /**
              * Only Show Children
              */
-            if($only_show_child) {
+            if ($only_show_child) {
                 
-                if($this->current_cat && $this->current_cat->term_id) {
+                if ($this->current_cat && $this->current_cat->term_id) {
                     $terms_chilren = get_terms(apply_filters('woocommerce_product_attribute_terms', array(
                         'taxonomy' => 'product_cat',
                         'parent' => $this->current_cat->term_id,
@@ -313,7 +331,7 @@ if (class_exists('WC_Widget')) {
                         'hide_empty' => $hide_empty
                     )));
                     
-                    if(! $terms_chilren) {
+                    if (! $terms_chilren) {
                         $term_root = get_ancestors($this->current_cat->term_id, 'product_cat');
                         $rootId = isset($term_root[0]) ? $term_root[0] : $rootId;
                     } else {
@@ -322,7 +340,7 @@ if (class_exists('WC_Widget')) {
                 }
             }
             
-            elseif((isset($nasa_opt['disable_top_level_cat']) && $nasa_opt['disable_top_level_cat'])) {
+            elseif ((isset($nasa_opt['disable_top_level_cat']) && $nasa_opt['disable_top_level_cat'])) {
                 $rootId = $this->cat_ancestors ? end($this->cat_ancestors) :
                     ($this->current_cat ? $this->current_cat->term_id : $rootId);
             }
@@ -338,50 +356,59 @@ if (class_exists('WC_Widget')) {
             $list_args['current_category'] = $this->current_cat ? $this->current_cat->term_id : '';
             $list_args['current_category_ancestors'] = $this->cat_ancestors;
             $list_args['child_of'] = $rootId;
-            if(version_compare(WC()->version, '3.3.0', ">=") && (!isset($nasa_opt['show_uncategorized']) || !$nasa_opt['show_uncategorized'])) {
+            if (version_compare(WC()->version, '3.3.0', ">=") && (!isset($nasa_opt['show_uncategorized']) || !$nasa_opt['show_uncategorized'])) {
                 $list_args['exclude'] = get_option('default_product_cat');
             }
             
             $accordion = $a ? ' nasa-accordion' : '';
 
-            if($getSide == 'top') {
+            if ($getSide == 'top') {
                 $class_wrap_cat_top = 'nasa-widget-filter-cats-topbar';
-                if(isset($nasa_opt['top_bar_cat_pos']) && $nasa_opt['top_bar_cat_pos'] == 'top') {
+                if (isset($nasa_opt['top_bar_cat_pos']) && $nasa_opt['top_bar_cat_pos'] == 'top') {
                     $accordion .= ' nasa-top-cat-filter';
                     $class_wrap_cat_top .= ' nasa-top-cat-filter-wrap';
                 }
                 echo '<div class="' . esc_attr($class_wrap_cat_top) . '">';
             }
             
-            echo '<ul class="nasa-root-cat product-categories' . $accordion . '">';
+            echo '<ul class="nasa-product-categories-widget nasa-product-taxs-widget nasa-root-tax nasa-root-cat product-categories' . $accordion . '">';
             wp_list_categories(apply_filters('woocommerce_product_categories_widget_args', $list_args));
 
             if ($show_items && ($menu_cat->getTotalRoot() > $show_items)) {
-                echo '<li class="nasa_show_manual"><a data-show="1" class="nasa-show" href="javascript:void(0);">' . esc_html__('+ Show more', 'elessi-theme') . '</a><a data-show="0" class="nasa-hidden" href="javascript:void(0);">' . esc_html__('- Show less', 'elessi-theme') . '</a></li>';
+                echo '<li class="nasa_show_manual"><a data-show="1" class="nasa-show" href="javascript:void(0);" data-text="' . esc_attr__('- Show less', 'elessi-theme') . '">' . esc_html__('+ Show more', 'elessi-theme') . '</a></li>';
             }
             
             echo '<li class="nasa-current-note"></li>';
 
             echo '</ul>';
             
-            if($getSide == 'top') {
+            if ($getSide == 'top') {
                 echo '</div>';
             }
             
             $this->widget_end($args);
         }
-
     }
 
     if (!class_exists('WC_Product_Cat_List_Walker')) {
-        include_once WC()->plugin_path() . '/includes/walkers/class-product-cat-list-walker.php';
+        require_once WC()->plugin_path() . '/includes/walkers/class-product-cat-list-walker.php';
     }
 
+    /**
+     * Elessi_Product_Cat_List_Walker
+     * 
+     * Extends from WC_Product_Cat_List_Walker
+     */
     class Elessi_Product_Cat_List_Walker extends WC_Product_Cat_List_Walker {
 
         protected $_icons = array();
         protected $_k = 0;
         protected $_show_default = 0;
+        protected $_max_depth = 0;
+
+        public function __construct($max_depth = 0) {
+            $this->_max_depth = (int) $max_depth;
+        }
 
         public function setIcons($instance) {
             $this->_icons = $instance;
@@ -404,8 +431,8 @@ if (class_exists('WC_Widget')) {
          * @param integer $current_object_id
          */
         public function start_el(&$output, $cat, $depth = 0, $args = array(), $current_object_id = 0) {
-            $output .= '<li class="cat-item cat-item-' . $cat->term_id . ' cat-item-' . $cat->slug;
-            $nasa_active = $accodion = $icon = '';
+            $output .= '<li class="nasa-tax-item cat-item cat-item-' . $cat->term_id . ' cat-item-' . $cat->slug;
+            $nasa_active = $accordion = $icon = '';
             if ($depth == 0) {
                 $output .= ' root-item';
                 if ($this->_show_default && ($this->_k >= $this->_show_default)) {
@@ -414,31 +441,34 @@ if (class_exists('WC_Widget')) {
                 $this->_k++;
             }
             if (isset($this->_icons['cat_' . $cat->slug]) && trim($this->_icons['cat_' . $cat->slug]) != '') {
-                $icon = '<i class="' . $this->_icons['cat_' . $cat->slug] . '"></i>';
-                $icon .= '&nbsp;&nbsp;';
+                $icon = '<i class="nasa-icon ' . $this->_icons['cat_' . $cat->slug] . '"></i>&nbsp;&nbsp;';
             }
 
             if ($args['current_category'] == $cat->term_id) {
-                $output .= ' current-cat active';
+                $output .= ' current-cat current-tax-item active';
                 $nasa_active = ' nasa-active';
             }
 
-            if ($args['has_children'] && $args['hierarchical']) {
-                $output .= ' cat-parent li_accordion';
-                $accodion = $args['current_category'] == $cat->term_id ? 
-                    '<a href="javascript:void(0);" class="accordion" data-class_show="pe-7s-plus" data-class_hide="pe-7s-less"><span class="icon pe-7s-less"></span></a>':
-                    '<a href="javascript:void(0);" class="accordion" data-class_show="pe-7s-plus" data-class_hide="pe-7s-less"><span class="icon pe-7s-plus"></span></a>';
+            if ($args['has_children'] && $args['hierarchical'] && (!$this->_max_depth || $depth+ 1 < $this->_max_depth)) {
+                $output .= ' cat-parent nasa-tax-parent li_accordion';
+                $accordion = '<a href="javascript:void(0);" class="accordion"></a>';
             }
 
             if ($args['current_category_ancestors'] && $args['current_category'] && in_array($cat->term_id, $args['current_category_ancestors'])) {
-                $output .= ' current-cat-parent active';
-                $accodion = '<a href="javascript:void(0);" class="accordion" data-class_show="pe-7s-plus" data-class_hide="pe-7s-less"><span class="icon pe-7s-less"></span></a>';
+                $output .= ' nasa-current-tax-parent current-cat-parent active';
             }
             
-            $output .= '">' . $accodion;
+            $output .= '">' . $accordion;
 
-            $output .= '<a href="' . get_term_link($cat, $this->tree_type) . '" data-id="' . esc_attr((int) $cat->term_id) . '" class="nasa-filter-by-cat' . $nasa_active . '">' . $icon . $cat->name;
-            $output .= $args['show_count'] ? ' <span class="count">(' . $cat->count . ')</span>' : '';
+            $output .= '<a ' .
+                'href="' . get_term_link($cat, $this->tree_type) . '" ' .
+                'title="' . esc_attr($cat->name) . '" ' .
+                'data-id="' . esc_attr((int) $cat->term_id) . '" ' .
+                'class="nasa-filter-item nasa-filter-by-tax nasa-filter-by-cat' . $nasa_active . '">' .
+                    $icon . $cat->name;
+            
+            $output .= $args['show_count'] ? ' <span class="count">' . $cat->count . '</span>' : '';
+            
             $output .= '</a>';
         }
     }

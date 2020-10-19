@@ -25,11 +25,15 @@ if (has_excerpt()) : ?>
                         comments_template();
                     endif;
                 endwhile;
+                wp_reset_postdata();
                 ?>
             </div>
         </div>
 
         <div class="large-3 columns left col-sidebar">
+            <a href="javascript:void(0);" title="<?php echo esc_attr__('Close', 'elessi-theme'); ?>" class="hidden-tag nasa-close-sidebar">
+                <?php echo esc_html__('Close', 'elessi-theme'); ?>
+            </a>
             <?php get_sidebar(); ?>
         </div>
 

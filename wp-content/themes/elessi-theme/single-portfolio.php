@@ -4,7 +4,7 @@
  *
  */
 
-if(!NASA_CORE_ACTIVED || (isset($nasa_opt['enable_portfolio']) && !$nasa_opt['enable_portfolio'])) :
+if (!NASA_CORE_ACTIVED || (isset($nasa_opt['enable_portfolio']) && !$nasa_opt['enable_portfolio'])) :
     include_once ELESSI_THEME_PATH . '/404.php';
     exit(); // Exit if nasa-core has not actived OR disable Fortfolios
 endif;

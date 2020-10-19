@@ -87,7 +87,7 @@ function mailchimp_environment_variables() {
     return (object) array(
         'repo' => 'master',
         'environment' => 'production', // staging or production
-        'version' => '2.4.1',
+        'version' => '2.4.7',
         'php_version' => phpversion(),
         'wp_version' => (empty($wp_version) ? 'Unknown' : $wp_version),
         'wc_version' => function_exists('WC') ? WC()->version : null,
@@ -415,7 +415,8 @@ function mailchimp_date_utc($date) {
  * @return DateTime
  */
 function mailchimp_date_local($date) {
-    $timezone = mailchimp_get_option('store_timezone', 'America/New_York');
+    $timezone = str_replace(':', '', mailchimp_get_timezone());
+    
     if (is_numeric($date)) {
         $stamp = $date;
         $date = new \DateTime('now', new DateTimeZone('UTC'));
@@ -461,6 +462,36 @@ function mailchimp_get_timezone_list() {
     date_default_timezone_set($current);
 
     return $zones_array;
+}
+
+/**
+ * Gets the current tomezone from wordpress settings
+ * 
+ * @return String timezone 
+ */
+function mailchimp_get_timezone($humanReadable = false) {
+    // get timezone data from options
+    $timezone_string = get_option( 'timezone_string' );
+    $offset  = get_option( 'gmt_offset' );
+    
+    $signal = ($offset <=> 0 ) < 0 ? "-" : "+";
+    $offset = sprintf('%1s%02d:%02d', $signal, abs((int) $offset), abs(fmod($offset, 1) * 60));
+    
+    // shows timezone name + offset in hours and minutes, or only the timezone name. If no timezone string is set, show only offset
+    if (!$humanReadable && $timezone_string) {
+        $timezone = $timezone_string;
+    }
+    else if ($humanReadable && $timezone_string) {
+        $timezone = "UTC" . $offset .' '. $timezone_string;
+    }
+    else if ($humanReadable && !$timezone_string) {
+         $timezone = "UTC" . $offset;
+    }
+    else if (!$timezone_string) {
+        $timezone = $offset;
+    }
+    
+    return $timezone;
 }
 
 /**
@@ -1038,10 +1069,11 @@ function mailchimp_on_all_plugins_loaded() {
 }
 
 function mailchimp_get_allowed_capability() {
+    $capability = 'manage_options';
     if (current_user_can('manage_woocommerce') && mailchimp_get_option('mailchimp_permission_cap') == 'manage_woocommerce') {
         return 'manage_woocommerce';
     }
-    return 'manage_options';
+    return apply_filters('mailchimp_allowed_capability', $capability);
 }
 
 /**
@@ -1114,6 +1146,17 @@ function mailchimp_remove_communication_status() {
     }
 }
 
+/**
+ * Removes any Woocommece inbox notes this plugin created.
+ */
+function mailchimp_remove_activity_panel_inbox_notes() {
+    if ( ! class_exists( '\Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes' ) ) {
+        return;
+    }
+
+    \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes::delete_notes_with_name( 'mailchimp-for-woocommerce-incomplete-install' );
+}
+
 // Print notices outside woocommerce admin bar
 function mailchimp_settings_errors() {
     $settings_errors = get_settings_errors();
@@ -1129,37 +1172,58 @@ function mailchimp_settings_errors() {
  * @param null $language
  * @param string $caller
  * @param string $status_if_new
+ * @param MailChimp_WooCommerce_Order|null $order
  * @throws MailChimp_WooCommerce_Error
  * @throws MailChimp_WooCommerce_ServerError
  */
-function mailchimp_member_language_update($user_email = null, $language = null, $caller = '', $status_if_new = 'transactional') {
-    mailchimp_debug('debug', "mailchimp_member_language_update", array(
+function mailchimp_member_data_update($user_email = null, $language = null, $caller = '', $status_if_new = 'transactional', $order = null, $gdpr_fields = null) {
+    mailchimp_debug('debug', "mailchimp_member_data_update", array(
         'user_email' => $user_email,
         'user_language' => $language,
         'caller' => $caller,
         'status_if_new' => $status_if_new,
     ));
     if (!$user_email) return;
+    
     $hash = md5(strtolower(trim($user_email)));
+    $gdpr_fields_to_save = null;
+
     if ($caller !== 'cart' || !mailchimp_get_transient($caller . ".member.{$hash}")) {
         $list_id = mailchimp_get_list_id();
         try {
             // try to get the member to update if already synced
             $member = mailchimp_get_api()->member($list_id, $user_email);
-            // update member with new language
+            // update member with new data
             // if the member's subscriber status was transactional - and if we're passing in either one of these options below,
             // we can attach the new status to the member.
+            
+
             if ($member['status'] === 'transactional' && in_array($status_if_new, array('subscribed', 'pending'))) {
                 $member['status'] = $status_if_new;
             }
-            mailchimp_get_api()->update($list_id, $user_email, $member['status'], null, null, $language);
+
+            if (($member['status'] === 'transactional' && in_array($status_if_new, array('subscribed', 'pending'))) || $member['status'] === 'subscribed') {
+                if (!empty($gdpr_fields)) {
+                    $gdpr_fields_to_save = [];
+                    foreach ($gdpr_fields as $id => $value) {
+                        $gdpr_field['marketing_permission_id'] = $id;
+                        $gdpr_field['enabled'] = (bool) $value;
+                        $gdpr_fields_to_save[] = $gdpr_field;
+                    }
+                }
+            }
+            $merge_fields = $order ? apply_filters('mailchimp_get_ecommerce_merge_tags', array(), $order) : array();
+            if (!is_array($merge_fields)) $merge_fields = array();
+            mailchimp_get_api()->update($list_id, $user_email, $member['status'], $merge_fields, null, $language, $gdpr_fields_to_save);
             // set transient to prevent too many calls to update language
             mailchimp_set_transient($caller . ".member.{$hash}", true, 3600);
             mailchimp_log($caller . '.member.updated', "Updated {$user_email} subscriber status to {$member['status']} and language to {$language}");
         } catch (\Exception $e) {
             if ($e->getCode() == 404) {
+                $merge_fields = $order ? apply_filters('mailchimp_get_ecommerce_merge_tags', array(), $order) : array();
+                if (!is_array($merge_fields)) $merge_fields = array();
                 // member doesn't exist yet, create as transactional ( or what was passed in the function args )
-                mailchimp_get_api()->subscribe($list_id, $user_email, $status_if_new, array(), array(), $language);
+                mailchimp_get_api()->subscribe($list_id, $user_email, $status_if_new, $merge_fields, array(), $language);
                 // set transient to prevent too many calls to update language
                 mailchimp_set_transient($caller . ".member.{$hash}", true, 3600);
                 mailchimp_log($caller . '.member.created', "Added {$user_email} as transactional, setting language to [{$language}]");

@@ -1,9 +1,9 @@
 <?php
 
-// In Admin
 /*
  * Required Plugins use in theme
  * 
+ * In Admin
  */
 require_once ELESSI_THEME_PATH . '/admin/classes/class-tgm-plugin-activation.php';
 add_action('tgmpa_register', 'elessi_register_required_plugins');
@@ -18,9 +18,9 @@ function elessi_register_required_plugins() {
         array(
             'name' => esc_html__('Nasa Core', 'elessi-theme'),
             'slug' => 'nasa-core',
-            'source' => ELESSI_THEME_PATH . '/admin/plugins/nasa-core_v2.1.1.zip',
+            'source' => ELESSI_THEME_PATH . '/admin/plugins/nasa-core_v3.9.0.zip',
             'required' => true,
-            'version' => '2.1.1'
+            'version' => '3.9.0'
         ),
         
         array(
@@ -28,33 +28,33 @@ function elessi_register_required_plugins() {
             'slug' => 'js_composer',
             'source' => ELESSI_THEME_PATH . '/admin/plugins/js_composer.zip',
             'required' => true,
-            'version' => '6.0.5'
-        ),
-        
-        array(
-            'name' => esc_html__('YITH WooCommerce Wishlist', 'elessi-theme'),
-            'slug' => 'yith-woocommerce-wishlist',
-            'required' => true
+            'version' => '6.4.1'
         ),
         
         array(
             'name' => esc_html__('YITH WooCommerce Compare', 'elessi-theme'),
             'slug' => 'yith-woocommerce-compare',
-            'required' => true
+            'required' => false
         ),
         
         array(
             'name' => esc_html__('Contact Form 7', 'elessi-theme'),
             'slug' => 'contact-form-7',
-            'required' => true
+            'required' => false
+        ),
+        
+        array(
+            'name' => esc_html__('Smash Balloon Instagram Feed', 'elessi-theme'),
+            'slug' => 'instagram-feed',
+            'required' => false
         ),
         
         array(
             'name' => esc_html__('Revolution Slider', 'elessi-theme'),
             'slug' => 'revslider',
             'source' => ELESSI_THEME_PATH . '/admin/plugins/revslider.zip',
-            'required' => true,
-            'version' => '5.4.8.3'
+            'required' => false,
+            'version' => '6.2.23'
         )
     );
 
@@ -109,7 +109,7 @@ if (!defined('ELESSI_ADMIN_DIR_URI')) {
 }
 
 define('ELESSI_ADMIN_THEMENAME', $theme_name);
-define('ELESSI_ADMIN_SUPPORT_FORUMS', 'https://www.nasatheme.com/support/elessi-documentation/');
+define('ELESSI_ADMIN_SUPPORT_FORUMS', 'https://elessi.nasatheme.com/documentation/');
 
 define('ELESSI_ADMIN_BACKUPS', 'backups');
 

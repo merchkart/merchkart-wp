@@ -4,97 +4,115 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
 
     ob_start();
     ?><style><?php
-    // echo '@charset "UTF-8";' . "\n";
+    echo '@charset "UTF-8";' . "\n";
+    
     /**
      * Start font style
      */
-    if ((!isset($nasa_opt['type_font_select']) || $nasa_opt['type_font_select'] == 'custom') && isset($nasa_opt['custom_font']) && $nasa_opt['custom_font']) :
+    $type_font_select = isset($nasa_opt['type_font_select']) ? $nasa_opt['type_font_select'] : '';
+    $type_headings = isset($nasa_opt['type_headings']) ? $nasa_opt['type_headings'] : '';
+    $type_texts = isset($nasa_opt['type_texts']) ? $nasa_opt['type_texts'] : '';
+    $type_nav = isset($nasa_opt['type_nav']) ? $nasa_opt['type_nav'] : '';
+    $type_banner = isset($nasa_opt['type_banner']) ? $nasa_opt['type_banner'] : '';
+    $type_price = isset($nasa_opt['type_price']) ? $nasa_opt['type_price'] : '';
+    $custom_font = isset($nasa_opt['custom_font']) ? $nasa_opt['custom_font'] : '';
+    
+    echo elessi_get_font_style(
+        $type_font_select,
+        $type_headings,
+        $type_texts,
+        $type_nav,
+        $type_banner,
+        $type_price,
+        $custom_font
+    );
+    // End font style
+    
+    if (isset($nasa_opt['logo_height']) && (int) $nasa_opt['logo_height']) :
         ?>
-            body,
-            p,
-            h1, h2, h3, h4, h5, h6,
-            #top-bar,
-            .nav-dropdown,
-            .top-bar-nav a.nav-top-link,
-            .megatop > a,
-            .root-item > a,
-            .nasa-tabs .nasa-tab a,
-            .service-title,
-            .price .amount,
-            .banner .banner-content .banner-inner h1,
-            .banner .banner-content .banner-inner h2,
-            .banner .banner-content .banner-inner h3,
-            .banner .banner-content .banner-inner h4,
-            .banner .banner-content .banner-inner h5,
-            .banner .banner-content .banner-inner h6
+            body .logo .header_logo
             {
-                font-family: "<?php echo esc_attr(ucwords($nasa_opt['custom_font'])); ?>", helvetica, arial, sans-serif !important;
+                height: <?php echo (int) $nasa_opt['logo_height'] . 'px'; ?>;
             }
         <?php
-    elseif ($nasa_opt['type_font_select'] == 'google') :
-        if (isset($nasa_opt['type_texts']) && $nasa_opt['type_texts'] != '') :
-            ?>
-                p,
-                body,
-                #top-bar,
-                .nav-dropdown,
-                .top-bar-nav a.nav-top-link
-                {
-                    font-family: "<?php echo esc_attr($nasa_opt['type_texts']); ?>", helvetica, arial, sans-serif !important;
-                }
-            <?php
-        endif;
-
-        if (isset($nasa_opt['type_nav']) && $nasa_opt['type_nav'] != '') :
-            ?>
-                .megatop > a,
-                .nasa-tabs .nasa-tab a,
-                .root-item a
-                {
-                    font-family: "<?php echo esc_attr($nasa_opt['type_nav']); ?>", helvetica, arial, sans-serif !important;
-                }
-            <?php
-        endif;
-
-        if (isset($nasa_opt['type_headings']) && $nasa_opt['type_headings'] != '') :
-            ?>
-                .service-title,
-                h1, h2, h3, h4, h5, h6
-                {
-                    font-family: "<?php echo esc_attr($nasa_opt['type_headings']); ?>", helvetica, arial, sans-serif !important;
-                }
-            <?php
-        endif;
-
-        if (isset($nasa_opt['type_banner']) && $nasa_opt['type_banner'] != '') :
-            ?>
-                .banner .banner-content .banner-inner h1,
-                .banner .banner-content .banner-inner h2,
-                .banner .banner-content .banner-inner h3,
-                .banner .banner-content .banner-inner h4,
-                .banner .banner-content .banner-inner h5,
-                .banner .banner-content .banner-inner h6
-                {
-                    font-family: "<?php echo esc_attr($nasa_opt['type_banner']); ?>", helvetica, arial, sans-serif !important;
-                    letter-spacing: 0px;
-                }
-            <?php
-        endif;
+    endif;
+    
+    if (isset($nasa_opt['logo_width']) && (int) $nasa_opt['logo_width']) :
+        ?>
+            body .logo .header_logo
+            {
+                width: <?php echo (int) $nasa_opt['logo_width'] . 'px'; ?>;
+            }
+        <?php
+    else :
+        ?>
+            body .logo .header_logo
+            {
+                width: auto;
+            }
+        <?php
+    endif;
+    
+    if (isset($nasa_opt['logo_height_mobile']) && (int) $nasa_opt['logo_height_mobile']) :
+        ?>
+            body .mobile-menu .logo .header_logo,
+            body .fixed-already .mobile-menu .logo .header_logo,
+            body .nasa-login-register-warper #nasa-login-register-form .nasa-form-logo-log .header_logo
+            {
+                height: <?php echo (int) $nasa_opt['logo_height_mobile'] . 'px'; ?>;
+            }
+        <?php
+    endif;
+    
+    if (isset($nasa_opt['logo_width_mobile']) && (int) $nasa_opt['logo_width_mobile']) :
+        ?>
+            body .mobile-menu .logo .header_logo,
+            body .fixed-already .mobile-menu .logo .header_logo,
+            body .nasa-login-register-warper #nasa-login-register-form .nasa-form-logo-log .header_logo
+            {
+                width: <?php echo (int) $nasa_opt['logo_width_mobile'] . 'px'; ?>;
+            }
+        <?php
+    else :
+        ?>
+            body .mobile-menu .logo .header_logo,
+            body .fixed-already .mobile-menu .logo .header_logo,
+            body .nasa-login-register-warper #nasa-login-register-form .nasa-form-logo-log .header_logo
+            {
+                width: auto;
+            }
+        <?php
+    endif;
+    
+    if (isset($nasa_opt['logo_height_sticky']) && (int) $nasa_opt['logo_height_sticky']) :
+        ?>
+            body .fixed-already .logo .header_logo
+            {
+                height: <?php echo (int) $nasa_opt['logo_height_sticky'] . 'px'; ?>;
+            }
+        <?php
+    endif;
+    
+    if (isset($nasa_opt['logo_width_sticky']) && (int) $nasa_opt['logo_width_sticky']) :
+        ?>
+            body .fixed-already .logo .header_logo
+            {
+                width: <?php echo (int) $nasa_opt['logo_width_sticky'] . 'px'; ?>;
+            }
+        <?php
         
-        if (isset($nasa_opt['type_price']) && $nasa_opt['type_price'] != '') :
-            ?>
-                .price,
-                .amount
-                {
-                    font-family: "<?php echo esc_attr($nasa_opt['type_price']); ?>", helvetica, arial, sans-serif !important;
-                }
-            <?php
-        endif;
-    endif; // End font style
+    else :
+        ?>
+            body .fixed-already .logo .header_logo
+            {
+                width: auto;
+            }
+        <?php
+    endif;
 
     if (isset($nasa_opt['max_height_logo']) && (int) $nasa_opt['max_height_logo']) :
         ?>
-            body .logo-wrapper .logo .header_logo
+            body  .logo .header_logo
             {
                 max-height: <?php echo (int) $nasa_opt['max_height_logo'] . 'px'; ?>;
             }
@@ -103,7 +121,8 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
     
     if (isset($nasa_opt['max_height_mobile_logo']) && (int) $nasa_opt['max_height_mobile_logo']) :
         ?>
-            body .mobile-menu .logo-wrapper .logo .header_logo,
+            body .mobile-menu .logo .header_logo,
+            body .fixed-already .mobile-menu .logo .header_logo,
             body .nasa-login-register-warper #nasa-login-register-form .nasa-form-logo-log .header_logo
             {
                 max-height: <?php echo (int) $nasa_opt['max_height_mobile_logo'] . 'px'; ?>;
@@ -113,7 +132,7 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
     
     if (isset($nasa_opt['max_height_sticky_logo']) && (int) $nasa_opt['max_height_sticky_logo']) :
         ?>
-            body .fixed-already .logo-wrapper .logo .header_logo
+            body .fixed-already .logo .header_logo
             {
                 max-height: <?php echo (int) $nasa_opt['max_height_sticky_logo'] . 'px'; ?>;
             }
@@ -145,43 +164,12 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
         <?php
     endif;
 
-    /* COLOR PRIMARY ================================================================ */
+    /* COLOR PRIMARY */
     if (isset($nasa_opt['color_primary'])) :
         echo elessi_get_style_primary_color($nasa_opt['color_primary']);
     endif;
 
-    /* COLOR SECONDARY ============================================================== */
-    if (isset($nasa_opt['color_secondary']) && $nasa_opt['color_secondary'] != '') :
-        ?>
-            a.secondary.trans-button,
-            li.menu-sale a
-            {
-                color: <?php echo esc_attr($nasa_opt['color_secondary']); ?> !important;
-            }
-            body .label-sale.menu-item a:after,
-            body .button.secondary,
-            body .button.checkout,
-            body #submit.secondary,
-            body button.secondary,
-            body .button.secondary,
-            body input[type="submit"].secondary
-            {
-                background-color: <?php echo esc_attr($nasa_opt['color_secondary']); ?>;
-            }
-            body a.button.secondary,
-            body .button.secondary
-            {
-                border-color: <?php echo esc_attr($nasa_opt['color_secondary']); ?>;
-            }
-            a.secondary.trans-button:hover
-            {
-                color: #FFF!important;
-                background-color: <?php echo esc_attr($nasa_opt['color_secondary']); ?> !important;
-            }
-        <?php
-    endif;
-
-    /* COLOR SUCCESS ============================================================== */
+    /* COLOR SUCCESS */
     if (isset($nasa_opt['color_success']) && $nasa_opt['color_success'] != '') :
         ?> 
             .woocommerce-message {
@@ -203,17 +191,14 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
             {
                 border-top-color: <?php echo esc_attr($nasa_opt['color_success']) ?> !important;
             }
-            .out-of-stock-label
-            {
-                border-right-color: <?php echo esc_attr($nasa_opt['color_success']); ?> !important;
-                border-top-color: <?php echo esc_attr($nasa_opt['color_success']); ?> !important;
-            }
-            body .added .pe-icon,
-            body .added .nasa-icon,
-            body .product-interactions .btn-wishlist.nasa-added .nasa-icon,
-            body .product-interactions .btn-wishlist.nasa-added .icon-nasa-like
+            .added .nasa-icon,
+            .nasa-added .nasa-icon
             {
                 color: <?php echo esc_attr($nasa_opt['color_success']); ?> !important;
+            }
+            body #nasa-content-ask-a-quetion div.wpcf7-response-output.wpcf7-mail-sent-ok
+            {
+                color: <?php echo esc_attr($nasa_opt['color_success']); ?>;
             }
             body #yith-wcwl-popup-message #yith-wcwl-message
             {
@@ -222,7 +207,7 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
         <?php
     endif;
 
-    /* COLOR SALE ============================================================== */
+    /* COLOR SALE */
     if (isset($nasa_opt['color_sale_label']) && $nasa_opt['color_sale_label'] != '') :
         ?>
             body .badge
@@ -240,7 +225,7 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
         <?php
     endif;
 
-    /* COLOR HOT ============================================================== */
+    /* COLOR HOT */
     if (isset($nasa_opt['color_hot_label']) && $nasa_opt['color_hot_label'] != '') :
         ?>
             body .badge.hot-label
@@ -258,63 +243,87 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
         <?php
     endif;
     
-    /* COLOR DEAL ============================================================== */
+    /* COLOR DEAL */
     if (isset($nasa_opt['color_deal_label']) && $nasa_opt['color_deal_label'] != '') :
         ?>
-            body .badge.deal-label
+        body .badge.deal-label
+        {
+            background: <?php echo esc_attr($nasa_opt['color_deal_label']); ?>;
+        }
+        body .badge.deal-label:before
+        {
+            border-color: transparent <?php echo esc_attr($nasa_opt['color_deal_label']); ?> transparent transparent;
+        }
+        body .product-gallery .badge.deal-label:after
+        {
+            border-color: <?php echo esc_attr($nasa_opt['color_deal_label']); ?> transparent transparent transparent;
+        }
+        <?php
+    endif;
+    
+    /* COLOR SALE */
+    if (isset($nasa_opt['color_variants_label']) && $nasa_opt['color_variants_label'] != '') :
+        ?>
+            body .badge.nasa-variants
             {
-                background: <?php echo esc_attr($nasa_opt['color_deal_label']); ?>;
+                background: <?php echo esc_attr($nasa_opt['color_variants_label']); ?>;
             }
-            body .badge.deal-label:before
+            body .badge.nasa-variants:before
             {
-                border-color: transparent <?php echo esc_attr($nasa_opt['color_deal_label']); ?> transparent transparent;
-            }
-            body .product-gallery .badge.deal-label:after
-            {
-                border-color: <?php echo esc_attr($nasa_opt['color_deal_label']); ?> transparent transparent transparent;
+                border-color: transparent <?php echo esc_attr($nasa_opt['color_variants_label']) ?> transparent transparent;
             }
         <?php
     endif;
 
-    /* COLOR PRICE ============================================================== */
+    /* COLOR PRICE */
     if (isset($nasa_opt['color_price_label']) && $nasa_opt['color_price_label'] != '') :
         ?>
-            body .product-price, 
-            body .price.nasa-sc-p-price,
-            body .price,
-            body .product-item .info .price,
-            body .countdown .countdown-row .countdown-amount,
-            body .columns.nasa-column-custom-4 .nasa-sc-p-deal-countdown .countdown-row.countdown-show4 .countdown-section .countdown-amount,
-            body .item-product-widget .product-meta .price
-            {
-                color: <?php echo esc_attr($nasa_opt['color_price_label']); ?>;
-            }
-            .amount
-            {
-                color: <?php echo esc_attr($nasa_opt['color_price_label']); ?> !important;
-            }
+        body .product-price, 
+        body .price.nasa-sc-p-price,
+        body .price,
+        body .product-item .info .price,
+        body .countdown .countdown-row .countdown-amount,
+        body .columns.nasa-column-custom-4 .nasa-sc-p-deal-countdown .countdown-row.countdown-show4 .countdown-section .countdown-amount,
+        body .item-product-widget .product-meta .price,
+        html body .nasa-after-add-to-cart-subtotal-price,
+        html body .nasa-total-condition-desc .woocommerce-Price-amount,
+        html body .woocommerce-table--order-details tfoot tr:last-child td > .amount
+        {
+            color: <?php echo esc_attr($nasa_opt['color_price_label']); ?>;
+        }
+        .amount,
+        .nasa-total-condition-desc .woocommerce-Price-amount
+        {
+            color: <?php echo esc_attr($nasa_opt['color_price_label']); ?> !important;
+        }
         <?php
     endif;
 
-    /* COLOR BUTTON ============================================================== */
+    /* COLOR BUTTON */
     if (isset($nasa_opt['color_button']) && $nasa_opt['color_button'] != '') :
         ?> 
             form.cart .button,
-            .cart-inner .button.secondary,
             .checkout-button,
             input#place_order,
             .btn-viewcart,
             input#submit,
             .add_to_cart,
             button,
-            .button
+            .button,
+            body input[type="submit"].dokan-btn,
+            body a.dokan-btn,
+            body .dokan-btn,
+            body #dokan-store-listing-filter-form-wrap .apply-filter #apply-filter-btn,
+            input[type="submit"].dokan-btn-theme,
+            a.dokan-btn-theme,
+            .dokan-btn-theme
             {
                 background-color: <?php echo esc_attr($nasa_opt['color_button']); ?> !important;
             }
         <?php
     endif;
 
-    /* COLOR HOVER ============================================================== */
+    /* COLOR HOVER */
     if (isset($nasa_opt['color_hover']) && $nasa_opt['color_hover'] != '') :
         ?>
             form.cart .button:hover,
@@ -326,7 +335,6 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
             .footer-type-2 input.button,
             button:hover,
             .button:hover,
-            .cart-inner .button.secondary:hover,
             .checkout-button:hover,
             input#place_order:hover,
             .btn-viewcart:hover,
@@ -334,12 +342,6 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
             .add_to_cart:hover
             {
                 background-color: <?php echo esc_attr($nasa_opt['color_hover']); ?>!important;
-            }
-            body .product_list_widget .product-interactions .add-to-cart-grid:hover,
-            body .product_list_widget .product-interactions .quick-view:hover
-            {
-                background-color: <?php echo esc_attr($nasa_opt['color_hover']); ?>;
-                border-color: <?php echo esc_attr($nasa_opt['color_hover']); ?>;
             }
         <?php
     endif;
@@ -357,21 +359,27 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
             {
                 border-color: <?php echo esc_attr($nasa_opt['button_border_color']); ?> !important;
             }
-            body .products.list .product-item .product-interactions > div
+            body .group-btn-in-list .add-to-cart-grid .add_to_cart_text,
+            html body input[type="submit"].dokan-btn,
+            html body a.dokan-btn,
+            html body .dokan-btn,
+            html body #dokan-store-listing-filter-form-wrap .apply-filter #apply-filter-btn,
+            body input[type="submit"].dokan-btn-theme,
+            body a.dokan-btn-theme,
+            body .dokan-btn-theme
             {
                 border-color: <?php echo esc_attr($nasa_opt['button_border_color']); ?>;
             }
         <?php
     endif;
 
-    /* COLOR BORDER BUTTON HOVER ============================================================== */
+    /* COLOR BORDER BUTTON HOVER */
     if (isset($nasa_opt['button_border_color_hover']) && $nasa_opt['button_border_color_hover'] != '') :
         ?>
             #submit:hover, 
             button:hover, 
             .button:hover, 
             input[type="submit"]:hover,
-            .products.list .product-item .product-interactions > div:hover,
             .widget.woocommerce li.nasa-li-filter-size.chosen a,
             .widget.woocommerce li.nasa-li-filter-size.nasa-chosen a,
             .widget.woocommerce li.nasa-li-filter-size:hover a,
@@ -384,27 +392,41 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
             {
                 border-color: <?php echo esc_attr($nasa_opt['button_border_color_hover']); ?> !important;
             }
-            body .products.list .product-item .product-interactions > div:hover
+            body .group-btn-in-list add-to-cart-grid:hover .add_to_cart_text,
+            html body input[type="submit"].dokan-btn:hover,
+            html body a.dokan-btn:hover,
+            html body .dokan-btn:hover,
+            html body #dokan-store-listing-filter-form-wrap .apply-filter #apply-filter-btn,
+            body input[type="submit"].dokan-btn-theme:hover,
+            body a.dokan-btn-theme:hover,
+            body .dokan-btn-theme:hover
             {
                 border-color: <?php echo esc_attr($nasa_opt['button_border_color_hover']); ?>;
             }
         <?php
     endif;
 
-    /* COLOR TEXT BUTTON ============================================================== */
+    /* COLOR TEXT BUTTON */
     if (isset($nasa_opt['button_text_color']) && $nasa_opt['button_text_color'] != '') :
         ?>
             #submit, 
             button, 
             .button, 
-            input[type="submit"]
+            input[type="submit"],
+            body input[type="submit"].dokan-btn,
+            body a.dokan-btn,
+            body .dokan-btn,
+            html body #dokan-store-listing-filter-form-wrap .apply-filter #apply-filter-btn,
+            body input[type="submit"].dokan-btn-theme,
+            body a.dokan-btn-theme,
+            body .dokan-btn-theme
             {
                 color: <?php echo esc_attr($nasa_opt['button_text_color']); ?> !important;
             }
         <?php
     endif;
 
-    /* COLOR HOVER TEXT BUTTON ======================================================= */
+    /* COLOR HOVER TEXT BUTTON */
     if (isset($nasa_opt['button_text_color_hover']) && $nasa_opt['button_text_color_hover'] != '') :
         ?>
             #submit:hover, 
@@ -414,9 +436,13 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
             {
                 color: <?php echo esc_attr($nasa_opt['button_text_color_hover']); ?> !important;
             }
-            body .product_list_widget .product-interactions .quick-view:hover .nasa-icon-text,
-            body .product_list_widget .product-interactions .quick-view:hover .pe-icon,
-            body .product_list_widget .product-interactions .quick-view:hover .nasa-icon
+            html body input[type="submit"].dokan-btn:hover,
+            html body a.dokan-btn:hover,
+            html body .dokan-btn:hover,
+            html body #dokan-store-listing-filter-form-wrap .apply-filter #apply-filter-btn:hover,
+            body input[type="submit"].dokan-btn-theme:hover,
+            body a.dokan-btn-theme:hover,
+            body .dokan-btn-theme:hover
             {
                 color: <?php echo esc_attr($nasa_opt['button_text_color_hover']); ?>;
             }
@@ -425,12 +451,8 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
 
     if (isset($nasa_opt['button_radius'])) :
         ?>
-            body .products.list .product-item .info .product-interactions .add-to-cart-btn,
-            body .products.list .product-interactions .add-to-cart-grid,
-            body .product-item .product-deal-special-buttons .nasa-product-grid .product-interactions .add-to-cart-btn .add-to-cart-grid,
+            body .product-item .product-deal-special-buttons .nasa-product-grid .add-to-cart-grid,
             body .widget .tagcloud a,
-            body .products.grid .product-item .product-deals .info .nasa-deal-showmore a.button,
-            body .products.grid .product-item .product-deals .info .nasa-deal-showmore button,
             body .wishlist_table .add_to_cart,
             body .yith-wcwl-add-button > a.button.alt,
             body #submit,
@@ -444,7 +466,14 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
             body .button[disabled],
             body input[type="submit"],
             body input[type="submit"].disabled,
-            body input[type="submit"][disabled]
+            body input[type="submit"][disabled],
+            html body input[type="submit"].dokan-btn,
+            html body a.dokan-btn,
+            html body .dokan-btn,
+            html body #dokan-store-listing-filter-form-wrap .apply-filter #apply-filter-btn,
+            body input[type="submit"].dokan-btn-theme,
+            body a.dokan-btn-theme,
+            body .dokan-btn-theme
             {
                 border-radius: <?php echo (int) $nasa_opt['button_radius']; ?>px;
                 -webkit-border-radius: <?php echo (int) $nasa_opt['button_radius']; ?>px;
@@ -459,7 +488,14 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
             body #submit, 
             body button, 
             body .button,
-            body input[type="submit"]
+            body input[type="submit"],
+            html body input[type="submit"].dokan-btn,
+            html body a.dokan-btn,
+            html body .dokan-btn,
+            html body #dokan-store-listing-filter-form-wrap .apply-filter #apply-filter-btn,
+            body input[type="submit"].dokan-btn-theme,
+            body a.dokan-btn-theme,
+            body .dokan-btn-theme
             {
                 border-width: <?php echo (int) $nasa_opt['button_border']; ?>px;
             }
@@ -493,10 +529,10 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
         <?php
     endif;
     
-    /* BG COLOR BUTTON BUY NOW ============================================== */
+    /* BG COLOR BUTTON BUY NOW */
     if (isset($nasa_opt['buy_now_bg_color']) && $nasa_opt['buy_now_bg_color'] != '') :
         ?>
-            body .cart button.nasa-buy-now
+            body .nasa-buy-now
             {
                 background-color: <?php echo esc_attr($nasa_opt['buy_now_bg_color']); ?> !important;
                 border-color: <?php echo esc_attr($nasa_opt['buy_now_bg_color']); ?> !important;
@@ -504,10 +540,10 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
         <?php
     endif;
     
-    /* BG COLOR BUTTON HOVER BUY NOW ======================================== */
+    /* BG COLOR BUTTON HOVER BUY NOW */
     if (isset($nasa_opt['buy_now_bg_color_hover']) && $nasa_opt['buy_now_bg_color_hover'] != '') :
         ?>
-            body .cart button.nasa-buy-now:hover
+            body .nasa-buy-now:hover
             {
                 background-color: <?php echo esc_attr($nasa_opt['buy_now_bg_color_hover']); ?> !important;
                 border-color: <?php echo esc_attr($nasa_opt['buy_now_bg_color_hover']); ?> !important;
@@ -515,14 +551,27 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
         <?php
     endif;
     
-    /* SHADOW COLOR BUTTON BUY NOW ==================================== */
+    /* SHADOW COLOR BUTTON BUY NOW */
     if (isset($nasa_opt['buy_now_color_shadow']) && $nasa_opt['buy_now_color_shadow'] != '') :
         ?>
-            body .cart button.nasa-buy-now
+            body .nasa-buy-now
             {
                 -webkit-box-shadow: 0 2px 0 <?php echo esc_attr($nasa_opt['buy_now_color_shadow']); ?> !important;
                 -moz-box-shadow: 0 2px 0 <?php echo esc_attr($nasa_opt['buy_now_color_shadow']); ?> !important;
                 box-shadow: 0 2px 0 <?php echo esc_attr($nasa_opt['buy_now_color_shadow']); ?> !important;
+            }
+        <?php
+    endif;
+    
+    $custom_percentage_left = isset($nasa_opt['percentage-header-1']) && $nasa_opt['percentage-header-1'] != 70 ? $nasa_opt['percentage-header-1'] : false;
+    if ($custom_percentage_left) :
+        $custom_percentage_right = 100 - $custom_percentage_left;
+        ?>
+            body .nasa-left-main-header {
+                width: <?php echo (int) $custom_percentage_left . '%'; ?>;
+            }
+            body .nasa-right-main-header {
+                width: <?php echo (int) $custom_percentage_right . '%'; ?>;
             }
         <?php
     endif;
@@ -567,31 +616,10 @@ function elessi_get_content_custom_css($nasa_opt = array()) {
         echo elessi_get_style_plus_wide_width($max_width);
     endif;
     
-    /* Add custom here ================================== */
-    /* HERE ============================================= */
-    /* Add custom here ================================== */
-    if (!isset($nasa_opt['disable_wow']) || !$nasa_opt['disable_wow']) :
-        ?>
-            .wow
-            {
-                visibility: hidden;
-            }
-        <?php
-    endif;
-
-    if (isset($nasa_opt['disable-quickview']) && $nasa_opt['disable-quickview']) :
-        ?>
-            body .product-item .product-img-wrap .nasa-product-grid .product-interactions .btn-compare
-            {
-                top: 55px;
-            }
-        <?php
-    endif;
-    
     /**
      * Promo Popup
      */
-    if(isset($nasa_opt['promo_popup']) && $nasa_opt['promo_popup']) :
+    if (isset($nasa_opt['promo_popup']) && $nasa_opt['promo_popup']) :
         if (!isset($nasa_opt['pp_background_image'])) :
             $nasa_opt['pp_background_image'] = ELESSI_THEME_URI . '/assets/images/newsletter_bg.jpg';
         endif;

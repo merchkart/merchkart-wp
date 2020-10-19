@@ -1,8 +1,6 @@
 <?php
-if (class_exists('WooCommerce')) {
-
+if (NASA_WOO_ACTIVED) {
     add_action('widgets_init', 'elessi_product_variations_widget');
-
     function elessi_product_variations_widget() {
         register_widget('Elessi_Product_Variations_Widget');
     }
@@ -24,7 +22,7 @@ if (class_exists('WooCommerce')) {
          * Constructor
          */
         public function __construct() {
-            $this->widget_cssclass = 'woocommerce widget_layered_nav';
+            $this->widget_cssclass = 'woocommerce widget_layered_nav nasa-widget-has-active';
             $this->widget_description = esc_html__('Shows a custom attribute in a widget which lets you narrow down the list of products when viewing product categories.', 'elessi-theme');
             $this->widget_id = self::$nasa_widget_id;
             $this->widget_name = esc_html__('Nasa Product Variations Filter', 'elessi-theme');
@@ -125,7 +123,7 @@ if (class_exists('WooCommerce')) {
             if ($attribute_taxonomies) {
                 foreach ($attribute_taxonomies as $tax) {
                     if (taxonomy_exists(wc_attribute_taxonomy_name($tax->attribute_name))) {
-                        $attribute_array[$tax->attribute_name] = $tax->attribute_name;
+                        $attribute_array[$tax->attribute_name] = $tax->attribute_label . '&nbsp;(&nbsp;' . $tax->attribute_name . '&nbsp;)';
                     }
                 }
             }

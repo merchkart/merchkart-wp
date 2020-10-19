@@ -14,19 +14,19 @@ get_header();
                     <?php if (!is_wc_endpoint_url('order-received')) : ?>
                         <div class="checkout-breadcrumb">
                             <div class="title-cart">
-                                <h1>01</h1>
-                                <a href="<?php echo esc_url(wc_get_cart_url()); ?>">
+                                <a href="<?php echo esc_url(wc_get_cart_url()); ?>" title="<?php esc_attr_e('Shopping Cart', 'elessi-theme'); ?>">
+                                    <h1>01</h1>
                                     <h4><?php esc_html_e('Shopping Cart', 'elessi-theme'); ?></h4>
-                                    <p><?php esc_html_e('Manage your items list.', 'elessi-theme'); ?></p>
+                                    <p><?php esc_html_e('Manage Your Items List', 'elessi-theme'); ?></p>
                                 </a>
                                 <span class="pe-7s-angle-right"></span>
                             </div>
 
                             <div class="title-checkout">
-                                <h1>02</h1>
-                                <a href="<?php echo esc_url(wc_get_checkout_url()); ?>">
-                                    <h4><?php esc_html_e('Checkout details', 'elessi-theme'); ?></h4>
-                                    <p><?php esc_html_e('Checkout your items list', 'elessi-theme'); ?></p>
+                                <a href="<?php echo esc_url(wc_get_checkout_url()); ?>" title="<?php esc_attr_e('Checkout details', 'elessi-theme'); ?>">
+                                    <h1>02</h1>
+                                    <h4><?php esc_html_e('Checkout Details', 'elessi-theme'); ?></h4>
+                                    <p><?php esc_html_e('Checkout Your Items List', 'elessi-theme'); ?></p>
                                 </a>
                                 <span class="pe-7s-angle-right"></span>
                             </div>
@@ -34,31 +34,31 @@ get_header();
                             <div class="title-thankyou">
                                 <h1>03</h1>
                                 <h4><?php esc_html_e('Order Complete', 'elessi-theme'); ?></h4>
-                                <p><?php esc_html_e('Review and submit your order', 'elessi-theme'); ?></p>
+                                <p><?php esc_html_e('Review And Submit Your Order', 'elessi-theme'); ?></p>
                             </div>
                         </div>
                     <?php else : ?>
                         <div class="checkout-breadcrumb">
                             <div class="title-cart">
-                                <h1>01</h1>
-                                <a href="#">
+                                <a href="javascript:void(0);">
+                                    <h1>01</h1>
                                     <h4><?php esc_html_e('Shopping Cart', 'elessi-theme'); ?></h4>
-                                    <p><?php esc_html_e('Manage your items list.', 'elessi-theme'); ?></p>
+                                    <p><?php esc_html_e('Manage Your Items List', 'elessi-theme'); ?></p>
                                 </a>
                                 <span class="pe-7s-angle-right"></span>
                             </div>
                             <div class="title-checkout">
-                                <h1>02</h1>
-                                <a href="#">
-                                    <h4><?php esc_html_e('Checkout details', 'elessi-theme'); ?></h4>
-                                    <p><?php esc_html_e('Checkout your items list', 'elessi-theme'); ?></p>
+                                <a href="javascript:void(0);">
+                                    <h1>02</h1>
+                                    <h4><?php esc_html_e('Checkout Details', 'elessi-theme'); ?></h4>
+                                    <p><?php esc_html_e('Checkout Your Items List', 'elessi-theme'); ?></p>
                                 </a>
                                 <span class="pe-7s-angle-right"></span>
                             </div>
                             <div class="title-thankyou nasa-complete">
                                 <h1>03</h1>
                                 <h4><?php esc_html_e('Order Complete', 'elessi-theme'); ?></h4>
-                                <p><?php esc_html_e('Review and submit your order', 'elessi-theme'); ?></p>
+                                <p><?php esc_html_e('Review And Submit Your Order', 'elessi-theme'); ?></p>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -81,18 +81,16 @@ get_header();
             </div>
         </div>
     </div>
-    <div class="row">
-        <div id="content" class="large-12 columns">
-            <?php
-            if(class_exists('WooCommerce') && shortcode_exists('woocommerce_cart')):
-                echo do_shortcode('[woocommerce_cart]');
-            endif;
-            while (have_posts()) :
-                the_post();
-                the_content();
-            endwhile;
-            ?>
-        </div>
+    <div id="content">
+        <?php
+        if (class_exists('WooCommerce') && shortcode_exists('woocommerce_cart')):
+            echo do_shortcode('[woocommerce_cart]');
+        endif;
+        while (have_posts()) :
+            the_post();
+            the_content();
+        endwhile;
+        ?>
     </div>
 </div>
 

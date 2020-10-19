@@ -26,7 +26,7 @@ $coulums_slide = 12 - $columns_title;
             </div>
         </div>
         
-        <?php if(!isset($nasa_viewmore) || $nasa_viewmore == true) : ?>
+        <?php if (!isset($nasa_viewmore) || $nasa_viewmore == true) : ?>
             <a class="nasa-view-more-slider" href="<?php echo esc_url($product->get_permalink()); ?>" title="<?php echo esc_attr__('View more', 'elessi-theme'); ?>"><?php echo esc_html__('View more', 'elessi-theme'); ?></a>
         <?php endif; ?>
     </div>
@@ -34,7 +34,14 @@ $coulums_slide = 12 - $columns_title;
 
 <div class="large-<?php echo esc_attr($coulums_slide); ?> columns">
     <div class="row group-slider">
-        <div id="nasa-slider-<?php echo esc_attr($id_sc); ?>" class="slider products-group nasa-combo-slider owl-carousel" data-margin="10px" data-columns="4" data-columns-small="1" data-columns-tablet="2" data-padding="65px" data-disable-nav="true">
+        <div
+            id="nasa-slider-<?php echo esc_attr($id_sc); ?>"
+            class="nasa-slider-items-margin nasa-slick-slider nasa-combo-slider"
+            data-columns="4"
+            data-columns-small="2"
+            data-columns-tablet="3" 
+            data-switch-tablet="<?php echo elessi_switch_tablet(); ?>"
+            data-switch-desktop="<?php echo elessi_switch_desktop(); ?>">
             <?php
             $file_content = ELESSI_CHILD_PATH . '/includes/nasa-content-product-gift.php';
             $file_content = is_file($file_content) ? $file_content : ELESSI_THEME_PATH . '/includes/nasa-content-product-gift.php';

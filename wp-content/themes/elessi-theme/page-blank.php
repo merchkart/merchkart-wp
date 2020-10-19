@@ -4,16 +4,21 @@
  */
 get_header(); ?>
 
-<?php if (has_excerpt()) : ?>
+<?php
+if (has_excerpt()) : ?>
     <div class="page-header">
         <?php the_excerpt(); ?>
     </div>
-<?php endif; ?>
+<?php
+endif; ?>
 
-<?php while (have_posts()) :
+<?php
+while (have_posts()) :
     the_post();
     the_content();
-endwhile; ?>
+endwhile;
+wp_reset_postdata();
+?>
 
 <?php
 get_footer();

@@ -5,7 +5,7 @@ $class_content .= $pp_style == 'full' ? ' large-12' : ' large-6 right';
 ?>
 <div id="nasa-popup" class="white-popup-block mfp-hide mfp-with-anim zoom-anim-dialog">
     <div class="row">
-        <?php if($pp_style == 'simple'): ?>
+        <?php if ($pp_style == 'simple'): ?>
             <div class="columns large-6 medium-6 small-12 nasa-pp-left"></div>
         <?php endif; ?>
         
@@ -21,7 +21,7 @@ $class_content .= $pp_style == 'full' ? ' large-12' : ' large-6 right';
                     /**
                      * Content contact form 7
                      */
-                    echo (isset($nasa_opt['pp_contact_form']) && (int) $nasa_opt['pp_contact_form'] && shortcode_exists('contact-form-7')) ? do_shortcode('[contact-form-7 id="' . ((int) $nasa_opt['pp_contact_form']) . '"]') : '';
+                    echo isset($nasa_opt['pp_contact_form']) ? elessi_get_newsletter_form((int) $nasa_opt['pp_contact_form']) : '';
                     ?>
                 </div>
                 <hr class="nasa-popup-hr" />

@@ -102,6 +102,7 @@ function of_load_only() {
     wp_enqueue_script('jquery-ui-core');
     wp_enqueue_script('jquery-ui-sortable');
     wp_enqueue_script('jquery-ui-slider');
+    wp_enqueue_script('modernizr', ELESSI_ADMIN_DIR_URI . 'assets/js/modernizr.js', array('jquery'));
     wp_enqueue_script('jquery-input-mask', ELESSI_ADMIN_DIR_URI . 'assets/js/jquery.maskedinput-1.2.2.js', array('jquery'));
     wp_enqueue_script('tipsy', ELESSI_ADMIN_DIR_URI . 'assets/js/jquery.tipsy.js', array('jquery'));
     wp_enqueue_script('cookie', ELESSI_ADMIN_DIR_URI . 'assets/js/cookie.js', 'jquery');
@@ -247,11 +248,8 @@ function nasa_theme_rebuilt_css_dynamic() {
         WP_Filesystem();
     }
             
-    if(!$wp_filesystem->is_dir($dynamic_path)) {
-        if (!defined('FS_CHMOD_DIR')) {
-            define('FS_CHMOD_DIR', (fileperms(ABSPATH) & 0777 | 0755));
-        }
-        if (!$wp_filesystem->mkdir($dynamic_path, FS_CHMOD_DIR)){
+    if (!$wp_filesystem->is_dir($dynamic_path)) {
+        if (!wp_mkdir_p($dynamic_path)){
             return true;
         }
     }
@@ -260,6 +258,9 @@ function nasa_theme_rebuilt_css_dynamic() {
     
     $data = get_theme_mods();
     $css = elessi_get_content_custom_css($data);
+    if (!defined('FS_CHMOD_FILE')) {
+        define('FS_CHMOD_FILE', (fileperms(ABSPATH . 'index.php') & 0777 | 0644));
+    }
     if (!$wp_filesystem->put_contents($filename, $css, FS_CHMOD_FILE)) {
         return true;
     }
