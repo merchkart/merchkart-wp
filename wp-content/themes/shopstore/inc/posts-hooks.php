@@ -144,7 +144,23 @@ if ( ! function_exists( 'shopstore_posts_formats_gallery' ) ) :
 	function shopstore_posts_formats_gallery() {
 		global $post;
 		$post_thumbnail_url = '';
-		if ( get_post_gallery() ) :
+		
+		if( has_block('gallery', $post->post_content) ): 
+		
+			$post_blocks = parse_blocks( $post->post_content );
+			
+			if( !empty( $post_blocks ) ):
+				
+				echo '<div class="gallery-media wp-block-gallery">';
+				foreach ( $post_blocks as $row  ):
+					if( $row['blockName']=='core/gallery' )
+					echo $row['innerHTML'];
+				endforeach;
+				echo '</div>';
+			endif;
+			
+		
+		elseif ( get_post_gallery() ) :
 			echo '<figure class="gallery-media owlGallery">';
 			
 				$gallery = get_post_gallery( $post, false );
@@ -158,7 +174,7 @@ if ( ! function_exists( 'shopstore_posts_formats_gallery' ) ) :
 				
 				} 
 				
-			echo '</figure><div class="divider25"></div>';
+			echo '</figure>';
 			
 		else: 
 			do_action('shopstore_posts_formats_thumbnail');	

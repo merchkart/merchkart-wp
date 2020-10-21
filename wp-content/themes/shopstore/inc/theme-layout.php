@@ -200,7 +200,10 @@ if ( ! function_exists( 'shopstore_banner_heading' ) ) :
 					echo single_post_title( '', false );
 				echo '</h1>';
 			} elseif ( is_archive() ) {
+				
 				the_archive_title( '<h1 class="page-title-text">', '</h1>' );
+				the_archive_description( '<p class="archive-description subtitle">', '</p>' );
+				
 			} elseif ( is_search() ) {
 				echo '<h1 class="title">';
 					printf( /* translators:straing */ esc_html__( 'Search Results for: %s', 'shopstore' ),  get_search_query() );

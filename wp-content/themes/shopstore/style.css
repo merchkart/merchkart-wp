@@ -4,8 +4,10 @@ Theme URI: https://athemeart.com/downloads/shopstore/
 Author: aThemeArt
 Author URI: http://athemeart.com/
 Description: ShopStore is a sleek multipurpose WordPress WooCommerce theme. The theme is fully responsive that make your site look good on any devices and screens . Its attractive design and impressive product display options make this shopping theme an excellent choice for online shops. it's free WooCommerce WordPress Theme suitable for eCommerce websites of any Store , Shop type: fashion, sport, technology, fashion, furniture, digitals etc. Its modern design is perfect to create a website for your business. Online Store includes plenty of customization options that are easy to use. ShopStore works perfectly with Gutenberg and the most popular page builders  (  WPBakery Page Builder, Elementor, Brizy, Beaver Builder, Visual Composer, SiteOrigin, Divi). ShopStore is also responsive, RTL & translation ready etc, so that is was easy for you to create extra layouts and pages. And thanks to the most popular and powerful WooCommerce plugin you can create a versatile and completely customizable WordPress shop. Check out Demo at https://athemeart.com/demo/shopstore
-
-Version: 3.4
+Requires at least: 5.0
+Tested up to: 5.5.3
+Requires PHP: 7.0
+Version: 4.2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: shopstore
@@ -806,7 +808,6 @@ ul.flat-unstyled li > ul > li > a {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: 0 none;
     color: #000000;
-  
     height: 42px;
     line-height: 42px;
     margin: 0;
@@ -817,6 +818,10 @@ ul.flat-unstyled li > ul > li > a {
     top: 0;
     width: 48px;
     z-index: 99;
+}
+#btn-search-category:focus{
+	transform: scale(1.5);
+	
 }
 #btn-search-category:hover, #btn-search-two:hover i {color: #e60000}
 #btn-search-category .icon-search::before {
@@ -2050,11 +2055,10 @@ ul.popular_category_list li:before,
 .sidebar .widget.widget_tag_cloud ul li::before  {
     content: "\f0c2";
 }
-.screen-reader-text{
-	display:none;	
-}
+
 #secondary .widget li:hover a,
-#secondary .widget li.current-cat a{
+#secondary .widget li.current-cat a,
+#secondary .widget li a:focus{
 	color:#37BF91;
 }
 
@@ -2096,9 +2100,9 @@ article.main-post .content-post h3.title-post {
 	margin-bottom:18px;
 }
 
-article.main-post .content-post h3.title-post a:not(:hover) {
+/*article.main-post .content-post h3.title-post a:not(:hover) {
 	color:#2d2d2d;
-}
+}*/
 
 article.main-post .content-post ul.meta-post{
 	margin-bottom:11px;
@@ -2159,7 +2163,10 @@ article.main-post .content-post .entry-post .more-link a,
 }
 
 article.main-post .content-post .entry-post .more-link a:hover,
-.read-more-btn:hover {
+.read-more-btn:hover,
+article.main-post .content-post .entry-post .more-link a:hover,
+.read-more-btn:focus,
+article.main-post .content-post .entry-post .more-link a:focus{
 	color:#748590;
 	background:none;
 	
@@ -2179,7 +2186,9 @@ article.main-post .content-post .entry-post .more-link a i,
 	font-size:1rem;
 }
 article.main-post .content-post .entry-post .more-link a:hover i,
-.read-more-btn:hover i {
+.read-more-btn:hover i,
+article.main-post .content-post .entry-post .more-link a:focus i,
+.read-more-btn:focus i {
 	right:8px;
 	font-size:1.4rem;
 }
@@ -2523,16 +2532,19 @@ ul.comments-list .comment-reply-link:hover{
  * owlGallery
 *---------------------------------------------------------------*/
 
-.owlGallery{
+.owlGallery,
+.gallery-media ul.wp-block-gallery{
 	overflow:hidden;
 	position:relative;
 }
-.owlGallery img{
+.owlGallery img,
+.gallery-media ul.wp-block-gallery img{
 	max-width:100%;
 	height:auto;	
 }
 .owlGallery .owl-item,
-.owlGallery .item{
+.owlGallery .item,
+.gallery-media ul.wp-block-gallery .owl-item{
 	float:left;
 }
 .owl-nav{
@@ -2580,9 +2592,6 @@ ul.comments-list .comment-reply-link:hover{
 	top: 50%;
 	transform: translate(-50%, -50%);
 	width: 95%;
-}
-.screen-reader-text{
-	display:none;	
 }
 
 /*--------------------------------------------------------------
@@ -2741,6 +2750,7 @@ ul.comments-list .comment-reply-link:hover{
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
+	color:#748590;
 }
 .btn-style-2:after,
 .navigation a:after {
@@ -2755,17 +2765,23 @@ ul.comments-list .comment-reply-link:hover{
 	transition: opacity 300ms ease;
 }
 .btn-style-2:hover .btn-content,
-.navigation a:hover .btn-content {
+.navigation a:hover .btn-content,
+.btn-style-2:focus .btn-content,
+.navigation a:focus .btn-content {
 	right: 110%;
 }
 .btn-style-2:hover .icon,
-.navigation a:hover .icon {
+.navigation a:hover .icon,
+.btn-style-2:focus .icon,
+.navigation a:focus .icon  {
 	border-left: 0;
 	font-size: 1.8em;
 	width: 100%;
 }
 .btn-style-2:hover:after,
-.navigation a:hover:after {
+.navigation a:hover:after,
+.btn-style-2:focus:after,
+.navigation a:focus:after  {
 	opacity: .2;
 }
 .navigation.posts-navigation .nav-previous a,
@@ -2781,7 +2797,9 @@ ul.comments-list .comment-reply-link:hover{
 	border-right: 1px solid #748590;
 }
 .navigation.posts-navigation .nav-previous a:hover .icon,
-.error-404 a.btn-style-2:hover .icon{
+.error-404 a.btn-style-2:hover .icon,
+.navigation.posts-navigation .nav-previous a:focus .icon,
+.error-404 a.btn-style-2:focus .icon{
 	border:none;
 }
 
@@ -2797,7 +2815,9 @@ ul.comments-list .comment-reply-link:hover{
 	text-align: right;
 }
 .navigation.posts-navigation .nav-previous a:hover .btn-content,
-.error-404 a.btn-style-2:hover .btn-content{
+.error-404 a.btn-style-2:hover .btn-content,
+.navigation.posts-navigation .nav-previous a:focus .btn-content,
+.error-404 a.btn-style-2:focus .btn-content{
 	right:auto;
 	left:110%;
 }
@@ -3203,6 +3223,7 @@ h3.title-post{
 }
 
 /* Text meant only for screen readers. */
+/* Text meant only for screen readers. */
 .screen-reader-text {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
@@ -3240,6 +3261,49 @@ h3.title-post{
 }
 
 /* Do not show the outline on the skip link target. */
-#primary[tabindex="-1"]:focus {
+#content[tabindex="-1"]:focus {
   outline: 0;
 }
+.gallery-media ul.wp-block-gallery li.blocks-gallery-item{
+	width:100%!important;	
+}
+
+.gallery-media ul.wp-block-gallery li.blocks-gallery-item img{
+	    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+}
+
+.woocommerce ul#shipping_method li input[type='radio'],
+.woocommerce ul#shipping_method li input[type='checkbox']{
+	width:auto;
+	height:auto;	
+}
+.woocommerce-shipping-destination{
+	display:block;
+	clear:both;	
+}
+
+.wc-stripe-elements-field, .wc-stripe-iban-element-field{
+	max-width: 50%!important;
+	padding: 14px;
+	margin-left: 10px;
+	margin-top: -4px;
+	width: 450px!important;
+}
+#add_payment_method #payment ul.payment_methods li .stripe-credit-card-brand, .woocommerce-checkout #payment ul.payment_methods li .stripe-credit-card-brand {
+	right:auto;
+	left: 250px;
+}
+
+.header-middle .aspw-widgets-wrap-class  h3{
+	display:none;	
+}
+.header-middle .aspw-widgets-wrap-class{
+	padding-top:20px;	
+}
+.woocommerce table.cart img{
+	max-width:80px;
+	height:auto;	
+}
+

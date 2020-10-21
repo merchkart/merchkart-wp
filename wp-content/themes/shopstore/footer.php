@@ -28,8 +28,11 @@
 					<div class="col-md-7">
 						<p class="copyright"> <?php
 			/* translators: 1: Current Year, 2: Blog Name 3: Theme Developer 4: WordPress. */
-		printf( esc_html__( 'Copyright &copy; %1$s %2$s All Right Reserved. Theme By %3$s . Proudly powered by %4$s .', 'shopstore' ), esc_attr( date( 'Y' ) ), esc_html( get_bloginfo( 'name' ) ), '<a href="https://athemeart.com/downloads/shopstore/">aThemeArt</a>', '<a href="https://wordpress.org">WordPress</a>' );
+		printf( esc_html__( 'Copyright &copy; %1$s %2$s , All Right Reserved. %3$s by aThemeArt - Proudly powered by %4$s', 'shopstore' ), esc_attr( date( 'Y' ) ), esc_html( get_bloginfo( 'name' ) ), '<br/><a href="https://athemeart.com/downloads/shopstore/" title="WordPress store theme" target="_blank" rel="nofollow">Shop Store Theme</a>', '<a href="'.esc_attr( 'https://wordpress.org' ).'" target="_blank" rel="nofollow">'.esc_html_x( 'WordPress', 'credit to cms', 'shopstore' ).'</a>' );
+		
 	?></p>
+    
+
 					</div><!-- /.col-md-12 -->
                     <div class="col-md-5 text-right">
                     
@@ -39,7 +42,7 @@
                    
 						<?php 
 						foreach ($social_link['social'] as $key => $link): 
-							if( $link != ""):
+							if( !empty( $link )):
 							?>
 							<li><a href="<?php echo esc_url( $link );?>" class="fa <?php echo esc_attr($key);?>" target="_blank"></a></li>
 							<?php endif; 

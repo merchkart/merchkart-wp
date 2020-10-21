@@ -2,10 +2,10 @@
 
 Contributors: athemeart
 Donate link: https://athemeart.com/downloads/shopstore/
-Requires at least: 4.0
-Tested up to: 5.2.2
-Stable tag: 3.4
+Requires at least: 5.0
+Tested up to: 5.5.0
 Requires PHP: 7.0
+Stable tag: 4.2.0
 License: GPLv3 
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -98,6 +98,43 @@ All are Licensed under CC0
 
 == Upgrade Notice  ==
 
+= 4.1.9 =
+* Elementor editor simplify
+
+= 4.1.8 =
+* Author URL remove from footer
+
+= 4.1.7 =
+* Removed esc_attr error
+
+= 4.1.5 =
+* Removed all demo content
+* theme meta info added
+
+= 4.1.4 =
+* Widget add for Advanced Product Search 
+
+= 4.1.3 =
+* stripe input box css added
+
+= 4.1.1 =
+* skip links
+* keyboard navigation
+
+= 4.1.0 =
+* gutenberg gallery slider
+* google font sawp
+* recommed seo plugins
+
+= 3.7 =
+* extra icon remove
+
+= 3.6 =
+* fixed double showing archive title
+
+= 3.5 =
+* recmommed two plugins
+
 = 3.4 =
 * skip-link added
 
@@ -157,6 +194,31 @@ All are Licensed under CC0
 
 
 == Changelog ==
+
+= 4.2.0 =
+* Fixed Woocommerce css
+* Add Related product 2 columns
+
+= 4.1.4 =
+* Widget add for Advanced Product Search 
+
+= 4.1.3 =
+* stripe input box css added
+
+= 4.1.1 =
+* smart slider -3 Right TGM Added
+
+= 4.1.1 =
+* skip links
+* keyboard navigation
+
+= 4.1.0 =
+* gutenberg gallery slider
+* google font sawp
+* recommed seo plugins
+
+= 3.7 =
+* extra icon remove
 
 = 3.4 =
 * skip-link added
