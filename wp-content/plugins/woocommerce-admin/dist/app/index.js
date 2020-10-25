@@ -52,7 +52,7 @@ this["wc"] = this["wc"] || {}; this["wc"]["app"] =
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "chunks/" + chunkId + "." + {"0":"c2bc01c0f1fb53b04619","1":"9c6240fe0285336d4601","2":"7c37f2d162f480b8a1f8","3":"9d9bcc97f47cdfb1b68d","4":"569ef0d82e269809ccea","5":"c750e100a6fdd3a69f62","6":"a1cfaa769c3ae60919e3","7":"c9ed2f5aab5e118da74b","8":"88cdb058cc37250e3894","9":"17f4ec69378f7c8ffa0d","10":"6ab65bcdbb9b1d18130c","11":"384a5698a2a07a903f33","12":"d3d073fe29a28388f6d5","13":"1fb65e2fff8975ecf26a","14":"923b981e22307e59a68a","15":"572e1639820c8c18c276","16":"9370d88cd0f7048fe9ed","17":"7b9db75b449e14126c7a","18":"c46cd1104731242c53c6","19":"2c402410e34b9bac52cb","20":"bb65ad22ea85233709c5","21":"46016e50e137d2ae3be4","22":"aab27cc10f4e6eb24302","23":"5ebca0cf8e55385565f0","28":"672662c30b69eaf59341","29":"18be233035c4325ece57","30":"7e1d8028430fa7148071","33":"1d4c376e447be418680d","34":"1e9bc8608472c4f5be27","36":"d4e2bf3905e220b74d65","38":"6d42b4a3f810d63a4d1f","46":"45fd9f1a980110080b85","47":"28791f36dc275728980e","48":"77063cbcc06c66457bda","49":"e78eb9119c8eac3f6923","51":"7833f6f14975491e98af","52":"6c12fab082eddf9686fc","53":"a3f503c6370338b21be2","54":"7fac56b68b9f3e25d29a"}[chunkId] + ".js"
+/******/ 		return __webpack_require__.p + "chunks/" + chunkId + "." + {"0":"d82e0e3293a5788ce1b3","1":"9c6240fe0285336d4601","2":"7c37f2d162f480b8a1f8","3":"9d9bcc97f47cdfb1b68d","4":"569ef0d82e269809ccea","5":"c750e100a6fdd3a69f62","6":"a1cfaa769c3ae60919e3","7":"98d5571225e8bb353b9c","8":"88cdb058cc37250e3894","9":"17f4ec69378f7c8ffa0d","10":"5ad18ec555981926de5a","11":"e31ce9931c09bfa70ffd","12":"1e3fd4a0eb677c221f97","13":"1fb65e2fff8975ecf26a","14":"57ecb260ced16ea3d9cd","15":"b43dc4898cfe64a80f40","16":"49b97e6388f1e4ab98e0","17":"3bb7411d9278dab5881f","18":"9a8ad51cd904fce65ba8","19":"2c402410e34b9bac52cb","20":"4da69c21435efd2c9e40","21":"0573c8f697c9f049bb48","22":"236bdfd5d0b2ac1d6f41","23":"2a199043713d4e1770f4","28":"381aadd00d85f921db60","29":"18be233035c4325ece57","30":"7e1d8028430fa7148071","33":"1d4c376e447be418680d","34":"d3144bb875308a09d8d7","36":"22aea36f504a5d4259ea","38":"6eb0f9093968baecc7b4","46":"c754aac4b14123e58adb","47":"cd57928eaf0f6b1653b7","48":"77063cbcc06c66457bda","49":"e78eb9119c8eac3f6923","51":"7833f6f14975491e98af","52":"6c12fab082eddf9686fc","53":"a3f503c6370338b21be2","54":"7fac56b68b9f3e25d29a"}[chunkId] + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -7124,6 +7124,7 @@ var controller_Controller = /*#__PURE__*/function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       window.document.documentElement.scrollTop = 0;
+      window.document.body.classList.remove('woocommerce-admin-is-loading');
     }
   }, {
     key: "componentDidUpdate",
@@ -7628,10 +7629,10 @@ var InboxPanel = Object(external_this_wp_element_["lazy"])(function () {
   return Promise.all(/* import() | activity-panels-inbox */[__webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(52), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, 762));
 });
 var OrdersPanel = Object(external_this_wp_element_["lazy"])(function () {
-  return Promise.all(/* import() | activity-panels-orders */[__webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, 913));
+  return Promise.all(/* import() | activity-panels-orders */[__webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, 912));
 });
 var StockPanel = Object(external_this_wp_element_["lazy"])(function () {
-  return Promise.all(/* import() | activity-panels-stock */[__webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, 914));
+  return Promise.all(/* import() | activity-panels-stock */[__webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, 913));
 });
 var ReviewsPanel = Object(external_this_wp_element_["lazy"])(function () {
   return Promise.all(/* import() | activity-panels-inbox */[__webpack_require__.e(2), __webpack_require__.e(4), __webpack_require__.e(5), __webpack_require__.e(52), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, 903));
@@ -7734,6 +7735,8 @@ var activity_panel_ActivityPanel = /*#__PURE__*/function (_Component) {
           location = _this$props$getHistor.location;
 
       var showInbox = (isEmbedded || location.pathname !== '/') && !isPerformingSetupTask;
+      var showOrdersStockAndReviews = (taskListComplete || taskListHidden) && !isPerformingSetupTask;
+      var showStoreSetup = !taskListComplete && !taskListHidden && !isPerformingSetupTask;
       var inbox = showInbox ? {
         name: 'inbox',
         title: Object(external_this_wp_i18n_["__"])('Inbox', 'woocommerce-admin'),
@@ -7742,12 +7745,12 @@ var activity_panel_ActivityPanel = /*#__PURE__*/function (_Component) {
         }, "inbox"),
         unread: hasUnreadNotes
       } : null;
-      var setup = !taskListComplete && !isPerformingSetupTask && !taskListHidden ? {
+      var setup = showStoreSetup ? {
         name: 'setup',
         title: Object(external_this_wp_i18n_["__"])('Store Setup', 'woocommerce-admin'),
         icon: Object(external_this_wp_element_["createElement"])(setup_progress_SetupProgress, null)
       } : null;
-      var ordersStockAndReviews = taskListComplete && !isPerformingSetupTask ? [{
+      var ordersStockAndReviews = showOrdersStockAndReviews ? [{
         name: 'orders',
         title: Object(external_this_wp_i18n_["__"])('Orders', 'woocommerce-admin'),
         icon: Object(external_this_wp_element_["createElement"])(pages_default.a, null),
@@ -8584,7 +8587,7 @@ function layout_isNativeReflectConstruct() { if (typeof Reflect === "undefined" 
 
 
 var StoreAlerts = Object(external_this_wp_element_["lazy"])(function () {
-  return Promise.all(/* import() | store-alerts */[__webpack_require__.e(5), __webpack_require__.e(47)]).then(__webpack_require__.bind(null, 912));
+  return Promise.all(/* import() | store-alerts */[__webpack_require__.e(5), __webpack_require__.e(47)]).then(__webpack_require__.bind(null, 915));
 });
 var layout_PrimaryLayout = /*#__PURE__*/function (_Component) {
   inherits_default()(PrimaryLayout, _Component);
@@ -13056,31 +13059,31 @@ var REPORTS_FILTER = 'woocommerce_admin_reports_list';
  */
 
 var RevenueReport = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["lazy"])(function () {
-  return Promise.all(/* import() | analytics-report-revenue */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(0), __webpack_require__.e(20)]).then(__webpack_require__.bind(null, 705));
+  return Promise.all(/* import() | analytics-report-revenue */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(0), __webpack_require__.e(20)]).then(__webpack_require__.bind(null, 707));
 });
 var ProductsReport = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["lazy"])(function () {
   return Promise.all(/* import() | analytics-report-products */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(0), __webpack_require__.e(7), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, 706));
 });
 var OrdersReport = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["lazy"])(function () {
-  return Promise.all(/* import() | analytics-report-orders */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(0), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, 707));
+  return Promise.all(/* import() | analytics-report-orders */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(0), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, 710));
 });
 var CategoriesReport = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["lazy"])(function () {
-  return Promise.all(/* import() | analytics-report-categories */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(0), __webpack_require__.e(7), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, 703));
+  return Promise.all(/* import() | analytics-report-categories */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(0), __webpack_require__.e(7), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, 704));
 });
 var CouponsReport = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["lazy"])(function () {
-  return Promise.all(/* import() | analytics-report-coupons */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(0), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, 708));
+  return Promise.all(/* import() | analytics-report-coupons */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(0), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, 709));
 });
 var TaxesReport = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["lazy"])(function () {
-  return Promise.all(/* import() | analytics-report-taxes */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(0), __webpack_require__.e(22)]).then(__webpack_require__.bind(null, 709));
+  return Promise.all(/* import() | analytics-report-taxes */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(0), __webpack_require__.e(22)]).then(__webpack_require__.bind(null, 705));
 });
 var DownloadsReport = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["lazy"])(function () {
-  return Promise.all(/* import() | analytics-report-downloads */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(0), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, 710));
+  return Promise.all(/* import() | analytics-report-downloads */[__webpack_require__.e(1), __webpack_require__.e(3), __webpack_require__.e(0), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, 708));
 });
 var StockReport = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["lazy"])(function () {
   return Promise.all(/* import() | analytics-report-stock */[__webpack_require__.e(1), __webpack_require__.e(0), __webpack_require__.e(21)]).then(__webpack_require__.bind(null, 702));
 });
 var CustomersReport = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["lazy"])(function () {
-  return Promise.all(/* import() | analytics-report-customers */[__webpack_require__.e(1), __webpack_require__.e(0), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, 704));
+  return Promise.all(/* import() | analytics-report-customers */[__webpack_require__.e(1), __webpack_require__.e(0), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, 703));
 });
 /* harmony default export */ __webpack_exports__["a"] = (function () {
   var reports = [{

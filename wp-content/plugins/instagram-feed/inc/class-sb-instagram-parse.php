@@ -143,6 +143,7 @@ class SB_Instagram_Parse
 	 * @since 2.1.3/5.2.3 added 'd' element as a default backup from the API
 	 */
 	public static function get_media_src_set( $post, $resized_images = array() ) {
+		$full_size = SB_Instagram_Parse::get_media_url( $post );
 		$media_urls = array(
 			'd' => SB_Instagram_Parse::get_media_url( $post ),
 			'150' => '',
@@ -151,7 +152,6 @@ class SB_Instagram_Parse
 		);
 		$account_type = isset( $post['images'] ) ? 'personal' : 'business';
 
-
 		if ( $account_type === 'personal' ) {
 			$media_urls['150'] = $post['images']['thumbnail']['url'];
 			$media_urls['320'] = $post['images']['low_resolution']['url'];
@@ -159,15 +159,9 @@ class SB_Instagram_Parse
 		} else {
 			$post_id = SB_Instagram_Parse::get_post_id( $post );
 
-			$permalink = SB_Instagram_Parse::fix_permalink( SB_Instagram_Parse::get_permalink( $post ) );
-
-			if ( ($post['media_type'] === 'CAROUSEL_ALBUM' || $post['media_type'] === 'VIDEO') && ($media_urls['640'] === '' || $media_urls['640'] === 'video' || $media_urls['640'] === 'pending')) {
-				$media_urls['640'] = $permalink . 'media/?size=l';
-			} else {
-				$media_urls['640'] = isset( $post['media_url'] ) ? $post['media_url'] : $permalink . 'media/?size=l';
-			}
-			$media_urls['150'] = $permalink . 'media/?size=t';
-			$media_urls['320'] = $permalink . 'media/?size=m';
+			$media_urls['640'] = $full_size;
+			$media_urls['150'] = $full_size;
+			$media_urls['320'] = $full_size;
 
 			// use resized images if exists
 			if ( isset( $resized_images[ $post_id ]['id'] )
