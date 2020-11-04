@@ -1926,7 +1926,7 @@ div#ui-datepicker-div.yith-plugin-fw-datepicker-div {
     margin-bottom : 40px;
 }
 
-.yith-plugin-ui .yith-add-box-row label,
+.yith-plugin-ui .yith-add-box-row > label,
 .yith-plugin-ui .yith-toggle-row-opened .yith-toggle-content .yith-toggle-content-row > label {
     display        : table-cell;
     width          : 200px;
@@ -2121,7 +2121,7 @@ div#ui-datepicker-div.yith-plugin-fw-datepicker-div {
 
 .yith-plugin-fw-option-with-description {
     display        : table-cell;
-    width          : auto;
+    width          : 90%;
     vertical-align : top;
 }
 
