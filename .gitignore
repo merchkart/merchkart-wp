@@ -84,6 +84,9 @@ Thumbs.db
 # No need to Sync Config File
 wp-config.php
 
+# Remove W3 Total Cache Config Changes
+wp-content/w3tc-config/master.php
+
 # ignore everything in the "wp-content" directory, except:
 # "mu-plugins" directory
 # "plugins" directory
